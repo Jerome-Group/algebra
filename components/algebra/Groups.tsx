@@ -1,5 +1,6 @@
 "use client";
-import { useMemo, useState } from "react";
+import { SvgMath } from "./SvgMath";
+import { useId, useMemo, useState } from "react";
 import {
   group,
   closure,
@@ -15,7 +16,8 @@ import {
   cycleTex,
   type Lesson,
 } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
+import { useLaboratoryControl } from "./WebMCP";
 import {
   Select,
   SelectTrigger,
@@ -43,6 +45,8 @@ export function Choice({
   onChange: (v: string) => void;
   options: [string, string][];
 }) {
+  const id = useId();
+  useLaboratoryControl(id, { label, value, options, set: onChange });
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger aria-label={label}>
@@ -51,7 +55,7 @@ export function Choice({
       <SelectContent>
         {options.map(([v, t]) => (
           <SelectItem key={v} value={v}>
-            {t}
+            <Prose>{t}</Prose>
           </SelectItem>
         ))}
       </SelectContent>
@@ -73,11 +77,22 @@ export function Range({
   onChange: (v: number) => void;
   step?: number;
 }) {
+  const id = useId();
+  useLaboratoryControl(id, {
+    label,
+    value,
+    min,
+    max,
+    step,
+    set: (v) => onChange(Number(v)),
+  });
   return (
     <div className="range-control">
       <label>
-        {label}
-        <strong>{value}</strong>
+        <Prose>{label}</Prose>
+        <strong>
+          <M>{String(value)}</M>
+        </strong>
       </label>
       <Slider
         aria-label={label}
@@ -180,24 +195,24 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             setB(2);
           }}
           options={[
-            ["C", "Cyclic Cₙ"],
-            ["D", "Dihedral Dₙ"],
-            ["V", "Klein four V₄"],
-            ["Q", "Quaternion Q₈"],
-            ["S", "Symmetric Sₙ"],
-            ["U", "Units modulo n"],
+            ["C", "Cyclic $C_n$"],
+            ["D", "Dihedral $D_n$"],
+            ["V", "Klein four $V_4$"],
+            ["Q", "Quaternion $Q_8$"],
+            ["S", "Symmetric $S_n$"],
+            ["U", "Units modulo $n$"],
           ]}
         />
         {(type === "C" || type === "D" || type === "U" || type === "S") && (
           <Choice
-            label="Parameter n"
+            label={"Parameter $n$"}
             value={String(n)}
             onChange={(v) => {
               setN(+v);
               setA(1);
             }}
             options={(type === "S" ? [3, 4] : [3, 4, 5, 6, 8, 10, 12, 24]).map(
-              (i) => [String(i), `n = ${i}`],
+              (i) => [String(i), `$n = ${i}$`],
             )}
           />
         )}
@@ -210,9 +225,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           role="img"
           aria-label="Subgroup inclusion lattice"
         >
-          <text x="24" y="30" className="svg-caption">
+          <SvgMath x="24" y="30" className="svg-caption">
             SUBGROUP INCLUSION · EDGES ARE COVERS
-          </text>
+          </SvgMath>
           {(() => {
             const sizes = [...new Set(shownSg.map((h) => h.length))],
               xy = shownSg.map((h, i) => {
@@ -257,15 +272,15 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                       r={18}
                       fill={normal(g, h) ? "#69dbca" : "#a7a1ff"}
                     />
-                    <text
+                    <SvgMath
                       x={xy[i][0]}
                       y={xy[i][1] + 5}
                       textAnchor="middle"
                       fill="#102331"
                     >
                       {quotientView ? h.length / H.length : h.length}
-                    </text>
-                    <text
+                    </SvgMath>
+                    <SvgMath
                       x={xy[i][0]}
                       y={xy[i][1] + 34}
                       textAnchor="middle"
@@ -282,7 +297,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                             : quotientView
                               ? `H${i + 1}/H`
                               : `H${i + 1}`}
-                    </text>
+                    </SvgMath>
                   </g>
                 ))}
               </>
@@ -321,7 +336,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>ab</TableHead>
+                <TableHead>
+                  <M>{"ab"}</M>
+                </TableHead>
                 {g.labels.map((l, i) => (
                   <TableHead key={i}>
                     <M>{l}</M>
@@ -374,9 +391,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               <path d="M0,0 L7,3 L0,6" fill="#7bddcf" />
             </marker>
           </defs>
-          <text x="24" y="30" className="svg-caption">
+          <SvgMath x="24" y="30" className="svg-caption">
             RIGHT MULTIPLICATION BY THE SELECTED ELEMENT
-          </text>
+          </SvgMath>
           {pos.map((p, i) => {
             const j = g.mul(i, x),
               q = pos[j],
@@ -426,15 +443,15 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                 stroke={i === x ? "#fff" : "none"}
                 strokeWidth="3"
               />
-              <text
+              <SvgMath
                 x={p[0]}
                 y={p[1] + 5}
                 textAnchor="middle"
                 fill="#102331"
                 fontSize="13"
               >
-                {g.labels[i].replace("^", "").replaceAll("\\,", " ")}
-              </text>
+                {g.labels[i]}
+              </SvgMath>
             </g>
           ))}
         </svg>
@@ -456,30 +473,32 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         )}
         <div className="two-cols">
           <Choice
-            label="Element a"
+            label={"Element $a$"}
             value={String(x)}
             onChange={(v) => setA(+v)}
-            options={g.labels.map((l, i) => [String(i), `a = ${l}`])}
+            options={g.labels.map((l, i) => [String(i), `$a = ${l}$`])}
           />
           <Choice
-            label="Element b"
+            label={"Element $b$"}
             value={String(y)}
             onChange={(v) => setB(+v)}
-            options={g.labels.map((l, i) => [String(i), `b = ${l}`])}
+            options={g.labels.map((l, i) => [String(i), `$b = ${l}$`])}
           />
         </div>
         <div className="stat-strip">
           <div>
             <strong>{order(g, x)}</strong>
-            <span>order of a</span>
+            <M>{"\\operatorname{ord}(a)"}</M>
           </div>
           <div>
             <strong>{H.length}</strong>
-            <span>|H|</span>
+            <M>{"|H|"}</M>
           </div>
           <div>
             <strong>{cs.length}</strong>
-            <span>index [G:H]</span>
+            <span>
+              <Prose>{"index [$G$:H]"}</Prose>
+            </span>
           </div>
           <div>
             <strong>{sg.length}</strong>
@@ -491,17 +510,20 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         >{`a b=${g.labels[pr]},\\quad b a=${g.labels[g.mul(y, x)]},\\quad a^{-1}=${g.labels[inverse(g, x)]}`}</M>
         {double && (
           <p className="lab-explain">
-            H=⟨a⟩ and K=⟨b⟩. A double coset HgK lets H act on the left and K on
-            the right; unlike ordinary cosets, double cosets can have different
-            sizes. Here the sizes are {doubles.map((c) => c.length).join(", ")}.
+            <Prose>
+              {
+                " $H=\\langle a\\rangle$ and $K=\\langle b\\rangle$. A double coset HgK lets $H$ act on the left and $K$ on the right; unlike ordinary cosets, double cosets can have different sizes. Here the sizes are "
+              }
+            </Prose>
+            {doubles.map((c) => c.length).join(", ")}.
           </p>
         )}
         <p className="lab-explain">
           The selected generated subgroup is{" "}
           <M>{`H=\\{${H.map((i) => g.labels[i]).join(",")}\\}`}</M>. Following
           multiplication arrows returns to the identity after {order(g, x)}{" "}
-          steps. Cosets partition G into {cs.length} equal pieces of size{" "}
-          {H.length}.
+          <Prose>{" steps. Cosets partition $G$ into "}</Prose>
+          {cs.length} equal pieces of size {H.length}.
         </p>
         <details open={/normal|centralizer/.test(lesson.id)}>
           <summary>Conjugation, centralizer and normalizer</summary>
@@ -509,26 +531,35 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             block
           >{`bHb^{-1}=\\{${conjugate.map((i) => g.labels[i]).join(",")}\\}`}</M>
           <p>
-            Conjugation by b{" "}
-            {conjugate.every((h) => H.includes(h)) ? "preserves" : "changes"} H
-            as a set. |C_G(H)|={centralizer.length} fixes each member under
-            conjugation; |N_G(H)|={normalizer.length} preserves H as a set. H is
-            normal precisely when its normalizer is all of G.
+            <Prose>{" Conjugation by $b$"}</Prose>{" "}
+            {conjugate.every((h) => H.includes(h)) ? "preserves" : "changes"}
+            <Prose>{" $H$ as a set. |$C_G(H)|=$"}</Prose>
+            {centralizer.length}
+            <Prose>{" fixes each member under conjugation; |$N_G(H)|=$"}</Prose>
+            {normalizer.length}
+            <Prose>
+              {
+                " preserves $H$ as a set. $H$ is normal precisely when its normalizer is all of $G$. "
+              }
+            </Prose>
           </p>
         </details>
         {lesson.id === "mh2220-simple-composition" && (
           <details open>
-            <summary>A composition series for S₄</summary>
+            <summary>
+              <Prose>{"A composition series for $S_{4}$"}</Prose>
+            </summary>
             <M block>
               {
                 "S_4\\triangleright A_4\\triangleright V_4\\triangleright C_2\\triangleright 1"
               }
             </M>
             <p>
-              Each subgroup is normal in the preceding one; the factors have
-              orders 2,3,2,2 and are cyclic of prime order. C₂ here is generated
-              by a double transposition. Compare C₂₄, whose composition factors
-              have the same prime orders but whose group structure is different.
+              <Prose>
+                {
+                  " Each subgroup is normal in the preceding one; the factors have orders 2,3,2,2 and are cyclic of prime order. $C_{2}$ here is generated by a double transposition. Compare $C_{24}$, whose composition factors have the same prime orders but whose group structure is different. "
+                }
+              </Prose>
             </p>
           </details>
         )}
@@ -572,11 +603,11 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         <details>
           <summary>Conventions and scope</summary>
           <p>
-            These machines enumerate actual finite groups, not arbitrary
-            operation tables. Dₙ has order 2n and elements rᵃsᵇ, with sr = r⁻¹s.
-            The graph uses right multiplication. Cₙ is written additively; its
-            identity is 0. Q₈ uses i²=j²=k²=ijk=−1. A finite example illustrates
-            a theorem but does not prove the general case.
+            <Prose>
+              {
+                " These machines enumerate actual finite groups, not arbitrary operation tables. $D_{n}$ has order 2n and elements $r$ᵃ$s$ᵇ, with $sr = r^{-1}s$. The graph uses right multiplication. $C_{n}$ is written additively; its identity is 0. $Q_{8}$ uses i²=j²=k²=ijk=−1. A finite example illustrates a theorem but does not prove the general case. "
+              }
+            </Prose>
           </p>
         </details>
       </div>
@@ -607,7 +638,7 @@ export function PolygonLab() {
             setR(mod(r + 1, n));
           }}
         >
-          Rotate r
+          <Prose>{" Rotate $r$ "}</Prose>
         </button>
         <button
           onClick={() => {
@@ -615,7 +646,7 @@ export function PolygonLab() {
             setS(1 - s);
           }}
         >
-          Reflect s
+          <Prose>{" Reflect $s$ "}</Prose>
         </button>
         <button
           onClick={() => {
@@ -658,28 +689,28 @@ export function PolygonLab() {
         )}
         {pos.map((v, i) => (
           <g key={i}>
-            <text
+            <SvgMath
               x={v[0] * 1.12 - 33.6}
               y={v[1] * 1.12 - 24.6}
               textAnchor="middle"
               fill="#8094aa"
             >
               {i + 1}
-            </text>
+            </SvgMath>
             <circle
               cx={pos[p[i]][0]}
               cy={pos[p[i]][1]}
               r="20"
               fill={palette[i % 12]}
             />
-            <text
+            <SvgMath
               x={pos[p[i]][0]}
               y={pos[p[i]][1] + 5}
               textAnchor="middle"
               fill="#112535"
             >
               {i + 1}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </svg>
@@ -689,16 +720,19 @@ export function PolygonLab() {
         >{`g=r^{${r}}s^{${s}},\\quad g(i)=${r}+(-1)^{${s}}i\\pmod{${n}}`}</M>
         <M block>{`\\pi(g)=${cycleTex(p)},\\quad |D_{${n}}|=${2 * n}`}</M>
         <p>
-          Gray labels mark the original positions; colored labels travel with
-          their vertices. Apply r then s, reset, and apply s then r. The
-          destinations differ because reflection reverses the direction of
-          rotation.
+          <Prose>
+            {
+              " Gray labels mark the original positions; colored labels travel with their vertices. Apply $r$ then $s$, reset, and apply $s$ then $r$. The destinations differ because reflection reverses the direction of rotation. "
+            }
+          </Prose>
         </p>
         <M block>{"srs=r^{-1},\\qquad r^n=s^2=e"}</M>
         <p>
-          Positions in the formula are numbered 0 through n−1; the drawing
-          numbers them 1 through n. A reflection is an orientation-reversing
-          symmetry, not a rotation in the plane.
+          <Prose>
+            {
+              " Positions in the formula are numbered 0 through $n-1$; the drawing numbers them 1 through $n$. A reflection is an orientation-reversing symmetry, not a rotation in the plane. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -719,21 +753,21 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
     <div className="generic-lab">
       <div className="lab-controls">
         <Range
-          label="Domain modulus n"
+          label={"Domain modulus $n$"}
           value={n}
           min={2}
           max={16}
           onChange={setN}
         />
         <Range
-          label="Codomain modulus m"
+          label={"Codomain modulus $m$"}
           value={m}
           min={2}
           max={12}
           onChange={setM}
         />
         <Range
-          label="Multiplier k"
+          label={"Multiplier $k$"}
           value={k}
           min={0}
           max={12}
@@ -759,9 +793,9 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
                 fill="none"
               />
               <circle cx="120" cy={y} r="10" fill={palette[j % 12]} />
-              <text x="96" y={y + 5} textAnchor="end" fill="#c4d6e4">
+              <SvgMath x="96" y={y + 5} textAnchor="end" fill="#c4d6e4">
                 {i}
-              </text>
+              </SvgMath>
             </g>
           );
         })}
@@ -773,9 +807,9 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
               r="10"
               fill={palette[i % 12]}
             />
-            <text x="443" y={50 + (i * 305) / (m - 1)} fill="#c4d6e4">
+            <SvgMath x="443" y={50 + (i * 305) / (m - 1)} fill="#c4d6e4">
               {i}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </svg>
@@ -807,14 +841,20 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
         )}
         {ring && (
           <p>
-            Preserving multiplication also requires k² ≡ k (mod m); preserving
-            the multiplicative identity requires k ≡ 1 (mod m). Unital:{" "}
+            <Prose>
+              {
+                " Preserving multiplication also requires $k^{2} \\equiv  k$ (mod m); preserving the multiplicative identity requires $k \\equiv  1$ (mod m). Unital:"
+              }
+            </Prose>{" "}
             {ringValid && mod(k - 1, m) === 0 ? "yes" : "no"}.
           </p>
         )}
         <p>
           The necessary and sufficient condition for the additive group map is{" "}
-          <M>{"m\\mid kn"}</M>, since the relation n·[1]=0 must be preserved.
+          <M>{"m\\mid kn"}</M>
+          <Prose>
+            {", since the relation $n\\cdot [1]=0$ must be preserved. "}
+          </Prose>
         </p>
       </div>
     </div>

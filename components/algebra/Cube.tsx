@@ -1,4 +1,5 @@
 "use client";
+import { SvgMath } from "./SvgMath";
 import { useEffect, useRef, useState } from "react";
 import {
   cube,
@@ -18,7 +19,7 @@ import {
   type ActionSet,
   type Lesson,
 } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   Select,
   SelectTrigger,
@@ -155,14 +156,14 @@ export function CubeScene({
           return (
             <g key={i}>
               {line([0, 0, 0], v, ["#98696e", "#6b947b", "#65879b"][i])}
-              <text
+              <SvgMath
                 x={p[0] + 7}
                 y={p[1] - 3}
                 fill={["#b9888d", "#83b598", "#79a1b8"][i]}
                 fontSize="12"
               >
                 {["x", "y", "z"][i]}
-              </text>
+              </SvgMath>
             </g>
           );
         })}
@@ -230,7 +231,7 @@ export function CubeScene({
                   stroke={i === selected ? "#edfff8" : "#17333b"}
                   strokeWidth="2"
                 />
-                <text
+                <SvgMath
                   x={q[0]}
                   y={q[1] + 5}
                   fill={palette[i % 12]}
@@ -239,7 +240,7 @@ export function CubeScene({
                   fontSize="14"
                 >
                   {i + 1}
-                </text>
+                </SvgMath>
               </g>
             );
           })}
@@ -252,7 +253,7 @@ export function CubeScene({
           title="Zoom out"
           onClick={() => setZoom((z) => Math.max(0.55, z - 0.15))}
         >
-          −
+          <Prose>{" $-$ "}</Prose>
         </button>
         <button
           title="Reset camera"
@@ -398,7 +399,8 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             <label>Induced permutation</label>
             <M block>{`\\pi_X(Q)=${cycleTex(p)}`}</M>
             <span>
-              det Q = {det(el.matrix)} · {cycles(p).length} cycles
+              <Prose>{" det $Q$ = "}</Prose>
+              {det(el.matrix)} · {cycles(p).length} cycles
             </span>
           </div>
         </div>
@@ -414,26 +416,31 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
               onClick={() => setSelected(i)}
             >
               {i + 1}
-              <span>→{p[i] + 1}</span>
+              <span>
+                <Prose>{"$\\to$"}</Prose>
+                {p[i] + 1}
+              </span>
             </button>
           ))}
         </div>
         <div className="stat-strip">
           <div>
             <strong>{G.length}</strong>
-            <span>|G|</span>
+            <M>{"|G|"}</M>
           </div>
           <div>
             <strong>{orb.length}</strong>
-            <span>|Orb({selected + 1})|</span>
+            <M>{`|\\operatorname{Orb}(${selected + 1})|`}</M>
           </div>
           <div>
             <strong>{stab.length}</strong>
-            <span>|Stab({selected + 1})|</span>
+            <M>{`|\\operatorname{Stab}(${selected + 1})|`}</M>
           </div>
           <div>
             <strong>{kernel.length}</strong>
-            <span>|ker π|</span>
+            <span>
+              <M>{"|\\ker\\pi|"}</M>
+            </span>
           </div>
         </div>
         <p className="lab-explain">
@@ -480,9 +487,12 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           })}
         </div>
         <details>
-          <summary>Count colorings with Burnside’s lemma</summary>
+          <summary>
+            <Prose>{"Count colorings with Burnside’$s$ lemma"}</Prose>
+          </summary>
           <label className="slider-label">
-            Labeled colors k <b>{colors}</b>
+            <Prose>{" Labeled colors $k$ "}</Prose>
+            <b>{colors}</b>
           </label>
           <Slider
             aria-label="Number of colors"
@@ -498,15 +508,20 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <p>
             For {colors} colors on {set}, there are{" "}
             <strong>{colorings.toLocaleString()} inequivalent colorings</strong>
-            . Repeated colors are allowed. A coloring fixed by g must be
-            constant on every cycle.
+            <Prose>
+              {
+                " . Repeated colors are allowed. A coloring fixed by $g$ must be constant on every cycle. "
+              }
+            </Prose>
           </p>
           <div className="cycle-distribution">
             {[...cts]
               .sort((a, b) => b[0] - a[0])
               .map(([c, n]) => (
                 <span key={c}>
-                  {n} elements × {c} cycles
+                  {n}
+                  <Prose>{" elements $\\times$ "}</Prose>
+                  {c} cycles
                 </span>
               ))}
           </div>
@@ -514,10 +529,14 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <details open={lesson.id === "representations-actions-modules"}>
           <summary>From this action to a permutation representation</summary>
           <p>
-            Attach one basis vector eᵢ to each object. The action permutes
-            coefficients by <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This
-            representation has dimension {p.length}; the geometric matrix Q has
-            dimension 3.
+            <Prose>
+              {
+                " Attach one basis vector $e^{i}$ to each object. The action permutes coefficients by "
+              }
+            </Prose>
+            <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This representation has dimension{" "}
+            {p.length}
+            <Prose>{"; the geometric matrix $Q$ has dimension 3. "}</Prose>
           </p>
           <M
             block
@@ -534,9 +553,11 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <details>
           <summary>Generators and composition convention</summary>
           <p>
-            Column vectors; AB applies B first. Every button left-multiplies Q.
-            The matrix product is exact; camera movement is independent of the
-            group action.
+            <Prose>
+              {
+                " Column vectors; AB applies $B$ first. Every button left-multiplies $Q$. The matrix product is exact; camera movement is independent of the group action. "
+              }
+            </Prose>
           </p>
           <M block>{`A=${matrixTex([
             [1, 0, 0],
@@ -549,9 +570,11 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           ])}`}</M>
           <M block>{"J=-I_3,\\qquad A^4=B^4=J^2=I,\\quad JQ=QJ"}</M>
           <p>
-            A and B generate all 24 rotations. Adjoining J yields 48 symmetries.
-            Determinant −1 includes inversion and rotoreflections, not only
-            plane reflections.
+            <Prose>
+              {
+                " A and $B$ generate all 24 rotations. Adjoining J yields 48 symmetries. Determinant $-1$ includes inversion and rotoreflections, not only plane reflections. "
+              }
+            </Prose>
           </p>
         </details>
       </div>

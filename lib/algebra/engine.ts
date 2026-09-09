@@ -307,9 +307,17 @@ export const palette = [
 export type Lesson = {
   id: string;
   title: string;
+  navTitle?: string;
   track: string;
   section: string;
-  source: { title: string; url: string; section: string };
+  source: Citation;
+  references?: Citation[];
+  aliases?: string[];
+  subject?: string;
+  family?: string;
+  connections?: string[];
+  worked?: { title: string; steps: string[] };
+  reading?: { title: string; paragraphs: string[]; source: Citation }[];
   intuition: string;
   definition: string;
   explanation: string;
@@ -319,4 +327,14 @@ export type Lesson = {
   prompt: string;
   machine: string;
   parameters?: Record<string, unknown>;
+};
+
+export type Citation = {
+  title: string;
+  url: string;
+  section: string;
+  pages?: string;
+  pdfPages?: string;
+  role?: string;
+  chapterUrl?: string;
 };

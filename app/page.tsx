@@ -1,4 +1,4 @@
-import Atlas from "@/components/algebra/Atlas";
+import Algebra from "@/components/algebra/Algebra";
 export default function Page() {
-  return <Atlas />;
+  return <Algebra />;
 }

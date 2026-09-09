@@ -1,6 +1,7 @@
 "use client";
+import { SvgMath } from "./SvgMath";
 import { useState } from "react";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
 import { CubeScene } from "./Cube";
 import {
@@ -30,10 +31,10 @@ export function QuadraticLab() {
     <div>
       <div className="lab-toolbar">
         <Choice
-          label="Quadratic radicand D"
+          label={"Quadratic radicand $D$"}
           value={String(D)}
           onChange={(v) => setD(+v)}
-          options={[-1, -2, -3, -5, -7].map((d) => [String(d), `D = ${d}`])}
+          options={[-1, -2, -3, -5, -7].map((d) => [String(d), `$D = ${d}$`])}
         />
         <Choice
           label="Lattice ring"
@@ -41,7 +42,7 @@ export function QuadraticLab() {
           onChange={(v) => setFull(v === "integers")}
           options={[
             ["integers", "Full ring of integers"],
-            ["naive", "ℤ[√D] comparison"],
+            ["naive", "$\\mathbb Z[\\sqrt D]$ comparison"],
           ]}
         />
       </div>
@@ -85,30 +86,30 @@ export function QuadraticLab() {
           r="8"
           fill="#69dbca"
         />
-        <text x={292 + re * scale} y={194 - im * scale} fill="#69dbca">
+        <SvgMath x={292 + re * scale} y={194 - im * scale} fill="#69dbca">
           z
-        </text>
+        </SvgMath>
         <circle
           cx={280 + re * scale}
           cy={200 + im * scale}
           r="6"
           fill="#e2bd78"
         />
-        <text x={292 + re * scale} y={214 + im * scale} fill="#e2bd78">
-          z̄
-        </text>
+        <SvgMath x={292 + re * scale} y={214 + im * scale} fill="#e2bd78">
+          {"\\bar z"}
+        </SvgMath>
       </svg>
       <div className="lab-controls">
         <div className="two-cols">
           <Range
-            label="Coefficient a"
+            label={"Coefficient $a$"}
             min={-3}
             max={3}
             value={a}
             onChange={setA}
           />
           <Range
-            label="Coefficient b"
+            label={"Coefficient $b$"}
             min={-3}
             max={3}
             value={b}
@@ -118,12 +119,16 @@ export function QuadraticLab() {
         <M block>{`z=a+b\\omega,\\quad\\omega=${omega}`}</M>
         <M block>{`\\operatorname{Tr}(z)=${trace},\\qquad N(z)=${norm}`}</M>
         <p>
-          {half
-            ? "Alternate rows shift by half a unit. The purple points are algebraic integers missing from ℤ[√D]."
-            : "These points are integer combinations of 1 and √D."}{" "}
-          For squarefree D≡1 (mod 4), the full integer ring uses ω=(1+√D)/2;
-          otherwise it uses √D. The picture covers imaginary quadratic fields
-          D&lt;0.
+          <Prose>
+            {half
+              ? "Alternate rows shift by half a unit. The purple points are algebraic integers missing from $\\mathbb Z[\\sqrt D]$."
+              : "These points are integer combinations of $1$ and $\\sqrt D$."}
+          </Prose>
+          <Prose>
+            {
+              " For squarefree $D\\equiv1\\pmod4$, use $\\omega=(1+\\sqrt D)/2$; otherwise use $\\sqrt D$. The picture covers imaginary quadratic fields, $D<0$."
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -150,14 +155,17 @@ export function CyclicLab() {
             setN(+v);
             setPower(1);
           }}
-          options={[3, 4, 5, 6, 8].map((n) => [String(n), `C${n} on ℝ³`])}
+          options={[3, 4, 5, 6, 8].map((n) => [
+            String(n),
+            `$C_{${n}}$ on $\\mathbb R^3$`,
+          ])}
         />
-        <span className="lab-tag">Axis ⊕ rotation plane</span>
+        <span className="lab-tag">Axis and rotation plane</span>
       </div>
       <CubeScene matrix={m} set="vertices" selected={0} onSelect={() => {}} />
       <div className="lab-controls">
         <Range
-          label="Exponent k in rᵏ"
+          label={"Exponent $k$ in $r^k$"}
           value={power}
           min={0}
           max={n - 1}
@@ -171,9 +179,11 @@ export function CyclicLab() {
           block
         >{`\\chi(r^{${power}})=1+2\\cos(2\\pi ${power}/${n})\\approx ${(1 + 2 * c).toFixed(4)}`}</M>
         <p>
-          The z-axis is fixed pointwise. The xy-plane is invariant and rotates.
-          Over ℂ, that plane splits into two eigenlines with eigenvalues on the
-          unit circle. The generator has no real eigenline in the plane for n≥3.
+          <Prose>
+            {
+              " The z-axis is fixed pointwise. The xy-plane is invariant and rotates. Over $\\mathbb C$, that plane splits into two eigenlines with eigenvalues on the unit circle. The generator has no real eigenline in the plane for $n\\ge 3$. "
+            }
+          </Prose>
         </p>
         <div className="cyclic-spectrum">
           {Array.from({ length: n }, (_, k) => (
@@ -183,7 +193,8 @@ export function CyclicLab() {
               onClick={() => setPower(k)}
             >
               <span>
-                r<sup>{k}</sup>
+                <Prose>{" $r$"}</Prose>
+                <sup>{k}</sup>
               </span>
               <strong>
                 {Number((1 + 2 * Math.cos((2 * Math.PI * k) / n)).toFixed(3))}
@@ -192,9 +203,11 @@ export function CyclicLab() {
           ))}
         </div>
         <p>
-          The numbers are the character values (rounded when necessary). For C₄,
-          they are exactly (3,1,−1,1). The cube serves as a frame showing the
-          ambient linear action; these angles are not all cube symmetries.
+          <Prose>
+            {
+              " The numbers are the character values (rounded when necessary). For $C_{4}$, they are exactly ($3,1,-1,1$). The cube serves as a frame showing the ambient linear action; these angles are not all cube symmetries. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -250,14 +263,14 @@ export function MatrixFiniteLab() {
               r="25"
               fill={palette[i]}
             />
-            <text
+            <SvgMath
               x={pos[p[i]][0]}
               y={pos[p[i]][1] + 5}
               textAnchor="middle"
               fill="#132e3a"
             >
               {x.join(",")}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </svg>
@@ -275,9 +288,11 @@ export function MatrixFiniteLab() {
         </div>
         <M block>{`A=${matrixTex(m)},\\quad\\pi(A)=${cycleTex(p)}`}</M>
         <p>
-          Only the identity fixes all three nonzero vectors, so this action is
-          faithful. Both GL₂(𝔽₂) and S₃ have six elements; the resulting
-          injection is an isomorphism.
+          <Prose>
+            {
+              " Only the identity fixes all three nonzero vectors, so this action is faithful. Both $\\operatorname{GL}_{2}(\\mathbb F _{2})$ and $S_{3}$ have six elements; the resulting injection is an isomorphism. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -295,17 +310,17 @@ export function SylowCalculator() {
         Sylow arithmetic for any proposed order
       </label>
       <Range
-        label="Group order |G|"
+        label={"Group order $|G|$"}
         value={N}
         min={2}
         max={120}
         onChange={setN}
       />
       <Choice
-        label="Prime p"
+        label={"Prime $p$"}
         value={String(p)}
         onChange={(v) => setP(+v)}
-        options={[2, 3, 5, 7, 11].map((x) => [String(x), `p = ${x}`])}
+        options={[2, 3, 5, 7, 11].map((x) => [String(x), `$p = ${x}$`])}
       />
       <M block>{`|G|=${q}\\cdot${N / q},\\quad |P|=${q}`}</M>
       <M block>{`n_${p}\\mid ${N / q},\\quad n_${p}\\equiv1\\pmod{${p}}`}</M>
@@ -365,21 +380,21 @@ export function SemidirectLab() {
                       : "#294552"
                 }
               />
-              <text
+              <SvgMath
                 x={65 + (i * 430) / (n - 1)}
                 y={95 + layer * 150}
                 textAnchor="middle"
                 fill={i === x && layer === y ? "#102e32" : "#becdd9"}
               >
                 {i},{layer}
-              </text>
+              </SvgMath>
             </g>
           )),
         )}
       </svg>
       <div className="lab-controls">
         <Range
-          label="Cyclic modulus n"
+          label={"Cyclic modulus $n$"}
           min={3}
           max={8}
           value={n}
@@ -390,10 +405,10 @@ export function SemidirectLab() {
           }}
         />
         <div className="two-cols">
-          <Range label="a" min={0} max={n - 1} value={a} onChange={setA} />
-          <Range label="b" min={0} max={1} value={b} onChange={setB} />
-          <Range label="c" min={0} max={n - 1} value={c} onChange={setC} />
-          <Range label="d" min={0} max={1} value={d} onChange={setD} />
+          <Range label={"$a$"} min={0} max={n - 1} value={a} onChange={setA} />
+          <Range label={"$b$"} min={0} max={1} value={b} onChange={setB} />
+          <Range label={"$c$"} min={0} max={n - 1} value={c} onChange={setC} />
+          <Range label={"$d$"} min={0} max={1} value={d} onChange={setD} />
         </div>
         <M
           block
@@ -420,62 +435,148 @@ export function ModuleLab() {
     ],
     v = [x, y],
     w = [a * x + off * y, b * y],
-    pos = (v: number[]) => [280 + v[0] * 30, 200 - v[1] * 30];
+    scale = Math.min(42, 175 / Math.max(4, ...w.map(Math.abs))),
+    pos = (v: number[]) => [220 + v[0] * scale, 160 - v[1] * scale];
   return (
     <div>
-      <div className="lab-controls">
+      <div className="lab-intro">
         <M block>
           {"R=\\mathbb R[t],\\quad V=\\mathbb R^2,\\quad t\\cdot v=Tv"}
         </M>
         <p>
-          A polynomial acts by substitution: f(t)·v=f(T)v. T need not be
-          invertible. This is a ring module, even when T is not a group action.
+          <Prose>
+            {
+              " A polynomial acts by substitution: $f(t)\\cdot v=f(T)v$. $T$ need not be invertible. This is a ring module, even when $T$ is not a group action. "
+            }
+          </Prose>
         </p>
       </div>
       <svg
         className="math-svg"
-        viewBox="0 0 560 400"
+        viewBox="0 0 440 320"
         role="img"
-        aria-label="Module operator and invariant line"
+        aria-label="An upper triangular operator preserves the horizontal line; the quotient remembers height"
       >
-        <rect x="20" y="187" width="520" height="26" fill="#69dbca11" />
-        <line x1="20" y1="200" x2="540" y2="200" stroke="#69dbca" />
-        <line x1="280" y1="20" x2="280" y2="380" stroke="#496275" />
+        {[-3, -2, -1, 0, 1, 2, 3].map((k) => (
+          <g key={k}>
+            <line
+              x1={220 + k * scale}
+              y1="20"
+              x2={220 + k * scale}
+              y2="300"
+              stroke="#e2dfd8"
+            />
+            <line
+              x1="20"
+              y1={160 + k * scale}
+              x2="420"
+              y2={160 + k * scale}
+              stroke="#e2dfd8"
+            />
+            {k !== 0 && (
+              <SvgMath
+                x={220 + k * scale}
+                y="184"
+                textAnchor="middle"
+                fontSize={13}
+              >
+                {k}
+              </SvgMath>
+            )}
+          </g>
+        ))}
+        <line
+          x1="20"
+          y1="160"
+          x2="420"
+          y2="160"
+          stroke="#8858d1"
+          strokeWidth="2"
+        />
+        <line x1="220" y1="20" x2="220" y2="300" stroke="#77727c" />
+        <SvgMath x="270" y="212" fontSize={15}>
+          {"W=\\operatorname{span}(1,0)"}
+        </SvgMath>
         {[v, w].map((p, i) => (
           <g key={i}>
             <line
-              x1="280"
-              y1="200"
+              x1="220"
+              y1="160"
               x2={pos(p)[0]}
               y2={pos(p)[1]}
-              stroke={palette[i]}
+              stroke={i ? "#ee502e" : "#171827"}
               strokeWidth="3"
             />
-            <circle cx={pos(p)[0]} cy={pos(p)[1]} r="6" fill={palette[i]} />
-            <text x={pos(p)[0] + 10} y={pos(p)[1] - 8} fill={palette[i]}>
-              {i ? "Tv" : "v"}
-            </text>
+            <circle
+              cx={pos(p)[0]}
+              cy={pos(p)[1]}
+              r="5"
+              fill={i ? "#ee502e" : "#171827"}
+            />
+            <SvgMath
+              x={Math.min(pos(p)[0] + 8, 410)}
+              y={pos(p)[1] + (i ? 30 : -14)}
+              fontSize={20}
+              textAnchor={pos(p)[0] > 310 ? "end" : "start"}
+            >{`${i ? "Tv" : "v"}=(${p.join(",")})`}</SvgMath>
           </g>
         ))}
       </svg>
       <div className="lab-controls">
         <div className="three-cols">
-          <Range label="T₁₁" min={-2} max={2} value={a} onChange={setA} />
-          <Range label="T₁₂" min={-2} max={2} value={off} onChange={setOff} />
-          <Range label="T₂₂" min={-2} max={2} value={b} onChange={setB} />
+          <Range
+            label={"$T_{11}$"}
+            min={-2}
+            max={2}
+            value={a}
+            onChange={setA}
+          />
+          <Range
+            label={"$T_{12}$"}
+            min={-2}
+            max={2}
+            value={off}
+            onChange={setOff}
+          />
+          <Range
+            label={"$T_{22}$"}
+            min={-2}
+            max={2}
+            value={b}
+            onChange={setB}
+          />
         </div>
         <div className="two-cols">
-          <Range label="Vector x" min={-2} max={2} value={x} onChange={setX} />
-          <Range label="Vector y" min={-2} max={2} value={y} onChange={setY} />
+          <Range
+            label={"Vector $x$"}
+            min={-2}
+            max={2}
+            value={x}
+            onChange={setX}
+          />
+          <Range
+            label={"Vector $y$"}
+            min={-2}
+            max={2}
+            value={y}
+            onChange={setY}
+          />
         </div>
         <M
           block
         >{`T=${matrixTex(m)},\\quad Tv=${matrixTex(w.map((x) => [x]))}`}</M>
         <p>
-          The x-axis W is invariant because T(x,0)=(ax,0). A quotient class
-          modulo W remembers only y; the induced operator on V/W is
-          multiplication by {b}. Change T₁₂: it changes the horizontal output
-          while leaving the quotient action unchanged.
+          <Prose>
+            {
+              " The x-axis $W$ is invariant because $T(x,0)=(ax,0)$. A quotient class modulo $W$ remembers only $y$; the induced operator on $V/W$ is multiplication by "
+            }
+          </Prose>
+          {b}
+          <Prose>
+            {
+              ". Change $T_{12}$: it changes the horizontal output while leaving the quotient action unchanged. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -520,14 +621,16 @@ export function SquareModesLab() {
             ["contrast", "Opposite contrasts"],
           ]}
         />
-        <button onClick={() => setR(mod(r + 1, 4))}>Apply r</button>
+        <button onClick={() => setR(mod(r + 1, 4))}>
+          <Prose>{"Apply $r$"}</Prose>
+        </button>
         <button
           onClick={() => {
             setR(mod(-r, 4));
             setS(1 - s);
           }}
         >
-          Apply s
+          <Prose>{" Apply $s$ "}</Prose>
         </button>
       </div>
       <svg
@@ -544,12 +647,12 @@ export function SquareModesLab() {
         {pos.map((p, i) => (
           <g key={i}>
             <circle cx={p[0]} cy={p[1]} r="22" fill={palette[i]} />
-            <text x={p[0]} y={p[1] + 5} textAnchor="middle" fill="#102d38">
+            <SvgMath x={p[0]} y={p[1] + 5} textAnchor="middle" fill="#102d38">
               {out[i]}
-            </text>
-            <text x={p[0]} y={p[1] + 45} textAnchor="middle" fill="#91b2c2">
-              vertex {i + 1}
-            </text>
+            </SvgMath>
+            <SvgMath x={p[0]} y={p[1] + 45} textAnchor="middle" fill="#91b2c2">
+              {`\\text{vertex }${i + 1}`}
+            </SvgMath>
           </g>
         ))}
       </svg>

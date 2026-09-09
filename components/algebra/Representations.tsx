@@ -1,6 +1,7 @@
 "use client";
+import { SvgMath } from "./SvgMath";
 import { useState } from "react";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
 import { CubeScene } from "./Cube";
 import {
@@ -136,20 +137,20 @@ export function OrthogonalLab() {
                 r="7"
                 fill={palette[i]}
               />
-              <text
+              <SvgMath
                 x={f(v[0], v[1])[0] + 12}
                 y={f(v[0], v[1])[1] - 10}
                 fill={palette[i]}
               >
-                Qe{i + 1}
-              </text>
+                {`Qe_{${i + 1}}`}
+              </SvgMath>
             </g>
           ))}
         </svg>
       )}
       <div className="lab-controls">
         <Range
-          label="Angle θ in degrees"
+          label={"Angle $\\theta$ in degrees"}
           value={angle}
           min={0}
           max={360}
@@ -166,16 +167,22 @@ export function OrthogonalLab() {
         <M block>{`Q^TQ=I,\\quad\\det Q=${e}`}</M>
         <p>
           The columns remain orthonormal: their lengths and angle never change.
-          The orientation-preserving component is SO({dim}).{" "}
-          {dim === "3"
-            ? "An arbitrary angle rotates the cube to a new position in space; only certain angles and axes return its vertex set to itself."
-            : "Rotations form a circle: angles add modulo 2π."}
+          The orientation-preserving component is{" "}
+          <M>{`\\operatorname{SO}(${dim})`}</M>.{" "}
+          {dim === "3" ? (
+            "An arbitrary angle rotates the cube to a new position in space; only certain angles and axes return its vertex set to itself."
+          ) : (
+            <Prose>
+              {"Rotations form a circle: angles add modulo $2\\pi$."}
+            </Prose>
+          )}
         </p>
         <p>
-          Changing the orientation selector jumps between components. There is
-          no continuous path from determinant +1 to −1 inside an orthogonal
-          group. Displayed decimal entries are approximations; the construction
-          uses sine and cosine.
+          <Prose>
+            {
+              " Changing the orientation selector jumps between components. There is no continuous path from $determinant +1$ to $-1$ inside an orthogonal group. Displayed decimal entries are approximations; the construction uses sine and cosine. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
@@ -203,13 +210,17 @@ export function PermutationLab() {
   return (
     <div>
       <div className="lab-controls">
-        <label>Permutation p, images of 1,2,…</label>
+        <label>
+          <Prose>{"Permutation $p$, images of 1,2,…"}</Prose>
+        </label>
         <input
           aria-label="Permutation p"
           value={raw}
           onChange={(e) => setRaw(e.target.value)}
         />
-        <label>Permutation q</label>
+        <label>
+          <Prose>{"Permutation $q$"}</Prose>
+        </label>
         <input
           aria-label="Permutation q"
           value={rawB}
@@ -217,8 +228,11 @@ export function PermutationLab() {
         />
         {(!ok || !okQ) && (
           <p className="error-note">
-            Use each integer 1 to n once (2 ≤ n ≤ 8), with the same n in both
-            rows.
+            <Prose>
+              {
+                " Use each integer 1 to $n$ once ($2 \\le  n \\le  8$), with the same $n$ in both rows. "
+              }
+            </Prose>
           </p>
         )}
       </div>
@@ -237,18 +251,23 @@ export function PermutationLab() {
               strokeWidth="3"
             />
             <circle cx={x(i, pp.length)} cy="55" r="17" fill={palette[i]} />
-            <text x={x(i, pp.length)} y="60" textAnchor="middle" fill="#102331">
+            <SvgMath
+              x={x(i, pp.length)}
+              y="60"
+              textAnchor="middle"
+              fill="#102331"
+            >
               {i + 1}
-            </text>
+            </SvgMath>
             <circle cx={x(v, pp.length)} cy="265" r="17" fill={palette[i]} />
-            <text
+            <SvgMath
               x={x(v, pp.length)}
               y="270"
               textAnchor="middle"
               fill="#102331"
             >
               {v + 1}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </svg>
@@ -264,9 +283,11 @@ export function PermutationLab() {
             block
           >{`P_p=${matrixTex(p.map((_, i) => p.map((v) => (v === i ? 1 : 0))))}`}</M>
           <p>
-            Column j is eₚ₍ⱼ₎. Matrix multiplication follows composition: PₚPq =
-            Pₚq. The order is the least common multiple of the cycle lengths,
-            including fixed points.
+            <Prose>
+              {
+                " Column $j$ is $e_{p(j)}$. Matrix multiplication follows composition: $P_{p}Pq = P_{p}q$. The order is the least common multiple of the cycle lengths, including fixed points. "
+              }
+            </Prose>
           </p>
         </div>
       )}
@@ -310,7 +331,9 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
             `Apply ${cycleTex(p).replaceAll("\\,", " ")}`,
           ])}
         />
-        <span className="lab-tag">Permutation module ℝ³</span>
+        <span className="lab-tag">
+          <Prose>{"Permutation module $\\mathbb R ^{3}$"}</Prose>
+        </span>
       </div>
       <svg
         className="math-svg"
@@ -326,9 +349,9 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
         {pos.map((q, i) => (
           <g key={i}>
             <circle cx={q[0]} cy={q[1]} r="22" fill={palette[i]} />
-            <text x={q[0]} y={q[1] + 5} textAnchor="middle" fill="#102331">
+            <SvgMath x={q[0]} y={q[1] + 5} textAnchor="middle" fill="#102331">
               {i + 1}
-            </text>
+            </SvgMath>
             <rect
               x={q[0] - 18}
               y={Math.min(q[1] - 30, q[1] - 30 - bar(w[i]))}
@@ -337,9 +360,9 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
               fill={palette[i]}
               opacity=".55"
             />
-            <text x={q[0] + 35} y={q[1] + 5} fill={palette[i]}>
+            <SvgMath x={q[0] + 35} y={q[1] + 5} fill={palette[i]}>
               {w[i]}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </svg>
@@ -381,11 +404,11 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
             }
           </M>
           <p>
-            For this transitive permutation representation, averaging
-            redistributes every coordinate equally. P commutes with each ρ(g),
-            P²=P, and its image is the fixed subspace. Maschke’s more general
-            complement proof averages a projection onto a chosen invariant
-            subspace, with ρ(g)P₀ρ(g)⁻¹.
+            <Prose>
+              {
+                " For this transitive permutation representation, averaging redistributes every coordinate equally. $P$ commutes with each $\\rho (g)$, $P^{2}=P$, and its image is the fixed subspace. Maschke’$s$ more general complement proof averages a projection onto a chosen invariant subspace, with $\\rho (g)P_{0}\\rho (g)^{-1}$. "
+              }
+            </Prose>
           </p>
         </details>
         <details>
@@ -396,10 +419,11 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
             }
           </M>
           <p>
-            A 120° rotation has no invariant real line. Over ℂ it has two
-            eigenlines, so it is irreducible over ℝ but reducible after
-            complexification. Change to the orthogonal machine to see the
-            rotation.
+            <Prose>
+              {
+                " A 120° rotation has no invariant real line. Over $\\mathbb C$ it has two eigenlines, so it is irreducible over $\\mathbb R$ but reducible after complexification. Change to the orthogonal machine to see the rotation. "
+              }
+            </Prose>
           </p>
         </details>
       </div>
@@ -422,8 +446,14 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
           [2, 0, -1],
         ],
     names = useS4
-      ? ["1", "sgn", "Std", "Std ⊗ sgn", "V₂"]
-      : ["1", "sgn", "Std"],
+      ? [
+          "1",
+          "\\operatorname{sgn}",
+          "\\operatorname{Std}",
+          "\\operatorname{Std}\\otimes\\operatorname{sgn}",
+          "V_2",
+        ]
+      : ["1", "\\operatorname{sgn}", "\\operatorname{Std}"],
     sizes = useS4 ? [1, 6, 3, 8, 6] : [1, 3, 2],
     classes = useS4
       ? ["e", "(12)", "(12)(34)", "(123)", "(1234)"]
@@ -439,18 +469,24 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
     <div>
       <div className="lab-controls">
         <p>
-          Finite group {useS4 ? "S₄" : "S₃"}; representations over ℂ. Columns
-          are conjugacy classes, not individual elements.
+          Finite group <M>{useS4 ? "S_4" : "S_3"}</M>
+          <Prose>
+            {
+              "; representations over $\\mathbb C$. Columns are conjugacy classes, not individual elements. "
+            }
+          </Prose>
         </p>
       </div>
       <div className="character-table">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>χ</TableHead>
+              <TableHead>
+                <Prose>{"$\\chi$"}</Prose>
+              </TableHead>
               {classes.map((x, i) => (
                 <TableHead key={x}>
-                  {x}
+                  <M>{x}</M>
                   <small>size {sizes[i]}</small>
                 </TableHead>
               ))}
@@ -459,7 +495,9 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
           <TableBody>
             {rows.map((r, i) => (
               <TableRow key={i}>
-                <TableHead>{names[i]}</TableHead>
+                <TableHead>
+                  <M>{names[i]}</M>
+                </TableHead>
                 {r.map((x, j) => (
                   <TableCell key={j} style={{ color: palette[i] }}>
                     {x}
@@ -476,13 +514,13 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
             label="First character"
             value={String(a)}
             onChange={(v) => setA(+v)}
-            options={names.map((n, i) => [String(i), n])}
+            options={names.map((n, i) => [String(i), `$${n}$`])}
           />
           <Choice
             label="Second character"
             value={String(b)}
             onChange={(v) => setB(+v)}
-            options={names.map((n, i) => [String(i), n])}
+            options={names.map((n, i) => [String(i), `$${n}$`])}
           />
         </div>
         <M block>{`\\chi_{V\\otimes W}=\\chi_V\\chi_W=(${prod.join(",")})`}</M>
@@ -493,7 +531,7 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
                 style={{ height: `${24 + m * 36}px`, background: palette[i] }}
               />
               <strong>{m}</strong>
-              <span>{names[i]}</span>
+              <M>{names[i]}</M>
             </div>
           ))}
         </div>
@@ -501,15 +539,19 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
           block
         >{`\\langle\\chi,\\psi\\rangle=\\frac1{${N}}\\sum_C |C|\\chi(C)\\overline{\\psi(C)}`}</M>
         <p>
-          The bars show exact irreducible multiplicities. Weight by class size;
-          treating all columns equally gives the wrong answer. For S₃, Std⊗Std =
-          1⊕sgn⊕Std.
+          <Prose>
+            {
+              " The bars show exact irreducible multiplicities. Weight by class size; treating all columns equally gives the wrong answer. For $S_{3}$, $Std\\otimes \\operatorname{Std} = 1\\oplus sgn\\oplus \\operatorname{Std}$. "
+            }
+          </Prose>
         </p>
         {useS4 && (
           <p>
-            Cube rotations give the character (3,−1,−1,0,1), the sign twist of
-            the standard S₄ representation. The four-diagonal permutation module
-            instead splits as 1⊕Std.
+            <Prose>
+              {
+                " Cube rotations give the character ($3,-1,-1,0,1$), the sign twist of the standard $S_{4}$ representation. The four-diagonal permutation module instead splits as $1\\oplus \\operatorname{Std}$. "
+              }
+            </Prose>
           </p>
         )}
       </div>
