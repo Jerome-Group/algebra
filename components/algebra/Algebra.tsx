@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -87,8 +86,8 @@ function LearningExperience() {
           href="#cube-four-actions"
           onClick={() => open("cube-four-actions")}
         >
-          <Image
-            unoptimized
+          {/* eslint-disable-next-line @next/next/no-img-element -- Serve the generated mark without an image-transformation service. */}
+          <img
             className="brand-logo"
             src="/logo.png"
             width={36}
