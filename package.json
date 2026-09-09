@@ -13,7 +13,7 @@
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .sites-runtime",
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate",
-    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\""
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"worker/**/*.ts\" \"hooks/**/*.ts\" \"examples/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\""
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
