@@ -2,7 +2,7 @@
 
 Any decision this repository makes that the code cannot state for itself is written down in
 `docs/adr/` as a numbered, immutable record. `CODING_STANDARDS.md` §3 draws the line: the code
-carries *what* it does, and this directory carries the *why* — the constraint that ruled an
+carries _what_ it does, and this directory carries the _why_ — the constraint that ruled an
 option out, the trade-off accepted, the thing that will look like a mistake to whoever reads it
 next without the reasoning.
 

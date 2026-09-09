@@ -1,28 +1,12 @@
-# <repository> — context
+# Abstract Algebra — context
 
-*(One line: the domain this repository operates in.)*
+An interactive mathematics learning application.
 
 ## Language
 
-The ubiquitous language of this repository: the words the code, the issues and the commits all
-use for the same thing. An entry earns its place when two people — or a person and an agent —
-could reasonably mean different things by the same word.
+**Site**: the existing ChatGPT Sites deployment; GitHub stores its reviewed source snapshot.
 
-Each entry is the term, what it means **here**, and the near-synonyms to avoid so the wrong one
-does not creep back in.
+**Course reference**: a link or citation to learning material. A link does not redistribute the
+referenced file or grant permission to copy it.
 
-**\<Term\>**:
-What it means in this repository.
-_Avoid_: the words that mean something adjacent and would blur it
-
-Two terms are Organisation-wide and mean the same thing in every repository:
-
-**Organisation**:
-The `Jerome-Group` GitHub org — the top-level account that owns the repositories.
-_Avoid_: team, group
-
-**Baseline**:
-The configuration every repository in the Organisation inherits — branch protection, the
-security defaults, and the per-repository settings. It is applied from the management hub, not
-from here.
-_Avoid_: template, policy, default
+**Baseline**: the Organisation's centrally managed repository configuration and conformance checks.
