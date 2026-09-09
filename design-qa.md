@@ -16,6 +16,7 @@ Final result: passed
 1. Earlier desktop iterations exposed a split diagram/control column, clipped vector labels and a dark cube background that obscured labels. Fixed the laboratory to use its panel width with controls below, adjusted label anchors, and gave mathematical figures a light paper surface. Final module and cube captures show readable mathematical labels.
 2. Responsive testing after stylesheet consolidation found the desktop sidebar overriding the mobile drawer and causing horizontal overflow. Moved breakpoint rules after base styles. Post-fix 390 × 844 inspection shows the closed drawer hidden, accessible Concepts toggle, readable single-column notes, and no document overflow. Removed the mobile laboratory height cap so controls follow the whole diagram; minimisation brings notes into view.
 3. Camera disclosure contrast was too low. Set an explicit dark foreground on its paper background.
+4. Finite quotient grids overflowed the narrow right panel and selected cells used a dark background. Stacked domain and image grids, moved matrix controls below them, and changed selected cells to peach with dark mathematics. A new desktop browser capture confirmed both complete grids and readable labels.
 
 ## Required fidelity surfaces
 

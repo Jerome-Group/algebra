@@ -19,42 +19,6 @@ export function LinearQuotientLab() {
     );
   return (
     <div>
-      <div className="lab-controls">
-        <Choice
-          label="Scalar field"
-          value={String(prime)}
-          onChange={(v) => {
-            setPrime(+v);
-            setA(1);
-            setB(1);
-            setC(0);
-            setD(0);
-            setSelected(0);
-          }}
-          options={[2, 3, 5].map((p) => [String(p), `$\\mathbb F_${p}$`])}
-        />
-        <div className="matrix-controls">
-          {[
-            ["a", a, setA],
-            ["b", b, setB],
-            ["c", c, setC],
-            ["d", d, setD],
-          ].map(([label, value, set]) => (
-            <Range
-              key={String(label)}
-              label={`Matrix entry $${label}$`}
-              min={0}
-              max={prime - 1}
-              value={value as number}
-              onChange={set as (v: number) => void}
-            />
-          ))}
-        </div>
-        <M block>{`T(v)=${matrixTex([
-          [a, b],
-          [c, d],
-        ])}v,\\quad V=\\mathbb F_${prime}^2`}</M>
-      </div>
       <div className="fiber-board">
         <section>
           <h3>Domain · select a vector</h3>
@@ -100,6 +64,42 @@ export function LinearQuotientLab() {
             ))}
           </div>
         </section>
+      </div>
+      <div className="lab-controls">
+        <Choice
+          label="Scalar field"
+          value={String(prime)}
+          onChange={(v) => {
+            setPrime(+v);
+            setA(1);
+            setB(1);
+            setC(0);
+            setD(0);
+            setSelected(0);
+          }}
+          options={[2, 3, 5].map((p) => [String(p), `$\\mathbb F_${p}$`])}
+        />
+        <div className="matrix-controls">
+          {[
+            ["a", a, setA],
+            ["b", b, setB],
+            ["c", c, setC],
+            ["d", d, setD],
+          ].map(([label, value, set]) => (
+            <Range
+              key={String(label)}
+              label={`Matrix entry $${label}$`}
+              min={0}
+              max={prime - 1}
+              value={value as number}
+              onChange={set as (v: number) => void}
+            />
+          ))}
+        </div>
+        <M block>{`T(v)=${matrixTex([
+          [a, b],
+          [c, d],
+        ])}v,\\quad V=\\mathbb F_${prime}^2`}</M>
       </div>
       <div className="lab-controls">
         <M
