@@ -238,13 +238,21 @@
 .wordmark {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 9px;
+  min-width: 0;
   font-size: 24px;
   font-weight: 780;
   letter-spacing: -1px;
   line-height: 1;
   color: #141519;
   width: auto;
+}
+.brand-logo {
+  display: block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .header-context {
   margin-left: auto;

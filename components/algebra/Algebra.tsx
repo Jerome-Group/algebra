@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -86,7 +87,15 @@ function LearningExperience() {
           href="#cube-four-actions"
           onClick={() => open("cube-four-actions")}
         >
-          Abstract Algebra
+          <Image
+            unoptimized
+            className="brand-logo"
+            src="/logo.png"
+            width={36}
+            height={36}
+            alt=""
+          />
+          <span>Abstract Algebra</span>
         </a>
         <div className="header-context">
           {lesson.subject}
