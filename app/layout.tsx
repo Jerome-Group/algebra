@@ -4,7 +4,8 @@ import "katex/dist/katex.min.css";
 
 export const metadata: Metadata = {
   title: "Algebra Atlas",
-  description: "A visual companion to groups, rings and representations. Rigorous mathematics, made tangible.",
+  description:
+    "A visual companion to groups, rings and representations. Rigorous mathematics, made tangible.",
   other: {
     "codex-preview": "development",
   },

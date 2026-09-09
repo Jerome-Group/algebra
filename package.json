@@ -11,8 +11,9 @@
     "build": "bash scripts/build-verified.sh",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
-    "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .sites-runtime",
+    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\""
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
@@ -55,6 +56,7 @@
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
+    "prettier": "3.9.6",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
     "tw-animate-css": "^1.4.0",

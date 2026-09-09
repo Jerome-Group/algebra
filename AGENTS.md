@@ -14,7 +14,7 @@ Course files remain outside Git; access-controlled notes links may remain.
 ## Getting it running
 
 Use Node.js 24+: `npm ci`, `npx vite`, `npx vinext build`, then
-`node --test tests/*.test.mjs`. Existing Sites shell wrappers require Linux tools.
+`node --test tests/*.test.mjs`, `npm run format:check`, and `npm run lint`. Existing Sites shell wrappers require Linux tools.
 Keep the original Site identifier; a GitHub import is not a Sites deployment.
 
 ## Conventions

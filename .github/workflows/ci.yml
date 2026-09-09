@@ -11,7 +11,7 @@ on:
   # GitHub disables a schedule after 60 days without repository activity, and emails the Owner
   # when it does.
   schedule:
-    - cron: '17 4 * * 1'
+    - cron: "17 4 * * 1"
 
 permissions:
   contents: read
@@ -19,6 +19,7 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       # Actions are pinned to a commit, not a tag, so a moved tag cannot change what runs here.
       # Dependabot is what moves these pins forward (.github/dependabot.yml).
@@ -55,10 +56,14 @@ jobs:
 
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: '24'
+          node-version: "24"
           cache: npm
       - name: Install locked dependencies
         run: npm ci
+      - name: Check formatting
+        run: npm run format:check
+      - name: Lint the application
+        run: npm run lint
       - name: Build the application
         run: npx vinext build
       - name: Test the application

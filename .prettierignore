@@ -1,0 +1,7 @@
+# Retain registry and vendor source exactly as distributed.
+components/ui/
+vendor/
+public/
+node_modules/
+dist/
+.sites-runtime/

@@ -99,14 +99,15 @@ Two shapes are settled, so no repository re-argues them:
 
 ## 6. Repo-specific standards
 
-*(Each repository fills this in and owns it.)* Language and framework conventions, the seams
-where tests are written, naming or layout rules particular to this codebase, and anything the
-core leaves open. Add them here; they evolve through this repository's normal pull-request flow.
+Use TypeScript and React with the retained Vinext build. Routes belong in `app/`, interactive
+views in `components/`, and mathematics/helpers in `lib/`. Tests live in `tests/` and run with
+Node's test runner against the built Worker where applicable.
 
-This section is empty because this repository is newly generated. Fill it in with the first
-change that has an opinion worth holding the next one to — the formatter and linter that run in
-CI, where the tests live, and the one or two layout rules a newcomer would otherwise guess
-wrong.
+CI runs pinned Prettier in check mode, ESLint, the production build, and the existing tests.
+Vendored UI and assets retain their source formatting and notices. The initial ESLint suppression
+file records existing source findings by file/rule/count (ADR-0002); never regenerate it to hide
+new violations. Fixes remove corresponding suppressions. Run `npm run format:check` and
+`npm run lint` before committing; all required checks must complete within ten minutes.
 
 ## 7. Evolution — what is rigid, what moves
 

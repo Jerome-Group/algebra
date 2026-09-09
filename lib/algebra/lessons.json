@@ -1098,16 +1098,8 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "S",
-          "T",
-          "inclusion"
-        ],
-        [
-          "T",
-          "R",
-          "inclusion"
-        ]
+        ["S", "T", "inclusion"],
+        ["T", "R", "inclusion"]
       ],
       "mode": "subring",
       "nodes": [
@@ -1316,16 +1308,8 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "B",
-          "AB",
-          "multiply on left"
-        ],
-        [
-          "B",
-          "BC",
-          "multiply on right"
-        ]
+        ["B", "AB", "multiply on left"],
+        ["B", "BC", "multiply on right"]
       ],
       "mode": "one-sided-ideals",
       "nodes": [
@@ -1390,18 +1374,9 @@
     "intuition": "A quotient merges elements whose difference lies in an ideal. All calculations remain meaningful because changing a representative only changes the result by an element of that ideal.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        0,
-        -1,
-        0,
-        2
-      ],
+      "coefficients": [0, -1, 0, 2],
       "mode": "quotient",
-      "modulus": [
-        1,
-        0,
-        1
-      ]
+      "modulus": [1, 0, 1]
     },
     "pitfall": "A quotient imposes an equation on classes; it does not assert that X squared equals -1 in the original polynomial ring.",
     "prompt": "Use g as the quotient modulus. Divide f by g and inspect the remainder: adding a multiple of g changes the polynomial but not its class.",
@@ -1425,21 +1400,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "R",
-          "Q",
-          "quotient"
-        ],
-        [
-          "R",
-          "S",
-          "φ"
-        ],
-        [
-          "Q",
-          "S",
-          "isomorphism"
-        ]
+        ["R", "Q", "quotient"],
+        ["R", "S", "φ"],
+        ["Q", "S", "isomorphism"]
       ],
       "mode": "isomorphism",
       "nodes": [
@@ -1479,26 +1442,10 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "I",
-          "J",
-          "⊆"
-        ],
-        [
-          "J",
-          "R",
-          "⊆"
-        ],
-        [
-          "R",
-          "Q",
-          "quotient"
-        ],
-        [
-          "J",
-          "JQ",
-          "quotient"
-        ]
+        ["I", "J", "⊆"],
+        ["J", "R", "⊆"],
+        ["R", "Q", "quotient"],
+        ["J", "JQ", "quotient"]
       ],
       "mode": "correspondence",
       "nodes": [
@@ -1619,21 +1566,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "a",
-          "q",
-          "same class"
-        ],
-        [
-          "b",
-          "q",
-          "same class"
-        ],
-        [
-          "c",
-          "q",
-          "same class"
-        ]
+        ["a", "q", "same class"],
+        ["b", "q", "same class"],
+        ["c", "q", "same class"]
       ],
       "mode": "fractions",
       "nodes": [
@@ -1677,26 +1612,10 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "R",
-          "L",
-          "invert X"
-        ],
-        [
-          "L",
-          "K",
-          "invert all nonzero polynomials"
-        ],
-        [
-          "a",
-          "L",
-          "belongs"
-        ],
-        [
-          "b",
-          "K",
-          "belongs"
-        ]
+        ["R", "L", "invert X"],
+        ["L", "K", "invert all nonzero polynomials"],
+        ["a", "L", "belongs"],
+        ["b", "K", "belongs"]
       ],
       "mode": "localization",
       "nodes": [
@@ -1744,21 +1663,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "Z",
-          "R",
-          "invert denominators coprime to 3"
-        ],
-        [
-          "M",
-          "R",
-          "unique maximal ideal"
-        ],
-        [
-          "R",
-          "F",
-          "quotient"
-        ]
+        ["Z", "R", "invert denominators coprime to 3"],
+        ["M", "R", "unique maximal ideal"],
+        ["R", "F", "quotient"]
       ],
       "mode": "local-ring",
       "nodes": [
@@ -1830,16 +1737,8 @@
       "a": 84,
       "b": 30,
       "edges": [
-        [
-          "a",
-          "b",
-          "subtract a multiple"
-        ],
-        [
-          "b",
-          "c",
-          "last nonzero remainder"
-        ]
+        ["a", "b", "subtract a multiple"],
+        ["b", "c", "last nonzero remainder"]
       ],
       "mode": "euclidean",
       "nodes": [
@@ -1880,14 +1779,8 @@
     "parameters": {
       "D": -1,
       "mode": "gaussian-division",
-      "w": [
-        3,
-        2
-      ],
-      "z": [
-        7,
-        5
-      ]
+      "w": [3, 2],
+      "z": [7, 5]
     },
     "pitfall": "This norm argument is special to a lattice with the required covering bound. It does not prove that every quadratic integer ring is Euclidean.",
     "prompt": "Divide 7+5i by 3+2i. Locate a nearest Gaussian integer to the quotient and verify the remainder norm.",
@@ -1911,26 +1804,10 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "F",
-          "E",
-          "implies"
-        ],
-        [
-          "E",
-          "P",
-          "implies"
-        ],
-        [
-          "P",
-          "U",
-          "implies"
-        ],
-        [
-          "U",
-          "D",
-          "implies"
-        ]
+        ["F", "E", "implies"],
+        ["E", "P", "implies"],
+        ["P", "U", "implies"],
+        ["U", "D", "implies"]
       ],
       "mode": "domain-hierarchy",
       "nodes": [
@@ -1978,21 +1855,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "P",
-          "I",
-          "always"
-        ],
-        [
-          "I",
-          "P",
-          "in a PID"
-        ],
-        [
-          "C",
-          "I",
-          "irreducible, not prime"
-        ]
+        ["P", "I", "always"],
+        ["I", "P", "in a PID"],
+        ["C", "I", "irreducible, not prime"]
       ],
       "mode": "prime-irreducible",
       "nodes": [
@@ -2032,26 +1897,10 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "six",
-          "two",
-          "factor"
-        ],
-        [
-          "six",
-          "three",
-          "factor"
-        ],
-        [
-          "six",
-          "plus",
-          "alternative factor"
-        ],
-        [
-          "six",
-          "minus",
-          "alternative factor"
-        ]
+        ["six", "two", "factor"],
+        ["six", "three", "factor"],
+        ["six", "plus", "alternative factor"],
+        ["six", "minus", "alternative factor"]
       ],
       "mode": "factorization",
       "nodes": [
@@ -2098,16 +1947,9 @@
     "intuition": "A polynomial is a finite sequence of coefficients, with multiplication given by combining every pair whose exponents add to the desired degree.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        1,
-        2,
-        1
-      ],
+      "coefficients": [1, 2, 1],
       "mode": "multiply",
-      "other": [
-        2,
-        1
-      ]
+      "other": [2, 1]
     },
     "pitfall": "Formal polynomials need not be determined by their values on a finite field. For example X^p-X is nonzero as a polynomial but vanishes at every point of the prime field.",
     "prompt": "Multiply two polynomials by following contributions along coefficient diagonals. Repeat modulo 4 to see a leading term disappear.",
@@ -2130,18 +1972,9 @@
     "intuition": "Long division repeatedly removes the highest remaining term. A monic divisor makes each removal possible without dividing coefficients outside the ring.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        1,
-        0,
-        0,
-        1
-      ],
+      "coefficients": [1, 0, 0, 1],
       "mode": "divide",
-      "modulus": [
-        1,
-        0,
-        1
-      ]
+      "modulus": [1, 0, 1]
     },
     "pitfall": "Division by a nonunit constant can fail over the integers: 1 cannot equal 2q with an integer polynomial q.",
     "prompt": "Reduce a polynomial modulo X²+1 step by step. Watch the leading term decrease at every step.",
@@ -2164,12 +1997,7 @@
     "intuition": "A root means the polynomial contains a linear factor. Repeated roots correspond to repeated copies of that factor, consuming more of the polynomial's degree.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        2,
-        -3,
-        0,
-        1
-      ],
+      "coefficients": [2, -3, 0, 1],
       "mode": "roots"
     },
     "pitfall": "Exclude the zero polynomial from finite multiplicity and root bounds. A zero-divisor ring can have more roots than the degree: 2X modulo 4 has both 0 and 2 as roots.",
@@ -2193,13 +2021,7 @@
     "intuition": "A factorization of degree two or three must contain a linear factor. At degree four, two quadratic factors can hide from a root search.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        2,
-        0,
-        3,
-        0,
-        1
-      ],
+      "coefficients": [2, 0, 3, 0, 1],
       "mode": "irreducibility"
     },
     "pitfall": "No roots does not imply irreducible in degree four: (X²+1)(X²+2) has no rational roots but factors over the rationals.",
@@ -2223,11 +2045,7 @@
     "intuition": "Separate the common integer factor of all coefficients from the genuinely polynomial part. Primitive polynomials keep their arithmetic structure when moving between integers and rationals.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        3,
-        9,
-        6
-      ],
+      "coefficients": [3, 9, 6],
       "mode": "content"
     },
     "pitfall": "Primitivity matters: 2X+2 is reducible in the integer polynomial ring through its content, but is associate to a linear polynomial over the rationals.",
@@ -2251,13 +2069,7 @@
     "intuition": "Reducing modulo a prime can force any hypothetical factors to have constant terms divisible by that prime. Their product would then contain one prime factor too many.",
     "machine": "polynomial",
     "parameters": {
-      "coefficients": [
-        1,
-        0,
-        0,
-        0,
-        1
-      ],
+      "coefficients": [1, 0, 0, 0, 1],
       "mode": "eisenstein",
       "p": 2,
       "shift": 1
@@ -2284,21 +2096,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "two",
-          "both",
-          "proper inclusion"
-        ],
-        [
-          "x",
-          "both",
-          "proper inclusion"
-        ],
-        [
-          "both",
-          "R",
-          "proper inclusion"
-        ]
+        ["two", "both", "proper inclusion"],
+        ["x", "both", "proper inclusion"],
+        ["both", "R", "proper inclusion"]
       ],
       "mode": "nonprincipal",
       "nodes": [
@@ -2342,21 +2142,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "i1",
-          "i2",
-          "strict inclusion"
-        ],
-        [
-          "i2",
-          "i3",
-          "strict inclusion"
-        ],
-        [
-          "i3",
-          "inf",
-          "continues indefinitely"
-        ]
+        ["i1", "i2", "strict inclusion"],
+        ["i2", "i3", "strict inclusion"],
+        ["i3", "inf", "continues indefinitely"]
       ],
       "mode": "ascending-chain",
       "nodes": [
@@ -2400,21 +2188,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "F",
-          "P",
-          "Hilbert basis theorem"
-        ],
-        [
-          "P",
-          "Q",
-          "proper quotient"
-        ],
-        [
-          "P",
-          "G",
-          "every ideal finite"
-        ]
+        ["F", "P", "Hilbert basis theorem"],
+        ["P", "Q", "proper quotient"],
+        ["P", "G", "every ideal finite"]
       ],
       "mode": "hilbert-basis",
       "nodes": [
@@ -2458,21 +2234,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "zero",
-          "x",
-          "prime; F[X,Y]"
-        ],
-        [
-          "x",
-          "xy",
-          "prime; F[X,Y]"
-        ],
-        [
-          "zero",
-          "two",
-          "prime; Z"
-        ]
+        ["zero", "x", "prime; F[X,Y]"],
+        ["x", "xy", "prime; F[X,Y]"],
+        ["zero", "two", "prime; Z"]
       ],
       "mode": "prime-chain",
       "nodes": [
@@ -2565,21 +2329,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "rad",
-          "M",
-          "submodule"
-        ],
-        [
-          "M",
-          "fiber",
-          "reduction"
-        ],
-        [
-          "fiber",
-          "zero",
-          "zero quotient + finite generation"
-        ]
+        ["rad", "M", "submodule"],
+        ["M", "fiber", "reduction"],
+        ["fiber", "zero", "zero quotient + finite generation"]
       ],
       "mode": "nakayama",
       "nodes": [
@@ -2673,14 +2425,8 @@
     "machine": "representation",
     "parameters": {
       "matrix": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          0
-        ]
+        [1, 0],
+        [0, 0]
       ],
       "mode": "module"
     },
@@ -2706,14 +2452,8 @@
     "machine": "representation",
     "parameters": {
       "matrix": [
-        [
-          2,
-          0
-        ],
-        [
-          0,
-          1
-        ]
+        [2, 0],
+        [0, 1]
       ],
       "mode": "invariant-subspace"
     },
@@ -2763,21 +2503,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "zero",
-          "m2",
-          "\\text{layer }\\mathbb F_2"
-        ],
-        [
-          "m2",
-          "m",
-          "\\text{layer }\\mathbb F_2"
-        ],
-        [
-          "m",
-          "R",
-          "\\text{layer }\\mathbb F_2"
-        ]
+        ["zero", "m2", "\\text{layer }\\mathbb F_2"],
+        ["m2", "m", "\\text{layer }\\mathbb F_2"],
+        ["m", "R", "\\text{layer }\\mathbb F_2"]
       ],
       "mode": "module-filtration",
       "nodes": [
@@ -2821,21 +2549,9 @@
     "machine": "diagram",
     "parameters": {
       "edges": [
-        [
-          "v3",
-          "v2",
-          "⊂"
-        ],
-        [
-          "v2",
-          "v1",
-          "⊂"
-        ],
-        [
-          "v1",
-          "v0",
-          "⊂"
-        ]
+        ["v3", "v2", "⊂"],
+        ["v2", "v1", "⊂"],
+        ["v1", "v0", "⊂"]
       ],
       "mode": "valuation",
       "nodes": [
@@ -2880,11 +2596,7 @@
     "machine": "field",
     "parameters": {
       "mode": "finite-field",
-      "modulus": [
-        1,
-        1,
-        1
-      ],
+      "modulus": [1, 1, 1],
       "p": 2
     },
     "pitfall": "The four-element field is not integers modulo 4. Its nonzero multiplicative group is cyclic of order 3, whereas its additive group has exponent 2.",
@@ -2920,33 +2632,12 @@
     "prompt": "Trace the determinant map and its kernel in the diagram. Compare the conditions defining GL, SL and O in the matrix lab.",
     "machine": "diagram",
     "parameters": {
-      "nodes": [
-        "GLₙ(F)",
-        "SLₙ(F) = ker det",
-        "F×",
-        "GLₙ(F) / SLₙ(F)"
-      ],
+      "nodes": ["GLₙ(F)", "SLₙ(F) = ker det", "F×", "GLₙ(F) / SLₙ(F)"],
       "edges": [
-        [
-          1,
-          0,
-          "subgroup"
-        ],
-        [
-          0,
-          2,
-          "det, onto"
-        ],
-        [
-          0,
-          3,
-          "quotient"
-        ],
-        [
-          3,
-          2,
-          "isomorphism"
-        ]
+        [1, 0, "subgroup"],
+        [0, 2, "det, onto"],
+        [0, 3, "quotient"],
+        [3, 2, "isomorphism"]
       ]
     }
   },
@@ -2976,26 +2667,10 @@
         "Upper triangular stabilizer B"
       ],
       "edges": [
-        [
-          0,
-          1,
-          "contained in"
-        ],
-        [
-          1,
-          2,
-          "contained in"
-        ],
-        [
-          3,
-          0,
-          "preserves"
-        ],
-        [
-          3,
-          1,
-          "preserves"
-        ]
+        [0, 1, "contained in"],
+        [1, 2, "contained in"],
+        [3, 0, "preserves"],
+        [3, 1, "preserves"]
       ]
     }
   },
@@ -3040,28 +2715,11 @@
     "prompt": "Compare a nonzero map between irreducible modules with a projection from a reducible module. Which invariant kernel is permitted?",
     "machine": "diagram",
     "parameters": {
-      "nodes": [
-        "Irreducible V",
-        "Irreducible W",
-        "ker T = 0",
-        "im T = W"
-      ],
+      "nodes": ["Irreducible V", "Irreducible W", "ker T = 0", "im T = W"],
       "edges": [
-        [
-          0,
-          1,
-          "nonzero equivariant T"
-        ],
-        [
-          2,
-          0,
-          "injective"
-        ],
-        [
-          1,
-          3,
-          "surjective"
-        ]
+        [0, 1, "nonzero equivariant T"],
+        [2, 0, "injective"],
+        [1, 3, "surjective"]
       ]
     }
   },
@@ -3138,36 +2796,12 @@
         "Three-dimensional Indᴳ_H 1"
       ],
       "edges": [
-        [
-          0,
-          1,
-          "copy"
-        ],
-        [
-          0,
-          2,
-          "copy"
-        ],
-        [
-          0,
-          3,
-          "copy"
-        ],
-        [
-          1,
-          4,
-          "direct sum"
-        ],
-        [
-          2,
-          4,
-          "direct sum"
-        ],
-        [
-          3,
-          4,
-          "direct sum"
-        ]
+        [0, 1, "copy"],
+        [0, 2, "copy"],
+        [0, 3, "copy"],
+        [1, 4, "direct sum"],
+        [2, 4, "direct sum"],
+        [3, 4, "direct sum"]
       ]
     }
   },
@@ -3190,33 +2824,12 @@
     "prompt": "In S₃ with H generated by a transposition, standard restricts to trivial plus sign. Deduce that Ind(trivial)=trivial plus standard.",
     "machine": "diagram",
     "parameters": {
-      "nodes": [
-        "W as an H-module",
-        "Resᴳ_H V",
-        "Indᴳ_H W",
-        "V as a G-module"
-      ],
+      "nodes": ["W as an H-module", "Resᴳ_H V", "Indᴳ_H W", "V as a G-module"],
       "edges": [
-        [
-          0,
-          1,
-          "H-equivariant f"
-        ],
-        [
-          0,
-          2,
-          "w ↦ 1 ⊗ w"
-        ],
-        [
-          2,
-          3,
-          "a ⊗ w ↦ a f(w)"
-        ],
-        [
-          1,
-          3,
-          "same vector space"
-        ]
+        [0, 1, "H-equivariant f"],
+        [0, 2, "w ↦ 1 ⊗ w"],
+        [2, 3, "a ⊗ w ↦ a f(w)"],
+        [1, 3, "same vector space"]
       ]
     }
   },
@@ -3312,26 +2925,10 @@
         "All linear operators End(V)"
       ],
       "edges": [
-        [
-          0,
-          1,
-          "basis and linear extension"
-        ],
-        [
-          0,
-          2,
-          "ρ"
-        ],
-        [
-          1,
-          3,
-          "ρ̃"
-        ],
-        [
-          2,
-          3,
-          "inclusion"
-        ]
+        [0, 1, "basis and linear extension"],
+        [0, 2, "ρ"],
+        [1, 3, "ρ̃"],
+        [2, 3, "inclusion"]
       ]
     }
   },
@@ -3450,55 +3047,19 @@
       "mode": "all",
       "generators": {
         "A": [
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ],
-          [
-            0,
-            1,
-            0
-          ]
+          [1, 0, 0],
+          [0, 0, -1],
+          [0, 1, 0]
         ],
         "B": [
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            1
-          ]
+          [0, -1, 0],
+          [1, 0, 0],
+          [0, 0, 1]
         ],
         "J": [
-          [
-            -1,
-            0,
-            0
-          ],
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ]
+          [-1, 0, 0],
+          [0, -1, 0],
+          [0, 0, -1]
         ]
       },
       "object": "vertices"
@@ -3525,64 +3086,22 @@
     "parameters": {
       "generators": {
         "A": [
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ],
-          [
-            0,
-            1,
-            0
-          ]
+          [1, 0, 0],
+          [0, 0, -1],
+          [0, 1, 0]
         ],
         "B": [
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            1,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            1
-          ]
+          [0, -1, 0],
+          [1, 0, 0],
+          [0, 0, 1]
         ],
         "J": [
-          [
-            -1,
-            0,
-            0
-          ],
-          [
-            0,
-            -1,
-            0
-          ],
-          [
-            0,
-            0,
-            -1
-          ]
+          [-1, 0, 0],
+          [0, -1, 0],
+          [0, 0, -1]
         ]
       },
-      "alphabet": [
-        "A",
-        "A^-1",
-        "B",
-        "B^-1",
-        "J"
-      ],
+      "alphabet": ["A", "A^-1", "B", "B^-1", "J"],
       "composition": "left multiplication; rightmost factor acts first",
       "object": "vertices"
     }
@@ -3608,33 +3127,12 @@
     "parameters": {
       "object": "diagonals",
       "diagonalRepresentatives": [
-        [
-          1,
-          1,
-          1
-        ],
-        [
-          1,
-          1,
-          -1
-        ],
-        [
-          1,
-          -1,
-          1
-        ],
-        [
-          -1,
-          1,
-          1
-        ]
+        [1, 1, 1],
+        [1, 1, -1],
+        [1, -1, 1],
+        [-1, 1, 1]
       ],
-      "actionSets": [
-        "vertices",
-        "edges",
-        "faces",
-        "diagonals"
-      ]
+      "actionSets": ["vertices", "edges", "faces", "diagonals"]
     }
   },
   {
@@ -3659,27 +3157,12 @@
       "object": "faces",
       "showStabilizer": true,
       "stabilizers": {
-        "vertices": [
-          3,
-          6
-        ],
-        "edges": [
-          2,
-          4
-        ],
-        "faces": [
-          4,
-          8
-        ],
-        "diagonals": [
-          6,
-          12
-        ]
+        "vertices": [3, 6],
+        "edges": [2, 4],
+        "faces": [4, 8],
+        "diagonals": [6, 12]
       },
-      "stabilizerOrderConvention": [
-        "rotations",
-        "all"
-      ]
+      "stabilizerOrderConvention": ["rotations", "all"]
     }
   },
   {
@@ -3703,46 +3186,15 @@
     "parameters": {
       "object": "diagonals",
       "diagonalRepresentatives": [
-        [
-          1,
-          1,
-          1
-        ],
-        [
-          1,
-          1,
-          -1
-        ],
-        [
-          1,
-          -1,
-          1
-        ],
-        [
-          -1,
-          1,
-          1
-        ]
+        [1, 1, 1],
+        [1, 1, -1],
+        [1, -1, 1],
+        [-1, 1, 1]
       ],
       "generatorDiagonalImages": {
-        "A": [
-          3,
-          1,
-          4,
-          2
-        ],
-        "B": [
-          4,
-          3,
-          1,
-          2
-        ],
-        "J": [
-          1,
-          2,
-          3,
-          4
-        ]
+        "A": [3, 1, 4, 2],
+        "B": [4, 3, 1, 2],
+        "J": [1, 2, 3, 4]
       }
     }
   },
@@ -3791,11 +3243,7 @@
       "dimension": 3,
       "showFrame": true,
       "showDeterminant": true,
-      "reflectionNormal": [
-        1,
-        0,
-        0
-      ]
+      "reflectionNormal": [1, 0, 0]
     }
   },
   {
@@ -3842,11 +3290,7 @@
     "machine": "orthogonal",
     "parameters": {
       "dimension": 3,
-      "axis": [
-        1,
-        1,
-        1
-      ],
+      "axis": [1, 1, 1],
       "angle": 2.0943951023931953,
       "showAxis": true
     }
@@ -3896,11 +3340,7 @@
     "parameters": {
       "group": "D4",
       "dimension": 4,
-      "decomposition": [
-        "constant",
-        "alternating",
-        "opposite-contrast"
-      ],
+      "decomposition": ["constant", "alternating", "opposite-contrast"],
       "field": "R"
     }
   },
@@ -3972,94 +3412,22 @@
     "machine": "characters",
     "parameters": {
       "group": "S4",
-      "classLabels": [
-        "1^4",
-        "2 1^2",
-        "2^2",
-        "3 1",
-        "4"
-      ],
-      "classSizes": [
-        1,
-        6,
-        3,
-        8,
-        6
-      ],
+      "classLabels": ["1^4", "2 1^2", "2^2", "3 1", "4"],
+      "classSizes": [1, 6, 3, 8, 6],
       "irreducibleCharacters": {
-        "trivial": [
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "sign": [
-          1,
-          -1,
-          1,
-          1,
-          -1
-        ],
-        "standard": [
-          3,
-          1,
-          -1,
-          0,
-          -1
-        ],
-        "standardSign": [
-          3,
-          -1,
-          -1,
-          0,
-          1
-        ],
-        "twoDimensional": [
-          2,
-          0,
-          2,
-          -1,
-          0
-        ]
+        "trivial": [1, 1, 1, 1, 1],
+        "sign": [1, -1, 1, 1, -1],
+        "standard": [3, 1, -1, 0, -1],
+        "standardSign": [3, -1, -1, 0, 1],
+        "twoDimensional": [2, 0, 2, -1, 0]
       },
       "cubePermutationCharacters": {
-        "vertices": [
-          8,
-          0,
-          0,
-          2,
-          0
-        ],
-        "edges": [
-          12,
-          2,
-          0,
-          0,
-          0
-        ],
-        "faces": [
-          6,
-          0,
-          2,
-          0,
-          2
-        ],
-        "diagonals": [
-          4,
-          2,
-          0,
-          1,
-          0
-        ]
+        "vertices": [8, 0, 0, 2, 0],
+        "edges": [12, 2, 0, 0, 0],
+        "faces": [6, 0, 2, 0, 2],
+        "diagonals": [4, 2, 0, 1, 0]
       },
-      "geometricRotationCharacter": [
-        3,
-        -1,
-        -1,
-        0,
-        1
-      ]
+      "geometricRotationCharacter": [3, -1, -1, 0, 1]
     }
   },
   {
@@ -4160,114 +3528,57 @@
       "colors": 3,
       "rotationalCycleTypes": [
         {
-          "cycles": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
+          "cycles": [1, 1, 1, 1, 1, 1],
           "count": 1
         },
         {
-          "cycles": [
-            1,
-            1,
-            2,
-            2
-          ],
+          "cycles": [1, 1, 2, 2],
           "count": 3
         },
         {
-          "cycles": [
-            1,
-            1,
-            4
-          ],
+          "cycles": [1, 1, 4],
           "count": 6
         },
         {
-          "cycles": [
-            2,
-            2,
-            2
-          ],
+          "cycles": [2, 2, 2],
           "count": 6
         },
         {
-          "cycles": [
-            3,
-            3
-          ],
+          "cycles": [3, 3],
           "count": 8
         }
       ],
       "fullCycleTypes": [
         {
-          "cycles": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
+          "cycles": [1, 1, 1, 1, 1, 1],
           "count": 1
         },
         {
-          "cycles": [
-            1,
-            1,
-            1,
-            1,
-            2
-          ],
+          "cycles": [1, 1, 1, 1, 2],
           "count": 3
         },
         {
-          "cycles": [
-            1,
-            1,
-            2,
-            2
-          ],
+          "cycles": [1, 1, 2, 2],
           "count": 9
         },
         {
-          "cycles": [
-            1,
-            1,
-            4
-          ],
+          "cycles": [1, 1, 4],
           "count": 6
         },
         {
-          "cycles": [
-            2,
-            2,
-            2
-          ],
+          "cycles": [2, 2, 2],
           "count": 7
         },
         {
-          "cycles": [
-            2,
-            4
-          ],
+          "cycles": [2, 4],
           "count": 6
         },
         {
-          "cycles": [
-            3,
-            3
-          ],
+          "cycles": [3, 3],
           "count": 8
         },
         {
-          "cycles": [
-            6
-          ],
+          "cycles": [6],
           "count": 8
         }
       ]
@@ -4293,31 +3604,13 @@
     "machine": "cube",
     "parameters": {
       "selectedGenerator": "B",
-      "actionSets": [
-        "vertices",
-        "edges",
-        "faces",
-        "diagonals"
-      ],
+      "actionSets": ["vertices", "edges", "faces", "diagonals"],
       "showCycleType": true,
       "quarterTurnCycleTypes": {
-        "vertices": [
-          4,
-          4
-        ],
-        "edges": [
-          4,
-          4,
-          4
-        ],
-        "faces": [
-          1,
-          1,
-          4
-        ],
-        "diagonals": [
-          4
-        ]
+        "vertices": [4, 4],
+        "edges": [4, 4, 4],
+        "faces": [1, 1, 4],
+        "diagonals": [4]
       }
     }
   }

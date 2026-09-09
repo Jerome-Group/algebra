@@ -16,6 +16,8 @@ npx vite
 Build and run the existing checks on macOS or Linux:
 
 ```sh
+npm run format:check
+npm run lint
 npx vinext build
 node --test tests/*.test.mjs
 ```
@@ -34,3 +36,6 @@ Owned source and documentation are MIT licensed. Dependencies and vendored asset
 own licences and notices. Course PDFs and other course files are excluded and ignored. References
 to access-controlled notes remain; access is governed by the Owner's Drive sharing permissions.
 Credentials, private notes, and student data must never be committed.
+
+The import applies Prettier formatting and records pre-existing ESLint findings in
+`eslint-suppressions.json`; see ADR-0002. New lint errors remain gated.
