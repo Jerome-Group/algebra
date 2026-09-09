@@ -645,39 +645,85 @@
 .study-workspace .reading-content h2 {
   line-height: 1.25;
 }
-.algebra-app .structure-map {
-  padding: 20px 0 0;
+.lesson-references h2 {
+  font-weight: 400;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
-.algebra-app .structure-map svg {
-  display: block;
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  aspect-ratio: 560/410;
+.reference-list {
+  list-style: none;
+  padding: 0;
 }
-.algebra-app .structure-node {
-  background: #f3ece2;
-  color: #262329;
-  border: 2px solid #e2613a;
+.reference-list a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-right: 24px;
+}
+.reference-list a > span {
+  color: #334fe0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.reference-list svg {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+.lesson-references {
+  border-top: 1px solid #7d7b78;
+  margin-top: 26px;
+  padding-top: 15px;
+}
+.reference-list li {
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid #d9d4cb;
   border-radius: 0;
-  font-size: 24px;
-  padding: 4px;
+  background: transparent;
 }
-.algebra-app .structure-node .math-inline {
-  font-size: inherit;
+.reference-list li a {
+  padding: 10px 0;
 }
-.algebra-app .structure-node .katex {
-  font-size: 1em;
-}
-.algebra-app .camera-settings {
-  padding: 8px 12px;
-  background: #f1eee8;
-}
-.algebra-app .camera-settings summary {
-  color: #51484a;
-  cursor: pointer;
+.reference-list strong {
+  font-weight: 550;
+  overflow-wrap: anywhere;
   font-size: 12px;
 }
-.algebra-app .camera-settings > button {
-  padding: 8px 0;
+.reference-list small {
+  line-height: 1.6;
+  color: #606a82;
+  font-size: 11px;
+}
+.further-reading {
+  margin: 2rem 0;
+}
+.further-reading > h2 {
+  font-size: 1.05rem;
+}
+.further-reading details {
+  border-top: 1px solid var(--border);
+}
+.further-reading summary {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.further-reading summary svg {
+  flex-shrink: 0;
+}
+.further-reading details[open] summary svg {
+  transform: rotate(180deg);
+}
+.further-reading details > div {
+  padding-bottom: 1rem;
 }
