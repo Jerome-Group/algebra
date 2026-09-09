@@ -105,7 +105,7 @@ Node's test runner against the built Worker where applicable.
 
 CI runs pinned Prettier in check mode, ESLint, the production build, and the existing tests.
 Vendored UI and assets retain their source formatting and notices. The initial ESLint suppression
-file records existing source findings by file/rule/count (ADR-0002); never regenerate it to hide
+file records existing source findings by file/rule/count (ADR-0003); never regenerate it to hide
 new violations. Fixes remove corresponding suppressions. Run `npm run format:check` and
 `npm run lint` before committing; all required checks must complete within ten minutes.
 

@@ -4,6 +4,11 @@ An interactive learning site for students exploring groups, rings, fields, and r
 
 Live site: https://algebra.jeromegroup.org
 
+## Status
+
+Existing teaching application imported from ChatGPT Sites; build and tests are checked in CI.
+Course documents are excluded; access-controlled notes links are retained.
+
 ## Local development
 
 Use Node.js 24 or newer, then:
@@ -38,4 +43,4 @@ to access-controlled notes remain; access is governed by the Owner's Drive shari
 Credentials, private notes, and student data must never be committed.
 
 The import applies Prettier formatting and records pre-existing ESLint findings in
-`eslint-suppressions.json`; see ADR-0002. New lint errors remain gated.
+`eslint-suppressions.json`; see ADR-0003. New lint errors remain gated.
