@@ -86,7 +86,15 @@ function LearningExperience() {
           href="#cube-four-actions"
           onClick={() => open("cube-four-actions")}
         >
-          Abstract Algebra
+          {/* eslint-disable-next-line @next/next/no-img-element -- Serve the generated mark without an image-transformation service. */}
+          <img
+            className="brand-logo"
+            src="/logo.png"
+            width={36}
+            height={36}
+            alt=""
+          />
+          <span>Abstract Algebra</span>
         </a>
         <div className="header-context">
           {lesson.subject}

@@ -283,12 +283,23 @@
 @media (max-width: 760px) {
   .algebra-header {
     height: 56px;
-    padding: 0 16px;
-    gap: 14px;
+    padding: 0 12px;
+    gap: 8px;
   }
   .wordmark {
-    font-size: 21px;
+    font-size: 18px;
     margin-right: auto;
+    gap: 6px;
+  }
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
+  .header-sources,
+  .library-toggle {
+    font-size: 13px;
+    padding: 6px;
+    gap: 5px;
   }
   .algebra-layout {
     display: block;
