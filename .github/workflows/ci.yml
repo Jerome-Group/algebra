@@ -52,3 +52,14 @@ jobs:
       #
       # Renaming this job renames the check context, which the `Required checks` ruleset names by
       # hand. Rename both, or every merge blocks on a check that will never report.
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build the application
+        run: npx vinext build
+      - name: Test the application
+        run: node --test tests/*.test.mjs

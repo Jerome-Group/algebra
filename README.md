@@ -1,15 +1,36 @@
-# <repository>
+# Abstract Algebra
 
-*(One or two sentences: what this is and who it is for.)*
+An interactive learning site for students exploring groups, rings, fields, and representations.
 
-A [Jerome-Group](https://github.com/Jerome-Group) repository. It was born from a template, so
-it already carries the Organisation's conventions — see [`MAP.md`](MAP.md) to find your way
-around and [`AGENTS.md`](AGENTS.md) for how work is done here.
+Live site: https://algebra.jeromegroup.org
 
-## Status
+## Local development
 
-🌱 Newly generated. Replace this section, the title, and the description above.
+Use Node.js 24 or newer, then:
 
-## Getting started
+```sh
+npm ci
+npx vite
+```
 
-*(How to run it, build it, or test it.)*
+Build and run the existing checks on macOS or Linux:
+
+```sh
+npx vinext build
+node --test tests/*.test.mjs
+```
+
+The retained `install:ci` and `build` wrappers target the Linux Sites environment.
+The commands above work directly on the MacBook Pro. See `MAP.md` for the source layout.
+
+## Source and rights
+
+Imported from the existing ChatGPT Sites source at `95215a69eeff93af7533f63d09459b2e6c3bb49c`. This GitHub repository was generated
+from `Jerome-Group/public-template`; it contains a source snapshot, not the Sites development history.
+Existing `.openai/hosting.json` identifies the original Site. GitHub pushes do not automatically
+publish a new Sites version.
+
+Owned source and documentation are MIT licensed. Dependencies and vendored assets retain their
+own licences and notices. Course PDFs and other course files are excluded and ignored. References
+to access-controlled notes remain; access is governed by the Owner's Drive sharing permissions.
+Credentials, private notes, and student data must never be committed.

@@ -1,21 +1,21 @@
-# AGENTS.md — <repository>
+# AGENTS.md — algebra
 
 > Canonical instruction file for AI agents (Claude Code and others) working in this repo.
 > `CLAUDE.md` is a symlink to this file, so the two can never drift.
 
 ## What this repo is
 
-*(One paragraph: what this repository is for, and what it is not for. Replace this and the
-heading above before the first pull request.)*
+The public Abstract Algebra learning application, imported from ChatGPT Sites.
+Course files remain outside Git; access-controlled notes links may remain.
 
-- **Visibility:** *(private | public)*
+- **Visibility:** public
 - **Organisation:** [Jerome-Group](https://github.com/Jerome-Group)
 
 ## Getting it running
 
-*(The commands an agent could not have guessed — install, run, test, lint — and any constraint
-on where they may be run. Fill this in with the first real code; until then it is honestly
-empty.)*
+Use Node.js 24+: `npm ci`, `npx vite`, `npx vinext build`, then
+`node --test tests/*.test.mjs`. Existing Sites shell wrappers require Linux tools.
+Keep the original Site identifier; a GitHub import is not a Sites deployment.
 
 ## Conventions
 
@@ -93,4 +93,4 @@ skeleton CI has not earned that.
 
 ## Repository notes
 
-*(Anything with no natural home above. May be empty.)*
+Retain third-party licence notices. Never add course PDFs or private learning records.
