@@ -406,7 +406,7 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " For this transitive permutation representation, averaging redistributes every coordinate equally. $P$ commutes with each $\\rho (g)$, $P^{2}=P$, and its image is the fixed subspace. Maschke’$s$ more general complement proof averages a projection onto a chosen invariant subspace, with $\\rho (g)P_{0}\\rho (g)^{-1}$. "
+                " For this transitive permutation representation, averaging redistributes every coordinate equally. $P$ commutes with each $\\rho (g)$, $P^{2}=P$, and its image is the fixed subspace. Maschke’s more general complement proof averages a projection onto a chosen invariant subspace, with $\\rho (g)P_{0}\\rho (g)^{-1}$. "
               }
             </Prose>
           </p>

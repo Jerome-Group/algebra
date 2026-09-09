@@ -1,24 +1,7 @@
 "use client";
 import { useEffect, type RefObject } from "react";
 import { type Lesson } from "@/lib/algebra/engine";
-type Control = {
-  label: string;
-  value: string | number;
-  options?: [string, string][];
-  min?: number;
-  max?: number;
-  step?: number;
-  set: (value: string) => void;
-};
-export const laboratoryControls = new Map<string, Control>();
-export function useLaboratoryControl(id: string, control: Control) {
-  useEffect(() => {
-    laboratoryControls.set(id, control);
-    return () => {
-      laboratoryControls.delete(id);
-    };
-  }, [id, control]);
-}
+import { useLaboratoryControls } from "./LaboratoryControls";
 type Tool = {
   name: string;
   description: string;
@@ -35,27 +18,7 @@ const schema = (properties: object = {}, required: string[] = []) => ({
   required,
   additionalProperties: false,
 });
-function visibleElements() {
-  return [
-    ...document.querySelectorAll<HTMLElement>(
-      ".algebra-app button, .algebra-app input, .algebra-app a, .algebra-app summary",
-    ),
-  ].filter((el) => el.getClientRects().length && !el.closest("[hidden]"));
-}
-function describe(el: HTMLElement, index: number) {
-  return {
-    id: `element-${index}`,
-    kind: el.tagName.toLowerCase(),
-    label:
-      el.getAttribute("aria-label") ||
-      el.textContent?.trim() ||
-      el.getAttribute("placeholder") ||
-      el.tagName,
-    value: el instanceof HTMLInputElement ? el.value : undefined,
-    disabled: el instanceof HTMLButtonElement ? el.disabled : false,
-    href: el instanceof HTMLAnchorElement ? el.href : undefined,
-  };
-}
+import { visibleElements, describe } from "./InterfaceControls";
 export function useLearningTools({
   lessons,
   current,
@@ -71,6 +34,7 @@ export function useLearningTools({
   setView: (view: string) => void;
   setQuery: (query: string) => void;
 }) {
+  const laboratoryControls = useLaboratoryControls();
   useEffect(() => {
     const context =
       (document as Document & { modelContext?: ModelContext }).modelContext ||
@@ -236,7 +200,8 @@ export function useLearningTools({
             el.dispatchEvent(new Event("change", { bubbles: true }));
           } else if (el instanceof HTMLButtonElement && el.disabled)
             throw Error("Control disabled");
-          else el.click();
+          else if (el instanceof HTMLElement) el.click();
+          else el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
           return { activated: label };
         },
       },
@@ -247,5 +212,5 @@ export function useLearningTools({
           console.error(`WebMCP registration failed: ${tool.name}`, error);
       });
     return () => abort.abort();
-  }, [lessons, current, open, setTab, setView, setQuery]);
+  }, [lessons, current, open, setTab, setView, setQuery, laboratoryControls]);
 }

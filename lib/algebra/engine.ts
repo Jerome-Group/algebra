@@ -1,3 +1,4 @@
+import type { LaboratoryKind } from "./laboratory-types";
 export type Mat = number[][];
 export const I: Mat = [
   [1, 0, 0],
@@ -325,7 +326,7 @@ export type Lesson = {
   proof: string;
   pitfall: string;
   prompt: string;
-  machine: string;
+  machine: LaboratoryKind;
   parameters?: Record<string, unknown>;
 };
 

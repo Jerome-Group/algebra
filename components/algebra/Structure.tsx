@@ -346,9 +346,9 @@ export function ConjugationLab() {
             setA(1);
           }}
           options={[
-            ["D", "D₄ · 8 elements"],
-            ["Q", "Q₈ · 8 elements"],
-            ["C", "C₄ · 4 elements"],
+            ["D", "$D_4$ · 8 elements"],
+            ["Q", "$Q_8$ · 8 elements"],
+            ["C", "$C_4$ · 4 elements"],
           ]}
         />
         <Choice
@@ -389,9 +389,11 @@ export function ConjugationLab() {
           block
         >{`\\operatorname{Stab}(${g.labels[x]})=\\{${stabilizer.map((h) => g.labels[h]).join(",")}\\}`}</M>
         <p>
-          {mode === "regular"
-            ? "Left translation is transitive and free. Only the identity can fix x, because hx=x implies h=e."
-            : "Conjugation remembers internal structure. The stabilizer is the centralizer C_G(x); singleton orbits are exactly the central elements."}
+          <Prose>
+            {mode === "regular"
+              ? "Left translation is transitive and free. Only the identity fixes $x$, since $hx=x$ implies $h=e$."
+              : "Under conjugation the stabilizer is $C_G(x)$; singleton orbits are exactly the central elements."}
+          </Prose>
         </p>
         <M block>
           {mode === "regular"
@@ -516,7 +518,7 @@ export function ColoringLab() {
         <p>
           <Prose>
             {
-              " The orbit–stabilizer equation concerns this single coloring. Burnside’$s$ average counts all inequivalent colorings using $k$ labeled colors, with repetition allowed. It counts fixed colorings by $k$ to the number of bead cycles, not by the number of fixed beads. "
+              " The orbit–stabilizer equation concerns this single coloring. Burnside’s average counts all inequivalent colorings using $k$ labeled colors, with repetition allowed. It counts fixed colorings by $k$ to the number of bead cycles, not by the number of fixed beads. "
             }
           </Prose>
         </p>

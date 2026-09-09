@@ -66,7 +66,9 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>{op === "add" ? "+" : "×"}</TableHead>
+              <TableHead>
+                <M>{op === "add" ? "+" : "\\times"}</M>
+              </TableHead>
               {Array.from({ length: n }, (_, i) => (
                 <TableHead key={i}>{i}</TableHead>
               ))}
@@ -183,7 +185,7 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " For divisors d,e of $n$, ($d)+(e)=(\\gcd(d,e)$), (d)∩(e)=(lcm(d,e)), and ($d)(e)=(\\gcd(de,n)$). Inclusion reverses divisibility. Every chain stabilizes in a finite ring; this does not test an arbitrary infinite ring. "
+                "For divisors $d,e$ of $n$, $(d)+(e)=(\\gcd(d,e))$, $(d)\\cap(e)=(\\operatorname{lcm}(d,e))$, and $(d)(e)=(\\gcd(de,n))$. Inclusion reverses divisibility. Chains stabilize in this finite ring; an arbitrary infinite ring requires its own argument."
               }
             </Prose>
           </p>
@@ -692,22 +694,16 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
             </M>
             <div className="two-cols">
               <Choice
-                label="First F4 element"
+                label="First element of $\\mathbb F_4$"
                 value={String(x)}
                 onChange={(z) => setX(+z)}
-                options={labels.map((l, i) => [
-                  String(i),
-                  ["0", "1", "α", "1+α"][i],
-                ])}
+                options={labels.map((l, i) => [String(i), `$${l}$`])}
               />
               <Choice
-                label="Second F4 element"
+                label="Second element of $\\mathbb F_4$"
                 value={String(y)}
                 onChange={(z) => setY(+z)}
-                options={labels.map((l, i) => [
-                  String(i),
-                  ["0", "1", "α", "1+α"][i],
-                ])}
+                options={labels.map((l, i) => [String(i), `$${l}$`])}
               />
             </div>
           </div>

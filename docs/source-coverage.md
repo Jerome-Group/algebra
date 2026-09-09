@@ -155,3 +155,408 @@ Exercise reading route: `ex:16.1`, `ex:16.2`, `ex:16.3`, `ex:16.4`, `ex:16.5`, `
 Results and examples: `lem:17.1`, `prop:17.2`, `prop:17.3`, `lem:17.4`, `prop:17.5`, `lem:17.6`, `thm:17.7`, `thm:burnside-paqb`.
 
 Exercise reading route: `ex:17.1`, `ex:17.2`, `ex:17.3`.
+
+## Result-by-result destinations
+
+Page numbers below refer to the supplied study text. A single page is the extracted statement heading; a span is the source section reading range when its heading is named rather than numerically indexed. Destination means the concept’s statement, worked example or named deeper note. Exercise rows explicitly retain their complete solutions in the source.
+
+| Source identifier           | Printed / PDF page | Destination                                                                                | Treatment                                         |
+| --------------------------- | ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| `prop:1.1`                  | 2 / 3              | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Statement / construction and proof route          |
+| `thm:lagrange`              | 2 / 3              | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Statement / construction and proof route          |
+| `prop:1.2`                  | 3 / 4              | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Statement / construction and proof route          |
+| `prop:1.3`                  | 3 / 4              | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Statement / construction and proof route          |
+| `thm:1.4`                   | 3 / 4              | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Statement / construction and proof route          |
+| `thm:1.5`                   | 4 / 5              | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Statement / construction and proof route          |
+| `thm:1.6`                   | 4 / 5              | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Statement / construction and proof route          |
+| `prop:1.7`                  | 5 / 6              | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Statement / construction and proof route          |
+| `prop:1.8`                  | 5 / 6              | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Statement / construction and proof route          |
+| `thm:1.9`                   | 5 / 6              | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Statement / construction and proof route          |
+| `prop:1.10`                 | 6 / 7              | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Statement / construction and proof route          |
+| `prop:1.11`                 | 7 / 8              | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Statement / construction and proof route          |
+| `thm:fth`                   | 7 / 8              | [First isomorphism theorem](https://algebra.jeromegroup.org/#mh2220-first-isomorphism)   | Statement / construction and proof route          |
+| `thm:first-iso`             | 7 / 8              | [Second isomorphism theorem](https://algebra.jeromegroup.org/#mh2220-second-isomorphism)   | Statement / construction and proof route          |
+| `thm:correspondence`        | 8 / 9              | [Second isomorphism theorem](https://algebra.jeromegroup.org/#mh2220-second-isomorphism)   | Statement / construction and proof route          |
+| `thm:second-iso`            | 8 / 9              | [Second isomorphism theorem](https://algebra.jeromegroup.org/#mh2220-second-isomorphism)   | Statement / construction and proof route          |
+| `ex:1.1`                    | 8 / 9              | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Source exercise; complete solution not reproduced |
+| `ex:1.2`                    | 9 / 10             | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Source exercise; complete solution not reproduced |
+| `ex:1.3`                    | 9 / 10             | [Subgroups](https://algebra.jeromegroup.org/#mh2220-subgroups)                             | Source exercise; complete solution not reproduced |
+| `ex:1.4`                    | 10 / 11            | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Source exercise; complete solution not reproduced |
+| `ex:1.5`                    | 10 / 11            | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Source exercise; complete solution not reproduced |
+| `ex:1.6`                    | 13 / 14            | [Lagrange](https://algebra.jeromegroup.org/#mh2220-lagrange)                               | Source exercise; complete solution not reproduced |
+| `ex:1.7`                    | 14 / 15            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.8`                    | 15 / 16            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.9`                    | 15 / 16            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.10`                   | 16 / 17            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.11`                   | 16 / 17            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.12`                   | 17 / 18            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.13`                   | 18 / 19            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.14`                   | 18 / 19            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `ex:1.15`                   | 19 / 20            | [Normality](https://algebra.jeromegroup.org/#mh2220-normal)                                | Source exercise; complete solution not reproduced |
+| `thm:third-iso`             | 20 / 21            | [Second isomorphism theorem](https://algebra.jeromegroup.org/#mh2220-second-isomorphism)   | Statement / construction and proof route          |
+| `prop:2.1`                  | 21 / 22            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `prop:2.2`                  | 22 / 23            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `thm:2.3`                   | 23 / 24            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `lem:2.4`                   | 24 / 25            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `lem:2.5`                   | 24 / 25            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `prop:2.6`                  | 25 / 26            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Statement / construction and proof route          |
+| `lem:2.7`                   | 26 / 27            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `lem:2.8`                   | 26 / 27            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `cor:2.9`                   | 27 / 28            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `prop:2.10`                 | 27 / 28            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `prop:2.11`                 | 28 / 29            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `prop:2.12`                 | 29 / 30            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `prop:2.13`                 | 30 / 31            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Statement / construction and proof route          |
+| `ex:2.1`                    | 31 / 32            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.2`                    | 31 / 32            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.3`                    | 32 / 33            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.4`                    | 32 / 33            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.5`                    | 33 / 34            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.6`                    | 33 / 34            | [Automorphisms](https://algebra.jeromegroup.org/#mh2220-automorphism)                      | Source exercise; complete solution not reproduced |
+| `ex:2.7`                    | 34 / 35            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.8`                    | 34 / 35            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.9`                    | 37 / 38            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.10`                   | 38 / 39            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.11`                   | 38 / 39            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.12`                   | 39 / 40            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.13`                   | 40 / 41            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `ex:2.14`                   | 42 / 43            | [Direct products](https://algebra.jeromegroup.org/#mh2220-direct-product)                  | Source exercise; complete solution not reproduced |
+| `prop:3.1`                  | 44 / 45            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `thm:cayley`                | 44 / 45            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `lem:3.2`                   | 45 / 46            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `prop:3.3`                  | 45 / 46            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `prop:3.4`                  | 46 / 47            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `cor:3.5`                   | 46 / 47            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `lem:3.6`                   | 47 / 48            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `prop:3.7`                  | 47 / 48            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Statement / construction and proof route          |
+| `prop:3.8`                  | 47 / 48            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `prop:3.9`                  | 48 / 49            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `cor:3.10`                  | 49 / 50            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `cor:3.11`                  | 49 / 50            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `prop:3.12`                 | 49 / 50            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `prop:3.13`                 | 50 / 51            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `prop:3.14`                 | 51 / 52            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `prop:3.15`                 | 51 / 52            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Statement / construction and proof route          |
+| `ex:3.1`                    | 52 / 53            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.2`                    | 52 / 53            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.3`                    | 53 / 54            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.4`                    | 53 / 54            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.5`                    | 53 / 54            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.6`                    | 54 / 55            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.7`                    | 55 / 56            | [Actions](https://algebra.jeromegroup.org/#mh2220-actions)                                 | Source exercise; complete solution not reproduced |
+| `ex:3.8`                    | 55 / 56            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.9`                    | 56 / 57            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.10`                   | 56 / 57            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.11`                   | 57 / 58            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.12`                   | 58 / 59            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.13`                   | 58 / 59            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.14`                   | 59 / 60            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.15`                   | 60 / 61            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `ex:3.16`                   | 61 / 62            | [Primitive actions](https://algebra.jeromegroup.org/#actions-primitive)                    | Source exercise; complete solution not reproduced |
+| `prop:4.1`                  | 63 / 64            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `prop:4.2`                  | 64 / 65            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `prop:4.3`                  | 64 / 65            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `prop:4.4`                  | 65 / 66            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `prop:4.5`                  | 66 / 67            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `lem:4.6`                   | 66 / 67            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `lem:4.7`                   | 68 / 69            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `thm:bruhat`                | 68 / 69            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `lem:4.8`                   | 69 / 70            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `cor:4.9`                   | 69 / 70            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `cor:4.10`                  | 69 / 70            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `lem:4.11`                  | 70 / 71            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `thm:4.12`                  | 71 / 72            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Statement / construction and proof route          |
+| `ex:4.1`                    | 71 / 72            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.2`                    | 72 / 73            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.3`                    | 73 / 74            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.4`                    | 73 / 74            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.5`                    | 74 / 75            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.6`                    | 78 / 79            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.7`                    | 78 / 79            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.8`                    | 81 / 82            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `ex:4.9`                    | 83 / 84            | [Bruhat decomposition](https://algebra.jeromegroup.org/#linear-bruhat)                     | Source exercise; complete solution not reproduced |
+| `prop:5.1`                  | 86 / 87            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Statement / construction and proof route          |
+| `thm:kolchin`               | 87 / 88            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Statement / construction and proof route          |
+| `prop:5.2`                  | 87 / 88            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Statement / construction and proof route          |
+| `lem:5.3`                   | 90 / 91            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Statement / construction and proof route          |
+| `thm:5.4`                   | 90 / 91            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Statement / construction and proof route          |
+| `ex:5.1`                    | 92 / 93            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.2`                    | 92 / 93            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.3`                    | 94 / 95            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.4`                    | 96 / 97            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.5`                    | 96 / 97            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.6`                    | 97 / 98            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.7`                    | 97 / 98            | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `ex:5.8`                    | 99 / 100           | [Flags](https://algebra.jeromegroup.org/#odyssey-flags)                                    | Source exercise; complete solution not reproduced |
+| `prop:6.1`                  | 102 / 103          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `prop:6.2`                  | 102 / 103          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `prop:6.3`                  | 103 / 104          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `prop:6.4`                  | 104 / 105          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `prop:6.5`                  | 104 / 105          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `lem:6.6`                   | 105 / 106          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `lem:6.7`                   | 105 / 106          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `thm:6.8`                   | 106 / 107          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Statement / construction and proof route          |
+| `ex:6.1`                    | 107 / 108          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.2`                    | 108 / 109          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.3`                    | 109 / 110          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.4`                    | 110 / 111          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.5`                    | 111 / 112          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.6`                    | 112 / 113          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.7`                    | 113 / 114          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.8`                    | 114 / 115          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.9`                    | 115 / 116          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.10`                   | 116 / 117          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `ex:6.11`                   | 118 / 119          | [Projective special linear groups](https://algebra.jeromegroup.org/#linear-projective)     | Source exercise; complete solution not reproduced |
+| `thm:sylow`                 | 120 / 121          | [Sylow existence](https://algebra.jeromegroup.org/#mh2220-sylow-existence)                 | Statement / construction and proof route          |
+| `cor:7.1`                   | 121 / 122          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `thm:cauchy`                | 122 / 123          | [Sylow existence](https://algebra.jeromegroup.org/#mh2220-sylow-existence)                 | Statement / construction and proof route          |
+| `prop:7.2`                  | 122 / 123          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `prop:7.3`                  | 123 / 124          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `thm:7.4`                   | 123 / 124          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `thm:7.5`                   | 124 / 125          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `cor:7.6`                   | 125 / 126          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Statement / construction and proof route          |
+| `ex:7.1`                    | 125 / 126          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.2`                    | 126 / 127          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.3`                    | 126 / 127          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.4`                    | 126 / 127          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.5`                    | 127 / 128          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.6`                    | 128 / 129          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.7`                    | 128 / 129          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.8`                    | 129 / 130          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.9`                    | 130 / 131          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.10`                   | 131 / 132          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.11`                   | 132 / 133          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.12`                   | 133 / 134          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.13`                   | 135 / 136          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.14`                   | 136 / 137          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.15`                   | 137 / 138          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.16`                   | 137 / 138          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `ex:7.17`                   | 138 / 139          | [Sylow counts](https://algebra.jeromegroup.org/#mh2220-sylow-counts)                       | Source exercise; complete solution not reproduced |
+| `thm:8.1`                   | 140 / 141          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `lem:8.2`                   | 140 / 141          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `prop:8.3`                  | 140 / 141          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `cor:8.4`                   | 141 / 142          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `lem:8.5`                   | 141 / 142          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `thm:8.6`                   | 141 / 142          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `thm:frattini-arg`          | 142 / 143          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `thm:8.7`                   | 142 / 143          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `cor:8.8`                   | 143 / 144          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `lem:8.9`                   | 143 / 144          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `prop:8.10`                 | 143 / 144          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `prop:8.11`                 | 144 / 145          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Statement / construction and proof route          |
+| `ex:8.1`                    | 145 / 146          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.2`                    | 146 / 147          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.3`                    | 146 / 147          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.4`                    | 147 / 148          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.5`                    | 147 / 148          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.6`                    | 148 / 149          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.7`                    | 149 / 150          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.8`                    | 149 / 150          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.9`                    | 150 / 151          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `ex:8.10`                   | 150 / 151          | [Prime-power groups](https://algebra.jeromegroup.org/#mh2220-p-groups)                     | Source exercise; complete solution not reproduced |
+| `thm:schur-zassenhaus`      | 151–159 / 152–160  | [Hall subgroups & complements](https://algebra.jeromegroup.org/#group-complements)         | Statement / construction and proof route          |
+| `ex:9.1`                    | 153 / 154          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.2`                    | 154 / 155          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.3`                    | 154 / 155          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.4`                    | 155 / 156          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.5`                    | 156 / 157          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.6`                    | 156 / 157          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.7`                    | 157 / 158          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.8`                    | 157 / 158          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.9`                    | 158 / 159          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.10`                   | 158 / 159          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `ex:9.11`                   | 159 / 160          | [Extensions & cocycles](https://algebra.jeromegroup.org/#group-extensions)                 | Source exercise; complete solution not reproduced |
+| `prop:10.1`                 | 160 / 161          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `lem:10.2`                  | 161 / 162          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `thm:jordan-holder`         | 160–168 / 161–169  | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `prop:10.3`                 | 163 / 164          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `lem:10.4`                  | 163 / 164          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `thm:10.5`                  | 163 / 164          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `cor:10.6`                  | 164 / 165          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Statement / construction and proof route          |
+| `ex:10.1`                   | 164 / 165          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.2`                   | 164 / 165          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.3`                   | 164 / 165          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.4`                   | 165 / 166          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.5`                   | 165 / 166          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.6`                   | 166 / 167          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.7`                   | 166 / 167          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `ex:10.8`                   | 167 / 168          | [Composition factors](https://algebra.jeromegroup.org/#mh2220-simple-composition)          | Source exercise; complete solution not reproduced |
+| `prop:11.1`                 | 169 / 170          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `prop:11.2`                 | 169 / 170          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `prop:11.3`                 | 169 / 170          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `prop:11.4`                 | 170 / 171          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `cor:11.5`                  | 171 / 172          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `prop:11.6`                 | 171 / 172          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `cor:11.7`                  | 171 / 172          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:11.8`                  | 172 / 173          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:11.9`                  | 172 / 173          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:burnside-solvable`     | 173 / 174          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:feit-thompson`         | 169–182 / 170–183  | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement only; long proof outside this treatment |
+| `thm:11.10`                 | 174 / 175          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:11.11`                 | 174 / 175          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `thm:11.12`                 | 174 / 175          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Statement / construction and proof route          |
+| `prop:11.13`                | 175 / 176          | [Nilpotence & Frattini](https://algebra.jeromegroup.org/#group-nilpotent)                  | Statement / construction and proof route          |
+| `lem:11.14`                 | 175 / 176          | [Nilpotence & Frattini](https://algebra.jeromegroup.org/#group-nilpotent)                  | Statement / construction and proof route          |
+| `thm:11.15`                 | 176 / 177          | [Nilpotence & Frattini](https://algebra.jeromegroup.org/#group-nilpotent)                  | Statement / construction and proof route          |
+| `ex:11.1`                   | 177 / 178          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.2`                   | 177 / 178          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.3`                   | 177 / 178          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.4`                   | 178 / 179          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.5`                   | 179 / 180          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.6`                   | 180 / 181          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.7`                   | 180 / 181          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.8`                   | 180 / 181          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.9`                   | 181 / 182          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.10`                  | 181 / 182          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `ex:11.11`                  | 182 / 183          | [Solvable groups](https://algebra.jeromegroup.org/#group-solvable)                         | Source exercise; complete solution not reproduced |
+| `prop:12.1`                 | 183 / 184          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `prop:12.2`                 | 185 / 186          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `prop:12.3`                 | 185 / 186          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `prop:12.4`                 | 186 / 187          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `lem:12.5`                  | 187 / 188          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `prop:12.6`                 | 187 / 188          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `prop:12.7`                 | 188 / 189          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Statement / construction and proof route          |
+| `thm:maschke`               | 188 / 189          | [Maschke](https://algebra.jeromegroup.org/#representations-maschke)                        | Statement / construction and proof route          |
+| `cor:12.8`                  | 189 / 190          | [Maschke](https://algebra.jeromegroup.org/#representations-maschke)                        | Statement / construction and proof route          |
+| `ex:12.1`                   | 189 / 190          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `ex:12.2`                   | 189 / 190          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `ex:12.3`                   | 190 / 191          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `ex:12.4`                   | 190 / 191          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `ex:12.5`                   | 191 / 192          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `ex:12.6`                   | 192 / 193          | [Tensor products & duals](https://algebra.jeromegroup.org/#tensor-products)                | Source exercise; complete solution not reproduced |
+| `lem:13.1`                  | 193 / 194          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.2`                  | 193 / 194          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.3`                  | 194 / 195          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `prop:13.4`                 | 194 / 195          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `prop:13.5`                 | 194 / 195          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.6`                  | 195 / 196          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.7`                  | 195 / 196          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.8`                  | 195 / 196          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.9`                  | 196 / 197          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.10`                 | 196 / 197          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.11`                 | 197 / 198          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.12`                 | 197 / 198          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.13`                 | 197 / 198          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.14`                 | 198 / 199          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.15`                 | 198 / 199          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.16`                 | 198 / 199          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.17`                 | 199 / 200          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `thm:13.18`                 | 199 / 200          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Statement / construction and proof route          |
+| `lem:13.19`                 | 199 / 200          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `cor:13.20`                 | 200 / 201          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `lem:13.21`                 | 200 / 201          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `cor:13.22`                 | 200 / 201          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `thm:13.23`                 | 200 / 201          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `cor:13.24`                 | 201 / 202          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `lem:13.25`                 | 201 / 202          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `thm:13.26`                 | 201 / 202          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `thm:13.27`                 | 202 / 203          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `prop:13.28`                | 202 / 203          | [Radicals & module layers](https://algebra.jeromegroup.org/#algebra-radical)               | Statement / construction and proof route          |
+| `ex:13.1`                   | 203 / 204          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.2`                   | 203 / 204          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.3`                   | 203 / 204          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.4`                   | 204 / 205          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.5`                   | 204 / 205          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.6`                   | 205 / 206          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.7`                   | 205 / 206          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.8`                   | 205 / 206          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.9`                   | 206 / 207          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.10`                  | 206 / 207          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.11`                  | 206 / 207          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.12`                  | 207 / 208          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.13`                  | 207 / 208          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.14`                  | 208 / 209          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `ex:13.15`                  | 208 / 209          | [Wedderburn decomposition](https://algebra.jeromegroup.org/#algebra-wedderburn)            | Source exercise; complete solution not reproduced |
+| `thm:14.1`                  | 209 / 210          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `cor:14.2`                  | 210 / 211          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `thm:14.3`                  | 210 / 211          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `prop:14.4`                 | 211 / 212          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `prop:14.5`                 | 212 / 213          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `lem:14.6`                  | 212 / 213          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `thm:14.7`                  | 212 / 213          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `prop:14.8`                 | 213 / 214          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `cor:14.9`                  | 214 / 215          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `prop:14.10`                | 214 / 215          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `lem:14.11`                 | 215 / 216          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `thm:14.12`                 | 215 / 216          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Statement / construction and proof route          |
+| `ex:14.1`                   | 216 / 217          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.2`                   | 216 / 217          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.3`                   | 216 / 217          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.4`                   | 217 / 218          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.5`                   | 217 / 218          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.6`                   | 217 / 218          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.7`                   | 218 / 219          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `ex:14.8`                   | 218 / 219          | [Traces & characters](https://algebra.jeromegroup.org/#representations-characters)         | Source exercise; complete solution not reproduced |
+| `thm:row-orthogonality`     | 220 / 221          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.1`                  | 220 / 221          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.2`                  | 220 / 221          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.3`                  | 221 / 222          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.4`                  | 221 / 222          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `prop:15.5`                 | 221 / 222          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `thm:col-orthogonality`     | 222 / 223          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `lem:15.6`                  | 222 / 223          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `prop:15.7`                 | 222 / 223          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.8`                  | 223 / 224          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.9`                  | 223 / 224          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `lem:15.10`                 | 223 / 224          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.11`                 | 224 / 225          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `prop:15.12`                | 224 / 225          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `lem:15.13`                 | 224 / 225          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `cor:15.14`                 | 225 / 226          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.1`                | 225 / 226          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.2`                | 226 / 227          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.3`                | 226 / 227          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.4`                | 227 / 228          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.5`                | 227 / 228          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.6`                | 227 / 228          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.7`                | 228 / 229          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.8`                | 228 / 229          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.eg.9`                | 229 / 230          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Statement / construction and proof route          |
+| `ex:15.1`                   | 231 / 232          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.2`                   | 232 / 233          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.3`                   | 232 / 233          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.4`                   | 233 / 234          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.5`                   | 233 / 234          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.6`                   | 233 / 234          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.7`                   | 234 / 235          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.8`                   | 234 / 235          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.9`                   | 234 / 235          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `ex:15.10`                  | 235 / 236          | [Character tables](https://algebra.jeromegroup.org/#odyssey-character-table)               | Source exercise; complete solution not reproduced |
+| `lem:16.1`                  | 237 / 238          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `thm:frobenius-reciprocity` | 237 / 238          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `thm:16.2`                  | 238 / 239          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `prop:16.3`                 | 239 / 240          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `cor:16.4`                  | 239 / 240          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `prop:16.5`                 | 240 / 241          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `cor:16.6`                  | 241 / 242          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Statement / construction and proof route          |
+| `thm:frobenius`             | 237 / 238          | [Frobenius groups](https://algebra.jeromegroup.org/#actions-frobenius)                     | Statement / construction and proof route          |
+| `ex:16.1`                   | 243 / 244          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.2`                   | 244 / 245          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.3`                   | 244 / 245          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.4`                   | 245 / 246          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.5`                   | 246 / 247          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.6`                   | 247 / 248          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.7`                   | 248 / 249          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.8`                   | 249 / 250          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.9`                   | 250 / 251          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.10`                  | 250 / 251          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.11`                  | 250 / 251          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.12`                  | 237–258 / 238–259  | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.13`                  | 251 / 252          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.14`                  | 253 / 254          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.15`                  | 253 / 254          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.16`                  | 255 / 256          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.17`                  | 256 / 257          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.18`                  | 256 / 257          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `ex:16.19`                  | 257 / 258          | [Induction](https://algebra.jeromegroup.org/#odyssey-induction)                            | Source exercise; complete solution not reproduced |
+| `lem:17.1`                  | 259 / 260          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `prop:17.2`                 | 259 / 260          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `prop:17.3`                 | 260 / 261          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `lem:17.4`                  | 260 / 261          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `prop:17.5`                 | 261 / 262          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `lem:17.6`                  | 261 / 262          | [Integrality & character degrees](https://algebra.jeromegroup.org/#characters-integrality) | Statement / construction and proof route          |
+| `thm:17.7`                  | 261 / 262          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Statement / construction and proof route          |
+| `thm:burnside-paqb`         | 262 / 263          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Statement / construction and proof route          |
+| `ex:17.1`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |
+| `ex:17.2`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |
+| `ex:17.3`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |

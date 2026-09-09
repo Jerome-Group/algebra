@@ -17,7 +17,7 @@ import {
   type Lesson,
 } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
-import { useLaboratoryControl } from "./WebMCP";
+import { useLaboratoryControl } from "./LaboratoryControls";
 import {
   Select,
   SelectTrigger,
@@ -533,13 +533,17 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>{" Conjugation by $b$"}</Prose>{" "}
             {conjugate.every((h) => H.includes(h)) ? "preserves" : "changes"}
-            <Prose>{" $H$ as a set. |$C_G(H)|=$"}</Prose>
-            {centralizer.length}
-            <Prose>{" fixes each member under conjugation; |$N_G(H)|=$"}</Prose>
-            {normalizer.length}
+            <Prose>{" $H$ as a set. The centralizer has size "}</Prose>
+            <M>{`|C_G(H)|=${centralizer.length}`}</M>
             <Prose>
               {
-                " preserves $H$ as a set. $H$ is normal precisely when its normalizer is all of $G$. "
+                " and fixes each member under conjugation. The normalizer has size "
+              }
+            </Prose>
+            <M>{`|N_G(H)|=${normalizer.length}`}</M>
+            <Prose>
+              {
+                " and preserves $H$ as a set. $H$ is normal precisely when its normalizer is all of $G$. "
               }
             </Prose>
           </p>
@@ -592,12 +596,19 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         </div>
         {(mode === "subgroups" || mode === "sylow") && (
           <p className="lab-explain">
-            {quotientView
-              ? "Nodes contain H; labels give quotient orders |K/H|."
-              : "Node labels give subgroup orders."}{" "}
+            <Prose>
+              {quotientView
+                ? "Nodes contain $H$; labels give quotient orders $|K/H|$."
+                : "Node labels give subgroup orders."}
+            </Prose>{" "}
             Teal nodes are normal; violet nodes are not.{" "}
-            {mode === "sylow" &&
-              "For D₃ (order 6), there are three subgroups of order 2 and one subgroup of order 3; the latter is normal."}
+            {mode === "sylow" && (
+              <Prose>
+                {
+                  "For $D_3$ (order $6$), there are three subgroups of order $2$ and one of order $3$; the latter is normal."
+                }
+              </Prose>
+            )}
           </p>
         )}
         <details>
@@ -605,7 +616,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " These machines enumerate actual finite groups, not arbitrary operation tables. $D_{n}$ has order 2n and elements $r$ᵃ$s$ᵇ, with $sr = r^{-1}s$. The graph uses right multiplication. $C_{n}$ is written additively; its identity is 0. $Q_{8}$ uses i²=j²=k²=ijk=−1. A finite example illustrates a theorem but does not prove the general case. "
+                " These machines enumerate actual finite groups, not arbitrary operation tables. $D_n$ has order $2n$ and elements $r^as^b$, with $sr = r^{-1}s$. The graph uses right multiplication. $C_{n}$ is written additively; its identity is 0. $Q_8$ uses $i^2=j^2=k^2=ijk=-1$. A finite example illustrates a theorem but does not prove the general case. "
               }
             </Prose>
           </p>

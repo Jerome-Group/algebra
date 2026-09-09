@@ -1,3 +1,4 @@
+import { laboratoryKinds } from "../lib/algebra/laboratory-types.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -42,6 +43,10 @@ test("all prose, deeper notes and diagram labels contain valid mathematical expr
 test("concept navigation resolves every connection and preserved legacy link", () => {
   const ids = new Set(lessons.map((x) => x.id));
   for (const lesson of lessons) {
+    assert.ok(
+      laboratoryKinds.includes(lesson.machine),
+      `${lesson.id}: laboratory`,
+    );
     assert.ok(lesson.subject && lesson.family && lesson.navTitle, lesson.id);
     for (const id of lesson.connections || [])
       assert.ok(ids.has(id), `${lesson.id} -> ${id}`);
