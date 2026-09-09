@@ -85,3 +85,24 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.equal(first, second);
   assert.match(first, /--skeleton-width:70%/);
 });
+
+test("all laboratory entry points render valid dynamic mathematics inside their provider", async () => {
+  const [{ default: Laboratory }, { LaboratoryProvider }] = await Promise.all([
+    vite.ssrLoadModule("/components/algebra/Laboratory.tsx"),
+    vite.ssrLoadModule("/components/algebra/LaboratoryControls.tsx"),
+  ]);
+  const lessons = JSON.parse(
+    await readFile(path.join(root, "lib/algebra/lessons.json"), "utf8"),
+  );
+  for (const lesson of lessons) {
+    const html = renderToStaticMarkup(
+      React.createElement(
+        LaboratoryProvider,
+        null,
+        React.createElement(Laboratory, { l: lesson }),
+      ),
+    );
+    assert.doesNotMatch(html, /class="katex-error"/, lesson.id);
+    assert.match(html, /class="katex"/, lesson.id);
+  }
+});

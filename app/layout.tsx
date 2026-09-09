@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./algebra.css";
+import "./laboratories.css";
+import "./responsive.css";
 import "katex/dist/katex.min.css";
 
 export const metadata: Metadata = {
-  title: "Algebra Atlas",
+  title: "Abstract Algebra",
   description:
     "A visual companion to groups, rings and representations. Rigorous mathematics, made tangible.",
   other: {

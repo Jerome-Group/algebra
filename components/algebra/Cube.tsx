@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { SvgMath } from "./SvgMath";
+import { useRef, useState } from "react";
 import {
   cube,
   I,
@@ -18,15 +19,8 @@ import {
   type ActionSet,
   type Lesson,
 } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
+import { Math as M, Prose } from "./Math";
+import { Choice, Range } from "./Groups";
 import { RotateCcw, Move3D } from "lucide-react";
 export function CubeScene({
   matrix,
@@ -110,7 +104,15 @@ export function CubeScene({
         }}
         onPointerMove={(e) => {
           if (drag.current) {
-            setYaw(drag.current.px + (e.clientX - drag.current.x) * 0.008);
+            setYaw(
+              Math.max(
+                -3.14,
+                Math.min(
+                  3.14,
+                  drag.current.px + (e.clientX - drag.current.x) * 0.008,
+                ),
+              ),
+            );
             setPitch(
               Math.max(
                 -1.4,
@@ -132,8 +134,8 @@ export function CubeScene({
       >
         <defs>
           <radialGradient id="scene-glow">
-            <stop offset="0" stopColor="#1e3c4a" />
-            <stop offset="1" stopColor="#111e2b" />
+            <stop offset="0" stopColor="#f7f0e7" />
+            <stop offset="1" stopColor="#eee8df" />
           </radialGradient>
         </defs>
         <rect width="560" height="400" fill="url(#scene-glow)" />
@@ -141,8 +143,8 @@ export function CubeScene({
           const x = (i - 7) * 0.5;
           return (
             <g key={i}>
-              {line([x, -1.6, -3.5], [x, -1.6, 3.5], "#29414f")}
-              {line([-3.5, -1.6, x], [3.5, -1.6, x], "#29414f")}
+              {line([x, -1.6, -3.5], [x, -1.6, 3.5], "#d0c6ba")}
+              {line([-3.5, -1.6, x], [3.5, -1.6, x], "#d0c6ba")}
             </g>
           );
         })}
@@ -155,14 +157,14 @@ export function CubeScene({
           return (
             <g key={i}>
               {line([0, 0, 0], v, ["#98696e", "#6b947b", "#65879b"][i])}
-              <text
+              <SvgMath
                 x={p[0] + 7}
                 y={p[1] - 3}
                 fill={["#b9888d", "#83b598", "#79a1b8"][i]}
-                fontSize="12"
+                fontSize="20"
               >
                 {["x", "y", "z"][i]}
-              </text>
+              </SvgMath>
             </g>
           );
         })}
@@ -182,7 +184,7 @@ export function CubeScene({
                 .join(" ")}
               fill={faceColors[i]}
               fillOpacity=".12"
-              stroke="#88d8c6"
+              stroke="#6c6963"
               strokeWidth="1.4"
             />
           ))}
@@ -230,16 +232,16 @@ export function CubeScene({
                   stroke={i === selected ? "#edfff8" : "#17333b"}
                   strokeWidth="2"
                 />
-                <text
+                <SvgMath
                   x={q[0]}
                   y={q[1] + 5}
                   fill={palette[i % 12]}
                   textAnchor="middle"
                   fontWeight="600"
-                  fontSize="14"
+                  fontSize="22"
                 >
                   {i + 1}
-                </text>
+                </SvgMath>
               </g>
             );
           })}
@@ -247,30 +249,42 @@ export function CubeScene({
       <span className="scene-hint">
         <Move3D size={14} /> Drag to orbit · select a label
       </span>
-      <div className="camera-controls">
+      <details className="camera-settings">
+        <summary>Camera view</summary>
+        <Range
+          label="Horizontal angle"
+          value={yaw}
+          min={-3.14}
+          max={3.14}
+          step={0.01}
+          onChange={setYaw}
+        />
+        <Range
+          label="Vertical angle"
+          value={pitch}
+          min={-1.4}
+          max={1.4}
+          step={0.02}
+          onChange={setPitch}
+        />
+        <Range
+          label="Zoom"
+          value={zoom}
+          min={0.55}
+          max={1.6}
+          step={0.05}
+          onChange={setZoom}
+        />
         <button
-          title="Zoom out"
-          onClick={() => setZoom((z) => Math.max(0.55, z - 0.15))}
-        >
-          −
-        </button>
-        <button
-          title="Reset camera"
           onClick={() => {
             setYaw(0.62);
             setPitch(-0.38);
             setZoom(1);
           }}
         >
-          <RotateCcw size={12} />
+          Reset camera
         </button>
-        <button
-          title="Zoom in"
-          onClick={() => setZoom((z) => Math.min(1.6, z + 0.15))}
-        >
-          +
-        </button>
-      </div>
+      </details>
     </div>
   );
 }
@@ -303,17 +317,6 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
       (a, g) => a + colors ** cycles(permutation(g.matrix, set)).length,
       0,
     ) / G.length;
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const d = (e as CustomEvent).detail;
-      setIndex(d.element);
-      setSet(d.set);
-      if (det(cube[d.element].matrix) < 0) setRotOnly(false);
-      setSelected(0);
-    };
-    window.addEventListener("algebra-cube-config", handler);
-    return () => window.removeEventListener("algebra-cube-config", handler);
-  }, []);
   const apply = (name: string) => {
     const g = cube.find((c) => c.word.length === 1 && c.word[0] === name)!;
     setIndex(
@@ -325,41 +328,37 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
   };
   return (
     <div className="cube-lab">
+      <CubeScene
+        matrix={el.matrix}
+        set={set}
+        selected={selected}
+        onSelect={setSelected}
+      />
       <div className="lab-toolbar">
-        <Select
+        <Choice
+          label="Action set"
           value={set}
-          onValueChange={(v) => {
+          onChange={(v) => {
             setSet(v as ActionSet);
             setSelected(0);
           }}
-        >
-          <SelectTrigger aria-label="Action set">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.keys(points).map((k) => (
-              <SelectItem key={k} value={k}>
-                {points[k as ActionSet].length}{" "}
-                {k === "mixed" ? "vertices + faces" : k}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select
+          options={Object.keys(points).map((k) => [
+            k,
+            `${points[k as ActionSet].length} ${k === "mixed" ? "vertices + faces" : k}`,
+          ])}
+        />
+        <Choice
+          label="Cube group"
           value={rotOnly ? "rotations" : "full"}
-          onValueChange={(v) => {
+          onChange={(v) => {
             setRotOnly(v === "rotations");
             setIndex(0);
           }}
-        >
-          <SelectTrigger aria-label="Cube group">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="full">Full group · 48</SelectItem>
-            <SelectItem value="rotations">Rotations · 24</SelectItem>
-          </SelectContent>
-        </Select>
+          options={[
+            ["full", "Full group · 48"],
+            ["rotations", "Rotations · 24"],
+          ]}
+        />
         <button
           className="icon-button"
           title="Reset transformation"
@@ -368,22 +367,18 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <RotateCcw size={17} />
         </button>
       </div>
-      <CubeScene
-        matrix={el.matrix}
-        set={set}
-        selected={selected}
-        onSelect={setSelected}
-      />
       <div className="cube-under">
         <div className="generator-row">
           <span>Apply generator</span>
           {["A", "B", ...(!rotOnly ? ["J"] : [])].map((g) => (
             <button key={g} onClick={() => apply(g)}>
-              {g === "A"
-                ? "A · rotate x"
-                : g === "B"
-                  ? "B · rotate z"
-                  : "J · invert"}
+              <Prose>
+                {g === "A"
+                  ? "$A$ · rotate about $x$"
+                  : g === "B"
+                    ? "$B$ · rotate about $z$"
+                    : "$J$ · invert"}
+              </Prose>
             </button>
           ))}
         </div>
@@ -398,7 +393,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             <label>Induced permutation</label>
             <M block>{`\\pi_X(Q)=${cycleTex(p)}`}</M>
             <span>
-              det Q = {det(el.matrix)} · {cycles(p).length} cycles
+              <M>{`\\det Q=${det(el.matrix)}`}</M> · {cycles(p).length} cycles
             </span>
           </div>
         </div>
@@ -414,26 +409,31 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
               onClick={() => setSelected(i)}
             >
               {i + 1}
-              <span>→{p[i] + 1}</span>
+              <span>
+                <Prose>{"$\\to$"}</Prose>
+                {p[i] + 1}
+              </span>
             </button>
           ))}
         </div>
         <div className="stat-strip">
           <div>
             <strong>{G.length}</strong>
-            <span>|G|</span>
+            <M>{"|G|"}</M>
           </div>
           <div>
             <strong>{orb.length}</strong>
-            <span>|Orb({selected + 1})|</span>
+            <M>{`|\\operatorname{Orb}(${selected + 1})|`}</M>
           </div>
           <div>
             <strong>{stab.length}</strong>
-            <span>|Stab({selected + 1})|</span>
+            <M>{`|\\operatorname{Stab}(${selected + 1})|`}</M>
           </div>
           <div>
             <strong>{kernel.length}</strong>
-            <span>|ker π|</span>
+            <span>
+              <M>{"|\\ker\\pi|"}</M>
+            </span>
           </div>
         </div>
         <p className="lab-explain">
@@ -443,9 +443,11 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           Each destination in this orbit is reached by exactly {stab.length}{" "}
           group elements:{" "}
           <M>{`${G.length}=${orb.length}\\cdot ${stab.length}`}</M>.{" "}
-          {set === "diagonals" && !rotOnly
-            ? "Inversion fixes all four diagonal lines, so the kernel is {I, −I}."
-            : "Only the identity fixes every point simultaneously."}
+          <Prose>
+            {set === "diagonals" && !rotOnly
+              ? "Inversion fixes all four diagonal lines, so the kernel is $\\{I,-I\\}$."
+              : "Only the identity fixes every point simultaneously."}
+          </Prose>
         </p>
         <div className="filter-row">
           <span>Explore the elements</span>
@@ -474,23 +476,21 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
                 onClick={() => setIndex(i)}
                 title={`${x.word.join(" ") || "I"}, determinant ${det(x.matrix)}`}
               >
-                {x.word.join("") || "I"}
+                <M>{x.word.join("") || "I"}</M>
               </button>
             );
           })}
         </div>
         <details>
-          <summary>Count colorings with Burnside’s lemma</summary>
-          <label className="slider-label">
-            Labeled colors k <b>{colors}</b>
-          </label>
-          <Slider
-            aria-label="Number of colors"
+          <summary>
+            <Prose>{"Count colorings with Burnside’s lemma"}</Prose>
+          </summary>
+          <Range
+            label="Labeled colors $k$"
+            value={colors}
             min={1}
             max={6}
-            step={1}
-            value={[colors]}
-            onValueChange={(v) => setColors(v[0])}
+            onChange={setColors}
           />
           <M
             block
@@ -498,15 +498,20 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <p>
             For {colors} colors on {set}, there are{" "}
             <strong>{colorings.toLocaleString()} inequivalent colorings</strong>
-            . Repeated colors are allowed. A coloring fixed by g must be
-            constant on every cycle.
+            <Prose>
+              {
+                " . Repeated colors are allowed. A coloring fixed by $g$ must be constant on every cycle. "
+              }
+            </Prose>
           </p>
           <div className="cycle-distribution">
             {[...cts]
               .sort((a, b) => b[0] - a[0])
               .map(([c, n]) => (
                 <span key={c}>
-                  {n} elements × {c} cycles
+                  {n}
+                  <Prose>{" elements $\\times$ "}</Prose>
+                  {c} cycles
                 </span>
               ))}
           </div>
@@ -514,10 +519,14 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <details open={lesson.id === "representations-actions-modules"}>
           <summary>From this action to a permutation representation</summary>
           <p>
-            Attach one basis vector eᵢ to each object. The action permutes
-            coefficients by <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This
-            representation has dimension {p.length}; the geometric matrix Q has
-            dimension 3.
+            <Prose>
+              {
+                " Attach one basis vector $e_i$ to each object. The action permutes coefficients by "
+              }
+            </Prose>
+            <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This representation has dimension{" "}
+            {p.length}
+            <Prose>{"; the geometric matrix $Q$ has dimension 3. "}</Prose>
           </p>
           <M
             block
@@ -534,9 +543,11 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <details>
           <summary>Generators and composition convention</summary>
           <p>
-            Column vectors; AB applies B first. Every button left-multiplies Q.
-            The matrix product is exact; camera movement is independent of the
-            group action.
+            <Prose>
+              {
+                " Column vectors; AB applies $B$ first. Every button left-multiplies $Q$. The matrix product is exact; camera movement is independent of the group action. "
+              }
+            </Prose>
           </p>
           <M block>{`A=${matrixTex([
             [1, 0, 0],
@@ -549,9 +560,11 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           ])}`}</M>
           <M block>{"J=-I_3,\\qquad A^4=B^4=J^2=I,\\quad JQ=QJ"}</M>
           <p>
-            A and B generate all 24 rotations. Adjoining J yields 48 symmetries.
-            Determinant −1 includes inversion and rotoreflections, not only
-            plane reflections.
+            <Prose>
+              {
+                " A and $B$ generate all 24 rotations. Adjoining J yields 48 symmetries. Determinant $-1$ includes inversion and rotoreflections, not only plane reflections. "
+              }
+            </Prose>
           </p>
         </details>
       </div>

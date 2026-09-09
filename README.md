@@ -2,11 +2,13 @@
 
 An interactive learning site for students exploring groups, rings, fields, and representations.
 
-Live site: https://algebra.jeromegroup.org
+Live site: [Abstract Algebra](https://algebra.jeromegroup.org)
 
 ## Status
 
-Existing teaching application imported from ChatGPT Sites; build and tests are checked in CI.
+Concept-based teaching application imported from ChatGPT Sites; build and tests are checked in CI.
+The interface pairs mathematical chapters and progressive notes with visual laboratories.
+See [source coverage](docs/source-coverage.md) for the complete 17-section group-to-character reading route.
 Course documents are excluded; access-controlled notes links are retained.
 
 ## Local development

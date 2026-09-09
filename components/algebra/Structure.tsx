@@ -1,4 +1,5 @@
 "use client";
+import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
@@ -46,9 +47,9 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
         { id: "Q", label: "(G/N)/(M/N)" },
       ];
       edges = [
-        ["G", "GN", "quotient by N"],
-        ["GN", "Q", "quotient by M/N"],
-        ["G", "GM", "quotient by M"],
+        ["G", "GN", "quotient by $N$"],
+        ["GN", "Q", "quotient by $M/N$"],
+        ["G", "GM", "quotient by $M$"],
         ["Q", "GM", "isomorphism"],
       ];
     } else {
@@ -95,7 +96,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
     <div>
       <div className="structure-map">
         <svg
-          viewBox="0 0 560 410"
+          viewBox={`0 0 560 ${nodes.length > 5 ? 490 : 410}`}
           role="img"
           aria-label="Mathematical structure relationships"
         >
@@ -108,7 +109,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               refY="3.5"
               orient="auto"
             >
-              <path d="M0 0L8 3.5L0 7" fill="#69dbca" />
+              <path d="M0 0L8 3.5L0 7" fill="#d96240" />
             </marker>
           </defs>
           {normEdges.map((e, i) => {
@@ -124,7 +125,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                 y1={p[1] + (dy * 36) / d}
                 x2={q[0] - (dx * 38) / d}
                 y2={q[1] - (dy * 38) / d}
-                stroke={selected === i ? "#69dbca" : "#3f596e"}
+                stroke={selected === i ? "#dc5632" : "#7e7770"}
                 strokeWidth={selected === i ? 3 : 1.5}
                 markerEnd="url(#struct-arrow)"
               />
@@ -133,13 +134,19 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
           {nodes.map((n, i) => (
             <foreignObject
               key={i}
-              x={rows[i][0] - 88}
+              x={rows[i][0] - 105}
               y={rows[i][1] - 28}
-              width="176"
+              width="210"
               height="64"
             >
-              <div className="structure-node">
-                {n.text ? <span>{n.label}</span> : <M>{n.label}</M>}
+              <div
+                className="structure-node"
+                style={{
+                  fontSize:
+                    n.label.replace(/\\[a-zA-Z]+/g, "").length > 24 ? 15 : 24,
+                }}
+              >
+                {n.text ? <Prose>{n.label}</Prose> : <M>{n.label}</M>}
               </div>
             </foreignObject>
           ))}
@@ -163,7 +170,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
             {current && (
               <div className="relationship-readout">
                 {nodes[current[0]].text ? (
-                  <span>{nodes[current[0]].label}</span>
+                  <Prose>{nodes[current[0]].label}</Prose>
                 ) : (
                   <M>{nodes[current[0]].label}</M>
                 )}
@@ -171,7 +178,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                   <Prose>{String(current[2])}</Prose>
                 </span>
                 {nodes[current[1]].text ? (
-                  <span>{nodes[current[1]].label}</span>
+                  <Prose>{nodes[current[1]].label}</Prose>
                 ) : (
                   <M>{nodes[current[1]].label}</M>
                 )}
@@ -206,14 +213,14 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
           <>
             <div className="two-cols">
               <Range
-                label="Numerator a"
+                label={"Numerator $a$"}
                 min={-12}
                 max={12}
                 value={a > 12 ? 1 : a}
                 onChange={setA}
               />
               <Range
-                label="Denominator b"
+                label={"Denominator $b$"}
                 min={1}
                 max={12}
                 value={b > 12 ? 2 : b}
@@ -243,10 +250,15 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                     {den % prime
                       ? "This rational belongs"
                       : "This rational does not belong"}{" "}
-                    to ℤ₍{prime}₎: in lowest terms its denominator is{" "}
-                    {den % prime ? "not divisible" : "divisible"} by {prime}. In
-                    ℚ all nonzero integer denominators are allowed. Reduction
-                    must come before testing: {prime}/{prime}=1 is allowed.
+                    to <M>{`\\mathbb Z_{(${prime})}`}</M>: in lowest terms its
+                    denominator is {den % prime ? "not divisible" : "divisible"}{" "}
+                    by <M>{String(prime)}</M>.
+                    <Prose>
+                      {
+                        " In $\\mathbb Q$ every nonzero integer denominator is allowed. Reduce before testing: "
+                      }
+                    </Prose>
+                    <M>{`${prime}/${prime}=1`}</M> is allowed.
                   </p>
                 </>
               );
@@ -288,9 +300,9 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               })()}
             </div>
             <p>
-              Last nonzero remainder: gcd({a},{b}) = {gcd(a, b)}. At each step
-              the generated ideal is unchanged while the nonzero remainder
-              decreases.
+              Last nonzero remainder: <M>{`\\gcd(${a},${b})=${gcd(a, b)}`}</M>.
+              At each step the generated ideal is unchanged while the nonzero
+              remainder decreases.
             </p>
           </>
         )}
@@ -334,9 +346,9 @@ export function ConjugationLab() {
             setA(1);
           }}
           options={[
-            ["D", "D₄ · 8 elements"],
-            ["Q", "Q₈ · 8 elements"],
-            ["C", "C₄ · 4 elements"],
+            ["D", "$D_4$ · 8 elements"],
+            ["Q", "$Q_8$ · 8 elements"],
+            ["C", "$C_4$ · 4 elements"],
           ]}
         />
         <Choice
@@ -377,9 +389,11 @@ export function ConjugationLab() {
           block
         >{`\\operatorname{Stab}(${g.labels[x]})=\\{${stabilizer.map((h) => g.labels[h]).join(",")}\\}`}</M>
         <p>
-          {mode === "regular"
-            ? "Left translation is transitive and free. Only the identity can fix x, because hx=x implies h=e."
-            : "Conjugation remembers internal structure. The stabilizer is the centralizer C_G(x); singleton orbits are exactly the central elements."}
+          <Prose>
+            {mode === "regular"
+              ? "Left translation is transitive and free. Only the identity fixes $x$, since $hx=x$ implies $h=e$."
+              : "Under conjugation the stabilizer is $C_G(x)$; singleton orbits are exactly the central elements."}
+          </Prose>
         </p>
         <M block>
           {mode === "regular"
@@ -464,23 +478,29 @@ export function ColoringLab() {
                 fill={palette[bits[i] % k]}
                 stroke="#bfdde2"
               />
-              <text
+              <SvgMath
                 x={280 + 170 * Math.cos(t)}
                 y={200 + 170 * Math.sin(t)}
                 textAnchor="middle"
                 fill="#98adbd"
               >
                 {i + 1}
-              </text>
+              </SvgMath>
             </g>
           );
         })}
       </svg>
       <div className="lab-controls">
         <div className="two-cols">
-          <Range label="Beads n" min={3} max={10} value={n} onChange={setN} />
           <Range
-            label="Labeled colors k"
+            label={"Beads $n$"}
+            min={3}
+            max={10}
+            value={n}
+            onChange={setN}
+          />
+          <Range
+            label={"Labeled colors $k$"}
             min={2}
             max={5}
             value={k}
@@ -496,10 +516,11 @@ export function ColoringLab() {
           block
         >{`${perms.length}=${orb.size}\\cdot${st},\\qquad\\#\\text{coloring orbits}=\\frac{${sum}}{${perms.length}}=${sum / perms.length}`}</M>
         <p>
-          The orbit–stabilizer equation concerns this single coloring.
-          Burnside’s average counts all inequivalent colorings using k labeled
-          colors, with repetition allowed. It counts fixed colorings by k to the
-          number of bead cycles, not by the number of fixed beads.
+          <Prose>
+            {
+              " The orbit–stabilizer equation concerns this single coloring. Burnside’s average counts all inequivalent colorings using $k$ labeled colors, with repetition allowed. It counts fixed colorings by $k$ to the number of bead cycles, not by the number of fixed beads. "
+            }
+          </Prose>
         </p>
       </div>
     </div>
