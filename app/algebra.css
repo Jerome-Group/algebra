@@ -143,7 +143,7 @@
   line-height: 1.35;
   margin: 18px 0;
 }
-.connections button:hover {
+.connections a:hover {
   color: #334fe0;
 }
 .convention-note h3 {
@@ -207,7 +207,7 @@
 .chapter-concepts {
   padding: 0 0 10px 8px;
 }
-.chapter-switcher button[aria-current] {
+.chapter-switcher a[aria-current] {
   color: #243bb5;
   background: #eef1ff;
   border-color: #a4b0ee;
@@ -354,7 +354,7 @@
   color: #353440;
   padding: 11px 0;
 }
-.library-results .chapter-concepts button {
+.library-results .chapter-concepts a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -367,13 +367,13 @@
   font-size: 12px;
   color: #514f59;
 }
-.library-results button[aria-current="page"] {
+.library-results a[aria-current="page"] {
   border-left-color: #334fe0;
   border-color: var(--accent);
   background: #ffe8df;
   color: #181819;
 }
-.library-results button:hover {
+.library-results a:hover {
   background: #f4eae1;
 }
 .library-footer {
@@ -431,7 +431,7 @@
   list-style: none;
   font-size: 11px;
 }
-.chapter-switcher button {
+.chapter-switcher a {
   padding: 5px 10px;
   font-size: 12px;
   color: #596078;
@@ -522,7 +522,7 @@
   border-left: 1px solid #aba8a2;
   padding-left: 22px;
 }
-.connections button {
+.connections a {
   display: block;
   width: 100%;
   text-align: left;
@@ -530,7 +530,7 @@
   border-radius: 0;
   padding: 13px 0;
 }
-.connections button span {
+.connections a span {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -539,7 +539,7 @@
   color: #3830ce;
   font-size: 13px;
 }
-.connections button small {
+.connections a small {
   display: block;
   color: #6b7287;
   margin-bottom: 8px;
@@ -591,7 +591,7 @@
 .study-workspace .connections > .section-kicker {
   flex-basis: 100%;
 }
-.study-workspace .connections button {
+.study-workspace .connections a {
   flex: 1 1 180px;
 }
 .study-workspace .convention-note {
@@ -734,4 +734,145 @@
 }
 .further-reading details > div {
   padding-bottom: 1rem;
+}
+
+.reading-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.reading-tabs button {
+  padding: 10px 12px;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+}
+.reading-tabs button[aria-pressed="true"] {
+  border-color: #d65332;
+  font-weight: 700;
+}
+.lesson-section {
+  margin-bottom: 32px;
+}
+.lesson-practice {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.practice-problem {
+  padding: 18px 0;
+  border-top: 1px solid #cfcac3;
+}
+.practice-problem summary {
+  cursor: pointer;
+  padding: 8px 0;
+  font-weight: 600;
+}
+.prerequisite-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.prerequisite-links a,
+.route-options a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.learning-objective {
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.learning-routes {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #cfcac3;
+  padding-bottom: 14px;
+}
+.learning-routes > summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.route-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+.route-options h2 {
+  font-size: 20px;
+}
+.route-options p,
+.route-options li {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.route-options ol {
+  padding-left: 20px;
+}
+.route-options button {
+  padding: 8px 12px;
+  margin: 12px 0;
+  border: 1px solid #aaa39b;
+}
+.route-progress {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.search-results a {
+  display: block;
+}
+.search-results small {
+  display: block;
+  font-size: 12px;
+  margin: 5px 0;
+}
+.search-snippet {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.chapter-concepts a,
+.chapter-switcher a {
+  cursor: pointer;
+  display: block;
+}
+.chapter-concepts a:focus-visible,
+.connections a:focus-visible,
+.reading-tabs button:focus-visible {
+  outline: 2px solid #1944b8;
+  outline-offset: 3px;
+}
+.concept-main,
+.study-reading,
+.reading-content,
+.lesson-section {
+  min-width: 0;
+}
+.math-display {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.experiment-context {
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  border-bottom: 1px solid #cfcac3;
+}
+.experiment-context p + p {
+  margin-top: 12px;
+}
+.open-experiment {
+  border: 1px solid #a09b94;
+  padding: 8px 12px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+#experiment {
+  scroll-margin-top: 80px;
 }

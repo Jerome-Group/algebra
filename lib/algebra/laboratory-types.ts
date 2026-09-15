@@ -1,4 +1,6 @@
 export const laboratoryKinds = [
+  "axis-angle",
+  "plane-representation",
   "actions",
   "cayley",
   "characters",

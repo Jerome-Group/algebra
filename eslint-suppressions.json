@@ -19,7 +19,7 @@
       "count": 4
     },
     "prefer-const": {
-      "count": 2
+      "count": 1
     }
   },
   "lib/algebra/engine.ts": {

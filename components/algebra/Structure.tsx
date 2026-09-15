@@ -1,18 +1,8 @@
 "use client";
-import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
-import {
-  gcd,
-  mod,
-  palette,
-  type Lesson,
-  group,
-  inverse,
-  closure,
-  cosets,
-} from "@/lib/algebra/engine";
+import { gcd, type Lesson } from "@/lib/algebra/engine";
 export function StructureLab({ lesson }: { lesson: Lesson }) {
   const [selected, setSelected] = useState(0),
     [step, setStep] = useState(3),
@@ -55,13 +45,9 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
     } else {
       nodes = [
         { id: "start", label: "V" },
-        { id: "action", label: "\\rho(g)" },
         { id: "end", label: "V" },
       ];
-      edges = [
-        ["start", "action", "representation"],
-        ["action", "end", "linear action"],
-      ];
+      edges = [["start", "end", "linear map $\\rho(g):V\\to V$"]];
     }
   }
   const rows =
@@ -75,14 +61,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               [440, 195],
               [280, 340],
             ][i];
-          return [
-            [100, 65],
-            [400, 65],
-            [280, 205],
-            [100, 345],
-            [440, 345],
-            [280, 430],
-          ][i % 6];
+          return [i % 2 === 0 ? 135 : 425, 65 + 140 * Math.floor(i / 2)];
         });
   const normEdges = edges
     .map((e) => [
@@ -96,7 +75,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
     <div>
       <div className="structure-map">
         <svg
-          viewBox={`0 0 560 ${nodes.length > 5 ? 490 : 410}`}
+          viewBox={`0 0 560 ${Math.max(410, 140 * Math.ceil(nodes.length / 2))}`}
           role="img"
           aria-label="Mathematical structure relationships"
         >
@@ -310,217 +289,6 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
           Read each arrow with its displayed condition. The definition and proof
           explain why the relation holds; proximity in the drawing does not add
           a mathematical relation.
-        </p>
-      </div>
-    </div>
-  );
-}
-export function ConjugationLab() {
-  const [type, setType] = useState("D"),
-    [n, setN] = useState(4),
-    [mode, setMode] = useState("conjugation"),
-    [a, setA] = useState(1);
-  const g = group(type, n),
-    N = g.labels.length,
-    x = a % N,
-    act = (h: number, y: number) =>
-      mode === "regular" ? g.mul(h, y) : g.mul(g.mul(h, y), inverse(g, h));
-  const seen = new Set<number>(),
-    orbits: number[][] = [];
-  for (let i = 0; i < N; i++)
-    if (!seen.has(i)) {
-      const orbit = [...new Set(g.labels.map((_, h) => act(h, i)))];
-      orbit.forEach((x) => seen.add(x));
-      orbits.push(orbit);
-    }
-  const stabilizer = g.labels.map((_, h) => h).filter((h) => act(h, x) === x),
-    orbit = orbits.find((o) => o.includes(x))!;
-  return (
-    <div>
-      <div className="lab-toolbar">
-        <Choice
-          label="Group acting on itself"
-          value={type}
-          onChange={(v) => {
-            setType(v);
-            setA(1);
-          }}
-          options={[
-            ["D", "$D_4$ · 8 elements"],
-            ["Q", "$Q_8$ · 8 elements"],
-            ["C", "$C_4$ · 4 elements"],
-          ]}
-        />
-        <Choice
-          label="Action on group"
-          value={mode}
-          onChange={setMode}
-          options={[
-            ["conjugation", "Conjugation hxh⁻¹"],
-            ["regular", "Left translation hx"],
-          ]}
-        />
-      </div>
-      <div className="conjugacy-orbits">
-        {orbits.map((o, i) => (
-          <div key={i} style={{ borderColor: palette[i] }}>
-            <label>
-              Orbit · {o.length} {o.length === 1 ? "element" : "elements"}
-            </label>
-            <div>
-              {o.map((y) => (
-                <button
-                  key={y}
-                  onClick={() => setA(y)}
-                  className={x === y ? "selected" : ""}
-                >
-                  <M>{g.labels[y]}</M>
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="lab-controls">
-        <M
-          block
-        >{`|G|=${N}=|\\operatorname{Orb}(${g.labels[x]})|\\,|\\operatorname{Stab}(${g.labels[x]})|=${orbit.length}\\cdot${stabilizer.length}`}</M>
-        <M
-          block
-        >{`\\operatorname{Stab}(${g.labels[x]})=\\{${stabilizer.map((h) => g.labels[h]).join(",")}\\}`}</M>
-        <p>
-          <Prose>
-            {mode === "regular"
-              ? "Left translation is transitive and free. Only the identity fixes $x$, since $hx=x$ implies $h=e$."
-              : "Under conjugation the stabilizer is $C_G(x)$; singleton orbits are exactly the central elements."}
-          </Prose>
-        </p>
-        <M block>
-          {mode === "regular"
-            ? "G\\curvearrowright G,\\quad h\\cdot x=hx"
-            : `|G|=${orbits.map((o) => o.length).join("+")}`}
-        </M>
-        <p>
-          Changing the action changes both the orbit partition and the
-          stabilizers—even though the group and underlying set stay the same.
-        </p>
-      </div>
-    </div>
-  );
-}
-export function ColoringLab() {
-  const [n, setN] = useState(6),
-    [k, setK] = useState(2),
-    [ref, setRef] = useState(false),
-    [bits, setBits] = useState<number[]>(Array(12).fill(0));
-  const perms = Array.from({ length: ref ? 2 * n : n }, (_, a) =>
-    Array.from({ length: n }, (_, i) => mod((a % n) + (a >= n ? -i : i), n)),
-  );
-  const cyc = (p: number[]) => {
-    let c = 0,
-      seen = new Set<number>();
-    for (let i = 0; i < n; i++)
-      if (!seen.has(i)) {
-        c++;
-        let j = i;
-        while (!seen.has(j)) {
-          seen.add(j);
-          j = p[j];
-        }
-      }
-    return c;
-  };
-  const sum = perms.reduce((s, p) => s + k ** cyc(p), 0),
-    orb = new Set(perms.map((p) => p.map((i) => bits[i] % k).join(","))),
-    st = perms.filter((p) =>
-      p.every((j, i) => bits[j] % k === bits[i] % k),
-    ).length;
-  return (
-    <div>
-      <div className="lab-toolbar">
-        <Choice
-          label="Coloring equivalence"
-          value={ref ? "bracelet" : "necklace"}
-          onChange={(v) => setRef(v === "bracelet")}
-          options={[
-            ["necklace", "Necklaces · rotations"],
-            ["bracelet", "Bracelets · rotations + reflections"],
-          ]}
-        />
-      </div>
-      <svg
-        viewBox="0 0 560 400"
-        className="math-svg"
-        role="img"
-        aria-label="Interactive colored necklace"
-      >
-        <circle cx="280" cy="195" r="132" fill="none" stroke="#496379" />
-        {Array.from({ length: n }, (_, i) => {
-          const t = -Math.PI / 2 + (i * 2 * Math.PI) / n;
-          return (
-            <g
-              key={i}
-              role="button"
-              tabIndex={0}
-              aria-label={`Change bead ${i + 1} color`}
-              onClick={() =>
-                setBits((b) => b.map((x, j) => (i === j ? (x + 1) % k : x)))
-              }
-              onKeyDown={(e) => {
-                if (e.key === "Enter")
-                  setBits((b) => b.map((x, j) => (i === j ? (x + 1) % k : x)));
-              }}
-            >
-              <circle
-                cx={280 + 132 * Math.cos(t)}
-                cy={195 + 132 * Math.sin(t)}
-                r="22"
-                fill={palette[bits[i] % k]}
-                stroke="#bfdde2"
-              />
-              <SvgMath
-                x={280 + 170 * Math.cos(t)}
-                y={200 + 170 * Math.sin(t)}
-                textAnchor="middle"
-                fill="#98adbd"
-              >
-                {i + 1}
-              </SvgMath>
-            </g>
-          );
-        })}
-      </svg>
-      <div className="lab-controls">
-        <div className="two-cols">
-          <Range
-            label={"Beads $n$"}
-            min={3}
-            max={10}
-            value={n}
-            onChange={setN}
-          />
-          <Range
-            label={"Labeled colors $k$"}
-            min={2}
-            max={5}
-            value={k}
-            onChange={setK}
-          />
-        </div>
-        <p>
-          Click a bead to change its color. This coloring has {orb.size}{" "}
-          distinct labeled arrangements in its orbit and a stabilizer of size{" "}
-          {st}.
-        </p>
-        <M
-          block
-        >{`${perms.length}=${orb.size}\\cdot${st},\\qquad\\#\\text{coloring orbits}=\\frac{${sum}}{${perms.length}}=${sum / perms.length}`}</M>
-        <p>
-          <Prose>
-            {
-              " The orbit–stabilizer equation concerns this single coloring. Burnside’s average counts all inequivalent colorings using $k$ labeled colors, with repetition allowed. It counts fixed colorings by $k$ to the number of bead cycles, not by the number of fixed beads. "
-            }
-          </Prose>
         </p>
       </div>
     </div>

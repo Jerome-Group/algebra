@@ -3,13 +3,14 @@ import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range } from "./Groups";
-import { matrixTex } from "@/lib/algebra/engine";
-export function ModuleLab() {
-  const [a, setA] = useState(2),
-    [b, setB] = useState(1),
+import { type Lesson, matrixTex } from "@/lib/algebra/engine";
+export function ModuleLab({ lesson }: { lesson: Lesson }) {
+  const initial = lesson.parameters?.matrix as number[][] | undefined;
+  const [a, setA] = useState(initial?.[0]?.[0] ?? 2),
+    [b, setB] = useState(initial?.[1]?.[1] ?? 1),
     [x, setX] = useState(2),
     [y, setY] = useState(1),
-    [off, setOff] = useState(0);
+    [off, setOff] = useState(initial?.[0]?.[1] ?? 0);
   const m = [
       [a, off],
       [0, b],

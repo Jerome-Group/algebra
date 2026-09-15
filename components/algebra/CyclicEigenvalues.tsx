@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
 import { CubeScene } from "./Cube";
-import { matrixTex } from "@/lib/algebra/engine";
-export function CyclicLab() {
-  const [n, setN] = useState(4),
+import { type Lesson, matrixTex } from "@/lib/algebra/engine";
+export function CyclicLab({ lesson }: { lesson: Lesson }) {
+  const [n, setN] = useState(Number(lesson.parameters?.order ?? 4)),
     [power, setPower] = useState(1),
     t = (2 * Math.PI * power) / n,
     c = Math.cos(t),

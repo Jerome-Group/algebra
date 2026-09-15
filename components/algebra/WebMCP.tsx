@@ -1,4 +1,10 @@
 "use client";
+import {
+  readingViewIds,
+  isReadingView,
+  type ReadingView,
+} from "@/lib/algebra/reading-views";
+import { searchLessons } from "@/lib/algebra/search";
 import { useEffect, type RefObject } from "react";
 import { type Lesson } from "@/lib/algebra/engine";
 import { useLaboratoryControls } from "./LaboratoryControls";
@@ -30,7 +36,7 @@ export function useLearningTools({
   lessons: Lesson[];
   current: RefObject<Lesson>;
   open: (id: string) => void;
-  setTab: (tab: string) => void;
+  setTab: (tab: ReadingView) => void;
   setView: (view: string) => void;
   setQuery: (query: string) => void;
 }) {
@@ -49,12 +55,8 @@ export function useLearningTools({
         inputSchema: schema({ query: { type: "string" } }),
         annotations: { readOnlyHint: true },
         execute: ({ query = "" }) =>
-          lessons
-            .filter((l) =>
-              `${l.title} ${l.subject} ${l.intuition}`
-                .toLowerCase()
-                .includes(String(query).toLowerCase()),
-            )
+          searchLessons(lessons, String(query))
+            .map((result) => result.lesson)
             .map(({ id, title, subject, family, connections }) => ({
               id,
               title,
@@ -92,20 +94,16 @@ export function useLearningTools({
           {
             view: {
               type: "string",
-              enum: ["understand", "example", "theorem", "proof", "sources"],
+              enum: [...readingViewIds, "sources"],
             },
           },
           ["view"],
         ),
         execute: ({ view }) => {
-          if (
-            !["understand", "example", "theorem", "proof", "sources"].includes(
-              String(view),
-            )
-          )
+          if (view !== "sources" && !isReadingView(view))
             throw Error("Unknown reading view");
           setView(view === "sources" ? "sources" : "lesson");
-          if (view !== "sources") setTab(String(view));
+          if (isReadingView(view)) setTab(view);
           return { view };
         },
       },

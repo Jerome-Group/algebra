@@ -10,7 +10,9 @@ import {
   RepresentationLab,
   CharacterLab,
 } from "./Representations";
-import { StructureLab, ConjugationLab, ColoringLab } from "./Structure";
+import { StructureLab } from "./Structure";
+import { ConjugationLab } from "./Conjugation";
+import { ColoringLab } from "./Coloring";
 import { QuadraticLab } from "./QuadraticIntegers";
 import { CyclicLab } from "./CyclicEigenvalues";
 import { MatrixFiniteLab } from "./FiniteLinearGroups";
@@ -18,12 +20,15 @@ import { SylowCalculator } from "./SylowArithmetic";
 import { SemidirectLab } from "./SemidirectProducts";
 import { ModuleLab } from "./Modules";
 import { SquareModesLab } from "./SquareModes";
+import { AxisAngleLab, PlaneRepresentationLab } from "./RotationLessons";
 import type { ComponentType } from "react";
 import type { LaboratoryKind } from "@/lib/algebra/laboratory-types";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
 > = {
+  "axis-angle": AxisAngleLab,
+  "plane-representation": PlaneRepresentationLab,
   "linear-quotient": LinearQuotientLab,
   "quadratic-quotient": QuadraticQuotientLab,
   module: ModuleLab,

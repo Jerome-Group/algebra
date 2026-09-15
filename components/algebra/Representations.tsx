@@ -22,10 +22,14 @@ import {
   TableHead,
   TableCell,
 } from "@/components/ui/table";
-export function OrthogonalLab() {
-  const [angle, setAngle] = useState(45),
-    [reflect, setReflect] = useState(false),
-    [dim, setDim] = useState("2"),
+export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
+  const [angle, setAngle] = useState(
+      Math.round(
+        (Number(lesson.parameters?.angle ?? Math.PI / 4) * 180) / Math.PI,
+      ),
+    ),
+    [reflect, setReflect] = useState(Boolean(lesson.parameters?.reflection)),
+    [dim, setDim] = useState(String(lesson.parameters?.dimension ?? 2)),
     [axis, setAxis] = useState("z");
   const t = (angle * Math.PI) / 180,
     c = Math.cos(t),
@@ -49,10 +53,10 @@ export function OrthogonalLab() {
             [s, c, 0],
             [0, 0, 1],
           ];
-  m = m.map((r) => r.map((v, i) => (i === 0 ? v * e : v)));
+  m = m.map((r) => r.map((v, i) => (i === 1 ? v * e : v)));
   const f = (x: number, y: number) => [
-    280 + 130 * (e * c * x - s * y),
-    210 - 130 * (e * s * x + c * y),
+    280 + 130 * (c * x - e * s * y),
+    210 - 130 * (s * x + e * c * y),
   ];
   return (
     <div>
@@ -159,8 +163,8 @@ export function OrthogonalLab() {
         <M block>{`Q\\approx${matrixTex(
           dim === "2"
             ? [
-                [e * c, -s],
-                [e * s, c],
+                [c, -e * s],
+                [s, e * c],
               ]
             : m,
         )}`}</M>
@@ -180,7 +184,7 @@ export function OrthogonalLab() {
         <p>
           <Prose>
             {
-              " Changing the orientation selector jumps between components. There is no continuous path from $determinant +1$ to $-1$ inside an orthogonal group. Displayed decimal entries are approximations; the construction uses sine and cosine. "
+              " Changing the orientation selector jumps between components. There is no continuous path from determinant $+1$ to $-1$ inside an orthogonal group. Displayed decimal entries are approximations; the construction uses sine and cosine. "
             }
           </Prose>
         </p>
@@ -285,7 +289,7 @@ export function PermutationLab() {
           <p>
             <Prose>
               {
-                " Column $j$ is $e_{p(j)}$. Matrix multiplication follows composition: $P_{p}Pq = P_{p}q$. The order is the least common multiple of the cycle lengths, including fixed points. "
+                " Column $j$ is $e_{p(j)}$. Matrix multiplication follows composition: $P_{p}P_q = P_{pq}$. The order is the least common multiple of the cycle lengths, including fixed points. "
               }
             </Prose>
           </p>

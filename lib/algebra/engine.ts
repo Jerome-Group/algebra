@@ -318,6 +318,14 @@ export type Lesson = {
   family?: string;
   connections?: string[];
   worked?: { title: string; steps: string[] };
+  proofStatus: string;
+  exampleStatus?: string;
+  prerequisites?: string[];
+  objective?: string;
+  labScope: string;
+  level: string;
+  conventions?: string;
+  practice?: { question: string; hint: string; answer: string }[];
   reading?: { title: string; paragraphs: string[]; source: Citation }[];
   intuition: string;
   definition: string;

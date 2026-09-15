@@ -1,3 +1,5 @@
+import { searchLessons } from "@/lib/algebra/search";
+import { ConceptLink } from "./ConceptLink";
 import { Search, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import type { Lesson } from "@/lib/algebra/engine";
@@ -27,13 +29,7 @@ export function ConceptLibrary({
   setQuery: (s: string) => void;
   setExpanded: (s: string | undefined) => void;
 }) {
-  const filtered = lessons.filter((l) =>
-    query
-      ? `${l.title} ${l.intuition} ${l.family} ${l.subject}`
-          .toLowerCase()
-          .includes(query.toLowerCase())
-      : l.subject === subject,
-  );
+  const results = searchLessons(lessons, query);
   return (
     <nav
       className={`concept-library ${menu ? "is-open" : ""}`}
@@ -84,13 +80,14 @@ export function ConceptLibrary({
                     {lessons
                       .filter((l) => l.subject === s && l.family === f)
                       .map((l) => (
-                        <button
+                        <ConceptLink
+                          id={l.id}
+                          open={open}
                           key={l.id}
                           aria-current={l.id === id ? "page" : undefined}
-                          onClick={() => open(l.id)}
                         >
                           <Prose>{l.navTitle || l.title}</Prose>
-                        </button>
+                        </ConceptLink>
                       ))}
                   </div>
                 </details>
@@ -101,12 +98,18 @@ export function ConceptLibrary({
       </div>
       {query && (
         <div className="library-results search-results" aria-live="polite">
-          <p className="library-count">{filtered.length} matches</p>
+          <p className="library-count">{results.length} matches</p>
           <div className="chapter-concepts">
-            {filtered.map((l) => (
-              <button key={l.id} onClick={() => open(l.id)}>
+            {results.map(({ lesson: l, snippet }) => (
+              <ConceptLink key={l.id} id={l.id} open={open}>
                 <Prose>{l.navTitle || l.title}</Prose>
-              </button>
+                <small>
+                  {l.subject} · {l.family}
+                </small>
+                <span className="search-snippet">
+                  <Prose>{snippet}</Prose>
+                </span>
+              </ConceptLink>
             ))}
           </div>
         </div>
