@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Minus, Plus, Maximize2, Minimize2 } from "lucide-react";
 import type { Lesson } from "@/lib/algebra/engine";
 import Laboratory from "./Laboratory";
+import { Prose } from "./Math";
 
 export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [open, setOpen] = useState(true),
@@ -11,10 +12,12 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}
       aria-label="Interactive mathematical experience"
+      id="experiment"
+      tabIndex={-1}
     >
       <div className="exploration-heading">
         <span className="exploration-label">Explore</span>
-        <span className="exploration-description">Make the idea move.</span>
+        <span className="exploration-description">Test an example</span>
         <div className="exploration-actions">
           {open && (
             <button
@@ -43,6 +46,12 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
         className="visual-panel"
         data-machine={lesson.machine}
       >
+        <div className="experiment-context">
+          <p>
+            <Prose>{lesson.prompt}</Prose>
+          </p>
+          <p className="reading-caption">{lesson.labScope}</p>
+        </div>
         <Laboratory key={lesson.id} l={lesson} />
       </div>
     </section>

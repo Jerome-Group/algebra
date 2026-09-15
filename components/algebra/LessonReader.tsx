@@ -1,5 +1,6 @@
+import { readingViews, type ReadingView } from "@/lib/algebra/reading-views";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ConceptLink } from "./ConceptLink";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
 import { Reference } from "./Sources";
@@ -12,18 +13,45 @@ export function LessonReader({
 }: {
   lesson: Lesson;
   lessons: Lesson[];
-  tab: string;
-  setTab: (s: string) => void;
+  tab: ReadingView;
+  setTab: (s: ReadingView) => void;
   open: (id: string) => void;
 }) {
   return (
-    <Tabs value={tab} onValueChange={setTab}>
-      <TabsList variant="line" className="reading-tabs">
-        <TabsTrigger value="understand">Understand</TabsTrigger>
-        <TabsTrigger value="example">Worked example</TabsTrigger>
-        <TabsTrigger value="theorem">Theorem</TabsTrigger>
-        <TabsTrigger value="proof">Proof</TabsTrigger>
-      </TabsList>
+    <div className="lesson-reader">
+      <nav className="reading-tabs" aria-label="Reading view">
+        {readingViews.map(([value, label]) => (
+          <button
+            key={value}
+            aria-pressed={tab === value}
+            onClick={() => setTab(value)}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
+      <p className="reading-caption">
+        {lesson.level} · {lesson.proofStatus}
+      </p>
+      {lesson.objective && (
+        <p className="learning-objective">
+          <strong>Your goal: </strong>
+          <Prose>{lesson.objective}</Prose>
+        </p>
+      )}
+      {!!lesson.prerequisites?.length && (
+        <div className="prerequisite-links">
+          <span>Before this lesson:</span>{" "}
+          {lesson.prerequisites.map((id) => {
+            const prerequisite = lessons.find((item) => item.id === id);
+            return prerequisite ? (
+              <ConceptLink key={id} id={id} open={open}>
+                {prerequisite.navTitle}
+              </ConceptLink>
+            ) : null;
+          })}
+        </div>
+      )}
       <div className="reading-prelude">
         <div>
           <p className="concept-intro">
@@ -43,69 +71,110 @@ export function LessonReader({
       <div className="reading-layout">
         <article className="concept-notes">
           <div className="reading-content">
-            <TabsContent value="understand">
-              <h2>
-                <Prose>{lesson.title}</Prose>
-              </h2>
-              <p>
-                <Prose>{lesson.explanation}</Prose>
-              </p>
-              <div className="study-prompt">
-                <h3>Try the idea</h3>
+            {(tab === "guided" || tab === "understand") && (
+              <section className="lesson-section" aria-label="understand">
+                <h2>
+                  <Prose>{lesson.title}</Prose>
+                </h2>
                 <p>
-                  <Prose>{lesson.prompt}</Prose>
+                  <Prose>{lesson.explanation}</Prose>
                 </p>
-              </div>
-            </TabsContent>
-            <TabsContent value="example">
-              <h2>{lesson.worked?.title || "Reason through the example"}</h2>
-              {lesson.worked ? (
-                <ol className="worked-steps">
-                  {lesson.worked.steps.map((step, i) => (
-                    <li key={i}>
-                      <Prose>{step}</Prose>
-                    </li>
-                  ))}
-                </ol>
-              ) : (
-                <>
+                <div className="study-prompt">
+                  <h3>Study task</h3>
                   <p>
-                    <Prose>{lesson.explanation}</Prose>
+                    <Prose>{lesson.prompt}</Prose>
                   </p>
+                  <button
+                    className="open-experiment"
+                    onClick={() => {
+                      const experiment = document.getElementById("experiment");
+                      experiment?.scrollIntoView({ block: "start" });
+                      experiment?.focus({ preventScroll: true });
+                    }}
+                  >
+                    Open experiment
+                  </button>
+                </div>
+              </section>
+            )}
+            {(tab === "guided" || tab === "example") && (
+              <section className="lesson-section" aria-label="example">
+                <h2>{lesson.worked?.title || "Reason through the example"}</h2>
+                {lesson.worked ? (
+                  <ol className="worked-steps">
+                    {lesson.worked.steps.map((step, i) => (
+                      <li key={i}>
+                        <Prose>{step}</Prose>
+                      </li>
+                    ))}
+                  </ol>
+                ) : (
                   <p>
-                    <Prose>{lesson.proof}</Prose>
+                    This reference entry does not yet include a worked problem.
+                    Read the statement and labelled proof sketch, then use the
+                    cited source for further examples.
                   </p>
-                </>
-              )}
-              <p className="reading-caption">
-                Original illustration; source results linked below.
-              </p>
-            </TabsContent>
-            <TabsContent value="theorem">
-              <h2>Statement and hypotheses</h2>
-              <p>
-                <Prose>{lesson.explanation}</Prose>
-              </p>
-              <M block>{lesson.theorem}</M>
-              <p>
-                <Prose>{lesson.pitfall}</Prose>
-              </p>
-            </TabsContent>
-            <TabsContent value="proof">
-              <h2>Why it holds</h2>
-              <p>
-                <Prose>{lesson.proof}</Prose>
-              </p>
-              <M block>{lesson.theorem}</M>
-              <p className="reading-caption">
-                The visual model illustrates the argument; the linked source
-                gives the full treatment.
-              </p>
-            </TabsContent>
+                )}
+                <p className="reading-caption">
+                  {lesson.worked
+                    ? "Original worked illustration; source results linked below."
+                    : "Reference entry · worked example not yet developed."}
+                </p>
+              </section>
+            )}
+            {(tab === "guided" || tab === "theorem") && (
+              <section className="lesson-section" aria-label="theorem">
+                <h2>Statement and hypotheses</h2>
+                <M block>{lesson.theorem}</M>
+                <p>
+                  <Prose>{lesson.pitfall}</Prose>
+                </p>
+              </section>
+            )}
+            {(tab === "guided" || tab === "proof") && (
+              <section className="lesson-section" aria-label="proof">
+                <h2>{lesson.proofStatus || "Proof sketch here"}</h2>
+                <p>
+                  <Prose>{lesson.proof}</Prose>
+                </p>
+                <p className="reading-caption">
+                  The visual model illustrates the argument; the linked source
+                  gives the full treatment.
+                </p>
+              </section>
+            )}
           </div>
+          {!!lesson.practice?.length && (
+            <section
+              className="lesson-practice"
+              aria-label="Practice with feedback"
+            >
+              <h2>Check your understanding</h2>
+              {lesson.practice.map((problem, index) => (
+                <div key={index} className="practice-problem">
+                  <h3>Problem {index + 1}</h3>
+                  <p>
+                    <Prose>{problem.question}</Prose>
+                  </p>
+                  <details>
+                    <summary>Hint</summary>
+                    <p>
+                      <Prose>{problem.hint}</Prose>
+                    </p>
+                  </details>
+                  <details>
+                    <summary>Answer and reasoning</summary>
+                    <p>
+                      <Prose>{problem.answer}</Prose>
+                    </p>
+                  </details>
+                </div>
+              ))}
+            </section>
+          )}
           {lesson.reading?.length ? (
             <section className="further-reading" aria-label="Deeper notes">
-              <h2>Go deeper</h2>
+              <h2>Further reading · outlines</h2>
               {lesson.reading.map((note) => (
                 <details key={note.title}>
                   <summary>
@@ -143,27 +212,26 @@ export function LessonReader({
               (l) => l.id === target || l.aliases?.includes(target),
             );
             return next ? (
-              <button key={target} onClick={() => open(target)}>
+              <ConceptLink key={target} id={target} open={open}>
                 <small>{next.subject}</small>
                 <span>
                   <Prose>{next.navTitle || next.title}</Prose>
                   <ArrowUpRight size={16} />
                 </span>
-              </button>
+              </ConceptLink>
             ) : null;
           })}
           <div className="convention-note">
             <h3>Conventions</h3>
             <p>
               <Prose>
-                {
-                  "$D_n$ has $2n$ elements. Matrices act on column vectors; $AB$ applies $B$ first. Ring hypotheses are stated when needed."
-                }
+                {lesson.conventions ||
+                  "Matrices act on column vectors. Check the hypotheses of each statement."}
               </Prose>
             </p>
           </div>
         </aside>
       </div>
-    </Tabs>
+    </div>
   );
 }

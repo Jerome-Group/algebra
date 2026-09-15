@@ -395,7 +395,7 @@
 @media (max-width: 760px) {
   .study-workspace {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 20px;
   }
   .right-lab {
@@ -414,4 +414,87 @@
   .study-workspace .margin-note {
     display: block;
   }
+}
+
+/* Controls must remain readable in the narrow laboratory column as well as on phones. */
+.algebra-app .lab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.algebra-app .lab-toolbar [data-slot="select-trigger"] {
+  flex: 1 1 220px;
+  min-width: 0;
+  width: auto;
+  font-size: 14px;
+}
+.algebra-app .lab-toolbar .lab-tag {
+  flex: 1 1 100%;
+  white-space: normal;
+  font-size: 14px;
+}
+.algebra-app .lab-controls p,
+.algebra-app .cube-under p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.algebra-app .library-results .chapter-concepts a,
+.algebra-app .library-results summary {
+  font-size: 14px;
+}
+.algebra-app .search-results .chapter-concepts a {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.algebra-app .right-lab .exploration-actions button {
+  font-size: 14px;
+  min-height: 32px;
+}
+.algebra-app .margin-note {
+  display: block;
+}
+.algebra-app .structure-map svg {
+  aspect-ratio: auto;
+}
+@media (max-width: 760px) {
+  .algebra-app .lab-toolbar [data-slot="select-trigger"] {
+    flex-basis: 100%;
+    width: 100%;
+  }
+  .algebra-app .concept-end button {
+    white-space: normal;
+    text-align: left;
+  }
+  .algebra-app .algebra-header {
+    flex-wrap: wrap;
+    min-height: 56px;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .algebra-app .wordmark {
+    font-size: 16px;
+  }
+}
+/* Long headings must reflow when readers enlarge text. */
+.concept-heading > div {
+  min-width: 0;
+}
+.concept-heading h1 {
+  overflow-wrap: anywhere;
+}
+.algebra-app .math-inline {
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+.chapter-number {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Hidden MathML must not create a second page-wide scroll surface. */
+.algebra-app {
+  overflow-x: clip;
 }
