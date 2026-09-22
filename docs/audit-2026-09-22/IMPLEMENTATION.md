@@ -109,3 +109,17 @@ remains unavailable. Type checking retains the same three baseline Cloudflare er
 Dependency observation: GitHub alert #1 concerns esbuild 0.18.20 under drizzle-kit's
 legacy esm-loader development dependency. The application Vite path uses esbuild 0.28.1.
 The dependency update is tracked separately from the teaching change.
+
+- #36 adds local, versioned competency evidence for submitted guided checkpoints and
+  diagnostic capstones in all sixteen units. Assessment text is the evidence revision:
+  edited questions, answers or explanations invalidate old attempts. Unknown, malformed
+  and future-version records grant no credit. The device can be reset explicitly;
+  inaccessible storage leaves the current session usable. Unit completion requires all
+  lessons to have authored guided teaching, all their assessed competencies, and the
+  capstone; incomplete units remain visibly pending. The atlas's prerequisite filter
+  reads demonstrated competencies. These assessments check selection and explanation
+  of reasoning, not a graded written proof.
+
+Progress validation: 42 Node tests, production build and format passed. Type checking
+still reports only the three baseline Cloudflare declaration errors. Browser validation
+covers reload, correction, reset, unit gate, inaccessible storage and axe.

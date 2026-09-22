@@ -4,6 +4,8 @@ import { learningMetadata } from "@/lib/algebra/learning";
 import { Math as M, Prose } from "./Math";
 import { Checkpoint } from "./Checkpoint";
 import { ConceptLink } from "./ConceptLink";
+import { lessonCompletion } from "@/lib/algebra/progress";
+import { useLearningProgress } from "./LearningProgress";
 import { Reference } from "./Sources";
 
 export function GuidedReader({
@@ -19,6 +21,8 @@ export function GuidedReader({
   open: (id: string) => void;
   readReference: () => void;
 }) {
+  const { mastered } = useLearningProgress();
+  const completion = lessonCompletion(lesson, mastered);
   const metadata = learningMetadata(lesson);
   return (
     <article className="guided-reader">
@@ -47,6 +51,12 @@ export function GuidedReader({
           ))}
         </p>
       )}
+      <p className="competency-progress" role="status">
+        {completion.count} of {completion.total} competencies demonstrated
+        {completion.complete ? " · Lesson complete" : ""}. Checkpoint choices
+        assess recognition of reasoning; practise writing the proofs
+        independently.
+      </p>
       <section>
         <h2>Objects and conventions</h2>
         <p>
@@ -79,6 +89,7 @@ export function GuidedReader({
         </p>
       </section>
       <Checkpoint
+        competencyId={`${lesson.id}:boundaryCheck`}
         title="Check the hypothesis"
         assessment={content.boundaryCheck}
       />
@@ -97,8 +108,13 @@ export function GuidedReader({
           ))}
         </ol>
       </section>
-      <Checkpoint title="Apply the idea" assessment={content.application} />
       <Checkpoint
+        competencyId={`${lesson.id}:application`}
+        title="Apply the idea"
+        assessment={content.application}
+      />
+      <Checkpoint
+        competencyId={`${lesson.id}:transfer`}
         title="Transfer to a new problem"
         assessment={content.transfer}
       />
