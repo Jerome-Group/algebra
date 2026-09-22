@@ -292,31 +292,79 @@
     "conceptKind": "object"
   },
   "orthogonal-metric-orientation": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 18,
     "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "orthogonal-metric-orientation:boundaryCheck",
+        "statement": "Which claim follows from QᵀQ=I for a real 3×3 matrix?",
+        "level": "explain"
+      },
+      {
+        "id": "orthogonal-metric-orientation:application",
+        "statement": "For H=diag(−1,1,1), what is its fixed space?",
+        "level": "compute"
+      },
+      {
+        "id": "orthogonal-metric-orientation:transfer",
+        "statement": "A real 3×3 orthogonal Q has determinant −1 and fixes no nonzero vector. Which displayed example has that property?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "orthogonal-plane": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 18,
+    "prerequisites": ["orthogonal-metric-orientation"],
+    "competencies": [
+      {
+        "id": "orthogonal-plane:boundaryCheck",
+        "statement": "At θ=0, which line is fixed by both RθF and FRθ?",
+        "level": "explain"
+      },
+      {
+        "id": "orthogonal-plane:application",
+        "statement": "At θ=90°, which line does RθF fix?",
+        "level": "compute"
+      },
+      {
+        "id": "orthogonal-plane:transfer",
+        "statement": "When do FRθ and RθF agree modulo a full turn?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "orthogonal-axis-angle": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "estimatedMinutes": 18,
+    "prerequisites": ["orthogonal-plane"],
+    "competencies": [
+      {
+        "id": "orthogonal-axis-angle:boundaryCheck",
+        "statement": "At θ=180°, what ambiguity remains in an axis-angle description?",
+        "level": "explain"
+      },
+      {
+        "id": "orthogonal-axis-angle:application",
+        "statement": "About (1,1,1), which choice is a cube symmetry?",
+        "level": "compute"
+      },
+      {
+        "id": "orthogonal-axis-angle:transfer",
+        "statement": "For axis (1,2,0) and θ=60°, what may the lab report?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"

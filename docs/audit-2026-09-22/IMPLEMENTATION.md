@@ -156,3 +156,18 @@ declaration errors. The package validator still reports PASS for 143 concepts,
   Counting-unit competencies and its existing capstone use versioned local
   progress. The 57-versus-56 full cube-symmetry extension remains a separate
   pending audit row, not part of this rotation-only slice.
+
+- #42 adds three guided geometry lessons and the V09 synchronizer. A fixed
+  F=diag(1,−1) drives both ordered plane products and their half-angle fixed
+  lines, including the θ=0 gate. The metric comparator keeps dimension,
+  normal, matrix, determinant, fixed space, dot products and cube verdict
+  together; it separates a plane reflection from −I₃. Rodrigues' formula now
+  accepts any nonzero real axis and a continuous angle. The cube permutation
+  and generator word appear only after the matrix matches a cube rotation.
+  The lessons teach the proof and diagnose the 0°/180° axis ambiguities.
+
+Geometry validation: 52 Node tests, 34 browser checks, production build,
+lint and package validator pass. The browser run covers ordered products,
+dimension and fixed-space changes, arbitrary axes, four viewport widths and
+serious/critical axe checks. Lint retains ten baseline warnings; TypeScript
+retains the three baseline Cloudflare declaration errors.

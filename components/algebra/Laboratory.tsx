@@ -31,6 +31,7 @@ import { OrbitWorkbench } from "./OrbitWorkbench";
 import { UrecaDirectProducts } from "./UrecaDirectProducts";
 import { ModulePresentation } from "./ModulePresentation";
 import { FixedColoringLab } from "./FixedColoringLab";
+import { MetricOrientationLab, PlaneReflectionLab } from "./OrthogonalGeometry";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -70,7 +71,14 @@ const laboratories: Record<
   homomorphism: HomomorphismLab,
   product: ProductLab,
   permutation: PermutationLab,
-  orthogonal: OrthogonalLab,
+  orthogonal: ({ lesson }) =>
+    lesson.id === "orthogonal-plane" ? (
+      <PlaneReflectionLab />
+    ) : lesson.id === "orthogonal-metric-orientation" ? (
+      <MetricOrientationLab />
+    ) : (
+      <OrthogonalLab lesson={lesson} />
+    ),
   representation: RepresentationLab,
   characters: CharacterLab,
   ring: RingLab,

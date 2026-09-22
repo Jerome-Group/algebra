@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { matrixTex } from "@/lib/algebra/engine";
+import { matrixTex, permutation } from "@/lib/algebra/engine";
+import { cubeSymmetryMatch } from "@/lib/algebra/orthogonal-geometry";
 import { rotationConfig } from "@/lib/algebra/rotation-config";
 import { axisRotation, planeRotation } from "@/lib/algebra/rotations";
 import { Math as M, Prose } from "./Math";
@@ -13,22 +14,60 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
   const [angle, setAngle] = useState(
     config.kind === "axis-angle" ? config.angle : 0,
   );
+  const [axis, setAxis] = useState<number[]>(
+    config.kind === "axis-angle" ? config.axis : [1, 1, 1],
+  );
   if (config.kind !== "axis-angle")
     throw new Error("Expected axis-angle configuration");
-  const axis = config.axis;
-  const matrix = axisRotation(axis, angle);
+  const validAxis = axis.every(Number.isFinite) && Math.hypot(...axis) > 0;
+  const validAngle = Number.isFinite(angle) && angle >= 0 && angle <= 360;
+  const valid = validAxis && validAngle;
+  const matrix = valid ? axisRotation(axis, angle) : null;
+  const matched = matrix ? cubeSymmetryMatch(matrix) : undefined;
+  const images = matched ? permutation(matched.matrix, "vertices") : null;
+  const normalized = valid
+    ? axis.map((value) => (value / Math.hypot(...axis)).toFixed(3))
+    : [];
   return (
-    <div>
+    <div className="axis-angle-lab">
       <div className="lab-toolbar">
-        <span className="lab-tag">Body diagonal · continuous rotation</span>
+        <span className="lab-tag">
+          Arbitrary nonzero axis · continuous spatial rotation
+        </span>
       </div>
-      <CubeScene
-        matrix={matrix}
-        set="vertices"
-        selected={0}
-        onSelect={() => {}}
-      />
+      {matrix && (
+        <CubeScene matrix={matrix} set="vertices" selected={0} axis={axis} />
+      )}
       <div className="lab-controls">
+        <p>
+          Choose any nonzero real axis vector. The dashed line shows the axis;
+          the cube moves under the resulting right-handed rotation.
+        </p>
+        {axis.map((value, index) => (
+          <label key={index}>
+            Axis {"xyz"[index]} component, currently {value}
+            <input
+              type="number"
+              step="any"
+              value={value}
+              onChange={(event) =>
+                setAxis(
+                  axis.map((item, i) =>
+                    i === index ? Number(event.target.value) : item,
+                  ),
+                )
+              }
+            />
+          </label>
+        ))}
+        <button onClick={() => setAxis([1, 1, 1])}>
+          Use cube body diagonal (1,1,1)
+        </button>
+        <button onClick={() => setAxis([1, 0, 0])}>
+          Use face axis (1,0,0)
+        </button>
+        {!validAxis && <p role="alert">Enter a nonzero finite axis vector.</p>}
+        {!validAngle && <p role="alert">Enter an angle from 0° to 360°.</p>}
         <Range
           label="Rotation angle in degrees"
           min={0}
@@ -36,17 +75,45 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
           value={angle}
           onChange={setAngle}
         />
-        <M
-          block
-        >{String.raw`n=\frac{1}{\sqrt3}(1,1,1),\quad R\approx${matrixTex(matrix)}`}</M>
-        <M
-          block
-        >{String.raw`Rn=n,\quad\operatorname{tr}(R)=1+2\cos(${angle}^\circ)`}</M>
-        <p>
-          The diagonal stays fixed. The cube returns to its vertex set at 0°,
-          120°, 240° and 360°. Intermediate angles are rotations of space, but
-          not symmetries of the cube.
-        </p>
+        <label>
+          Exact angle in degrees, currently {angle}
+          <input
+            type="number"
+            min={0}
+            max={360}
+            step="any"
+            value={angle}
+            onChange={(event) => setAngle(Number(event.target.value))}
+          />
+        </label>
+        {matrix && (
+          <div className="live-mathematics" aria-live="polite">
+            <p>
+              Normalized axis: ({normalized.join(", ")}). Rodrigues rotation at{" "}
+              {angle}°.
+            </p>
+            <M block>{String.raw`R\approx${matrixTex(matrix)}`}</M>
+            <M
+              block
+            >{String.raw`Rn=n,\quad\operatorname{tr}(R)=1+2\cos(${angle}^\circ)`}</M>
+            <p>
+              {matched
+                ? `Cube symmetry: yes. Vertex permutation (images of 1–8): ${images!.map((index) => index + 1).join(", ")}. Generator word: ${matched.word.join(" ") || "I"}.`
+                : "Cube symmetry: no. This is a rotation of space, but it has no permutation or generator word in the cube symmetry group."}
+            </p>
+            <p>
+              {Math.abs(angle) < 1e-9 || Math.abs(angle - 360) < 1e-9
+                ? "At the identity rotation every axis is possible; the axis is not uniquely determined."
+                : Math.abs(angle - 180) < 1e-9
+                  ? "At 180° the axis line is determined, but n and −n describe the same rotation."
+                  : "Away from 0° and 180°, reversing the axis reverses the signed angle."}
+            </p>
+            <p>
+              Along (1,1,1), exactly 0°, 120°, 240° and 360° preserve the cube.
+              Other angles remain valid spatial rotations.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
