@@ -4,6 +4,10 @@ import { ArrowLeft, ArrowRight, ChevronDown, Search, X } from "lucide-react";
 import data from "@/lib/algebra/lessons.json";
 import { type Lesson } from "@/lib/algebra/engine";
 import { Prose } from "./Math";
+import {
+  LearningProgressProvider,
+  useLearningProgress,
+} from "./LearningProgress";
 import Exploration from "./Exploration";
 import { ConceptLibrary } from "./ConceptLibrary";
 import { ConceptLink } from "./ConceptLink";
@@ -33,11 +37,14 @@ const subjects = [
 export default function Algebra() {
   return (
     <LaboratoryProvider>
-      <LearningExperience />
+      <LearningProgressProvider lessons={lessons}>
+        <LearningExperience />
+      </LearningProgressProvider>
     </LaboratoryProvider>
   );
 }
 function LearningExperience() {
+  const { mastered } = useLearningProgress();
   const [id, setId] = useState("foundations-functions"),
     [subject, setSubject] = useState(subjects[0]),
     [query, setQuery] = useState(""),
@@ -289,6 +296,7 @@ function LearningExperience() {
         >
           {view === "home" ? (
             <LearningHome
+              lessons={lessons}
               resume={lessons.find((entry) => entry.id === resumeId)}
               open={open}
               navigate={navigate}
@@ -298,11 +306,7 @@ function LearningExperience() {
           ) : view === "explore" ? (
             <LaboratoryGallery lessons={lessons} open={openLab} />
           ) : view === "reference" ? (
-            <ReferenceAtlas
-              lessons={lessons}
-              mastered={new Set()}
-              open={open}
-            />
+            <ReferenceAtlas lessons={lessons} mastered={mastered} open={open} />
           ) : view === "sources" ? (
             <SourceCoverage lessons={lessons} open={open} />
           ) : (

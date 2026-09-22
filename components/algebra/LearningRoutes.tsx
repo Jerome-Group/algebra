@@ -1,3 +1,6 @@
+import { capstoneAssessment, unitCompletion } from "@/lib/algebra/progress";
+import { useLearningProgress } from "./LearningProgress";
+import { Checkpoint } from "./Checkpoint";
 import type { Lesson } from "@/lib/algebra/engine";
 import { learningRoutes } from "@/lib/algebra/routes";
 import { ConceptLink } from "./ConceptLink";
@@ -13,6 +16,7 @@ export function LearningRoutes({
   setRoute: (id: string) => void;
   open: (id: string, unit?: string) => void;
 }) {
+  const { mastered } = useLearningProgress();
   return (
     <section className="learning-routes course-catalog">
       <p className="section-kicker">GUIDED COURSES</p>
@@ -24,83 +28,110 @@ export function LearningRoutes({
         Completion records demonstrated competencies, not page visits.
       </p>
       <div className="route-options">
-        {learningRoutes.map((item) => (
-          <section key={item.id}>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-            <p>
-              <strong>Entry skills:</strong> {item.entryCompetencies.join(" ")}
-            </p>
-            <p>
-              <strong>Outcomes:</strong> {item.outcomes.join(" ")}
-            </p>
-            <p>
-              {
-                item.lessons.filter((id) => {
-                  const lesson = lessons.find((entry) => entry.id === id);
-                  return (
-                    lesson &&
-                    learningMetadata(lesson).teachingStatus === "guided"
-                  );
-                }).length
-              }{" "}
-              of {item.lessons.length} lessons currently meet the guided
-              teaching contract.
-            </p>
-            <button
-              aria-pressed={route === item.id}
-              onClick={() => {
-                setRoute(item.id);
-                open(item.lessons[0], item.id);
-              }}
-            >
-              Start this unit
-            </button>
-            <ol>
-              {item.lessons.map((id) => (
-                <li key={id}>
-                  <ConceptLink
-                    id={id}
-                    open={(target) => {
-                      setRoute(item.id);
-                      open(target, item.id);
-                    }}
-                  >
-                    {lessons.find((lesson) => lesson.id === id)?.navTitle}
-                  </ConceptLink>
-                </li>
-              ))}
-            </ol>
-            <details>
-              <summary>Unit capstone</summary>
-              <p>{item.capstone.question}</p>
+        {learningRoutes.map((item) => {
+          const completion = unitCompletion(item, lessons, mastered);
+          const assessment = capstoneAssessment(item.id);
+          return (
+            <section key={item.id}>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+              <p>
+                <strong>Entry skills:</strong>{" "}
+                {item.entryCompetencies.join(" ")}
+              </p>
+              <p>
+                <strong>Outcomes:</strong> {item.outcomes.join(" ")}
+              </p>
+              <p>
+                {
+                  item.lessons.filter((id) => {
+                    const lesson = lessons.find((entry) => entry.id === id);
+                    return (
+                      lesson &&
+                      learningMetadata(lesson).teachingStatus === "guided"
+                    );
+                  }).length
+                }{" "}
+                of {item.lessons.length} lessons currently meet the guided
+                teaching contract.
+              </p>
+              <p className="competency-progress" role="status">
+                {completion.count} of {completion.total} currently assessed
+                competencies demonstrated · Capstone{" "}
+                {completion.capstone ? "demonstrated" : "not yet demonstrated"}
+                {completion.complete ? " · Unit complete" : ""}
+                {!completion.teachingReady
+                  ? " · More guided teaching remains before this unit can be completed"
+                  : ""}
+                .
+              </p>
+              <button
+                aria-pressed={route === item.id}
+                onClick={() => {
+                  setRoute(item.id);
+                  open(item.lessons[0], item.id);
+                }}
+              >
+                Start this unit
+              </button>
+              <ol>
+                {item.lessons.map((id) => (
+                  <li key={id}>
+                    <ConceptLink
+                      id={id}
+                      open={(target) => {
+                        setRoute(item.id);
+                        open(target, item.id);
+                      }}
+                    >
+                      {lessons.find((lesson) => lesson.id === id)?.navTitle}
+                    </ConceptLink>
+                  </li>
+                ))}
+              </ol>
               <details>
-                <summary>Compare your reasoning</summary>
-                <p>{item.capstone.answer}</p>
+                <summary>Unit capstone</summary>
+                {assessment && (
+                  <Checkpoint
+                    competencyId={`unit:${item.id}`}
+                    title="Unit transfer checkpoint"
+                    assessment={assessment}
+                  />
+                )}
+                <p>
+                  Write your full solution before choosing its supporting
+                  reasoning. A selected response is evidence of this checkpoint,
+                  not independent certification of a written proof.
+                </p>
+                <details>
+                  <summary>Compare your reasoning</summary>
+                  <p>{item.capstone.answer}</p>
+                </details>
               </details>
-            </details>
-            <p>
-              <strong>Completion:</strong> {item.completionCriteria}
-            </p>
-            <p>
-              <strong>Remediation:</strong>{" "}
-              {item.remediation.map((id) => (
-                <ConceptLink key={id} id={id} open={open}>
-                  {lessons.find((lesson) => lesson.id === id)?.navTitle}
-                  {" · "}
-                </ConceptLink>
-              ))}
-            </p>
-            <p>
-              <strong>Builds on:</strong>{" "}
-              {item.prerequisiteUnits
-                .map(
-                  (id) => learningRoutes.find((unit) => unit.id === id)?.title,
-                )
-                .join(" → ") || "Start here"}
-            </p>
-          </section>
-        ))}
+              <p>
+                <strong>Completion:</strong> {item.completionCriteria}
+              </p>
+              <p>
+                <strong>Remediation:</strong>{" "}
+                {item.remediation.map((id) => (
+                  <ConceptLink key={id} id={id} open={open}>
+                    {lessons.find((lesson) => lesson.id === id)?.navTitle}
+                    {" · "}
+                  </ConceptLink>
+                ))}
+              </p>
+              <p>
+                <strong>Builds on:</strong>{" "}
+                {item.prerequisiteUnits
+                  .map(
+                    (id) =>
+                      learningRoutes.find((unit) => unit.id === id)?.title,
+                  )
+                  .join(" → ") || "Start here"}
+              </p>
+            </section>
+          );
+        })}
       </div>
     </section>
   );

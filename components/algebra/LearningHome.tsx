@@ -1,15 +1,23 @@
+import { useState } from "react";
+import { useLearningProgress } from "./LearningProgress";
+import { lessonCompletion } from "@/lib/algebra/progress";
 import type { Lesson } from "@/lib/algebra/engine";
 import type { ProductMode } from "@/lib/algebra/navigation";
 
 export function LearningHome({
+  lessons,
   resume,
   open,
   navigate,
 }: {
+  lessons: Lesson[];
   resume?: Lesson;
   open: (id: string) => void;
   navigate: (mode: ProductMode) => void;
 }) {
+  const { mastered, reset, storageAvailable } = useLearningProgress();
+  const [resetting, setResetting] = useState(false);
+  const results = lessons.map((lesson) => lessonCompletion(lesson, mastered));
   return (
     <section className="learning-home">
       <p className="section-kicker">ABSTRACT ALGEBRA · A MATHEMATICAL STUDIO</p>
@@ -56,6 +64,44 @@ export function LearningHome({
         <button onClick={() => open("mh2220-quotient")}>
           Investigate quotient groups →
         </button>
+      </section>
+      <section className="device-progress">
+        <h2>Your demonstrated competencies</h2>
+        <p role="status">
+          {results.reduce((sum, item) => sum + item.count, 0)} of{" "}
+          {results.reduce((sum, item) => sum + item.total, 0)} currently
+          assessed competencies ·{" "}
+          {results.filter((item) => item.complete).length} guided lessons
+          complete.
+        </p>
+        <p>
+          {storageAvailable
+            ? "Saved only in this browser. Page visits do not count; revised assessments require new evidence."
+            : "Browser storage is unavailable. Progress lasts only for this session."}
+        </p>
+        {resetting ? (
+          <>
+            <p>
+              Clear all submitted competency and capstone evidence on this
+              device?
+            </p>
+            <button
+              onClick={() => {
+                reset();
+                setResetting(false);
+              }}
+            >
+              Clear my progress
+            </button>
+            <button onClick={() => setResetting(false)}>
+              Keep my progress
+            </button>
+          </>
+        ) : (
+          <button onClick={() => setResetting(true)}>
+            Reset learning progress
+          </button>
+        )}
       </section>
       <section className="resume-learning">
         <h2>Continue learning</h2>
