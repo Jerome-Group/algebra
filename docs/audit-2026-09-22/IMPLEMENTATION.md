@@ -171,3 +171,17 @@ lint and package validator pass. The browser run covers ordered products,
 dimension and fixed-space changes, arbitrary axes, four viewport widths and
 serious/critical axe checks. Lint retains ten baseline warnings; TypeScript
 retains the three baseline Cloudflare declaration errors.
+
+- #44 completes V03 across cyclic and S₃ examples. The cyclic graph now shows
+  shortest word lengths, all divisor-order subgroups and the difference between
+  a subgroup union and its join. The S₃ word explorer checks relations, then
+  separately proves presentation completeness by reducing every word to six
+  normal forms whose permutations are distinct. Cayley's theorem is a guided
+  lesson with a live left-regular S₃→S₆ table: composition, injectivity and
+  the nonminimal-degree boundary are explicit. The three concept audit rows
+  and V03 cite the implementation and checks.
+
+V03 validation: 55 Node tests, 37 browser checks, production build, format,
+lint and package validator pass. New browser coverage exercises both relation
+views and the regular embedding at 320/390/768/1440px, including keyboard
+controls and axe. TypeScript still reports only the baseline Cloudflare errors.

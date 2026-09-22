@@ -26,6 +26,8 @@ import type { LaboratoryKind } from "@/lib/algebra/laboratory-types";
 import { FunctionFiberLab } from "./FunctionFibers";
 import { OperationChecker } from "./OperationChecker";
 import { CayleyReachability } from "./CayleyReachability";
+import { GeneratorRelationLab } from "./CayleyRelations";
+import { CayleyEmbeddingLab } from "./CayleyEmbedding";
 import { CosetConstructor } from "./CosetConstructor";
 import { OrbitWorkbench } from "./OrbitWorkbench";
 import { UrecaDirectProducts } from "./UrecaDirectProducts";
@@ -40,7 +42,13 @@ const laboratories: Record<
   "ureca-direct-products": UrecaDirectProducts,
   "function-fibers": FunctionFiberLab,
   "operation-checker": OperationChecker,
-  "cayley-reachability": CayleyReachability,
+  "cayley-reachability": ({ lesson }) =>
+    lesson.id === "mh2220-generators" ? (
+      <GeneratorRelationLab lesson={lesson} />
+    ) : (
+      <CayleyReachability lesson={lesson} />
+    ),
+  "cayley-embedding": CayleyEmbeddingLab,
   "coset-constructor": CosetConstructor,
   "orbit-workbench": OrbitWorkbench,
   "module-presentation": ModulePresentation,

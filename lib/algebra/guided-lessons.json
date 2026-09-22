@@ -2147,5 +2147,74 @@
       "explanation": "The nonzero axis gives a valid spatial rotation. A cube permutation and word require preservation of the selected vertex set."
     },
     "connection": "The finite cube group sits inside SO(3). Its action on vertices and conjugacy classes becomes meaningful only after the cube-preservation test succeeds."
+  },
+  "mh2220-cayley-embedding": {
+    "hook": "Can every element of a finite group be represented by a distinct permutation without guessing a geometric action?",
+    "objects": "For a group G, λg:G→G sends x to gx. It is a left action. Permutations compose right factor first: λg∘λh applies λh before λg. For finite |G|=n, label G to regard each λg as an element of Sₙ.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "In S₃, what is λg(e) for any g?",
+      "choices": ["e", "g", "g⁻¹"],
+      "answer": 1,
+      "explanation": "Left multiplication sends the identity to g. This single image will detect whether two regular permutations are equal."
+    },
+    "examples": [
+      {
+        "title": "C₃ becomes a 3-cycle",
+        "steps": [
+          "Label C₃ additively as 0,1,2. Translation by 1 sends 0→1, 1→2, 2→0, the cycle (0 1 2).",
+          "Translation by 2 gives its square, and translation by 0 is the identity permutation.",
+          "The three distinct images of 0 certify three distinct permutations."
+        ]
+      },
+      {
+        "title": "S₃ embeds in S₆",
+        "steps": [
+          "Label the six permutations of three letters by e,(12),(23),(13),(123),(132). For g=(123), the first image in its regular row is λg(e)=g.",
+          "For any g,h,x, the two-step image λg(λh(x))=g(hx) equals (gh)x=λgh(x). The live table checks all six x for the selected pair.",
+          "Each row of the regular table is a permutation: multiplying on the left by g⁻¹ reverses it. Six distinct first images give six distinct rows."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Cayley degree need not be minimal",
+      "explanation": "The regular action of S₃ uses six points, giving S₃↪S₆. Its natural action on three letters already gives S₃≅S₃, so Cayley’s construction does not prove minimal permutation degree."
+    },
+    "proofSteps": [
+      "For any g∈G, λg has inverse λg⁻¹ because g⁻¹(gx)=x and g(g⁻¹x)=x. Hence λg belongs to Sym(G).",
+      "Associativity gives (λg∘λh)(x)=g(hx)=(gh)x=λgh(x) for every x; λ is a homomorphism.",
+      "If λg=λh, evaluate both at e: g=λg(e)=λh(e)=h. Thus λ is injective.",
+      "For finite |G|=n, a labeling of the elements identifies Sym(G) with Sₙ. Infinite groups still embed in Sym(G), but the finite-degree statement no longer applies."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What does Cayley’s construction guarantee for a finite group of order n?",
+      "choices": [
+        "An embedding into Sₙ, not necessarily minimal",
+        "An embedding into Sₙ₋₁",
+        "A faithful action on every n-point set"
+      ],
+      "answer": 0,
+      "explanation": "The regular action always uses the group’s n elements. A smaller faithful action may exist, but needs separate analysis."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For C₃ under addition, what permutation is λ₁ on 0,1,2?",
+      "choices": ["0→1→2→0", "0→0, 1→2, 2→1", "Every point is fixed"],
+      "answer": 0,
+      "explanation": "Translation by one cyclically permutes all three residues."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is the left-regular map for S₃ injective even before computing the full table?",
+      "choices": [
+        "λg(e)=g distinguishes every g",
+        "Every action is faithful",
+        "S₃ has six elements"
+      ],
+      "answer": 0,
+      "explanation": "An equal pair of permutations would agree at e, forcing the corresponding group elements equal. Group order alone would not prove faithfulness."
+    },
+    "connection": "Regular left multiplication is one action among many. The action on three letters can have smaller degree; orbit and stabilizer tools compare such actions."
   }
 }

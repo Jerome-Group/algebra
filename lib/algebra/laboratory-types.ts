@@ -4,6 +4,7 @@ export const laboratoryKinds = [
   "function-fibers",
   "operation-checker",
   "cayley-reachability",
+  "cayley-embedding",
   "coset-constructor",
   "orbit-workbench",
   "module-presentation",
