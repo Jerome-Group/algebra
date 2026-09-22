@@ -1,38 +1,6 @@
 import type { Lesson } from "@/lib/algebra/engine";
 import { Prose } from "./Math";
-
-const experiences = [
-  {
-    id: "orthogonal-axis-angle",
-    name: "Axis–angle rotation experiment",
-    question: "Which rotations preserve a cube?",
-  },
-  {
-    id: "representations-real-complex",
-    name: "Real and complex eigenline illustration",
-    question: "Can a real irreducible split over the complex numbers?",
-  },
-  {
-    id: "actions-regular-conjugation",
-    name: "Regular and conjugation action checker",
-    question: "How does changing the action change the orbit?",
-  },
-  {
-    id: "linear-quotient",
-    name: "Linear quotient constructor",
-    question: "Which vectors become the same after taking a quotient?",
-  },
-  {
-    id: "m3220-modules",
-    name: "Module scalar-action experiment",
-    question: "Can a nonunit act invertibly?",
-  },
-  {
-    id: "mh2220-semidirect",
-    name: "Semidirect product constructor",
-    question: "When does the action change a product group?",
-  },
-];
+import { labContract } from "@/lib/algebra/lab-contracts";
 
 export function LaboratoryGallery({
   lessons,
@@ -41,6 +9,10 @@ export function LaboratoryGallery({
   lessons: Lesson[];
   open: (id: string) => void;
 }) {
+  const experiences = lessons.flatMap((lesson) => {
+    const contract = labContract(lesson.id);
+    return contract ? [{ id: lesson.id, ...contract }] : [];
+  });
   return (
     <section className="laboratory-gallery">
       <p className="section-kicker">MATHEMATICAL LABORATORIES</p>

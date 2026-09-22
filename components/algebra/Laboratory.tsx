@@ -23,10 +23,22 @@ import { SquareModesLab } from "./SquareModes";
 import { AxisAngleLab, PlaneRepresentationLab } from "./RotationLessons";
 import type { ComponentType } from "react";
 import type { LaboratoryKind } from "@/lib/algebra/laboratory-types";
+import { FunctionFiberLab } from "./FunctionFibers";
+import { OperationChecker } from "./OperationChecker";
+import { CayleyReachability } from "./CayleyReachability";
+import { CosetConstructor } from "./CosetConstructor";
+import { OrbitWorkbench } from "./OrbitWorkbench";
+import { ModulePresentation } from "./ModulePresentation";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
 > = {
+  "function-fibers": FunctionFiberLab,
+  "operation-checker": OperationChecker,
+  "cayley-reachability": CayleyReachability,
+  "coset-constructor": CosetConstructor,
+  "orbit-workbench": OrbitWorkbench,
+  "module-presentation": ModulePresentation,
   "axis-angle": AxisAngleLab,
   "plane-representation": PlaneRepresentationLab,
   "linear-quotient": LinearQuotientLab,

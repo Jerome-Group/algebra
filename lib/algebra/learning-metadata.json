@@ -21,7 +21,7 @@
         "level": "prove"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -47,7 +47,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -99,7 +99,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
@@ -171,7 +171,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -217,7 +217,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
@@ -317,7 +317,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -377,7 +377,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-cosets"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -387,7 +387,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-actions", "mh2220-cosets"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -467,7 +467,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -477,7 +477,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -487,7 +487,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -863,7 +863,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Algebra", "MH3220"],
     "conceptKind": "theorem"
   },
@@ -889,7 +889,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -915,7 +915,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -941,7 +941,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "illustration",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -961,7 +961,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -1431,7 +1431,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-rings"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
@@ -1451,7 +1451,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-submodules"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
@@ -1574,7 +1574,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["ureca-invariant-subspaces"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -1670,7 +1670,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "reference-diagram",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -1690,7 +1690,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-submodules"],
     "competencies": [],
-    "visualisationType": "reference-diagram",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
@@ -1726,7 +1726,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "reference-diagram",
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220", "MH3220"],
     "conceptKind": "object"
   },
@@ -1752,7 +1752,7 @@
         "level": "transfer"
       }
     ],
-    "visualisationType": "reference-diagram",
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220", "MH3220"],
     "conceptKind": "technique"
   }

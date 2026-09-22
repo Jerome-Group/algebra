@@ -16,7 +16,7 @@
     "connections": ["mh2220-homomorphism"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "A relationship map illustrates the stated construction. Work the example and practice independently; arrows are not a proof.",
+    "labScope": "The arrow diagram displays a finite function. Existence of a general descended map follows from representative independence, proved in the lesson.",
     "navTitle": "Functions & equivalence",
     "title": "Maps, fibers and well-defined rules",
     "intuition": "Before an operation can be a group law, it must be a function: each input has exactly one output.",
@@ -25,29 +25,9 @@
     "theorem": "f\\text{ bijective}\\iff f\\text{ has a two-sided inverse function}",
     "proof": "If $f$ is bijective, each $y$ has exactly one preimage $x$. Define $h(y)=x$. Then $hf=\\operatorname{id}_X$ and $fh=\\operatorname{id}_Y$. Conversely, if these identities hold, $f(x)=f(x^{\\prime})$ implies $hf(x)=hf(x^{\\prime})$ and $x=x^{\\prime}$; every $y=f(h(y))$ is attained. Thus $f$ is both injective and surjective.",
     "pitfall": "The symbols $f^{-1}(B)$ and $f^{-1}:Y\\to X$ express different things: an inverse image versus an inverse function. A quotient is a set of classes, not deletion of their elements.",
-    "prompt": "Follow $X\\xrightarrow{f}Y\\xrightarrow{g}Z$. On paper apply $f$ first and $g$ second, then check whether a proposed rule on equivalence classes changes with its representative.",
-    "machine": "diagram",
-    "parameters": {
-      "nodes": [
-        {
-          "id": "X",
-          "label": "X"
-        },
-        {
-          "id": "Y",
-          "label": "Y"
-        },
-        {
-          "id": "Z",
-          "label": "Z"
-        }
-      ],
-      "edges": [
-        ["X", "Y", "function $f$"],
-        ["Y", "Z", "function $g$"],
-        ["X", "Z", "composition $g\\circ f$"]
-      ]
-    },
+    "prompt": "Which fiber loses an input and which gains it if f(0) changes from 0 to 1?",
+    "machine": "function-fibers",
+    "parameters": {},
     "objective": "Distinguish functions, inverse images and well-defined quotient rules.",
     "prerequisites": [],
     "worked": {
@@ -85,7 +65,7 @@
     "connections": ["foundations-quotient-rules"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "The dependency diagram records the maps. It is not an interactive fiber constructor and does not prove representative independence; use the authored proof steps.",
+    "labScope": "Fibers partition the domain because a function assigns one output. Arbitrary congruence classes descend only when each lies inside a fiber.",
     "navTitle": "Fibers & equivalence classes",
     "title": "Fibers & equivalence classes",
     "intuition": "Why do equal outputs sort every input into exactly one class?",
@@ -94,28 +74,9 @@
     "theorem": "X/{\\sim}\\longrightarrow\\operatorname{im}f,\\quad[x]\\longmapsto f(x)\\text{ is a bijection}",
     "proof": "Reflexivity follows from f(x)=f(x). Symmetry follows by reversing equality; transitivity follows by chaining equalities. If two fibers overlap at z, both target values equal f(z), so the fibers coincide. Otherwise they are disjoint. Every x belongs to its own fiber. Conversely, membership in the same block of a partition is reflexive, symmetric and transitive. The map [x]↦f(x) is well-defined by the defining relation. Equal outputs mean equal classes, so it is injective. Every element of im f has a preimage, so it is surjective onto im f.",
     "pitfall": "On Z, define x~y when |x−y|≤1. It is reflexive and symmetric, but 0~1 and 1~2 while 0 is not related to 2. Overlapping neighborhoods do not form equivalence classes.",
-    "prompt": "Which relation on Z is an equivalence relation?",
-    "machine": "diagram",
-    "parameters": {
-      "nodes": [
-        {
-          "id": "X",
-          "label": "X"
-        },
-        {
-          "id": "Q",
-          "label": "X/{\\sim}"
-        },
-        {
-          "id": "I",
-          "label": "\\operatorname{im}f"
-        }
-      ],
-      "edges": [
-        ["X", "Q", "quotient map"],
-        ["Q", "I", "induced bijection"]
-      ]
-    },
+    "prompt": "Change f(4) to 0: predict the sizes of the fibers of 0 and 1.",
+    "machine": "function-fibers",
+    "parameters": {},
     "objective": "Compute fibers, verify equivalence axioms and recover a partition from a function.",
     "prerequisites": ["foundations-functions"],
     "worked": {
@@ -153,7 +114,7 @@
     "connections": ["mh2220-congruence"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "The dependency diagram records the maps. It is not an interactive fiber constructor and does not prove representative independence; use the authored proof steps.",
+    "labScope": "A finite witness disproves the proposed rule. Absence of a witness certifies only this displayed finite domain; the lesson proves the general criterion.",
     "navTitle": "Well-defined quotient rules",
     "title": "Well-defined quotient rules",
     "intuition": "If a class has many names, how can a formula using one name define a function?",
@@ -162,27 +123,10 @@
     "theorem": "F([x])=[f(x)]\\text{ is well-defined}\\iff (x\\sim x^{\\prime}\\Rightarrow f(x)\\approx f(x^{\\prime}))",
     "proof": "Necessity: if [x]=[x′], a function must give one output, hence [f(x)]=[f(x′)]. Sufficiency: assume x~x′ implies f(x)≈f(x′). Pick any representative of an input class. Another representative gives the same output class by assumption, so the output is unambiguous. This proves well-definedness; injectivity, surjectivity and preservation of operations are separate questions.",
     "pitfall": "The proposed map Z/2Z→Z, [n]₂↦n, gives 0 and 2 for the same input class. The integer output has no quotient relation that could identify them.",
-    "prompt": "Does [n]₃↦[n²]₆ define a function?",
-    "machine": "diagram",
+    "prompt": "With f(x)=x mod 3 and parity input classes, compare representatives 0 and 2.",
+    "machine": "function-fibers",
     "parameters": {
-      "nodes": [
-        {
-          "id": "X",
-          "label": "X"
-        },
-        {
-          "id": "Q",
-          "label": "X/{\\sim}"
-        },
-        {
-          "id": "I",
-          "label": "\\operatorname{im}f"
-        }
-      ],
-      "edges": [
-        ["X", "Q", "quotient map"],
-        ["Q", "I", "induced bijection"]
-      ]
+      "classModulus": 2
     },
     "objective": "Prove representative independence or disprove a quotient rule with a concrete witness.",
     "prerequisites": ["foundations-fibers"],
@@ -209,12 +153,10 @@
     "explanation": "A group consists of a set $G$ and an operation $G\\times G\\to G$. Closure says that applying the operation stays in $G$. Associativity says that parentheses do not change a three-term product; it does not say that factors can be reordered. There is an identity $e$, and each $a$ has a two-sided inverse. Integer addition and composition of triangle symmetries are first examples. Matrix groups are a later application.",
     "id": "mh2220-axioms",
     "intuition": "Composition is the basic operation: make one move, then another. The group axioms guarantee that moves combine consistently and can be undone.",
-    "machine": "cayley",
-    "parameters": {
-      "group": "D4"
-    },
+    "machine": "operation-checker",
+    "parameters": {},
     "pitfall": "Closure and associativity are different conditions. Positive integers under addition lack an identity; nonnegative integers have an identity but lack additive inverses for positive elements. Nonzero real numbers under addition are not closed: 1 + (−1) = 0.",
-    "prompt": "Compose a rotation with a reflection in both orders. Which axiom allows regrouping three moves?",
+    "prompt": "Before choosing subtraction modulo 3, predict which axiom will fail.",
     "proof": "If $e$ and $f$ are identities, then $e=ef=f$. If $b$ and $c$ are inverses of $a$, then $b=b(ac)=(ba)c=c$ by associativity and the identity laws.",
     "section": "1.1 · Definitions 1.1, 1.3",
     "source": {
@@ -257,7 +199,7 @@
       }
     ],
     "prerequisites": ["foundations-functions"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Exhaustive checks prove the axioms for the displayed finite operation. A family-wide result needs the algebraic proof in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -266,12 +208,12 @@
     "explanation": "The identity and each inverse are unique. Cancellation is allowed on a fixed side. Inverting a product reverses its order. Conjugation changes the frame in which a move is described and preserves its order. Group order counts elements; element order counts repetitions.",
     "id": "mh2220-inverse-order",
     "intuition": "An inverse reverses a move; the order counts how many repeated applications first return to the identity.",
-    "machine": "cayley",
+    "machine": "cayley-reachability",
     "parameters": {
-      "group": "D4"
+      "generator": 8
     },
     "pitfall": "Two infinite groups need not have the same cardinality. If $a$ and $b$ commute then $(ab)^m=a^mb^m$. Without that hypothesis the formula is not valid in general.",
-    "prompt": "Select an element and follow its successive powers until the identity first appears.",
+    "prompt": "In C12 choose 8: will its order be 3, 6 or 12?",
     "proof": "If $u$ and $v$ are inverses of $g$, then $u=u(gv)=(ug)v=v$. Multiply an equality on the appropriate side to cancel. Since $(hgh^{-1})^m=hg^mh^{-1}$, exactly the same positive exponents yield the identity.",
     "section": "1.2 · Propositions 1.9, 1.13; Definition 1.10",
     "source": {
@@ -314,7 +256,7 @@
       }
     ],
     "prerequisites": ["mh2220-axioms"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Cyclic arithmetic is a concrete illustration. The inverse of an arbitrary noncommutative product still reverses factor order, as proved in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -406,12 +348,10 @@
     "explanation": "The empty word is the identity. Adding generators can only enlarge the generated subgroup. A subgroup lattice records inclusion, not geometric position: meet is intersection and join is the subgroup generated by both sets. Integer generation is governed by the greatest common divisor.",
     "id": "mh2220-generators",
     "intuition": "Generators are a small vocabulary of moves. Their finite words describe every move that those generators can reach.",
-    "machine": "subgroups",
-    "parameters": {
-      "group": "D4"
-    },
+    "machine": "cayley-reachability",
+    "parameters": {},
     "pitfall": "Joining two subgroups means generating from their union; the union itself can fail closure.",
-    "prompt": "Compare the subgroups generated by a rotation, a reflection, and both together.",
+    "prompt": "For g=4 in C12, predict the entire reachable set before applying steps.",
     "proof": "Every integer combination of a and $b$ is divisible by their gcd. Bézout's identity expresses the gcd itself as an integer combination, so the generated subgroup contains all its multiples and nothing else.",
     "section": "1.3 · Definition 1.20",
     "source": {
@@ -437,7 +377,7 @@
     "navTitle": "Generators",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The finite search constructs this subgroup. It does not certify a presentation in another group; the lesson supplies the normal-form argument for S3.",
     "objective": "Explain why the union of two subgroups may fail while the subgroup generated by that union exists.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -687,13 +627,12 @@
     "explanation": "All cyclic groups are abelian. A finite group is cyclic exactly when it contains an element whose order is the whole group order. Every subgroup of a cyclic group is cyclic; for each divisor $d$ of $n$ there is one subgroup of $C_n$ of order $d$.",
     "id": "mh2220-cyclic",
     "intuition": "Repeating one move produces either a closed loop or an unending chain. These are the only cyclic possibilities.",
-    "machine": "cayley",
+    "machine": "cayley-reachability",
     "parameters": {
-      "group": "C12",
-      "n": 12
+      "generator": 5
     },
     "pitfall": "An abelian group need not be cyclic. A cycle in an arbitrary drawing need not mean the group itself is cyclic.",
-    "prompt": "On $C_{12}$, choose step sizes 1, 2, 3, 4 and 6. Explain every orbit length using the gcd.",
+    "prompt": "Compare 4 and 5 in C12: which gives all twelve points?",
     "proof": "The equality $(g^k)^m=e$ means $n$ divides km. Dividing $n$ and $k$ by their gcd shows that the least positive $m$ is $n/\\gcd(n,k)$. The map $k\\mapsto g^k$ has kernel $n\\mathbb Z$ in the finite case and zero kernel in the infinite case.",
     "section": "2.4 · Theorems 2.39, 2.41; 3.2 · Theorem 3.11",
     "source": {
@@ -719,7 +658,7 @@
     "navTitle": "Cyclic groups",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The table checks selected n. Divisibility proves the formula for every finite cyclic group, while the integer-exponent proof covers the infinite case.",
     "objective": "Derive ord(gᵏ)=n/gcd(n,k) and explain uniqueness of a subgroup of each divisor order.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -970,13 +909,10 @@
     "explanation": "Left cosets partition the group, and each has the same size as $H$. Right cosets form another partition. In a nonabelian group the two partitions need not agree. A coset usually is not itself a subgroup because it may not contain the identity.",
     "id": "mh2220-cosets",
     "intuition": "A coset is a translated copy of a subgroup. Distinct copies fit together without overlap.",
-    "machine": "cosets",
-    "parameters": {
-      "group": "D3",
-      "subgroup": "reflection"
-    },
+    "machine": "coset-constructor",
+    "parameters": {},
     "pitfall": "Elements of $G/H$ are whole cosets. At this stage $G/H$ is a set; it is a quotient group only when $H$ is normal.",
-    "prompt": "Compare left and right cosets of a reflection subgroup in $D_{3}$.",
+    "prompt": "For H={e,(12)}, predict whether (123)H equals H(123).",
     "proof": "If $gh=kh^{\\prime}$ with $h,h^{\\prime}\\in H$, then $k^{-1}g=h^{\\prime}h^{-1}\\in H$, so $gH=kH$. Left multiplication by $g$ is a bijection $H\\to gH$, with inverse left multiplication by $g^{-1}$.",
     "section": "3.5 · Definition 3.28; Lemma 3.31",
     "source": {
@@ -1019,7 +955,7 @@
       }
     ],
     "prerequisites": ["mh2220-homomorphism", "foundations-fibers"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The tiling is a complete finite example. Translation h↦ah proves equal coset cardinality for arbitrary groups.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -1028,12 +964,10 @@
     "explanation": "The index counts cosets. In a finite group, subgroup order and every element order divide group order. A group of prime order is necessarily cyclic. Lagrange restricts possible subgroup sizes but does not promise a subgroup for each divisor.",
     "id": "mh2220-lagrange",
     "intuition": "Counting a finite group by equal-size coset tiles turns subgroup structure into divisibility.",
-    "machine": "cosets",
-    "parameters": {
-      "group": "D4"
-    },
+    "machine": "coset-constructor",
+    "parameters": {},
     "pitfall": "The converse fails: $A_{4}$ has order 12 but no subgroup of order 6. A subset whose size divides $|G|$ need not be closed.",
-    "prompt": "Select a subgroup and verify that the number of cosets times their size equals the group order.",
+    "prompt": "Predict the number of cosets before choosing the order-two subgroup.",
     "proof": "Cosets partition $G$ and each has $|H|$ elements, giving the formula. Apply it to the cyclic subgroup generated by $g$. If $|G|$ is prime, any nonidentity element has order $p$ and generates the whole group.",
     "section": "3.5 · Theorem 3.35; Corollary 3.40",
     "source": {
@@ -1085,7 +1019,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "This partition illustrates Lagrange. It does not prove a converse; the lesson gives the A4 counterexample to subgroup existence for every divisor.",
     "objective": "Reconstruct the counting proof and distinguish a necessary divisibility condition from an existence theorem.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -1328,12 +1262,13 @@
     "explanation": "Normality is invariance of a whole set under conjugation. It does not say that each element stays fixed. Every subgroup of an abelian group is normal. Every subgroup of index 2 is normal because the only other left or right coset is its complement.",
     "id": "mh2220-normal",
     "intuition": "A normal subgroup is unchanged when its moves are described after a change of frame.",
-    "machine": "subgroups",
+    "machine": "coset-constructor",
     "parameters": {
-      "group": "D4"
+      "subgroup": 1,
+      "representative": 1
     },
     "pitfall": "Setwise equality $gN=Ng$ does not imply $gn=ng$ for every $n$. Normal subgroups need not lie in the center.",
-    "prompt": "Conjugate a reflection subgroup, then the rotation subgroup, and observe which set remains unchanged.",
+    "prompt": "For A3, predict whether conjugating a 3-cycle by a transposition fixes that element or swaps it.",
     "proof": "For index two, if $g\\in N$, both $gN$ and $Ng$ equal $N$. Otherwise both equal the complement $G\\setminus N$. Thus left and right cosets agree. Also $A_n=\\ker(\\operatorname{sgn})$ is normal because the sign map is a homomorphism and every kernel is normal.",
     "section": "4.1 · Definition 4.1; Theorem 4.2",
     "source": {
@@ -1402,7 +1337,7 @@
       }
     ],
     "prerequisites": ["mh2220-orbit-stabilizer"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Left/right coset equality tests the same condition. The displayed checks are finite; the proof identifies all homomorphism kernels as normal.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -1411,13 +1346,13 @@
     "explanation": "Replacing a move by another in its coset should not change the resulting coset of a product. Normality is exactly the condition that makes the induced multiplication independent of representatives. Quotients of abelian groups are abelian, and quotients of cyclic groups are cyclic.",
     "id": "mh2220-quotient",
     "intuition": "A quotient remembers only which coset a move belongs to. Multiplication survives when that forgetting is consistent.",
-    "machine": "cosets",
+    "machine": "coset-constructor",
     "parameters": {
-      "group": "D4",
-      "subgroup": "rotations"
+      "subgroup": 1,
+      "representative": 1
     },
     "pitfall": "Removing the elements of $N$ from $G$ does not form $G/N$. The identity in the quotient is the entire coset $N$.",
-    "prompt": "Collapse the rotations of $D_{4}$ to one coset and identify the two-element quotient.",
+    "prompt": "Compare H={e,(12)} with A3: predict which admits a quotient table.",
     "proof": "If $g^{\\prime}=gn$ and $h^{\\prime}=hm$ with $n,m\\in N$, then $g^{\\prime}h^{\\prime}=gh(h^{-1}nh)m\\in ghN$ because $N$ is normal. Thus the product is independent of representatives. Associativity, identity and inverses descend from $G$.",
     "section": "4.1 · Definition 4.6; Proposition 4.12",
     "source": {
@@ -1460,7 +1395,7 @@
       }
     ],
     "prerequisites": ["mh2220-normal", "foundations-quotient-rules"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The witness rejects a nonnormal quotient. The expression anbm=ab(b⁻¹nb)m explains why normality makes the general law well-defined.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -1723,7 +1658,7 @@
       "n": 2
     },
     "pitfall": "The complement $H$ need not be normal. The same underlying set $N\\times H$ can support nonisomorphic semidirect products for different actions.",
-    "prompt": "Compare a direct product with the inversion action. Watch how crossing the reflection coordinate reverses a rotation step.",
+    "prompt": "Predict whether a reflection followed by a rotation equals the reverse order under the inversion action.",
     "proof": "Every element has a unique expression $nh$. Multiplication gives $(nh)(n^{\\prime}h^{\\prime})=n(hn^{\\prime}h^{-1})hh^{\\prime}$. This is the displayed semidirect-product law, and associativity follows from the homomorphism condition $\\alpha(hh^{\\prime})=\\alpha(h)\\alpha(h^{\\prime})$.",
     "section": "4.4 · Definition 4.28; Theorem 4.31",
     "source": {
@@ -1749,7 +1684,7 @@
     "navTitle": "Semidirect products",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Recover the action and multiplication from a stated normal subgroup and complement.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -2174,13 +2109,10 @@
     "explanation": "The same group can act on many sets, and even on the same set in different ways. Polygon symmetries act on vertices, edges and diagonals. The group also acts on itself by left multiplication or by conjugation, which are different actions.",
     "id": "mh2220-actions",
     "intuition": "Choose a set of things to watch. Each group element moves them, and the movement must respect group multiplication.",
-    "machine": "actions",
-    "parameters": {
-      "group": "D4",
-      "object": "vertices"
-    },
+    "machine": "orbit-workbench",
+    "parameters": {},
     "pitfall": "An action need not be faithful: a nonidentity element may fix every point. A trivial action is valid but reveals no distinctions among group elements.",
-    "prompt": "Use the same symmetry on vertices and edges. Ask whether these actions have the same kernel.",
+    "prompt": "Compare the identity point under regular and conjugation actions.",
     "proof": "For each $g$ the map $x\\mapsto g\\cdot x$ is invertible, with inverse $x\\mapsto g^{-1}\\cdot x$. The action equation says that these permutations multiply as the group elements do. Conversely such a homomorphism supplies both action axioms.",
     "section": "6.1 · Definition 6.1; Lemma 6.3",
     "source": {
@@ -2249,7 +2181,7 @@
       }
     ],
     "prerequisites": ["mh2220-cosets"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "These are three different actions of one group. Orbit–stabilizer follows from a coset bijection, not merely from seeing equal products of counts.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -2258,13 +2190,13 @@
     "explanation": "The orbit is a subset of the acted-on set. The stabilizer is a subgroup of $G$. Points in one orbit have conjugate stabilizers. A transitive action has a single orbit and is equivalent as a $G$-set to the action on cosets of one stabilizer.",
     "id": "mh2220-orbit-stabilizer",
     "intuition": "A point's orbit records where it can go; its stabilizer records moves that leave it where it is.",
-    "machine": "actions",
+    "machine": "orbit-workbench",
     "parameters": {
-      "group": "D4",
-      "object": "vertices"
+      "action": "conjugation",
+      "point": 1
     },
     "pitfall": "The bijection is an isomorphism of $G$-sets, not generally of groups: neither the orbit nor the coset set need have a group structure.",
-    "prompt": "In the cube lab select a vertex, then an edge. Count each orbit and stabilizer. The worked $S_3$ example below uses a different set with the same theorem.",
+    "prompt": "For a transposition under conjugation, predict orbit size and stabilizer order.",
     "proof": "Let $H=G_x$. It is a subgroup: $e$ fixes $x$, and if $a,b$ fix $x$, then $ab^{-1}$ fixes $x$. Define $f:G/H\\to Gx$ by $f(gH)=gx$. If $gH=hH$, then $h^{-1}g\\in H$, hence $gx=hx$; thus $f$ is well-defined. Conversely, $gx=hx$ implies $h^{-1}g\\in H$ and $gH=hH$, giving injectivity. Every point of the orbit is $gx$, giving surjectivity. Each coset has $|H|$ elements via $h\\mapsto gh$. For finite $G$, its coset partition therefore gives $|G|=|Gx||H|$. No normality is required: $G/H$ here denotes a set of left cosets, not necessarily a quotient group.",
     "section": "6.1–6.2 · Definition 6.4; Theorem 6.6",
     "source": {
@@ -2307,7 +2239,7 @@
       }
     ],
     "prerequisites": ["mh2220-actions", "mh2220-cosets"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The bijection gGx↦g·x explains the formula. The table enumerates this finite example and displays all hypotheses.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -5985,16 +5917,10 @@
     "explanation": "A left $R$-module is an abelian group equipped with this action. The ring acts on itself by left multiplication; its submodules are left ideals. Matrix multiplication makes column vectors a module over the full matrix ring.",
     "id": "m3220-modules",
     "intuition": "A module turns ring elements into compatible additive transformations. Vector spaces are the special case where the scalars form a field.",
-    "machine": "module",
-    "parameters": {
-      "matrix": [
-        [1, 0],
-        [0, 0]
-      ],
-      "mode": "module"
-    },
+    "machine": "module-presentation",
+    "parameters": {},
     "pitfall": "Units of $R$ always induce invertible additive operators on an $R$-module. A nonunit may also act invertibly on a particular module: $2$ acts as its own inverse on $\\mathbb Z/3\\mathbb Z$, although it is not a unit of $\\mathbb Z$. On the regular module $R$, invertibility of left multiplication is equivalent to being a unit. We require $1v=v$ for unital modules.",
-    "prompt": "Apply a singular matrix to a vector. Which module laws survive even though information is collapsed?",
+    "prompt": "Predict multiplication by 2 on Z/3Z, then change the module to Z/6Z.",
     "proof": "The module laws for matrices are exactly distributivity and associativity of matrix multiplication. For the regular module, closure under the scalar action is precisely closure under multiplication from the left.",
     "section": "§6.4, Definition 6.25 and Proposition 6.32, pp.87–89",
     "source": {
@@ -6047,7 +5973,7 @@
       }
     ],
     "prerequisites": ["m3220-rings"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Units act invertibly on every unital module. The displayed exception shows why the converse fails for a particular module; on the regular module Z, 2 is not surjective.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -6140,7 +6066,7 @@
     "connections": ["m3220-modules"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "A relationship map illustrates the stated construction. Work the example and practice independently; arrows are not a proof.",
+    "labScope": "Exactness at the middle Z is im(×n)=ker q=nZ. The finite table cannot alone prove injectivity on infinite Z; divisibility does.",
     "navTitle": "Generators & exact sequences",
     "title": "Generation does not guarantee a basis",
     "intuition": "Module generators need not be independent. Quotients can introduce relations among them.",
@@ -6149,27 +6075,10 @@
     "theorem": "qs=\\operatorname{id}_Q\\Longrightarrow M=\\operatorname{im}i\\oplus\\operatorname{im}s",
     "proof": "For each $m$, write $m=(m-sq(m))+sq(m)$. The first term lies in $\\ker q=\\operatorname{im}i$, and the second lies in $\\operatorname{im}s$. If $s(x)$ also lies in $\\ker q$, then $x=qs(x)=0$, so the intersection is zero. Both summands are submodules because all maps are module maps.",
     "pitfall": "The cyclic module $\\mathbb Z/2\\mathbb Z$ is not free over $\\mathbb Z$: its nonzero generator satisfies the relation $2m=0$. Finite generation is not the same as finite length or freeness.",
-    "prompt": "Follow the exact sequence and identify where injectivity, the kernel equality and surjectivity are used. Test the nonsplit example on paper.",
-    "machine": "diagram",
+    "prompt": "For relation 6e=0, predict the kernel of the quotient map from Z.",
+    "machine": "module-presentation",
     "parameters": {
-      "nodes": [
-        {
-          "id": "N",
-          "label": "N"
-        },
-        {
-          "id": "M",
-          "label": "M"
-        },
-        {
-          "id": "Q",
-          "label": "Q"
-        }
-      ],
-      "edges": [
-        ["N", "M", "injective map $i$"],
-        ["M", "Q", "surjective map $q$; kernel $i(N)$"]
-      ]
+      "modulus": 6
     },
     "objective": "Distinguish generators from bases and split from nonsplit exact sequences.",
     "prerequisites": ["m3220-submodules"],
@@ -6196,13 +6105,12 @@
     "explanation": "For a commutative ring, the annihilator is an ideal, and the action factors through the quotient by it. For example integers modulo $n$, viewed as a module over the integers, have annihilator $n$ times the integers.",
     "id": "m3220-annihilator",
     "intuition": "A module homomorphism commutes with every scalar action. The annihilator records which scalars act as zero on the entire module.",
-    "machine": "homomorphism",
+    "machine": "module-presentation",
     "parameters": {
-      "mode": "annihilator",
-      "n": 6
+      "modulus": 6
     },
     "pitfall": "The annihilator of a single vector can be larger than the annihilator of the whole module. Specify which object is being killed.",
-    "prompt": "Track the action of integer scalars on residues modulo 6. Which different scalars induce identical transformations?",
+    "prompt": "In Z/6Z compare ann(M)=6Z with the kernel of multiplication by 2.",
     "proof": "Changing $r$ by an annihilator element leaves every action unchanged, so the quotient action is well-defined. Submodules are exactly the same before and after this change of scalar ring because the actual transformations on $M$ are unchanged.",
     "section": "§6.4, Definition 6.33; Exercise 6.14, pp.89,94–95",
     "source": {
@@ -6255,7 +6163,7 @@
       }
     ],
     "prerequisites": ["m3220-submodules"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The two objects have different types. The table computes a module endomorphism; integer multiples identify the ring ideal annihilating the entire module.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -8007,7 +7915,7 @@
     "theorem": "R(n,\\theta)n=n,\\qquad\\operatorname{tr}R(n,\\theta)=1+2\\cos\\theta,\\qquad SO(3)\\subsetneq O(3).",
     "proof": "A real orthogonal $3\\times 3$ matrix has eigenvalues of modulus one and nonreal eigenvalues occur in conjugate pairs. Determinant +1 forces at least one eigenvalue +1. Its unit eigenvector $n$ has an invariant orthogonal complement, where the restriction has determinant $+1$ and hence is a plane rotation. Decomposing into $n$ and $n$⊥ gives Rodrigues’ formula and the trace identity.",
     "pitfall": "The trace determines the angle in [$0,\\pi ]$ but not the axis. Generic SO(3) rotations do not preserve the cube. Linear interpolation of rotation matrices is generally not orthogonal.",
-    "prompt": "Rotate about a body diagonal continuously. Which angle values return the cube to its original set of occupied points?",
+    "prompt": "Before rotating through 60° and 120°, predict which will carry every cube vertex to a cube vertex.",
     "machine": "axis-angle",
     "parameters": {
       "kind": "axis-angle",
@@ -8026,7 +7934,7 @@
     "navTitle": "Axis & angle",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set.",
+    "labScope": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Track the fixed body diagonal while varying the angle continuously; identify the angles that preserve the cube.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -8122,7 +8030,7 @@
     "theorem": "\\mathbb R^2\\text{ is irreducible over }\\mathbb R,\\qquad\\mathbb C^2=E_\\omega\\oplus E_{\\omega^{-1}},\\qquad\\omega=e^{2\\pi i/3}.",
     "proof": "The characteristic polynomial is $t^{2}+t+1$, whose discriminant is $-3$; hence there is no real eigenvalue or real invariant line. Over $\\mathbb C$ it has the two distinct roots $\\omega$ and $\\omega ^{-1}$. Their eigenspaces are one-dimensional, invariant under the generator, and therefore invariant under all of $C_{3}$.",
     "pitfall": "“Every irreducible representation of an abelian group is one-dimensional” requires hypotheses such as finite-dimensional representations over an algebraically closed field. It is false over $\\mathbb R$ as stated.",
-    "prompt": "Switch from $\\mathbb R$ to $\\mathbb C$ for the same two-dimensional $C_3$ representation. Apply powers of the generator and compare the two complex eigenlines with the absence of an invariant real line.",
+    "prompt": "Predict whether the real 120° rotation has a real invariant line, then compare its two complex eigenlines.",
     "machine": "plane-representation",
     "parameters": {
       "kind": "plane-representation",
@@ -8159,7 +8067,7 @@
       }
     ],
     "prerequisites": ["ureca-invariant-subspaces"],
-    "labScope": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis.",
+    "labScope": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis. This experiment tests the displayed example; the lesson supplies the general argument.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -8377,13 +8285,11 @@
     "theorem": "\\ker\\phi_X=\\{g:g\\cdot x=x\\ \\forall x\\in X\\}=\\bigcap_{x\\in X}G_x.",
     "proof": "An element belongs to the kernel of the homomorphism into $S_X$ exactly when its induced permutation is the identity, which means fixing every point. This gives the intersection formula. The cube examples then establish the claimed distinctions: inversion witnesses a nontrivial diagonal kernel, and vertex faithfulness persists after adjoining a separate orbit of face centers.",
     "pitfall": "A transitive action need not be free. The rotation group is transitive on eight vertices but every vertex still has a three-element stabilizer.",
-    "prompt": "Choose vertices + faces, then follow a vertex and a face. The action is faithful but has two orbits. Compare it with the transitive diagonal action, whose full-group kernel is nontrivial.",
-    "machine": "cube",
+    "prompt": "For conjugation on S3, predict the kernel and the orbit of identity.",
+    "machine": "orbit-workbench",
     "parameters": {
-      "object": "diagonals",
-      "compareAction": "vertices-plus-faces",
-      "showOrbits": true,
-      "showKernel": true
+      "action": "conjugation",
+      "point": 0
     },
     "subject": "Groups & symmetry",
     "family": "Actions & counting",
@@ -8397,7 +8303,7 @@
     "navTitle": "Faithful & transitive",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The kernel is the center for conjugation; S3 has trivial center. One fixed point does not mean every group element acts trivially everywhere.",
     "objective": "Explain why a transitive action with a nontrivial stabilizer can still be faithful.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -8435,13 +8341,11 @@
     "theorem": "G/H\\longrightarrow G\\cdot x,\\quad gH\\longmapsto g\\cdot x\\quad\\text{is a }G\\text{-equivariant bijection}.",
     "proof": "The coset-to-orbit map is well-defined and bijective by the criterion $h^{-1}g\\in H$. An element $a$ fixes every coset exactly when $agH=gH$ for all $g$, equivalently $g^{-1}ag\\in H$. Intersect these conditions over $G$. Every normal subgroup contained in $H$ lies in all conjugates of $H$.",
     "pitfall": "A nontrivial stabilizer does not mean the action is unfaithful. Kernel elements must fix every object, rather than just the selected one.",
-    "prompt": "Pick two different faces and compare their stabilizers. Find a rotation in one stabilizer but not the other, then intersect all six.",
-    "machine": "cube",
+    "prompt": "Choose identity under conjugation; compare its stabilizer core with the action kernel.",
+    "machine": "orbit-workbench",
     "parameters": {
-      "object": "faces",
-      "showStabilizer": true,
-      "showKernel": true,
-      "mode": "stabilizer-intersection"
+      "action": "conjugation",
+      "point": 0
     },
     "subject": "Groups & symmetry",
     "family": "Actions & counting",
@@ -8455,7 +8359,7 @@
     "navTitle": "Stabilizers & kernels",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "For transitive actions the selected orbit is the whole set, so core and kernel agree. The distinction matters for nontransitive actions.",
     "objective": "Find a nontrivial stabilizer and a trivial kernel in the same action.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -8493,11 +8397,11 @@
     "theorem": "\\operatorname{Stab}_{\\lambda}(x)=\\{e\\},\\quad\\ker c=Z(G),\\quad|\\operatorname{Cl}(x)|=[G:C_G(x)].",
     "proof": "For left multiplication, $gx=x$ implies $g=e$, and $yx^{-1}$ carries $x$ to $y$. For conjugation, $gxg^{-1}=x$ is equivalent to $gx=xg$, so the stabilizer is $C_G(x)$. Fixing every element means belonging to $Z(G)$. Orbit–stabilizer now gives $|\\operatorname{Cl}(x)|=[G:C_G(x)]$.",
     "pitfall": "A left coset and a conjugacy class are different kinds of subsets. Conjugation is not generally transitive, and the identity always forms a singleton orbit.",
-    "prompt": "Choose $D_4$ and a quarter turn $r$. Conjugate it by a reflection: the result is $r^{-1}$. Compare its conjugacy class with the whole group reached by left multiplication. The cube-axis statement above is a separate geometric example.",
-    "machine": "conjugation",
+    "prompt": "Apply (12) to e under regular multiplication and under conjugation.",
+    "machine": "orbit-workbench",
     "parameters": {
-      "group": "D",
-      "n": 4
+      "action": "conjugation",
+      "point": 0
     },
     "subject": "Groups & symmetry",
     "family": "Actions & counting",
@@ -8511,7 +8415,7 @@
     "navTitle": "Act on the group",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Changing the action changes the mathematical question. The table exposes the formulas rather than reusing a rotation model with renamed controls.",
     "objective": "Execute every instruction in the prompt using visible controls.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -10083,7 +9987,7 @@
     "theorem": "V/\\ker T\\cong\\operatorname{im}T,\\qquad\\dim V=\\dim\\ker T+\\dim\\operatorname{im}T.",
     "proof": "Prove well-definedness using $T(v-u)=0$. Linearity is inherited directly from $T$. Surjectivity follows from the definition of the image, and injectivity from equality of fibers. In finite dimensions, extend a basis of the kernel to a basis of $V$; the images of the new basis vectors form a basis of the image.",
     "pitfall": "The image can be a proper subspace of the stated codomain. Quotienting by the kernel gives the image, not automatically the whole codomain.",
-    "prompt": "Choose the zero matrix, a rank-one matrix, and an invertible matrix over the finite field. Compare the sizes of their fibers.",
+    "prompt": "Predict how fiber size changes from rank zero to rank one to rank two over the displayed finite field.",
     "machine": "linear-quotient",
     "parameters": {
       "nodes": [],
@@ -10104,7 +10008,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Build a basis of V/ker T and identify its image under the induced isomorphism.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",

@@ -86,3 +86,26 @@ Foundation validation: 32 Node tests pass; production build passes; no new TypeS
 errors. Browser checks exercise wrong-answer feedback, correction, reference navigation,
 all four widths and axe. The baseline diagram-caption contrast and duplicate landmark
 labels were corrected rather than excluded from that accessibility check.
+
+- #32 / PR #34 merged as `e119479`. Review found that WebMCP treated checkpoint radios
+  as text inputs. Labelled radio/checkbox activation and native select/textarea updates
+  now reach React state; a browser test uses the registered tools to submit a checkpoint.
+- #33 adds six foundation engines with nineteen lesson-specific contracts. Predictions
+  precede manipulation, and each contract states an invariant, failure case and proof
+  boundary. The Cayley graph has redundant outline/text reachability encoding; cosets
+  reject nonnormal multiplication with an explicit representative witness. Action kernels
+  are distinguished from stabilizer cores on a single orbit. The module board retains
+  the nonunit-on-one-module counterexample.
+
+Laboratory validation: production build and 37 Node tests pass. Six browser tests cover
+keyboard activation, failure witnesses, 320/390/768/1440px layouts and serious/critical
+axe checks. Screenshot review caught the inherited 340px inner scrolling cap; foundation
+workspaces now expand naturally and the browser suite guards their full height. Evidence
+is uploaded by CI. The ledger records foundation-lab delivery without claiming every
+concept's full gate: advanced examples and other teaching requirements remain later work.
+Review was local on both standards and #33 specification; configured review-agent access
+remains unavailable. Type checking retains the same three baseline Cloudflare errors.
+
+Dependency observation: GitHub alert #1 concerns esbuild 0.18.20 under drizzle-kit's
+legacy esm-loader development dependency. The application Vite path uses esbuild 0.28.1.
+The dependency update is tracked separately from the teaching change.
