@@ -1,3 +1,4 @@
+import { learningRoutes } from "../lib/algebra/routes.ts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -70,4 +71,11 @@ test("a prerequisite without demonstrated competencies is never implicitly maste
   );
   assert.equal(prerequisitesMet(lesson, new Set(), lessons), false);
   assert.equal(prerequisitesMet(lesson, new Set([lesson.id]), lessons), false);
+});
+
+test("visible learning routes exclude reference-only entries", () => {
+  for (const route of learningRoutes) {
+    for (const id of route.lessons)
+      assert.notEqual(metadata[id].teachingStatus, "reference-only", id);
+  }
 });
