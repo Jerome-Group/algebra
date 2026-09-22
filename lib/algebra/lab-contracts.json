@@ -57,24 +57,24 @@
   "mh2220-generators": {
     "name": "Cayley reachability and word builder",
     "type": "constructor",
-    "question": "Which elements can this generator reach?",
-    "prediction": "For g=4 in C12, predict the entire reachable set before applying steps.",
-    "objects": "Additive Cn, generator g, inverse −g, and words starting at 0.",
-    "invariant": "Reachable points form the generated subgroup; a shortest word is recorded for each reachable element.",
-    "counterexample": "A nonzero generator need not generate the whole cyclic group.",
-    "debrief": "The finite search constructs this subgroup. It does not certify a presentation in another group; the lesson supplies the normal-form argument for S3.",
-    "fallback": "All essential values are listed as labelled text and tables below the controls."
+    "question": "How do finite words generate a subgroup, and when do relations determine it?",
+    "prediction": "For g=4 in C12 predict the reachable set; then test r³=e and srs=r⁻¹ in S₃.",
+    "objects": "Additive Cₙ with g and −g, plus S₃ with r=(123), s=(12); products in S₃ apply the right factor first.",
+    "invariant": "BFS records shortest words. The S₃ relations yield six normal forms only after a reduction argument; observed identity words alone are not a completeness proof.",
+    "counterexample": "⟨4⟩∪⟨6⟩ in C₁₂ omits 10 although their join contains it; a sampled relation without normal forms does not present an arbitrary group.",
+    "debrief": "The cyclic graph proves finite reachability for the selected Cₙ. The S₃ table checks three defining relations; a separate normal-form upper bound plus six distinct images proves that particular presentation complete.",
+    "fallback": "Reachability, shortest lengths, Cₙ subgroups, S₃ words, relations and normal forms are all available in labelled text and tables."
   },
   "mh2220-cyclic": {
     "name": "Cyclic order and subgroup explorer",
     "type": "experiment",
     "question": "Which residues generate Cn?",
     "prediction": "Compare 4 and 5 in C12: which gives all twelve points?",
-    "objects": "Finite cyclic group Z/nZ with addition and a chosen residue g.",
-    "invariant": "The subgroup has n/gcd(n,g) elements and is all of Cn exactly when gcd(n,g)=1.",
-    "counterexample": "Choose g=0 or a non-coprime residue to see a proper subgroup.",
-    "debrief": "The table checks selected n. Divisibility proves the formula for every finite cyclic group, while the integer-exponent proof covers the infinite case.",
-    "fallback": "All essential values are listed as labelled text and tables below the controls."
+    "objects": "Additive Cₙ with n=6,8 or 12, a chosen residue g, shortest ±g words and every divisor-order subgroup.",
+    "invariant": "ord(g)=n/gcd(n,g); one subgroup of each divisor order is listed with every element.",
+    "counterexample": "In C₁₂, ⟨4⟩∪⟨6⟩ is not a subgroup, while their join is ⟨2⟩.",
+    "debrief": "The finite table shows every subgroup for the selected Cₙ and the current first-return relation. The exponent/least-positive-return proof in the lesson establishes the classification for all cyclic groups.",
+    "fallback": "The graph has exact reachable sets, shortest words and lengths, order equation and a table of all subgroup elements."
   },
   "mh2220-cosets": {
     "name": "Coset partition constructor",
@@ -372,5 +372,16 @@
     "counterexample": "At θ=90°, the two products fix y=x and y=−x respectively; treating the composition order as interchangeable fails.",
     "debrief": "The graphic, selected product and exact F convention agree at θ=0 and throughout the slider. Matrix multiplication proves FRθF=R−θ and the half-angle rule; the display tests examples.",
     "fallback": "Both matrices, selected fixed-line angle and image of e₁ are available as text and rendered equations."
+  },
+  "mh2220-cayley-embedding": {
+    "name": "Left-regular permutation embedding",
+    "type": "checker",
+    "question": "How does left multiplication turn every S₃ element into a distinct permutation?",
+    "prediction": "For g=(123) and h=(12), predict λg(e), λh(e) and whether λgλh=λgh.",
+    "objects": "S₃ acting on its own six elements by λg(x)=gx; right factor acts first in a product.",
+    "invariant": "Every λg is a permutation; λg∘λh=λgh and λg(e)=g, so λ is an injective homomorphism.",
+    "counterexample": "S₃ embeds into S₆ by its regular action but already acts faithfully on three letters; degree six is not minimal.",
+    "debrief": "The six-row table constructs the embedding and checks selected compositions. Associativity and evaluation at identity prove the theorem for every group, while the finite table alone proves only this example.",
+    "fallback": "Every λg permutation, selected product, composition check and identity image are provided as labelled text and tables."
   }
 }

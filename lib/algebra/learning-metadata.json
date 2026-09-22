@@ -232,12 +232,28 @@
     "conceptKind": "object"
   },
   "mh2220-cayley-embedding": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 18,
+    "prerequisites": ["mh2220-generators"],
+    "competencies": [
+      {
+        "id": "mh2220-cayley-embedding:boundaryCheck",
+        "statement": "What does Cayley’s construction guarantee for a finite group of order n?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-cayley-embedding:application",
+        "statement": "For C₃ under addition, what permutation is λ₁ on 0,1,2?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-cayley-embedding:transfer",
+        "statement": "Why is the left-regular map for S₃ injective even before computing the full table?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
