@@ -95,3 +95,50 @@ test("reference teaching filter returns the explicit reference entries", async (
   await expect(page.getByRole("status")).toHaveText("24 matching concepts");
   await expect(page.locator(".atlas-results > li")).toHaveCount(24);
 });
+
+test("guided checkpoints diagnose an error and keep the source/reference path available", async ({
+  page,
+}, testInfo) => {
+  await page.goto("/#foundations-functions");
+  const guide = page.locator(".guided-reader");
+  await expect(guide).toBeVisible();
+  const checkpoint = guide.locator(".learning-checkpoint").first();
+  await checkpoint.getByRole("radio").nth(1).check();
+  await checkpoint.getByRole("button", { name: "Check reasoning" }).click();
+  await expect(checkpoint.getByRole("status")).toContainText("Reconsider");
+  await expect(checkpoint.getByRole("status")).toContainText(
+    "exactly one output",
+  );
+  await checkpoint.getByRole("radio").first().check();
+  await checkpoint.getByRole("button", { name: "Check reasoning" }).click();
+  await expect(checkpoint.getByRole("status")).toContainText("Correct");
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(width);
+    await page.screenshot({
+      path: testInfo.outputPath(`guided-functions-${width}.png`),
+    });
+  }
+  const audit = await new AxeBuilder({ page }).analyze();
+  await testInfo.attach("guided-axe", {
+    body: JSON.stringify(audit),
+    contentType: "application/json",
+  });
+  expect(
+    audit.violations.filter((violation) =>
+      ["serious", "critical"].includes(violation.impact),
+    ),
+  ).toEqual([]);
+  await page
+    .getByRole("button", {
+      name: "Read the reference notes and further practice",
+    })
+    .click();
+  await expect(
+    page.getByRole("navigation", { name: "Reading view" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Read lesson", exact: true }).click();
+  await expect(guide).toBeVisible();
+});

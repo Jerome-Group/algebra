@@ -5,6 +5,8 @@ import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
 import { Reference } from "./Sources";
 import { learningMetadata } from "@/lib/algebra/learning";
+import { guidedContent } from "@/lib/algebra/guided";
+import { GuidedReader } from "./GuidedReader";
 export function LessonReader({
   lesson,
   lessons,
@@ -19,6 +21,19 @@ export function LessonReader({
   open: (id: string) => void;
 }) {
   const learning = learningMetadata(lesson);
+  const guide = guidedContent(lesson.id);
+  if (learning.teachingStatus === "guided" && guide && tab === "guided") {
+    return (
+      <GuidedReader
+        key={lesson.id}
+        lesson={lesson}
+        content={guide}
+        lessons={lessons}
+        open={open}
+        readReference={() => setTab("understand")}
+      />
+    );
+  }
   return (
     <div className="lesson-reader">
       <nav className="reading-tabs" aria-label="Reading view">
@@ -70,7 +85,7 @@ export function LessonReader({
             <M block>{lesson.definition}</M>
           </div>
         </div>
-        <aside className="margin-note">
+        <aside className="margin-note" aria-label="Boundary reminder">
           <span className="section-kicker">KEEP IN MIND</span>
           <p>
             <Prose>{lesson.pitfall}</Prose>
@@ -214,7 +229,10 @@ export function LessonReader({
             </ul>
           </section>
         </article>
-        <aside className="connections">
+        <aside
+          className="connections"
+          aria-label="Connected concepts and sources"
+        >
           <span className="section-kicker">CONNECTED IDEAS</span>
           {lesson.connections?.map((target) => {
             const next = lessons.find(

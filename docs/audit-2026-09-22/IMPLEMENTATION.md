@@ -73,3 +73,16 @@ cover all five modes, viewport reflow, axe, unit history, reference filtering an
 measured-header drawer offset. Local results are in `outputs/playwright/`; CI uploads
 `browser-evidence`. The drawer/header test caught the 768px fixed-height conflict before
 merge. All eight checks pass after correcting both header sizing and drawer positioning.
+
+- #30 / PR #31 merged as `edceb05`; its browser checks also run in CI.
+- #32 authors nineteen guided lessons: seventeen original audit entries and two new
+  prerequisite bridges. The first unit now stays within functions, fibers and quotient
+  rules. Four diagnostic checkpoints accompany each authored lesson; their grading is
+  currently session-local, with persistent competency progress scheduled for its own slice.
+  Ledger entries distinguish delivered teaching from pending concept-specific laboratories.
+  Existing reference notes, citations and proof-status labels remain reachable.
+
+Foundation validation: 32 Node tests pass; production build passes; no new TypeScript
+errors. Browser checks exercise wrong-answer feedback, correction, reference navigation,
+all four widths and axe. The baseline diagram-caption contrast and duplicate landmark
+labels were corrected rather than excluded from that accessibility check.

@@ -106,3 +106,39 @@ test("all laboratory entry points render valid dynamic mathematics inside their 
     assert.match(html, /class="katex"/, lesson.id);
   }
 });
+
+test("every guided reader renders all checkpoints and retains accessible mathematics", async () => {
+  const { LessonReader } = await vite.ssrLoadModule(
+    "/components/algebra/LessonReader.tsx",
+  );
+  const lessons = JSON.parse(
+    await readFile(path.join(root, "lib/algebra/lessons.json"), "utf8"),
+  );
+  const metadata = JSON.parse(
+    await readFile(
+      path.join(root, "lib/algebra/learning-metadata.json"),
+      "utf8",
+    ),
+  );
+  for (const lesson of lessons.filter(
+    (item) => metadata[item.id].teachingStatus === "guided",
+  )) {
+    const html = renderToStaticMarkup(
+      React.createElement(LessonReader, {
+        lesson,
+        lessons,
+        tab: "guided",
+        setTab() {},
+        open() {},
+      }),
+    );
+    assert.equal(
+      (html.match(/class="learning-checkpoint"/g) || []).length,
+      4,
+      lesson.id,
+    );
+    assert.match(html, /<math/, lesson.id);
+    assert.doesNotMatch(html, /class="katex-error"/, lesson.id);
+    assert.match(html, /Rigour and sources/, lesson.id);
+  }
+});
