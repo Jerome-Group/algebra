@@ -150,3 +150,13 @@ test("curated laboratories have complete lesson-specific contracts and matching 
     assert.equal(lesson.labScope, contract.debrief, id);
   }
 });
+
+test("existing Explore workspaces retain discoverable mathematical contracts", () => {
+  for (const id of [
+    "orthogonal-axis-angle",
+    "representations-real-complex",
+    "linear-quotient",
+    "mh2220-semidirect",
+  ])
+    assert.ok(labContract(id), id);
+});

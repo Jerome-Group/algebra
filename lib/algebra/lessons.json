@@ -1658,7 +1658,7 @@
       "n": 2
     },
     "pitfall": "The complement $H$ need not be normal. The same underlying set $N\\times H$ can support nonisomorphic semidirect products for different actions.",
-    "prompt": "Compare a direct product with the inversion action. Watch how crossing the reflection coordinate reverses a rotation step.",
+    "prompt": "Predict whether a reflection followed by a rotation equals the reverse order under the inversion action.",
     "proof": "Every element has a unique expression $nh$. Multiplication gives $(nh)(n^{\\prime}h^{\\prime})=n(hn^{\\prime}h^{-1})hh^{\\prime}$. This is the displayed semidirect-product law, and associativity follows from the homomorphism condition $\\alpha(hh^{\\prime})=\\alpha(h)\\alpha(h^{\\prime})$.",
     "section": "4.4 · Definition 4.28; Theorem 4.31",
     "source": {
@@ -1684,7 +1684,7 @@
     "navTitle": "Semidirect products",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Recover the action and multiplication from a stated normal subgroup and complement.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -7915,7 +7915,7 @@
     "theorem": "R(n,\\theta)n=n,\\qquad\\operatorname{tr}R(n,\\theta)=1+2\\cos\\theta,\\qquad SO(3)\\subsetneq O(3).",
     "proof": "A real orthogonal $3\\times 3$ matrix has eigenvalues of modulus one and nonreal eigenvalues occur in conjugate pairs. Determinant +1 forces at least one eigenvalue +1. Its unit eigenvector $n$ has an invariant orthogonal complement, where the restriction has determinant $+1$ and hence is a plane rotation. Decomposing into $n$ and $n$⊥ gives Rodrigues’ formula and the trace identity.",
     "pitfall": "The trace determines the angle in [$0,\\pi ]$ but not the axis. Generic SO(3) rotations do not preserve the cube. Linear interpolation of rotation matrices is generally not orthogonal.",
-    "prompt": "Rotate about a body diagonal continuously. Which angle values return the cube to its original set of occupied points?",
+    "prompt": "Before rotating through 60° and 120°, predict which will carry every cube vertex to a cube vertex.",
     "machine": "axis-angle",
     "parameters": {
       "kind": "axis-angle",
@@ -7934,7 +7934,7 @@
     "navTitle": "Axis & angle",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set.",
+    "labScope": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Track the fixed body diagonal while varying the angle continuously; identify the angles that preserve the cube.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -8030,7 +8030,7 @@
     "theorem": "\\mathbb R^2\\text{ is irreducible over }\\mathbb R,\\qquad\\mathbb C^2=E_\\omega\\oplus E_{\\omega^{-1}},\\qquad\\omega=e^{2\\pi i/3}.",
     "proof": "The characteristic polynomial is $t^{2}+t+1$, whose discriminant is $-3$; hence there is no real eigenvalue or real invariant line. Over $\\mathbb C$ it has the two distinct roots $\\omega$ and $\\omega ^{-1}$. Their eigenspaces are one-dimensional, invariant under the generator, and therefore invariant under all of $C_{3}$.",
     "pitfall": "“Every irreducible representation of an abelian group is one-dimensional” requires hypotheses such as finite-dimensional representations over an algebraically closed field. It is false over $\\mathbb R$ as stated.",
-    "prompt": "Switch from $\\mathbb R$ to $\\mathbb C$ for the same two-dimensional $C_3$ representation. Apply powers of the generator and compare the two complex eigenlines with the absence of an invariant real line.",
+    "prompt": "Predict whether the real 120° rotation has a real invariant line, then compare its two complex eigenlines.",
     "machine": "plane-representation",
     "parameters": {
       "kind": "plane-representation",
@@ -8067,7 +8067,7 @@
       }
     ],
     "prerequisites": ["ureca-invariant-subspaces"],
-    "labScope": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis.",
+    "labScope": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis. This experiment tests the displayed example; the lesson supplies the general argument.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -9987,7 +9987,7 @@
     "theorem": "V/\\ker T\\cong\\operatorname{im}T,\\qquad\\dim V=\\dim\\ker T+\\dim\\operatorname{im}T.",
     "proof": "Prove well-definedness using $T(v-u)=0$. Linearity is inherited directly from $T$. Surjectivity follows from the definition of the image, and injectivity from equality of fibers. In finite dimensions, extend a basis of the kernel to a basis of $V$; the images of the new basis vectors form a basis of the image.",
     "pitfall": "The image can be a proper subspace of the stated codomain. Quotienting by the kernel gives the image, not automatically the whole codomain.",
-    "prompt": "Choose the zero matrix, a rank-one matrix, and an invertible matrix over the finite field. Compare the sizes of their fibers.",
+    "prompt": "Predict how fiber size changes from rank zero to rank one to rank two over the displayed finite field.",
     "machine": "linear-quotient",
     "parameters": {
       "nodes": [],
@@ -10008,7 +10008,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
     "objective": "Build a basis of V/ker T and identify its image under the induced isomorphism.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",

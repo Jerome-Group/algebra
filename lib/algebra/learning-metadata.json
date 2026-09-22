@@ -317,7 +317,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
@@ -863,7 +863,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Algebra", "MH3220"],
     "conceptKind": "theorem"
   },
@@ -961,7 +961,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -1574,7 +1574,7 @@
     "estimatedMinutes": 15,
     "prerequisites": ["ureca-invariant-subspaces"],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },

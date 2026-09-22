@@ -207,5 +207,49 @@
     "counterexample": "For n=6,r=2, ann(M)=6Z but ker(r·)={0,3}.",
     "debrief": "The two objects have different types. The table computes a module endomorphism; integer multiples identify the ring ideal annihilating the entire module.",
     "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "orthogonal-axis-angle": {
+    "name": "Body-diagonal rotation experiment",
+    "type": "experiment",
+    "question": "Which body-diagonal rotations preserve the cube?",
+    "prediction": "Before rotating through 60° and 120°, predict which will carry every cube vertex to a cube vertex.",
+    "objects": "The cube vertex set in R³; axis (1,1,1); right-handed rotations acting on column vectors.",
+    "invariant": "Every rotation preserves lengths and the axis; preserving the cube is an additional finite-set condition.",
+    "counterexample": "60° preserves lengths but does not preserve the cube vertex set.",
+    "debrief": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set. This experiment tests the displayed example; the lesson supplies the general argument.",
+    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+  },
+  "representations-real-complex": {
+    "name": "Real and complex C3 representation",
+    "type": "experiment",
+    "question": "Can changing the field change irreducibility?",
+    "prediction": "Predict whether the real 120° rotation has a real invariant line, then compare its two complex eigenlines.",
+    "objects": "C3 acting on a two-dimensional real space by a 120° rotation, then its complexification on C².",
+    "invariant": "The group and generator matrix remain fixed when the scalar field changes.",
+    "counterexample": "A real irreducible plane can split into two complex one-dimensional subspaces.",
+    "debrief": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis. This experiment tests the displayed example; the lesson supplies the general argument.",
+    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+  },
+  "linear-quotient": {
+    "name": "Linear fibers and quotient map",
+    "type": "experiment",
+    "question": "Why are fibers translates of the kernel?",
+    "prediction": "Predict how fiber size changes from rank zero to rank one to rank two over the displayed finite field.",
+    "objects": "A two-dimensional vector space over the selected finite field and a linear map on columns.",
+    "invariant": "Nonempty fibers are kernel cosets; |domain|/|kernel|=|image|.",
+    "counterexample": "A noninvertible map may have several inputs with the same output, while targets outside its image have empty fibers.",
+    "debrief": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
+    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+  },
+  "mh2220-semidirect": {
+    "name": "Direct and semidirect product workbench",
+    "type": "experiment",
+    "question": "When does switching factors change the product?",
+    "prediction": "Predict whether a reflection followed by a rotation equals the reverse order under the inversion action.",
+    "objects": "Pairs in C_m⋊C2 or C_m×C2 with left action; the nontrivial C2 element may invert the C_m coordinate.",
+    "invariant": "Multiplication uses the selected action on the first coordinate; trivial action recovers the direct product.",
+    "counterexample": "With m=5 and inversion action, reflection and nontrivial rotation do not commute.",
+    "debrief": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
+    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
   }
 }
