@@ -1,5 +1,6 @@
 import { capstoneAssessment, unitCompletion } from "@/lib/algebra/progress";
 import { useLearningProgress } from "./LearningProgress";
+import { RepresentationJourney } from "./RepresentationJourney";
 import { Checkpoint } from "./Checkpoint";
 import type { Lesson } from "@/lib/algebra/engine";
 import { learningRoutes } from "@/lib/algebra/routes";
@@ -27,6 +28,7 @@ export function LearningRoutes({
         Follow a short unit, explain its key moves, then solve its capstone.
         Completion records demonstrated competencies, not page visits.
       </p>
+      <RepresentationJourney lessons={lessons} open={open} />
       <div className="route-options">
         {learningRoutes.map((item) => {
           const completion = unitCompletion(item, lessons, mastered);

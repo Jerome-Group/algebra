@@ -71,6 +71,15 @@ export function SourceCoverage({
           </section>
         );
       })}
+      <p>
+        <a href="#learn">Follow the integrated URECA representation route →</a>{" "}
+        The 18 September direct-product teaching is reconstructed from meeting
+        annotations; its{" "}
+        <a href="https://github.com/Jerome-Group/algebra/blob/main/docs/audit-2026-09-22/URECA_PROVENANCE.md">
+          source status
+        </a>{" "}
+        is explicit.
+      </p>
       <details className="source-links">
         <summary>Open the complete citation library</summary>
         <SourceLibrary lessons={lessons} />

@@ -1234,3 +1234,36 @@
     padding: 10px;
   }
 }
+
+.representation-journey {
+  border: 1px solid #c8d2df;
+  background: #f6f8fb;
+  padding: clamp(16px, 3vw, 32px);
+  margin: 24px 0 38px;
+}
+.representation-journey ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: stage;
+}
+.representation-journey li {
+  counter-increment: stage;
+  border: 1px solid #d5dce8;
+  background: white;
+  padding: 15px;
+}
+.representation-journey li h3::before {
+  content: counter(stage) ". ";
+  color: #2d467d;
+}
+.representation-journey li p {
+  line-height: 1.55;
+}
+.representation-journey li button {
+  min-height: 42px;
+  border: 1px solid #293f72;
+  padding: 8px 12px;
+}

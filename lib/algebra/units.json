@@ -313,20 +313,34 @@
   {
     "id": "tensor",
     "title": "Tensor and direct-product representations",
-    "description": "Distinguish tensor balancing from external tensor products and test faithfulness.",
-    "lessons": ["modules-generators", "tensor-products", "ureca-group-algebra"],
+    "description": "Build external tensor representations, prove direct-product irreducibility and diagnose reciprocal-scalar kernels.",
+    "lessons": [
+      "tensor-products",
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products",
+      "ureca-direct-product-irreducibles",
+      "ureca-product-kernel-scalar-matching",
+      "ureca-faithful-direct-product"
+    ],
     "entryCompetencies": [
-      "Understand multilinearity and the complex S3 standard representation."
+      "Read complex characters and class-weighted inner products.",
+      "Distinguish tensor balancing over a ring from the external action of a product group."
     ],
     "outcomes": [
-      "Distinguish tensor balancing from external tensor products and test faithfulness."
+      "Prove the character bound and distinguish scalar images from kernels.",
+      "Factor direct-product inner products and close the degree-squared count.",
+      "Classify faithful products by matching central scalars."
     ],
     "capstone": {
       "question": "Explain why two faithful factors can yield a nonfaithful external tensor product using scalar −I.",
       "answer": "On C2 take its faithful sign character; on D8 take its faithful complex two-dimensional square representation. The nonidentity pair (−1,r²) acts as (−1)⊗(−I)=I, so the product has nontrivial kernel."
     },
     "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",
-    "remediation": ["modules-generators", "tensor-products"],
-    "prerequisiteUnits": ["modules", "tables"]
+    "remediation": [
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products",
+      "ureca-product-kernel-scalar-matching"
+    ],
+    "prerequisiteUnits": ["characters", "tables"]
   }
 ]

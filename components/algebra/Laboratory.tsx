@@ -28,11 +28,13 @@ import { OperationChecker } from "./OperationChecker";
 import { CayleyReachability } from "./CayleyReachability";
 import { CosetConstructor } from "./CosetConstructor";
 import { OrbitWorkbench } from "./OrbitWorkbench";
+import { UrecaDirectProducts } from "./UrecaDirectProducts";
 import { ModulePresentation } from "./ModulePresentation";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
 > = {
+  "ureca-direct-products": UrecaDirectProducts,
   "function-fibers": FunctionFiberLab,
   "operation-checker": OperationChecker,
   "cayley-reachability": CayleyReachability,

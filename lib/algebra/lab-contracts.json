@@ -251,5 +251,60 @@
     "counterexample": "With m=5 and inversion action, reflection and nontrivial rotation do not commute.",
     "debrief": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
     "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+  },
+  "ureca-character-bound-kernel": {
+    "name": "Character bound and kernel inspector",
+    "type": "checker",
+    "question": "Does maximum absolute trace imply kernel membership?",
+    "prediction": "For the D₈ half-turn r², predict χ(r²), |χ(r²)| and whether r² is in the kernel.",
+    "objects": "The faithful degree-two complexified square representation of D₈; r² acts as −I₂.",
+    "invariant": "For finite-order matrices, |χ(g)|≤degree; equality means scalar image, while χ(g)=degree means identity image.",
+    "counterexample": "The central half-turn has |χ|=2 and is not a kernel element.",
+    "debrief": "The eigenvalue argument above proves the general bound. A plotted or tabulated equality alone illustrates it; only equality of the actual trace with degree proves kernel membership.",
+    "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
+  },
+  "ureca-external-tensor-products": {
+    "name": "External tensor grid",
+    "type": "constructor",
+    "question": "How do factor dimensions and traces combine?",
+    "prediction": "For π(a)=ω on C and ρ(r²)=−I₂, predict the product degree and trace at (a,r²).",
+    "objects": "C₃-character line V and D₈ square plane W over C; (g,h) acts on V⊗W.",
+    "invariant": "The degree multiplies and the character value is the product of factor traces.",
+    "counterexample": "The nonidentity pair (t,r²) cancels in the C₂×D₈ variant.",
+    "debrief": "Kronecker trace multiplication and the group action law are proved in the lesson. The grid reports the selected finite examples and distinguishes the external group action from tensor balancing.",
+    "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
+  },
+  "ureca-direct-product-irreducibles": {
+    "name": "Irreducible product accounting",
+    "type": "constructor",
+    "question": "Do the external-product rows exhaust all irreducibles?",
+    "prediction": "Predict the number and degree-squared total for C₃×D₈ before viewing the accounting table.",
+    "objects": "Irreducible complex characters of C₃ and D₈; external products form rows for C₃×D₈.",
+    "invariant": "Inner products factor and the sum of squared product degrees is |G||H|.",
+    "counterexample": "A list of products without orthogonality cannot certify irreducibility.",
+    "debrief": "The lesson proves factorisation and completeness. The dashboard gives an exact count for the selected small groups; no picture substitutes for the character-inner-product proof.",
+    "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
+  },
+  "ureca-product-kernel-scalar-matching": {
+    "name": "Reciprocal scalar kernel matcher",
+    "type": "checker",
+    "question": "Can nonidentity scalar images cancel in the tensor kernel?",
+    "prediction": "Choose C₂ or C₃ with the D₈ square representation. Predict whether a nonidentity product pair acts as identity.",
+    "objects": "A faithful complex character of C₂ or C₃ and the faithful degree-two D₈ square representation.",
+    "invariant": "A pair is in the product kernel exactly when its two operator scalars are reciprocal.",
+    "counterexample": "The pair (t,r²) lies in the C₂×D₈ kernel despite both factor kernels being trivial.",
+    "debrief": "The pure-tensor argument in the lesson proves the exact formula. The table classifies every pair in the displayed finite example and marks scalar preimages separately from kernels.",
+    "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
+  },
+  "ureca-faithful-direct-product": {
+    "name": "Faithful product compatibility studio",
+    "type": "checker",
+    "question": "When does a direct product admit a faithful irreducible?",
+    "prediction": "Predict the difference between C₂×D₈ and C₃×D₈ before checking center orders and kernel pairs.",
+    "objects": "The faithful one-dimensional C_n character and faithful degree-two complex D₈ square representation.",
+    "invariant": "For faithful irreducible factors the product-kernel size is gcd of their center orders.",
+    "counterexample": "The C₂×D₈ nonidentity pair (t,r²) acts trivially, while C₃×D₈ has no such pair.",
+    "debrief": "The centre-character argument proves the finite complex criterion. The compatibility table checks these examples and cannot replace the proof that all product irreducibles have this form.",
+    "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
   }
 }

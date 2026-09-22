@@ -1328,5 +1328,362 @@
       "explanation": "Equality of cosets is the membership argument. It explains precisely what information the quotient forgets."
     },
     "connection": "This completes the quotient spine: fibers, cosets, normality, induced maps and lattice correspondence express the same identification mechanism at different scales."
+  },
+  "ureca-character-bound-kernel": {
+    "hook": "Can a character have maximum absolute value away from the kernel?",
+    "objects": "Fix a finite group G, a nonzero complex representation π:G→GL_d(C), and χ(g)=tr π(g). The representation is a left action on columns.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What does χπ(1) measure?",
+      "choices": [
+        "The representation degree d",
+        "The group order |G|",
+        "The order of g"
+      ],
+      "answer": 0,
+      "explanation": "The identity matrix has trace d, the dimension of the representation space."
+    },
+    "examples": [
+      {
+        "title": "The central half-turn in the faithful D₈ plane action",
+        "steps": [
+          "The square representation sends r² to −I₂.",
+          "Thus χ(r²)=−2 and |χ(r²)|=2=χ(1).",
+          "Yet r² is nonidentity and π(r²)≠I₂; it is not in the kernel."
+        ]
+      },
+      {
+        "title": "A non-scalar quarter-turn",
+        "steps": [
+          "The real 90° rotation matrix has complex eigenvalues i and −i.",
+          "Its trace is zero, below the degree-two bound.",
+          "The two unit-circle phases cancel, so strict inequality detects a non-scalar image."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Absolute trace as a kernel test",
+      "explanation": "The sign character of C₂ sends its nonidentity element to −1. Its trace has absolute value one, but its kernel is only the identity."
+    },
+    "proofSteps": [
+      "If g has order m, π(g)^m=I. Over C, x^m−1 has distinct roots, so π(g) diagonalizes with mth-root eigenvalues ζ₁,…,ζ_d.",
+      "Each |ζ_j|=1. The triangle inequality yields |Σζ_j|≤Σ|ζ_j|=d.",
+      "If Σζ_j=d, all real parts must equal one, hence every ζ_j=1 and π(g)=I.",
+      "If |Σζ_j|=d, equality in the triangle inequality makes all ζ_j share one phase λ, so π(g)=λI. The converse in each case is immediate."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which trace condition characterizes membership in ker π?",
+      "choices": ["|χ(g)|=χ(1)", "χ(g)=χ(1)", "χ(g) is a real number"],
+      "answer": 1,
+      "explanation": "The ordinary equality forces all finite-order eigenvalues to be 1. Absolute equality allows a nonidentity scalar such as −I."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For π(r²)=−I₂, what are χ(r²) and kernel membership?",
+      "choices": [
+        "χ=−2; r² is not in the kernel",
+        "χ=2; r² is in the kernel",
+        "χ=−2; r² is in the kernel"
+      ],
+      "answer": 0,
+      "explanation": "The trace of −I₂ is −2; a kernel element must act as +I₂."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A degree-three finite-group representation has π(g)=ωI₃ with ω³=1 and ω≠1. What follows?",
+      "choices": [
+        "|χ(g)|=3, yet g is not in the kernel",
+        "χ(g)=3 and g is in the kernel",
+        "The character bound fails"
+      ],
+      "answer": 0,
+      "explanation": "χ(g)=3ω has absolute value 3, but 3ω≠3. This is a scalar preimage, not a kernel element."
+    },
+    "connection": "Carry the scalar-equality distinction into the external tensor product: reciprocal nonidentity scalars can cancel."
+  },
+  "ureca-external-tensor-products": {
+    "hook": "How can two different groups act on one tensor space?",
+    "objects": "Let G,H be finite, π:G→GL(V), ρ:H→GL(W), and V,W nonzero finite-dimensional complex vector spaces. Product-group elements act on pure tensors.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which group acts in π⊠ρ?",
+      "choices": ["G×H", "G only", "H only"],
+      "answer": 0,
+      "explanation": "The first group acts on V, the second on W, and a pair (g,h) acts on V⊗W."
+    },
+    "examples": [
+      {
+        "title": "A C₃ character tensored with the D₈ plane",
+        "steps": [
+          "Let a generate C₃ with π(a)=ω, and let ρ be the faithful two-dimensional D₈ square representation.",
+          "The product has degree 1·2=2; (a,r) acts by ωρ(r).",
+          "Since tr ρ(r)=0, the product character at (a,r) is ω·0=0."
+        ]
+      },
+      {
+        "title": "The cancellation preview",
+        "steps": [
+          "Let the nontrivial C₂ element t act by −1 and D₈ central r² act by −I₂.",
+          "On a pure tensor, (t,r²) sends v⊗w to (−v)⊗(−w)=v⊗w.",
+          "Both factors act nontrivially on their own spaces, yet this pair acts trivially on V⊗W."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Mixing tensor constructions",
+      "explanation": "The balancing relation (ur)⊗v=u⊗(rv) describes U⊗_R V for a right and left R-module. It is not the formula defining an action of G×H on a complex vector-space tensor product."
+    },
+    "proofSteps": [
+      "Define (g,h)·(v⊗w)=π(g)v⊗ρ(h)w and extend linearly; the tensor universal property makes this well-defined over C.",
+      "For (g₁,h₁)(g₂,h₂)=(g₁g₂,h₁h₂), composing operators gives π(g₁)π(g₂)⊗ρ(h₁)ρ(h₂), so the action law holds.",
+      "Inverse pairs act invertibly, and bases {v_i⊗w_j} show degree (dim V)(dim W).",
+      "The diagonal entries of A⊗B are A_ii B_jj. Summing i,j gives tr(A⊗B)=tr(A)tr(B)."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What is needed to call this an external product of G and H representations?",
+      "choices": [
+        "Both factors are representations over the same field and (g,h) acts by π(g)⊗ρ(h)",
+        "A right R-module and a left R-module alone",
+        "An action of G on both factors"
+      ],
+      "answer": 0,
+      "explanation": "The two representations share C here, and the acting group is G×H."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "If χπ(a)=ω and χρ(r²)=−2, what is χπ⊠ρ(a,r²)?",
+      "choices": ["−2ω", "−2+ω", "2ω"],
+      "answer": 0,
+      "explanation": "Tensor-product traces multiply, giving ω·(−2)."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "What happens to the pair (t,r²) in sign(C₂)⊠square(D₈)?",
+      "choices": [
+        "It acts as I on the tensor space",
+        "It acts as −I",
+        "It is not a pair in C₂×D₈"
+      ],
+      "answer": 0,
+      "explanation": "The two negative scalar factors multiply to +1, so the pair is in the product kernel."
+    },
+    "connection": "Next factor inner products of these product characters to prove which external products are irreducible."
+  },
+  "ureca-direct-product-irreducibles": {
+    "hook": "Could a direct product have an irreducible representation that is missing from the tensor list?",
+    "objects": "Let {π_i} and {ρ_j} be complete lists of finite-dimensional irreducible complex representations of finite G and H, with degrees d_i and e_j.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What does character inner product 1 say for a genuine complex character?",
+      "choices": [
+        "Its representation is irreducible",
+        "Its degree is one",
+        "Its kernel is trivial"
+      ],
+      "answer": 0,
+      "explanation": "An actual complex character has self-inner-product equal to the sum of squared irreducible multiplicities; one forces one irreducible copy."
+    },
+    "examples": [
+      {
+        "title": "All characters of C₂×C₃",
+        "steps": [
+          "Each cyclic group has only degree-one complex irreducibles: two for C₂ and three for C₃.",
+          "Their six external products are pairwise distinct by factored orthogonality.",
+          "Six squared degrees sum to 6=|C₂×C₃|, so the six exhaust the irreducibles."
+        ]
+      },
+      {
+        "title": "Counting C₃×D₈",
+        "steps": [
+          "D₈ has four degree-one irreducibles and one degree-two irreducible: 4·1²+2²=8.",
+          "C₃ has three degree-one irreducibles: 3·1²=3.",
+          "Their external products number 3·5=15; squared degrees sum 3·8=24=|C₃×D₈|."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Counting candidates but skipping orthogonality",
+      "explanation": "Fifteen listed matrices need not be irreducible just because their squared dimensions sum to 24; first prove orthogonality and that each candidate is an actual representation."
+    },
+    "proofSteps": [
+      "Write χ_{i,j}(g,h)=χ_i(g)ψ_j(h). The inner-product sum over G×H separates into one sum over G and one over H.",
+      "Each factor inner product is Kronecker delta, so the product is δ_{ik}δ_{jℓ}. This proves the candidates are irreducible and pairwise inequivalent.",
+      "Compute Σ_{i,j}(d_i e_j)²=(Σ_i d_i²)(Σ_j e_j²)=|G||H|.",
+      "For finite groups over C, all irreducible squared degrees sum to the group order. The candidates use the whole total, so no further irreducible can occur."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which combination proves the candidate list is complete?",
+      "choices": [
+        "Only the character product rule",
+        "Factored orthogonality and a degree-squared total of |G||H|",
+        "Only a count of conjugacy classes of G"
+      ],
+      "answer": 1,
+      "explanation": "Orthogonality identifies distinct irreducibles; the full squared-degree total excludes an extra one."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "How many irreducibles does C₃×D₈ have, and what is their squared-degree total?",
+      "choices": ["15 and 24", "8 and 24", "15 and 15"],
+      "answer": 0,
+      "explanation": "Three C₃ characters pair with five D₈ irreducibles; 3(4·1²+1·2²)=24."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If G has irreducible degrees 1,1,2 and H has degrees 1,1,1, how many product irreducibles and what total squared degree?",
+      "choices": ["9 and 18", "6 and 12", "9 and 9"],
+      "answer": 0,
+      "explanation": "There are 3·3=9 pairs; squared-degree sum is (1+1+4)(1+1+1)=18."
+    },
+    "connection": "Now one can test faithfulness of each irreducible product using the actual scalar-preimage kernel rather than factor kernels alone."
+  },
+  "ureca-product-kernel-scalar-matching": {
+    "hook": "How can two nonidentity operators multiply to the identity on a tensor product?",
+    "objects": "Representations π of G on V and ρ of H on W are finite-dimensional over C, with V,W nonzero. In the examples, D₈ square rotations act on columns.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "If A⊗B is identity, what can A and B be?",
+      "choices": [
+        "Reciprocal scalar operators",
+        "Any operators with equal traces",
+        "Two arbitrary invertible matrices"
+      ],
+      "answer": 0,
+      "explanation": "A⊗B=I on nonzero finite-dimensional tensor factors forces A=λI and B=λ⁻¹I."
+    },
+    "examples": [
+      {
+        "title": "Cancellation in C₂×D₈",
+        "steps": [
+          "The faithful C₂ sign has π(t)=−1 and the faithful D₈ plane has ρ(r²)=−I₂.",
+          "The scalar pair is (−1,−1), whose product is +1.",
+          "Thus (t,r²) is a nonidentity product-kernel element although both individual kernels are trivial."
+        ]
+      },
+      {
+        "title": "No negative partner in C₃×D₈",
+        "steps": [
+          "A faithful C₃ character takes values 1,ω,ω².",
+          "Only e and r² in the D₈ square representation act scalarly, by +1 and −1.",
+          "No nontrivial C₃ scalar is the reciprocal of −1; the product kernel is trivial."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "The product of factor kernels",
+      "explanation": "The two faithful representations above both have trivial kernels. Their Cartesian product contains only (e,e), missing (t,r²) in the external tensor kernel."
+    },
+    "proofSteps": [
+      "Let A⊗B=I and choose nonzero w. For every v, Av⊗Bw=v⊗w; uniqueness of pure-tensor factors forces Av=λ_v v and Bw=λ_v⁻¹w.",
+      "Since B and w are fixed, λ_v is constant for every nonzero v; linearity then gives A=λI and B=λ⁻¹I. Conversely reciprocal scalars tensor to I.",
+      "Apply this operator statement to A=π(g), B=ρ(h) to obtain the exact kernel set.",
+      "If π is faithful and π(g) is scalar, it commutes with every π(x); faithfulness forces g to commute with every x, so g∈Z(G). Repeat for H. This center conclusion needs faithfulness."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When can scalar preimages be restricted to group centers by this argument?",
+      "choices": [
+        "When the factors are faithful",
+        "For every representation regardless of kernel",
+        "Only if both groups are abelian"
+      ],
+      "answer": 0,
+      "explanation": "A scalar image makes the represented commutator trivial. Faithfulness is needed to conclude the group commutator itself is trivial."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which nonidentity pair is in sign(C₂)⊠square(D₈) kernel?",
+      "choices": ["(t,r²)", "(t,e)", "(e,r)"],
+      "answer": 0,
+      "explanation": "Both factors of (t,r²) act as −I, so their tensor is identity."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is faithful(C₃)⊠faithful(D₈ square) faithful?",
+      "choices": [
+        "No nontrivial reciprocal scalar occurs: {1,ω,ω²}∩{1,−1}={1}",
+        "Both factors are faithful, which alone is sufficient",
+        "C₃ has no nonidentity element"
+      ],
+      "answer": 0,
+      "explanation": "The reciprocal scalar sets intersect only at 1. Faithful factors alone do not suffice, as C₂×D₈ shows."
+    },
+    "connection": "Schur turns these scalar preimages into central characters; compare their root-of-unity images to decide whether a product is faithful."
+  },
+  "ureca-faithful-direct-product": {
+    "hook": "Exactly when can faithful irreducibles of two groups combine faithfully?",
+    "objects": "G,H are finite; all representations are nonzero, finite-dimensional and complex. D₈ means the order-eight square group, not a sixteen-element convention.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What does Schur imply for a central element in a complex irreducible?",
+      "choices": [
+        "It acts as a scalar",
+        "It always acts as identity",
+        "It need not commute with the representation"
+      ],
+      "answer": 0,
+      "explanation": "A central element yields an intertwiner; over C, Schur makes it scalar."
+    },
+    "examples": [
+      {
+        "title": "C₂×D₈ fails",
+        "steps": [
+          "The sign of C₂ is faithful and the geometric D₈ plane is faithful irreducible.",
+          "Their center orders are 2 and 2; the common scalar −1 gives (t,r²) in the tensor kernel.",
+          "Every irreducible of C₂×D₈ is a product, so no alternative faithful irreducible escapes this obstruction."
+        ]
+      },
+      {
+        "title": "C₃×D₈ succeeds",
+        "steps": [
+          "Use the faithful C₃ character a↦ω and the faithful D₈ square plane.",
+          "Their centers have orders 3 and 2, hence common scalar image only {1}.",
+          "The external product is irreducible by character inner-product factorisation and faithful by scalar matching."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Cyclic center as a complete test",
+      "explanation": "A faithful irreducible forces an injective center character, hence cyclic center. The converse is not asserted for an arbitrary finite group; the direct-product criterion also assumes each factor has a faithful irreducible."
+    },
+    "proofSteps": [
+      "For faithful irreducible π, Schur gives π(z)=α(z)I for z∈Z(G). Faithfulness makes α injective; similarly β for H.",
+      "Finite subgroups of C× are cyclic. The images are μ_a and μ_b, where a=|Z(G)| and b=|Z(H)|. Their intersection has gcd(a,b) elements.",
+      "Each common scalar gives exactly one central pair with α(z)β(w)=1, so |ker(π⊠ρ)|=gcd(a,b). Thus coprime centers and faithful factors suffice.",
+      "Conversely, a faithful irreducible of G×H is π⊠ρ by the previous lesson. If either factor had a kernel, its product with identity would lie in the product kernel. Both factors are faithful, and the same gcd formula forces coprime center orders."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which package of conditions makes the coprime-center criterion valid?",
+      "choices": [
+        "Finite groups, complex irreducibles, and each factor has a faithful irreducible",
+        "Any groups with cyclic centers",
+        "Finite groups over any field without further hypotheses"
+      ],
+      "answer": 0,
+      "explanation": "The proof uses complex Schur, finite scalar images and faithful irreducible factors. Coprime centers alone do not create missing factor representations."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the kernel size for faithful irreducible factors with center orders 6 and 4?",
+      "choices": ["2", "1", "24"],
+      "answer": 0,
+      "explanation": "The common root-of-unity subgroup has order gcd(6,4)=2."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Which product admits a faithful irreducible with D₈: C₂×D₈ or C₃×D₈?",
+      "choices": [
+        "Only C₃×D₈",
+        "Both, because each factor is faithful",
+        "Neither, because D₈ is nonabelian"
+      ],
+      "answer": 0,
+      "explanation": "D₈ has a faithful irreducible with center order 2. The C₃ center order is coprime to 2; the C₂ order is not."
+    },
+    "connection": "The representation route now joins Maschke, Schur, character inner products, tables, external products and the scalar-compatibility capstone."
   }
 }

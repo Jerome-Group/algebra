@@ -1,4 +1,5 @@
 export const laboratoryKinds = [
+  "ureca-direct-products",
   "function-fibers",
   "operation-checker",
   "cayley-reachability",
