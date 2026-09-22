@@ -26,6 +26,7 @@ import {
 import { LessonReader } from "./LessonReader";
 import { LaboratoryProvider } from "./LaboratoryControls";
 import { useLearningTools } from "./WebMCP";
+import { RepresentationObjectProvider } from "./RepresentationObject";
 const lessons = data as Lesson[];
 const subjects = [
   "Groups & symmetry",
@@ -37,9 +38,11 @@ const subjects = [
 export default function Algebra() {
   return (
     <LaboratoryProvider>
-      <LearningProgressProvider lessons={lessons}>
-        <LearningExperience />
-      </LearningProgressProvider>
+      <RepresentationObjectProvider>
+        <LearningProgressProvider lessons={lessons}>
+          <LearningExperience />
+        </LearningProgressProvider>
+      </RepresentationObjectProvider>
     </LaboratoryProvider>
   );
 }

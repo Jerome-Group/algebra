@@ -30,6 +30,11 @@ export function assessmentRegistry(lessons: Lesson[]): AssessmentRegistry {
     const assessment = capstoneAssessment(unit.id);
     if (assessment) registry[`unit:${unit.id}`] = assessment;
   }
+  const representationRoute = capstoneAssessment(
+    "route-ureca-representation-theory",
+  );
+  if (representationRoute)
+    registry["route:ureca-representation-theory"] = representationRoute;
   return registry;
 }
 export function readProgress(

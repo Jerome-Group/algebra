@@ -31,6 +31,8 @@ for (const [id, heading, result] of cases)
   test(`${id} teaches its exact state at four widths`, async ({
     page,
   }, info) => {
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
     await page.goto(`/#lab:${id}`);
     const experiment = page.locator(".exploration");
     await experiment
@@ -46,6 +48,8 @@ for (const [id, heading, result] of cases)
     await expect(lab.getByRole("heading", { name: heading })).toBeVisible();
     await expect(lab.locator(".live-mathematics")).toContainText(result);
     const firstSelect = lab.getByRole("combobox").first();
+    if (id === "ureca-external-tensor-products")
+      await expect(firstSelect).toHaveValue("3");
     await firstSelect.focus();
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
@@ -88,12 +92,39 @@ for (const [id, heading, result] of cases)
 test("integrated URECA route carries one D8 representation through nine stages", async ({
   page,
 }) => {
-  await page.goto("/#learn");
+  await page.goto("/#route-ureca-representation-theory");
   const route = page.locator(".representation-journey");
   await expect(route.locator("ol > li")).toHaveCount(9);
   await expect(route).toContainText("D₈ square");
   await expect(route).toContainText("⟨χ,χ⟩=(4+4)/8=1");
   await expect(route).toContainText("C₂×D₈ product fails");
+  const selected = route.getByRole("combobox", {
+    name: /Same representation, selected element/,
+  });
+  await selected.selectOption("1");
+  await expect(route).toContainText("Character sample: χ(r) = tr ρ(r) = 0");
+  await page.reload();
+  await expect(selected).toHaveValue("1");
+  await route.getByRole("button", { name: "Open this step" }).nth(5).click();
+  await page.goto("/#lab:ureca-external-tensor-products");
+  await page
+    .getByRole("textbox", { name: "Your mathematical prediction" })
+    .fill("The trace remains zero for this selected square rotation.");
+  await page.getByRole("button", { name: "Test my prediction" }).click();
+  const lab = page.locator(".ureca-lab");
+  await expect(lab.getByRole("combobox", { name: /D₈ element h/ })).toHaveValue(
+    "1",
+  );
+  await page.goto("/#route-ureca-representation-theory");
+  await expect(selected).toHaveValue("1");
+  const capstone = route.getByRole("group", { name: /URECA route capstone/ });
+  await capstone
+    .getByRole("radio", { name: /Product-row inner products factor/ })
+    .check();
+  await route.getByRole("button", { name: "Check reasoning" }).click();
+  await expect(route).toContainText("Route capstone demonstrated");
+  await page.reload();
+  await expect(route).toContainText("Route capstone demonstrated");
   await route.getByRole("button", { name: "Open this step" }).last().click();
   await expect(page.locator(".guided-reader")).toBeVisible();
   await expect(page.locator("#lesson-heading")).toContainText("faithful");

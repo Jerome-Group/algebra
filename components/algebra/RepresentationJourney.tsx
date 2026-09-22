@@ -2,6 +2,20 @@ import type { Lesson } from "@/lib/algebra/engine";
 import { learningMetadata } from "@/lib/algebra/learning";
 import { lessonCompletion } from "@/lib/algebra/progress";
 import { useLearningProgress } from "./LearningProgress";
+import { Checkpoint } from "./Checkpoint";
+import { useRepresentationObject } from "./RepresentationObject";
+import {
+  dihedralCharacter,
+  dihedralElements,
+  dihedralIndex,
+  dihedralMatrix,
+  dihedralScalar,
+  productCharacterLabel,
+  productKernel,
+} from "@/lib/algebra/direct-products";
+import { capstoneAssessment } from "@/lib/algebra/progress";
+
+export const representationRouteId = "route-ureca-representation-theory";
 
 const stages = [
   {
@@ -62,6 +76,21 @@ export function RepresentationJourney({
   open: (id: string) => void;
 }) {
   const { mastered } = useLearningProgress();
+  const { element, setElement } = useRepresentationObject();
+  const matrix = dihedralMatrix(element);
+  const trace = dihedralCharacter(element);
+  const capstone = capstoneAssessment(representationRouteId);
+  const routeSteps = [
+    `Decomposition lab: in the four-vertex permutation space, x=(1,0,−1,0) and y=(0,1,0,−1) span this square plane. The decomposition is 4=1+1+2; on the selected plane, ρ(${dihedralElements[element]}) = [${matrix.map((row) => row.join(", ")).join("; ")}].`,
+    `Schur check: ${dihedralElements[element]} acts ${dihedralScalar(element) === null ? "non-scalarly" : `by ${dihedralScalar(element)}I₂`}; central r² acts by −I₂.`,
+    `Character sample: χ(${dihedralElements[element]}) = tr ρ(${dihedralElements[element]}) = ${trace}.`,
+    `The complete square-plane row (2, −2, 0, 0, 0) has norm (4+4)/8=1; the selected sample is ${trace}.`,
+    `Bound sample: |χ(${dihedralElements[element]})|=${Math.abs(trace)}; ${element === 0 ? "kernel" : dihedralScalar(element) === null ? "strict bound" : "scalar equality outside the kernel"}.`,
+    `Tensor sample with C₃ generator a: tr(π(a)⊗ρ(${dihedralElements[element]})) = ${productCharacterLabel(3, 1, element)}.`,
+    `Each of the 3 cyclic character rows pairs with all 5 D₈ rows; 15 irreducibles and squared degrees sum to 24.`,
+    `For the selected ${dihedralElements[element]}, a reciprocal scalar pair occurs only when its image matches the inverse cyclic scalar.`,
+    `C₂×D₈ kernel size ${productKernel(2).length}; C₃×D₈ kernel size ${productKernel(3).length}.`,
+  ];
   return (
     <section
       className="representation-journey"
@@ -80,8 +109,27 @@ export function RepresentationJourney({
         right factor first. The early pages are worked illustrations; only
         authored guided checkpoints record competencies.
       </p>
+      <p>
+        <a href={`#${representationRouteId}`}>Direct link to this route</a> ·
+        Shared D₈ square object is kept on this device as you open its labs.
+      </p>
+      <label>
+        Same representation, selected element {dihedralElements[element]}
+        <select
+          value={element}
+          onChange={(event) =>
+            setElement(dihedralIndex(Number(event.target.value)))
+          }
+        >
+          {dihedralElements.map((name, index) => (
+            <option key={name} value={index}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </label>
       <ol>
-        {stages.map((stage) => {
+        {stages.map((stage, index) => {
           const lesson = lessons.find((item) => item.id === stage.id);
           if (!lesson) return null;
           const status = learningMetadata(lesson).teachingStatus;
@@ -92,6 +140,9 @@ export function RepresentationJourney({
               <p>{stage.move}</p>
               <p>
                 <strong>Same object:</strong> {stage.anchor}
+              </p>
+              <p className="live-mathematics" aria-live="polite">
+                <strong>Live step:</strong> {routeSteps[index]}
               </p>
               <p>
                 {status.replaceAll("-", " ")}
@@ -106,7 +157,22 @@ export function RepresentationJourney({
         <strong>Cumulative challenge:</strong> Prove every irreducible of Cₙ×D₈
         is external, then decide for n=2 and n=3 whether a faithful irreducible
         exists. Use factored inner products, the squared-degree count and
-        reciprocal scalar kernels. The final guided lesson works the reasoning.
+        reciprocal scalar kernels. Work the proof before submitting the
+        checkpoint.
+      </p>
+      {capstone && (
+        <Checkpoint
+          competencyId="route:ureca-representation-theory"
+          title="URECA route capstone"
+          assessment={capstone}
+        />
+      )}
+      <p role="status">
+        Route capstone{" "}
+        {mastered.has("route:ureca-representation-theory")
+          ? "demonstrated"
+          : "not yet demonstrated"}
+        .
       </p>
     </section>
   );

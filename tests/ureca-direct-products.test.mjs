@@ -8,6 +8,7 @@ import {
   dihedralCharacterClasses,
   dihedralElements,
   dihedralMatrix,
+  dihedralIndex,
   dihedralScalar,
   pairInKernel,
   productCharacter,
@@ -48,6 +49,8 @@ test("the selected D8 matrices form a faithful irreducible complex representatio
   assert.equal(characterNorm, 1);
 });
 test("character equality separates scalar images from the kernel", () => {
+  assert.throws(() => dihedralIndex(8), /Unknown D8 element/);
+  assert.throws(() => dihedralMatrix(8), /Unknown D8 element/);
   for (let index = 0; index < 8; index++) {
     const absolute = Math.abs(dihedralCharacter(index));
     assert.ok(absolute <= 2);

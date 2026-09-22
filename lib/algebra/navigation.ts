@@ -12,6 +12,7 @@ export type Destination =
 export function parseDestination(hash: string): Destination {
   const target = hash.replace(/^#/, "");
   if (!target) return { mode: "home" };
+  if (target === "route-ureca-representation-theory") return { mode: "learn" };
   if (productModes.includes(target as ProductMode))
     return { mode: target as ProductMode };
   if (target.startsWith("lab:"))
