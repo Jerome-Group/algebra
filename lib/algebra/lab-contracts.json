@@ -209,15 +209,15 @@
     "fallback": "All essential values are listed as labelled text and tables below the controls."
   },
   "orthogonal-axis-angle": {
-    "name": "Body-diagonal rotation experiment",
+    "name": "Arbitrary-axis Rodrigues explorer",
     "type": "experiment",
-    "question": "Which body-diagonal rotations preserve the cube?",
-    "prediction": "Before rotating through 60° and 120°, predict which will carry every cube vertex to a cube vertex.",
-    "objects": "The cube vertex set in R³; axis (1,1,1); right-handed rotations acting on column vectors.",
-    "invariant": "Every rotation preserves lengths and the axis; preserving the cube is an additional finite-set condition.",
-    "counterexample": "60° preserves lengths but does not preserve the cube vertex set.",
-    "debrief": "Continuous rotations about the body diagonal (1,1,1). Only multiples of 120° preserve the cube vertex set. This experiment tests the displayed example; the lesson supplies the general argument.",
-    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+    "question": "When does a spatial rotation also permute cube vertices?",
+    "prediction": "For axis (1,1,1), compare 60° and 120° cube preservation; then try a general nonzero axis.",
+    "objects": "Any nonzero real axis vector in R³, a continuous angle from 0° to 360°, and the cube vertex set.",
+    "invariant": "Normalization and Rodrigues’ formula give a determinant-one orthogonal map fixing the axis; cube permutation and word exist only if vertices are preserved.",
+    "counterexample": "60° about (1,1,1), or 60° about (1,2,0), preserves Euclidean geometry but has no cube-group permutation or word.",
+    "debrief": "The matrix and dashed axis follow the selected real vector and angle. Exact matrix matching identifies cube symmetries; the 0° and 180° ambiguity and the general proof are explained in the lesson.",
+    "fallback": "The axis, matrix, cube verdict, and any vertex permutation and word are shown as labelled text."
   },
   "representations-real-complex": {
     "name": "Real and complex C3 representation",
@@ -350,5 +350,27 @@
     "counterexample": "A face-axis quarter-turn fixes no vertex yet fixes q² vertex colorings. Face and vertex cycle polynomials differ.",
     "debrief": "Each matrix induces an exact permutation on the chosen feature set. The class table yields (q⁸+17q⁴+6q²)/24 for vertices; this finite ledger illustrates Burnside.",
     "fallback": "Axis diagrams have text names; the table lists every signed-permutation matrix ID, true conjugacy class, cycle type and fixed-coloring contribution."
+  },
+  "orthogonal-metric-orientation": {
+    "name": "Metric, determinant and fixed-space comparator",
+    "type": "experiment",
+    "question": "What distinguishes a plane reflection from central inversion when determinants agree?",
+    "prediction": "Predict the fixed-space dimensions of a plane reflection and −I₃ before comparing their matrices.",
+    "objects": "Real R² or R³ column vectors, orthogonal matrices, coordinate-plane normals and the cube vertex set.",
+    "invariant": "QᵀQ=I preserves all inner products; det Q is ±1; fixed space and cube preservation are separate invariants.",
+    "counterexample": "A 37° z-axis rotation preserves metric and orientation but not the cube; −I₃ and a plane reflection have equal determinant but different fixed spaces.",
+    "debrief": "The controls synchronize matrix, dimension, determinant, fixed space, dot-product calculation and cube verdict. The displayed examples illustrate the general identity (Qu)·(Qv)=uᵀQᵀQv, proved in the lesson.",
+    "fallback": "The selected matrix, determinant, fixed space, dot products and cube verdict appear as text beside the graphic."
+  },
+  "orthogonal-plane": {
+    "name": "Ordered plane-reflection products",
+    "type": "experiment",
+    "question": "Which line does RθF fix, and how does FRθ differ?",
+    "prediction": "At θ=0 predict the shared fixed line, then at θ=90° predict the two fixed lines of RθF and FRθ.",
+    "objects": "R² column vectors, Rθ counterclockwise, and one fixed F=diag(1,−1); products apply the right factor first.",
+    "invariant": "Both products are reflections with determinant −1; RθF fixes θ/2 and FRθ fixes −θ/2 modulo 180°.",
+    "counterexample": "At θ=90°, the two products fix y=x and y=−x respectively; treating the composition order as interchangeable fails.",
+    "debrief": "The graphic, selected product and exact F convention agree at θ=0 and throughout the slider. Matrix multiplication proves FRθF=R−θ and the half-angle rule; the display tests examples.",
+    "fallback": "Both matrices, selected fixed-line angle and image of e₁ are available as text and rendered equations."
   }
 }

@@ -1953,5 +1953,199 @@
       "explanation": "The two fixed faces and one four-cycle are three independent cycles, so there are 3³ choices."
     },
     "connection": "The same geometric rotations induce different permutation representations on vertices, faces and edges. This distinction recurs when constructing characters from fixed points."
+  },
+  "orthogonal-metric-orientation": {
+    "hook": "A plane reflection and central inversion both reverse orientation in R³. Do they fix the same vectors?",
+    "objects": "Real column vectors with the usual dot product. Q is orthogonal when QᵀQ=I. A plane reflection Hₙ=I−2nnᵀ uses a unit normal n in R³; −I₃ is central inversion, not a plane reflection.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "What is the dot product of u=(1,2) and v=(0,1)?",
+      "choices": ["0", "2", "3"],
+      "answer": 1,
+      "explanation": "Multiply matching coordinates and add: 1·0+2·1=2."
+    },
+    "examples": [
+      {
+        "title": "One matrix preserves every inner product",
+        "steps": [
+          "For F=diag(1,−1), FᵀF=I₂ and det F=−1.",
+          "With u=(1,2), v=(0,1), their images are Fu=(1,−2), Fv=(0,−1). Both dot products equal 2.",
+          "F fixes (x,0) and reverses the perpendicular y-direction."
+        ]
+      },
+      {
+        "title": "Same determinant, different fixed spaces",
+        "steps": [
+          "For unit n=(1,0,0), Hₙ=diag(−1,1,1), det Hₙ=−1, and the fixed plane is x=0.",
+          "Central inversion −I₃ has determinant (−1)³=−1, but −v=v over R forces v=0.",
+          "Both maps preserve inner products and cube vertices, yet one fixes a plane and the other only the origin."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A metric map need not preserve a chosen solid",
+      "explanation": "Rotate R³ by 37° around the z-axis. It is orthogonal with determinant +1, but a cube vertex generally leaves the vertex set. The cube-preservation condition is extra."
+    },
+    "proofSteps": [
+      "From QᵀQ=I, (Qu)ᵀ(Qv)=uᵀQᵀQv=uᵀv for all real column vectors u,v; lengths and angles follow.",
+      "Taking determinants gives (det Q)²=1, hence det Q is +1 or −1.",
+      "For unit n, Hₙn=−n, while Hₙv=v for every v perpendicular to n. An orthonormal basis beginning with n gives determinant −1 and fixed-space dimension two in R³.",
+      "For −I₃, every direction has eigenvalue −1, so determinant −1 and fixed-space dimension zero. Determinant alone does not identify a reflection plane."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which claim follows from QᵀQ=I for a real 3×3 matrix?",
+      "choices": [
+        "It preserves every dot product",
+        "It preserves the chosen cube",
+        "It has determinant +1"
+      ],
+      "answer": 0,
+      "explanation": "The matrix identity gives metric preservation. Determinant may be −1, and an arbitrary orthogonal map need not preserve a particular finite solid."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For H=diag(−1,1,1), what is its fixed space?",
+      "choices": ["x=0, a plane", "the x-axis", "only {0}"],
+      "answer": 0,
+      "explanation": "H(x,y,z)=(−x,y,z), so H v=v exactly when x=0."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A real 3×3 orthogonal Q has determinant −1 and fixes no nonzero vector. Which displayed example has that property?",
+      "choices": ["H=I−2e₁e₁ᵀ", "−I₃", "F=diag(1,−1) on R²"],
+      "answer": 1,
+      "explanation": "−I₃ fixes only zero. The plane reflection fixes a two-dimensional plane; the R² matrix has a different dimension."
+    },
+    "connection": "The next lesson fixes the plane reflection F=diag(1,−1) and compares the order of composition with rotations."
+  },
+  "orthogonal-plane": {
+    "hook": "Reflect, then turn; turn, then reflect. Why do the mirror lines separate?",
+    "objects": "Real plane column vectors. Rθ rotates counterclockwise through θ. F=diag(1,−1) reflects across the x-axis. Products act right factor first, so RθF and FRθ use the same F in opposite orders.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "What does F=diag(1,−1) do to (2,3)?",
+      "choices": ["(−2,3)", "(2,−3)", "(−2,−3)"],
+      "answer": 1,
+      "explanation": "F keeps the first coordinate and negates the second, so its fixed line is the x-axis."
+    },
+    "examples": [
+      {
+        "title": "The zero-angle gate",
+        "steps": [
+          "At θ=0, R₀=I₂. Therefore R₀F=FR₀=F=diag(1,−1).",
+          "Both products fix the x-axis, and both send (1,0) to itself. The drawn line and matrix must agree."
+        ]
+      },
+      {
+        "title": "A quarter-turn separates the lines",
+        "steps": [
+          "At θ=90°, RθF has matrix [[0,1],[1,0]], whose fixed line is y=x, at +45°.",
+          "FRθ has matrix [[0,−1],[−1,0]], whose fixed line is y=−x, at −45°.",
+          "Their matrices and fixed lines differ even though both have determinant −1."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "The angle is not the mirror-line angle",
+      "explanation": "For R90°F, calling the fixed line 90° would point to the y-axis. Direct multiplication fixes (1,1), so the line is 45°, half the rotation angle."
+    },
+    "proofSteps": [
+      "Multiply Rθ by F on the right to obtain [[cosθ,sinθ],[sinθ,−cosθ]]. Multiplying on the left gives FRθ=[[cosθ,−sinθ],[−sinθ,−cosθ]].",
+      "The unit vector at angle θ/2 is fixed by RθF, using cos(θ−θ/2)=cos(θ/2) and sin(θ−θ/2)=sin(θ/2). FRθ fixes the line at −θ/2.",
+      "Direct multiplication gives FRθF=R−θ, so a reflection conjugates a rotation to its inverse.",
+      "Every orthogonal 2×2 matrix has an orthonormal first column (cosθ,sinθ); its second column is either (−sinθ,cosθ) or its negative. Thus the two families Rθ and RθF exhaust O(2)."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "At θ=0, which line is fixed by both RθF and FRθ?",
+      "choices": ["the x-axis", "the y-axis", "no nonzero line"],
+      "answer": 0,
+      "explanation": "Both products equal the fixed F=diag(1,−1); changing the reflection convention here would contradict the matrix."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "At θ=90°, which line does RθF fix?",
+      "choices": ["y=x", "y=−x", "the y-axis"],
+      "answer": 0,
+      "explanation": "The fixed line makes half the angle of θ with the x-axis: +45°."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "When do FRθ and RθF agree modulo a full turn?",
+      "choices": ["Only θ=0", "θ=0 or 180°", "Every θ"],
+      "answer": 1,
+      "explanation": "Equality requires Rθ=R−θ, hence 2θ=0 modulo 360°. The two classes are 0° and 180°."
+    },
+    "connection": "The same matrix discipline carries into R³, where an arbitrary axis and continuous angle describe spatial rotations but only special ones preserve a cube."
+  },
+  "orthogonal-axis-angle": {
+    "hook": "A 60° turn around a cube diagonal is a genuine rotation. Why is it not a cube symmetry?",
+    "objects": "Real column vectors in R³. Enter any nonzero axis a, normalize n=a/‖a‖, and rotate by θ using the right-hand rule. The cube vertex set is {(±1,±1,±1)}; it is extra structure beyond Euclidean space.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "What unit axis has the direction of (1,1,1)?",
+      "choices": ["(1,1,1)", "(1,1,1)/√3", "(1,1,1)/3"],
+      "answer": 1,
+      "explanation": "Its norm is √3, so divide every component by √3."
+    },
+    "examples": [
+      {
+        "title": "A body-diagonal third-turn",
+        "steps": [
+          "Let n=(1,1,1)/√3 and θ=120°. Rodrigues’ formula yields R(x,y,z)=(z,x,y).",
+          "The axis is fixed, every cube vertex is permuted, and three applications give the identity.",
+          "Within turns about this oriented body diagonal, 0°, 120°, 240° and 360° preserve the cube."
+        ]
+      },
+      {
+        "title": "A general axis remains valid",
+        "steps": [
+          "Take a=(1,2,0) and θ=60°. Normalization gives n=(1,2,0)/√5.",
+          "Rodrigues’ formula still gives an orthogonal determinant-one matrix fixing n.",
+          "It does not carry the cube vertex set to itself, so no cube-vertex permutation or cube-group word exists."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Confusing SO(3) with the cube group",
+      "explanation": "At 60° about (1,1,1), the cube moves rigidly in space but its final vertices do not coincide with the original eight. A continuous rotation is not automatically one of the 24 cube rotations."
+    },
+    "proofSteps": [
+      "Decompose v into its component (n·v)n along the unit axis and its component perpendicular to n. Fix the first component.",
+      "On the perpendicular plane, turn through θ: Rv=cosθ v+(1−cosθ)(n·v)n+sinθ(n×v). This is Rodrigues’ formula and preserves inner products and orientation.",
+      "Substituting v=n gives Rn=n. The axial eigenvalue is 1, and the perpendicular plane has trace 2cosθ, so tr R=1+2cosθ.",
+      "At θ=0, every axis gives I. At θ=180°, n and −n give the same map. For the body diagonal, cube preservation requires a 120° multiple, because the three incident edges at an axis endpoint must cycle."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "At θ=180°, what ambiguity remains in an axis-angle description?",
+      "choices": [
+        "n and −n give the same rotation",
+        "every axis gives the rotation",
+        "the rotation ceases to be orthogonal"
+      ],
+      "answer": 0,
+      "explanation": "A half-turn has one axis line, but its two orientations coincide. At θ=0 every axis is possible."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "About (1,1,1), which choice is a cube symmetry?",
+      "choices": ["60°", "120°", "90°"],
+      "answer": 1,
+      "explanation": "A 120° turn cycles the three coordinate directions and permutes all eight cube vertices."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For axis (1,2,0) and θ=60°, what may the lab report?",
+      "choices": [
+        "An SO(3) matrix and no cube permutation",
+        "No valid rotation matrix",
+        "A cube word even when vertices leave the cube"
+      ],
+      "answer": 0,
+      "explanation": "The nonzero axis gives a valid spatial rotation. A cube permutation and word require preservation of the selected vertex set."
+    },
+    "connection": "The finite cube group sits inside SO(3). Its action on vertices and conjugacy classes becomes meaningful only after the cube-preservation test succeeds."
   }
 }

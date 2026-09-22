@@ -27,11 +27,13 @@ export function CubeScene({
   set,
   selected,
   onSelect,
+  axis,
 }: {
   matrix: Mat;
   set: ActionSet;
   selected: number;
-  onSelect: (i: number) => void;
+  onSelect?: (i: number) => void;
+  axis?: number[];
 }) {
   const [yaw, setYaw] = useState(0.62),
     [pitch, setPitch] = useState(-0.38),
@@ -96,8 +98,25 @@ export function CubeScene({
     <div className="cube-scene vector-scene">
       <svg
         viewBox="0 0 560 400"
-        role="img"
-        aria-label="Interactive three-dimensional cube projection. Drag to orbit the camera."
+        role="group"
+        tabIndex={0}
+        aria-label={`Interactive three-dimensional cube projection. Drag or use arrow keys to orbit the camera. Yaw ${yaw.toFixed(2)}, pitch ${pitch.toFixed(2)} radians. Home resets the camera.`}
+        onKeyDown={(event) => {
+          const step = 0.1;
+          if (event.key === "ArrowLeft")
+            setYaw((value) => Math.max(-3.14, value - step));
+          else if (event.key === "ArrowRight")
+            setYaw((value) => Math.min(3.14, value + step));
+          else if (event.key === "ArrowUp")
+            setPitch((value) => Math.min(1.4, value + step));
+          else if (event.key === "ArrowDown")
+            setPitch((value) => Math.max(-1.4, value - step));
+          else if (event.key === "Home") {
+            setYaw(0.62);
+            setPitch(-0.38);
+          } else return;
+          event.preventDefault();
+        }}
         onPointerDown={(e) => {
           drag.current = { x: e.clientX, y: e.clientY, px: yaw, py: pitch };
           e.currentTarget.setPointerCapture(e.pointerId);
@@ -139,6 +158,15 @@ export function CubeScene({
           </radialGradient>
         </defs>
         <rect width="560" height="400" fill="url(#scene-glow)" />
+        {axis &&
+          Math.hypot(...axis) > 0 &&
+          line(
+            axis.map((value) => (-1.8 * value) / Math.hypot(...axis)),
+            axis.map((value) => (1.8 * value) / Math.hypot(...axis)),
+            "#9b5427",
+            true,
+            "rotation-axis",
+          )}
         {Array.from({ length: 15 }, (_, i) => {
           const x = (i - 7) * 0.5;
           return (
@@ -216,12 +244,13 @@ export function CubeScene({
             return (
               <g
                 key={i}
-                role="button"
-                tabIndex={0}
-                aria-label={`Follow ${set} ${i + 1}`}
-                onClick={() => onSelect(i)}
+                role={onSelect ? "button" : undefined}
+                tabIndex={onSelect ? 0 : undefined}
+                aria-label={onSelect ? `Follow ${set} ${i + 1}` : undefined}
+                onClick={() => onSelect?.(i)}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") onSelect(i);
+                  if (onSelect && (e.key === "Enter" || e.key === " "))
+                    onSelect(i);
                 }}
               >
                 <circle
