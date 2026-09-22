@@ -1,0 +1,211 @@
+{
+  "foundations-functions": {
+    "name": "Function and fiber machine",
+    "type": "constructor",
+    "question": "How does changing one function value change a fiber?",
+    "prediction": "Which fiber loses an input and which gains it if f(0) changes from 0 to 1?",
+    "objects": "A function from X={0,1,2,3,4,5} to Y={0,1,2}; input equivalence is congruence modulo m.",
+    "invariant": "Every input has exactly one output; the nonempty fibers partition X.",
+    "counterexample": "Choose incompatible representatives to see why a function need not descend to chosen classes.",
+    "debrief": "The arrow diagram displays a finite function. Existence of a general descended map follows from representative independence, proved in the lesson.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "foundations-fibers": {
+    "name": "Fiber partition constructor",
+    "type": "constructor",
+    "question": "Can two different nonempty fibers overlap?",
+    "prediction": "Change f(4) to 0: predict the sizes of the fibers of 0 and 1.",
+    "objects": "Six inputs, three targets, and equality-of-output fibers. The independently chosen input classes need not be fibers.",
+    "invariant": "Each input occurs in one fiber. Empty fibers correspond to unused targets.",
+    "counterexample": "Assign every input output 0; surjectivity fails but the nonempty fiber still partitions X.",
+    "debrief": "Fibers partition the domain because a function assigns one output. Arbitrary congruence classes descend only when each lies inside a fiber.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "foundations-quotient-rules": {
+    "name": "Quotient rule checker",
+    "type": "checker",
+    "question": "When does [x]↦f(x) survive a different representative?",
+    "prediction": "With f(x)=x mod 3 and parity input classes, compare representatives 0 and 2.",
+    "objects": "Domain quotient X/~, where ~ is congruence modulo m; the target Y is not quotiented.",
+    "invariant": "A well-defined map must be constant on each chosen input class.",
+    "counterexample": "The incompatible-representatives button uses parity classes with different function values.",
+    "debrief": "A finite witness disproves the proposed rule. Absence of a witness certifies only this displayed finite domain; the lesson proves the general criterion.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-axioms": {
+    "name": "Group operation and axiom checker",
+    "type": "checker",
+    "question": "Does this closed operation actually form a group?",
+    "prediction": "Before choosing subtraction modulo 3, predict which axiom will fail.",
+    "objects": "Finite set {0,…,n−1}; operation choices are modular addition, multiplication, subtraction, or unreduced addition.",
+    "invariant": "Each axiom is tested separately; associativity compares every triple.",
+    "counterexample": "Subtraction exhibits an explicit associativity witness; unreduced addition exhibits failed closure.",
+    "debrief": "Exhaustive checks prove the axioms for the displayed finite operation. A family-wide result needs the algebraic proof in the lesson.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-inverse-order": {
+    "name": "Inverse and first-return experiment",
+    "type": "experiment",
+    "question": "How many repeated generator steps return to identity?",
+    "prediction": "In C12 choose 8: will its order be 3, 6 or 12?",
+    "objects": "Additive Cn with a chosen residue generator and its additive inverse.",
+    "invariant": "A word evaluates by addition modulo n; the first positive return is n/gcd(n,g).",
+    "counterexample": "Choose 4 in C12: a nonzero element has order 3 and does not generate all 12 elements.",
+    "debrief": "Cyclic arithmetic is a concrete illustration. The inverse of an arbitrary noncommutative product still reverses factor order, as proved in the lesson.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-generators": {
+    "name": "Cayley reachability and word builder",
+    "type": "constructor",
+    "question": "Which elements can this generator reach?",
+    "prediction": "For g=4 in C12, predict the entire reachable set before applying steps.",
+    "objects": "Additive Cn, generator g, inverse −g, and words starting at 0.",
+    "invariant": "Reachable points form the generated subgroup; a shortest word is recorded for each reachable element.",
+    "counterexample": "A nonzero generator need not generate the whole cyclic group.",
+    "debrief": "The finite search constructs this subgroup. It does not certify a presentation in another group; the lesson supplies the normal-form argument for S3.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-cyclic": {
+    "name": "Cyclic order and subgroup explorer",
+    "type": "experiment",
+    "question": "Which residues generate Cn?",
+    "prediction": "Compare 4 and 5 in C12: which gives all twelve points?",
+    "objects": "Finite cyclic group Z/nZ with addition and a chosen residue g.",
+    "invariant": "The subgroup has n/gcd(n,g) elements and is all of Cn exactly when gcd(n,g)=1.",
+    "counterexample": "Choose g=0 or a non-coprime residue to see a proper subgroup.",
+    "debrief": "The table checks selected n. Divisibility proves the formula for every finite cyclic group, while the integer-exponent proof covers the infinite case.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-cosets": {
+    "name": "Coset partition constructor",
+    "type": "constructor",
+    "question": "Do these representatives name the same left coset?",
+    "prediction": "For H={e,(12)}, predict whether (123)H equals H(123).",
+    "objects": "S3 acts on three letters; permutation products apply the right factor first.",
+    "invariant": "Cosets partition six elements into equal sets; equal size alone does not make sets equal.",
+    "counterexample": "The order-two subgroup has unequal left and right cosets.",
+    "debrief": "The tiling is a complete finite example. Translation h↦ah proves equal coset cardinality for arbitrary groups.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-lagrange": {
+    "name": "Coset counting workbench",
+    "type": "experiment",
+    "question": "Why does the subgroup order divide six?",
+    "prediction": "Predict the number of cosets before choosing the order-two subgroup.",
+    "objects": "G=S3 and one of four explicitly listed subgroups.",
+    "invariant": "6=[G:H]|H| for every selected subgroup.",
+    "counterexample": "The nonnormal subgroup still satisfies the counting formula: normality is unnecessary.",
+    "debrief": "This partition illustrates Lagrange. It does not prove a converse; the lesson gives the A4 counterexample to subgroup existence for every divisor.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-normal": {
+    "name": "Normality and conjugation checker",
+    "type": "checker",
+    "question": "Does conjugation preserve a subgroup as a set?",
+    "prediction": "For A3, predict whether conjugating a 3-cycle by a transposition fixes that element or swaps it.",
+    "objects": "S3, a chosen subgroup H and a conjugating permutation a; ab applies b first.",
+    "invariant": "Normality is equality aHa⁻¹=H for every a, not pointwise fixation.",
+    "counterexample": "The transposition subgroup moves to a different subgroup of the same size.",
+    "debrief": "Left/right coset equality tests the same condition. The displayed checks are finite; the proof identifies all homomorphism kernels as normal.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-quotient": {
+    "name": "Quotient multiplication constructor",
+    "type": "constructor",
+    "question": "Can these cosets multiply independently of representatives?",
+    "prediction": "Compare H={e,(12)} with A3: predict which admits a quotient table.",
+    "objects": "Left cosets of H≤S3; the product is attempted using representatives.",
+    "invariant": "A quotient table appears only for normal H.",
+    "counterexample": "Changing a representative in the order-two subgroup gives different output cosets.",
+    "debrief": "The witness rejects a nonnormal quotient. The expression anbm=ab(b⁻¹nb)m explains why normality makes the general law well-defined.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-actions": {
+    "name": "Group action workbench",
+    "type": "experiment",
+    "question": "How does changing the action change the orbit?",
+    "prediction": "Compare the identity point under regular and conjugation actions.",
+    "objects": "S3 acting on letters, on itself by left multiplication, or on itself by conjugation.",
+    "invariant": "The identity acts trivially and (gh)·x=g·(h·x) for each action.",
+    "counterexample": "Identity is fixed under conjugation but not under every regular-action element.",
+    "debrief": "These are three different actions of one group. Orbit–stabilizer follows from a coset bijection, not merely from seeing equal products of counts.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "mh2220-orbit-stabilizer": {
+    "name": "Orbit–stabilizer workbench",
+    "type": "checker",
+    "question": "How do orbit size and point stabilizer fit together?",
+    "prediction": "For a transposition under conjugation, predict orbit size and stabilizer order.",
+    "objects": "Left actions of S3 on three letters or its six elements.",
+    "invariant": "|orbit(x)|·|stabilizer(x)|=6, with concrete sets shown.",
+    "counterexample": "A fixed point has orbit size one and stabilizer all of G, even in a faithful action.",
+    "debrief": "The bijection gGx↦g·x explains the formula. The table enumerates this finite example and displays all hypotheses.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "actions-faithful-transitive": {
+    "name": "Faithfulness and transitivity checker",
+    "type": "checker",
+    "question": "Can an action be faithful without being transitive?",
+    "prediction": "For conjugation on S3, predict the kernel and the orbit of identity.",
+    "objects": "S3 acting on its elements by conjugation, or the natural and regular actions for comparison.",
+    "invariant": "Faithfulness uses the kernel on the whole set; transitivity compares one orbit with the whole set.",
+    "counterexample": "Conjugation on S3 is faithful but not transitive.",
+    "debrief": "The kernel is the center for conjugation; S3 has trivial center. One fixed point does not mean every group element acts trivially everywhere.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "actions-stabilizer-kernel-core": {
+    "name": "Stabilizer, kernel and core inspector",
+    "type": "checker",
+    "question": "When is the core of a point stabilizer the whole action kernel?",
+    "prediction": "Choose identity under conjugation; compare its stabilizer core with the action kernel.",
+    "objects": "S3 with a left action; the core is the intersection of conjugates of the selected point stabilizer.",
+    "invariant": "The core is the kernel of the action restricted to that orbit.",
+    "counterexample": "At the identity conjugation orbit, the core is S3 while the whole-action kernel is {e}.",
+    "debrief": "For transitive actions the selected orbit is the whole set, so core and kernel agree. The distinction matters for nontransitive actions.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "actions-regular-conjugation": {
+    "name": "Regular versus conjugation workbench",
+    "type": "experiment",
+    "question": "Does the same group element move identity in both actions?",
+    "prediction": "Apply (12) to e under regular multiplication and under conjugation.",
+    "objects": "S3 acting on itself by g·x=gx or g·x=gxg⁻¹.",
+    "invariant": "Regular action is free and transitive; conjugation orbits are conjugacy classes.",
+    "counterexample": "Identity is a singleton conjugacy class but its regular orbit is all of S3.",
+    "debrief": "Changing the action changes the mathematical question. The table exposes the formulas rather than reusing a rotation model with renamed controls.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "m3220-modules": {
+    "name": "Module scalar-action and presentation board",
+    "type": "experiment",
+    "question": "Can an integer nonunit act invertibly on this module?",
+    "prediction": "Predict multiplication by 2 on Z/3Z, then change the module to Z/6Z.",
+    "objects": "Left Z-module Z/nZ=⟨e | ne=0⟩, with integer scalar r.",
+    "invariant": "Scalar action respects addition; invertibility on one module differs from being a unit of the ring.",
+    "counterexample": "2 is a nonunit of Z but acts invertibly on Z/3Z.",
+    "debrief": "Units act invertibly on every unital module. The displayed exception shows why the converse fails for a particular module; on the regular module Z, 2 is not surjective.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "modules-generators": {
+    "name": "Cyclic module presentation and exactness board",
+    "type": "constructor",
+    "question": "What does one generator with one relation describe?",
+    "prediction": "For relation 6e=0, predict the kernel of the quotient map from Z.",
+    "objects": "Left Z-module M=Z/nZ with generator [1], relation ne=0 and quotient q:Z→M.",
+    "invariant": "The presentation has kernel nZ and exact sequence 0→Z→Z→M→0 with first map multiplication by n.",
+    "counterexample": "M is cyclic but not free over Z: its generator is annihilated by a nonzero integer.",
+    "debrief": "Exactness at the middle Z is im(×n)=ker q=nZ. The finite table cannot alone prove injectivity on infinite Z; divisibility does.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  },
+  "m3220-annihilator": {
+    "name": "Annihilator and scalar-kernel board",
+    "type": "checker",
+    "question": "How is the module annihilator different from one scalar map’s kernel?",
+    "prediction": "In Z/6Z compare ann(M)=6Z with the kernel of multiplication by 2.",
+    "objects": "Left Z-module Z/nZ; ann(M) is an ideal of Z while ker(r·) is a subset of M.",
+    "invariant": "The annihilator lives in the ring; the scalar map kernel lives in the module.",
+    "counterexample": "For n=6,r=2, ann(M)=6Z but ker(r·)={0,3}.",
+    "debrief": "The two objects have different types. The table computes a module endomorphism; integer multiples identify the ring ideal annihilating the entire module.",
+    "fallback": "All essential values are listed as labelled text and tables below the controls."
+  }
+}

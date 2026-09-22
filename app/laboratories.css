@@ -1178,3 +1178,153 @@
 .algebra-app .camera-settings > button {
   padding: 8px 0;
 }
+
+.foundation-lab {
+  min-width: 0;
+}
+.foundation-lab > svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 320px;
+}
+.foundation-lab > label {
+  display: block;
+  margin: 16px 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.foundation-lab select {
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  border: 1px solid #8792a0;
+  border-radius: 4px;
+  background: #fff;
+  color: #233047;
+  padding: 7px;
+  font-size: 15px;
+}
+.foundation-lab table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+.foundation-lab caption {
+  text-align: left;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.foundation-lab th,
+.foundation-lab td {
+  border: 1px solid #a7b0bc;
+  padding: 8px;
+  text-align: center;
+}
+.foundation-lab th {
+  background: #e7ebf1;
+  color: #263957;
+}
+.foundation-lab button,
+.experiment-context > button {
+  min-height: 44px;
+  border: 1px solid #455d91;
+  border-radius: 4px;
+  margin: 6px 8px 6px 0;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #293f77;
+  background: #f7f8fc;
+  white-space: normal;
+}
+.experiment-context > button:disabled {
+  color: #666;
+  border-color: #aaa;
+}
+.prediction-prompt {
+  display: block;
+  margin: 18px 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+.prediction-prompt textarea {
+  display: block;
+  resize: vertical;
+  width: 100%;
+  min-height: 88px;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #7c899b;
+  border-radius: 5px;
+  background: #fff;
+  font-weight: 400;
+}
+.live-mathematics {
+  border-left: 3px solid #566c91;
+  padding-left: 14px;
+  margin: 20px 0;
+}
+.coset-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.coset-tiles section {
+  border: 2px solid #6b7790;
+  padding: 10px;
+  border-radius: 6px;
+}
+.coset-tiles h3 {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+.coset-tiles span {
+  display: inline-block;
+  padding: 5px 7px;
+  margin: 4px;
+  background: #e3e9f5;
+  border: 1px solid #8695b4;
+  border-radius: 4px;
+}
+.action-state,
+.presentation-board {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.action-state span,
+.presentation-board span {
+  border: 1px solid #8b97ad;
+  padding: 8px;
+  background: #edf0f7;
+}
+.laboratory-debrief {
+  border-top: 1px solid #aab1b8;
+  padding-top: 18px;
+  margin-top: 20px;
+}
+.laboratory-debrief h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 15px 0 6px;
+}
+.math-table-scroll {
+  overflow-x: auto;
+}
+.exploration-heading {
+  flex-wrap: wrap;
+}
+.exploration-description {
+  min-width: 0;
+  white-space: normal;
+}
+
+.exploration.compact .visual-panel > .foundation-lab,
+.exploration.compact .visual-panel > .experiment-context {
+  max-height: none;
+  overflow: visible;
+}

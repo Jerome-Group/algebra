@@ -1,4 +1,10 @@
 export const laboratoryKinds = [
+  "function-fibers",
+  "operation-checker",
+  "cayley-reachability",
+  "coset-constructor",
+  "orbit-workbench",
+  "module-presentation",
   "axis-angle",
   "plane-representation",
   "actions",
