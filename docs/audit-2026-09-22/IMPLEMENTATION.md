@@ -67,3 +67,9 @@ after rebuilding; do not reuse a server loaded against replaced build artifacts.
 
 Required review agents could not start: configured-model access was unavailable. Standards
 and specification reviews therefore ran locally; this is not independent review evidence.
+
+Browser regression coverage now runs in CI via `npm run test:browser`. The eight checks
+cover all five modes, viewport reflow, axe, unit history, reference filtering and the
+measured-header drawer offset. Local results are in `outputs/playwright/`; CI uploads
+`browser-evidence`. The drawer/header test caught the 768px fixed-height conflict before
+merge. All eight checks pass after correcting both header sizing and drawer positioning.

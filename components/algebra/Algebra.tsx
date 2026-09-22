@@ -52,6 +52,21 @@ function LearningExperience() {
     );
   const lesson = lessons.find((l) => l.id === id) || lessons[0];
   const current = useRef(lesson);
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const element = header.current;
+    if (!element) return;
+    const updateHeight = () =>
+      element.parentElement?.style.setProperty(
+        "--algebra-header-height",
+        `${element.getBoundingClientRect().height}px`,
+      );
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(element);
+    element.parentElement?.setAttribute("data-ready", "true");
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     current.current = lesson;
   }, [lesson]);
@@ -181,7 +196,7 @@ function LearningExperience() {
       >
         Skip to concept
       </a>
-      <header className="algebra-header">
+      <header ref={header} className="algebra-header">
         <a
           className="wordmark"
           href="#home"

@@ -13,7 +13,8 @@
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .sites-runtime",
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate",
-    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"worker/**/*.ts\" \"hooks/**/*.ts\" \"examples/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\""
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"worker/**/*.ts\" \"hooks/**/*.ts\" \"examples/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\"",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
@@ -44,7 +45,9 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@cloudflare/vite-plugin": "1.54.6",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/katex": "^0.16.8",
     "@types/node": "22.19.19",
