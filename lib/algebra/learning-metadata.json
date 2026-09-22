@@ -6,7 +6,8 @@
     "prerequisites": ["foundations-functions"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-inverse-order": {
     "teachingStatus": "worked-illustration",
@@ -15,7 +16,8 @@
     "prerequisites": ["mh2220-axioms"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-subgroups": {
     "teachingStatus": "worked-illustration",
@@ -24,7 +26,8 @@
     "prerequisites": ["mh2220-inverse-order"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-generators": {
     "teachingStatus": "worked-illustration",
@@ -33,7 +36,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-congruence": {
     "teachingStatus": "worked-illustration",
@@ -42,7 +46,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-units": {
     "teachingStatus": "worked-illustration",
@@ -51,7 +56,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-permutations": {
     "teachingStatus": "worked-illustration",
@@ -60,7 +66,8 @@
     "prerequisites": ["mh2220-subgroups"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-cyclic": {
     "teachingStatus": "worked-illustration",
@@ -69,7 +76,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-permutation-matrices": {
     "teachingStatus": "worked-illustration",
@@ -78,7 +86,8 @@
     "prerequisites": ["mh2220-permutations", "foundations-linear-algebra"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-alternating": {
     "teachingStatus": "worked-illustration",
@@ -87,7 +96,8 @@
     "prerequisites": ["mh2220-permutation-matrices"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-lagrange": {
     "teachingStatus": "worked-illustration",
@@ -96,7 +106,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-euler-fermat": {
     "teachingStatus": "worked-illustration",
@@ -105,7 +116,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-cayley-embedding": {
     "teachingStatus": "worked-illustration",
@@ -114,7 +126,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-real-circle": {
     "teachingStatus": "reference-only",
@@ -123,7 +136,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-dihedral": {
     "teachingStatus": "worked-illustration",
@@ -132,7 +146,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "cube-signed-permutations": {
     "teachingStatus": "reference-only",
@@ -141,7 +156,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "cube-generator-words": {
     "teachingStatus": "reference-only",
@@ -150,7 +166,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "cube-diagonals-s4": {
     "teachingStatus": "reference-only",
@@ -159,7 +176,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "orthogonal-metric-orientation": {
     "teachingStatus": "worked-illustration",
@@ -168,7 +186,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "orthogonal-plane": {
     "teachingStatus": "worked-illustration",
@@ -177,7 +196,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "orthogonal-axis-angle": {
     "teachingStatus": "worked-illustration",
@@ -186,7 +206,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "mh2220-small-groups": {
     "teachingStatus": "worked-illustration",
@@ -195,7 +216,8 @@
     "prerequisites": ["groups-cauchy", "mh2220-normal"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-commutator": {
     "teachingStatus": "worked-illustration",
@@ -204,7 +226,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-finite-abelian": {
     "teachingStatus": "worked-illustration",
@@ -213,7 +236,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-quaternion": {
     "teachingStatus": "reference-only",
@@ -222,7 +246,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-centralizer-normalizer": {
     "teachingStatus": "worked-illustration",
@@ -231,7 +256,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-actions": {
     "teachingStatus": "worked-illustration",
@@ -240,7 +266,8 @@
     "prerequisites": ["mh2220-cosets"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-orbit-stabilizer": {
     "teachingStatus": "worked-illustration",
@@ -249,7 +276,8 @@
     "prerequisites": ["mh2220-actions", "mh2220-cosets"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-conjugacy": {
     "teachingStatus": "worked-illustration",
@@ -258,7 +286,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-burnside": {
     "teachingStatus": "worked-illustration",
@@ -267,7 +296,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-necklaces": {
     "teachingStatus": "worked-illustration",
@@ -276,7 +306,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-cycle-index": {
     "teachingStatus": "worked-illustration",
@@ -285,7 +316,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-solid-colorings": {
     "teachingStatus": "worked-illustration",
@@ -294,7 +326,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "cube-four-actions": {
     "teachingStatus": "worked-illustration",
@@ -303,7 +336,8 @@
     "prerequisites": ["mh2220-first-isomorphism"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "cube-orbit-stabilizer": {
     "teachingStatus": "reference-only",
@@ -312,7 +346,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "technique"
   },
   "actions-faithful-transitive": {
     "teachingStatus": "worked-illustration",
@@ -321,7 +356,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "actions-stabilizer-kernel-core": {
     "teachingStatus": "worked-illustration",
@@ -330,7 +366,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "actions-regular-conjugation": {
     "teachingStatus": "worked-illustration",
@@ -339,7 +376,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "actions-cube-burnside": {
     "teachingStatus": "reference-only",
@@ -348,7 +386,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "technique"
   },
   "actions-cycle-lenses": {
     "teachingStatus": "reference-only",
@@ -357,7 +396,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "actions-primitive": {
     "teachingStatus": "worked-illustration",
@@ -366,7 +406,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "actions-frobenius": {
     "teachingStatus": "proof-roadmap",
@@ -375,7 +416,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "mh2220-sylow-existence": {
     "teachingStatus": "worked-illustration",
@@ -384,7 +426,8 @@
     "prerequisites": ["groups-cauchy", "mh2220-orbit-stabilizer"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-sylow-conjugacy": {
     "teachingStatus": "worked-illustration",
@@ -393,7 +436,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-sylow-counts": {
     "teachingStatus": "worked-illustration",
@@ -402,7 +446,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-simple-composition": {
     "teachingStatus": "reference-only",
@@ -411,7 +456,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-p-groups": {
     "teachingStatus": "worked-illustration",
@@ -420,7 +466,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "group-complements": {
     "teachingStatus": "proof-roadmap",
@@ -429,7 +476,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "group-solvable": {
     "teachingStatus": "proof-roadmap",
@@ -438,7 +486,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "group-nilpotent": {
     "teachingStatus": "proof-roadmap",
@@ -447,7 +496,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "characters-burnside": {
     "teachingStatus": "worked-illustration",
@@ -456,7 +506,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "theorem"
   },
   "mh2220-finite-matrices": {
     "teachingStatus": "worked-illustration",
@@ -465,7 +516,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "odyssey-linear-groups": {
     "teachingStatus": "worked-illustration",
@@ -474,7 +526,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1"],
+    "conceptKind": "object"
   },
   "odyssey-flags": {
     "teachingStatus": "reference-only",
@@ -483,7 +536,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1"],
+    "conceptKind": "object"
   },
   "linear-bruhat": {
     "teachingStatus": "proof-roadmap",
@@ -492,7 +546,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "technique"
   },
   "linear-projective": {
     "teachingStatus": "proof-roadmap",
@@ -501,7 +556,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "mh2220-homomorphism": {
     "teachingStatus": "worked-illustration",
@@ -510,7 +566,8 @@
     "prerequisites": ["mh2220-permutations"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-isomorphism": {
     "teachingStatus": "worked-illustration",
@@ -519,7 +576,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-first-isomorphism": {
     "teachingStatus": "worked-illustration",
@@ -528,7 +586,8 @@
     "prerequisites": ["mh2220-quotient"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-second-isomorphism": {
     "teachingStatus": "worked-illustration",
@@ -537,7 +596,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-third-isomorphism": {
     "teachingStatus": "worked-illustration",
@@ -546,7 +606,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "mh2220-correspondence": {
     "teachingStatus": "worked-illustration",
@@ -555,7 +616,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   },
   "m3220-ring-hom": {
     "teachingStatus": "worked-illustration",
@@ -564,7 +626,8 @@
     "prerequisites": ["m3220-domains"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-first-ring-isomorphism": {
     "teachingStatus": "worked-illustration",
@@ -573,7 +636,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "m3220-ring-correspondence": {
     "teachingStatus": "worked-illustration",
@@ -582,7 +646,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "linear-quotient": {
     "teachingStatus": "worked-illustration",
@@ -591,7 +656,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "MH3220"],
+    "conceptKind": "theorem"
   },
   "mh2220-cosets": {
     "teachingStatus": "worked-illustration",
@@ -600,7 +666,8 @@
     "prerequisites": ["mh2220-homomorphism"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-normal": {
     "teachingStatus": "worked-illustration",
@@ -609,7 +676,8 @@
     "prerequisites": ["mh2220-orbit-stabilizer"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-quotient": {
     "teachingStatus": "worked-illustration",
@@ -618,7 +686,8 @@
     "prerequisites": ["mh2220-normal"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-automorphism": {
     "teachingStatus": "reference-only",
@@ -627,7 +696,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "technique"
   },
   "mh2220-semidirect": {
     "teachingStatus": "worked-illustration",
@@ -636,7 +706,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-coset-action": {
     "teachingStatus": "worked-illustration",
@@ -645,7 +716,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "mh2220-double-cosets": {
     "teachingStatus": "reference-only",
@@ -654,7 +726,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "m3220-quotient-ring": {
     "teachingStatus": "worked-illustration",
@@ -663,7 +736,8 @@
     "prerequisites": ["m3220-ideals"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "mh2220-direct-product": {
     "teachingStatus": "worked-illustration",
@@ -672,7 +746,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "m3220-crt": {
     "teachingStatus": "worked-illustration",
@@ -681,7 +756,8 @@
     "prerequisites": ["m3220-quotient-ring"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "cube-direct-product": {
     "teachingStatus": "reference-only",
@@ -690,7 +766,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "group-extensions": {
     "teachingStatus": "proof-roadmap",
@@ -699,7 +776,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "m3220-rings": {
     "teachingStatus": "worked-illustration",
@@ -708,7 +786,8 @@
     "prerequisites": ["mh2220-congruence"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-subrings": {
     "teachingStatus": "worked-illustration",
@@ -717,7 +796,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-units": {
     "teachingStatus": "worked-illustration",
@@ -726,7 +806,8 @@
     "prerequisites": ["m3220-rings"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-domains": {
     "teachingStatus": "worked-illustration",
@@ -735,7 +816,8 @@
     "prerequisites": ["m3220-units"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-ideals": {
     "teachingStatus": "worked-illustration",
@@ -744,7 +826,8 @@
     "prerequisites": ["m3220-ring-hom"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-ideal-arithmetic": {
     "teachingStatus": "worked-illustration",
@@ -753,7 +836,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-maximal": {
     "teachingStatus": "worked-illustration",
@@ -762,7 +846,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-prime": {
     "teachingStatus": "worked-illustration",
@@ -771,7 +856,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-jacobson": {
     "teachingStatus": "worked-illustration",
@@ -780,7 +866,8 @@
     "prerequisites": ["m3220-noetherian"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-quadratic-integers": {
     "teachingStatus": "reference-only",
@@ -789,7 +876,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-norm-trace": {
     "teachingStatus": "reference-only",
@@ -798,7 +886,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-fractions": {
     "teachingStatus": "worked-illustration",
@@ -807,7 +896,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-euclidean": {
     "teachingStatus": "worked-illustration",
@@ -816,7 +906,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-gaussian-division": {
     "teachingStatus": "worked-illustration",
@@ -825,7 +916,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-pid": {
     "teachingStatus": "worked-illustration",
@@ -834,7 +926,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-prime-irreducible": {
     "teachingStatus": "worked-illustration",
@@ -843,7 +936,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-ufd": {
     "teachingStatus": "worked-illustration",
@@ -852,7 +946,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-localization": {
     "teachingStatus": "worked-illustration",
@@ -861,7 +956,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-prime-localization": {
     "teachingStatus": "worked-illustration",
@@ -870,7 +966,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-localization-variants": {
     "teachingStatus": "reference-only",
@@ -879,7 +976,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-noetherian": {
     "teachingStatus": "worked-illustration",
@@ -888,7 +986,8 @@
     "prerequisites": ["m3220-module-chains"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-hilbert": {
     "teachingStatus": "reference-only",
@@ -897,7 +996,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "m3220-krull": {
     "teachingStatus": "reference-only",
@@ -906,7 +1006,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-nilradical": {
     "teachingStatus": "worked-illustration",
@@ -915,7 +1016,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-artinian": {
     "teachingStatus": "reference-only",
@@ -924,7 +1026,8 @@
     "prerequisites": ["m3220-nakayama"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-artinian-decomposition": {
     "teachingStatus": "reference-only",
@@ -933,7 +1036,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-dvr": {
     "teachingStatus": "reference-only",
@@ -942,7 +1046,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-characteristic": {
     "teachingStatus": "worked-illustration",
@@ -951,7 +1056,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-algebraic": {
     "teachingStatus": "worked-illustration",
@@ -960,7 +1066,8 @@
     "prerequisites": ["m3220-irreducibility-tests"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-finite-field-four": {
     "teachingStatus": "worked-illustration",
@@ -969,7 +1076,8 @@
     "prerequisites": ["m3220-algebraic"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "quadratic-quotient": {
     "teachingStatus": "worked-illustration",
@@ -978,7 +1086,8 @@
     "prerequisites": ["m3220-finite-field-four"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "MH3220"],
+    "conceptKind": "object"
   },
   "m3220-polynomial": {
     "teachingStatus": "worked-illustration",
@@ -987,7 +1096,8 @@
     "prerequisites": ["m3220-crt"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-polynomial-division": {
     "teachingStatus": "worked-illustration",
@@ -996,7 +1106,8 @@
     "prerequisites": ["m3220-polynomial"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-roots": {
     "teachingStatus": "worked-illustration",
@@ -1005,7 +1116,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-irreducibility-tests": {
     "teachingStatus": "worked-illustration",
@@ -1014,7 +1126,8 @@
     "prerequisites": ["m3220-polynomial-division"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-gauss": {
     "teachingStatus": "worked-illustration",
@@ -1023,7 +1136,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "m3220-eisenstein": {
     "teachingStatus": "worked-illustration",
@@ -1032,7 +1146,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "m3220-polynomial-ufd": {
     "teachingStatus": "worked-illustration",
@@ -1041,7 +1156,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "m3220-nakayama": {
     "teachingStatus": "worked-illustration",
@@ -1050,7 +1166,8 @@
     "prerequisites": ["modules-generators", "m3220-jacobson"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "theorem"
   },
   "m3220-modules": {
     "teachingStatus": "worked-illustration",
@@ -1059,7 +1176,8 @@
     "prerequisites": ["m3220-rings"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-submodules": {
     "teachingStatus": "worked-illustration",
@@ -1068,7 +1186,8 @@
     "prerequisites": ["m3220-modules"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-annihilator": {
     "teachingStatus": "worked-illustration",
@@ -1077,7 +1196,8 @@
     "prerequisites": ["m3220-submodules"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "m3220-module-chains": {
     "teachingStatus": "reference-only",
@@ -1086,7 +1206,8 @@
     "prerequisites": ["tensor-products"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "object"
   },
   "ureca-linear-action": {
     "teachingStatus": "worked-illustration",
@@ -1098,7 +1219,8 @@
     ],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "ureca-permutation-module": {
     "teachingStatus": "worked-illustration",
@@ -1107,7 +1229,8 @@
     "prerequisites": ["ureca-linear-action"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "ureca-invariant-subspaces": {
     "teachingStatus": "worked-illustration",
@@ -1116,7 +1239,8 @@
     "prerequisites": ["ureca-permutation-module"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "ureca-intertwiners": {
     "teachingStatus": "worked-illustration",
@@ -1125,7 +1249,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "ureca-cyclic-eigenvalues": {
     "teachingStatus": "worked-illustration",
@@ -1134,7 +1259,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "odyssey-schur": {
     "teachingStatus": "worked-illustration",
@@ -1143,7 +1269,8 @@
     "prerequisites": ["representations-maschke"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1", "URECA Y2"],
+    "conceptKind": "theorem"
   },
   "odyssey-character-table": {
     "teachingStatus": "worked-illustration",
@@ -1152,7 +1279,8 @@
     "prerequisites": ["odyssey-schur", "representations-maschke"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1", "URECA Y2"],
+    "conceptKind": "object"
   },
   "odyssey-induction": {
     "teachingStatus": "reference-only",
@@ -1161,7 +1289,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1"],
+    "conceptKind": "object"
   },
   "odyssey-frobenius": {
     "teachingStatus": "reference-only",
@@ -1170,7 +1299,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Odyssey Y1"]
+    "sourceCollections": ["Odyssey Y1"],
+    "conceptKind": "theorem"
   },
   "representations-square-modes": {
     "teachingStatus": "worked-illustration",
@@ -1179,7 +1309,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "representations-real-complex": {
     "teachingStatus": "worked-illustration",
@@ -1188,7 +1319,8 @@
     "prerequisites": ["ureca-invariant-subspaces"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus"],
+    "conceptKind": "object"
   },
   "representations-maschke": {
     "teachingStatus": "worked-illustration",
@@ -1197,7 +1329,8 @@
     "prerequisites": ["ureca-invariant-subspaces", "ureca-intertwiners"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus", "Odyssey Y1", "URECA Y2"],
+    "conceptKind": "theorem"
   },
   "representations-characters": {
     "teachingStatus": "worked-illustration",
@@ -1206,7 +1339,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["Beyond the syllabus"]
+    "sourceCollections": ["Beyond the syllabus", "Odyssey Y1", "URECA Y2"],
+    "conceptKind": "object"
   },
   "characters-integrality": {
     "teachingStatus": "proof-roadmap",
@@ -1215,7 +1349,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "ureca-group-algebra": {
     "teachingStatus": "worked-illustration",
@@ -1224,7 +1359,8 @@
     "prerequisites": ["m3220-annihilator"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "tensor-products": {
     "teachingStatus": "worked-illustration",
@@ -1233,7 +1369,8 @@
     "prerequisites": ["ureca-group-algebra"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "algebra-wedderburn": {
     "teachingStatus": "proof-roadmap",
@@ -1242,7 +1379,8 @@
     "prerequisites": ["m3220-artinian"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "technique"
   },
   "algebra-radical": {
     "teachingStatus": "proof-roadmap",
@@ -1251,7 +1389,8 @@
     "prerequisites": ["algebra-wedderburn"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["Algebra"]
+    "sourceCollections": ["Algebra", "Odyssey Y1"],
+    "conceptKind": "object"
   },
   "foundations-functions": {
     "teachingStatus": "worked-illustration",
@@ -1260,7 +1399,8 @@
     "prerequisites": [],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "object"
   },
   "foundations-linear-algebra": {
     "teachingStatus": "worked-illustration",
@@ -1269,7 +1409,8 @@
     "prerequisites": ["foundations-functions"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["URECA Y2"]
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "object"
   },
   "modules-generators": {
     "teachingStatus": "worked-illustration",
@@ -1278,7 +1419,8 @@
     "prerequisites": ["m3220-submodules"],
     "competencies": [],
     "visualisationType": "reference-diagram",
-    "sourceCollections": ["MH3220"]
+    "sourceCollections": ["MH3220"],
+    "conceptKind": "technique"
   },
   "groups-cauchy": {
     "teachingStatus": "worked-illustration",
@@ -1287,6 +1429,7 @@
     "prerequisites": ["mh2220-orbit-stabilizer"],
     "competencies": [],
     "visualisationType": "illustration",
-    "sourceCollections": ["MH2220"]
+    "sourceCollections": ["MH2220"],
+    "conceptKind": "theorem"
   }
 }

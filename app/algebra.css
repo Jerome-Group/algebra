@@ -876,3 +876,235 @@
 #experiment {
   scroll-margin-top: 80px;
 }
+
+/* Mode pages give the question room before catalogue navigation. */
+.product-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: auto;
+}
+.product-navigation a {
+  padding: 12px;
+  color: #303c52;
+  font-size: 14px;
+  border-radius: 6px;
+}
+.product-navigation a[aria-current="page"] {
+  background: #e7eaf6;
+  color: #263ba0;
+  font-weight: 700;
+}
+.mode-layout {
+  display: block !important;
+}
+.mode-layout .concept-main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  padding: 52px 32px 80px;
+}
+.mode-layout h1 {
+  font-size: clamp(32px, 4.5vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 16px 0 24px;
+  font-family: Georgia, serif;
+}
+.mode-layout h2 {
+  font-size: 24px;
+  line-height: 1.3;
+  margin: 12px 0;
+}
+.mode-layout p {
+  line-height: 1.7;
+  margin: 12px 0;
+}
+.mode-layout button {
+  min-height: 44px;
+  text-align: left;
+  color: #283d94;
+}
+.home-intro {
+  max-width: 720px;
+  font-size: 20px;
+}
+.home-paths {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+.home-paths button {
+  border-top: 2px solid #31487f;
+  padding: 22px 0;
+}
+.home-paths strong {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.home-paths span {
+  display: block;
+  line-height: 1.6;
+  color: #414c61;
+}
+.featured-challenge {
+  background: #eee9dd;
+  border-left: 4px solid #85704c;
+  padding: 28px;
+  margin: 24px 0;
+}
+.featured-challenge h2 {
+  max-width: 740px;
+  font-family: Georgia, serif;
+  font-size: 32px;
+}
+.resume-learning {
+  border-top: 1px solid #ccc;
+  margin-top: 32px;
+  padding-top: 20px;
+}
+.atlas-search {
+  display: block;
+  font-weight: 600;
+  margin: 28px 0 18px;
+}
+.atlas-search input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  margin-top: 8px;
+  background: white;
+}
+.atlas-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.atlas-filters label {
+  font-size: 14px;
+  color: #394459;
+}
+.atlas-filters select {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  background: white;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 8px;
+  margin-top: 6px;
+}
+.filter-checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.atlas-results {
+  list-style: none;
+  padding: 0;
+}
+.atlas-results li {
+  padding: 22px 0;
+  border-top: 1px solid #d5d8dc;
+}
+.atlas-results a {
+  font-size: 23px;
+  color: #263b91;
+  font-weight: 600;
+}
+.atlas-results p {
+  margin: 7px 0;
+}
+.gallery-grid,
+.course-catalog .route-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.gallery-grid article,
+.course-catalog .route-options section {
+  padding: 22px;
+  border: 1px solid #c9ced7;
+  border-radius: 8px;
+  min-width: 0;
+  background: #fcfbf8;
+}
+.course-catalog {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+.course-catalog ol {
+  padding-left: 24px;
+}
+.course-catalog li {
+  margin: 9px 0;
+}
+.course-catalog details {
+  border-top: 1px solid #d5d8dc;
+  padding: 12px 0;
+}
+.source-collection {
+  margin: 24px 0;
+  padding: 22px;
+  border-top: 2px solid #c5ccd5;
+}
+.source-collection summary,
+.source-links summary {
+  cursor: pointer;
+  padding: 12px 0;
+}
+.source-collection ul {
+  padding-left: 24px;
+}
+.source-collection li {
+  margin: 9px 0;
+}
+.missing-topics {
+  border-left: 3px solid #8b4c29;
+  padding-left: 20px;
+}
+@media (max-width: 768px) {
+  .algebra-header {
+    flex-wrap: wrap;
+  }
+  .product-navigation {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+  .product-navigation a {
+    padding: 10px 8px;
+  }
+  .mode-layout .concept-main {
+    padding: 28px 18px 60px;
+  }
+  .home-paths,
+  .gallery-grid,
+  .course-catalog .route-options {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .atlas-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .featured-challenge {
+    padding: 20px;
+  }
+}
+@media (max-width: 390px) {
+  .atlas-filters {
+    grid-template-columns: 1fr;
+  }
+  .mode-layout h1 {
+    font-size: 34px;
+  }
+  .source-collection {
+    padding: 18px 0;
+  }
+}

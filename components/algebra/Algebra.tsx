@@ -1,13 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BookOpen,
-  ChevronDown,
-  Search,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Search, X } from "lucide-react";
 import data from "@/lib/algebra/lessons.json";
 import { type Lesson } from "@/lib/algebra/engine";
 import { Prose } from "./Math";
@@ -17,7 +10,15 @@ import { ConceptLink } from "./ConceptLink";
 import { LearningRoutes } from "./LearningRoutes";
 import type { ReadingView } from "@/lib/algebra/reading-views";
 import { learningRoutes } from "@/lib/algebra/routes";
-import { SourceLibrary } from "./Sources";
+import { SourceCoverage } from "./SourceCoverage";
+import { LearningHome } from "./LearningHome";
+import { ReferenceAtlas } from "./ReferenceAtlas";
+import { LaboratoryGallery } from "./LaboratoryGallery";
+import {
+  parseDestination,
+  productModes,
+  type ProductMode,
+} from "@/lib/algebra/navigation";
 import { LessonReader } from "./LessonReader";
 import { LaboratoryProvider } from "./LaboratoryControls";
 import { useLearningTools } from "./WebMCP";
@@ -43,12 +44,29 @@ function LearningExperience() {
     [tab, setTab] = useState<ReadingView>("guided"),
     [route, setRoute] = useState("actions"),
     [menu, setMenu] = useState(false),
-    [view, setView] = useState("lesson"),
+    [view, setView] = useState("home"),
+    [laboratory, setLaboratory] = useState(false),
+    [resumeId, setResumeId] = useState<string | null>(null),
     [expanded, setExpanded] = useState<string | undefined>(
       "Groups & generators",
     );
   const lesson = lessons.find((l) => l.id === id) || lessons[0];
   const current = useRef(lesson);
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const element = header.current;
+    if (!element) return;
+    const updateHeight = () =>
+      element.parentElement?.style.setProperty(
+        "--algebra-header-height",
+        `${element.getBoundingClientRect().height}px`,
+      );
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(element);
+    element.parentElement?.setAttribute("data-ready", "true");
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     current.current = lesson;
   }, [lesson]);
@@ -58,6 +76,13 @@ function LearningExperience() {
     );
     if (!next) throw Error("Unknown concept");
     setId(next.id);
+    setLaboratory(false);
+    setResumeId(next.id);
+    try {
+      localStorage.setItem("algebra-resume-v1", next.id);
+    } catch {
+      /* Storage may be disabled. */
+    }
     setSubject(next.subject || subjects[0]);
     setExpanded(next.family);
     setTab("guided");
@@ -71,18 +96,61 @@ function LearningExperience() {
     });
   }, []);
   const open = useCallback(
-    (target: string) => {
-      if (location.hash !== `#${target}`)
-        history.pushState({}, "", `#${target}`);
+    (target: string, unit?: string) => {
+      if (
+        location.hash !== `#${target}` ||
+        history.state?.unit !== (unit ?? null)
+      )
+        history.pushState({ unit: unit ?? null }, "", `#${target}`);
+      setRoute(unit ?? "");
       selectLesson(target);
+    },
+    [selectLesson],
+  );
+  const navigate = useCallback((mode: ProductMode) => {
+    if (location.hash !== `#${mode}`) history.pushState({}, "", `#${mode}`);
+    setView(mode);
+    setMenu(false);
+    requestAnimationFrame(() => {
+      document.getElementById("mode-heading")?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0 });
+    });
+  }, []);
+  const openLab = useCallback(
+    (target: string) => {
+      history.pushState({}, "", `#lab:${target}`);
+      selectLesson(target);
+      setLaboratory(true);
     },
     [selectLesson],
   );
   useEffect(() => {
     const sync = () => {
-      const target = location.hash.slice(1) || "foundations-functions";
-      if (lessons.some((l) => l.id === target || l.aliases?.includes(target)))
-        selectLesson(target);
+      const destination = parseDestination(location.hash);
+      if (destination.mode !== "lesson") {
+        setView(destination.mode);
+        setMenu(false);
+        try {
+          setResumeId(localStorage.getItem("algebra-resume-v1"));
+        } catch {
+          /* Optional device progress. */
+        }
+        requestAnimationFrame(() =>
+          document.getElementById("mode-heading")?.focus(),
+        );
+      } else if (
+        lessons.some(
+          (l) => l.id === destination.id || l.aliases?.includes(destination.id),
+        )
+      ) {
+        setRoute(
+          typeof history.state?.unit === "string" ? history.state.unit : "",
+        );
+        selectLesson(destination.id);
+        setLaboratory(destination.laboratory);
+      } else {
+        setView("reference");
+      }
     };
     sync();
     window.addEventListener("hashchange", sync);
@@ -118,13 +186,20 @@ function LearningExperience() {
     index = siblings.indexOf(lesson);
   return (
     <div className="algebra-app">
-      <a className="skip-link" href="#concept">
+      <a
+        className="skip-link"
+        href="#concept"
+        onClick={(event) => {
+          event.preventDefault();
+          document.getElementById("concept")?.focus();
+        }}
+      >
         Skip to concept
       </a>
-      <header className="algebra-header">
+      <header ref={header} className="algebra-header">
         <a
           className="wordmark"
-          href="#foundations-functions"
+          href="#home"
           onClick={(event) => {
             if (
               !event.metaKey &&
@@ -133,7 +208,7 @@ function LearningExperience() {
               !event.altKey
             ) {
               event.preventDefault();
-              open("foundations-functions");
+              navigate("home");
             }
           }}
         >
@@ -147,11 +222,36 @@ function LearningExperience() {
           />
           <span>Abstract Algebra</span>
         </a>
-        <div className="header-context">
-          {lesson.subject}
-          <span>/</span>
-          {lesson.family}
-        </div>
+        <nav className="product-navigation" aria-label="Learning modes">
+          {productModes
+            .filter((mode) => mode !== "home")
+            .map((mode) => (
+              <a
+                key={mode}
+                href={`#${mode}`}
+                aria-current={view === mode ? "page" : undefined}
+                onClick={(event) => {
+                  if (
+                    !event.metaKey &&
+                    !event.ctrlKey &&
+                    !event.shiftKey &&
+                    !event.altKey
+                  ) {
+                    event.preventDefault();
+                    navigate(mode);
+                  }
+                }}
+              >
+                {mode === "learn"
+                  ? "Learn"
+                  : mode === "explore"
+                    ? "Explore"
+                    : mode === "reference"
+                      ? "Reference"
+                      : "Sources"}
+              </a>
+            ))}
+        </nav>
         <button
           id="library-toggle"
           className="library-toggle"
@@ -160,38 +260,57 @@ function LearningExperience() {
         >
           {menu ? <X size={18} /> : <Search size={18} />} Concepts
         </button>
-        <button
-          className="header-sources"
-          onClick={() => setView(view === "sources" ? "lesson" : "sources")}
-        >
-          <BookOpen size={17} /> Sources
-        </button>
       </header>
-      <div className="algebra-layout">
-        <ConceptLibrary
-          {...{
-            lessons,
-            subjects,
-            id,
-            subject,
-            query,
-            menu,
-            expanded,
-            open,
-            setSubject,
-            setQuery,
-            setExpanded,
-          }}
-        />
-        <main id="concept" className="concept-main" inert={menu || undefined}>
-          {view === "sources" ? (
-            <SourceLibrary lessons={lessons} />
+      <div
+        className={`algebra-layout ${view !== "lesson" ? "mode-layout" : ""}`}
+      >
+        {(view === "lesson" || menu) && (
+          <ConceptLibrary
+            {...{
+              lessons,
+              subjects,
+              id,
+              subject,
+              query,
+              menu,
+              expanded,
+              open,
+              setSubject,
+              setQuery,
+              setExpanded,
+            }}
+          />
+        )}
+        <main
+          id="concept"
+          tabIndex={-1}
+          className="concept-main"
+          inert={menu || undefined}
+        >
+          {view === "home" ? (
+            <LearningHome
+              resume={lessons.find((entry) => entry.id === resumeId)}
+              open={open}
+              navigate={navigate}
+            />
+          ) : view === "learn" ? (
+            <LearningRoutes {...{ lessons, route, setRoute, open }} />
+          ) : view === "explore" ? (
+            <LaboratoryGallery lessons={lessons} open={openLab} />
+          ) : view === "reference" ? (
+            <ReferenceAtlas
+              lessons={lessons}
+              mastered={new Set()}
+              open={open}
+            />
+          ) : view === "sources" ? (
+            <SourceCoverage lessons={lessons} open={open} />
           ) : (
             <>
-              <LearningRoutes {...{ lessons, route, setRoute, open }} />
               {activeRoute && (
                 <p className="route-progress">
-                  {activeRoute.title} · Lesson {index + 1} of {siblings.length}
+                  {activeRoute.title} · Reading position {index + 1} of{" "}
+                  {siblings.length}
                 </p>
               )}
               <div className="concept-heading">
@@ -212,14 +331,18 @@ function LearningExperience() {
                   <button
                     aria-label={`Previous: ${siblings[index - 1]?.navTitle || "start of route"}`}
                     disabled={index <= 0}
-                    onClick={() => open(siblings[index - 1].id)}
+                    onClick={() =>
+                      open(siblings[index - 1].id, activeRoute?.id)
+                    }
                   >
                     <ArrowLeft size={18} />
                   </button>
                   <button
                     aria-label={`Next: ${siblings[index + 1]?.navTitle || "end of route"}`}
                     disabled={index === siblings.length - 1}
-                    onClick={() => open(siblings[index + 1].id)}
+                    onClick={() =>
+                      open(siblings[index + 1].id, activeRoute?.id)
+                    }
                   >
                     <ArrowRight size={18} />
                   </button>
@@ -246,23 +369,27 @@ function LearningExperience() {
                     ))}
                 </div>
               </details>
-              <div className="study-workspace">
-                <div className="study-reading">
-                  <LessonReader {...{ lesson, lessons, tab, setTab, open }} />
+              {laboratory ? (
+                <Exploration key={lesson.id} lesson={lesson} />
+              ) : (
+                <div className="study-workspace">
+                  <div className="study-reading">
+                    <LessonReader {...{ lesson, lessons, tab, setTab, open }} />
+                  </div>
+                  <aside className="right-lab">
+                    <Exploration key={lesson.id} lesson={lesson} />
+                  </aside>
                 </div>
-                <aside className="right-lab">
-                  <Exploration key={lesson.id} lesson={lesson} />
-                </aside>
-              </div>
+              )}
               <footer className="concept-end">
                 <span>Abstract Algebra</span>
                 <button
                   disabled={index === siblings.length - 1}
-                  onClick={() => open(siblings[index + 1].id)}
+                  onClick={() => open(siblings[index + 1].id, activeRoute?.id)}
                 >
                   {siblings[index + 1]
                     ? `Next: ${siblings[index + 1].navTitle}`
-                    : "Route complete · revisit any concept"}{" "}
+                    : "End of reading list · return to unit capstone"}{" "}
                   <ArrowRight size={16} />
                 </button>
               </footer>

@@ -478,6 +478,20 @@
   }
 }
 /* Long headings must reflow when readers enlarge text. */
+@media (max-width: 800px) {
+  .algebra-app .algebra-header {
+    height: auto;
+    min-height: 58px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+@media (max-width: 1150px) {
+  .algebra-app .concept-library {
+    top: var(--algebra-header-height, 100px);
+    height: calc(100dvh - var(--algebra-header-height, 100px));
+  }
+}
 .concept-heading > div {
   min-width: 0;
 }

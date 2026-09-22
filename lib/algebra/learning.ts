@@ -29,6 +29,7 @@ export type LearningMetadata = {
   competencies: Competency[];
   visualisationType: (typeof visualisationTypes)[number];
   sourceCollections: string[];
+  conceptKind: "object" | "theorem" | "technique";
 };
 const catalogue = metadata as Record<string, LearningMetadata>;
 
@@ -43,6 +44,7 @@ export function learningMetadata(lesson: Lesson): LearningMetadata {
       visualisationType:
         lesson.machine === "diagram" ? "reference-diagram" : "illustration",
       sourceCollections: [lesson.track],
+      conceptKind: "object",
     }
   );
 }
