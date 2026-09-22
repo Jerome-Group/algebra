@@ -24,7 +24,11 @@ const schema = (properties: object = {}, required: string[] = []) => ({
   required,
   additionalProperties: false,
 });
-import { visibleElements, describe } from "./InterfaceControls";
+import {
+  visibleElements,
+  describe,
+  activateControl,
+} from "./InterfaceControls";
 export function useLearningTools({
   lessons,
   current,
@@ -186,21 +190,7 @@ export function useLearningTools({
           const el = visibleElements()[index];
           if (!el || describe(el, index).label !== label)
             throw Error("Stale control; refresh algebra_controls");
-          if (el instanceof HTMLAnchorElement) return { url: el.href };
-          if (el instanceof HTMLInputElement) {
-            if (typeof value !== "string" || value.length > 200)
-              throw Error("Supply an expression under 201 characters");
-            Object.getOwnPropertyDescriptor(
-              HTMLInputElement.prototype,
-              "value",
-            )!.set!.call(el, value);
-            el.dispatchEvent(new Event("input", { bubbles: true }));
-            el.dispatchEvent(new Event("change", { bubbles: true }));
-          } else if (el instanceof HTMLButtonElement && el.disabled)
-            throw Error("Control disabled");
-          else if (el instanceof HTMLElement) el.click();
-          else el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-          return { activated: label };
+          return { activated: label, ...activateControl(el, value) };
         },
       },
     ];
