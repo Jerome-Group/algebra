@@ -306,5 +306,49 @@
     "counterexample": "The C₂×D₈ nonidentity pair (t,r²) acts trivially, while C₃×D₈ has no such pair.",
     "debrief": "The centre-character argument proves the finite complex criterion. The compatibility table checks these examples and cannot replace the proof that all product irreducibles have this form.",
     "fallback": "The named group elements, matrices, character values and kernel sets are also listed as text and tables next to the controls."
+  },
+  "mh2220-burnside": {
+    "name": "Fixed-point table and orbit counter",
+    "type": "experiment",
+    "question": "How can a motion with no fixed bead still fix colorings?",
+    "prediction": "Predict the fixed-coloring count for a nonidentity triangle rotation before opening the table.",
+    "objects": "A finite cyclic or dihedral group acts on labeled bead positions and hence on assignments of labeled colors.",
+    "invariant": "A coloring is fixed exactly when each permutation cycle is monochromatic; Burnside averages these counts over the whole group.",
+    "counterexample": "A nonidentity triangle rotation fixes no bead, but fixes both constant binary colorings. Naive division of 8 by 3 fails.",
+    "debrief": "Double-count (g,c) with g·c=c: each coloring orbit contributes |G| such pairs. This proves the formula; the table checks a finite instance.",
+    "fallback": "The table lists every symmetry or grouped class, its cycle type, fixed positions, fixed colorings and contribution."
+  },
+  "mh2220-necklaces": {
+    "name": "Necklace and bracelet fixed-point table",
+    "type": "experiment",
+    "question": "Why do six binary beads give 14 necklaces but 13 bracelets?",
+    "prediction": "Predict which of the two even-polygon reflection types fixes more colorings.",
+    "objects": "Cₙ acts by rotations; Dₙ adds n reflections. Colors may repeat or be unused.",
+    "invariant": "A reflection through two opposite beads has two fixed positions and n/2+1 cycles; a gap-axis reflection has n/2 cycles.",
+    "counterexample": "Treating all even-n reflections alike gives the wrong bracelet count; dividing 2⁶ by 12 assumes a free action.",
+    "debrief": "Count cycles for every rotation and each reflection type, then average all 2n fixed-coloring counts. The table is the finite calculation.",
+    "fallback": "Every group element or grouped cycle class and its fixed-coloring contribution is listed in the accessible table."
+  },
+  "mh2220-cycle-index": {
+    "name": "Cycle-index inventory workbench",
+    "type": "experiment",
+    "question": "How do cycle lengths count orbits with a specified color inventory?",
+    "prediction": "Predict the number of triangle-rotation orbits with exactly two red and one blue bead.",
+    "objects": "The action on n bead positions has cycle-index monomials ∏aⱼ^cⱼ. For two colors, replace aⱼ by xʲ+yʲ.",
+    "invariant": "The coefficient of xʳyⁿ⁻ʳ after averaging counts orbits with exactly r beads of the first color.",
+    "counterexample": "Substituting aⱼ=2 counts all binary colorings but cannot recover a prescribed inventory.",
+    "debrief": "Each cycle must use one color, contributing xʲ or yʲ. Multiplying cycle factors and averaging is Burnside coefficient by coefficient.",
+    "fallback": "The table shows the cycle lengths, fixed-coloring total and live inventory coefficient in text."
+  },
+  "mh2220-solid-colorings": {
+    "name": "Cube-axis fixed-coloring ledger",
+    "type": "experiment",
+    "question": "Which cube rotation axes create which cycles on vertices, faces and edges?",
+    "prediction": "Predict whether a face-axis quarter-turn fixes any vertices and how many binary vertex colorings it fixes.",
+    "objects": "The 24 orientation-preserving signed-permutation matrices act separately on cube vertices, face centers and edge midpoints.",
+    "invariant": "The five proper cube rotation conjugacy classes have 1, 6, 3, 8 and 6 elements. A class of size m whose action has c cycles contributes m·q^c fixed colorings before averaging.",
+    "counterexample": "A face-axis quarter-turn fixes no vertex yet fixes q² vertex colorings. Face and vertex cycle polynomials differ.",
+    "debrief": "Each matrix induces an exact permutation on the chosen feature set. The class table yields (q⁸+17q⁴+6q²)/24 for vertices; this finite ledger illustrates Burnside.",
+    "fallback": "Axis diagrams have text names; the table lists every signed-permutation matrix ID, true conjugacy class, cycle type and fixed-coloring contribution."
   }
 }

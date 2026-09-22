@@ -1685,5 +1685,273 @@
       "explanation": "D₈ has a faithful irreducible with center order 2. The C₃ center order is coprime to 2; the C₂ order is not."
     },
     "connection": "The representation route now joins Maschke, Schur, character inner products, tables, external products and the scalar-compatibility capstone."
+  },
+  "mh2220-burnside": {
+    "hook": "A rotation moves every vertex. Can it still fix a coloring?",
+    "objects": "Let a finite group G act on a finite position set P on the left. It acts on colorings c:P→{red,blue} by (g·c)(p)=c(g⁻¹p). A fixed coloring is constant on every cycle of the position permutation; unused colors are allowed.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For a left action, what is the stabilizer of a coloring c?",
+      "choices": [
+        "The elements g with g·c=c",
+        "All elements that fix one chosen vertex",
+        "The set of colors used by c"
+      ],
+      "answer": 0,
+      "explanation": "A stabilizer consists of all group elements fixing the whole coloring, not just one position."
+    },
+    "examples": [
+      {
+        "title": "Three rotations of a binary triangle",
+        "steps": [
+          "The identity has three one-cycles on positions and fixes 2³=8 colorings.",
+          "Each nonidentity rotation has one three-cycle, fixes no position, but fixes two constant colorings.",
+          "The fixed-coloring table is 8,2,2. Average (8+2+2)/3=4 orbits."
+        ]
+      },
+      {
+        "title": "Four beads under quarter-turns",
+        "steps": [
+          "The rotations by 0,1,2,3 steps have 4,1,2,1 cycles.",
+          "With two labeled colors their fixed-coloring counts are 16,2,4,2.",
+          "The average is 24/4=6 necklaces, not 16/4=4."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Divide total colorings by group order",
+      "explanation": "On the triangle, 8/3 is not even an integer. The two constant colorings each have the whole rotation group as stabilizer, so the coloring action is not free."
+    },
+    "proofSteps": [
+      "Count pairs (g,c) for which g·c=c, first by g. This yields the sum of all fixed-coloring counts.",
+      "Count the same pairs by c. A coloring contributes the size of its stabilizer.",
+      "Within one coloring orbit, orbit–stabilizer gives orbit size times stabilizer size equal to |G|. Every orbit therefore contributes |G| pairs. Divide by |G|."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "A triangle rotation fixes no vertex. How many binary colorings can it fix?",
+      "choices": [
+        "Zero, because it fixes no vertex",
+        "Two, because its single three-cycle can have either color",
+        "Six, because it moves three vertices"
+      ],
+      "answer": 1,
+      "explanation": "Fixed positions and fixed colorings differ: every cycle must be monochromatic, yielding two constant colorings."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "The four rotations of a square fix 16,2,4,2 binary colorings. How many orbits?",
+      "choices": ["4", "6", "24"],
+      "answer": 1,
+      "explanation": "The fixed counts sum to 24; averaging over four rotations gives six orbits."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A permutation of five positions has cycles of lengths 2 and 3. With three labeled colors, how many colorings does it fix?",
+      "choices": ["0", "3²=9", "3⁵=243"],
+      "answer": 1,
+      "explanation": "One color may be chosen independently for each of the two cycles, giving 3²=9 fixed colorings."
+    },
+    "connection": "Necklace and cube counts use the same double count. Their only new work is to derive the position-cycle table accurately."
+  },
+  "mh2220-necklaces": {
+    "hook": "Why do six binary beads give fourteen necklaces but thirteen bracelets?",
+    "objects": "Number n bead positions 0,…,n−1 around a polygon. Cₙ has n rotations; Dₙ has those rotations plus n reflections. A necklace identifies rotations only; a bracelet also identifies reflections. Colors are labeled, may repeat, and need not all appear.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which group acts when mirror images are also identified?",
+      "choices": [
+        "Cₙ of order n",
+        "Dₙ of order 2n",
+        "The group of all color permutations"
+      ],
+      "answer": 1,
+      "explanation": "Adding reflections to the rotations forms the dihedral action of order 2n."
+    },
+    "examples": [
+      {
+        "title": "Six beads: all rotation rows",
+        "steps": [
+          "Rotation by k steps has gcd(6,k) cycles. For k=0,1,2,3,4,5 the cycle counts are 6,1,2,3,2,1.",
+          "Binary fixed-coloring counts are 64,2,4,8,4,2, summing to 84.",
+          "Averaging the six rotations gives 14 necklaces. The two monochromatic colorings remain included."
+        ]
+      },
+      {
+        "title": "Six beads: two reflection types",
+        "steps": [
+          "Three axes pass through opposite beads. Each fixes two beads and swaps the other four in two pairs: 1²2², four cycles, 2⁴=16 fixed colorings.",
+          "Three axes pass through opposite gaps. Each swaps three pairs: 2³, three cycles, 2³=8 fixed colorings.",
+          "The dihedral total is 84+3·16+3·8=156. Divide by 12 to get 13 bracelets."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Treat all even reflections alike",
+      "explanation": "For n even, an axis through opposite beads fixes two positions; an axis through gaps fixes none. At n=6 they have four versus three cycles, hence 16 versus 8 fixed binary colorings."
+    },
+    "proofSteps": [
+      "For a rotation by k steps, the orbit of position 0 has length n/gcd(n,k), and there are gcd(n,k) disjoint cycles. It fixes q^gcd(n,k) colorings.",
+      "For odd n, each reflection fixes one bead and pairs the rest, giving (n+1)/2 cycles.",
+      "For even n, n/2 axes through opposite beads have n/2+1 cycles, while n/2 gap axes have n/2 cycles. Average all rotation and reflection fixed-coloring counts over 2n elements."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which statement about even-n reflections is correct?",
+      "choices": [
+        "Every reflection fixes one bead",
+        "Half have two fixed beads and half have none",
+        "All have n/2+1 cycles"
+      ],
+      "answer": 1,
+      "explanation": "Even polygons have two geometric axis types; their fixed-position and cycle counts differ."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For six binary beads, how many bracelets result from the rotation sum 84 and reflection contributions 3·16+3·8?",
+      "choices": ["13", "14", "26"],
+      "answer": 0,
+      "explanation": "The full sum is 156 and |D₆|=12, so the result is 13."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For five beads and q colors, how many colorings does one reflection fix?",
+      "choices": ["q²", "q³", "q⁵"],
+      "answer": 1,
+      "explanation": "An odd-polygon reflection fixes one bead and pairs the other four, giving three cycles and q³ fixed colorings."
+    },
+    "connection": "The cycle index records all these cycle lengths. It can count a chosen color inventory, not just any assignment from q colors."
+  },
+  "mh2220-cycle-index": {
+    "hook": "How can a fixed-point table count colorings with exactly two red beads?",
+    "objects": "For a finite group G on n positions, cⱼ(g) is the number of j-cycles of g, including fixed points as one-cycles. Define Z_G(a₁,…,aₙ)=|G|⁻¹Σ_g∏ⱼ aⱼ^cⱼ(g). For two labeled colors red and blue, substitute aⱼ=xʲ+yʲ.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What does a one-cycle in a position permutation represent?",
+      "choices": [
+        "A fixed position",
+        "An unused color",
+        "A separate group orbit"
+      ],
+      "answer": 0,
+      "explanation": "A position fixed by one group element is a cycle of length one and contributes its own color choice."
+    },
+    "examples": [
+      {
+        "title": "Triangle rotations: derive the polynomial",
+        "steps": [
+          "The identity has cycle type 1³; the two nonidentity rotations each have type 3¹. Thus Z=(a₁³+2a₃)/3.",
+          "Replace a₁ with x+y and a₃ with x³+y³. Expand to ((x+y)³+2(x³+y³))/3.",
+          "The result is x³+x²y+xy²+y³. The coefficient of x²y is 1: one orbit has exactly two red beads."
+        ]
+      },
+      {
+        "title": "Four-bead rotation inventory",
+        "steps": [
+          "The four cycle types are 1⁴, 4, 2², 4, so Z=(a₁⁴+a₂²+2a₄)/4.",
+          "For exactly two red beads, the identity contributes coefficient 6 in (x+y)⁴, the half-turn contributes coefficient 2 in (x²+y²)², and quarter-turns contribute 0.",
+          "The coefficient after averaging is (6+2)/4=2 rotational orbits with two red beads."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Substitute aⱼ=2 and expect an inventory",
+      "explanation": "Setting every aⱼ=2 gives the total number of binary coloring orbits, with all inventories mixed. It cannot say how many have exactly two red beads; the variables x and y must retain color multiplicities."
+    },
+    "proofSteps": [
+      "A coloring fixed by g is constant on each cycle. A j-cycle contributes either xʲ or yʲ to the weighted color inventory.",
+      "Multiply (xʲ+yʲ) over every cycle of g. The coefficient of xʳyⁿ⁻ʳ counts fixed colorings with exactly r red beads.",
+      "Average these weighted fixed-coloring polynomials over G. Burnside applies to each invariant inventory separately, so the coefficient in Z after substitution counts its orbits."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which substitution retains exactly how many red beads are used?",
+      "choices": ["aⱼ=2 for every j", "aⱼ=xʲ+yʲ", "aⱼ=x+y for every j"],
+      "answer": 1,
+      "explanation": "A j-cycle uses j beads of one color, so its monomial must carry exponent j."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "The triangle cycle index is (a₁³+2a₃)/3. What is the coefficient of x²y after aⱼ=xʲ+yʲ?",
+      "choices": ["0", "1", "3"],
+      "answer": 1,
+      "explanation": "Only (x+y)³ supplies x²y, with coefficient 3; divide by 3 to obtain one orbit."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For four beads under rotations, identity contributes 6 and half-turn contributes 2 fixed colorings with exactly two red beads; quarter-turns contribute 0. How many orbits have that inventory?",
+      "choices": ["2", "4", "8"],
+      "answer": 0,
+      "explanation": "Burnside coefficient by coefficient gives (6+2+0+0)/4=2."
+    },
+    "connection": "The same cycle-index calculation works for cube vertices, faces and edges once their different cycle tables are derived from the rotations."
+  },
+  "mh2220-solid-colorings": {
+    "hook": "Why do the same twenty-four cube rotations give different coloring polynomials on vertices, faces and edges?",
+    "objects": "Use the 24 orientation-preserving signed-permutation matrices of the centered cube. They act separately on eight vertices, six face centers and twelve edge midpoints. Color these labeled positions with q labeled colors; repetition and unused colors are allowed. Only proper rotations are averaged.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What must be known before applying Burnside to cube-vertex colorings?",
+      "choices": [
+        "Only the order 24",
+        "The cycle decomposition on vertices of every rotation class",
+        "The number of visible faces in a drawing"
+      ],
+      "answer": 1,
+      "explanation": "The fixed-coloring count is q to the number of vertex cycles, so the action on the chosen feature set matters."
+    },
+    "examples": [
+      {
+        "title": "All five cube rotation-axis families on vertices",
+        "steps": [
+          "Identity: one element, cycle type 1⁸, contribution q⁸. Six face-axis quarter-turns each have type 4², contributing 6q².",
+          "Three face-axis half-turns and six edge-axis half-turns each have type 2⁴, contributing 9q⁴. Eight vertex-axis third-turns each have type 1²3², contributing 8q⁴.",
+          "The family counts 1+6+3+8+6=24. Sum q⁸+17q⁴+6q²; divide by 24. At q=2 the answer is 23."
+        ]
+      },
+      {
+        "title": "One motion, two feature sets",
+        "steps": [
+          "A 90° face-axis rotation acts on eight vertices in two four-cycles, so it fixes q² vertex colorings and no individual vertex.",
+          "On six faces it fixes the two axis faces and cycles the other four, type 1²4, so it fixes q³ face colorings.",
+          "The group element is unchanged; only the chosen action set differs. The lab shows vertices, faces and edges separately."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Use a vertex polynomial to count face colorings",
+      "explanation": "The axis faces remain fixed under a face-axis quarter-turn, but no vertex does. Thus its face and vertex cycle counts differ. The displayed vertex polynomial cannot be reused for faces or edges."
+    },
+    "proofSteps": [
+      "Classify each proper rotation by axis and angle: identity; six face quarter-turns; three face half-turns; eight vertex third-turns; six edge half-turns.",
+      "Apply each representative matrix to the selected feature set, compute its disjoint cycles, and raise q to the number of cycles. The table verifies every member of each family.",
+      "Sum class size times fixed-coloring count and divide by 24. This is Burnside for the chosen finite rotation action; switching feature sets requires a new cycle ledger."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "A face-axis quarter-turn on the cube has which vertex and face cycle counts?",
+      "choices": [
+        "Two vertex cycles and three face cycles",
+        "Three vertex cycles and two face cycles",
+        "Eight vertex cycles and six face cycles"
+      ],
+      "answer": 0,
+      "explanation": "The vertices split into two four-cycles; the two axis faces are fixed and the other four faces make a four-cycle."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For q=2, what does (q⁸+17q⁴+6q²)/24 give?",
+      "choices": ["10", "23", "24"],
+      "answer": 1,
+      "explanation": "(256+272+24)/24=552/24=23 rotation orbits of binary vertex colorings."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A cube face-axis quarter-turn has face cycle type 1²4. With three labeled colors, how many face colorings does it fix?",
+      "choices": ["3²=9", "3³=27", "3⁶=729"],
+      "answer": 1,
+      "explanation": "The two fixed faces and one four-cycle are three independent cycles, so there are 3³ choices."
+    },
+    "connection": "The same geometric rotations induce different permutation representations on vertices, faces and edges. This distinction recurs when constructing characters from fixed points."
   }
 }

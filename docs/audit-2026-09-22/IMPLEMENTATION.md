@@ -145,3 +145,14 @@ workspaces at 320/390/768/1440 CSS pixels, keyboard controls, axe and the
 nine-stage route, persistent object and capstone. Type checking retains only the three baseline Cloudflare
 declaration errors. The package validator still reports PASS for 143 concepts,
 15 regressions, six source gaps and twenty visualisation rows.
+
+- #40 adds the V06 fixed-coloring engine and four authored counting lessons.
+  Six-bead necklaces/bracelets derive the two even-reflection cycle types;
+  cycle-index inventory uses coefficient extraction; cube rotations are
+  enumerated as 24 proper signed-permutation matrices and grouped into five
+  axis families for vertices, faces and edges. The lab table exposes all
+  elements, cycle types, fixed-coloring counts and class contributions before
+  averaging, including motions with no fixed positions but fixed colorings.
+  Counting-unit competencies and its existing capstone use versioned local
+  progress. The 57-versus-56 full cube-symmetry extension remains a separate
+  pending audit row, not part of this rotation-only slice.
