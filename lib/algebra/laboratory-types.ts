@@ -1,4 +1,5 @@
 export const laboratoryKinds = [
+  "fixed-colorings",
   "ureca-direct-products",
   "function-fibers",
   "operation-checker",

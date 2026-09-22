@@ -30,10 +30,12 @@ import { CosetConstructor } from "./CosetConstructor";
 import { OrbitWorkbench } from "./OrbitWorkbench";
 import { UrecaDirectProducts } from "./UrecaDirectProducts";
 import { ModulePresentation } from "./ModulePresentation";
+import { FixedColoringLab } from "./FixedColoringLab";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
 > = {
+  "fixed-colorings": FixedColoringLab,
   "ureca-direct-products": UrecaDirectProducts,
   "function-fibers": FunctionFiberLab,
   "operation-checker": OperationChecker,

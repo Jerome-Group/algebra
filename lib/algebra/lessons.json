@@ -2402,14 +2402,14 @@
     "explanation": "Both $G$ and $X$ are finite. The group need not act faithfully. A fixed configuration may have many moved positions: only the assigned data must agree after the move. Stabilizers account for the unequal sizes of orbits.",
     "id": "mh2220-burnside",
     "intuition": "Instead of choosing one representative from every orbit, count how many configurations each symmetry fixes and average.",
-    "machine": "coloring",
+    "machine": "fixed-colorings",
     "parameters": {
       "colors": 2,
       "mode": "colorings",
       "n": 6
     },
     "pitfall": "Dividing $|X|$ by $|G|$ works only for a free action. Symmetric configurations often have smaller orbits and invalidate that shortcut.",
-    "prompt": "Color a polygon, identify its stabilizer, and compare its orbit size with a coloring having no nontrivial symmetry.",
+    "prompt": "Predict the fixed-coloring count for a nonidentity triangle rotation before opening the table.",
     "proof": "Count pairs $(g,x)$ with $gx=x$. Counting first by $g$ sums fixed-point counts. Counting by $x$ sums stabilizer sizes. Each orbit contributes $|\\operatorname{Orb}(x)||\\operatorname{Stab}(x)|=|G|$, giving the formula.",
     "section": "6.3 · Theorem 6.10",
     "source": {
@@ -2435,7 +2435,7 @@
     "navTitle": "Burnside’s lemma",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Double-count (g,c) with g·c=c: each coloring orbit contributes |G| such pairs. This proves the formula; the table checks a finite instance.",
     "objective": "Explain why an element fixing no vertices may still fix many colorings.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -2459,14 +2459,14 @@
     "explanation": "A rotation by $k$ positions has gcd(n,k) cycles on the $n$ bead positions. A coloring fixed by it must be constant along each cycle, with $q$ choices per cycle. For bracelets, average over all 2n elements of $D_n$, including reflections.",
     "id": "mh2220-necklaces",
     "intuition": "Necklaces identify rotations; bracelets also identify reflections. The chosen equivalence changes the counting problem.",
-    "machine": "coloring",
+    "machine": "fixed-colorings",
     "parameters": {
       "colors": 2,
       "mode": "colorings",
       "n": 6
     },
     "pitfall": "These formulas allow repeated colors and unconstrained color counts. Fixing the number of beads of each color requires a different fixed-point calculation.",
-    "prompt": "For six beads in two colors, check 14 necklaces but 13 bracelets. Find the mirror pair that merges.",
+    "prompt": "Predict which of the two even-polygon reflection types fixes more colorings.",
     "proof": "Burnside gives the necklace formula. For odd $n$ each reflection has $(n+1)/2$ cycles. For even $n$, half the reflections have $n/2+1$ cycles and half have $n/2$ cycles. Their fixed-coloring counts give the two bracelet expressions.",
     "section": "6.3 · Examples 6.12–6.13",
     "source": {
@@ -2492,7 +2492,7 @@
     "navTitle": "Necklaces",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Count cycles for every rotation and each reflection type, then average all 2n fixed-coloring counts. The table is the finite calculation.",
     "objective": "Derive, rather than recall, the fixed-coloring count for each reflection type.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -2516,13 +2516,13 @@
     "explanation": "Let $S_r$ permute the $r$ positions of words on $q$ colors. Two words are in the same orbit precisely when they use each color the same number of times. These orbits are multisets, counted by stars and bars. This provides an elementary instance of the cycle-index method. The multivariate cycle index records each cycle length separately. For a color inventory, substitute $a_j=x_1^j+\\cdots+x_q^j$; coefficients count orbits with the prescribed numbers of each color. The worked triangle example derives one such substitution. The displayed rising-product identity is a specialization for the full symmetric group, not the definition of the cycle index.",
     "id": "mh2220-cycle-index",
     "intuition": "A permutation's cycle structure determines how many colorings it fixes. Averaging these powers connects group actions to multisets.",
-    "machine": "permutation",
+    "machine": "fixed-colorings",
     "parameters": {
       "mode": "cycle-index",
       "n": 3
     },
     "pitfall": "Fixed points count as cycles of length one. Omitting them gives wrong coloring counts and traces in permutation representations.",
-    "prompt": "Enter permutations with different cycle types and compare their cycle counts. A coloring fixed by a permutation must use one color on each cycle; relate this to the cycle-index formula.",
+    "prompt": "Predict the number of triangle-rotation orbits with exactly two red and one blue bead.",
     "proof": "Fixed words are constant on each cycle, giving $q$ choices per cycle. Burnside counts the orbits; stars and bars counts the same multisets. Multiplying by $r$! gives the product formula for every positive integer $q$, hence as a polynomial identity.",
     "section": "6.4 · Exercise 6.9 in the course compilation",
     "source": {
@@ -2548,7 +2548,7 @@
     "navTitle": "Cycle index",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Each cycle must use one color, contributing xʲ or yʲ. Multiplying cycle factors and averaging is Burnside coefficient by coefficient.",
     "objective": "Count colorings with a prescribed inventory, explaining the substitution used.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -2572,13 +2572,13 @@
     "explanation": "The tetrahedron has 12 rotations acting on 4 vertices. The cube has 24 rotations acting on 8 vertices. The cube's nonidentity rotations have either four vertex cycles (17 rotations) or two vertex cycles (6 rotations), producing the displayed average. For two colors this gives 23 cube-vertex colorings.",
     "id": "mh2220-solid-colorings",
     "intuition": "Color the vertices of a solid and identify colorings related by a rigid rotation. Different rotation axes create different cycle patterns.",
-    "machine": "cube",
+    "machine": "fixed-colorings",
     "parameters": {
       "object": "vertices",
       "orientation": "rotations"
     },
     "pitfall": "These count colorings modulo rotations, not colorings fixed by every rotation. Adding reflections changes the acting group to order 48 and changes the count.",
-    "prompt": "Switch the cube action among vertices, edges, faces and diagonals. Read the different cycle decompositions for the same rotation.",
+    "prompt": "Predict whether a face-axis quarter-turn fixes any vertices and how many binary vertex colorings it fixes.",
     "proof": "Cube rotations comprise identity; six quarter-turns about face axes with cycle type $4^{2}$; three half-turns about face axes with type $2^{4}$; eight third-turns about vertex axes with type $1^{2}3^{2}$; and six half-turns about edge axes with type $2^{4}$. Burnside gives the formula. Tetrahedral nonidentity rotations all have two vertex cycles.",
     "section": "6.4 · Exercises 6.10–6.11 in the course compilation",
     "source": {
@@ -2604,7 +2604,7 @@
     "navTitle": "Solid colorings",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Each matrix induces an exact permutation on the chosen feature set. The class table yields (q⁸+17q⁴+6q²)/24 for vertices; this finite ledger illustrates Burnside.",
     "objective": "Rebuild one coloring polynomial from a class/cycle table.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",

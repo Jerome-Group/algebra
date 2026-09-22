@@ -402,42 +402,106 @@
     "conceptKind": "object"
   },
   "mh2220-burnside": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "mh2220-burnside:boundaryCheck",
+        "statement": "Separate fixed positions from fixed colorings",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-burnside:application",
+        "statement": "Compute a fixed-point average from the full action table",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-burnside:transfer",
+        "statement": "Transfer double counting to a new finite action",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-necklaces": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["mh2220-burnside"],
+    "competencies": [
+      {
+        "id": "mh2220-necklaces:boundaryCheck",
+        "statement": "Distinguish rotations from dihedral equivalence",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-necklaces:application",
+        "statement": "Derive both even-reflection cycle counts",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-necklaces:transfer",
+        "statement": "Count necklaces and bracelets with unused colors allowed",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-cycle-index": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["mh2220-burnside"],
+    "competencies": [
+      {
+        "id": "mh2220-cycle-index:boundaryCheck",
+        "statement": "Read all cycle lengths including one-cycles",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-cycle-index:application",
+        "statement": "Substitute color-inventory weights into a cycle index",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-cycle-index:transfer",
+        "statement": "Extract a specified inventory coefficient",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
   "mh2220-solid-colorings": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["mh2220-burnside"],
+    "competencies": [
+      {
+        "id": "mh2220-solid-colorings:boundaryCheck",
+        "statement": "Distinguish cube vertex, face and edge actions",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-solid-colorings:application",
+        "statement": "Rebuild the cube-vertex polynomial by axis type",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-solid-colorings:transfer",
+        "statement": "Transfer fixed-coloring counts to another feature set",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },

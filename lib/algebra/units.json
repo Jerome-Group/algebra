@@ -115,17 +115,28 @@
     "id": "counting",
     "title": "Counting with group actions",
     "description": "Count orbits with a fixed-point table and explain the averaging argument.",
-    "lessons": ["mh2220-burnside", "mh2220-necklaces", "mh2220-cycle-index"],
+    "lessons": [
+      "mh2220-burnside",
+      "mh2220-necklaces",
+      "mh2220-cycle-index",
+      "mh2220-solid-colorings"
+    ],
     "entryCompetencies": ["Compute fixed points of a permutation."],
     "outcomes": [
-      "Count orbits with a fixed-point table and explain the averaging argument."
+      "Derive fixed-coloring counts from cycle decompositions and a complete class table.",
+      "Use cycle-index substitution for a specified inventory.",
+      "Distinguish necklace, bracelet and solid feature-set actions."
     ],
     "capstone": {
       "question": "Count binary necklaces of length 4 under rotations, including the constant necklaces.",
       "answer": "The four rotations fix 16,2,4,2 colorings. Their average is 6. Reflections are excluded; including them changes the acting group and requires another fixed-point table."
     },
     "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",
-    "remediation": ["mh2220-burnside", "mh2220-necklaces"],
+    "remediation": [
+      "mh2220-burnside",
+      "mh2220-necklaces",
+      "mh2220-cycle-index"
+    ],
     "prerequisiteUnits": ["actions"]
   },
   {
