@@ -376,7 +376,10 @@ function LearningExperience() {
                   <div className="study-reading">
                     <LessonReader {...{ lesson, lessons, tab, setTab, open }} />
                   </div>
-                  <aside className="right-lab">
+                  <aside
+                    className="right-lab"
+                    aria-label="Mathematical laboratory"
+                  >
                     <Exploration key={lesson.id} lesson={lesson} />
                   </aside>
                 </div>

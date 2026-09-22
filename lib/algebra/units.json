@@ -5,8 +5,8 @@
     "description": "Explain a fiber; distinguish an inverse image from an inverse; test independence of representatives.",
     "lessons": [
       "foundations-functions",
-      "mh2220-congruence",
-      "mh2220-homomorphism"
+      "foundations-fibers",
+      "foundations-quotient-rules"
     ],
     "entryCompetencies": ["Read set membership and compose two functions."],
     "outcomes": [
@@ -19,7 +19,7 @@
       "answer": "Fibers are residue classes modulo 3. The proposed rule fails because 0 and 3 represent the same input but their squares are 0 and 3 modulo 6."
     },
     "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",
-    "remediation": ["foundations-functions", "mh2220-congruence"],
+    "remediation": ["foundations-functions", "foundations-fibers"],
     "prerequisiteUnits": []
   },
   {

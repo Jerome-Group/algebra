@@ -69,6 +69,142 @@
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
   {
+    "track": "Algebra",
+    "section": "3.1 · Definitions 3.2, 3.4; Proposition 3.6",
+    "source": {
+      "section": "3.1 · Definitions 3.2, 3.4; Proposition 3.6",
+      "title": "MH2220_Lecture_Chapter_03.pdf",
+      "url": "https://drive.google.com/file/d/1Lsz_s5E7VV68TuziX1H-6s96DxkUNtDi/view",
+      "role": "Related course context; original prerequisite explanation",
+      "pdfPages": "2, 3",
+      "pages": "44, 45"
+    },
+    "subject": "Groups & symmetry",
+    "family": "Groups & generators",
+    "id": "foundations-fibers",
+    "connections": ["foundations-quotient-rules"],
+    "exampleStatus": "Worked example here",
+    "proofStatus": "Complete proof here",
+    "labScope": "The dependency diagram records the maps. It is not an interactive fiber constructor and does not prove representative independence; use the authored proof steps.",
+    "navTitle": "Fibers & equivalence classes",
+    "title": "Fibers & equivalence classes",
+    "intuition": "Why do equal outputs sort every input into exactly one class?",
+    "definition": "x\\sim y\\iff f(x)=f(y)",
+    "explanation": "Let f:X→Y be a function. Define x~x′ exactly when f(x)=f(x′). Empty fibers belong to targets outside the image; they are not equivalence classes.",
+    "theorem": "X/{\\sim}\\longrightarrow\\operatorname{im}f,\\quad[x]\\longmapsto f(x)\\text{ is a bijection}",
+    "proof": "Reflexivity follows from f(x)=f(x). Symmetry follows by reversing equality; transitivity follows by chaining equalities. If two fibers overlap at z, both target values equal f(z), so the fibers coincide. Otherwise they are disjoint. Every x belongs to its own fiber. Conversely, membership in the same block of a partition is reflexive, symmetric and transitive. The map [x]↦f(x) is well-defined by the defining relation. Equal outputs mean equal classes, so it is injective. Every element of im f has a preimage, so it is surjective onto im f.",
+    "pitfall": "On Z, define x~y when |x−y|≤1. It is reflexive and symmetric, but 0~1 and 1~2 while 0 is not related to 2. Overlapping neighborhoods do not form equivalence classes.",
+    "prompt": "Which relation on Z is an equivalence relation?",
+    "machine": "diagram",
+    "parameters": {
+      "nodes": [
+        {
+          "id": "X",
+          "label": "X"
+        },
+        {
+          "id": "Q",
+          "label": "X/{\\sim}"
+        },
+        {
+          "id": "I",
+          "label": "\\operatorname{im}f"
+        }
+      ],
+      "edges": [
+        ["X", "Q", "quotient map"],
+        ["Q", "I", "induced bijection"]
+      ]
+    },
+    "objective": "Compute fibers, verify equivalence axioms and recover a partition from a function.",
+    "prerequisites": ["foundations-functions"],
+    "worked": {
+      "title": "Remainder fibers",
+      "steps": [
+        "For f:Z→Z/3Z, the classes are 3Z, 1+3Z and 2+3Z.",
+        "Each integer lies in exactly one by division with remainder.",
+        "The label 1+3Z names an infinite set; choosing 4 instead gives the same set."
+      ]
+    },
+    "practice": [
+      {
+        "question": "For f:R→R, f(x)=x², describe the quotient by equal outputs.",
+        "hint": "Check the hypotheses and try changing representatives.",
+        "answer": "Positive targets have two opposite preimages; zero has one; negative targets have empty fibers and produce no class. The quotient corresponds to the image [0,∞), not all of R."
+      }
+    ],
+    "level": "Foundation or bridge",
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+  },
+  {
+    "track": "Algebra",
+    "section": "3.1 · Definitions 3.2, 3.4; Proposition 3.6",
+    "source": {
+      "section": "3.1 · Definitions 3.2, 3.4; Proposition 3.6",
+      "title": "MH2220_Lecture_Chapter_03.pdf",
+      "url": "https://drive.google.com/file/d/1Lsz_s5E7VV68TuziX1H-6s96DxkUNtDi/view",
+      "role": "Related course context; original prerequisite explanation",
+      "pdfPages": "2, 3",
+      "pages": "44, 45"
+    },
+    "subject": "Groups & symmetry",
+    "family": "Groups & generators",
+    "id": "foundations-quotient-rules",
+    "connections": ["mh2220-congruence"],
+    "exampleStatus": "Worked example here",
+    "proofStatus": "Complete proof here",
+    "labScope": "The dependency diagram records the maps. It is not an interactive fiber constructor and does not prove representative independence; use the authored proof steps.",
+    "navTitle": "Well-defined quotient rules",
+    "title": "Well-defined quotient rules",
+    "intuition": "If a class has many names, how can a formula using one name define a function?",
+    "definition": "F([x])=[f(x)]",
+    "explanation": "Let ~ partition X and ≈ partition Y. A proposed rule F:X/~→Y/≈, [x]↦[f(x)], must send equivalent inputs to equivalent outputs. Equality of output classes, not equality of chosen outputs, is required.",
+    "theorem": "F([x])=[f(x)]\\text{ is well-defined}\\iff (x\\sim x^{\\prime}\\Rightarrow f(x)\\approx f(x^{\\prime}))",
+    "proof": "Necessity: if [x]=[x′], a function must give one output, hence [f(x)]=[f(x′)]. Sufficiency: assume x~x′ implies f(x)≈f(x′). Pick any representative of an input class. Another representative gives the same output class by assumption, so the output is unambiguous. This proves well-definedness; injectivity, surjectivity and preservation of operations are separate questions.",
+    "pitfall": "The proposed map Z/2Z→Z, [n]₂↦n, gives 0 and 2 for the same input class. The integer output has no quotient relation that could identify them.",
+    "prompt": "Does [n]₃↦[n²]₆ define a function?",
+    "machine": "diagram",
+    "parameters": {
+      "nodes": [
+        {
+          "id": "X",
+          "label": "X"
+        },
+        {
+          "id": "Q",
+          "label": "X/{\\sim}"
+        },
+        {
+          "id": "I",
+          "label": "\\operatorname{im}f"
+        }
+      ],
+      "edges": [
+        ["X", "Q", "quotient map"],
+        ["Q", "I", "induced bijection"]
+      ]
+    },
+    "objective": "Prove representative independence or disprove a quotient rule with a concrete witness.",
+    "prerequisites": ["foundations-fibers"],
+    "worked": {
+      "title": "A parity swap is well-defined",
+      "steps": [
+        "Define F([n]₂)=[n+1]₂.",
+        "If n′=n+2k, then n′+1=(n+1)+2k, so the output parity is unchanged.",
+        "The map swaps the even and odd classes and is its own inverse."
+      ]
+    },
+    "practice": [
+      {
+        "question": "For positive m,n, when is [a]ₘ↦[a]ₙ well-defined?",
+        "hint": "Check the hypotheses and try changing representatives.",
+        "answer": "Necessity: 0 and m are equal modulo m, so n must divide m. Sufficiency: every difference divisible by m is then divisible by n. This is a divisibility proof, not a test of a few representatives."
+      }
+    ],
+    "level": "Foundation or bridge",
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+  },
+  {
     "definition": "\\mu:G\\times G\\to G,\\quad (ab)c=a(bc),\\quad ea=ae=a,\\quad aa^{-1}=a^{-1}a=e",
     "explanation": "A group consists of a set $G$ and an operation $G\\times G\\to G$. Closure says that applying the operation stays in $G$. Associativity says that parentheses do not change a three-term product; it does not say that factors can be reordered. There is an identity $e$, and each $a$ has a two-sided inverse. Integer addition and composition of triangle symmetries are first examples. Matrix groups are a later application.",
     "id": "mh2220-axioms",
@@ -373,7 +509,7 @@
         "answer": "No: multiplication by $[0]$ gives $[0]$ for every input, so $[0]$ has no inverse in a nonzero ring."
       }
     ],
-    "prerequisites": [],
+    "prerequisites": ["foundations-quotient-rules"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -882,7 +1018,7 @@
         "answer": "For $g\\notin H$, both $gH$ and $Hg$ equal $G\\setminus H$. For $g\\in H$, both equal $H$. Thus every index-two subgroup is normal."
       }
     ],
-    "prerequisites": ["mh2220-homomorphism"],
+    "prerequisites": ["mh2220-homomorphism", "foundations-fibers"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -1323,7 +1459,7 @@
         "answer": "The four elements are $4\\mathbb Z,1+4\\mathbb Z,2+4\\mathbb Z,3+4\\mathbb Z$. Addition uses representatives modulo four; $1+4\\mathbb Z$ generates the group."
       }
     ],
-    "prerequisites": ["mh2220-normal"],
+    "prerequisites": ["mh2220-normal", "foundations-quotient-rules"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."

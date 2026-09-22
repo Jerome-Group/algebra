@@ -1,0 +1,1332 @@
+{
+  "foundations-functions": {
+    "hook": "Can a rule have an inverse image without having an inverse function?",
+    "objects": "The domain and codomain are part of a function. Write f:X→Y; composition g∘f applies f first. An inverse image is a subset of X, not a reversed arrow.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which rule is a function from {0,1} to {a,b}?",
+      "choices": ["0↦a, 1↦b", "0↦a and 0↦b, with 1↦a", "Only 0↦a"],
+      "answer": 0,
+      "explanation": "Every input needs exactly one output. Several inputs may share an output; one input may not have two, and an input may not be omitted."
+    },
+    "examples": [
+      {
+        "title": "An injective map with missing outputs",
+        "steps": [
+          "For f:Z→Z, f(n)=2n, equality 2a=2b forces a=b.",
+          "Odd integers have no preimage, so f is not surjective.",
+          "The inverse image of {2,3,4} is {1,2}; that set exists even though f has no two-sided inverse."
+        ]
+      },
+      {
+        "title": "A many-to-one map onto its codomain",
+        "steps": [
+          "For p:Z→{0,1}, let p(n) be the remainder modulo 2.",
+          "The fiber of 0 is the even integers and the fiber of 1 is the odd integers.",
+          "Both outputs occur, so p is surjective, but p(0)=p(2), so it is not injective."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Choosing both square roots",
+      "explanation": "The rule x↦±√x from nonnegative real numbers to R assigns two outputs to every positive input. Choosing the nonnegative root gives a function; retaining both roots gives a relation."
+    },
+    "proofSteps": [
+      "If f is bijective, each y∈Y has a unique preimage x∈X. Define h(y)=x.",
+      "Uniqueness gives h(f(x))=x; existence gives f(h(y))=y.",
+      "Conversely, if hf=id_X and fh=id_Y, then f(x)=f(x′) implies x=hf(x)=hf(x′)=x′.",
+      "Every y is f(h(y)), so f is surjective. Both directions are proved."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "For an arbitrary f:X→Y, what does f⁻¹({y}) mean?",
+      "choices": [
+        "The unique inverse value",
+        "All inputs mapped to y, possibly none",
+        "A function Y→X"
+      ],
+      "answer": 1,
+      "explanation": "Inverse-image notation requires neither injectivity nor surjectivity. Assuming a unique input confuses a fiber with an inverse function."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For f:{0,1,2,3,4}→{0,1,2}, f(n)=n mod 3, what is f⁻¹({1})?",
+      "choices": ["{1}", "{1,4}", "{0,3}"],
+      "answer": 1,
+      "explanation": "Both 1 and 4 have remainder 1. A fiber contains every matching input, not just a preferred representative."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Restrict the codomain of n↦2n from Z to 2Z. What changes?",
+      "choices": [
+        "It becomes bijective",
+        "It becomes noninjective",
+        "Its input values change"
+      ],
+      "answer": 0,
+      "explanation": "The rule and domain stay fixed. Every allowed target now occurs exactly once, so the same rule becomes a bijection Z→2Z. Surjectivity depends on the codomain."
+    },
+    "connection": "Fibers turn a function into a partition. Next identify inputs with the same output; quotient maps formalize that identification."
+  },
+  "foundations-fibers": {
+    "hook": "Why do equal outputs sort every input into exactly one class?",
+    "objects": "Let f:X→Y be a function. Define x~x′ exactly when f(x)=f(x′). Empty fibers belong to targets outside the image; they are not equivalence classes.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For n↦n mod 3 on {0,1,2,3,4,5}, which inputs share the output of 2?",
+      "choices": ["{2,5}", "{0,3}", "{2}"],
+      "answer": 0,
+      "explanation": "The fiber includes 2 and 5. A class contains all equivalent inputs, not only its label."
+    },
+    "examples": [
+      {
+        "title": "Remainder fibers",
+        "steps": [
+          "For f:Z→Z/3Z, the classes are 3Z, 1+3Z and 2+3Z.",
+          "Each integer lies in exactly one by division with remainder.",
+          "The label 1+3Z names an infinite set; choosing 4 instead gives the same set."
+        ]
+      },
+      {
+        "title": "A finite partition becomes a function",
+        "steps": [
+          "Partition X={a,b,c,d} into {a,c}, {b}, {d}.",
+          "Map each input to its containing block. The codomain is the set of three blocks.",
+          "The fibers of this map recover exactly the original partition."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Nearness is not always equivalence",
+      "explanation": "On Z, define x~y when |x−y|≤1. It is reflexive and symmetric, but 0~1 and 1~2 while 0 is not related to 2. Overlapping neighborhoods do not form equivalence classes."
+    },
+    "proofSteps": [
+      "Reflexivity follows from f(x)=f(x).",
+      "Symmetry follows by reversing equality; transitivity follows by chaining equalities.",
+      "If two fibers overlap at z, both target values equal f(z), so the fibers coincide. Otherwise they are disjoint.",
+      "Every x belongs to its own fiber. Conversely, membership in the same block of a partition is reflexive, symmetric and transitive.",
+      "The map [x]↦f(x) is well-defined by the defining relation. Equal outputs mean equal classes, so it is injective. Every element of im f has a preimage, so it is surjective onto im f."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Can two distinct equivalence classes intersect?",
+      "choices": [
+        "Yes, at their representatives",
+        "No; one shared element forces equality",
+        "Only if the set is infinite"
+      ],
+      "answer": 1,
+      "explanation": "Transitivity makes every member of one intersecting class equivalent to every member of the other. Cardinality is irrelevant."
+    },
+    "application": {
+      "kind": "recognise",
+      "question": "Which relation on Z is an equivalence relation?",
+      "choices": ["a−b is divisible by 4", "a<b", "|a−b|≤1"],
+      "answer": 0,
+      "explanation": "Divisibility of differences is reflexive, symmetric and transitive. Strict order fails reflexivity; nearness fails transitivity."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For f:R→R, f(x)=x², describe the quotient by equal outputs.",
+      "choices": [
+        "Every class is a singleton",
+        "The classes are {0} and {x,−x} for x>0",
+        "There is a separate class for every negative target"
+      ],
+      "answer": 1,
+      "explanation": "Positive targets have two opposite preimages; zero has one; negative targets have empty fibers and produce no class. The quotient corresponds to the image [0,∞), not all of R."
+    },
+    "connection": "A quotient collects classes without deleting their members. To define a rule on those classes, the next lesson checks whether outputs survive a change of representative."
+  },
+  "foundations-quotient-rules": {
+    "hook": "If a class has many names, how can a formula using one name define a function?",
+    "objects": "Let ~ partition X and ≈ partition Y. A proposed rule F:X/~→Y/≈, [x]↦[f(x)], must send equivalent inputs to equivalent outputs. Equality of output classes, not equality of chosen outputs, is required.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which integers represent the same parity class as 1?",
+      "choices": ["1 only", "All odd integers", "All positive integers"],
+      "answer": 1,
+      "explanation": "A class includes all equivalent integers, including negative representatives such as −1."
+    },
+    "examples": [
+      {
+        "title": "A parity swap is well-defined",
+        "steps": [
+          "Define F([n]₂)=[n+1]₂.",
+          "If n′=n+2k, then n′+1=(n+1)+2k, so the output parity is unchanged.",
+          "The map swaps the even and odd classes and is its own inverse."
+        ]
+      },
+      {
+        "title": "A rule can depend on both quotient moduli",
+        "steps": [
+          "The rule [n]₄↦[n]₂ works: changing n by a multiple of 4 changes it by a multiple of 2.",
+          "Its fibers are pairs of classes modulo 4.",
+          "The reverse rule [n]₂↦[n]₄ fails; equal input classes need not yield equal output classes."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Forgetting brackets changes the question",
+      "explanation": "The proposed map Z/2Z→Z, [n]₂↦n, gives 0 and 2 for the same input class. The integer output has no quotient relation that could identify them."
+    },
+    "proofSteps": [
+      "Necessity: if [x]=[x′], a function must give one output, hence [f(x)]=[f(x′)].",
+      "Sufficiency: assume x~x′ implies f(x)≈f(x′). Pick any representative of an input class.",
+      "Another representative gives the same output class by assumption, so the output is unambiguous.",
+      "This proves well-definedness; injectivity, surjectivity and preservation of operations are separate questions."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which equality must be proved for [x]↦[f(x)]?",
+      "choices": [
+        "f(x)=f(x′) as elements of Y",
+        "[f(x)]=[f(x′)] whenever [x]=[x′]",
+        "Every class has only one member"
+      ],
+      "answer": 1,
+      "explanation": "Output representatives may differ while their classes agree. Requiring equality in Y would reject legitimate quotient maps."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Does [n]₃↦[n²]₆ define a function?",
+      "choices": [
+        "Yes, squaring preserves every quotient",
+        "No: 0 and 3 give output classes 0 and 3 modulo 6",
+        "No: the domain is finite"
+      ],
+      "answer": 1,
+      "explanation": "0 and 3 represent the same input; 0² and 3² have different residues modulo 6. One explicit witness disproves well-definedness."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For positive m,n, when is [a]ₘ↦[a]ₙ well-defined?",
+      "choices": ["When m divides n", "When n divides m", "For every m,n"],
+      "answer": 1,
+      "explanation": "Necessity: 0 and m are equal modulo m, so n must divide m. Sufficiency: every difference divisible by m is then divisible by n. This is a divisibility proof, not a test of a few representatives."
+    },
+    "connection": "Congruence proves that addition and multiplication descend to classes. Normality will solve the same representative problem for products of group cosets."
+  },
+  "mh2220-axioms": {
+    "hook": "What do adding integers and composing triangle motions have in common?",
+    "objects": "A group is a nonempty set G with a function G×G→G. The operation is associative, has a two-sided identity, and every element has a two-sided inverse. Composition applies the right-hand motion first.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Why must a binary operation give exactly one result for each pair?",
+      "choices": [
+        "It is a function G×G→G",
+        "It must be commutative",
+        "The set must be finite"
+      ],
+      "answer": 0,
+      "explanation": "Functionhood is required before the group axioms. Commutativity and finiteness are not group axioms."
+    },
+    "examples": [
+      {
+        "title": "Integers under addition",
+        "steps": [
+          "Sums of integers stay in Z, so addition is closed.",
+          "(a+b)+c=a+(b+c); zero is a two-sided identity.",
+          "The inverse of a is −a. This infinite group is also commutative."
+        ]
+      },
+      {
+        "title": "Symmetries of a triangle",
+        "steps": [
+          "The six motions preserving an equilateral triangle compose to another such motion.",
+          "Composition of functions is associative, the stationary motion is identity, and reversing a motion supplies its inverse.",
+          "A rotation and reflection need not commute. Both composition orders must be read right to left."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Failures must name the axiom",
+      "explanation": "On nonzero integers, addition fails closure since 1+(−1)=0. On Z, subtraction fails associativity: (1−2)−3=−4 but 1−(2−3)=2. Positive integers under addition lack an identity. Nonnegative integers under addition have identity 0 but positive elements lack inverses. A closed multiplication table alone proves none of the remaining axioms."
+    },
+    "proofSteps": [
+      "If e and e′ are both two-sided identities, then e=e·e′=e′.",
+      "If b and c are both inverses of a, then b=b·e=b·(a·c)=(b·a)·c=e·c=c.",
+      "The middle equality uses associativity. These proofs require neither commutativity nor finiteness."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "A table on a finite set has every output inside the set. What is established?",
+      "choices": ["All group axioms", "Closure only", "Associativity only"],
+      "answer": 1,
+      "explanation": "A table listing outputs establishes closure; associativity compares (ab)c with a(bc) for every triple, and needs a separate argument or exhaustive check."
+    },
+    "application": {
+      "kind": "recognise",
+      "question": "Which axiom fails for nonnegative integers under addition?",
+      "choices": ["Closure", "Associativity", "Existence of inverses"],
+      "answer": 2,
+      "explanation": "Zero is an identity and addition is associative and closed, but 1 has no additive inverse inside the nonnegative integers."
+    },
+    "transfer": {
+      "kind": "proof-step",
+      "question": "In b(ac)=(ba)c when proving uniqueness of inverses, which axiom is used?",
+      "choices": [
+        "Associativity",
+        "Commutativity",
+        "Cancellation assumed in advance"
+      ],
+      "answer": 0,
+      "explanation": "Associativity changes parentheses without changing order. No swapping of factors is justified in an arbitrary group."
+    },
+    "connection": "Uniqueness lets us write a⁻¹ without ambiguity. Next reverse a product and distinguish finite order from the size of the whole group."
+  },
+  "mh2220-inverse-order": {
+    "hook": "To undo two moves, why must you undo the last move first?",
+    "objects": "Let a,b lie in a group G. Write a⁰=e and a⁻ⁿ=(a⁻¹)ⁿ. The order of a is the least positive n with aⁿ=e, if such n exists; otherwise it is infinite.",
+    "prerequisiteCheck": {
+      "kind": "proof-step",
+      "question": "Which equality uses associativity alone?",
+      "choices": ["(ab)c=a(bc)", "ab=ba", "a²=e"],
+      "answer": 0,
+      "explanation": "Associativity changes grouping; commuting factors is an additional property."
+    },
+    "examples": [
+      {
+        "title": "Reverse two triangle motions",
+        "steps": [
+          "For rotation r and reflection s, applying rs means s first, then r.",
+          "Undo r with r⁻¹, then undo s with s⁻¹=s. The undoing word is sr⁻¹.",
+          "Algebraically (rs)(sr⁻¹)=r(ss)r⁻¹=e."
+        ]
+      },
+      {
+        "title": "Finite and infinite order",
+        "steps": [
+          "In the additive group Z/12Z, successive multiples of 8 are 8,4,0, so 8 has order 3.",
+          "In additive Z, the element 1 has infinite order because no positive multiple equals 0.",
+          "Order belongs to an element. An infinite group can still have finite-order elements, such as (1 mod 2,0) in C2×Z."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Power laws can fail across different bases",
+      "explanation": "In S3, let a=(12), b=(23). Then a²b²=e but (ab)² is a nonidentity 3-cycle. Commutativity is sufficient for (ab)ⁿ=aⁿbⁿ; it is not a group axiom."
+    },
+    "proofSteps": [
+      "(ab)(b⁻¹a⁻¹)=a(bb⁻¹)a⁻¹=aea⁻¹=e.",
+      "(b⁻¹a⁻¹)(ab)=b⁻¹(a⁻¹a)b=b⁻¹eb=e.",
+      "Uniqueness of inverse gives (ab)⁻¹=b⁻¹a⁻¹.",
+      "If a has finite order n, then (aᵏ)ᵗ=e exactly when n divides kt. Writing d=gcd(n,k), the least positive such t is n/d.",
+      "Multiplying ag=bg on the right by g⁻¹ gives a=b. Also (g⁻¹)ᵏ=e iff gᵏ=e, and (hgh⁻¹)ᵏ=hgᵏh⁻¹ by cancellation; these give equality of orders, including infinite order."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which assumption guarantees (ab)ⁿ=aⁿbⁿ for all positive n?",
+      "choices": [
+        "a and b commute",
+        "G is finite",
+        "a and b have the same order"
+      ],
+      "answer": 0,
+      "explanation": "Commutativity lets factors be rearranged. Finiteness or equal orders alone does not."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "If g has order 18, what is the order of g⁶?",
+      "choices": ["18", "6", "3"],
+      "answer": 2,
+      "explanation": "The least t with 18 dividing 6t is 3; equivalently 18/gcd(18,6)=3."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If (ab)⁻¹=a⁻¹b⁻¹, what follows about a and b?",
+      "choices": [
+        "They commute",
+        "Both have order two",
+        "The whole group is abelian"
+      ],
+      "answer": 0,
+      "explanation": "The inverse formula gives b⁻¹a⁻¹=a⁻¹b⁻¹; invert both sides to obtain ab=ba. This says nothing about other pairs in the group."
+    },
+    "connection": "The powers of one element form a cyclic subgroup. The subgroup test identifies when a more general subset has the same closure properties."
+  },
+  "mh2220-subgroups": {
+    "hook": "How can one short test replace three separate group checks?",
+    "objects": "A subgroup H≤G uses the inherited operation. The test requires H nonempty and xy⁻¹∈H for every x,y∈H. For additive groups this becomes x−y∈H.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "In an additive group, what replaces xy⁻¹?",
+      "choices": ["x−y", "x/y", "x+y⁻¹ as numbers"],
+      "answer": 0,
+      "explanation": "The inverse operation for addition is negation, so xy⁻¹ in multiplicative notation becomes x+(−y)."
+    },
+    "examples": [
+      {
+        "title": "Even integers",
+        "steps": [
+          "2Z is nonempty since it contains 0.",
+          "For 2a,2b∈2Z, their difference is 2(a−b), which lies in 2Z.",
+          "Thus 2Z is a subgroup of additive Z. The same argument works for every nZ, including 0Z={0}."
+        ]
+      },
+      {
+        "title": "The three rotations inside S3",
+        "steps": [
+          "A3={e,(123),(132)} consists of powers of r=(123).",
+          "For rⁱ,rʲ, the product rⁱ(rʲ)⁻¹=rⁱ⁻ʲ is another power of r.",
+          "This verifies subgroup closure without treating the triangle picture as a proof."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Odd integers fail the inherited subgroup test",
+      "explanation": "The difference of two odd integers is even; in particular 1−1=0 is not odd. A nonempty subset is not a subgroup merely because its elements look alike."
+    },
+    "proofSteps": [
+      "Choose h∈H. The test gives hh⁻¹=e∈H, then eh⁻¹=h⁻¹∈H.",
+      "For x,y∈H, the inverse y⁻¹ is in H; applying the test to x and y⁻¹ yields xy∈H. Associativity is inherited from G.",
+      "For H≤Z, either H={0}, or H contains positive integers (negate a negative member if necessary). Choose the least positive n∈H.",
+      "Divide h∈H as h=qn+r, 0≤r<n. Since r=h−qn∈H, minimality forces r=0. Thus H=nZ. Conversely every nZ is a subgroup.",
+      "Finally bZ≤aZ exactly when b∈aZ, equivalently a divides b. This includes the zero subgroup: 0Z≤aZ for every a."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why must the subgroup test require nonemptiness?",
+      "choices": [
+        "Otherwise the empty set passes the universal test vacuously",
+        "Associativity requires two elements",
+        "Finite groups may be empty"
+      ],
+      "answer": 0,
+      "explanation": "The empty set satisfies every universally quantified closure condition but has no identity. Nonemptiness rules out that false positive."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which inclusion is true?",
+      "choices": ["2Z⊆6Z", "6Z⊆2Z", "Neither"],
+      "answer": 1,
+      "explanation": "Every multiple of 6 is even, but 2 is not a multiple of 6. Larger divisors give smaller subgroups."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A subgroup of Z contains 12 and 18. What must it contain?",
+      "choices": [
+        "Every multiple of 6",
+        "Only multiples of 36",
+        "Every integer"
+      ],
+      "answer": 0,
+      "explanation": "It contains 18−12=6 and all multiples of 6. It need not contain 1: 6Z itself is a counterexample."
+    },
+    "connection": "Intersections preserve subgroup conditions; unions generally do not. Generated subgroups supply the smallest subgroup containing a chosen set."
+  },
+  "mh2220-generators": {
+    "hook": "If a union of subgroups fails, what is the smallest repair?",
+    "objects": "For S⊆G, ⟨S⟩ is the intersection of all subgroups containing S, equivalently all finite words in S and inverses. The join H∨K is ⟨H∪K⟩, not usually H∪K.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which closure operation must a subgroup of additive Z allow?",
+      "choices": [
+        "Differences",
+        "Only positive sums",
+        "Only taking absolute values"
+      ],
+      "answer": 0,
+      "explanation": "A subgroup contains inverses and sums, hence differences. Restricting to positive combinations generally gives a monoid instead."
+    },
+    "examples": [
+      {
+        "title": "Two integer generators",
+        "steps": [
+          "Euclid gives 18=1·12+6 and 12=2·6.",
+          "Back-substitute: 6=18−12. Every integer combination of 12 and 18 is a multiple of 6, and every multiple of 6 is such a combination.",
+          "Therefore ⟨12,18⟩=6Z. This is the Bézout mechanism, not a statement that 12Z∪18Z already contains every multiple of 6."
+        ]
+      },
+      {
+        "title": "Two transpositions generate S3",
+        "steps": [
+          "Let a=(12) and b=(23). Their products give ab=(123), ba=(132), and aba=(13).",
+          "Together with e,a,b these are all six permutations of three letters.",
+          "Thus ⟨a,b⟩=S3, while ⟨a⟩∪⟨b⟩ has only e,a,b and omits ab."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Relations need a completeness argument",
+      "explanation": "If a,b satisfy a²=b²=(ab)³=e in a group, this only defines a homomorphism from the presented group onto ⟨a,b⟩. To claim an isomorphism, show no additional relations collapse it; for S3 one can combine a six-word upper bound with six distinct images."
+    },
+    "proofSteps": [
+      "Every subgroup containing S contains every word in S and inverse letters.",
+      "The set of all such words contains e, is closed under concatenation, and is closed under reversing and inverting a word. Thus it is a subgroup.",
+      "These two inclusions identify it with the intersection definition.",
+      "For integer generators a,b, every common divisor divides all combinations; the Euclidean algorithm expresses gcd(a,b) as a combination. Hence ⟨a,b⟩=gcd(a,b)Z.",
+      "For the presentation a²=b²=(ab)³=e, cancel adjacent aa or bb. The relation gives abab=ba, baba=ab and aba=bab, so every alternating word reduces to one of e,a,b,ab,ba,aba. These six words have distinct images under a=(12), b=(23), proving that this presentation gives S3 rather than a smaller quotient."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Does a list of relations automatically prove a proposed presentation is complete?",
+      "choices": [
+        "Yes",
+        "No; one must rule out extra relations",
+        "Only when generators are finite"
+      ],
+      "answer": 1,
+      "explanation": "Relations establish a quotient map. Surjectivity from generating is not injectivity; a normal-form or order argument is needed."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is 4Z∨6Z in the subgroup lattice of Z?",
+      "choices": ["12Z", "4Z∪6Z", "2Z"],
+      "answer": 2,
+      "explanation": "Since 2=6−4, the join contains 2Z. Both original subgroups lie in 2Z, proving equality. The intersection, not the join, is 12Z."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is H∪K a subgroup exactly when one subgroup contains the other?",
+      "choices": [
+        "Choose h∈H\\K and k∈K\\H; hk can belong to neither if the union is closed",
+        "All subgroup unions are subgroups",
+        "It depends only on their orders"
+      ],
+      "answer": 0,
+      "explanation": "If hk∈H, then k=h⁻¹(hk)∈H, contradiction. If hk∈K, then h=(hk)k⁻¹∈K, contradiction. If one subgroup contains the other, the union is that subgroup."
+    },
+    "connection": "One-generator subgroups are cyclic. Their exponent arithmetic turns generation, order and inclusion into divisibility."
+  },
+  "mh2220-congruence": {
+    "hook": "Why is arithmetic on residue classes independent of the chosen integers?",
+    "objects": "Fix n≥1. Define a≡b mod n when n divides a−b. The class [a] is a+nZ on the integer line. Addition gives an abelian group; adding multiplication gives the ring Z/nZ.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which representatives belong to [2] modulo 5?",
+      "choices": ["Only 2", "…,−8,−3,2,7,12,…", "Every even integer"],
+      "answer": 1,
+      "explanation": "Representatives differ by multiples of the modulus; they need not have the same parity."
+    },
+    "examples": [
+      {
+        "title": "Changing both addends",
+        "steps": [
+          "Modulo 5, [2]+[4]=[6]=[1].",
+          "Use representatives 7 and −1 instead: 7+(−1)=6, still [1].",
+          "In general (a+kn)+(b+ℓn)−(a+b)=(k+ℓ)n."
+        ]
+      },
+      {
+        "title": "Changing both factors",
+        "steps": [
+          "Modulo 5, [2][4]=[8]=[3].",
+          "Use 7 and −1: their product is −7, whose class is also [3].",
+          "The product difference is (a+kn)(b+ℓn)−ab=n(kb+ℓa+kℓn), a multiple of n."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Dividing by a class is not always allowed",
+      "explanation": "Modulo 6, [2][1]=[2][4] but [1]≠[4]. Cancellation by [2] fails because [2] is not a unit. Well-defined multiplication does not make every nonzero class invertible."
+    },
+    "proofSteps": [
+      "Reflexivity: n divides a−a=0. Symmetry: if n divides a−b, it divides b−a.",
+      "Transitivity: if n divides a−b and b−c, it divides their sum a−c.",
+      "Changing representatives in a sum changes it by a multiple of n, so addition is well-defined.",
+      "The displayed product expansion proves multiplication is well-defined. Identity, inverses for addition, and distributivity descend from Z.",
+      "Division with remainder supplies exactly n distinct classes [0],…,[n−1]. Every [k] is k copies of [1] under addition, proving that the additive group is cyclic of order n."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What must be checked to define multiplication of classes?",
+      "choices": [
+        "The product is independent of both representatives",
+        "Each class has one integer",
+        "Every nonzero class is invertible"
+      ],
+      "answer": 0,
+      "explanation": "Independence is the quotient-rule condition. Invertibility is a separate property and fails in many residue rings."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Modulo 7, what is [−3][5]?",
+      "choices": ["[−15]=[6]", "[2]", "[1]"],
+      "answer": 0,
+      "explanation": "−15 differs from 6 by −21, a multiple of 7. Representatives need not lie in the standard range."
+    },
+    "transfer": {
+      "kind": "proof-step",
+      "question": "Why is (a+kn)(b+ℓn) equivalent to ab modulo n?",
+      "choices": [
+        "Their difference is n(kb+ℓa+kℓn)",
+        "Because both factors are equal as integers",
+        "Because n is prime"
+      ],
+      "answer": 0,
+      "explanation": "Factoring n from the difference proves independence for every positive modulus. Primality is unnecessary."
+    },
+    "connection": "This is the first complete quotient construction. Coset multiplication repeats the same proof obligation in a group where factors may not commute."
+  },
+  "mh2220-cyclic": {
+    "hook": "How much of a group can one element generate?",
+    "objects": "Write ⟨g⟩={gᵏ:k∈Z}. Infinite cyclic groups use integer exponents uniquely; a finite cyclic group of order n identifies exponents modulo n.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "If g has order 12, when is gᵃ=gᵇ?",
+      "choices": [
+        "Exactly when 12 divides a−b",
+        "Exactly when a=b",
+        "When a and b are positive"
+      ],
+      "answer": 0,
+      "explanation": "Multiply by g⁻ᵇ. Equality is equivalent to gᵃ⁻ᵇ=e, so the order divides the exponent difference."
+    },
+    "examples": [
+      {
+        "title": "Every subgroup of C12",
+        "steps": [
+          "For d=1,2,3,4,6,12, the subgroup ⟨gᵈ⟩ has order 12/d.",
+          "These are all subgroups: C12, ⟨g²⟩, ⟨g³⟩, ⟨g⁴⟩, ⟨g⁶⟩ and {e}.",
+          "Orders of gᵏ for k=0,…,11 are 1,12,6,4,3,12,2,12,3,4,6,12."
+        ]
+      },
+      {
+        "title": "Infinite cyclic structure",
+        "steps": [
+          "The group ⟨1⟩ under addition is Z: distinct integer exponents give distinct elements.",
+          "Its subgroups are dZ for d≥0, by the least-positive-element argument.",
+          "There is no finite return time for 1, so reducing all exponents modulo a fixed positive n would collapse distinct elements."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Equal order does not force cyclicity",
+      "explanation": "C2×C2 has order 4 but every nonidentity element has order 2. No element can generate all four elements, unlike C4."
+    },
+    "proofSteps": [
+      "If no positive power of g is e, equality gᵃ=gᵇ forces a=b; the exponent map Z→⟨g⟩ is a bijective homomorphism.",
+      "Otherwise choose the least positive return n. Division by n shows each exponent has the same power as its remainder, and the n remainders give distinct powers.",
+      "For H≤⟨g⟩, the exponent set {k:gᵏ∈H} is a subgroup of Z, say dZ. In the finite case it contains nZ, so d divides n.",
+      "Thus H=⟨gᵈ⟩ and has n/d elements. The condition (gᵏ)ᵗ=e is n|kt, giving order n/gcd(n,k) and one subgroup for each divisor order."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Does every finite group have a subgroup for every divisor of its order?",
+      "choices": [
+        "Yes, by Lagrange",
+        "Not in general; the cyclic hypothesis gives this conclusion",
+        "Only prime divisors are impossible"
+      ],
+      "answer": 1,
+      "explanation": "Lagrange is a necessary divisibility statement. The existence and uniqueness for every divisor here uses cyclic structure."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which elements generate C12?",
+      "choices": ["g,g⁵,g⁷,g¹¹", "g²,g⁴,g⁶", "All nonidentity elements"],
+      "answer": 0,
+      "explanation": "A power generates exactly when its exponent is coprime to 12."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "In C12, which subgroup has order 4 and why is it unique?",
+      "choices": [
+        "⟨g⁴⟩, because the exponent equals the order",
+        "⟨g³⟩, because its exponent subgroup must be 3Z",
+        "Any subgroup generated by a nonidentity element"
+      ],
+      "answer": 1,
+      "explanation": "The subgroup order is 12/d, so d=3. The classification by exponent subgroups proves uniqueness, not merely one example."
+    },
+    "connection": "Cosets compare an arbitrary subgroup with its ambient group; cyclic exponent arithmetic supplies the recurring concrete model."
+  },
+  "mh2220-cosets": {
+    "hook": "When do two different representatives name exactly the same subset?",
+    "objects": "For H≤G, a left coset is gH={gh:h∈H}; a right coset is Hg. Products of permutations apply the right-hand permutation first. A coset need not be a subgroup.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For H=3Z in additive Z, which elements are in 1+H?",
+      "choices": [
+        "All integers congruent to 1 modulo 3",
+        "Only 1 and 3",
+        "All multiples of 3"
+      ],
+      "answer": 0,
+      "explanation": "A coset translates every element of H. It is a whole set, not a pair of labels."
+    },
+    "examples": [
+      {
+        "title": "The three left cosets of an order-two subgroup",
+        "steps": [
+          "In S3 take H={e,(12)} and r=(123).",
+          "The left cosets are H, rH={(123),(13)}, and r²H={(132),(23)}. These three disjoint pairs contain all six elements.",
+          "The right coset Hr={(123),(23)} differs from rH, so left and right cosets need not agree."
+        ]
+      },
+      {
+        "title": "Residue classes as additive cosets",
+        "steps": [
+          "In Z take H=4Z. The four cosets are 4Z,1+4Z,2+4Z,3+4Z.",
+          "The representatives 1 and 9 give the same coset because 9−1∈4Z.",
+          "Each coset is in bijection with 4Z by translation, although all are infinite."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Cosets are not conjugacy classes",
+      "explanation": "The conjugacy class of (12) in S3 contains all three transpositions. The coset H={e,(12)} contains identity and one transposition. Conjugation and translation construct different sets."
+    },
+    "proofSteps": [
+      "If aH=bH, then a=bh for some h∈H, hence b⁻¹a∈H.",
+      "If b⁻¹a∈H, write a=bh; then aH=bhH=bH.",
+      "If aH and bH intersect at x=ah=bk, then b⁻¹a=kh⁻¹∈H, so the cosets coincide. Thus they are equal or disjoint.",
+      "The map H→aH, h↦ah, is bijective with inverse x↦a⁻¹x. This proves equal sizes, without assuming G finite."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What is the left-coset equality test?",
+      "choices": [
+        "aH=bH iff b⁻¹a∈H",
+        "aH=bH iff ab∈H",
+        "Cosets are equal whenever |aH|=|bH|"
+      ],
+      "answer": 0,
+      "explanation": "Every coset has the same size; equal size does not imply equal subsets. The order of multiplication in the membership test matters."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For H={e,(12)} in S3, which coset contains (13)?",
+      "choices": ["H", "(123)H", "(132)H"],
+      "answer": 1,
+      "explanation": "(123)(12)=(13), so (13) belongs to (123)H. Read the composition right to left."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A subgroup H of a possibly infinite G has a coset aH. Why are their cardinalities equal?",
+      "choices": [
+        "Translation h↦ah has inverse x↦a⁻¹x",
+        "All subsets of G have equal size",
+        "Lagrange applies only to finite G, so there is no argument"
+      ],
+      "answer": 0,
+      "explanation": "The explicit bijection works for finite and infinite groups. Finite counting is a later consequence."
+    },
+    "connection": "A partition into equally sized cosets proves Lagrange. To multiply the classes, however, we must first test normality."
+  },
+  "mh2220-lagrange": {
+    "hook": "Why must a subgroup order divide the group order—and why is the converse false?",
+    "objects": "Let G be finite and H≤G. The index [G:H] counts left cosets. The same bijection used for cosets gives |G|=[G:H]|H|.",
+    "prerequisiteCheck": {
+      "kind": "explain",
+      "question": "Why do cosets partition a group?",
+      "choices": [
+        "They are equal or disjoint and every element lies in its own coset",
+        "They all contain identity",
+        "They are all normal subgroups"
+      ],
+      "answer": 0,
+      "explanation": "Only the coset H contains identity. Equal-or-disjoint plus coverage gives the partition."
+    },
+    "examples": [
+      {
+        "title": "Counting S3 by pairs",
+        "steps": [
+          "For H={e,(12)}, the cosets H,(123)H,(132)H are three disjoint pairs.",
+          "Translation gives two elements in each pair.",
+          "Thus 6=3·2, and [S3:H]=3."
+        ]
+      },
+      {
+        "title": "An element order is a subgroup order",
+        "steps": [
+          "In C12, g⁴ generates {e,g⁴,g⁸}, a subgroup of order 3.",
+          "Its four cosets partition the twelve elements, so 12=4·3.",
+          "For any element a of a finite G, applying Lagrange to ⟨a⟩ shows ord(a) divides |G|."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A4 has no subgroup of order 6",
+      "explanation": "Suppose H had order 6 in A4. Its index would be two, so left and right cosets are H and its complement; hence H is normal. The quotient map to a group of order two sends every 3-cycle to identity, since its image has order dividing both 3 and 2. Then H contains identity and all eight 3-cycles, at least nine elements—a contradiction."
+    },
+    "proofSteps": [
+      "Choose one representative from each left coset. The cosets cover G and are pairwise disjoint.",
+      "For each representative a, h↦ah is a bijection H→aH, so each coset has |H| elements.",
+      "Adding the sizes of the [G:H] cosets gives |G|=[G:H]|H|.",
+      "Divisibility follows from this product. Nothing in the proof constructs a subgroup of a prescribed divisor order.",
+      "Let d=ord(g). Since d divides |G|, write |G|=kd to obtain g^|G|=(gᵈ)ᵏ=e. If |G|=p is prime, choose g≠e; its order divides p and exceeds 1, hence is p, so G=⟨g⟩≅Cp."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What extra hypothesis makes this an integer divisibility statement?",
+      "choices": ["G is finite", "G is abelian", "H is normal"],
+      "answer": 0,
+      "explanation": "Coset bijections do not require finiteness, but the finite product of integer orders does. Neither normality nor commutativity is used."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "If |G|=60 and |H|=12, how many left cosets are there?",
+      "choices": ["5", "12", "720"],
+      "answer": 0,
+      "explanation": "The cosets partition G into pieces of size 12, so the index is 60/12=5."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does 6 dividing 12 not guarantee a subgroup of order 6 in A4?",
+      "choices": [
+        "Divisibility is necessary, not sufficient; the index-two argument contradicts existence",
+        "Lagrange is false in A4",
+        "Only prime group orders satisfy Lagrange"
+      ],
+      "answer": 0,
+      "explanation": "A4 supplies a concrete counterexample to the converse while satisfying Lagrange for every subgroup it actually has."
+    },
+    "connection": "Cauchy and Sylow give existence results beyond Lagrange. Normality explains when a coset partition also carries a group operation."
+  },
+  "mh2220-homomorphism": {
+    "hook": "How much structure can a map preserve while identifying different inputs?",
+    "objects": "A group homomorphism φ:G→K satisfies φ(ab)=φ(a)φ(b). Its image is a subgroup of K; its kernel is the fiber of e_K. Images of a fixed nonempty fiber are described by a coset of the kernel.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Is the image of a function always its whole codomain?",
+      "choices": [
+        "Yes",
+        "No; it consists of outputs actually attained",
+        "Only if the domain is finite"
+      ],
+      "answer": 1,
+      "explanation": "Surjectivity is the claim that image equals codomain; it is not built into the word function."
+    },
+    "examples": [
+      {
+        "title": "Reduction modulo six",
+        "steps": [
+          "For φ:Z→Z/6Z, φ(n)=[n], we have φ(a+b)=[a+b]=[a]+[b].",
+          "Its kernel is 6Z and its image is all of Z/6Z.",
+          "The fiber over [2] is 2+6Z."
+        ]
+      },
+      {
+        "title": "A homomorphism that misses targets",
+        "steps": [
+          "Let i:2Z→Z be inclusion, using addition on both groups. It preserves sums.",
+          "The kernel is {0}, so it is injective. Its image is 2Z, not its codomain Z.",
+          "An odd target has an empty fiber; the fiber over 4 is {4}."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Preserving a set is not preserving its law",
+      "explanation": "The map f:Z→Z, f(n)=n+1, is bijective but not an additive homomorphism: f(0)=1≠0 and f(1+1)=3 while f(1)+f(1)=4."
+    },
+    "proofSteps": [
+      "φ(e)=φ(e)φ(e); multiply by φ(e)⁻¹ to obtain φ(e)=e.",
+      "φ(g)φ(g⁻¹)=φ(gg⁻¹)=e, so φ(g⁻¹)=φ(g)⁻¹.",
+      "If φ(x)=φ(g), then φ(g⁻¹x)=e, hence x∈g ker φ. Conversely x=gk with k∈ker φ gives φ(x)=φ(g).",
+      "Thus each nonempty fiber is g ker φ; empty fibers are precisely the targets outside im φ.",
+      "The image is a subgroup: φ(a)φ(b)⁻¹=φ(ab⁻¹) is in the image, which contains identity. For n∈ker φ, φ(gng⁻¹)=φ(g)eφ(g)⁻¹=e; inverse conjugation gives equality of the kernel with its conjugate."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which conclusion holds for every homomorphism φ:G→K?",
+      "choices": [
+        "G/ker φ is isomorphic to K",
+        "Every target has a preimage",
+        "Every nonempty fiber is a coset of ker φ"
+      ],
+      "answer": 2,
+      "explanation": "The image can be smaller than K. The quotient theorem targets im φ unless surjectivity is separately established."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For φ:Z→Z/6Z, φ(n)=[2n], what are kernel and image?",
+      "choices": [
+        "Kernel 3Z; image {[0],[2],[4]}",
+        "Kernel 6Z; image all six classes",
+        "Kernel {0}; image {[0]}"
+      ],
+      "answer": 0,
+      "explanation": "6 divides 2n exactly when 3 divides n. The attainable classes are the even residues."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A homomorphism has trivial kernel. What can you conclude without extra hypotheses?",
+      "choices": [
+        "It is injective but may not be surjective",
+        "It is bijective",
+        "Its codomain is trivial"
+      ],
+      "answer": 0,
+      "explanation": "Equal outputs give g⁻¹h in the kernel, hence g=h. Inclusion 2Z→Z shows surjectivity need not follow."
+    },
+    "connection": "Kernels provide normal subgroups automatically. Quotienting by a kernel turns the map into an isomorphism onto its actual image."
+  },
+  "mh2220-isomorphism": {
+    "hook": "When does a change of names preserve the whole group?",
+    "objects": "An isomorphism φ:G→K is a bijective homomorphism. Check law preservation, injectivity and surjectivity separately. Groups with different element orders cannot be isomorphic.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which condition is missing if a homomorphism is injective?",
+      "choices": ["Surjectivity", "Associativity", "An identity in its domain"],
+      "answer": 0,
+      "explanation": "An injective homomorphism may embed a proper subgroup into a larger group. An isomorphism must reach the entire codomain."
+    },
+    "examples": [
+      {
+        "title": "Integers and even integers",
+        "steps": [
+          "Define φ:Z→2Z by φ(n)=2n.",
+          "It preserves addition; 2a=2b implies a=b; every target 2k is φ(k).",
+          "The inverse ψ:2Z→Z sends 2k to k. The groups are isomorphic despite being different subsets."
+        ]
+      },
+      {
+        "title": "A finite isomorphism from powers",
+        "steps": [
+          "Let r be a rotation of a triangle through 120°. Define φ:Z/3Z→⟨r⟩ by [k]↦rᵏ.",
+          "If k changes by 3m, rᵏ is unchanged. Products correspond to addition of exponents.",
+          "The three powers e,r,r² are distinct and exhaustive, proving injectivity and surjectivity."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Equal size is too weak",
+      "explanation": "C4 and C2×C2 both have four elements. C4 has an element of order four, while every nonidentity element of C2×C2 has order two. No isomorphism can exist. Matching a few invariants, conversely, does not by itself prove isomorphism."
+    },
+    "proofSteps": [
+      "Let φ be a bijective homomorphism and write u=φ(a), v=φ(b); surjectivity permits these choices.",
+      "Then φ⁻¹(uv)=φ⁻¹(φ(a)φ(b))=φ⁻¹(φ(ab))=ab=φ⁻¹(u)φ⁻¹(v).",
+      "Thus the inverse is a homomorphism. If φ(g)ᵐ=e, then φ(gᵐ)=e; injectivity implies gᵐ=e, so element orders are preserved in both directions."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Two finite groups have the same order and the same number of generators. Is an isomorphism proved?",
+      "choices": [
+        "Yes",
+        "No; an explicit structure-preserving bijection or a sufficient theorem is still needed",
+        "Only if both have names"
+      ],
+      "answer": 1,
+      "explanation": "Matching invariants is useful evidence, but it is not a construction or proof of a bijective homomorphism."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which map is an additive isomorphism Z→3Z?",
+      "choices": ["n↦n+3", "n↦3n", "n↦n²"],
+      "answer": 1,
+      "explanation": "Multiplication by 3 preserves sums, is injective, and reaches every multiple of 3. Translation does not preserve identity; squaring does not preserve sums."
+    },
+    "transfer": {
+      "kind": "proof-step",
+      "question": "Why may the proof that φ⁻¹ preserves products write u=φ(a) and v=φ(b)?",
+      "choices": ["Surjectivity", "Only injectivity", "Commutativity"],
+      "answer": 0,
+      "explanation": "Surjectivity supplies preimages of arbitrary codomain elements; injectivity later makes the inverse a function."
+    },
+    "connection": "The first isomorphism theorem constructs a structure-preserving bijection from any homomorphism, after its kernel has been identified."
+  },
+  "mh2220-normal": {
+    "hook": "Does preserving a subgroup under conjugation mean fixing each of its elements?",
+    "objects": "N◁G means gNg⁻¹=N as sets for every g∈G. It is equivalent to gN=Ng. Centrality is stronger: every n∈N commutes individually with every g∈G.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "What is g(12)g⁻¹ when g=(123)?",
+      "choices": ["(23)", "(12)", "(123)"],
+      "answer": 0,
+      "explanation": "Conjugation relabels a transposition: (g(1) g(2))=(23)."
+    },
+    "examples": [
+      {
+        "title": "Normal but not central",
+        "steps": [
+          "A3={e,(123),(132)} is the kernel of sign:S3→{±1}, so it is normal.",
+          "Conjugation by (12) swaps (123) with (132).",
+          "The subgroup is preserved as a set while its elements move; A3 is not central in S3."
+        ]
+      },
+      {
+        "title": "Every subgroup of an abelian group",
+        "steps": [
+          "If G is abelian, gng⁻¹=n for every n∈N≤G.",
+          "Therefore every subgroup N is normal.",
+          "For example 3Z is normal in additive Z; left and right cosets are both translates."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A transposition subgroup moves",
+      "explanation": "H={e,(12)} in S3 is not normal: conjugating by (123) gives {e,(23)}, a different subgroup. Equal subgroup orders do not make the subgroups equal."
+    },
+    "proofSteps": [
+      "If gNg⁻¹=N, multiply the set equality on the right by g to obtain gN=Ng. Conversely multiply gN=Ng by g⁻¹.",
+      "For a homomorphism φ and n∈ker φ, φ(gng⁻¹)=φ(g)eφ(g)⁻¹=e, so gNg⁻¹⊆N.",
+      "Apply the same argument to g⁻¹ for the reverse inclusion. Thus every kernel is normal.",
+      "For index two, the only cosets are N and its complement, on both left and right, so N is normal. The sign homomorphism has kernel An, hence An◁Sn; for n=1 the same kernel statement remains valid."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Normality requires which condition?",
+      "choices": [
+        "Every conjugation preserves N as a set",
+        "Every element of N is fixed by every conjugation",
+        "N has the same order as each of its conjugates"
+      ],
+      "answer": 0,
+      "explanation": "Setwise preservation is the condition. Pointwise fixation is centrality; equal order holds for all conjugate subgroups and is insufficient."
+    },
+    "application": {
+      "kind": "recognise",
+      "question": "Which is normal but not central in S3?",
+      "choices": ["A3", "{e,(12)}", "S3 has no such subgroup"],
+      "answer": 0,
+      "explanation": "A3 is a kernel but a transposition conjugates its two nonidentity elements into each other."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A subgroup H has index two. Why is it normal?",
+      "choices": [
+        "Its two left and two right cosets are H and G\\H",
+        "Every index-two subgroup is central",
+        "Its elements all have order two"
+      ],
+      "answer": 0,
+      "explanation": "Any coset other than H is its complement. Thus left and right cosets agree for each representative, giving normality without centrality."
+    },
+    "connection": "Normality is exactly the condition that lets the coset partition inherit representative multiplication."
+  },
+  "mh2220-quotient": {
+    "hook": "Why does a coset space sometimes refuse to be a group?",
+    "objects": "For N◁G, G/N is the set of cosets, with (aN)(bN)=abN. One element of G/N is a whole subset of G. Quotienting identifies elements; it does not remove N from the set.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is one element of G/N?",
+      "choices": ["A coset gN", "One element outside N", "The complement G\\N"],
+      "answer": 0,
+      "explanation": "Cosets are the new elements. The subgroup N itself becomes the identity coset."
+    },
+    "examples": [
+      {
+        "title": "Parity as a group quotient",
+        "steps": [
+          "For G=Z and N=2Z, the quotient has two elements: the even and odd cosets.",
+          "Odd plus odd is even, even plus odd is odd, and 2Z is identity.",
+          "Every integer remains represented inside a coset; none is deleted."
+        ]
+      },
+      {
+        "title": "The quotient S3/A3",
+        "steps": [
+          "A3 consists of even permutations; its other coset consists of the three transpositions.",
+          "Products of two odd permutations are even, so the quotient multiplication matches C2.",
+          "All six original permutations are grouped into two new elements of size three."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Two representatives give incompatible products",
+      "explanation": "Let H={e,s}≤S3 with s=(12), and t=(23). The identity class H can be represented by e or s. Multiplying H by tH using e gives tH={(23),(132)}. Using s gives stH={(123),(13)}. These are different cosets, so the proposed multiplication is not well-defined."
+    },
+    "proofSteps": [
+      "Suppose a′=an and b′=bm with n,m∈N. Then a′b′=anbm=ab(b⁻¹nb)m.",
+      "Normality gives b⁻¹nb∈N, so a′b′N=abN. This checks both representatives.",
+      "Associativity descends from G. Identity is N and the inverse of aN is a⁻¹N.",
+      "Conversely, if representative multiplication is well-defined, replacing e by n∈N in N·bN gives nbN=bN, hence b⁻¹nb∈N. Applying inverse conjugation gives normality.",
+      "The natural map π(g)=gN preserves products by the quotient law and reaches every coset. Its kernel consists of g with gN=N, precisely N. For finite G, Lagrange gives |G/N|=|G|/|N|."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which factor in the well-definedness calculation must lie in N?",
+      "choices": ["b⁻¹nb", "ab", "Every element of G"],
+      "answer": 0,
+      "explanation": "Normality moves n past b: anbm=ab(b⁻¹nb)m. Closure alone would not place the conjugate in N."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the identity of Z/5Z?",
+      "choices": ["The class 5Z", "The empty set", "The integer 1 alone"],
+      "answer": 0,
+      "explanation": "The zero coset is the identity for addition. It contains all multiples of 5, including 0."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "H≤G is not normal. What still exists?",
+      "choices": [
+        "The set of left cosets, but not representative multiplication as a quotient group",
+        "No cosets at all",
+        "A quotient group with identity omitted"
+      ],
+      "answer": 0,
+      "explanation": "Cosets and their partition exist for every subgroup. Normality adds a well-defined quotient group law."
+    },
+    "connection": "The natural projection G→G/N is a surjective homomorphism with kernel N. The first isomorphism theorem reverses this construction."
+  },
+  "mh2220-first-isomorphism": {
+    "hook": "After identifying equal outputs, what information does a homomorphism retain?",
+    "objects": "For φ:G→K, put N=ker φ. The induced map φ̄:G/N→im φ sends gN to φ(g). The factorization is G→G/N→im φ↪K. The final inclusion need not be surjective.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For φ:Z→Z/6Z, φ(n)=[2n], what is ker φ?",
+      "choices": ["3Z", "6Z", "{0}"],
+      "answer": 0,
+      "explanation": "2n is divisible by 6 exactly when n is divisible by 3."
+    },
+    "examples": [
+      {
+        "title": "Reduction onto six classes",
+        "steps": [
+          "For φ(n)=[n] in Z/6Z, the kernel is 6Z and every class is attained.",
+          "The induced map Z/6Z→Z/6Z sends n+6Z to [n].",
+          "It gives the familiar quotient interpretation without changing the codomain."
+        ]
+      },
+      {
+        "title": "A genuinely non-surjective map",
+        "steps": [
+          "For φ:Z→Z/6Z, φ(n)=[2n], the kernel is 3Z.",
+          "The image is {[0],[2],[4]}, a subgroup of order 3.",
+          "The induced isomorphism Z/3Z→{[0],[2],[4]} sends [n]₃ to [2n]₆. It cannot be an isomorphism onto all six classes."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "The codomain cannot replace the image",
+      "explanation": "The inclusion 2Z→Z has trivial kernel. Its quotient by the kernel is 2Z and the induced map reaches only 2Z inside Z. Although these abstract groups happen to be isomorphic by another map, the inclusion is not onto Z."
+    },
+    "proofSteps": [
+      "Well-definedness: if gN=hN, then h⁻¹g∈N, so φ(h)⁻¹φ(g)=e and φ(g)=φ(h).",
+      "Homomorphism: φ̄((gN)(hN))=φ(gh)=φ(g)φ(h).",
+      "Injectivity: if φ̄(gN)=φ̄(hN), then h⁻¹g∈ker φ=N, hence gN=hN.",
+      "Surjectivity onto the image: every y∈im φ equals φ(g) for some g, so y=φ̄(gN). No larger target is claimed."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When may the theorem conclude G/ker φ≅K for this induced map?",
+      "choices": [
+        "When φ is surjective",
+        "When φ is injective",
+        "For every homomorphism"
+      ],
+      "answer": 0,
+      "explanation": "Surjectivity is exactly im φ=K. Injectivity controls the kernel instead."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For n↦[2n]₆, which quotient models the image?",
+      "choices": ["Z/3Z", "Z/6Z", "Z itself with six-element image"],
+      "answer": 0,
+      "explanation": "The kernel is 3Z, so the quotient has three classes corresponding to the three attainable outputs."
+    },
+    "transfer": {
+      "kind": "proof-step",
+      "question": "Equal induced outputs imply h⁻¹g∈ker φ. Which part of the proof does this establish?",
+      "choices": ["Injectivity", "Surjectivity", "Existence of φ"],
+      "answer": 0,
+      "explanation": "It turns equal outputs into equal input cosets. Surjectivity instead starts from an arbitrary element of the image and finds a preimage."
+    },
+    "connection": "The second and third isomorphism theorems are applications of this four-step mechanism to carefully chosen restriction and projection maps."
+  },
+  "mh2220-second-isomorphism": {
+    "hook": "What does a subgroup look like after a normal subgroup has been collapsed?",
+    "objects": "Let H≤G and N◁G. Then HN≤G, N◁HN, H∩N◁H, and H/(H∩N)≅HN/N via h(H∩N)↦hN.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which map suggests the kernel H∩N?",
+      "choices": [
+        "The restriction H→G/N, h↦hN",
+        "The set inclusion N→H without hypotheses",
+        "The map h↦h⁻¹ for any group"
+      ],
+      "answer": 0,
+      "explanation": "Restrict the quotient projection to H; precisely the elements of H lying in N go to the identity coset."
+    },
+    "examples": [
+      {
+        "title": "A nontrivial intersection in C12",
+        "steps": [
+          "Write C12 additively; take H=⟨2⟩={0,2,4,6,8,10} and N=⟨3⟩={0,3,6,9}.",
+          "H∩N={0,6} has order 2; H+N=C12 since 3−2=1.",
+          "H/(H∩N) and C12/N both have order 3. The isomorphism sends h+{0,6} to h+N."
+        ]
+      },
+      {
+        "title": "A transposition subgroup inside S3",
+        "steps": [
+          "Take H={e,(12)} and N=A3. Their intersection is {e} and HN=S3.",
+          "The restriction of sign to H is bijective onto {±1}.",
+          "The theorem identifies H/{e} with S3/A3, both of order 2."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Subgroup products need not be subgroups without normality",
+      "explanation": "In S3, take H={e,(12)} and K={e,(23)}. Their product HK has four elements. It cannot be a subgroup of a group of order six by Lagrange. The hypothesis N◁G is doing real work."
+    },
+    "proofSteps": [
+      "For h₁n₁,h₂n₂∈HN, their product is h₁h₂(h₂⁻¹n₁h₂)n₂∈HN; normality places the conjugate in N. Inverses similarly lie in HN.",
+      "N remains normal in HN. Restrict the quotient projection to H: q(h)=hN.",
+      "Its image is all HN/N because hnN=hN, and its kernel is H∩N, which is therefore normal in H.",
+      "Apply the first isomorphism theorem. The induced rule h(H∩N)↦hN inherits well-definedness and bijectivity from it."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is H∩N normal in H?",
+      "choices": [
+        "It is the kernel of the restricted quotient map",
+        "Every intersection is normal in G",
+        "H must be abelian"
+      ],
+      "answer": 0,
+      "explanation": "The kernel argument works without H being abelian or normal in G."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "In the C12 example, what is |H/(H∩N)|?",
+      "choices": ["6", "3", "2"],
+      "answer": 1,
+      "explanation": "|H|=6 and |H∩N|=2, so the quotient has order 3."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A coset hnN in HN/N is represented by which element of H?",
+      "choices": ["h", "n", "hn must belong to H"],
+      "answer": 0,
+      "explanation": "Since n∈N, hnN=hN. This establishes surjectivity of the restriction onto HN/N even when hn is not in H."
+    },
+    "connection": "A restriction produces the second theorem. A projection between two nested quotients produces the third."
+  },
+  "mh2220-third-isomorphism": {
+    "hook": "Does collapsing in two stages give the same result as collapsing at once?",
+    "objects": "Let N≤M≤G with both N and M normal in G. The map G/N→G/M sends gN to gM. Its kernel is M/N; therefore (G/N)/(M/N)≅G/M.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "When does aN=bN imply aM=bM?",
+      "choices": [
+        "When N≤M",
+        "When M≤N only",
+        "Whenever N and M have equal size"
+      ],
+      "answer": 0,
+      "explanation": "aN=bN gives b⁻¹a∈N⊆M. Containment supplies representative independence."
+    },
+    "examples": [
+      {
+        "title": "Two-stage quotient of C12",
+        "steps": [
+          "In additive C12, let N={0,6} and M={0,3,6,9}.",
+          "G/N has six elements and M/N has two. Quotienting again gives three elements.",
+          "Directly G/M also has three elements; (g+N)+(M/N) maps to g+M."
+        ]
+      },
+      {
+        "title": "Integer quotients",
+        "steps": [
+          "In Z, take N=12Z and M=3Z. The containment is 12Z≤3Z.",
+          "The first quotient is Z/12Z; M/N={0,3,6,9} modulo 12.",
+          "The final quotient identifies residues differing by 3, producing Z/3Z."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Reversed containment breaks the rule",
+      "explanation": "A rule gN↦gM need not be well-defined if N is not contained in M. With N=2Z and M=4Z, 0 and 2 name the same input class but different output classes."
+    },
+    "proofSteps": [
+      "Well-definedness: gN=hN implies h⁻¹g∈N≤M, hence gM=hM.",
+      "The map respects products and is surjective because every gM has preimage gN.",
+      "Its kernel consists of gN with g∈M, exactly M/N. Thus M/N is normal in G/N.",
+      "Apply the first isomorphism theorem to get the induced bijection (gN)(M/N)↦gM. A class of classes corresponds to one larger coset."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which normality assumptions make both displayed quotient groups valid?",
+      "choices": ["N◁G and M◁G, with N≤M", "Only N◁M", "Only M≤G"],
+      "answer": 0,
+      "explanation": "N◁G is needed for G/N; M◁G for G/M. Merely being normal in M does not suffice."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "If |G|=24, |N|=2 and |M|=8 with the stated hypotheses, what is |(G/N)/(M/N)|?",
+      "choices": ["3", "6", "12"],
+      "answer": 0,
+      "explanation": "|G/N|=12 and |M/N|=4; the quotient has 12/4=3 elements, agreeing with |G/M|."
+    },
+    "transfer": {
+      "kind": "explain",
+      "question": "What is one element of (G/N)/(M/N)?",
+      "choices": [
+        "A coset of M/N in G/N, consisting of N-cosets",
+        "An element removed from N",
+        "A chosen element of M only"
+      ],
+      "answer": 0,
+      "explanation": "The two-stage quotient has classes of classes. The theorem identifies that collection with a single coset of M in G."
+    },
+    "connection": "Correspondence organizes every subgroup between N and G, making nested quotient constructions visible in one lattice interval."
+  },
+  "mh2220-correspondence": {
+    "hook": "Which part of a subgroup lattice survives a quotient?",
+    "objects": "Let q:G→G/N be the projection with N◁G. Subgroups H with N≤H≤G correspond to subgroups K≤G/N by H↦H/N and K↦q⁻¹(K).",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is q⁻¹(K) for a subgroup K of G/N?",
+      "choices": [
+        "All g∈G with gN∈K",
+        "An inverse function, which cannot exist",
+        "One chosen representative from each coset"
+      ],
+      "answer": 0,
+      "explanation": "An inverse image is a full subset, not an inverse function or a section choosing representatives."
+    },
+    "examples": [
+      {
+        "title": "The interval above a kernel in C12",
+        "steps": [
+          "Take N=⟨g⁴⟩ of order 3 in C12. Subgroups containing N have orders 3,6,12.",
+          "They are N, ⟨g²⟩ and C12; their quotient subgroups have orders 1,2,4 in C12/N≅C4.",
+          "The subgroup ⟨g³⟩ of order 4 does not contain N, so it is outside the correspondence interval."
+        ]
+      },
+      {
+        "title": "A quotient with only two subgroups",
+        "steps": [
+          "Take S3→S3/A3≅C2. Subgroups above A3 are A3 and S3.",
+          "They correspond to the identity subgroup and all of C2.",
+          "A transposition subgroup has image C2 too, but it is not in the interval above A3 and cannot be recovered by taking the full inverse image."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Images forget subgroups below the kernel interval",
+      "explanation": "For H={e,(12)}≤S3, q(H)=C2 under the sign quotient. Its full preimage is S3, not H. In general q⁻¹(q(H))=HN, so recovering H requires N≤H."
+    },
+    "proofSteps": [
+      "Inverse images of subgroups under a homomorphism are subgroups and contain its kernel. Images of subgroups are subgroups.",
+      "If N≤H, then gN∈H/N exactly when g∈H, so q⁻¹(H/N)=H.",
+      "For K≤G/N, surjectivity of q gives q(q⁻¹(K))=K. Thus the two operations are inverse.",
+      "Both operations preserve inclusion. Normality corresponds because q(g)q(h)q(g)⁻¹=q(ghg⁻¹); surjectivity tests every conjugator in G/N.",
+      "For N≤K≤H, the map of coset sets hK↦(hN)(K/N) is bijective by the same representative test. Therefore [H:K]=[H/N:K/N], even when K is not normal; these are indices of subgroups, not asserted quotient groups."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which subgroups of G participate bijectively?",
+      "choices": [
+        "Exactly those containing N",
+        "All subgroups of G",
+        "Only those contained in N"
+      ],
+      "answer": 0,
+      "explanation": "Without N≤H, inverse image after image returns HN, which may be larger than H."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For C12/N≅C4 with |N|=3, which subgroup order upstairs corresponds to order 2 downstairs?",
+      "choices": ["6", "2", "3"],
+      "answer": 0,
+      "explanation": "The subgroup upstairs consists of two cosets, each of size |N|=3, so it has order 6."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For H≤G, why is q⁻¹(q(H))=HN?",
+      "choices": [
+        "gN=hN for some h∈H exactly when g=hn for n∈N",
+        "Because every subgroup is normal",
+        "Because inverse images choose one representative"
+      ],
+      "answer": 0,
+      "explanation": "Equality of cosets is the membership argument. It explains precisely what information the quotient forgets."
+    },
+    "connection": "This completes the quotient spine: fibers, cosets, normality, induced maps and lattice correspondence express the same identification mechanism at different scales."
+  }
+}

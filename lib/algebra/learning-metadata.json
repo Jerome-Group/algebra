@@ -1,50 +1,130 @@
 {
   "mh2220-axioms": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["foundations-functions"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-axioms:boundaryCheck",
+        "statement": "A table on a finite set has every output inside the set. What is established?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-axioms:application",
+        "statement": "Which axiom fails for nonnegative integers under addition?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-axioms:transfer",
+        "statement": "In b(ac)=(ba)c when proving uniqueness of inverses, which axiom is used?",
+        "level": "prove"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-inverse-order": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-axioms"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-inverse-order:boundaryCheck",
+        "statement": "Which assumption guarantees (ab)ⁿ=aⁿbⁿ for all positive n?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-inverse-order:application",
+        "statement": "If g has order 18, what is the order of g⁶?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-inverse-order:transfer",
+        "statement": "If (ab)⁻¹=a⁻¹b⁻¹, what follows about a and b?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-subgroups": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-inverse-order"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-subgroups:boundaryCheck",
+        "statement": "Why must the subgroup test require nonemptiness?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-subgroups:application",
+        "statement": "Which inclusion is true?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-subgroups:transfer",
+        "statement": "A subgroup of Z contains 12 and 18. What must it contain?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-generators": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-generators:boundaryCheck",
+        "statement": "Does a list of relations automatically prove a proposed presentation is complete?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-generators:application",
+        "statement": "What is 4Z∨6Z in the subgroup lattice of Z?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-generators:transfer",
+        "statement": "Why is H∪K a subgroup exactly when one subgroup contains the other?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
   "mh2220-congruence": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["foundations-quotient-rules"],
+    "competencies": [
+      {
+        "id": "mh2220-congruence:boundaryCheck",
+        "statement": "What must be checked to define multiplication of classes?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-congruence:application",
+        "statement": "Modulo 7, what is [−3][5]?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-congruence:transfer",
+        "statement": "Why is (a+kn)(b+ℓn) equivalent to ab modulo n?",
+        "level": "prove"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -70,11 +150,27 @@
     "conceptKind": "technique"
   },
   "mh2220-cyclic": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-cyclic:boundaryCheck",
+        "statement": "Does every finite group have a subgroup for every divisor of its order?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-cyclic:application",
+        "statement": "Which elements generate C12?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-cyclic:transfer",
+        "statement": "In C12, which subgroup has order 4 and why is it unique?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -100,11 +196,27 @@
     "conceptKind": "object"
   },
   "mh2220-lagrange": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-lagrange:boundaryCheck",
+        "statement": "What extra hypothesis makes this an integer divisibility statement?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-lagrange:application",
+        "statement": "If |G|=60 and |H|=12, how many left cosets are there?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-lagrange:transfer",
+        "statement": "Why does 6 dividing 12 not guarantee a subgroup of order 6 in A4?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
@@ -560,61 +672,157 @@
     "conceptKind": "object"
   },
   "mh2220-homomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-permutations"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-homomorphism:boundaryCheck",
+        "statement": "Which conclusion holds for every homomorphism φ:G→K?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-homomorphism:application",
+        "statement": "For φ:Z→Z/6Z, φ(n)=[2n], what are kernel and image?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-homomorphism:transfer",
+        "statement": "A homomorphism has trivial kernel. What can you conclude without extra hypotheses?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
   "mh2220-isomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-isomorphism:boundaryCheck",
+        "statement": "Two finite groups have the same order and the same number of generators. Is an isomorphism proved?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-isomorphism:application",
+        "statement": "Which map is an additive isomorphism Z→3Z?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-isomorphism:transfer",
+        "statement": "Why may the proof that φ⁻¹ preserves products write u=φ(a) and v=φ(b)?",
+        "level": "prove"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-first-isomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-quotient"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-first-isomorphism:boundaryCheck",
+        "statement": "When may the theorem conclude G/ker φ≅K for this induced map?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-first-isomorphism:application",
+        "statement": "For n↦[2n]₆, which quotient models the image?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-first-isomorphism:transfer",
+        "statement": "Equal induced outputs imply h⁻¹g∈ker φ. Which part of the proof does this establish?",
+        "level": "prove"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-second-isomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-second-isomorphism:boundaryCheck",
+        "statement": "Why is H∩N normal in H?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-second-isomorphism:application",
+        "statement": "In the C12 example, what is |H/(H∩N)|?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-second-isomorphism:transfer",
+        "statement": "A coset hnN in HN/N is represented by which element of H?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-third-isomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-third-isomorphism:boundaryCheck",
+        "statement": "Which normality assumptions make both displayed quotient groups valid?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-third-isomorphism:application",
+        "statement": "If |G|=24, |N|=2 and |M|=8 with the stated hypotheses, what is |(G/N)/(M/N)|?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-third-isomorphism:transfer",
+        "statement": "What is one element of (G/N)/(M/N)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-correspondence": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-correspondence:boundaryCheck",
+        "statement": "Which subgroups of G participate bijectively?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-correspondence:application",
+        "statement": "For C12/N≅C4 with |N|=3, which subgroup order upstairs corresponds to order 2 downstairs?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-correspondence:transfer",
+        "statement": "For H≤G, why is q⁻¹(q(H))=HN?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
@@ -660,31 +868,79 @@
     "conceptKind": "theorem"
   },
   "mh2220-cosets": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-homomorphism"],
-    "competencies": [],
+    "prerequisites": ["mh2220-homomorphism", "foundations-fibers"],
+    "competencies": [
+      {
+        "id": "mh2220-cosets:boundaryCheck",
+        "statement": "What is the left-coset equality test?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-cosets:application",
+        "statement": "For H={e,(12)} in S3, which coset contains (13)?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-cosets:transfer",
+        "statement": "A subgroup H of a possibly infinite G has a coset aH. Why are their cardinalities equal?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-normal": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-orbit-stabilizer"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-normal:boundaryCheck",
+        "statement": "Normality requires which condition?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-normal:application",
+        "statement": "Which is normal but not central in S3?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-normal:transfer",
+        "statement": "A subgroup H has index two. Why is it normal?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-quotient": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-normal"],
-    "competencies": [],
+    "prerequisites": ["mh2220-normal", "foundations-quotient-rules"],
+    "competencies": [
+      {
+        "id": "mh2220-quotient:boundaryCheck",
+        "statement": "Which factor in the well-definedness calculation must lie in N?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-quotient:application",
+        "statement": "What is the identity of Z/5Z?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-quotient:transfer",
+        "statement": "H≤G is not normal. What still exists?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -1393,11 +1649,27 @@
     "conceptKind": "object"
   },
   "foundations-functions": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": [],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "foundations-functions:boundaryCheck",
+        "statement": "For an arbitrary f:X→Y, what does f⁻¹({y}) mean?",
+        "level": "explain"
+      },
+      {
+        "id": "foundations-functions:application",
+        "statement": "For f:{0,1,2,3,4}→{0,1,2}, f(n)=n mod 3, what is f⁻¹({1})?",
+        "level": "compute"
+      },
+      {
+        "id": "foundations-functions:transfer",
+        "statement": "Restrict the codomain of n↦2n from Z to 2Z. What changes?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -1431,5 +1703,57 @@
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
+  },
+  "foundations-fibers": {
+    "teachingStatus": "guided",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["foundations-functions"],
+    "competencies": [
+      {
+        "id": "foundations-fibers:boundaryCheck",
+        "statement": "Can two distinct equivalence classes intersect?",
+        "level": "explain"
+      },
+      {
+        "id": "foundations-fibers:application",
+        "statement": "Which relation on Z is an equivalence relation?",
+        "level": "explain"
+      },
+      {
+        "id": "foundations-fibers:transfer",
+        "statement": "For f:R→R, f(x)=x², describe the quotient by equal outputs.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH2220", "MH3220"],
+    "conceptKind": "object"
+  },
+  "foundations-quotient-rules": {
+    "teachingStatus": "guided",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["foundations-fibers"],
+    "competencies": [
+      {
+        "id": "foundations-quotient-rules:boundaryCheck",
+        "statement": "Which equality must be proved for [x]↦[f(x)]?",
+        "level": "explain"
+      },
+      {
+        "id": "foundations-quotient-rules:application",
+        "statement": "Does [n]₃↦[n²]₆ define a function?",
+        "level": "compute"
+      },
+      {
+        "id": "foundations-quotient-rules:transfer",
+        "statement": "For positive m,n, when is [a]ₘ↦[a]ₙ well-defined?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH2220", "MH3220"],
+    "conceptKind": "technique"
   }
 }
