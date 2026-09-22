@@ -1,4 +1,6 @@
-export const learningRoutes = [
+import metadata from "./learning-metadata.json" with { type: "json" };
+
+const routes = [
   {
     id: "actions",
     title: "Groups → actions → representations",
@@ -74,3 +76,12 @@ export const learningRoutes = [
     ],
   },
 ];
+
+export const learningRoutes = routes.map((route) => ({
+  ...route,
+  lessons: route.lessons.filter(
+    (id) =>
+      (metadata as Record<string, { teachingStatus: string }>)[id]
+        ?.teachingStatus !== "reference-only",
+  ),
+}));

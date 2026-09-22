@@ -1,0 +1,1292 @@
+{
+  "mh2220-axioms": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["foundations-functions"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-inverse-order": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-axioms"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-subgroups": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-inverse-order"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-generators": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-congruence": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-units": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-permutations": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-subgroups"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-cyclic": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-permutation-matrices": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-permutations", "foundations-linear-algebra"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-alternating": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-permutation-matrices"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-lagrange": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-euler-fermat": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-cayley-embedding": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-real-circle": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-dihedral": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "cube-signed-permutations": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "cube-generator-words": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "cube-diagonals-s4": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "orthogonal-metric-orientation": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "orthogonal-plane": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "orthogonal-axis-angle": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "mh2220-small-groups": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["groups-cauchy", "mh2220-normal"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-commutator": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-finite-abelian": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-quaternion": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-centralizer-normalizer": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-actions": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-cosets"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-orbit-stabilizer": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-actions", "mh2220-cosets"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-conjugacy": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-burnside": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-necklaces": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-cycle-index": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-solid-colorings": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "cube-four-actions": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-first-isomorphism"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "cube-orbit-stabilizer": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-faithful-transitive": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-stabilizer-kernel-core": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-regular-conjugation": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-cube-burnside": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-cycle-lenses": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "actions-primitive": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "actions-frobenius": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "mh2220-sylow-existence": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["groups-cauchy", "mh2220-orbit-stabilizer"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-sylow-conjugacy": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-sylow-counts": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-simple-composition": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-p-groups": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "group-complements": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "group-solvable": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "group-nilpotent": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "characters-burnside": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "mh2220-finite-matrices": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "odyssey-linear-groups": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "odyssey-flags": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "linear-bruhat": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "linear-projective": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "mh2220-homomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-permutations"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-isomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-first-isomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-quotient"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-second-isomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-third-isomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-correspondence": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "m3220-ring-hom": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-domains"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-first-ring-isomorphism": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-ring-correspondence": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "linear-quotient": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Algebra"]
+  },
+  "mh2220-cosets": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-homomorphism"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-normal": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-orbit-stabilizer"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-quotient": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-normal"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-automorphism": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-semidirect": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-coset-action": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "mh2220-double-cosets": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "m3220-quotient-ring": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-ideals"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "mh2220-direct-product": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  },
+  "m3220-crt": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-quotient-ring"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "cube-direct-product": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "group-extensions": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "m3220-rings": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-congruence"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-subrings": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-units": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-rings"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-domains": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-units"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-ideals": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-ring-hom"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-ideal-arithmetic": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-maximal": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-prime": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-jacobson": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-noetherian"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-quadratic-integers": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-norm-trace": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-fractions": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-euclidean": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-gaussian-division": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-pid": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-prime-irreducible": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-ufd": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-localization": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-prime-localization": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-localization-variants": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-noetherian": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-module-chains"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-hilbert": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-krull": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-nilradical": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-artinian": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["m3220-nakayama"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-artinian-decomposition": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-dvr": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-characteristic": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-algebraic": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-irreducibility-tests"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-finite-field-four": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-algebraic"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "quadratic-quotient": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-finite-field-four"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Algebra"]
+  },
+  "m3220-polynomial": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-crt"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-polynomial-division": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-polynomial"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-roots": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-irreducibility-tests": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-polynomial-division"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-gauss": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-eisenstein": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-polynomial-ufd": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-nakayama": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["modules-generators", "m3220-jacobson"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-modules": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-rings"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-submodules": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-modules"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-annihilator": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-submodules"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH3220"]
+  },
+  "m3220-module-chains": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["tensor-products"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "ureca-linear-action": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [
+      "mh2220-permutation-matrices",
+      "foundations-linear-algebra"
+    ],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "ureca-permutation-module": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["ureca-linear-action"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "ureca-invariant-subspaces": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["ureca-permutation-module"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "ureca-intertwiners": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "ureca-cyclic-eigenvalues": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "odyssey-schur": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["representations-maschke"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "odyssey-character-table": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["odyssey-schur", "representations-maschke"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "odyssey-induction": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "odyssey-frobenius": {
+    "teachingStatus": "reference-only",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Odyssey Y1"]
+  },
+  "representations-square-modes": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "representations-real-complex": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["ureca-invariant-subspaces"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "representations-maschke": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["ureca-invariant-subspaces", "ureca-intertwiners"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "representations-characters": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["Beyond the syllabus"]
+  },
+  "characters-integrality": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "ureca-group-algebra": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-annihilator"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "tensor-products": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["ureca-group-algebra"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "algebra-wedderburn": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["m3220-artinian"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "algebra-radical": {
+    "teachingStatus": "proof-roadmap",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["algebra-wedderburn"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["Algebra"]
+  },
+  "foundations-functions": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": [],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH2220"]
+  },
+  "foundations-linear-algebra": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["foundations-functions"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"]
+  },
+  "modules-generators": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["m3220-submodules"],
+    "competencies": [],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["MH3220"]
+  },
+  "groups-cauchy": {
+    "teachingStatus": "worked-illustration",
+    "courseTier": "foundation",
+    "estimatedMinutes": 15,
+    "prerequisites": ["mh2220-orbit-stabilizer"],
+    "competencies": [],
+    "visualisationType": "illustration",
+    "sourceCollections": ["MH2220"]
+  }
+}

@@ -4,6 +4,7 @@ import { ConceptLink } from "./ConceptLink";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
 import { Reference } from "./Sources";
+import { learningMetadata } from "@/lib/algebra/learning";
 export function LessonReader({
   lesson,
   lessons,
@@ -17,6 +18,7 @@ export function LessonReader({
   setTab: (s: ReadingView) => void;
   open: (id: string) => void;
 }) {
+  const learning = learningMetadata(lesson);
   return (
     <div className="lesson-reader">
       <nav className="reading-tabs" aria-label="Reading view">
@@ -31,8 +33,15 @@ export function LessonReader({
         ))}
       </nav>
       <p className="reading-caption">
-        {lesson.level} · {lesson.proofStatus}
+        {learning.teachingStatus.replaceAll("-", " ")} · {learning.courseTier} ·
+        approximately {learning.estimatedMinutes} minutes · {lesson.proofStatus}
       </p>
+      {learning.teachingStatus === "reference-only" && (
+        <p>
+          This reference entry is available for lookup and source reading. It
+          does not count towards guided course completion.
+        </p>
+      )}
       {lesson.objective && (
         <p className="learning-objective">
           <strong>Your goal: </strong>
