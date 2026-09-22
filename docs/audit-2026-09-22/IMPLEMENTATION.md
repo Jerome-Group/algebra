@@ -47,3 +47,23 @@ Source: `c6faf85d302f21f854f2c7e65aa395c99fb561be`; Node 24.11.0.
 Local evidence: `/tmp/algebra-audit-evidence/` (install/build/lint/format/types/tests logs,
 baseline screenshots at 320, 390, 768 and 1440 CSS pixels, axe results). Private package
 source files remain outside Git at `/tmp/algebra-audit-20260922/`.
+
+## Delivered slices
+
+- #28 / PR #29: baseline and conservative learning metadata, merged as `a66404e`.
+  GitHub review caught a production route count still including reference entries; the
+  route filter and its regression test were fixed before merge.
+- #30: home and four product modes, sixteen short units, atlas filters, syllabus coverage
+  and local resume. Multi-source alignment includes the audit matrix’s URECA Maschke,
+  Schur and character chapters; it does not claim to reproduce the private course notes.
+  Unit capstones have worked reasoning, but competency grading and guided-content promotion
+  remain later slices.
+
+Mode browser evidence is in `/tmp/algebra-audit-evidence/modes-*`: home, atlas and Learn
+fit 320, 390, 768 and 1440 CSS pixels; atlas and Learn axe runs report no violations.
+The reference filter returns 24 entries. Back/forward restores the lesson heading and
+selected unit. Initial dev dependency cache errors were eliminated by restarting Vite
+after rebuilding; do not reuse a server loaded against replaced build artifacts.
+
+Required review agents could not start: configured-model access was unavailable. Standards
+and specification reviews therefore ran locally; this is not independent review evidence.

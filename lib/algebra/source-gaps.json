@@ -1,0 +1,27 @@
+[
+  {
+    "id": "ureca-character-bound-kernel",
+    "title": "Character bounds, scalar images and kernels",
+    "collection": "URECA Y2"
+  },
+  {
+    "id": "ureca-external-tensor-products",
+    "title": "External tensor products",
+    "collection": "URECA Y2"
+  },
+  {
+    "id": "ureca-direct-product-irreducibles",
+    "title": "Irreducibles of direct products",
+    "collection": "URECA Y2"
+  },
+  {
+    "id": "ureca-product-kernel-scalar-matching",
+    "title": "Scalar matching in product kernels",
+    "collection": "URECA Y2"
+  },
+  {
+    "id": "ureca-faithful-direct-product",
+    "title": "When is a product irreducible faithful?",
+    "collection": "URECA Y2"
+  }
+]
