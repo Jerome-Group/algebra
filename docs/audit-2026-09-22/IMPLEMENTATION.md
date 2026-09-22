@@ -123,3 +123,25 @@ The dependency update is tracked separately from the teaching change.
 Progress validation: 42 Node tests, production build and format passed. Type checking
 still reports only the three baseline Cloudflare declaration errors. Browser validation
 covers reload, correction, reset, unit gate, inaccessible storage and axe.
+
+- #36 / PR #37 merged as `f083457`: versioned local competency evidence and sixteen diagnostic unit capstones.
+
+- #38 adds five guided URECA direct-product lessons and a nine-stage route that
+  carries the faithful degree-two D₈ square representation through existing
+  Maschke/Schur/character material to product kernels. The route has a stable
+  deep link, persists its selected D₈ element across lab navigation/reload,
+  derives live decomposition, character and tensor readings from that object,
+  and saves an assessed cumulative capstone. The source provenance
+  labels the 18 September meeting notes as a reconstruction. V19 and V20 use
+  exact C₂/C₃×D₈ character rows, traces, eigenvalues and reciprocal-scalar
+  kernel pairs. The master source-gap ledger records all six delivered items;
+  the visual backlog records V03 as partial because its relation exploration
+  is still narrower than the full specification.
+
+URECA validation: 47 Node tests (including independently checked D₈ matrices,
+character orthogonality and reciprocal-scalar kernel pairs), 25 browser checks,
+production build, format and lint pass. Browser coverage includes the five new
+workspaces at 320/390/768/1440 CSS pixels, keyboard controls, axe and the
+nine-stage route, persistent object and capstone. Type checking retains only the three baseline Cloudflare
+declaration errors. The package validator still reports PASS for 143 concepts,
+15 regressions, six source gaps and twenty visualisation rows.

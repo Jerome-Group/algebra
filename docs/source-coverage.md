@@ -560,3 +560,17 @@ Page numbers below refer to the supplied study text. A single page is the extrac
 | `ex:17.1`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |
 | `ex:17.2`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |
 | `ex:17.3`                   | 263 / 264          | [Burnside’s solvability theorem](https://algebra.jeromegroup.org/#characters-burnside)     | Source exercise; complete solution not reproduced |
+
+## URECA direct-product teaching added locally on 22 September 2026
+
+Five dedicated guided lessons now cover the character bound, external tensor products,
+all irreducibles of a direct product, reciprocal-scalar kernel matching, and the
+faithful-product criterion. The Learn mode also links Maschke → Schur → characters →
+weighted inner products → tables → direct products through one persistent D₈ square
+representation. The tensor unit carries six lessons and a capstone. These local
+additions have not been published to the older Site URL linked above.
+
+The mathematical source is the owner's supplied 18 September meeting-note
+reconstruction, **not** a verbatim transcript; its private scan remains outside Git.
+[Source status and exact hypotheses](audit-2026-09-22/URECA_PROVENANCE.md) are public.
+The linked existing study notes remain background for character inner products.

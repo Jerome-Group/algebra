@@ -1755,5 +1755,141 @@
     "visualisationType": "checker",
     "sourceCollections": ["MH2220", "MH3220"],
     "conceptKind": "technique"
+  },
+  "ureca-character-bound-kernel": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [],
+    "competencies": [
+      {
+        "id": "ureca-character-bound-kernel:boundaryCheck",
+        "statement": "Which trace condition characterizes membership in ker π?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-character-bound-kernel:application",
+        "statement": "For π(r²)=−I₂, what are χ(r²) and kernel membership?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-character-bound-kernel:transfer",
+        "statement": "A degree-three finite-group representation has π(g)=ωI₃ with ω³=1 and ω≠1. What follows?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-external-tensor-products": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["ureca-character-bound-kernel"],
+    "competencies": [
+      {
+        "id": "ureca-external-tensor-products:boundaryCheck",
+        "statement": "What is needed to call this an external product of G and H representations?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-external-tensor-products:application",
+        "statement": "If χπ(a)=ω and χρ(r²)=−2, what is χπ⊠ρ(a,r²)?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-external-tensor-products:transfer",
+        "statement": "What happens to the pair (t,r²) in sign(C₂)⊠square(D₈)?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-direct-product-irreducibles": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": ["ureca-external-tensor-products"],
+    "competencies": [
+      {
+        "id": "ureca-direct-product-irreducibles:boundaryCheck",
+        "statement": "Which combination proves the candidate list is complete?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-direct-product-irreducibles:application",
+        "statement": "How many irreducibles does C₃×D₈ have, and what is their squared-degree total?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-direct-product-irreducibles:transfer",
+        "statement": "If G has irreducible degrees 1,1,2 and H has degrees 1,1,1, how many product irreducibles and what total squared degree?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-product-kernel-scalar-matching": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-product-kernel-scalar-matching:boundaryCheck",
+        "statement": "When can scalar preimages be restricted to group centers by this argument?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-product-kernel-scalar-matching:application",
+        "statement": "Which nonidentity pair is in sign(C₂)⊠square(D₈) kernel?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-product-kernel-scalar-matching:transfer",
+        "statement": "Why is faithful(C₃)⊠faithful(D₈ square) faithful?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-faithful-direct-product": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 25,
+    "prerequisites": [
+      "ureca-direct-product-irreducibles",
+      "ureca-product-kernel-scalar-matching"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-faithful-direct-product:boundaryCheck",
+        "statement": "Which package of conditions makes the coprime-center criterion valid?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-faithful-direct-product:application",
+        "statement": "What is the kernel size for faithful irreducible factors with center orders 6 and 4?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-faithful-direct-product:transfer",
+        "statement": "Which product admits a faithful irreducible with D₈: C₂×D₈ or C₃×D₈?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
   }
 }

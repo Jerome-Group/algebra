@@ -10086,5 +10086,277 @@
         "answer": "The quotient by $X^2$ does. Its class of X is nonzero with square zero. Neither the field nor the split product has such an element."
       }
     ]
+  },
+  {
+    "id": "ureca-character-bound-kernel",
+    "title": "Character bounds, scalar images and kernels",
+    "navTitle": "Character bounds, scalar images and kernels",
+    "track": "URECA Y2",
+    "section": "18 September · faithful irreducibles",
+    "source": {
+      "title": "Jerome Queck · From Group Theory to Representation Theory",
+      "url": "https://drive.google.com/file/d/1G89qtVaMPUFYG2PVBmtCMoypaeAwT97a/view",
+      "section": "§15 The Character Table: row orthogonality; S₃ example",
+      "role": "Background for character inner products; meeting reconstruction status in audit provenance",
+      "pages": "220–223",
+      "pdfPages": "221–224"
+    },
+    "references": [],
+    "subject": "Modules & representations",
+    "family": "Characters & direct products",
+    "connections": [],
+    "proofStatus": "Reconstructed complete proof here",
+    "exampleStatus": "Worked example here",
+    "prerequisites": [],
+    "objective": "Carry the scalar-equality distinction into the external tensor product: reciprocal nonidentity scalars can cancel.",
+    "labScope": "The eigenvalue argument above proves the general bound. A plotted or tabulated equality alone illustrates it; only equality of the actual trace with degree proves kernel membership.",
+    "level": "Advanced",
+    "conventions": "Finite groups; nonzero finite-dimensional complex representations; left actions on column vectors. Products AB apply B first. D₈ has eight elements, with r⁴=s²=1 and srs=r⁻¹. This lesson reconstructs omitted proof steps from the supplied meeting notes; it is not a verbatim meeting transcript.",
+    "intuition": "Can a character have maximum absolute value away from the kernel?",
+    "definition": "|\\chi_\\pi(g)|\\leq \\chi_\\pi(1)=d,\\quad \\pi(g)=I\\iff\\chi_\\pi(g)=d,\\quad \\pi(g)=\\lambda I\\iff|\\chi_\\pi(g)|=d",
+    "explanation": "For a finite group representation over C, π(g) has finite order and is diagonalizable. Its d eigenvalues lie on the unit circle. The triangle inequality gives the bound. The ordinary equality and absolute equality have different conclusions.",
+    "theorem": "g\\in\\ker\\pi\\iff\\chi_\\pi(g)=d\\quad\\text{(without absolute value)}",
+    "proof": "If g has order m, π(g)^m=I. Over C, x^m−1 has distinct roots, so π(g) diagonalizes with mth-root eigenvalues ζ₁,…,ζ_d. Each |ζ_j|=1. The triangle inequality yields |Σζ_j|≤Σ|ζ_j|=d. If Σζ_j=d, all real parts must equal one, hence every ζ_j=1 and π(g)=I. If |Σζ_j|=d, equality in the triangle inequality makes all ζ_j share one phase λ, so π(g)=λI. The converse in each case is immediate.",
+    "pitfall": "Never replace χ(g)=d by |χ(g)|=d in the kernel test: −I is scalar but not identity.",
+    "prompt": "For the D₈ half-turn r², predict χ(r²), |χ(r²)| and whether r² is in the kernel.",
+    "machine": "ureca-direct-products",
+    "parameters": {
+      "lessonMode": "ureca-character-bound-kernel"
+    },
+    "worked": {
+      "title": "The central half-turn in the faithful D₈ plane action",
+      "steps": [
+        "The square representation sends r² to −I₂.",
+        "Thus χ(r²)=−2 and |χ(r²)|=2=χ(1).",
+        "Yet r² is nonidentity and π(r²)≠I₂; it is not in the kernel."
+      ]
+    },
+    "practice": [
+      {
+        "question": "A degree-three finite-group representation has π(g)=ωI₃ with ω³=1 and ω≠1. What follows?",
+        "hint": "Check the exact field, factor action and theorem hypotheses before concluding.",
+        "answer": "χ(g)=3ω has absolute value 3, but 3ω≠3. This is a scalar preimage, not a kernel element."
+      }
+    ]
+  },
+  {
+    "id": "ureca-external-tensor-products",
+    "title": "External tensor products",
+    "navTitle": "External tensor products",
+    "track": "URECA Y2",
+    "section": "18 September · faithful irreducibles",
+    "source": {
+      "title": "Jerome Queck · From Group Theory to Representation Theory",
+      "url": "https://drive.google.com/file/d/1G89qtVaMPUFYG2PVBmtCMoypaeAwT97a/view",
+      "section": "§15 The Character Table: row orthogonality; S₃ example",
+      "role": "Background for character inner products; meeting reconstruction status in audit provenance",
+      "pages": "220–223",
+      "pdfPages": "221–224"
+    },
+    "references": [],
+    "subject": "Modules & representations",
+    "family": "Characters & direct products",
+    "connections": ["ureca-character-bound-kernel"],
+    "proofStatus": "Reconstructed complete proof here",
+    "exampleStatus": "Worked example here",
+    "prerequisites": ["ureca-character-bound-kernel"],
+    "objective": "Next factor inner products of these product characters to prove which external products are irreducible.",
+    "labScope": "Kronecker trace multiplication and the group action law are proved in the lesson. The grid reports the selected finite examples and distinguishes the external group action from tensor balancing.",
+    "level": "Advanced",
+    "conventions": "Finite groups; nonzero finite-dimensional complex representations; left actions on column vectors. Products AB apply B first. D₈ has eight elements, with r⁴=s²=1 and srs=r⁻¹. This lesson reconstructs omitted proof steps from the supplied meeting notes; it is not a verbatim meeting transcript.",
+    "intuition": "How can two different groups act on one tensor space?",
+    "definition": "(\\pi\\boxtimes\\rho)(g,h)=\\pi(g)\\otimes_{\\mathbb C}\\rho(h),\\quad \\dim(V\\otimes W)=(\\dim V)(\\dim W)",
+    "explanation": "For representations π of G on V and ρ of H on W, the product group acts on V⊗_C W. This is external because the two factors belong to different groups; the vector-space tensor is over C. It differs from balancing a right R-module with a left R-module over a ring.",
+    "theorem": "\\chi_{\\pi\\boxtimes\\rho}(g,h)=\\chi_\\pi(g)\\chi_\\rho(h)",
+    "proof": "Define (g,h)·(v⊗w)=π(g)v⊗ρ(h)w and extend linearly; the tensor universal property makes this well-defined over C. For (g₁,h₁)(g₂,h₂)=(g₁g₂,h₁h₂), composing operators gives π(g₁)π(g₂)⊗ρ(h₁)ρ(h₂), so the action law holds. Inverse pairs act invertibly, and bases {v_i⊗w_j} show degree (dim V)(dim W). The diagonal entries of A⊗B are A_ii B_jj. Summing i,j gives tr(A⊗B)=tr(A)tr(B).",
+    "pitfall": "Do not infer that faithful factors always give a faithful external tensor product; reciprocal scalars may cancel.",
+    "prompt": "For π(a)=ω on C and ρ(r²)=−I₂, predict the product degree and trace at (a,r²).",
+    "machine": "ureca-direct-products",
+    "parameters": {
+      "lessonMode": "ureca-external-tensor-products"
+    },
+    "worked": {
+      "title": "A C₃ character tensored with the D₈ plane",
+      "steps": [
+        "Let a generate C₃ with π(a)=ω, and let ρ be the faithful two-dimensional D₈ square representation.",
+        "The product has degree 1·2=2; (a,r) acts by ωρ(r).",
+        "Since tr ρ(r)=0, the product character at (a,r) is ω·0=0."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What happens to the pair (t,r²) in sign(C₂)⊠square(D₈)?",
+        "hint": "Check the exact field, factor action and theorem hypotheses before concluding.",
+        "answer": "The two negative scalar factors multiply to +1, so the pair is in the product kernel."
+      }
+    ]
+  },
+  {
+    "id": "ureca-direct-product-irreducibles",
+    "title": "Irreducibles of direct products",
+    "navTitle": "Irreducibles of direct products",
+    "track": "URECA Y2",
+    "section": "18 September · faithful irreducibles",
+    "source": {
+      "title": "Jerome Queck · From Group Theory to Representation Theory",
+      "url": "https://drive.google.com/file/d/1G89qtVaMPUFYG2PVBmtCMoypaeAwT97a/view",
+      "section": "§15 The Character Table: row orthogonality; S₃ example",
+      "role": "Background for character inner products; meeting reconstruction status in audit provenance",
+      "pages": "220–223",
+      "pdfPages": "221–224"
+    },
+    "references": [],
+    "subject": "Modules & representations",
+    "family": "Characters & direct products",
+    "connections": ["ureca-external-tensor-products"],
+    "proofStatus": "Reconstructed complete proof here",
+    "exampleStatus": "Worked example here",
+    "prerequisites": ["ureca-external-tensor-products"],
+    "objective": "Now one can test faithfulness of each irreducible product using the actual scalar-preimage kernel rather than factor kernels alone.",
+    "labScope": "The lesson proves factorisation and completeness. The dashboard gives an exact count for the selected small groups; no picture substitutes for the character-inner-product proof.",
+    "level": "Advanced",
+    "conventions": "Finite groups; nonzero finite-dimensional complex representations; left actions on column vectors. Products AB apply B first. D₈ has eight elements, with r⁴=s²=1 and srs=r⁻¹. This lesson reconstructs omitted proof steps from the supplied meeting notes; it is not a verbatim meeting transcript.",
+    "intuition": "Could a direct product have an irreducible representation that is missing from the tensor list?",
+    "definition": "\\operatorname{Irr}(G\\times H)=\\{\\pi_i\\boxtimes\\rho_j:\\pi_i\\in\\operatorname{Irr}(G),\\rho_j\\in\\operatorname{Irr}(H)\\}",
+    "explanation": "For finite groups over C, irreducible characters of G and H form orthonormal lists. External products give candidates for G×H. Factoring the product-group inner product proves each candidate irreducible. A sum of squared degrees equal to |G×H| leaves no missing irreducibles.",
+    "theorem": "\\langle\\chi_i\\psi_j,\\chi_k\\psi_\\ell\\rangle_{G\\times H}=\\delta_{ik}\\delta_{j\\ell},\\quad \\sum_{i,j}(d_i e_j)^2=|G||H|",
+    "proof": "Write χ_{i,j}(g,h)=χ_i(g)ψ_j(h). The inner-product sum over G×H separates into one sum over G and one over H. Each factor inner product is Kronecker delta, so the product is δ_{ik}δ_{jℓ}. This proves the candidates are irreducible and pairwise inequivalent. Compute Σ_{i,j}(d_i e_j)²=(Σ_i d_i²)(Σ_j e_j²)=|G||H|. For finite groups over C, all irreducible squared degrees sum to the group order. The candidates use the whole total, so no further irreducible can occur.",
+    "pitfall": "The product character formula alone is not a completeness proof; the degree-squared sum is essential.",
+    "prompt": "Predict the number and degree-squared total for C₃×D₈ before viewing the accounting table.",
+    "machine": "ureca-direct-products",
+    "parameters": {
+      "lessonMode": "ureca-direct-product-irreducibles"
+    },
+    "worked": {
+      "title": "All characters of C₂×C₃",
+      "steps": [
+        "Each cyclic group has only degree-one complex irreducibles: two for C₂ and three for C₃.",
+        "Their six external products are pairwise distinct by factored orthogonality.",
+        "Six squared degrees sum to 6=|C₂×C₃|, so the six exhaust the irreducibles."
+      ]
+    },
+    "practice": [
+      {
+        "question": "If G has irreducible degrees 1,1,2 and H has degrees 1,1,1, how many product irreducibles and what total squared degree?",
+        "hint": "Check the exact field, factor action and theorem hypotheses before concluding.",
+        "answer": "There are 3·3=9 pairs; squared-degree sum is (1+1+4)(1+1+1)=18."
+      }
+    ]
+  },
+  {
+    "id": "ureca-product-kernel-scalar-matching",
+    "title": "Scalar matching in product kernels",
+    "navTitle": "Scalar matching in product kernels",
+    "track": "URECA Y2",
+    "section": "18 September · faithful irreducibles",
+    "source": {
+      "title": "Jerome Queck · From Group Theory to Representation Theory",
+      "url": "https://drive.google.com/file/d/1G89qtVaMPUFYG2PVBmtCMoypaeAwT97a/view",
+      "section": "§15 The Character Table: row orthogonality; S₃ example",
+      "role": "Background for character inner products; meeting reconstruction status in audit provenance",
+      "pages": "220–223",
+      "pdfPages": "221–224"
+    },
+    "references": [],
+    "subject": "Modules & representations",
+    "family": "Characters & direct products",
+    "connections": [
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products"
+    ],
+    "proofStatus": "Reconstructed complete proof here",
+    "exampleStatus": "Worked example here",
+    "prerequisites": [
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products"
+    ],
+    "objective": "Schur turns these scalar preimages into central characters; compare their root-of-unity images to decide whether a product is faithful.",
+    "labScope": "The pure-tensor argument in the lesson proves the exact formula. The table classifies every pair in the displayed finite example and marks scalar preimages separately from kernels.",
+    "level": "Advanced",
+    "conventions": "Finite groups; nonzero finite-dimensional complex representations; left actions on column vectors. Products AB apply B first. D₈ has eight elements, with r⁴=s²=1 and srs=r⁻¹. This lesson reconstructs omitted proof steps from the supplied meeting notes; it is not a verbatim meeting transcript.",
+    "intuition": "How can two nonidentity operators multiply to the identity on a tensor product?",
+    "definition": "\\ker(\\pi\\boxtimes\\rho)=\\{(g,h):\\pi(g)=\\lambda I_V,\\ \\rho(h)=\\lambda^{-1}I_W\\text{ for some }\\lambda\\in\\mathbb C^\\times\\}",
+    "explanation": "The kernel of an external product includes factor-kernel pairs but can include more. For invertible matrices A,B on nonzero finite-dimensional spaces, A⊗B=I implies A and B are reciprocal scalars. For faithful irreducibles, those scalar preimages lie in the centers by faithfulness and Schur.",
+    "theorem": "\\ker\\pi\\times\\ker\\rho\\subseteq\\ker(\\pi\\boxtimes\\rho)",
+    "proof": "Let A⊗B=I and choose nonzero w. For every v, Av⊗Bw=v⊗w; uniqueness of pure-tensor factors forces Av=λ_v v and Bw=λ_v⁻¹w. Since B and w are fixed, λ_v is constant for every nonzero v; linearity then gives A=λI and B=λ⁻¹I. Conversely reciprocal scalars tensor to I. Apply this operator statement to A=π(g), B=ρ(h) to obtain the exact kernel set. If π is faithful and π(g) is scalar, it commutes with every π(x); faithfulness forces g to commute with every x, so g∈Z(G). Repeat for H. This center conclusion needs faithfulness.",
+    "pitfall": "Never compute the product kernel as kerπ×kerρ without checking nontrivial scalar preimages.",
+    "prompt": "Choose C₂ or C₃ with the D₈ square representation. Predict whether a nonidentity product pair acts as identity.",
+    "machine": "ureca-direct-products",
+    "parameters": {
+      "lessonMode": "ureca-product-kernel-scalar-matching"
+    },
+    "worked": {
+      "title": "Cancellation in C₂×D₈",
+      "steps": [
+        "The faithful C₂ sign has π(t)=−1 and the faithful D₈ plane has ρ(r²)=−I₂.",
+        "The scalar pair is (−1,−1), whose product is +1.",
+        "Thus (t,r²) is a nonidentity product-kernel element although both individual kernels are trivial."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Why is faithful(C₃)⊠faithful(D₈ square) faithful?",
+        "hint": "Check the exact field, factor action and theorem hypotheses before concluding.",
+        "answer": "The reciprocal scalar sets intersect only at 1. Faithful factors alone do not suffice, as C₂×D₈ shows."
+      }
+    ]
+  },
+  {
+    "id": "ureca-faithful-direct-product",
+    "title": "When is a product irreducible faithful?",
+    "navTitle": "When is a product irreducible faithful?",
+    "track": "URECA Y2",
+    "section": "18 September · faithful irreducibles",
+    "source": {
+      "title": "Jerome Queck · From Group Theory to Representation Theory",
+      "url": "https://drive.google.com/file/d/1G89qtVaMPUFYG2PVBmtCMoypaeAwT97a/view",
+      "section": "§15 The Character Table: row orthogonality; S₃ example",
+      "role": "Background for character inner products; meeting reconstruction status in audit provenance",
+      "pages": "220–223",
+      "pdfPages": "221–224"
+    },
+    "references": [],
+    "subject": "Modules & representations",
+    "family": "Characters & direct products",
+    "connections": [
+      "ureca-direct-product-irreducibles",
+      "ureca-product-kernel-scalar-matching"
+    ],
+    "proofStatus": "Reconstructed complete proof here",
+    "exampleStatus": "Worked example here",
+    "prerequisites": [
+      "ureca-direct-product-irreducibles",
+      "ureca-product-kernel-scalar-matching"
+    ],
+    "objective": "The representation route now joins Maschke, Schur, character inner products, tables, external products and the scalar-compatibility capstone.",
+    "labScope": "The centre-character argument proves the finite complex criterion. The compatibility table checks these examples and cannot replace the proof that all product irreducibles have this form.",
+    "level": "Advanced",
+    "conventions": "Finite groups; nonzero finite-dimensional complex representations; left actions on column vectors. Products AB apply B first. D₈ has eight elements, with r⁴=s²=1 and srs=r⁻¹. This lesson reconstructs omitted proof steps from the supplied meeting notes; it is not a verbatim meeting transcript.",
+    "intuition": "Exactly when can faithful irreducibles of two groups combine faithfully?",
+    "definition": "G\\times H\\text{ has a faithful irreducible over }\\mathbb C\\iff G,H\\text{ each do and }\\gcd(|Z(G)|,|Z(H)|)=1",
+    "explanation": "For finite groups over C, every irreducible of G×H is an external tensor of irreducibles. If the factors are faithful, Schur sends each center injectively to roots of unity. Their common scalar subgroup has size gcd of center orders and indexes the product kernel. Necessity follows because a faithful product restricts faithfully to each factor.",
+    "theorem": "|\\ker(\\pi\\boxtimes\\rho)|=\\gcd(|Z(G)|,|Z(H)|)\\quad\\text{for faithful irreducibles }\\pi,\\rho",
+    "proof": "For faithful irreducible π, Schur gives π(z)=α(z)I for z∈Z(G). Faithfulness makes α injective; similarly β for H. Finite subgroups of C× are cyclic. The images are μ_a and μ_b, where a=|Z(G)| and b=|Z(H)|. Their intersection has gcd(a,b) elements. Each common scalar gives exactly one central pair with α(z)β(w)=1, so |ker(π⊠ρ)|=gcd(a,b). Thus coprime centers and faithful factors suffice. Conversely, a faithful irreducible of G×H is π⊠ρ by the previous lesson. If either factor had a kernel, its product with identity would lie in the product kernel. Both factors are faithful, and the same gcd formula forces coprime center orders.",
+    "pitfall": "Coprime center orders are sufficient only with faithful irreducible factors; a cyclic center alone does not assert that a factor has one.",
+    "prompt": "Predict the difference between C₂×D₈ and C₃×D₈ before checking center orders and kernel pairs.",
+    "machine": "ureca-direct-products",
+    "parameters": {
+      "lessonMode": "ureca-faithful-direct-product"
+    },
+    "worked": {
+      "title": "C₂×D₈ fails",
+      "steps": [
+        "The sign of C₂ is faithful and the geometric D₈ plane is faithful irreducible.",
+        "Their center orders are 2 and 2; the common scalar −1 gives (t,r²) in the tensor kernel.",
+        "Every irreducible of C₂×D₈ is a product, so no alternative faithful irreducible escapes this obstruction."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Which product admits a faithful irreducible with D₈: C₂×D₈ or C₃×D₈?",
+        "hint": "Check the exact field, factor action and theorem hypotheses before concluding.",
+        "answer": "D₈ has a faithful irreducible with center order 2. The C₃ center order is coprime to 2; the C₂ order is not."
+      }
+    ]
   }
 ]

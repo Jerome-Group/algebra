@@ -174,5 +174,17 @@
     ],
     "answer": 2,
     "explanation": "On C2 take its faithful sign character; on D8 take its faithful complex two-dimensional square representation. The nonidentity pair (−1,r²) acts as (−1)⊗(−I)=I, so the product has nontrivial kernel."
+  },
+  "route-ureca-representation-theory": {
+    "kind": "transfer",
+    "question": "Carry the complex D₈ square representation through its character, external products and kernel. Which proof establishes the complete irreducible list for Cₙ×D₈ and correctly distinguishes n=2 from n=3?",
+    "choices": [
+      "Tensor products give all rows because their degrees multiply; both products are faithful since each factor representation is faithful.",
+      "The D₈ plane character has norm one and r² acts as −I₂. Product-row inner products factor, and the squared degrees total 8n, so the external rows are complete. C₂ has the cancelling pair (a,r²); C₃ has no matching −1 scalar, so its product is faithful.",
+      "The D₈ plane character has trace −2 at r², so r² is in its kernel. Thus both external products fail faithfulness.",
+      "C₃×D₈ has no degree-two irreducibles because 3 and 8 are coprime."
+    ],
+    "answer": 1,
+    "explanation": "Norm one establishes D₈ irreducibility. Product inner products establish distinct irreducible external rows; the 8n squared-degree sum establishes completeness. Trace −2 means scalar −I₂, not kernel. C₂ contributes −1 and cancels it, while C₃ has no −1 character value."
   }
 }
