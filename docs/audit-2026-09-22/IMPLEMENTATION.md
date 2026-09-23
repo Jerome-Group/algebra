@@ -284,3 +284,11 @@ Rings unit has authored competency evidence for its existing capstone.
   Characteristic-two group algebra and the opposite-ring step stay visible.
   The audit leaves broader group-algebra, unitization, nilpotent-span and
   Morita extensions outside these worked core examples.
+
+- #64 promotes ordinary tensor products to guided teaching and completes the
+  six-lesson Tensor/URECA unit. The right-R/left-R universal property and
+  balancing relation remain typed; a cyclic presentation computes
+  ℤ/m⊗_ℤℤ/n≅ℤ/gcd(m,n), including a zero tensor of nonzero factors. A rank-two
+  sum separates pure tensors from arbitrary elements, and a dual-basis
+  argument identifies V*⊗W with Hom(V,W) in finite dimension. The existing
+  external ⊠ and scalar-matching experiences retain their separate action.

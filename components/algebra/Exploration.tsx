@@ -19,6 +19,7 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
     lesson.machine === "ideal-chain-explorer" ||
     lesson.machine === "module-action-board" ||
     lesson.machine === "wedderburn-layers" ||
+    lesson.machine === "tensor-balancing" ||
     lesson.machine === "invariant-intertwiner" ||
     lesson.machine === "induction-reciprocity" ||
     lesson.machine === "character-construction";

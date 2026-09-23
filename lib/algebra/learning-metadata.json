@@ -2368,12 +2368,28 @@
     "conceptKind": "object"
   },
   "tensor-products": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": ["ureca-group-algebra"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "estimatedMinutes": 25,
+    "prerequisites": ["m3220-annihilator", "foundations-linear-algebra"],
+    "competencies": [
+      {
+        "id": "tensor-products:boundaryCheck",
+        "statement": "What property must b:U×V→A have to factor through U⊗_R V?",
+        "level": "explain"
+      },
+      {
+        "id": "tensor-products:application",
+        "statement": "What is ℤ/4ℤ⊗_ℤℤ/6ℤ?",
+        "level": "compute"
+      },
+      {
+        "id": "tensor-products:transfer",
+        "statement": "How does π⊠ρ for G×H differ from an ordinary U⊗_R V construction?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
@@ -2615,7 +2631,7 @@
     "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["ureca-character-bound-kernel"],
+    "prerequisites": ["tensor-products", "ureca-character-bound-kernel"],
     "competencies": [
       {
         "id": "ureca-external-tensor-products:boundaryCheck",
