@@ -9452,8 +9452,8 @@
     "theorem": "A\\text{ semisimple}\\iff A\\cong\\prod_i M_{n_i}(D_i),\\qquad D_i\\text{ finite-dimensional division algebras}.",
     "proof": "Decompose the regular module into isotypic pieces $n_iS_i$. Schur gives zero homomorphisms between nonisomorphic simple modules and division rings of endomorphisms on each simple. Thus its endomorphism ring is a product of matrix rings. Right multiplication identifies $A^{\\mathrm{op}}$ with $\\operatorname{End}_A(A)$; taking opposite rings recovers the claimed decomposition. Over an algebraically closed field, the division algebras are the field itself.",
     "pitfall": "Semisimple does not mean commutative. A simple algebra may have many proper left ideals: simplicity excludes proper nonzero two-sided ideals. The finite-dimensional hypothesis matters.",
-    "prompt": "Follow each relationship from the regular module to its endomorphisms. Then count the dimensions of the matrix blocks in the worked example.",
-    "machine": "diagram",
+    "prompt": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "machine": "wedderburn-layers",
     "parameters": {
       "nodes": [
         {
@@ -9520,7 +9520,7 @@
     "proofStatus": "Theorem imported · proof roadmap here",
     "exampleStatus": "Worked example here",
     "prerequisites": ["m3220-artinian"],
-    "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
+    "labScope": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
     "objective": "Distinguish algebra blocks, dimensions of simple modules and multiplicities in the regular module.",
     "level": "Advanced reference",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -9557,8 +9557,8 @@
     "theorem": "\\operatorname{rad}M=J(A)M,\\quad\\operatorname{soc}M=\\{m:J(A)m=0\\},\\quad\\operatorname{soc}^rM=\\{m:J(A)^rm=0\\}.",
     "proof": "A nilpotent ideal annihilates every simple module: otherwise its image is the whole module, and iteration contradicts nilpotence. Intersecting annihilators therefore contains all nilpotent ideals. Finite length and the semisimple quotient show this intersection is itself nilpotent. For a module, pass to the quotient by $J(A)M$ and use the semisimplicity of $A/J(A)$; the socle is the part already annihilated by the radical.",
     "pitfall": "The radical is nilpotent here because the algebra is finite-dimensional. For a general commutative ring the nilradical need not be nilpotent. Nilpotent elements need not individually form an ideal in a noncommutative algebra.",
-    "prompt": "Use the upper triangular algebra: erase strictly upper triangular entries and watch the diagonal factors survive.",
-    "machine": "diagram",
+    "prompt": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "machine": "wedderburn-layers",
     "parameters": {
       "nodes": [
         {
@@ -9644,7 +9644,7 @@
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
     "prerequisites": ["algebra-wedderburn"],
-    "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
+    "labScope": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
     "objective": "Compute a radical/socle filtration and identify the nonsplit extension data that the layer dimensions omit.",
     "level": "Advanced reference",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."

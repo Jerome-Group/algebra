@@ -275,3 +275,12 @@ Rings unit has authored competency evidence for its existing capstone.
   the e,r,r² transversal, with both generator matrices, subgroup correction,
   fixed-coset trace and matched Frobenius Hom dimensions. The audit keeps S₄,
   D₄/Q₈, A₅ table constructions and a separate GL₂ route pending.
+
+- #62 guides Wedderburn blocks and radical layers with V18. M₂(F) matrix
+  units distinguish block dimension four from simple dimension two and
+  regular multiplicity two; F[C₂] has an explicit block map when 2 is
+  invertible. The natural T₂(F)-module has radical and socle Fe₁, simple
+  successive layers, and a nonsplit extension detected by E₁₂e₂=e₁.
+  Characteristic-two group algebra and the opposite-ring step stay visible.
+  The audit leaves broader group-algebra, unitization, nilpotent-span and
+  Morita extensions outside these worked core examples.

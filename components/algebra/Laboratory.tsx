@@ -41,6 +41,7 @@ import { LocalisationMicroscope } from "./LocalisationMicroscope";
 import { IdealChainExplorer } from "./IdealChainExplorer";
 import { ModuleActionBoard } from "./ModuleActionBoard";
 import { InductionReciprocityLab } from "./InductionReciprocityLab";
+import { WedderburnLayerLab } from "./WedderburnLayerLab";
 import { InvariantIntertwinerLab } from "./InvariantIntertwinerLab";
 import { CharacterConstruction } from "./CharacterConstruction";
 const laboratories: Record<
@@ -66,6 +67,7 @@ const laboratories: Record<
   "ideal-chain-explorer": IdealChainExplorer,
   "module-action-board": ModuleActionBoard,
   "induction-reciprocity": InductionReciprocityLab,
+  "wedderburn-layers": WedderburnLayerLab,
   "invariant-intertwiner": InvariantIntertwinerLab,
   "character-construction": CharacterConstruction,
   "module-presentation": ModulePresentation,

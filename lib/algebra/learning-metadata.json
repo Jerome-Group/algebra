@@ -2378,22 +2378,54 @@
     "conceptKind": "object"
   },
   "algebra-wedderburn": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
     "prerequisites": ["m3220-artinian"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "competencies": [
+      {
+        "id": "algebra-wedderburn:boundaryCheck",
+        "statement": "When may a finite-dimensional semisimple F-algebra be written as a product of M_n(F) without division rings?",
+        "level": "explain"
+      },
+      {
+        "id": "algebra-wedderburn:application",
+        "statement": "How many copies of F² occur in the left regular M₂(F)-module?",
+        "level": "compute"
+      },
+      {
+        "id": "algebra-wedderburn:transfer",
+        "statement": "What fails in F₂[C₂] when trying the idempotents (1±g)/2?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "technique"
   },
   "algebra-radical": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
     "prerequisites": ["algebra-wedderburn"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "competencies": [
+      {
+        "id": "algebra-radical:boundaryCheck",
+        "statement": "Which algebra here is semisimple?",
+        "level": "explain"
+      },
+      {
+        "id": "algebra-radical:application",
+        "statement": "What is J(A)V on V=F²?",
+        "level": "compute"
+      },
+      {
+        "id": "algebra-radical:transfer",
+        "statement": "Why does 0→Fe₁→V→V/Fe₁→0 fail to split?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },

@@ -5120,5 +5120,148 @@
       "explanation": "The natural Hom-space isomorphism, not a numerical accident, is the theorem."
     },
     "connection": "Double cosets refine restriction of induced modules; H\\G/H has H and HrH in this example."
+  },
+  "algebra-wedderburn": {
+    "hook": "Is a matrix block the same size as its simple module?",
+    "objects": "For an associative finite-dimensional unital F-algebra A, semisimple A is a product of matrix algebras over division F-algebras. If F is algebraically closed and the algebras are finite-dimensional over F, the division rings are F, so A≅∏_i M_{n_i}(F). The simple left module S_i has dimension n_i; the regular left module contains S_i with multiplicity n_i.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For A=M₂(F), what is the dimension of its simple left module?",
+      "choices": [
+        "2, while dim_F A=4",
+        "4, equal to the block dimension",
+        "1, because A has one block"
+      ],
+      "answer": 0,
+      "explanation": "The column module F² is simple, and the regular module splits into two column copies."
+    },
+    "examples": [
+      {
+        "title": "Matrix units and the regular module",
+        "steps": [
+          "In M₂(F), E_ijE_kl=δ_jkE_il. The left ideals AE₁₁ and AE₂₂ are each isomorphic to the natural simple left module F², represented by one column.",
+          "A=AE₁₁⊕AE₂₂≅F²⊕F² as left modules. One block has F-dimension 4, its simple has dimension 2, and its regular multiplicity is 2."
+        ]
+      },
+      {
+        "title": "An explicit group-algebra block map",
+        "steps": [
+          "Let C₂={1,g} and char F≠2. The central idempotents e_+=(1+g)/2 and e_-=(1−g)/2 are orthogonal and sum to 1.",
+          "The unital algebra map F[C₂]→F×F, a+bg↦(a+b,a−b), is bijective with inverse (x,y)↦((x+y)/2)+((x−y)/2)g. The regular module is trivial⊕sign."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A semisimple quotient is not the original algebra",
+      "explanation": "For A=T₂(F), the upper-triangular 2×2 algebra, J(A)=FE₁₂ is nonzero and A/J(A)≅F×F. The quotient has two field blocks, but A is not their direct product and its natural module has a nonsplit extension."
+    },
+    "proofSteps": [
+      "Matrix units satisfy E_ijE_kl=δ_jkE_il by direct multiplication; the column left ideals AE_jj give n equivalent copies of the natural simple module in M_n(F).",
+      "For finite-dimensional semisimple unital A, simple isotypic components are two-sided ideals; their identity idempotents are central, and each component is a full matrix algebra over a division ring. Over algebraically closed F, finite-dimensional division F-algebras reduce to F.",
+      "For a left simple S, commuting A-endomorphisms form a division ring. Defining a right scalar action by s·d=d(s) reverses composition, so the opposite ring enters the double-centralizer step; do not silently identify these sides in the noncommutative case.",
+      "For F[C₂], e_+ and e_- are central orthogonal idempotents only when 2 is invertible. The displayed map sends the two idempotents to (1,0) and (0,1), certifying the block decomposition."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When may a finite-dimensional semisimple F-algebra be written as a product of M_n(F) without division rings?",
+      "choices": [
+        "When F is algebraically closed",
+        "Over every field",
+        "Only when A is commutative"
+      ],
+      "answer": 0,
+      "explanation": "The general blocks are matrix rings over division F-algebras."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "How many copies of F² occur in the left regular M₂(F)-module?",
+      "choices": ["2", "1", "4"],
+      "answer": 0,
+      "explanation": "Each column left ideal is a copy of F²."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "What fails in F₂[C₂] when trying the idempotents (1±g)/2?",
+      "choices": [
+        "2 is not invertible and the algebra has nonzero radical",
+        "The group has no identity",
+        "The regular module has dimension one"
+      ],
+      "answer": 0,
+      "explanation": "In characteristic two, (g+1)²=0 and the split block map collapses."
+    },
+    "connection": "Radical filtrations expose the extension data a semisimple quotient forgets."
+  },
+  "algebra-radical": {
+    "hook": "Can simple successive layers still form a nonsplit module?",
+    "objects": "Let A=T₂(F) be the finite-dimensional unital algebra of upper-triangular matrices [[a,b],[0,c]] over a field F. Its Jacobson radical J(A)=FE₁₂ has J²=0 and A/J≅F×F. On the natural left module V=F², Fe₁ is the socle and JV=Fe₁ is the module radical.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Does a filtration with simple quotients force the module to split?",
+      "choices": [
+        "No; the extension may be nonsplit",
+        "Yes, always",
+        "Only if the algebra has an identity"
+      ],
+      "answer": 0,
+      "explanation": "Composition factors do not record extension classes."
+    },
+    "examples": [
+      {
+        "title": "The natural triangular module",
+        "steps": [
+          "For [[a,b],[0,c]] acting on columns, Fe₁ is stable and simple: E₁₁ acts as 1, E₂₂ as 0. The quotient V/Fe₁ is a one-dimensional simple module on which E₂₂ acts as 1.",
+          "J(A)V=FE₁₂V=Fe₁. The only nonzero simple submodule is Fe₁, so soc(V)=Fe₁; also rad(V)=JV=Fe₁. The filtration 0<Fe₁<V has simple layers S₁ and S₂.",
+          "The exact sequence 0→S₁→V→S₂→0 does not split: every line complement contains e₂+c e₁, yet E₁₂(e₂+c e₁)=e₁ lies outside it."
+        ]
+      },
+      {
+        "title": "A characteristic-two group algebra",
+        "steps": [
+          "In F₂[C₂], let ε=g+1. Then ε²=g²+2g+1=0, so J=(ε) and the quotient is F₂.",
+          "The regular module has two one-dimensional trivial composition factors but is not a direct sum of them; the nilpotent ε action records the extension."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Layer dimensions do not identify the module",
+      "explanation": "The direct sum S₁⊕S₂ has the same simple layer dimensions as the natural T₂(F)-module, but E₁₂ acts as zero on the direct sum and nonzero on V. The extension data cannot be read from dimensions alone."
+    },
+    "proofSteps": [
+      "The map T₂(F)→F×F sending [[a,b],[0,c]]↦(a,c) is a surjective unital algebra map with kernel FE₁₂; that kernel squares to zero and is the Jacobson radical.",
+      "On V, E₁₂ sends e₂ to e₁ and e₁ to zero. Thus JV=Fe₁, and Fe₁ is the unique nonzero simple submodule.",
+      "A submodule complement to Fe₁ would be a stable line spanned by e₂+c e₁. E₁₂ sends that generator to e₁, not in the line, contradiction. Hence the extension is nonsplit despite simple layers.",
+      "The Artin–Wedderburn theorem applies to A/J, not to A when J≠0. Statements about unitization, spans of nilpotents and Morita equivalence of matrix rings are separate extensions, not consequences of this two-layer example."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which algebra here is semisimple?",
+      "choices": [
+        "A/J≅F×F, not A=T₂(F)",
+        "A because its natural module has simple factors",
+        "Neither A nor A/J"
+      ],
+      "answer": 0,
+      "explanation": "The radical must vanish for A itself to be semisimple."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is J(A)V on V=F²?",
+      "choices": ["Fe₁", "Fe₂", "0"],
+      "answer": 0,
+      "explanation": "E₁₂e₂=e₁ and E₁₂e₁=0."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does 0→Fe₁→V→V/Fe₁→0 fail to split?",
+      "choices": [
+        "No complementary line is stable under E₁₂",
+        "The quotient is not simple",
+        "V is infinite-dimensional"
+      ],
+      "answer": 0,
+      "explanation": "The off-diagonal action sends a complementary generator into Fe₁."
+    },
+    "connection": "The layer explorer compares this extension with actual semisimple blocks."
   }
 }
