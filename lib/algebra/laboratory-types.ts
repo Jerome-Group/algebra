@@ -12,6 +12,7 @@ export const laboratoryKinds = [
   "localisation-microscope",
   "ideal-chain-explorer",
   "module-action-board",
+  "induction-reciprocity",
   "invariant-intertwiner",
   "character-construction",
   "module-presentation",

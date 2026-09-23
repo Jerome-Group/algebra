@@ -6827,7 +6827,7 @@
         "answer": "Twice the trivial character has norm four, so is reducible. The difference has value zero at the identity but is not identically zero, so cannot be the character of a representation; it is a virtual character."
       }
     ],
-    "prerequisites": ["odyssey-schur", "representations-maschke"],
+    "prerequisites": ["representations-characters", "odyssey-schur"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -6851,8 +6851,8 @@
     "theorem": "\\operatorname{Ind}_H^G W\\cong\\bigoplus_{t\\in T}(t\\otimes W)\\ \\text{as }F\\text{-spaces},\\qquad \\dim_F\\operatorname{Ind}_H^G W=[G:H]\\dim_F W.",
     "proof": "As a right $FH$-module, $FG=\\bigoplus_{t\\in T}tFH$ for a left transversal $T$. Tensoring with $W$ gives $FG\\otimes_{FH}W\\cong\\bigoplus_{t\\in T}t\\otimes W$ as vector spaces. Hence the dimension is $[G:H]\\dim_F W$. For the trivial $H$-module the induced action permutes the cosets.",
     "pitfall": "Restriction keeps the vector space and uses fewer group elements; induction usually enlarges the vector space. The direct sum over cosets is a vector-space decomposition, not a decomposition into $G$-submodules.",
-    "prompt": "For $H=S_{2}$ inside $S_{3}$, follow the three cosets. Inducing the trivial $H$ representation gives the three-point permutation representation.",
-    "machine": "diagram",
+    "prompt": "Choose an H-character, acting element, coset basis vector and G target; predict motion, trace and both Hom dimensions.",
+    "machine": "induction-reciprocity",
     "parameters": {
       "nodes": [
         {
@@ -6941,10 +6941,11 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Example not yet developed",
-    "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
+    "labScope": "Coset matrices and Hom dimensions verify this S₃ case; the natural Hom-space isomorphism in the lesson proves Frobenius reciprocity generally.",
     "objective": "Follow one vector across coset copies and explain the correction by the subgroup element.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["odyssey-character-table"]
   },
   {
     "id": "odyssey-frobenius",
