@@ -13,6 +13,7 @@ export const laboratoryKinds = [
   "ideal-chain-explorer",
   "module-action-board",
   "induction-reciprocity",
+  "wedderburn-layers",
   "invariant-intertwiner",
   "character-construction",
   "module-presentation",

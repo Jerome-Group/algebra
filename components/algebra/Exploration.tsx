@@ -18,6 +18,7 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
     lesson.machine === "localisation-microscope" ||
     lesson.machine === "ideal-chain-explorer" ||
     lesson.machine === "module-action-board" ||
+    lesson.machine === "wedderburn-layers" ||
     lesson.machine === "invariant-intertwiner" ||
     lesson.machine === "induction-reciprocity" ||
     lesson.machine === "character-construction";

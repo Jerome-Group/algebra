@@ -614,5 +614,27 @@
     "counterexample": "Omitting sign_H(s)=−1 changes the s trace from −1 to +1 and misidentifies Ind sign_H as Ind trivial_H.",
     "debrief": "Coset matrices and Hom dimensions verify this S₃ case; the natural Hom-space isomorphism in the lesson proves Frobenius reciprocity generally.",
     "fallback": "Every coset image, generator matrix, character row and Hom dimension appears as labelled text and a table."
+  },
+  "algebra-wedderburn": {
+    "name": "Wedderburn and radical-layer explorer",
+    "type": "checker",
+    "question": "Which blocks, simple modules and extension layers does the selected algebra have?",
+    "prediction": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "objects": "Associative finite-dimensional unital F-algebras M2(F), T2(F) and F[C2]; natural left modules and regular modules.",
+    "invariant": "M2(F) has one matrix block and regular multiplicity two; T2(F) has radical FE12 and a nonsplit natural module; F[C2] changes in characteristic two.",
+    "counterexample": "Simple successive layers of the natural T2(F)-module do not split: E12 sends e2 to e1.",
+    "debrief": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
+    "fallback": "Hypotheses, dimensions, blocks, radical and module layers are shown in labelled text and a table."
+  },
+  "algebra-radical": {
+    "name": "Wedderburn and radical-layer explorer",
+    "type": "checker",
+    "question": "Do the simple layers of the natural triangular module split?",
+    "prediction": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "objects": "Associative finite-dimensional unital F-algebras M2(F), T2(F) and F[C2]; natural left modules and regular modules.",
+    "invariant": "M2(F) has one matrix block and regular multiplicity two; T2(F) has radical FE12 and a nonsplit natural module; F[C2] changes in characteristic two.",
+    "counterexample": "Simple successive layers of the natural T2(F)-module do not split: E12 sends e2 to e1.",
+    "debrief": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
+    "fallback": "Hypotheses, dimensions, blocks, radical and module layers are shown in labelled text and a table."
   }
 }
