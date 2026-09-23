@@ -2892,5 +2892,415 @@
       "explanation": "The two automorphisms of C₃ produce commuting or inverting multiplication."
     },
     "connection": "The same normal-subgroup and conjugation tools later organize groups of larger order and semidirect products."
+  },
+  "m3220-rings": {
+    "hook": "Two operations share one set. Which axioms belong to which operation?",
+    "objects": "Course convention: a ring R is an abelian group under +, has associative multiplication and both distributive laws; a multiplicative 1 and commutativity are optional unless stated. A unital ring has 1. In the zero ring, 0=1 if one allows the trivial unital ring.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What structure must (R,+) have in every ring?",
+      "choices": ["An abelian group", "A field", "A monoid without inverses"],
+      "answer": 0,
+      "explanation": "Addition has 0 and additive inverses and is commutative; multiplication need not have inverses."
+    },
+    "examples": [
+      {
+        "title": "ℤ and its even subring",
+        "steps": [
+          "ℤ has its usual addition and multiplication, is commutative, and has identity 1. It is an integral domain.",
+          "2ℤ is closed under both operations and additive inverses, and inherits distributivity; under the course convention it is a ring. It has no multiplicative identity of its own."
+        ]
+      },
+      {
+        "title": "Matrices and the zero ring",
+        "steps": [
+          "For any field F, M₂(F) has matrix addition as an abelian group, associative multiplication and identity I₂. Multiplication is not commutative: E₁₂E₂₁=E₁₁, while E₂₁E₁₂=E₂₂.",
+          "The one-element zero ring has 0·0=0 and satisfies ring axioms. If it is called unital, its 1 equals 0; a theorem requiring 1≠0 excludes it."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Multiplicative inverses are not an axiom",
+      "explanation": "ℤ is a ring even though 2 has no multiplicative inverse. Requiring inverses for every nonzero element would ask for a division ring, a stronger structure."
+    },
+    "proofSteps": [
+      "From additive group axioms, 0 and additive negatives exist. Associativity of multiplication and both distributive laws are separate requirements; neither follows from the addition table.",
+      "For any a, a0=a(0+0)=a0+a0. Add the additive inverse of a0 to obtain a0=0; similarly 0a=0.",
+      "Then 0=(a+(-a))b=ab+(-a)b, so (-a)b=-(ab), and likewise a(-b)=-(ab). These sign laws need distributivity and cancellation, not commutativity or 1.",
+      "For 2ℤ, inherited associativity/distributivity and closure prove the ring axioms. If 2k were its identity, (2k)·2=2 would give 2k=1 in ℤ, impossible."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which property is optional in this course’s ring convention?",
+      "choices": [
+        "A multiplicative identity",
+        "Additive inverses",
+        "Distributivity"
+      ],
+      "answer": 0,
+      "explanation": "The notes allow rings without 1, such as 2ℤ. State a unital hypothesis when a theorem needs it."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What are E₁₂E₂₁ and E₂₁E₁₂ in M₂(F)?",
+      "choices": ["E₁₁ and E₂₂", "Both I₂", "Both zero"],
+      "answer": 0,
+      "explanation": "Matrix-unit multiplication gives EᵢⱼEₖₗ=δⱼₖEᵢₗ."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A theorem assumes a nonzero unital commutative ring. Can it be applied automatically to 2ℤ or M₂(F)?",
+      "choices": [
+        "No: 2ℤ lacks 1 and M₂(F) is noncommutative",
+        "Yes: both are rings",
+        "No: neither has additive inverses"
+      ],
+      "answer": 0,
+      "explanation": "The extra hypotheses must be checked for each example, not inferred from the word ring."
+    },
+    "connection": "The next lesson adds a unital hypothesis to discuss units and separates invertibility from zero divisors."
+  },
+  "m3220-units": {
+    "hook": "Is every nonunit a zero divisor?",
+    "objects": "In a unital ring, a unit u has a two-sided inverse v with uv=vu=1. In a commutative ring, a nonzero zero divisor a kills a nonzero b. In a noncommutative ring, left and right zero divisors can differ.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "Is 2 a unit in ℤ?",
+      "choices": ["No", "Yes, inverse 1/2 in ℤ", "Yes, because it is nonzero"],
+      "answer": 0,
+      "explanation": "Only ±1 are units of ℤ; 1/2 is not an integer."
+    },
+    "examples": [
+      {
+        "title": "ℤ versus ℤ/8ℤ",
+        "steps": [
+          "In ℤ, 2 is a nonzero nonunit but not a zero divisor because ℤ is a domain.",
+          "In ℤ/8ℤ, [3] is a unit since 3·3≡1; [2] is a nonzero zero divisor since 2·4≡0. The units are [1],[3],[5],[7]."
+        ]
+      },
+      {
+        "title": "Finite matrices and one-sided inverses",
+        "steps": [
+          "Over a field F, A∈M₂(F) is a unit exactly when det A≠0. A nonzero singular matrix kills a nonzero vector, so it is a zero divisor in M₂(F).",
+          "For square matrices over F, AB=I₂ implies det A·det B=1 and hence BA=I₂. Thus a one-sided inverse becomes two-sided in this finite matrix example, though not in every unital ring."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Infinite shifts separate one side from two",
+      "explanation": "On the vector space with basis e₀,e₁,…, define S(eᵢ)=eᵢ₊₁ and L(e₀)=0, L(eᵢ₊₁)=eᵢ. Then LS=I but SL≠I. These endomorphisms are one-sided inverses, not units; the finite-square-matrix implication cannot be used without its hypothesis."
+    },
+    "proofSteps": [
+      "In ℤ/nℤ, [a] has an inverse exactly when integers u,k solve au+kn=1. Bézout says this is equivalent to gcd(a,n)=1.",
+      "For n=8, the residues coprime to 8 are 1,3,5,7. A residue 2 has 2·4=0 mod 8 with both factors nonzero, so it is a zero divisor.",
+      "In an integral domain, if nonzero a killed nonzero b, ab=0 would contradict the domain axiom. Thus a domain may have nonunits but has no nonzero zero divisors.",
+      "For square matrices over a field, AB=I forces det A≠0, so A is invertible and B=A⁻¹. The shift example shows why this argument needs finite dimension."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When does AB=I force BA=I in the stated matrix argument?",
+      "choices": [
+        "For finite square matrices over a field",
+        "In every unital ring",
+        "Only for diagonal matrices"
+      ],
+      "answer": 0,
+      "explanation": "The determinant argument uses finite square matrices over a field; infinite shifts disprove the general claim."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which residues are units in ℤ/8ℤ?",
+      "choices": ["1, 3, 5, 7", "All nonzero residues", "2, 4, 6"],
+      "answer": 0,
+      "explanation": "Exactly the residues coprime to eight are units."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "What does 2∈ℤ show about the proposed rule “every nonunit is a zero divisor”?",
+      "choices": [
+        "It is false even in an integral domain",
+        "It holds because 2·0=0",
+        "It holds only in fields"
+      ],
+      "answer": 0,
+      "explanation": "A zero divisor must kill a nonzero element; 2 cannot do that in ℤ."
+    },
+    "connection": "Ideals absorb multiplication, whether or not their elements are units. They are the right subobjects for quotient rings."
+  },
+  "m3220-ideals": {
+    "hook": "Why can an additive subgroup fail to support quotient multiplication?",
+    "objects": "A two-sided ideal I of a ring R is an additive subgroup with rI⊆I and Ir⊆I for every r∈R. In a commutative ring the two absorptions coincide. A left ideal needs only rI⊆I.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which condition is extra for a two-sided ideal beyond additive subgroup closure?",
+      "choices": [
+        "Absorption under multiplication by every ring element on both sides",
+        "Closure only under its own multiplication",
+        "Containing 1"
+      ],
+      "answer": 0,
+      "explanation": "The quotient product needs changes in either representative to remain inside I."
+    },
+    "examples": [
+      {
+        "title": "Principal ideals in commutative rings",
+        "steps": [
+          "In ℤ, nℤ is an ideal: sums and additive negatives remain multiples of n, and r(nk)=n(rk).",
+          "For a field F, (X²+1)⊂F[X] is an ideal. The coefficient field matters for later factor and quotient claims: over ℝ it yields a copy of ℂ, while over F₂ the polynomial is (X+1)²."
+        ]
+      },
+      {
+        "title": "A matrix left ideal is not two-sided",
+        "steps": [
+          "In M₂(F), let L={[[a,0],[b,0]]:a,b∈F}, the matrices supported in the first column. Left multiplication preserves the zero second column, so L is a left ideal.",
+          "E₁₁∈L but E₁₁E₁₂=E₁₂∉L; right absorption fails, so L cannot define ordinary quotient-ring multiplication."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A subring need not be an ideal",
+      "explanation": "The diagonal matrices in M₂(F) form a unital subring. Yet E₁₂·E₂₂=E₁₂ is not diagonal, so the subring is not a two-sided ideal."
+    },
+    "proofSteps": [
+      "An ideal is an additive subgroup, so cosets a+I can be added. To multiply cosets independently of representatives, changes a→a+i and b→b+j must leave (a+i)(b+j)−ab=aj+ib+ij in I.",
+      "For the first-column matrix set L, any A times a member of L still has zero second column; E₁₁E₁₂ leaves L, proving it is only a left ideal.",
+      "Let J be a nonzero two-sided ideal of M₂(F), with F a field. Choose A∈J with an entry aᵢⱼ≠0. Then Eₖᵢ A Eⱼₗ=aᵢⱼEₖₗ∈J for all k,l.",
+      "Multiplying by aᵢⱼ⁻¹I₂ gives every matrix unit Eₖₗ∈J; their F-linear combinations span M₂(F), so J=M₂(F). Thus only 0 and the whole ring are two-sided ideals."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which assumption lets a nonzero matrix entry produce every matrix unit in the proof?",
+      "choices": [
+        "The coefficient ring is a field",
+        "Matrices commute",
+        "The ideal is only left-sided"
+      ],
+      "answer": 0,
+      "explanation": "We divide by the nonzero entry aᵢⱼ, which requires a field."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What happens to E₁₁E₁₂ for the first-column left ideal L?",
+      "choices": [
+        "It equals E₁₂, outside L",
+        "It equals E₁₁, inside L",
+        "It equals zero"
+      ],
+      "answer": 0,
+      "explanation": "Matrix-unit multiplication gives E₁₂; its nonzero second column violates membership."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is an arbitrary subring insufficient for R/I multiplication?",
+      "choices": [
+        "Representative changes need two-sided absorption",
+        "Every subring is already an ideal",
+        "Subrings lack additive closure"
+      ],
+      "answer": 0,
+      "explanation": "A subring may fail absorption by elements of R outside itself, so products of cosets can depend on representatives."
+    },
+    "connection": "Selecting a two-sided ideal makes quotient multiplication meaningful. The V10 lattice tracks which ideals of R survive in R/I."
+  },
+  "m3220-ring-hom": {
+    "hook": "Does a ring map have to send 1 to 1?",
+    "objects": "Course convention: a ring homomorphism φ:R→S preserves addition and multiplication; preserving 1 is an additional unital-map condition when R,S have identities. Kernel is φ⁻¹(0), and image is φ(R).",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which equality is required of every ring homomorphism here?",
+      "choices": [
+        "φ(ab)=φ(a)φ(b)",
+        "φ(1)=1 even for nonunital rings",
+        "φ is injective"
+      ],
+      "answer": 0,
+      "explanation": "Multiplication is preserved; the course treats 1-preservation as an extra condition."
+    },
+    "examples": [
+      {
+        "title": "Unital evaluation and reduction",
+        "steps": [
+          "Evaluation evᵢ:ℝ[X]→ℂ sends f to f(i). It preserves +,·,1, has kernel (X²+1), and is surjective because a+bi is evᵢ(a+bX).",
+          "Reduction ρ:ℤ→ℤ/8ℤ sends n to [n]; it preserves 1, has kernel 8ℤ and image the whole quotient."
+        ]
+      },
+      {
+        "title": "A multiplicative map that does not preserve 1",
+        "steps": [
+          "Define j:ℤ→ℤ×ℤ by j(n)=(n,0). It preserves + and multiplication componentwise.",
+          "Its target identity is (1,1), while j(1)=(1,0). Under the course convention it is a ring map but not a unital map."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Image need not be an ideal",
+      "explanation": "The image of j is ℤ×{0}, a subring of ℤ×ℤ; this happens to be an ideal, but in general the image of a ring map need not be an ideal. For the inclusion ℤ→ℚ, the image ℤ is a subring and is not an ideal of ℚ because (1/2)·1∉ℤ."
+    },
+    "proofSteps": [
+      "Additive preservation gives φ(0)=0 and φ(−a)=−φ(a), so ker φ is an additive subgroup.",
+      "If a∈ker φ and r∈R, then φ(ra)=φ(r)φ(a)=0 and φ(ar)=φ(a)φ(r)=0. Thus ker φ is a two-sided ideal even when R is noncommutative.",
+      "For x=φ(a), y=φ(b), the sum/difference and product are images of a±b and ab. Therefore im φ is a subring; it contains 1_S only if φ is unital or another preimage of 1_S exists.",
+      "A map is injective exactly when its kernel is {0}, because φ(a)=φ(b) iff φ(a−b)=0. This uses the additive group structure."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "For f:ℤ→ℤ/6ℤ, f(n)=[2n], which homomorphism axioms hold? Check addition, multiplication and preservation of 1 separately.",
+      "choices": [
+        "Addition only; multiplication and 1 fail",
+        "Addition and multiplication hold; only 1 fails",
+        "All three axioms hold"
+      ],
+      "answer": 0,
+      "explanation": "f(a+b)=f(a)+f(b). But f(1·1)=[2] while f(1)f(1)=[4], and f(1)=[2]≠[1]. Thus it is not a ring homomorphism under either unital convention."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is ker(ℤ→ℤ/8ℤ)?",
+      "choices": ["8ℤ", "{0}", "All of ℤ"],
+      "answer": 0,
+      "explanation": "Exactly multiples of eight reduce to zero."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is the image of a ring homomorphism not automatically an ideal of its codomain?",
+      "choices": [
+        "It need not absorb multiplication by codomain elements outside the image",
+        "It may fail addition closure",
+        "Its kernel may be nonzero"
+      ],
+      "answer": 0,
+      "explanation": "The inclusion ℤ⊂ℚ is a counterexample: (1/2)·1 is outside ℤ."
+    },
+    "connection": "Kernel ideals make quotient maps possible. The next lesson checks multiplication of cosets before the isomorphism theorem."
+  },
+  "m3220-quotient-ring": {
+    "hook": "What makes the product (a+I)(b+I) independent of the chosen representatives?",
+    "objects": "Let I be a two-sided ideal of a ring R. The quotient R/I has classes a+I; addition and multiplication are (a+I)+(b+I)=(a+b)+I and (a+I)(b+I)=ab+I. Fix the coefficient ring in each polynomial example.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "In ℤ/8ℤ, what class is 10?",
+      "choices": ["[2]", "[10] distinct from [2]", "[0]"],
+      "answer": 0,
+      "explanation": "10−2=8 belongs to 8ℤ, so the classes agree."
+    },
+    "examples": [
+      {
+        "title": "Integer quotient with visible zero divisors",
+        "steps": [
+          "For R=ℤ and I=8ℤ, the quotient classes are [0],…,[7], with [2][4]=[0] although neither factor is zero.",
+          "Changing 2 to 10 changes its representative but not the product class: 10·4−2·4=32∈8ℤ."
+        ]
+      },
+      {
+        "title": "One coefficient ring, one quadratic quotient",
+        "steps": [
+          "Take R=ℝ[X], I=(X²+1), and evaluation evᵢ:R→ℂ. Division by monic X²+1 writes every f=q(X)(X²+1)+a+bX with a,b∈ℝ.",
+          "evᵢ(f)=a+bi, so evᵢ(f)=0 exactly when a=b=0. Thus ker evᵢ=I, and [X]²=[−1] in R/I. The coefficient ring remains ℝ throughout."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "An additive subgroup without absorption",
+      "explanation": "Constants H={0,1}⊂F₂[X] are an additive subgroup but not an ideal: X·1=X∉H. Although X and X+1 differ by 1∈H, multiplying by X changes their products by X∉H, so quotient multiplication would depend on representatives."
+    },
+    "proofSteps": [
+      "If a′=a+i and b′=b+j with i,j∈I, then a′b′−ab=aj+ib+ij. Two-sided absorption and additive closure put all three terms in I.",
+      "Likewise a′+b′−(a+b)=i+j∈I. Thus both quotient operations are well-defined; associativity/distributivity descend from R.",
+      "In ℝ[X], divide f by X²+1 to obtain unique a+bX remainder. Evaluation at i vanishes iff a+bi=0, hence iff a=b=0, proving ker evᵢ=(X²+1).",
+      "The induced map [f]↦f(i) is well-defined and bijective onto ℂ. The relation [X]²=[−1] holds in the quotient, not as an equality X²=−1 in ℝ[X]."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why must I be two-sided in a possibly noncommutative ring?",
+      "choices": [
+        "Both aj and ib must lie in I",
+        "Only additive closure is needed",
+        "Every subring is two-sided"
+      ],
+      "answer": 0,
+      "explanation": "Changing either representative creates products on both sides of elements of I."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "In ℝ[X]/(X²+1), what is [X]²?",
+      "choices": ["[−1]", "[X²] distinct from [−1]", "[1]"],
+      "answer": 0,
+      "explanation": "X²+1 belongs to I, so the classes of X² and −1 agree."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does the constants subgroup H⊂F₂[X] fail as a quotient-ring ideal?",
+      "choices": [
+        "X·1=X is outside H",
+        "H is not closed under addition",
+        "H lacks zero"
+      ],
+      "answer": 0,
+      "explanation": "Absorption fails, producing representative-dependent products."
+    },
+    "connection": "The first ring isomorphism theorem packages this descent and identifies exactly when the induced map is injective or surjective."
+  },
+  "m3220-first-ring-isomorphism": {
+    "hook": "A map kills an ideal. Does it become a map from the quotient, and is that map an isomorphism?",
+    "objects": "Let φ:R→S be a ring homomorphism and I a two-sided ideal with I⊆ker φ. The induced map φ̄:R/I→S sends [r] to φ(r). Its image is im φ and kernel is (ker φ)/I.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What must hold for [r]↦φ(r) to be independent of representatives modulo I?",
+      "choices": ["I⊆ker φ", "I contains 1", "φ is surjective"],
+      "answer": 0,
+      "explanation": "If r−r′∈I, their images agree exactly when φ kills I."
+    },
+    "examples": [
+      {
+        "title": "Reduction modulo 12 followed by modulo 6",
+        "steps": [
+          "Let φ:ℤ→ℤ/6ℤ be reduction and I=12ℤ⊂ker φ=6ℤ. The induced map ℤ/12ℤ→ℤ/6ℤ sends [n]₁₂ to [n]₆.",
+          "It is surjective but not injective: [0]₁₂ and [6]₁₂ differ yet have the same image. Its kernel is 6ℤ/12ℤ."
+        ]
+      },
+      {
+        "title": "Evaluation at i gives an isomorphism",
+        "steps": [
+          "For φ=evᵢ:ℝ[X]→ℂ, polynomial division shows ker φ=(X²+1).",
+          "Taking I=ker φ gives a bijective induced map ℝ[X]/(X²+1)→ℂ; its inverse sends a+bi to [a+bX]."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "The codomain can be larger than the image",
+      "explanation": "The inclusion ℤ→ℚ has kernel {0}; the first isomorphism theorem gives ℤ/{0}≅ℤ as the image, not an isomorphism with all of ℚ."
+    },
+    "proofSteps": [
+      "Well-definedness: if r+I=r′+I, then r−r′∈I⊆ker φ, so φ(r)=φ(r′). The formula therefore defines a unique map because every coset has a representative.",
+      "The induced map preserves addition and multiplication by the corresponding laws for φ. Its image is im φ, since every φ(r) is reached by [r].",
+      "Its kernel consists of classes [r] with r∈ker φ, namely (ker φ)/I. It is injective exactly when ker φ=I.",
+      "It is surjective onto S exactly when φ is surjective. Regardless, choosing I=ker φ gives the first isomorphism R/ker φ≅im φ."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which condition makes the induced map R/I→S injective?",
+      "choices": ["I=ker φ", "I⊆ker φ only", "φ is surjective"],
+      "answer": 0,
+      "explanation": "The induced kernel is (ker φ)/I, which is zero exactly when the two ideals coincide."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Let φ:ℤ→ℤ/6ℤ send n to [n]₆ and I=12ℤ. Construct the induced map ℤ/12ℤ→ℤ/6ℤ and identify its kernel.",
+      "choices": [
+        "[n]₁₂↦[n]₆; kernel {[0]₁₂,[6]₁₂}",
+        "[n]₁₂↦[2n]₆; kernel {[0]₁₂,[3]₁₂,[6]₁₂,[9]₁₂}",
+        "No induced map exists because 12ℤ≠6ℤ"
+      ],
+      "answer": 0,
+      "explanation": "Because 12ℤ⊆ker φ=6ℤ, representatives differing by 12 have the same image modulo 6. The unique descended map sends [n]₁₂ to φ(n)=[n]₆. Its kernel is {[0]₁₂,[6]₁₂}."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If φ:R→S is not surjective, what does R/ker φ identify with?",
+      "choices": ["im φ", "all of S", "ker φ"],
+      "answer": 0,
+      "explanation": "The induced map reaches exactly the image; a larger codomain remains larger."
+    },
+    "connection": "The quotient lattice workbench links ideals containing I to ideals of R/I. The next unit studies polynomial divisibility and factorisation in such rings."
   }
 }

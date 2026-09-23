@@ -12,6 +12,7 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [prediction, setPrediction] = useState("");
   const [testing, setTesting] = useState(false);
   const contract = labContract(lesson.id);
+  const integratedPrediction = lesson.machine === "ideal-quotient-lattice";
   return (
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}
@@ -59,21 +60,25 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
             <>
               <h2>{contract.question}</h2>
               <p>{contract.objects}</p>
-              <label className="prediction-prompt">
-                {contract.prediction}
-                <textarea
-                  value={prediction}
-                  onChange={(event) => setPrediction(event.target.value)}
-                  aria-label="Your mathematical prediction"
-                />
-              </label>
-              {!testing && (
-                <button
-                  disabled={!prediction.trim()}
-                  onClick={() => setTesting(true)}
-                >
-                  Test my prediction
-                </button>
+              {!integratedPrediction && (
+                <>
+                  <label className="prediction-prompt">
+                    {contract.prediction}
+                    <textarea
+                      value={prediction}
+                      onChange={(event) => setPrediction(event.target.value)}
+                      aria-label="Your mathematical prediction"
+                    />
+                  </label>
+                  {!testing && (
+                    <button
+                      disabled={!prediction.trim()}
+                      onClick={() => setTesting(true)}
+                    >
+                      Test my prediction
+                    </button>
+                  )}
+                </>
               )}
             </>
           )}
@@ -82,8 +87,10 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
           </p>
           <p className="reading-caption">{lesson.labScope}</p>
         </div>
-        {(!contract || testing) && <Laboratory key={lesson.id} l={lesson} />}
-        {contract && testing && (
+        {(!contract || testing || integratedPrediction) && (
+          <Laboratory key={lesson.id} l={lesson} />
+        )}
+        {contract && testing && !integratedPrediction && (
           <section className="laboratory-debrief">
             <h3>Invariant</h3>
             <p>{contract.invariant}</p>

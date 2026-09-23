@@ -35,6 +35,7 @@ import { ModulePresentation } from "./ModulePresentation";
 import { FixedColoringLab } from "./FixedColoringLab";
 import { MetricOrientationLab, PlaneReflectionLab } from "./OrthogonalGeometry";
 import { SylowWorkbench } from "./SylowWorkbench";
+import { IdealQuotientLattice } from "./IdealQuotientLattice";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -52,6 +53,7 @@ const laboratories: Record<
   "cayley-embedding": CayleyEmbeddingLab,
   "coset-constructor": CosetConstructor,
   "orbit-workbench": OrbitWorkbench,
+  "ideal-quotient-lattice": IdealQuotientLattice,
   "module-presentation": ModulePresentation,
   "axis-angle": AxisAngleLab,
   "plane-representation": PlaneRepresentationLab,

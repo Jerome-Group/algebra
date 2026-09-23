@@ -416,5 +416,27 @@
     "counterexample": "For p=2, n₂=1 passes arithmetic but S₃ has three distinct Sylow 2-subgroups.",
     "debrief": "Normalizer and unique fixed-Sylow arguments prove the restrictions. Arithmetic provides necessary candidates, not an existence algorithm.",
     "fallback": "The subgroup list, candidate list, normalizer, conjugation map and fixed set are labelled text and tables."
+  },
+  "m3220-ideals": {
+    "name": "Ideal and quotient lattice constructor",
+    "type": "constructor",
+    "question": "Which ideals survive when we quotient by I?",
+    "prediction": "Choose an ideal of ℤ/12ℤ or F₂[X]; predict which larger ideals correspond to ideals of the quotient.",
+    "objects": "An ideal I in ℤ/12ℤ or F₂[X], its quotient R/I, and every displayed ideal J containing I.",
+    "invariant": "J⊇I corresponds to J/I; multiplication of classes is independent of representatives only for a two-sided ideal.",
+    "counterexample": "The constants H={0,1} in F₂[X] are an additive subgroup, but X·1∉H, so multiplication of proposed classes is not well-defined.",
+    "debrief": "The tables compute finite examples and their inclusion order. The general correspondence comes from ideal preimages under R→R/I; two-sided absorption proves multiplication descends.",
+    "fallback": "Selected ideals, quotient elements, units, zero divisors and all ideal inclusions appear as labelled text and tables."
+  },
+  "m3220-quotient-ring": {
+    "name": "Quotient multiplication checker",
+    "type": "checker",
+    "question": "When does changing representatives preserve a quotient product?",
+    "prediction": "Select I in ℤ/12ℤ or F₂[X]. Predict the quotient classes and whether a non-ideal additive subgroup could work.",
+    "objects": "Cosets of a chosen two-sided ideal, with explicit arithmetic in ℤ/dℤ and F₂[X]/(q).",
+    "invariant": "For i,j∈I, (a+i)(b+j)−ab=aj+ib+ij∈I; units and zero divisors are computed in the quotient.",
+    "counterexample": "For constants H⊂F₂[X], X and X+1 differ by 1∈H but their products with X differ by X∉H.",
+    "debrief": "The selected finite quotient verifies examples. The proof of representative independence uses two-sided ideal absorption, not just the observed multiplication table.",
+    "fallback": "Quotient classes, multiplication table, units, zero divisors and ideal correspondence are available as text and tables."
   }
 }

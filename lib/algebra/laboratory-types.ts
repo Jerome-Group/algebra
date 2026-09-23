@@ -7,6 +7,7 @@ export const laboratoryKinds = [
   "cayley-embedding",
   "coset-constructor",
   "orbit-workbench",
+  "ideal-quotient-lattice",
   "module-presentation",
   "axis-angle",
   "plane-representation",

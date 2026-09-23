@@ -1100,21 +1100,53 @@
     "conceptKind": "theorem"
   },
   "m3220-ring-hom": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-domains"],
-    "competencies": [],
+    "prerequisites": ["m3220-ideals"],
+    "competencies": [
+      {
+        "id": "m3220-ring-hom:boundaryCheck",
+        "statement": "Which map is a ring homomorphism here but not unital?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ring-hom:application",
+        "statement": "What is ker(ℤ→ℤ/8ℤ)?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-ring-hom:transfer",
+        "statement": "Why is the image of a ring homomorphism not automatically an ideal of its codomain?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-first-ring-isomorphism": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-ring-hom", "m3220-quotient-ring"],
+    "competencies": [
+      {
+        "id": "m3220-first-ring-isomorphism:boundaryCheck",
+        "statement": "Which condition makes the induced map R/I→S injective?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-first-ring-isomorphism:application",
+        "statement": "What is the kernel of ℤ/12ℤ→ℤ/6ℤ?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-first-ring-isomorphism:transfer",
+        "statement": "If φ:R→S is not surjective, what does R/ker φ identify with?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
@@ -1258,12 +1290,28 @@
     "conceptKind": "object"
   },
   "m3220-quotient-ring": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-ideals"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "m3220-quotient-ring:boundaryCheck",
+        "statement": "Why must I be two-sided in a possibly noncommutative ring?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-quotient-ring:application",
+        "statement": "In ℝ[X]/(X²+1), what is [X]²?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-quotient-ring:transfer",
+        "statement": "Why does the constants subgroup H⊂F₂[X] fail as a quotient-ring ideal?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
@@ -1308,11 +1356,27 @@
     "conceptKind": "object"
   },
   "m3220-rings": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-congruence"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "m3220-rings:boundaryCheck",
+        "statement": "Which property is optional in this course’s ring convention?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-rings:application",
+        "statement": "What are E₁₂E₂₁ and E₂₁E₁₂ in M₂(F)?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-rings:transfer",
+        "statement": "A theorem assumes a nonzero unital commutative ring. Can it be applied automatically to 2ℤ or M₂(F)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1328,11 +1392,27 @@
     "conceptKind": "object"
   },
   "m3220-units": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-rings"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "m3220-units:boundaryCheck",
+        "statement": "When does AB=I force BA=I in the stated matrix argument?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-units:application",
+        "statement": "Which residues are units in ℤ/8ℤ?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-units:transfer",
+        "statement": "What does 2∈ℤ show about the proposed rule “every nonunit is a zero divisor”?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1348,12 +1428,28 @@
     "conceptKind": "technique"
   },
   "m3220-ideals": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-ring-hom"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "prerequisites": ["m3220-units"],
+    "competencies": [
+      {
+        "id": "m3220-ideals:boundaryCheck",
+        "statement": "Which assumption lets a nonzero matrix entry produce every matrix unit in the proof?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ideals:application",
+        "statement": "What happens to E₁₁E₁₂ for the first-column left ideal L?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-ideals:transfer",
+        "statement": "Why is an arbitrary subring insufficient for R/I multiplication?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },

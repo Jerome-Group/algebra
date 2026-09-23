@@ -157,9 +157,9 @@ test("all unit capstones offer distinct diagnosed reasoning and retain their wor
   }
 });
 
-test("operations, actions and Sylow units have authored evidence for completion", () => {
+test("promoted units have authored evidence for completion", () => {
   const all = new Set(Object.keys(registry));
-  for (const id of ["operations", "actions", "sylow"]) {
+  for (const id of ["operations", "actions", "sylow", "rings"]) {
     const unit = units.find((item) => item.id === id);
     assert.equal(unitCompletion(unit, lessons, all).complete, true, id);
   }
