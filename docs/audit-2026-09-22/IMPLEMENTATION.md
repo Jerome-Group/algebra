@@ -5,8 +5,9 @@ Specification: the supplied package's `codex/CODEX_MASTER_PROMPT.md` and per-con
 
 ## Release scope
 
-The owner removed Sites publication from scope on 22 September. Finish through reviewed PRs,
-merges, and a locally runnable application. Do not change the retained Site identity.
+The owner restored access to the original Sites project on 23 September. Finish through
+reviewed PRs, merges, a locally runnable application and a final verified publication.
+Preserve the retained Site identity and public audience.
 
 Deliver in slices: baseline and metadata; four modes and short units; guided content and
 foundation engines; actions/counting; rings/modules; advanced structure; representations and
@@ -41,8 +42,8 @@ Source: `c6faf85d302f21f854f2c7e65aa395c99fb561be`; Node 24.11.0.
   complementary landmarks. These remain release work; the baseline is not an accessibility pass.
 - Initial dev browser hit stale Vite dependency 504s; a production browser run is required
   for reliable console and interaction evidence.
-- Deployed source identity unverified: Sites reports the retained project ID unavailable
-  in this account. The owner confirmed the Site belongs to another account.
+- The retained Site identity was unavailable in the initial account. On 23 September,
+  Sites confirmed owner access to the original project, public audience and live URL.
 
 Local evidence: `/tmp/algebra-audit-evidence/` (install/build/lint/format/types/tests logs,
 baseline screenshots at 320, 390, 768 and 1440 CSS pixels, axe results). Private package
@@ -185,3 +186,19 @@ V03 validation: 55 Node tests, 37 browser checks, production build, format,
 lint and package validator pass. New browser coverage exercises both relation
 views and the regular embedding at 320/390/768/1440px, including keyboard
 controls and axe. TypeScript still reports only the baseline Cloudflare errors.
+
+- #46 promotes ten lessons across Operations, Actions and Sylow to authored
+  guided teaching. The dihedral lesson derives right-to-left normal forms;
+  actions include a labelled triangle, orbit–stabilizer, a computed four-property
+  grid and the kernel/core distinction. Cauchy uses cyclic-shift orbit counting;
+  Sylow existence exposes both induction cases; conjugacy uses distinct P and Q
+  in the fixed-coset action; counting proves the normalizer and unique-fixed-point
+  steps. The order-six classification uses Cauchy and index-two normality. V07
+  lists S₃'s actual subgroups alongside arithmetic candidates, centralizers,
+  cosets, conjugacy witnesses and a failure state. The three units now have the
+  guided evidence needed for their existing competency completion gates.
+
+V07 checks: model assertions cover every S₃ conjugate, centralizer and fixed
+coset; three browser flows cover prediction, keyboard controls, four widths,
+tables and axe. The ten audit rows distinguish delivered teaching from remaining
+visual work on the dihedral relation and Cauchy tuple action.

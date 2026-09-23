@@ -43,6 +43,20 @@ for (const [id, action, result] of cases) {
     await failure.focus();
     await page.keyboard.press("Enter");
     await expect(lab.locator(".live-mathematics")).toContainText(result);
+    if (id === "mh2220-actions") {
+      const properties = lab.getByRole("table", {
+        name: "Same group S₃, different action properties",
+      });
+      await expect(
+        properties.getByRole("row", { name: "letters yes yes no no" }),
+      ).toBeVisible();
+      await expect(
+        properties.getByRole("row", { name: "regular yes yes yes yes" }),
+      ).toBeVisible();
+      await expect(
+        properties.getByRole("row", { name: "conjugation yes no no no" }),
+      ).toBeVisible();
+    }
     await expect(
       page.getByRole("heading", { name: "Theorem debrief and proof boundary" }),
     ).toBeVisible();

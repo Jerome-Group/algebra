@@ -268,11 +268,27 @@
     "conceptKind": "object"
   },
   "mh2220-dihedral": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-generators"],
+    "competencies": [
+      {
+        "id": "mh2220-dihedral:boundaryCheck",
+        "statement": "Which convention makes “reflect, then rotate” equal rs?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-dihedral:application",
+        "statement": "In D₄, what is sr²s?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-dihedral:transfer",
+        "statement": "A word in r,s reduces to rᵏs. What evidence distinguishes it from rᵏ?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -386,11 +402,27 @@
     "conceptKind": "object"
   },
   "mh2220-small-groups": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["groups-cauchy", "mh2220-normal"],
-    "competencies": [],
+    "prerequisites": ["mh2220-sylow-counts"],
+    "competencies": [
+      {
+        "id": "mh2220-small-groups:boundaryCheck",
+        "statement": "Why is H=⟨r⟩ normal in G?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-small-groups:application",
+        "statement": "If srs⁻¹=r⁻¹, which familiar order-six group results?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-small-groups:transfer",
+        "statement": "What property distinguishes the two order-six types?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -436,21 +468,53 @@
     "conceptKind": "object"
   },
   "mh2220-actions": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-cosets"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-actions:boundaryCheck",
+        "statement": "Which pair names the acted-on set and the group for regular left multiplication of S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-actions:application",
+        "statement": "Where does (12) send e under regular left multiplication and conjugation?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-actions:transfer",
+        "statement": "Why does g⋆x=g⁻¹x fail as a left action for nonabelian G?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-orbit-stabilizer": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-actions", "mh2220-cosets"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-orbit-stabilizer:boundaryCheck",
+        "statement": "What extra condition would make G/Gₓ a quotient group rather than only a coset G-set?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-orbit-stabilizer:application",
+        "statement": "S₃ acts on three letters. If |G₁|=2, what is |G·1|?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-orbit-stabilizer:transfer",
+        "statement": "A 24-element rotation group acts transitively on eight cube vertices. What is a vertex stabilizer size?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -590,21 +654,53 @@
     "conceptKind": "technique"
   },
   "actions-faithful-transitive": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-orbit-stabilizer"],
+    "competencies": [
+      {
+        "id": "actions-faithful-transitive:boundaryCheck",
+        "statement": "Which implication holds for a nonempty G-set?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-faithful-transitive:application",
+        "statement": "S₃ on three letters has orbit size 3 and point stabilizer size 2. Which properties hold?",
+        "level": "compute"
+      },
+      {
+        "id": "actions-faithful-transitive:transfer",
+        "statement": "Conjugation on S₃ fixes e but has kernel {e}. Which conclusion follows?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "checker",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "actions-stabilizer-kernel-core": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["actions-faithful-transitive"],
+    "competencies": [
+      {
+        "id": "actions-stabilizer-kernel-core:boundaryCheck",
+        "statement": "When does Core_G(Gₓ) necessarily equal the whole-action kernel?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-stabilizer-kernel-core:application",
+        "statement": "For S₃ on {1,2,3}, what is G₁∩G₂∩G₃?",
+        "level": "compute"
+      },
+      {
+        "id": "actions-stabilizer-kernel-core:transfer",
+        "statement": "Under conjugation on S₃ at x=e, what are Core_G(Gₑ) and kerρ?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "checker",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
@@ -660,32 +756,80 @@
     "conceptKind": "object"
   },
   "mh2220-sylow-existence": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["groups-cauchy", "mh2220-orbit-stabilizer"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "mh2220-sylow-existence:boundaryCheck",
+        "statement": "Why does the chosen centralizer retain the full p-power pᵃ?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-sylow-existence:application",
+        "statement": "What orders must Sylow 2- and 3-subgroups of a group of order 24 have?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-sylow-existence:transfer",
+        "statement": "If a central subgroup C has order p, what order must the subgroup in G/C have to lift to a Sylow subgroup of G?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-sylow-conjugacy": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "prerequisites": ["mh2220-sylow-existence"],
+    "competencies": [
+      {
+        "id": "mh2220-sylow-conjugacy:boundaryCheck",
+        "statement": "What makes the fixed-coset argument work?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-sylow-conjugacy:application",
+        "statement": "How many Sylow 2-subgroups does S₃ have?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-sylow-conjugacy:transfer",
+        "statement": "Why does a fixed coset gQ prove conjugacy when H is Sylow?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "experiment",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
   "mh2220-sylow-counts": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "prerequisites": ["mh2220-sylow-conjugacy"],
+    "competencies": [
+      {
+        "id": "mh2220-sylow-counts:boundaryCheck",
+        "statement": "Why does nₚ divide m=[G:P]?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-sylow-counts:application",
+        "statement": "For |G|=6 and p=2, which n₂ values survive arithmetic alone?",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-sylow-counts:transfer",
+        "statement": "If nₚ=1, what follows?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"
   },
@@ -1823,11 +1967,27 @@
     "conceptKind": "technique"
   },
   "groups-cauchy": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-orbit-stabilizer"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "groups-cauchy:boundaryCheck",
+        "statement": "What must p be for the orbit argument to force a nonidentity element of order p?",
+        "level": "explain"
+      },
+      {
+        "id": "groups-cauchy:application",
+        "statement": "Which element of additive C₁₀ has order five?",
+        "level": "compute"
+      },
+      {
+        "id": "groups-cauchy:transfer",
+        "statement": "Why does one identity tuple imply another fixed tuple?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "theorem"

@@ -34,6 +34,7 @@ import { UrecaDirectProducts } from "./UrecaDirectProducts";
 import { ModulePresentation } from "./ModulePresentation";
 import { FixedColoringLab } from "./FixedColoringLab";
 import { MetricOrientationLab, PlaneReflectionLab } from "./OrthogonalGeometry";
+import { SylowWorkbench } from "./SylowWorkbench";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -70,12 +71,15 @@ const laboratories: Record<
   cayley: GroupLab,
   subgroups: GroupLab,
   cosets: GroupLab,
-  sylow: ({ lesson }) => (
-    <>
-      <SylowCalculator />
-      <GroupLab lesson={lesson} />
-    </>
-  ),
+  sylow: ({ lesson }) =>
+    lesson.id.startsWith("mh2220-sylow-") ? (
+      <SylowWorkbench lesson={lesson} />
+    ) : (
+      <>
+        <SylowCalculator />
+        <GroupLab lesson={lesson} />
+      </>
+    ),
   homomorphism: HomomorphismLab,
   product: ProductLab,
   permutation: PermutationLab,

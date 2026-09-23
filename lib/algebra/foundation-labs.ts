@@ -110,7 +110,7 @@ export const symmetricProduct = (a: number, b: number) => {
 };
 export const symmetricInverse = (a: number) =>
   symmetricThree.findIndex((_, b) => symmetricProduct(a, b) === 0);
-const sameSet = (a: number[], b: number[]) =>
+export const sameSet = (a: readonly number[], b: readonly number[]) =>
   a.length === b.length && a.every((value) => b.includes(value));
 
 export function cosetModel(subgroup: number[]) {
@@ -173,6 +173,18 @@ export function actionModel(action: SymmetricAction, point: number) {
     ),
   );
   return { group, points, apply, orbit, stabilizer, kernel, core };
+}
+
+export function actionPropertyGrid() {
+  return (["letters", "regular", "conjugation"] as const).map((action) => {
+    const first = actionModel(action, 0);
+    const faithful = first.kernel.length === 1;
+    const transitive = first.orbit.length === first.points.length;
+    const free = first.points.every(
+      (point) => actionModel(action, point).stabilizer.length === 1,
+    );
+    return { action, faithful, transitive, free, regular: free && transitive };
+  });
 }
 
 export function cyclicReachability(size: number, generators: number[]) {
