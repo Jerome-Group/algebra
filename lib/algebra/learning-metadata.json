@@ -1524,11 +1524,27 @@
     "conceptKind": "object"
   },
   "m3220-euclidean": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "competencies": [
+      {
+        "id": "m3220-euclidean:boundaryCheck",
+        "statement": "Why must the Euclidean algorithm stop?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-euclidean:application",
+        "statement": "What Bézout identity follows for 252 and 198?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-euclidean:transfer",
+        "statement": "What invariant survives 252=198+54?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
@@ -1544,11 +1560,27 @@
     "conceptKind": "technique"
   },
   "m3220-pid": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-euclidean"],
+    "competencies": [
+      {
+        "id": "m3220-pid:boundaryCheck",
+        "statement": "Why does the proof not choose a minimum from I={0}?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-pid:application",
+        "statement": "Let I=(18,30)⊂ℤ. Which generator does the Euclidean proof produce?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-pid:transfer",
+        "statement": "Which statement follows from proving (6) is principal?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1564,11 +1596,27 @@
     "conceptKind": "object"
   },
   "m3220-ufd": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-pid"],
+    "competencies": [
+      {
+        "id": "m3220-ufd:boundaryCheck",
+        "statement": "Which two obligations define a UFD?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ufd:application",
+        "statement": "Why do 2·3 and (1+√−5)(1−√−5) witness nonuniqueness?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-ufd:transfer",
+        "statement": "If two factorizations differ only by units and order, what failed?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
@@ -1724,12 +1772,28 @@
     "conceptKind": "object"
   },
   "m3220-polynomial-division": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": ["m3220-polynomial"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-ufd"],
+    "competencies": [
+      {
+        "id": "m3220-polynomial-division:boundaryCheck",
+        "statement": "Why does division by 2X+1 fail for f=X over ℤ[X]?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-polynomial-division:application",
+        "statement": "Divide X³+2X²+X+1 by X+1 over ℚ. What is (q,r)?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-polynomial-division:transfer",
+        "statement": "Why is division by monic X²+1 valid over ℤ[X]?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
@@ -1744,32 +1808,80 @@
     "conceptKind": "object"
   },
   "m3220-irreducibility-tests": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": ["m3220-polynomial-division"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-eisenstein", "m3220-polynomial-division"],
+    "competencies": [
+      {
+        "id": "m3220-irreducibility-tests:boundaryCheck",
+        "statement": "Why does no-root imply irreducible for a cubic but not a quartic?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-irreducibility-tests:application",
+        "statement": "Which polynomial is reducible over ℚ despite having no rational root?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-irreducibility-tests:transfer",
+        "statement": "Primitive f∈ℤ[X] has leading coefficient nonzero mod p and irreducible reduction mod p. What follows?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-gauss": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-polynomial-division"],
+    "competencies": [
+      {
+        "id": "m3220-gauss:boundaryCheck",
+        "statement": "Why is Fₚ[X] suitable for the primitive-product proof?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-gauss:application",
+        "statement": "What is the primitive part of 6X²+9X+3?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-gauss:transfer",
+        "statement": "A primitive F∈ℤ[X] factors into nonconstant polynomials over ℚ. What follows?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
   },
   "m3220-eisenstein": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-gauss"],
+    "competencies": [
+      {
+        "id": "m3220-eisenstein:boundaryCheck",
+        "statement": "For (X+1)⁴+1 and p=2, which condition checks the constant term?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-eisenstein:application",
+        "statement": "What is (X+1)⁴+1?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-eisenstein:transfer",
+        "statement": "A direct Eisenstein search fails for X⁴+1. What can you conclude?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
   },

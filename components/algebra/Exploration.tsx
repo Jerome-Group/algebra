@@ -12,7 +12,9 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [prediction, setPrediction] = useState("");
   const [testing, setTesting] = useState(false);
   const contract = labContract(lesson.id);
-  const integratedPrediction = lesson.machine === "ideal-quotient-lattice";
+  const integratedPrediction =
+    lesson.machine === "ideal-quotient-lattice" ||
+    lesson.machine === "polynomial-factorisation";
   return (
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}

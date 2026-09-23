@@ -438,5 +438,49 @@
     "counterexample": "For constants H⊂F₂[X], X and X+1 differ by 1∈H but their products with X differ by X∉H.",
     "debrief": "The selected finite quotient verifies examples. The proof of representative independence uses two-sided ideal absorption, not just the observed multiplication table.",
     "fallback": "Quotient classes, multiplication table, units, zero divisors and ideal correspondence are available as text and tables."
+  },
+  "m3220-polynomial-division": {
+    "name": "Polynomial division workbench",
+    "type": "checker",
+    "question": "When can each leading term be cancelled in polynomial long division?",
+    "prediction": "For f=X³+1 and g=X²+1 over ℤ, predict the quotient and remainder. Then open the workbench to change either polynomial or the coefficient ring.",
+    "objects": "The initial dividend is X³+1 and divisor is X²+1 over ℤ; after predicting, choose other coefficients or a finite coefficient ring.",
+    "invariant": "Each successful cancellation leaves f=qg+r; the remainder degree falls below the divisor degree.",
+    "counterexample": "Over ℤ[X], dividing X by 2X+1 requires the unavailable coefficient 1/2. A field permits it, while a monic divisor works over any commutative coefficient ring.",
+    "debrief": "The displayed cancellation steps verify the selected finite example. General existence and uniqueness require a field or monic divisor; a nonunit leading coefficient can block division.",
+    "fallback": "The quotient, remainder, cancellation steps and failure reason are available as equations and labelled text."
+  },
+  "m3220-gauss": {
+    "name": "Primitive content and factorisation workbench",
+    "type": "checker",
+    "question": "What does content reveal before comparing integer and rational factors?",
+    "prediction": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
+    "objects": "Worked polynomials in ℚ[X], ℝ[X], ℂ[X] and F₂[X], with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "X⁴+3X²+2 has no rational root but factors as (X²+1)(X²+2); a failed Eisenstein test is inconclusive.",
+    "debrief": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
+    "fallback": "Every selected result is available as text and a labelled evidence table."
+  },
+  "m3220-eisenstein": {
+    "name": "Shifted Eisenstein certificate workbench",
+    "type": "checker",
+    "question": "Can a translated polynomial supply a proof certificate when the direct test fails?",
+    "prediction": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
+    "objects": "Worked polynomials in ℚ[X], ℝ[X], ℂ[X] and F₂[X], with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "X⁴+3X²+2 has no rational root but factors as (X²+1)(X²+2); a failed Eisenstein test is inconclusive.",
+    "debrief": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
+    "fallback": "Every selected result is available as text and a labelled evidence table."
+  },
+  "m3220-irreducibility-tests": {
+    "name": "Root and factor certificate workbench",
+    "type": "checker",
+    "question": "Can a rootless quartic still be reducible over the chosen field?",
+    "prediction": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
+    "objects": "Worked polynomials in ℚ[X], ℝ[X], ℂ[X] and F₂[X], with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "X⁴+3X²+2 has no rational root but factors as (X²+1)(X²+2); a failed Eisenstein test is inconclusive.",
+    "debrief": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
+    "fallback": "Every selected result is available as text and a labelled evidence table."
   }
 }

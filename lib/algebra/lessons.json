@@ -4628,7 +4628,8 @@
         "hint": "Read the coefficients in the back-substitution.",
         "answer": "Take $u=-1$ and $v=3$. Substitution gives $-84+90=6$."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-first-ring-isomorphism"]
   },
   {
     "definition": "z=wq+r,\\qquad q\\in\\mathbb Z[i],\\qquad N(r)\\le\\tfrac12N(w)<N(w)\\quad(w\\ne0)",
@@ -4789,7 +4790,8 @@
         "hint": "A PID condition quantifies over all ideals.",
         "answer": "No. One principal ideal is not enough; every ideal must be principal, and the ring must be a domain."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-euclidean"]
   },
   {
     "definition": "p\\text{ prime}:\\ p\\mid ab\\Rightarrow p\\mid a\\text{ or }p\\mid b;\\quad p\\text{ irreducible}:\\ p=ab\\Rightarrow a\\in R^\\times\\text{ or }b\\in R^\\times",
@@ -4966,7 +4968,8 @@
         "hint": "Uniqueness permits associates.",
         "answer": "The factors differ only by the units minus one. UFD uniqueness is up to reordering and multiplication by units."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-pid"]
   },
   {
     "definition": "[X^k](fg)=\\sum_{i+j=k}a_ib_j,\\qquad \\deg0=-\\infty",
@@ -5049,7 +5052,7 @@
       "modulus": [1, 0, 1]
     },
     "pitfall": "Division by a nonunit constant can fail over the integers: 1 cannot equal 2q with an integer polynomial $q$.",
-    "prompt": "Reduce a polynomial modulo $X^{2}+1$ step by step. Watch the leading term decrease at every step.",
+    "prompt": "For f=X³+1 and g=X²+1 over ℤ, predict the quotient and remainder. Then open the workbench to change either polynomial or the coefficient ring.",
     "proof": "Subtract the leading coefficient of $f$ times a suitable power of $X$ times $d$, lowering the degree, and repeat. For uniqueness, (q-q')$d=r$'-$r$; a nonzero left side has degree at least deg $d$ because $d$ is monic, while the right side has smaller degree.",
     "section": "§5.1, Theorem 5.3 and Example 5.4, pp.63–65",
     "source": {
@@ -5101,8 +5104,8 @@
         "answer": "No integer polynomial quotient can cancel the coefficient of $X$ using an even leading coefficient. Field division works over the rationals but need not stay in the integers."
       }
     ],
-    "prerequisites": ["m3220-polynomial"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "prerequisites": ["m3220-ufd"],
+    "labScope": "The displayed cancellation steps verify the selected finite example. General existence and uniqueness require a field or monic divisor; a nonunit leading coefficient can block division.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -5177,13 +5180,13 @@
     "explanation": "For an integer polynomial with leading coefficient $a_n$ and constant term $a_0$, a rational root $r/s$ in lowest terms must satisfy $r$ divides $a_0$ and $s$ divides $a_n$. This produces a finite test when both coefficients are nonzero.",
     "id": "m3220-irreducibility-tests",
     "intuition": "A factorization of degree two or three must contain a linear factor. At degree four, two quadratic factors can hide from a root search.",
-    "machine": "polynomial",
+    "machine": "polynomial-factorisation",
     "parameters": {
       "coefficients": [2, 0, 3, 0, 1],
       "mode": "irreducibility"
     },
     "pitfall": "No roots does not imply irreducible in degree four: ($X^{2}+1)(X^{2}+2$) has no rational roots but factors over the rationals.",
-    "prompt": "Use polynomial arithmetic to compare a cubic without roots with $(X^2+1)(X^2+2)$. On paper identify which factor degrees remain possible; the lab does not certify irreducibility.",
+    "prompt": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
     "proof": "Clear denominators in $f(r/s)=0$. Isolating the leading term shows $s$ divides $a_n$ $r^n$, hence $s$ divides $a_n$; isolate the constant term similarly. The low-degree criterion follows because a nontrivial factorization must include degree one.",
     "section": "§5.2, Propositions 5.13,5.15, pp.68–69",
     "source": {
@@ -5235,8 +5238,8 @@
         "answer": "Yes. At zero its value is one; at one its value is also one. With no root it has no linear factor, which suffices for degree three."
       }
     ],
-    "prerequisites": ["m3220-polynomial-division"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "prerequisites": ["m3220-eisenstein", "m3220-polynomial-division"],
+    "labScope": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -5245,13 +5248,13 @@
     "explanation": "A product of primitive integer polynomials is primitive. Consequently, a primitive nonconstant integer polynomial is irreducible over the integers exactly when it is irreducible over the rationals.",
     "id": "m3220-gauss",
     "intuition": "Separate the common integer factor of all coefficients from the genuinely polynomial part. Primitive polynomials keep their arithmetic structure when moving between integers and rationals.",
-    "machine": "polynomial",
+    "machine": "polynomial-factorisation",
     "parameters": {
       "coefficients": [3, 9, 6],
       "mode": "content"
     },
     "pitfall": "Primitivity matters: $2X+2$ is reducible in the integer polynomial ring through its content, but is associate to a linear polynomial over the rationals.",
-    "prompt": "Factor the content out of $6X^{2}+9X+3$ and examine which part carries the nonconstant factorization.",
+    "prompt": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
     "proof": "If a prime divided every coefficient of the product, reduction modulo that prime would make the product of two nonzero polynomials zero in a polynomial ring over a field. For Gauss's lemma, clear denominators in a rational factorization and compare contents to remove the remaining rational scalar.",
     "section": "§5.2, Definition 5.17, Lemma 5.18 and Theorem 5.19, pp.69–70",
     "source": {
@@ -5287,7 +5290,7 @@
     "navTitle": "Gauss’s lemma",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
     "objective": "Turn a hypothetical factorization over ℚ into the required factorization over ℤ.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
@@ -5304,14 +5307,15 @@
         "hint": "Look at the factor $2X+1$.",
         "answer": "Its coefficients have gcd one, so it is primitive, but its leading coefficient is two, so it is not monic."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-polynomial-division"]
   },
   {
     "definition": "f=X^n+c_{n-1}X^{n-1}+\\cdots+c_0,\\quad p\\mid c_i\\ (i<n),\\quad p^2\\nmid c_0",
     "explanation": "For a monic integer polynomial satisfying these conditions, Eisenstein proves irreducibility over the integers and, by Gauss, over the rationals. A change of variable can expose the criterion even when the original coefficients hide it.",
     "id": "m3220-eisenstein",
     "intuition": "Reducing modulo a prime can force any hypothetical factors to have constant terms divisible by that prime. Their product would then contain one prime factor too many.",
-    "machine": "polynomial",
+    "machine": "polynomial-factorisation",
     "parameters": {
       "coefficients": [1, 0, 0, 0, 1],
       "mode": "eisenstein",
@@ -5319,7 +5323,7 @@
       "shift": 1
     },
     "pitfall": "Eisenstein is sufficient, not necessary. Failure for one prime or one coordinate system proves nothing about reducibility.",
-    "prompt": "On paper expand $(X+1)^4+1=X^4+4X^3+6X^2+4X+2$. Check Eisenstein at two; use the polynomial lab for arithmetic checks.",
+    "prompt": "Select a polynomial and coefficient field. Predict its factors, roots and proof status before revealing the certificate.",
     "proof": "By Gauss a nontrivial factorization of a monic integer polynomial may be taken monic and integral. Modulo $p$, their product is $X^n$, so both nonconstant factors have zero constant term modulo $p$. This contradicts $p^{2}$ not dividing $c_0$. Translation $X\\mapsto X+1$ is a ring automorphism.",
     "section": "§5.2, Theorem 5.23 and Examples 5.24–5.25, p.72",
     "source": {
@@ -5355,7 +5359,7 @@
     "navTitle": "Eisenstein",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
     "objective": "Check every divisibility condition and explain why failure of the test proves nothing by itself.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
@@ -5372,7 +5376,8 @@
         "hint": "Distinguish sufficient and necessary conditions.",
         "answer": "No. It is a sufficient test only. A polynomial can be irreducible without meeting the test in its current coordinates."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-gauss"]
   },
   {
     "definition": "\\mathbb Z[X]\\text{ is a UFD},\\qquad (2,X)\\subseteq\\mathbb Z[X]\\text{ is not principal}",

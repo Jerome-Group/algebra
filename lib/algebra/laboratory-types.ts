@@ -8,6 +8,7 @@ export const laboratoryKinds = [
   "coset-constructor",
   "orbit-workbench",
   "ideal-quotient-lattice",
+  "polynomial-factorisation",
   "module-presentation",
   "axis-angle",
   "plane-representation",
