@@ -242,15 +242,15 @@
     "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
   },
   "mh2220-semidirect": {
-    "name": "Direct and semidirect product workbench",
-    "type": "experiment",
-    "question": "When does switching factors change the product?",
-    "prediction": "Predict whether a reflection followed by a rotation equals the reverse order under the inversion action.",
-    "objects": "Pairs in C_m⋊C2 or C_m×C2 with left action; the nontrivial C2 element may invert the C_m coordinate.",
-    "invariant": "Multiplication uses the selected action on the first coordinate; trivial action recovers the direct product.",
-    "counterexample": "With m=5 and inversion action, reflection and nontrivial rotation do not commute.",
-    "debrief": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
-    "fallback": "The controls, equations and accompanying explanation describe the displayed state; the reference view retains the worked reasoning."
+    "name": "C₃⋊C₂ product constructor",
+    "type": "constructor",
+    "question": "How can C₃ and C₂ produce either S₃ or C₆?",
+    "prediction": "Predict whether the displayed reflection and rotation commute before choosing an action.",
+    "objects": "Pairs in C₃×C₂ with left action α:C₂→Aut(C₃); b acts on the next rotation coordinate.",
+    "invariant": "α(s)²=id and α(s) is invertible; the normal C₃ and complementary C₂ yield a split extension.",
+    "counterexample": "The zero endomorphism is not an automorphism or a valid C₂ action; C₄ is a nonsplit C₂ extension.",
+    "debrief": "The six-element table tests S₃ or C₆. Associativity in general uses α(hk)=α(h)α(k); internal splitting uses normality, trivial intersection and generation.",
+    "fallback": "The complete multiplication and subgroup tables, exact sequence, action check and failure are text."
   },
   "ureca-character-bound-kernel": {
     "name": "Character bound and kernel inspector",
@@ -647,5 +647,16 @@
     "counterexample": "ℤ/2⊗_ℤℤ/3=0 despite two nonzero factors; a rank-two tensor sum is not pure.",
     "debrief": "The cyclic calculation illustrates the universal property. Arbitrary-ring existence follows from the quotient construction in the lesson; external ⊠ also carries a product-group action.",
     "fallback": "Generator relations, balanced expressions, order and pure-tensor value are labelled text and table entries."
+  },
+  "mh2220-direct-product": {
+    "name": "Direct product and splitting constructor",
+    "type": "constructor",
+    "question": "When do two internal factors form a direct product rather than a twisted product?",
+    "prediction": "Predict whether the displayed factors commute under the trivial action, then compare inversion.",
+    "objects": "Pairs in C₃×C₂ with left action α:C₂→Aut(C₃); b acts on the next rotation coordinate.",
+    "invariant": "α(s)²=id and α(s) is invertible; the normal C₃ and complementary C₂ yield a split extension.",
+    "counterexample": "The zero endomorphism is not an automorphism or a valid C₂ action; C₄ is a nonsplit C₂ extension.",
+    "debrief": "The six-element table tests S₃ or C₆. Associativity in general uses α(hk)=α(h)α(k); internal splitting uses normality, trivial intersection and generation.",
+    "fallback": "The complete multiplication and subgroup tables, exact sequence, action check and failure are text."
   }
 }

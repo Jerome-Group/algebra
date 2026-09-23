@@ -45,14 +45,14 @@
   },
   "quotients": {
     "kind": "transfer",
-    "question": "Use the sign map S3 → {±1} to construct S3/A3 and prove its identification with C2. Choose the reasoning that supports your solution.",
+    "question": "Use A₃ and H=⟨(12)⟩ inside S₃ to recover a product law. Why is it not direct, and why does the C₄ extension by C₂ not split? Choose the reasoning that supports your solution.",
     "choices": [
-      "Sign has kernel A3 and image {±1}; equal signs are exactly equal A3-cosets.",
-      "Sign is injective since its output is never zero.",
-      "A3 is the image of sign."
+      "A₃ is normal, H is a complement, and conjugation by H inverts A₃; C₄ has no distinct order-two complement.",
+      "Any two factors with orders two and three commute; C₄ has two order-two subgroups.",
+      "S₃ is direct because A₃ and H intersect trivially; every exact sequence splits."
     ],
     "answer": 0,
-    "explanation": "Sign is a surjective homomorphism with kernel A3. Equal cosets have equal signs; equal signs differ by an element of A3. Thus gA3 ↦ sign(g) is a well-defined bijective homomorphism."
+    "explanation": "A₃ is normal of order three, H has order two, they intersect trivially and generate S₃. Conjugation by (12) inverts A₃, so S₃≅C₃⋊C₂ and the action is nontrivial. C₄ has only one subgroup of order two, its kernel, and therefore no complementary C₂."
   },
   "actions": {
     "kind": "transfer",

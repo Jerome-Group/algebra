@@ -1260,12 +1260,28 @@
     "conceptKind": "technique"
   },
   "mh2220-semidirect": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "experiment",
+    "estimatedMinutes": 22,
+    "prerequisites": ["mh2220-direct-product", "mh2220-actions"],
+    "competencies": [
+      {
+        "id": "mh2220-semidirect:boundaryCheck",
+        "statement": "Check the product hypotheses and identify a failure.",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-semidirect:application",
+        "statement": "Compute a product or element order.",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-semidirect:transfer",
+        "statement": "Transfer the internal criterion to a new group.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
@@ -1316,12 +1332,28 @@
     "conceptKind": "object"
   },
   "mh2220-direct-product": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 22,
+    "prerequisites": ["mh2220-normal"],
+    "competencies": [
+      {
+        "id": "mh2220-direct-product:boundaryCheck",
+        "statement": "Check the product hypotheses and identify a failure.",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-direct-product:application",
+        "statement": "Compute a product or element order.",
+        "level": "compute"
+      },
+      {
+        "id": "mh2220-direct-product:transfer",
+        "statement": "Transfer the internal criterion to a new group.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },

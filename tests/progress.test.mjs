@@ -161,6 +161,7 @@ test("promoted units have authored evidence for completion", () => {
   const all = new Set(Object.keys(registry));
   for (const id of [
     "operations",
+    "quotients",
     "actions",
     "sylow",
     "rings",
