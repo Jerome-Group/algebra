@@ -2058,45 +2058,106 @@
     "conceptKind": "object"
   },
   "ureca-linear-action": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [
-      "mh2220-permutation-matrices",
-      "foundations-linear-algebra"
+    "estimatedMinutes": 20,
+    "prerequisites": ["foundations-linear-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-linear-action:boundaryCheck",
+        "statement": "Why is ρ(g) invertible?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-linear-action:application",
+        "statement": "For R=[[0,−1],[1,0]], what is R e₁?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-linear-action:transfer",
+        "statement": "If an assignment satisfies the D₈ generator relations, what else identifies it as a representation?",
+        "level": "transfer"
+      }
     ],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
   },
   "ureca-permutation-module": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["ureca-linear-action"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "ureca-permutation-module:boundaryCheck",
+        "statement": "What determines permutation-module dimension?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-permutation-module:application",
+        "statement": "Under (123), where does 2e₁−e₃ go?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-permutation-module:transfer",
+        "statement": "For a four-element G-set, what matrix size represents the action on F[Ω]?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
   },
   "ureca-invariant-subspaces": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["ureca-permutation-module"],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "competencies": [
+      {
+        "id": "ureca-invariant-subspaces:boundaryCheck",
+        "statement": "When is the projection p_C(v)=Σv_i/3·u defined?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-invariant-subspaces:application",
+        "statement": "For the quarter-turn R over ℝ, which one-dimensional real subspace is invariant?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-invariant-subspaces:transfer",
+        "statement": "Over ℂ, is L+=ℂ(e₁+i e₂) invariant under full D₈?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
   },
   "ureca-intertwiners": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["ureca-invariant-subspaces"],
+    "competencies": [
+      {
+        "id": "ureca-intertwiners:boundaryCheck",
+        "statement": "What must be checked for the D₈ intertwiner T?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-intertwiners:application",
+        "statement": "For q:V⊕F→F, q(v,z)=z, what is ker q?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-intertwiners:transfer",
+        "statement": "If T is an intertwiner, what can be said of im T?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
   },
@@ -2267,12 +2328,28 @@
     "conceptKind": "object"
   },
   "foundations-linear-algebra": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["foundations-functions"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "competencies": [
+      {
+        "id": "foundations-linear-algebra:boundaryCheck",
+        "statement": "When can trace be taken for A:Fⁿ→Fᵐ?",
+        "level": "explain"
+      },
+      {
+        "id": "foundations-linear-algebra:application",
+        "statement": "For A(x,y)=(x+y,0), what is ker A?",
+        "level": "compute"
+      },
+      {
+        "id": "foundations-linear-algebra:transfer",
+        "statement": "For a 3×3 matrix of rank 2, what is its nullity?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
   },

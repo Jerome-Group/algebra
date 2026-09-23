@@ -4370,5 +4370,341 @@
       "explanation": "p(Tv)=2p(v) makes p a module map; its kernel is ℚe₂, and the first module isomorphism theorem gives M/ℚe₂≅N."
     },
     "connection": "The module action board carries the same cyclic object through presentation, scalar action, submodule and exactness checks."
+  },
+  "foundations-linear-algebra": {
+    "hook": "What does each matrix column do to a basis vector?",
+    "objects": "Over a specified field F, a linear map A:Fⁿ→Fᵐ is determined by its columns A e_j. Kernel and image are subspaces, rank–nullity is dim ker A+dim im A=n, and trace is the sum of diagonal entries of an endomorphism.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For a 2×3 matrix, what is the domain dimension?",
+      "choices": ["3", "2", "6"],
+      "answer": 0,
+      "explanation": "There is one column for each domain basis vector."
+    },
+    "examples": [
+      {
+        "title": "Columns, kernel and image",
+        "steps": [
+          "Over ℝ let A=[[1,1],[0,0]]. It maps e₁ and e₂ to e₁, so A(x,y)=(x+y,0).",
+          "ker A=span(1,−1) and im A=span(1,0). Both have dimension one, giving 1+1=2."
+        ]
+      },
+      {
+        "title": "Trace and an invariant line",
+        "steps": [
+          "For B=diag(2,3) over ℝ, the coordinate axes are invariant eigenlines with eigenvalues 2 and 3.",
+          "tr B=5 is the sum of eigenvalues. In the basis e₁+e₂,e₂ the matrix changes but trace remains 5."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A column is not a row",
+      "explanation": "The first row of A records the first output coordinate, not A(e₁). Confusing rows and columns gives the wrong image and often the wrong kernel."
+    },
+    "proofSteps": [
+      "For v=Σx_j e_j, linearity gives A(v)=Σx_j A(e_j); these images are exactly the columns.",
+      "The kernel solves Ax=0; the image is the span of the columns. Choose a basis of the kernel and extend it to a basis of the domain.",
+      "Images of the added basis vectors form a basis of im A, proving dim ker A+dim im A=dim domain.",
+      "A subspace W is invariant under B when BW⊆W; checking a basis of W suffices by linearity. Trace and eigenvalues require an endomorphism and a stated field."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When can trace be taken for A:Fⁿ→Fᵐ?",
+      "choices": [
+        "When n=m and a basis identifies it with a square matrix",
+        "For every rectangular matrix",
+        "Only if A is invertible"
+      ],
+      "answer": 0,
+      "explanation": "Trace is defined for an endomorphism, represented by a square matrix."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For A(x,y)=(x+y,0), what is ker A?",
+      "choices": ["span(1,−1)", "span(1,0)", "{0}"],
+      "answer": 0,
+      "explanation": "Solve x+y=0; the kernel has dimension one."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For a 3×3 matrix of rank 2, what is its nullity?",
+      "choices": ["1", "2", "3"],
+      "answer": 0,
+      "explanation": "Rank–nullity gives nullity 3−2=1."
+    },
+    "connection": "A group representation chooses invertible linear maps that respect multiplication."
+  },
+  "ureca-linear-action": {
+    "hook": "Why must every group element act by an invertible matrix?",
+    "objects": "Use a left action on column vectors over F. A representation ρ:G→GL_F(V) satisfies ρ(gh)=ρ(g)ρ(h), so the rightmost matrix acts first; ρ(e)=I and dim_F V is stated.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For a left representation, which matrix acts first in ρ(gh)v?",
+      "choices": ["ρ(h)", "ρ(g)", "Neither"],
+      "answer": 0,
+      "explanation": "Matrix multiplication applies the right factor first."
+    },
+    "examples": [
+      {
+        "title": "Quarter-turn and reflection",
+        "steps": [
+          "Over ℝ, V=ℝ², R=[[0,−1],[1,0]] and S=diag(1,−1) represent r and s of D₈ on columns.",
+          "R⁴=S²=I and SRS=R⁻¹. The generators therefore define a homomorphism D₈→GL₂(ℝ)."
+        ]
+      },
+      {
+        "title": "From a set action to vectors",
+        "steps": [
+          "If g permutes a finite set Ω, create a basis vector e_ω for each ω and define ρ(g)e_ω=e_{gω}, then extend linearly.",
+          "The action equation g(hω)=(gh)ω becomes ρ(g)ρ(h)e_ω=ρ(gh)e_ω on every basis vector."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "An arbitrary matrix assignment is not an action",
+      "explanation": "Assigning a singular matrix to a group generator fails: ρ(g)ρ(g⁻¹)=I forces every ρ(g) to be invertible."
+    },
+    "proofSteps": [
+      "A left group action by linear maps yields ρ(gh)v=g(hv)=ρ(g)ρ(h)v, so ρ is a homomorphism.",
+      "Conversely, a homomorphism ρ:G→GL(V) defines g·v=ρ(g)v; identity and associativity follow from ρ(e)=I and ρ(gh)=ρ(g)ρ(h).",
+      "For every g, ρ(g)ρ(g⁻¹)=ρ(e)=I, hence the inverse of ρ(g) is ρ(g⁻¹).",
+      "D₈ has presentation r⁴=s²=1, srs=r⁻¹; checking these matrices on generators verifies the displayed example."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is ρ(g) invertible?",
+      "choices": [
+        "ρ(g⁻¹) is its inverse",
+        "Every square matrix is invertible",
+        "Only finite groups have inverses"
+      ],
+      "answer": 0,
+      "explanation": "The group inverse maps to an inverse linear operator."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For R=[[0,−1],[1,0]], what is R e₁?",
+      "choices": ["e₂", "−e₁", "e₁"],
+      "answer": 0,
+      "explanation": "The first column is (0,1)=e₂."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If an assignment satisfies the D₈ generator relations, what else identifies it as a representation?",
+      "choices": [
+        "Its matrices act on one specified F-vector space with multiplication respected",
+        "One matrix per element with no relation checks",
+        "Only determinant 1 matrices"
+      ],
+      "answer": 0,
+      "explanation": "A presentation gives the homomorphism once all defining relations hold."
+    },
+    "connection": "Permutation modules use one independent basis vector per point."
+  },
+  "ureca-permutation-module": {
+    "hook": "Why do eight cube vertices give dimension eight, not three?",
+    "objects": "For a finite G-set Ω over field F, F[Ω] has independent basis {e_ω:ω∈Ω}; the left action is ρ(g)e_ω=e_{gω}. Its dimension is |Ω|, separate from any spatial embedding dimension.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is dim F[Ω] when Ω is the eight cube vertices?",
+      "choices": ["8", "3", "24"],
+      "answer": 0,
+      "explanation": "The module has one independent basis vector per vertex."
+    },
+    "examples": [
+      {
+        "title": "A three-point action",
+        "steps": [
+          "For C₃ acting cyclically on Ω={1,2,3}, ρ(r) sends e₁→e₂, e₂→e₃, e₃→e₁. Its columns are (0,1,0),(0,0,1),(1,0,0).",
+          "The vector 2e₁−e₃ moves to 2e₂−e₁, not to a single basis vector."
+        ]
+      },
+      {
+        "title": "Cube vertices",
+        "steps": [
+          "For an eight-vertex cube, a symmetry g permutes eight labels, giving an 8×8 permutation matrix with exactly one 1 in each row and column.",
+          "The physical cube sits in ℝ³, while ℝ[Ω] is eight-dimensional; the all-ones vector spans a trivial subrepresentation.",
+          "Label vertices by three sign bits 0,…,7. A half-turn about the x-axis flips the y and z bits, acting on the eight basis vectors by (0 3)(1 2)(4 7)(5 6); this exact basis permutation specifies the full 8×8 matrix."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Spatial dimension is not module dimension",
+      "explanation": "Treating the eight vertex labels as just three coordinate directions loses five independent basis vectors and cannot encode arbitrary vertex colourings."
+    },
+    "proofSteps": [
+      "Define ρ(g) on every basis vector and extend linearly: ρ(g)(Σa_ωe_ω)=Σa_ωe_{gω}.",
+      "Because g(hω)=(gh)ω, the equality ρ(g)ρ(h)=ρ(gh) holds on each e_ω and therefore on all F[Ω].",
+      "The inverse permutation gives ρ(g)⁻¹=ρ(g⁻¹), so these are invertible matrices.",
+      "The sum u=Σe_ω is fixed because g merely reorders its terms; its line is invariant over every field."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What determines permutation-module dimension?",
+      "choices": [
+        "The number of independent point labels in Ω",
+        "The dimension of a drawing containing Ω",
+        "The order of the acting group"
+      ],
+      "answer": 0,
+      "explanation": "F[Ω] is free with basis indexed by Ω."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Under (123), where does 2e₁−e₃ go?",
+      "choices": ["2e₂−e₁", "2e₁−e₃", "2e₃−e₂"],
+      "answer": 0,
+      "explanation": "Move each basis vector by the same permutation, keeping its coefficient."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For a four-element G-set, what matrix size represents the action on F[Ω]?",
+      "choices": ["4×4", "3×3", "|G|×|G| regardless of Ω"],
+      "answer": 0,
+      "explanation": "There is one row and column for each point basis vector."
+    },
+    "connection": "Invariant subspaces include the constant line and sometimes a complementary sum-zero space."
+  },
+  "ureca-invariant-subspaces": {
+    "hook": "Does a subspace remain stable even when its vectors move?",
+    "objects": "For ρ:G→GL_F(V), W≤V is invariant iff ρ(g)W⊆W for every g; it suffices to test generators. For a permutation module on three points, the constant line C=F(1,1,1) and sum-zero plane Z={x+y+z=0} are invariant.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Does invariant mean every vector is fixed pointwise?",
+      "choices": [
+        "No, vectors may move within the subspace",
+        "Yes, always",
+        "Only over ℂ"
+      ],
+      "answer": 0,
+      "explanation": "Setwise stability is weaker than pointwise fixation."
+    },
+    "examples": [
+      {
+        "title": "Projection and adapted basis",
+        "steps": [
+          "Over a field with 3 invertible, p_C(v)=((x+y+z)/3)(1,1,1) and p_Z(v)=v−p_C(v). Their images are C and Z.",
+          "The basis u=(1,1,1), v=(1,−1,0), w=(0,1,−1) is adapted to C⊕Z over characteristic not 3. A 3-cycle fixes u and moves v,w within Z."
+        ]
+      },
+      {
+        "title": "D₈ lines across fields",
+        "steps": [
+          "For R=[[0,−1],[1,0]] over ℝ, no real line is R-invariant: the characteristic polynomial X²+1 has no real root.",
+          "Over ℂ, L+=ℂ(e₁+i e₂) is R-stable with eigenvalue −i, but S sends it to ℂ(e₁−i e₂), so L+ is not invariant under full D₈."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Characteristic three boundary",
+      "explanation": "In characteristic 3, u=(1,1,1) lies in Z, and division by 3 is impossible. C and Z remain invariant, but the stated direct-sum projection and decomposition fail."
+    },
+    "proofSteps": [
+      "A generating set suffices: if each generator and its inverse preserves W, then every group word preserves W; in finite groups generator stability already gives inverse stability by equal dimensions.",
+      "For a permutation matrix, sum of coordinates is preserved, proving Z stable; the vector u is fixed, proving C stable.",
+      "When 3 is invertible, p_C and p_Z are idempotent, sum to I and have complementary images; every v decomposes uniquely as p_C(v)+p_Z(v).",
+      "In characteristic 3, C⊆Z, so C∩Z≠0 and the direct sum fails despite both subspaces remaining invariant."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When is the projection p_C(v)=Σv_i/3·u defined?",
+      "choices": [
+        "When 3 is invertible in F",
+        "Over every field",
+        "Only if all vectors are fixed"
+      ],
+      "answer": 0,
+      "explanation": "The denominator 3 must exist in the field."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For the quarter-turn R over ℝ, which one-dimensional real subspace is invariant?",
+      "choices": ["None", "ℝe₁", "Every line"],
+      "answer": 0,
+      "explanation": "A real invariant line would give a real eigenvalue, but X²+1 has none."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Over ℂ, is L+=ℂ(e₁+i e₂) invariant under full D₈?",
+      "choices": [
+        "No; S swaps it with L−",
+        "Yes; R-stability suffices",
+        "Only in characteristic three"
+      ],
+      "answer": 0,
+      "explanation": "Check every generator of the full acting group."
+    },
+    "connection": "An intertwiner carries actions between spaces and preserves kernels and images."
+  },
+  "ureca-intertwiners": {
+    "hook": "Can one fixed matrix translate an entire representation?",
+    "objects": "For left representations ρ_V:G→GL_F(V), ρ_W:G→GL_F(W), an intertwiner T:V→W satisfies Tρ_V(g)=ρ_W(g)T for every g. One T must work on a generating set; then it works on all group words.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "May T depend on g when claiming two representations are equivalent?",
+      "choices": [
+        "No, one invertible T must work for every g",
+        "Yes, choose a different T_g for each g",
+        "Only trace matters"
+      ],
+      "answer": 0,
+      "explanation": "Equivalence is a single change of basis respecting the whole action."
+    },
+    "examples": [
+      {
+        "title": "A D₈ basis change",
+        "steps": [
+          "Let ρ(r)=R=[[0,−1],[1,0]], ρ(s)=S=diag(1,−1), and ρ′(r)=R⁻¹, ρ′(s)=S over ℝ.",
+          "T=S satisfies TR=R⁻¹T and TS=ST on both generators. T is invertible, so it is an equivalence of the two representations."
+        ]
+      },
+      {
+        "title": "An equivariant projection",
+        "steps": [
+          "Let V=F² carry ρ and let F carry the trivial action. On V⊕F, q(v,z)=z is equivariant since q(ρ(g)v,z)=z=g·q(v,z).",
+          "q is not invertible: ker q=V⊕0 is invariant, and im q=F. The first module isomorphism identifies (V⊕F)/ker q with F."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Elementwise conjugacy is insufficient",
+      "explanation": "Finding a change of basis for r and a different one for s does not provide a single T satisfying both equations. The candidate I fails TR=R⁻¹T even though it commutes with S."
+    },
+    "proofSteps": [
+      "If T intertwines generators, multiply equations and use inverses to obtain Tρ(g)=ρ′(g)T for every word g.",
+      "For T=S, direct matrix multiplication gives SR=R⁻¹S and SS=SS; thus the two D₈ actions are equivalent.",
+      "If v∈ker T, then Tρ(g)v=ρ′(g)Tv=0, proving ker T invariant. If w=Tv, then ρ′(g)w=Tρ(g)v, proving im T invariant.",
+      "An invertible intertwiner is a representation equivalence. A noninvertible intertwiner may have proper kernel and image; Schur’s scalar conclusion needs irreducibility over an algebraically closed field."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What must be checked for the D₈ intertwiner T?",
+      "choices": [
+        "The same T satisfies equations for r and s",
+        "A separate matrix for each generator",
+        "Only equality of determinants"
+      ],
+      "answer": 0,
+      "explanation": "Generator equations propagate to all group elements."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For q:V⊕F→F, q(v,z)=z, what is ker q?",
+      "choices": ["V⊕0", "0⊕F", "All of V⊕F"],
+      "answer": 0,
+      "explanation": "The scalar coordinate must be zero, while v is free."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If T is an intertwiner, what can be said of im T?",
+      "choices": [
+        "It is invariant under the target action",
+        "It is always the full target",
+        "It is never invariant"
+      ],
+      "answer": 0,
+      "explanation": "ρ′(g)Tv=Tρ(g)v remains in the image."
+    },
+    "connection": "Maschke and Schur need explicit field and irreducibility hypotheses."
   }
 }
