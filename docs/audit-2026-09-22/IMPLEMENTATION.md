@@ -217,3 +217,14 @@ not an ideal gives a representative-dependent failure. Model tests check ring
 laws, all finite quotient cases and the non-ideal witness. Browser checks
 cover prediction, keyboard controls, live changes, four widths and axe. The
 Rings unit has authored competency evidence for its existing capstone.
+
+- #50 promotes seven Factorisation unit lessons to authored guided teaching. Euclidean
+  division carries the ideal invariant through every remainder and back-substitution;
+  PID and UFD proofs separate the zero ideal, existence, uniqueness and associates.
+  Polynomial lessons show legal leading-term cancellation, primitive content,
+  Eisenstein after translation, and the degree limit of root tests. V12 compares
+  four worked polynomials over ℚ, ℝ, ℂ and F₂, requiring a prediction before each
+  field-specific factorisation, roots, content and certificate reveal. A rootless
+  reducible quartic and an invalid degree-dropping reduction remain visible
+  boundaries. Seven concept rows and V12 have delivery evidence; unrelated
+  reference-only and roadmap rows remain outside guided completion.
