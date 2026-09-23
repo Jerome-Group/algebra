@@ -14,7 +14,9 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
   const contract = labContract(lesson.id);
   const integratedPrediction =
     lesson.machine === "ideal-quotient-lattice" ||
-    lesson.machine === "polynomial-factorisation";
+    lesson.machine === "polynomial-factorisation" ||
+    lesson.machine === "localisation-microscope" ||
+    lesson.machine === "ideal-chain-explorer";
   return (
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}

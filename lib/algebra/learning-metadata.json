@@ -1514,12 +1514,28 @@
     "conceptKind": "object"
   },
   "m3220-fractions": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "competencies": [
+      {
+        "id": "m3220-fractions:boundaryCheck",
+        "statement": "Which hypothesis justifies cancelling t in the transitivity proof?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-fractions:application",
+        "statement": "In ℤ, are 1/2 and 2/4 equivalent under cross multiplication?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-fractions:transfer",
+        "statement": "Why is ℤ[1/3] smaller than ℚ?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
@@ -1622,22 +1638,54 @@
     "conceptKind": "technique"
   },
   "m3220-localization": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-fractions"],
+    "competencies": [
+      {
+        "id": "m3220-localization:boundaryCheck",
+        "statement": "Does the universal property require R→S⁻¹R to be injective?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-localization:application",
+        "statement": "What is the forced image of 5/9 under the factor map ℤ[1/3]→ℚ extending inclusion?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-localization:transfer",
+        "statement": "For R=ℤ/6ℤ and S={1,2,4}, why does 3/1=0/1?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
   "m3220-prime-localization": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-localization"],
+    "competencies": [
+      {
+        "id": "m3220-prime-localization:boundaryCheck",
+        "statement": "Why must 3/6 be reduced before testing membership in ℤ₍₃₎?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-prime-localization:application",
+        "statement": "Classify 3/2 in ℤ₍₃₎.",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-prime-localization:transfer",
+        "statement": "Where is 1/3 present?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
@@ -1652,12 +1700,28 @@
     "conceptKind": "technique"
   },
   "m3220-noetherian": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": ["m3220-module-chains"],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "estimatedMinutes": 20,
+    "prerequisites": ["m3220-prime-localization"],
+    "competencies": [
+      {
+        "id": "m3220-noetherian:boundaryCheck",
+        "statement": "What does Noetherian mean for a module M?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-noetherian:application",
+        "statement": "Why is (X₁)⊊(X₁,X₂) in F[X₁,X₂,…]?",
+        "level": "compute"
+      },
+      {
+        "id": "m3220-noetherian:transfer",
+        "statement": "An ideal I is not finitely generated. What chain can you build?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },

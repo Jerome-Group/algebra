@@ -482,5 +482,49 @@
     "counterexample": "X⁴+3X²+2 has no rational root but factors as (X²+1)(X²+2); a failed Eisenstein test is inconclusive.",
     "debrief": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
     "fallback": "Every selected result is available as text and a labelled evidence table."
+  },
+  "m3220-fractions": {
+    "name": "Localisation and fraction microscope",
+    "type": "checker",
+    "question": "When do two fraction pairs represent the same localization element?",
+    "prediction": "Choose a target ring, fraction, comparison fraction and inverted set. Predict equivalence, membership, units and whether the universal factor map exists.",
+    "objects": "Reduced fractions in ℤ₍₃₎, ℤ[1/3] and ℚ, plus selected multiplicative subsets of ℤ.",
+    "invariant": "A reduced denominator decides membership; a map factors through S⁻¹R exactly when its target makes every s∈S a unit.",
+    "counterexample": "In ℤ/6ℤ with S={1,2,4}, 1/1 and 4/1 become equivalent after an S-annihilator, although direct cross products differ.",
+    "debrief": "The selected integer examples exhibit equivalence, units and the factor-map condition. The general proof uses the localization relation and separate regularity for injectivity.",
+    "fallback": "Fraction classifications across all three rings, cross products and factor-map status appear as text and a labelled table."
+  },
+  "m3220-localization": {
+    "name": "Localisation and fraction microscope",
+    "type": "checker",
+    "question": "Which denominators become units and when does a map factor through the localization?",
+    "prediction": "Choose a target ring, fraction, comparison fraction and inverted set. Predict equivalence, membership, units and whether the universal factor map exists.",
+    "objects": "Reduced fractions in ℤ₍₃₎, ℤ[1/3] and ℚ, plus selected multiplicative subsets of ℤ.",
+    "invariant": "A reduced denominator decides membership; a map factors through S⁻¹R exactly when its target makes every s∈S a unit.",
+    "counterexample": "In ℤ/6ℤ with S={1,2,4}, 1/1 and 4/1 become equivalent after an S-annihilator, although direct cross products differ.",
+    "debrief": "The selected integer examples exhibit equivalence, units and the factor-map condition. The general proof uses the localization relation and separate regularity for injectivity.",
+    "fallback": "Fraction classifications across all three rings, cross products and factor-map status appear as text and a labelled table."
+  },
+  "m3220-prime-localization": {
+    "name": "Localisation and fraction microscope",
+    "type": "checker",
+    "question": "Which reduced fractions are absent, units or nonunits in ℤ₍₃₎?",
+    "prediction": "Choose a target ring, fraction, comparison fraction and inverted set. Predict equivalence, membership, units and whether the universal factor map exists.",
+    "objects": "Reduced fractions in ℤ₍₃₎, ℤ[1/3] and ℚ, plus selected multiplicative subsets of ℤ.",
+    "invariant": "A reduced denominator decides membership; a map factors through S⁻¹R exactly when its target makes every s∈S a unit.",
+    "counterexample": "In ℤ/6ℤ with S={1,2,4}, 1/1 and 4/1 become equivalent after an S-annihilator, although direct cross products differ.",
+    "debrief": "The selected integer examples exhibit equivalence, units and the factor-map condition. The general proof uses the localization relation and separate regularity for injectivity.",
+    "fallback": "Fraction classifications across all three rings, cross products and factor-map status appear as text and a labelled table."
+  },
+  "m3220-noetherian": {
+    "name": "Ideal-chain and generator explorer",
+    "type": "constructor",
+    "question": "Can an infinite ring have every ascending ideal chain stabilize?",
+    "prediction": "Choose a ring, ideal chain and stage. Predict its generators, strictness and stabilization.",
+    "objects": "Ascending, descending and prime-ideal chains in ℤ, F[X₁,X₂,…], F[X,Y] and ℤ/12ℤ.",
+    "invariant": "ACC is equivalent to finite generation of every ideal; DCC is separate and infinite cardinality does not decide either.",
+    "counterexample": "ℤ is infinite and Noetherian, while (X₁)⊊(X₁,X₂)⊊⋯ never stabilizes in the infinite-variable ring.",
+    "debrief": "Stage evidence proves strictness or stabilization of the displayed chains. The general ACC equivalence is proved in the guided lesson; Hilbert and dimension claims need their own hypotheses.",
+    "fallback": "Every chain stage, generator and witness appears in text and a labelled table."
   }
 }

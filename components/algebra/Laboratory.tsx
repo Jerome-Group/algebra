@@ -37,6 +37,8 @@ import { MetricOrientationLab, PlaneReflectionLab } from "./OrthogonalGeometry";
 import { SylowWorkbench } from "./SylowWorkbench";
 import { IdealQuotientLattice } from "./IdealQuotientLattice";
 import { PolynomialFactorisation } from "./PolynomialFactorisation";
+import { LocalisationMicroscope } from "./LocalisationMicroscope";
+import { IdealChainExplorer } from "./IdealChainExplorer";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -56,6 +58,8 @@ const laboratories: Record<
   "orbit-workbench": OrbitWorkbench,
   "ideal-quotient-lattice": IdealQuotientLattice,
   "polynomial-factorisation": PolynomialFactorisation,
+  "localisation-microscope": LocalisationMicroscope,
+  "ideal-chain-explorer": IdealChainExplorer,
   "module-presentation": ModulePresentation,
   "axis-angle": AxisAngleLab,
   "plane-representation": PlaneRepresentationLab,
