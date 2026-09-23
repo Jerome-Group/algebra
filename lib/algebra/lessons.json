@@ -3627,7 +3627,7 @@
     "explanation": "In a matrix ring, matrices supported in one column form a left ideal: left multiplication combines rows but preserves which columns vanish. Right multiplication can move that column, so the ideal is usually not two-sided.",
     "id": "m3220-ideals",
     "intuition": "If an element is to count as zero in a quotient, multiplying it by anything should still count as zero. Ideal absorption is exactly that requirement.",
-    "machine": "diagram",
+    "machine": "ideal-quotient-lattice",
     "parameters": {
       "edges": [
         ["B", "AB", "multiply on left"],
@@ -3650,7 +3650,7 @@
       ]
     },
     "pitfall": "A left ideal alone does not support the usual quotient-ring multiplication. Matrix rings have many one-sided ideals even though their only two-sided ideals are 0 and the whole ring.",
-    "prompt": "Compare multiplication on the left and right of a matrix supported in one column.",
+    "prompt": "Choose an ideal of ℤ/12ℤ or F₂[X]; predict which larger ideals correspond to ideals of the quotient.",
     "proof": "For $B$ in the displayed set, every column of AB except column $k$ is a linear combination of zero columns and remains zero. For $n\\ge 2$, multiplying a matrix unit on the right can move its nonzero column.",
     "section": "§2.1, Definition 2.3 and Example 2.5, pp.24–26",
     "source": {
@@ -3703,7 +3703,7 @@
       }
     ],
     "prerequisites": ["m3220-ring-hom"],
-    "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
+    "labScope": "The tables compute finite examples and their inclusion order. The general correspondence comes from ideal preimages under R→R/I; two-sided absorption proves multiplication descends.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -3780,14 +3780,14 @@
     "explanation": "Quotienting by a polynomial is a rule for reduction. In the quotient by $X$ squared plus 1, the square of the class of $X$ is -1; every class has a representative of degree at most one.",
     "id": "m3220-quotient-ring",
     "intuition": "A quotient merges elements whose difference lies in an ideal. All calculations remain meaningful because changing a representative only changes the result by an element of that ideal.",
-    "machine": "polynomial",
+    "machine": "ideal-quotient-lattice",
     "parameters": {
       "coefficients": [0, -1, 0, 2],
       "mode": "quotient",
       "modulus": [1, 0, 1]
     },
     "pitfall": "A quotient imposes an equation on classes; it does not assert that $X$ squared equals -1 in the original polynomial ring.",
-    "prompt": "Use $g$ as the quotient modulus. Divide $f$ by $g$ and inspect the remainder: adding a multiple of $g$ changes the polynomial but not its class.",
+    "prompt": "Select I in ℤ/12ℤ or F₂[X]. Predict the quotient classes and whether a non-ideal additive subgroup could work.",
     "proof": "If $a^{\\prime}=a+i$ and $b^{\\prime}=b+j$ with $i,j\\in I$, then $a^{\\prime}b^{\\prime}-ab=aj+ib+ij\\in I$. Addition is checked similarly. For $\\mathbb R[X]/(X^2+1)$, monic division gives a unique linear representative; evaluation at the complex number $i$ identifies the quotient with $\\mathbb C$.",
     "section": "§2.1, Definition 2.7 and Example 2.8, pp.27–28",
     "source": {
@@ -3840,7 +3840,7 @@
       }
     ],
     "prerequisites": ["m3220-ideals"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The selected finite quotient verifies examples. The proof of representative independence uses two-sided ideal absorption, not just the observed multiplication table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },

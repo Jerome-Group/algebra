@@ -202,3 +202,18 @@ V07 checks: model assertions cover every S₃ conjugate, centralizer and fixed
 coset; three browser flows cover prediction, keyboard controls, four widths,
 tables and axe. The ten audit rows distinguish delivered teaching from remaining
 visual work on the dihedral relation and Cauchy tuple action.
+
+- #49 promotes the six Rings-unit lessons to guided teaching. Conventions
+  distinguish nonunital rings, unital maps, fields and two-sided ideals.
+  Worked examples cover ℤ, 2ℤ, ℤ/8ℤ, M₂(F), a matrix left ideal,
+  evaluation ℝ[X]→ℂ and reduction ℤ→ℤ/6ℤ. The quotient lesson proves
+  representative independence; the first isomorphism lesson separates
+  descent, injectivity, surjectivity and image.
+
+V10 constructs quotients of ℤ/12ℤ by selected ideals and of F₂[X] by three
+quadratic ideals. The model computes units, zero divisors, multiplication and
+the inclusion-preserving ideal correspondence; an additive subgroup that is
+not an ideal gives a representative-dependent failure. Model tests check ring
+laws, all finite quotient cases and the non-ideal witness. Browser checks
+cover prediction, keyboard controls, live changes, four widths and axe. The
+Rings unit has authored competency evidence for its existing capstone.
