@@ -5334,5 +5334,143 @@
       "explanation": "External tensor product adds a product-group action on a field tensor; scalar matching controls its kernel."
     },
     "connection": "The URECA direct-product route uses the underlying field tensor but names the representation π⊠ρ and checks scalar-matching kernels separately."
+  },
+  "mh2220-direct-product": {
+    "hook": "When do two independent subgroups really form a product inside a group?",
+    "objects": "For groups H and K, H×K has componentwise multiplication. Internally the map (h,k)↦hk is an isomorphism exactly when H and K commute elementwise, intersect trivially, and generate G. Both factors are then normal in G.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is the product of (1,0) and (0,1) in additive C₂×C₂?",
+      "choices": ["(1,1)", "(0,0)", "(1,0)"],
+      "answer": 0,
+      "explanation": "Add each coordinate independently."
+    },
+    "examples": [
+      {
+        "title": "C₂×C₃ inside C₆",
+        "steps": [
+          "In C₆=⟨g⟩, H=⟨g³⟩ has order two and K=⟨g²⟩ has order three.",
+          "They commute, meet only at e and |HK|=|H||K|=6, so HK=C₆.",
+          "The map H×K→C₆, (h,k)↦hk, is an isomorphism; C₂×C₃ is cyclic."
+        ]
+      },
+      {
+        "title": "The square of involutions",
+        "steps": [
+          "C₂×C₂ has four elements and every nonidentity element has order two.",
+          "The two coordinate subgroups commute, intersect trivially and generate it.",
+          "C₄ also has order four, but its generator has order four, so cardinality alone does not identify a product."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A twisting complement in S₃",
+      "explanation": "A₃ and ⟨(12)⟩ intersect trivially and generate S₃, but they do not commute: (12)(123)(12)=(132). Hence S₃ is a semidirect, not a direct, product."
+    },
+    "proofSteps": [
+      "If H and K commute, (h,k)↦hk preserves multiplication: h₁k₁h₂k₂=h₁h₂k₁k₂.",
+      "If h₁k₁=h₂k₂, then h₂⁻¹h₁=k₂k₁⁻¹ lies in H∩K={e}; hence the map is injective.",
+      "HK=G makes it surjective. Conversely, the coordinate subgroups in an external product have these three properties.",
+      "For any (h,k) in a direct product, its order is lcm(|h|,|k|) when the coordinate orders are finite."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is S₃ not A₃×C₂ despite having the right subgroup orders?",
+      "choices": [
+        "The subgroups do not commute",
+        "Their intersection is nontrivial",
+        "They do not generate S₃"
+      ],
+      "answer": 0,
+      "explanation": "The reflection conjugates a three-cycle to its inverse; the homomorphism step fails."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the order of (1,1) in C₂×C₄?",
+      "choices": ["2", "4", "8"],
+      "answer": 1,
+      "explanation": "Its order is lcm(2,4)=4, not the size of the whole product."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Can C₄ be an internal direct product of two proper order-two subgroups?",
+      "choices": [
+        "Yes, any two suffice",
+        "No, C₄ has only one order-two subgroup",
+        "Yes, because 2·2=4"
+      ],
+      "answer": 1,
+      "explanation": "The unique order-two subgroup cannot have trivial intersection with itself."
+    },
+    "connection": "Replacing commutation by a specified conjugation action leads to semidirect products."
+  },
+  "mh2220-semidirect": {
+    "hook": "The factors C₃ and C₂ can make either C₆ or S₃. What changes?",
+    "objects": "Let N=C₃ be additive and H=C₂=⟨s⟩. A left action α:H→Aut(N) gives (a,b)(c,d)=(a+α(sᵇ)c,b+d). Inversion α(s)c=−c is valid because inversion is an automorphism of C₃ and α(s)²=id.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which map C₃→C₃ is an automorphism of order dividing two?",
+      "choices": ["c↦−c", "c↦0", "c↦c+1"],
+      "answer": 0,
+      "explanation": "Inversion preserves addition and its square is identity; the zero map is not invertible."
+    },
+    "examples": [
+      {
+        "title": "Inversion builds S₃",
+        "steps": [
+          "Use (a,b)(c,d)=(a+(−1)ᵇc,b+d), with coordinates mod 3 and mod 2.",
+          "r=(1,0) has order three and s=(0,1) has order two; srs=(−1,0)=r⁻¹.",
+          "The six normal forms rᵃsᵇ form S₃. The three order-two subgroups are ⟨s⟩, ⟨rs⟩ and ⟨r²s⟩."
+        ]
+      },
+      {
+        "title": "Trivial action builds C₆",
+        "steps": [
+          "Set α(s)=id. Then (a,b)(c,d)=(a+c,b+d).",
+          "The element (1,1) has order lcm(3,2)=6, so C₃×C₂≅C₆.",
+          "The same underlying six pairs have a different multiplication law and subgroup structure."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A nonsplit extension",
+      "explanation": "1→C₂→C₄→C₂→1 has no complement to its order-two kernel. The only order-two subgroup is the kernel, so C₄ cannot be C₂⋊C₂. An extension is not automatically split."
+    },
+    "proofSteps": [
+      "The map α is a homomorphism: α(s)²=id. This equality is exactly what the C₂ relation s²=e requires.",
+      "Associativity follows by expanding ((n,h)(m,k))(p,l) and (n,h)((m,k)(p,l)); equality uses α(hk)=α(h)α(k).",
+      "If G=NH with N normal, H≤G and N∩H={e}, then each g has a unique nh form and conjugation hnh⁻¹ defines α(h).",
+      "The normal-form product is (n,h)(m,k)=(nα(h)(m),hk). This identifies G with N⋊H. It is direct precisely when α is trivial."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Does the map c↦0 define a C₂ action by automorphisms on C₃?",
+      "choices": [
+        "Yes, it is a homomorphism of sets",
+        "No, it is not invertible and its square is not id",
+        "Yes, because 0 has order two"
+      ],
+      "answer": 1,
+      "explanation": "A group action here must land in Aut(C₃), and s²=e imposes α(s)²=id."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Under inversion, what is (0,1)(1,0)?",
+      "choices": ["(1,1)", "(2,1)", "(0,1)"],
+      "answer": 1,
+      "explanation": "The left reflection coordinate applies inversion to the right rotation: 0−1=2 mod 3."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If N◁G, N∩H={e} and NH=G but H is not normal, what can be concluded?",
+      "choices": [
+        "G≅N×H",
+        "G≅N⋊H, with possibly nontrivial action",
+        "The extension cannot split"
+      ],
+      "answer": 1,
+      "explanation": "A complement splits the extension. Trivial conjugation is the extra condition for a direct product."
+    },
+    "connection": "Action data also controls dihedral groups, order-six classification and split extensions."
   }
 }

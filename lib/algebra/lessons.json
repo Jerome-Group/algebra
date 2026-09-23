@@ -1569,13 +1569,13 @@
     "explanation": "For finite-order elements the order formula follows by returning both coordinates to identity. Internally, $G$ is the direct product of $H$ and $K$ if $G=HK$, $H\\cap K={e}$, and both are normal. Distinct prime-power factors of a cyclic group separate into independent coordinates.",
     "id": "mh2220-direct-product",
     "intuition": "In a direct product, two coordinates move independently. Their repetitions synchronize according to a least common multiple.",
-    "machine": "product",
+    "machine": "semidirect",
     "parameters": {
       "m": 2,
       "n": 3
     },
     "pitfall": "The Cartesian set alone does not determine a direct product. $C_{2}\\times C_{2}$ is not cyclic even though it has four elements.",
-    "prompt": "Compare the orbit of (1,1) in $C_{2}\\times C_{3}$ with its orbit in $C_{2}\\times C_{4}$.",
+    "prompt": "Predict whether the displayed factors commute under the trivial action, then compare inversion.",
     "proof": "The element (1,1) in additive $C_m\\times C_n$ has order lcm(m,n), which equals mn exactly in the coprime case. When both subgroups are normal with trivial intersection, their commutators lie in the intersection, so the coordinates commute and multiplication $H\\times K\\to G$ is an isomorphism.",
     "section": "4.4 · Definitions 4.22; Theorems 4.24, 4.26",
     "source": {
@@ -1628,7 +1628,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The six-element table tests S₃ or C₆. Associativity in general uses α(hk)=α(h)α(k); internal splitting uses normality, trivial intersection and generation.",
     "objective": "Decide whether two subgroups really realize an internal direct product.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -1659,7 +1659,7 @@
       "n": 2
     },
     "pitfall": "The complement $H$ need not be normal. The same underlying set $N\\times H$ can support nonisomorphic semidirect products for different actions.",
-    "prompt": "Predict whether a reflection followed by a rotation equals the reverse order under the inversion action.",
+    "prompt": "Predict whether the displayed reflection and rotation commute before choosing an action.",
     "proof": "Every element has a unique expression $nh$. Multiplication gives $(nh)(n^{\\prime}h^{\\prime})=n(hn^{\\prime}h^{-1})hh^{\\prime}$. This is the displayed semidirect-product law, and associativity follows from the homomorphism condition $\\alpha(hh^{\\prime})=\\alpha(h)\\alpha(h^{\\prime})$.",
     "section": "4.4 · Definition 4.28; Theorem 4.31",
     "source": {
@@ -1685,7 +1685,7 @@
     "navTitle": "Semidirect products",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope. This experiment tests the displayed example; the lesson supplies the general argument.",
+    "labScope": "The six-element table tests S₃ or C₆. Associativity in general uses α(hk)=α(h)α(k); internal splitting uses normality, trivial intersection and generation.",
     "objective": "Recover the action and multiplication from a stated normal subgroup and complement.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",

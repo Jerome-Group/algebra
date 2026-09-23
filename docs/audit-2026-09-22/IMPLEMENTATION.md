@@ -5,9 +5,9 @@ Specification: the supplied package's `codex/CODEX_MASTER_PROMPT.md` and per-con
 
 ## Release scope
 
-The owner restored access to the original Sites project on 23 September. Finish through
-reviewed PRs, merges, a locally runnable application and a final verified publication.
-Preserve the retained Site identity and public audience.
+The owner clarified on 23 September that Sites belongs to another account. Finish
+through reviewed PRs, merges, and a locally runnable application. Keep the
+retained Site identity; publication is outside this release.
 
 Deliver in slices: baseline and metadata; four modes and short units; guided content and
 foundation engines; actions/counting; rings/modules; advanced structure; representations and
@@ -292,3 +292,10 @@ Rings unit has authored competency evidence for its existing capstone.
   sum separates pure tensors from arbitrary elements, and a dual-basis
   argument identifies V*⊗W with Hom(V,W) in finite dimension. The existing
   external ⊠ and scalar-matching experiences retain their separate action.
+
+- #67 promotes direct and semidirect products to guided teaching within the
+  six-lesson quotient/product unit. V08 validates both C₂ actions on C₃,
+  constructs C₆ and S₃ with their full multiplication and subgroup tables,
+  and displays the split exact sequence. A zero-map action is rejected;
+  C₄ supplies a nonsplit C₂ extension. The internal product proof separates
+  complement from commutation, and model/browser checks cover the distinction.

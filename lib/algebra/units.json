@@ -69,24 +69,31 @@
   },
   {
     "id": "quotients",
-    "title": "Homomorphisms, kernels and quotients",
-    "description": "Prove quotient maps are well-defined and identify kernels and images.",
+    "title": "Homomorphisms, quotients and products",
+    "description": "Prove quotient and product constructions with their exact hypotheses.",
     "lessons": [
       "mh2220-homomorphism",
       "mh2220-normal",
       "mh2220-quotient",
-      "mh2220-first-isomorphism"
+      "mh2220-first-isomorphism",
+      "mh2220-direct-product",
+      "mh2220-semidirect"
     ],
     "entryCompetencies": ["Recognise fibers and normal subgroups."],
     "outcomes": [
-      "Prove quotient maps are well-defined and identify kernels and images."
+      "Prove quotient maps are well-defined and identify kernels and images.",
+      "Distinguish direct and semidirect products by the conjugation action and splitting criterion."
     ],
     "capstone": {
-      "question": "Use the sign map S3 → {±1} to construct S3/A3 and prove its identification with C2.",
-      "answer": "Sign is a surjective homomorphism with kernel A3. Equal cosets have equal signs; equal signs differ by an element of A3. Thus gA3 ↦ sign(g) is a well-defined bijective homomorphism."
+      "question": "Use A₃ and H=⟨(12)⟩ inside S₃ to recover a product law. Why is it not direct, and why does the C₄ extension by C₂ not split?",
+      "answer": "A₃ is normal of order three, H has order two, they intersect trivially and generate S₃. Conjugation by (12) inverts A₃, so S₃≅C₃⋊C₂ and the action is nontrivial. C₄ has only one subgroup of order two, its kernel, and therefore no complementary C₂."
     },
     "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",
-    "remediation": ["mh2220-homomorphism", "mh2220-normal"],
+    "remediation": [
+      "mh2220-homomorphism",
+      "mh2220-normal",
+      "mh2220-direct-product"
+    ],
     "prerequisiteUnits": ["functions", "cosets"]
   },
   {
