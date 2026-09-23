@@ -228,3 +228,13 @@ Rings unit has authored competency evidence for its existing capstone.
   reducible quartic and an invalid degree-dropping reduction remain visible
   boundaries. Seven concept rows and V12 have delivery evidence; unrelated
   reference-only and roadmap rows remain outside guided completion.
+
+- #53 promotes the four Localisation unit lessons to guided teaching. Regular
+  denominator cancellation and the general annihilator relation are separate;
+  the universal property is proved without claiming injectivity. V11 reduces
+  selected fractions before classifying them in ℤ₍₃₎, ℤ[1/3] and ℚ, shows
+  inverted sets, surviving primes, the v₃ reading and a zero-divisor failure.
+  V13 constructs ascending, descending and prime-ideal chains with generators,
+  strictness witnesses, the finite/infinite cardinality boundary, and labelled
+  Hilbert, Artinian local-decomposition and dimension theorem dependencies.
+  Four concept rows and V11/V13 carry delivery evidence.

@@ -3794,5 +3794,286 @@
       "explanation": "Gauss and degree preservation carry any rational factorization to a nontrivial factorization modulo p, contradicting the certificate."
     },
     "connection": "V12 compares factorization across coefficient fields and labels each conclusion by its actual proof certificate."
+  },
+  "m3220-fractions": {
+    "hook": "When do two numerator-denominator pairs name the same fraction?",
+    "objects": "Let R be a commutative ring and S a multiplicative subset of regular elements (non-zero-divisors). Write (a,s)~(b,t) iff at=bs. The fraction field uses all nonzero elements of a domain; a selected S inverts only its members.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Why is a zero divisor dangerous as a denominator?",
+      "choices": [
+        "It can prevent cancellation",
+        "It has no additive inverse",
+        "It makes every numerator zero"
+      ],
+      "answer": 0,
+      "explanation": "Regularity supplies the cancellation used in transitivity of simple cross multiplication."
+    },
+    "examples": [
+      {
+        "title": "Transitivity with regular denominators",
+        "steps": [
+          "Assume at=bs and bu=ct for pairs (a,s),(b,t),(c,u). Multiply the first equality by u and substitute bu=ct to get atu=cts.",
+          "Cancel the regular t to obtain au=cs. Thus (a,s)~(c,u)."
+        ]
+      },
+      {
+        "title": "Arithmetic respects classes",
+        "steps": [
+          "For sums, (a/s)+(b/t)=(at+bs)/(st); for products, (a/s)(b/t)=ab/(st).",
+          "Replacing a/s by a′/s′ with as′=a′s gives equal products after multiplying by the same b/t; expanding the two sum numerators similarly gives equality after cross multiplication."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Cross multiplication with zero divisors can be too strict",
+      "explanation": "In R=ℤ/6ℤ and S={1,2,4}, the localization relation allows (1,1)~(4,1) because 2(1−4)=0 modulo 6. But direct cross multiplication gives 1≠4; the general relation needs an annihilating u∈S."
+    },
+    "proofSteps": [
+      "Reflexivity follows as=as and symmetry reverses equality. Transitivity uses the regular middle denominator to cancel t in atu=cts.",
+      "For addition, if as′=a′s and bt′=b′t, expand and regroup to show (at+bs)s′t′=(a′t′+b′s′)st.",
+      "For multiplication, ab s′t′=a′b′ st follows by multiplying the two representative equalities. Therefore both operations are independent of representatives.",
+      "If S includes zero divisors, use (a,s)~(b,t) iff some u∈S satisfies u(at−bs)=0. This also explains why R→S⁻¹R may fail to be injective."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which hypothesis justifies cancelling t in the transitivity proof?",
+      "choices": [
+        "t is a non-zero-divisor",
+        "t is nonzero but possibly a zero divisor",
+        "R is finite"
+      ],
+      "answer": 0,
+      "explanation": "Atu=cts implies t(au−cs)=0; regularity forces au−cs=0."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "In ℤ, are 1/2 and 2/4 equivalent under cross multiplication?",
+      "choices": [
+        "Yes, 1·4=2·2",
+        "No, denominators differ",
+        "Only if 2 is a unit in ℤ"
+      ],
+      "answer": 0,
+      "explanation": "Both cross products equal 4, so the pairs represent the same fraction."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is ℤ[1/3] smaller than ℚ?",
+      "choices": [
+        "It only permits denominators that become powers of 3 after reduction",
+        "It inverts every nonzero integer",
+        "Its numerators must be multiples of 3"
+      ],
+      "answer": 0,
+      "explanation": "Only the selected multiplicative set is inverted; 1/2 is absent from ℤ[1/3]."
+    },
+    "connection": "Localisation packages this construction by its universal property, even when denominators are zero divisors."
+  },
+  "m3220-localization": {
+    "hook": "What map must exist after a chosen set becomes invertible?",
+    "objects": "For commutative R and multiplicative S containing 1 and excluding 0 when a nonzero localization is wanted, S⁻¹R consists of fraction classes under u(at−bs)=0 for some u∈S. The canonical map sends r to r/1.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What must a map ψ:R→T do to factor through S⁻¹R?",
+      "choices": [
+        "Send every s∈S to a unit in T",
+        "Be injective",
+        "Send every s∈S to zero"
+      ],
+      "answer": 0,
+      "explanation": "The forced value ψ(a)/ψ(s) needs ψ(s) invertible; ψ itself may have a kernel."
+    },
+    "examples": [
+      {
+        "title": "Universal map for ℤ[1/3]",
+        "steps": [
+          "Let S={3ⁿ:n≥0} and ψ:ℤ→ℚ be inclusion. Since ψ(3) is invertible, define ψ̄(a/3ⁿ)=a/3ⁿ in ℚ.",
+          "If fractions agree in the localization, multiplying their difference by a power of 3 gives zero; the same relation holds in ℚ, so ψ̄ is well-defined and unique."
+        ]
+      },
+      {
+        "title": "A noninjective canonical map",
+        "steps": [
+          "Take R=ℤ/6ℤ and S={1,2,4}. Since 2·3=0 in R, the class 3/1 is zero in S⁻¹R although 3≠0 in R.",
+          "The universal property still holds. It does not imply injectivity of R→S⁻¹R."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Universal does not mean injective",
+      "explanation": "The unique factor map exists when S maps to units; it can collapse elements annihilated by S. In the zero-divisor example, 3/1=0/1."
+    },
+    "proofSteps": [
+      "Define (a,s)~(b,t) when u(at−bs)=0 for some u∈S; multiplication of witnesses proves transitivity and compatibility with arithmetic.",
+      "The canonical map j:R→S⁻¹R sends r↦r/1 and sends every s∈S to a unit, with inverse 1/s.",
+      "For ψ:R→T sending S to units, define ψ̄(a/s)=ψ(a)ψ(s)⁻¹. If u(at−bs)=0, applying ψ and cancelling the units ψ(u),ψ(s),ψ(t) proves well-definedness.",
+      "Any factor map must send a/s=(a/1)(s/1)⁻¹ to that value, proving uniqueness. The kernel of j is {r:sr=0 for some s∈S}; regular S makes j injective."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Does the universal property require R→S⁻¹R to be injective?",
+      "choices": [
+        "No; injectivity additionally follows when S consists of regular elements",
+        "Yes, always",
+        "Only if S contains 0"
+      ],
+      "answer": 0,
+      "explanation": "A zero divisor in S can annihilate a nonzero element while the universal map remains valid."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the forced image of 5/9 under the factor map ℤ[1/3]→ℚ extending inclusion?",
+      "choices": ["5/9", "9/5", "0"],
+      "answer": 0,
+      "explanation": "Every denominator becomes a unit in ℚ, so the value is ψ(5)ψ(9)⁻¹."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For R=ℤ/6ℤ and S={1,2,4}, why does 3/1=0/1?",
+      "choices": ["2(3−0)=0 in R", "3=0 in R", "S contains zero"],
+      "answer": 0,
+      "explanation": "The localization relation admits an S-annihilator; this is precisely why the canonical map can lose injectivity."
+    },
+    "connection": "At a prime ideal, the inverted set is its complement and units can be classified by the numerator."
+  },
+  "m3220-prime-localization": {
+    "hook": "Which fractions are units near the prime 3?",
+    "objects": "In ℤ₍₃₎=S⁻¹ℤ with S={n∈ℤ:3∤n}, a reduced rational a/b belongs exactly when 3∤b. It is a unit exactly when 3∤a, and a nonunit exactly when 3|a. Compare ℤ[1/3], which inverts powers of 3 instead.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Is 1/2 in ℤ₍₃₎?",
+      "choices": [
+        "Yes, 2 is not divisible by 3",
+        "No, 2 is not a power of 3",
+        "Only if 2 is a unit of ℤ"
+      ],
+      "answer": 0,
+      "explanation": "Prime localization inverts all integers outside (3), including 2."
+    },
+    "examples": [
+      {
+        "title": "Classify reduced fractions",
+        "steps": [
+          "1/2 is present and a unit in ℤ₍₃₎; its inverse 2 is present. It is absent from ℤ[1/3].",
+          "3/2 is present but a nonunit in ℤ₍₃₎ because its numerator is divisible by 3.",
+          "1/3 is absent from ℤ₍₃₎ but is a unit of ℤ[1/3]; it is also present in ℚ."
+        ]
+      },
+      {
+        "title": "The unique maximal ideal",
+        "steps": [
+          "The nonunits are precisely fractions a/b with 3|a and 3∤b. They form 3ℤ₍₃₎.",
+          "Any fraction outside this ideal has numerator prime to 3 and reciprocal b/a inside the ring, so every proper ideal lies in 3ℤ₍₃₎. The residue field is F₃."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Reduce before classifying",
+      "explanation": "3/6 equals 1/2. The unreduced denominator 6 is divisible by 3, but the rational number belongs to ℤ₍₃₎ and is a unit; classify reduced fractions."
+    },
+    "proofSteps": [
+      "For a reduced a/b, membership in ℤ₍₃₎ is equivalent to 3∤b; cancel common factors before inspecting b.",
+      "If 3∤a, b/a is allowed, so a/b is a unit. If 3|a, any inverse would force a numerator divisible by 3 to equal 1 after cross multiplication, impossible.",
+      "The nonunits form 3ℤ₍₃₎, an ideal. Every element outside it is invertible, so it is the unique maximal ideal.",
+      "ℤ[1/3] has reduced denominators ±3ⁿ; ℚ permits every nonzero denominator. These rings invert different sets even though all embed in ℚ."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why must 3/6 be reduced before testing membership in ℤ₍₃₎?",
+      "choices": [
+        "It equals 1/2, whose denominator is prime to 3",
+        "No fraction with numerator 3 belongs",
+        "3/6 equals 0"
+      ],
+      "answer": 0,
+      "explanation": "Membership is a property of the rational class, not a chosen presentation."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Classify 3/2 in ℤ₍₃₎.",
+      "choices": ["Present nonunit", "Present unit", "Absent"],
+      "answer": 0,
+      "explanation": "The reduced denominator 2 is allowed, but the numerator 3 lies in the unique maximal ideal."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Where is 1/3 present?",
+      "choices": ["ℤ[1/3] and ℚ, but not ℤ₍₃₎", "Only ℤ₍₃₎", "All three rings"],
+      "answer": 0,
+      "explanation": "The prime localization does not invert 3; the other two do."
+    },
+    "connection": "Noetherian conditions concern stabilizing ideals rather than whether a ring has finitely many elements."
+  },
+  "m3220-noetherian": {
+    "hook": "Why can an infinite ring satisfy an ascending-chain condition?",
+    "objects": "A commutative ring R is Noetherian when every ideal is finitely generated, equivalently every ascending chain of ideals stabilizes. For modules, replace ideals with submodules. This is unrelated to finite cardinality.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Does the infinite ring ℤ have to be non-Noetherian?",
+      "choices": [
+        "No; every ideal is principal",
+        "Yes; it has infinitely many integers",
+        "Only finite fields are Noetherian"
+      ],
+      "answer": 0,
+      "explanation": "Ideal generation and ascending chains, not the number of elements, decide Noetherianity."
+    },
+    "examples": [
+      {
+        "title": "Finite generation forces stabilization",
+        "steps": [
+          "For I₁⊆I₂⊆⋯, the union I is an ideal. If I=(a₁,…,aₖ), all its generators appear by some stage N.",
+          "Then I⊆I_N, hence I_n=I_N for n≥N."
+        ]
+      },
+      {
+        "title": "Infinite-variable counterexample",
+        "steps": [
+          "In F[X₁,X₂,…], let I_n=(X₁,…,X_n). Then X_{n+1}∉I_n, witnessed by setting X₁,…,X_n=0 while retaining X_{n+1}.",
+          "The union I=(X₁,X₂,…) is not finitely generated: finitely many proposed generators involve only finitely many variables, so a fresh X_j lies outside their generated ideal."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Infinite does not imply non-Noetherian",
+      "explanation": "ℤ has infinitely many elements but every ideal is (n), hence finitely generated and ACC. The infinite-variable polynomial ring fails because of a specific strict chain, not its cardinality."
+    },
+    "proofSteps": [
+      "If every ideal is finitely generated, the union of an ascending chain is an ideal whose finite generators all occur in one stage; the chain stabilizes.",
+      "Conversely, if an ideal I is not finitely generated, choose a₁∈I, then a₂∈I\\(a₁), and inductively a_{n+1} outside (a₁,…,a_n). This gives a nonstabilizing ascending chain.",
+      "The same proof applies to submodules of a fixed module. A Noetherian ring means R is Noetherian as an R-module; it does not assert every module is Noetherian.",
+      "In F[X₁,X₂,…], fresh variables certify strictness of I_n. Hilbert’s basis theorem concerns finitely many polynomial variables over a Noetherian base and does not cover this infinite-variable ring."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What does Noetherian mean for a module M?",
+      "choices": [
+        "Every submodule is finitely generated, equivalently ACC on submodules",
+        "M has finitely many elements",
+        "Every element of M is a unit"
+      ],
+      "answer": 0,
+      "explanation": "The chain condition is applied to submodules of that fixed module."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Why is (X₁)⊊(X₁,X₂) in F[X₁,X₂,…]?",
+      "choices": ["X₂ is not in (X₁)", "The ring is finite", "X₁ is a unit"],
+      "answer": 0,
+      "explanation": "Set X₁=0; every multiple of X₁ vanishes while X₂ need not."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "An ideal I is not finitely generated. What chain can you build?",
+      "choices": [
+        "Choose a new element outside each previously generated ideal",
+        "Every chain stabilizes immediately",
+        "A finite chain containing all elements"
+      ],
+      "answer": 0,
+      "explanation": "The successive finitely generated ideals strictly increase, contradicting ACC."
+    },
+    "connection": "The chain explorer keeps the ring/module context and theorem prerequisites visible."
   }
 }

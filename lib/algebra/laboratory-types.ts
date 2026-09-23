@@ -9,6 +9,8 @@ export const laboratoryKinds = [
   "orbit-workbench",
   "ideal-quotient-lattice",
   "polynomial-factorisation",
+  "localisation-microscope",
+  "ideal-chain-explorer",
   "module-presentation",
   "axis-angle",
   "plane-representation",
