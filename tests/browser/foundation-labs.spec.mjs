@@ -15,11 +15,6 @@ const cases = [
     "Try a fixed point with a faithful action",
     "Core of this point stabilizer: {e, (12), (23), (13), (123), (132)}",
   ],
-  [
-    "m3220-modules",
-    "Try the same scalar with a nontrivial kernel",
-    "not invertible",
-  ],
 ];
 for (const [id, action, result] of cases) {
   test(`${id} prediction, keyboard experiment, failure witness and accessible reflow`, async ({

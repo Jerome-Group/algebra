@@ -178,35 +178,35 @@
   "m3220-modules": {
     "name": "Module scalar-action and presentation board",
     "type": "experiment",
-    "question": "Can an integer nonunit act invertibly on this module?",
-    "prediction": "Predict multiplication by 2 on Z/3Z, then change the module to Z/6Z.",
-    "objects": "Left Z-module Z/nZ=⟨e | ne=0⟩, with integer scalar r.",
-    "invariant": "Scalar action respects addition; invertibility on one module differs from being a unit of the ring.",
-    "counterexample": "2 is a nonunit of Z but acts invertibly on Z/3Z.",
-    "debrief": "Units act invertibly on every unital module. The displayed exception shows why the converse fails for a particular module; on the regular module Z, 2 is not surjective.",
-    "fallback": "All essential values are listed as labelled text and tables below the controls."
+    "question": "When can a nonunit of the ring act invertibly on one module?",
+    "prediction": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left ℤ-module M=ℤ/nℤ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by ℤ→End(M); im(×r)≅M/ker(×r), while a section is needed for splitting.",
+    "counterexample": "2 is a nonunit of ℤ but acts invertibly on ℤ/3ℤ; 0→ℤ --×6→ℤ→ℤ/6ℤ→0 is exact and nonsplit.",
+    "debrief": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
+    "fallback": "Every action, relation, submodule, annihilator and exactness state appears as labelled text and a table."
   },
   "modules-generators": {
     "name": "Cyclic module presentation and exactness board",
     "type": "constructor",
-    "question": "What does one generator with one relation describe?",
-    "prediction": "For relation 6e=0, predict the kernel of the quotient map from Z.",
-    "objects": "Left Z-module M=Z/nZ with generator [1], relation ne=0 and quotient q:Z→M.",
-    "invariant": "The presentation has kernel nZ and exact sequence 0→Z→Z→M→0 with first map multiplication by n.",
-    "counterexample": "M is cyclic but not free over Z: its generator is annihilated by a nonzero integer.",
-    "debrief": "Exactness at the middle Z is im(×n)=ker q=nZ. The finite table cannot alone prove injectivity on infinite Z; divisibility does.",
-    "fallback": "All essential values are listed as labelled text and tables below the controls."
+    "question": "How do generators and relations lead to exactness, and when does the sequence split?",
+    "prediction": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left ℤ-module M=ℤ/nℤ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by ℤ→End(M); im(×r)≅M/ker(×r), while a section is needed for splitting.",
+    "counterexample": "2 is a nonunit of ℤ but acts invertibly on ℤ/3ℤ; 0→ℤ --×6→ℤ→ℤ/6ℤ→0 is exact and nonsplit.",
+    "debrief": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
+    "fallback": "Every action, relation, submodule, annihilator and exactness state appears as labelled text and a table."
   },
   "m3220-annihilator": {
     "name": "Annihilator and scalar-kernel board",
     "type": "checker",
-    "question": "How is the module annihilator different from one scalar map’s kernel?",
-    "prediction": "In Z/6Z compare ann(M)=6Z with the kernel of multiplication by 2.",
-    "objects": "Left Z-module Z/nZ; ann(M) is an ideal of Z while ker(r·) is a subset of M.",
-    "invariant": "The annihilator lives in the ring; the scalar map kernel lives in the module.",
-    "counterexample": "For n=6,r=2, ann(M)=6Z but ker(r·)={0,3}.",
-    "debrief": "The two objects have different types. The table computes a module endomorphism; integer multiples identify the ring ideal annihilating the entire module.",
-    "fallback": "All essential values are listed as labelled text and tables below the controls."
+    "question": "What kills one vector, the whole module and one scalar action?",
+    "prediction": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left ℤ-module M=ℤ/nℤ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by ℤ→End(M); im(×r)≅M/ker(×r), while a section is needed for splitting.",
+    "counterexample": "2 is a nonunit of ℤ but acts invertibly on ℤ/3ℤ; 0→ℤ --×6→ℤ→ℤ/6ℤ→0 is exact and nonsplit.",
+    "debrief": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
+    "fallback": "Every action, relation, submodule, annihilator and exactness state appears as labelled text and a table."
   },
   "orthogonal-axis-angle": {
     "name": "Arbitrary-axis Rodrigues explorer",
@@ -526,5 +526,16 @@
     "counterexample": "ℤ is infinite and Noetherian, while (X₁)⊊(X₁,X₂)⊊⋯ never stabilizes in the infinite-variable ring.",
     "debrief": "Stage evidence proves strictness or stabilization of the displayed chains. The general ACC equivalence is proved in the guided lesson; Hilbert and dimension claims need their own hypotheses.",
     "fallback": "Every chain stage, generator and witness appears in text and a labelled table."
+  },
+  "m3220-submodules": {
+    "name": "Operator submodule and quotient workspace",
+    "type": "illustration",
+    "question": "Which subspace survives every polynomial in the selected operator?",
+    "prediction": "For T=diag(2,1) on ℝ², predict whether the x-axis is stable and what T induces on the quotient by it. Then change the operator.",
+    "objects": "The initial left ℝ[t]-module ℝ² has t acting by T=diag(2,1), with W the x-axis.",
+    "invariant": "T(W)⊆W gives stability under every p(T), and the quotient action remembers only the y-coordinate.",
+    "counterexample": "The line ℝ(e₁+e₂) is not stable under diag(2,1): its image 2e₁+e₂ is not on that line. Stability under one operator does not imply stability under an unrelated operator.",
+    "debrief": "The vector diagram checks one operator state. General quotient well-definedness needs submodule closure under every scalar, and M/ker f≅im f is proved in the guided lesson.",
+    "fallback": "The matrix, vector image, invariant x-axis and induced quotient scalar are labelled in text next to the diagram."
   }
 }
