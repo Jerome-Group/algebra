@@ -101,6 +101,10 @@ test("corrected statements retain mathematical sides, qualifiers and boundary ca
     /bijection between irreducible complex characters/,
   );
   assert.equal(byId.get("characters-burnside").machine, "diagram");
+  const primitive = byId.get("actions-primitive");
+  assert.match(primitive.worked.steps.join(" "), /singleton action/);
+  assert.match(primitive.worked.steps.join(" "), /G₀<H<D₄/);
+  assert.match(primitive.proof, /G_x\\le H\\le G/);
 });
 
 test("routes and prerequisite edges resolve without cycles", () => {

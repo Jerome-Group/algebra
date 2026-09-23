@@ -658,5 +658,27 @@
     "counterexample": "The zero endomorphism is not an automorphism or a valid C₂ action; C₄ is a nonsplit C₂ extension.",
     "debrief": "The six-element table tests S₃ or C₆. Associativity in general uses α(hk)=α(h)α(k); internal splitting uses normality, trivial intersection and generation.",
     "fallback": "The complete multiplication and subgroup tables, exact sequence, action check and failure are text."
+  },
+  "characters-burnside": {
+    "name": "Burnside class-size proof workbench",
+    "type": "proof-animation",
+    "question": "Why does the center of a Sylow subgroup obstruct a nonabelian simple two-prime group?",
+    "prediction": "Predict the class size of a nonidentity element central in a Sylow subgroup before checking the centralizer index.",
+    "objects": "A finite group G of order p^a q^b; the S3 conjugacy classes are a concrete index example.",
+    "invariant": "For z in the center of a Sylow q-subgroup, q^b divides |C_G(z)|, so |z^G| is a p-power.",
+    "counterexample": "The identity has class size one and cannot trigger the prime-power-class obstruction.",
+    "debrief": "The displayed chain proves the reduction to the imported character-theoretic class-size lemma and then induction; the S3 table is an illustration, not a proof of that lemma.",
+    "fallback": "All centralizer orders, class sizes, hypotheses and proof steps appear in the table and text."
+  },
+  "m3220-nilradical": {
+    "name": "Nilradical hypothesis checker",
+    "type": "checker",
+    "question": "When does the nilradical equal the Jacobson radical, and what fails without commutativity?",
+    "prediction": "Predict the powers of 2 in ℤ/8ℤ and whether the same radical claim holds for M₂(F₂).",
+    "objects": "Commutative unital finite rings ℤ/8ℤ and ℤ/6ℤ; noncommutative M₂(F₂) as a failure state.",
+    "invariant": "In commutative unital rings Nil(R) is the prime-ideal intersection; in the Artinian cases J=Nil and a uniform power of J vanishes.",
+    "counterexample": "E₁₂ is nilpotent in M₂(F₂) but J(M₂(F₂))=0.",
+    "debrief": "The finite tables verify these rings. The general prime-intersection reverse inclusion needs prime avoidance of a power set, and Artinian radical nilpotence is a separate structural theorem.",
+    "fallback": "Element powers, radical powers, hypotheses and the matrix failure appear in text and tables."
   }
 }

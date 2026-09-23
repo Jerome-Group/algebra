@@ -299,3 +299,25 @@ Rings unit has authored competency evidence for its existing capstone.
   and displays the split exact sequence. A zero-map action is rejected;
   C₄ supplies a nonsplit C₂ extension. The internal product proof separates
   complement from commutation, and model/browser checks cover the distinction.
+
+## Final local release audit
+
+Sites publication is excluded at the owner's request; the original Site
+identifier remains in the repository. Run locally with Node 24+, `npm ci`,
+and `npx vite`. The GitHub import and the local build are not a Sites
+deployment.
+
+All 20 visual backlog entries have delivery evidence. The 143-row concept
+ledger has 46 rows without a deferred gate, 33 with delivered work plus a
+named deferred part, and 64 explicitly deferred rows. Reference and roadmap
+pages remain visible without granting guided completion. The 15 prior
+regressions have final verification paths in `prior_regression_check.csv`;
+the original audit's `remaining_action` text remains as historical input,
+while `final_verdict` and `verification_evidence` record this release's result.
+
+The final acceptance checks and evidence are in `ACCEPTANCE_CHECKLIST.md`.
+The independent Artinian/Nakayama proof order is in
+`PROOF_DEPENDENCIES.md`. Browser screenshots, traces and axe evidence are
+written to `outputs/playwright/` locally and uploaded as `browser-evidence`
+by CI. Type checking retains only the three baseline Cloudflare ambient
+type errors listed above; lint retains ten baseline warnings and no errors.

@@ -223,6 +223,7 @@
   --paper: #fbf9f3;
   --ink: #141519;
   --accent: #ff4d27;
+  --accent-text: #a92b16;
   background: var(--paper);
   color: var(--ink);
 }
@@ -402,7 +403,7 @@
 }
 .chapter-number {
   font-size: 25px;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 700;
   letter-spacing: -1px;
   border-right: 1px solid #8a8882;

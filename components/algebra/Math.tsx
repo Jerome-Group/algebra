@@ -25,6 +25,7 @@ export function Math({
   return (
     <span
       className={block ? "math-display" : "math-inline"}
+      tabIndex={0}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

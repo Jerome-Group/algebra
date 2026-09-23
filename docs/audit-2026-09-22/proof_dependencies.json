@@ -1,0 +1,13 @@
+{
+  "commutative-unital": [],
+  "artinian-dcc": ["commutative-unital"],
+  "jacobson-unit-characterization": ["commutative-unital"],
+  "radical-nilpotence-imported": ["artinian-dcc"],
+  "artinian-local-decomposition-imported": ["artinian-dcc"],
+  "finite-residue-layers": ["radical-nilpotence-imported", "artinian-dcc"],
+  "artinian-implies-noetherian": [
+    "finite-residue-layers",
+    "artinian-local-decomposition-imported"
+  ],
+  "nakayama-finitely-generated-module": ["jacobson-unit-characterization"]
+}
