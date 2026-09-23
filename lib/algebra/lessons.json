@@ -7027,7 +7027,7 @@
     "connections": ["ureca-linear-action"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "A relationship map illustrates the stated construction. Work the example and practice independently; arrows are not a proof.",
+    "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "navTitle": "Bases & linear maps",
     "title": "Coordinates before representations",
     "intuition": "A basis gives independent coordinates. A matrix records where those basis vectors go.",
@@ -7036,8 +7036,8 @@
     "theorem": "\\dim V=\\dim\\ker T+\\dim\\operatorname{im}T\\quad(\\dim V<\\infty)",
     "proof": "Choose a basis of the kernel and extend it to a basis of $V$. Images of the added basis vectors span the image because kernel vectors contribute zero. They are independent: a combination with image zero belongs to the kernel, so independence of the full extended basis forces all its added coefficients to vanish. Counting these two parts proves the formula.",
     "pitfall": "An invariant subspace can contain vectors that move. Being fixed pointwise is stronger. Matrices of different sizes cannot describe the same vector space in different bases.",
-    "prompt": "Follow the map from the vector space through its kernel quotient to its image. Compute the coordinate example on paper.",
-    "machine": "diagram",
+    "prompt": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "machine": "invariant-intertwiner",
     "parameters": {
       "nodes": [
         {
@@ -7098,8 +7098,8 @@
     "theorem": "g\\cdot(h\\cdot v)=(gh)\\cdot v,\\qquad \\rho(g)^{-1}=\\rho(g^{-1}),\\qquad \\rho\\text{ faithful}\\iff\\ker\\rho=\\{e\\}.",
     "proof": "The homomorphism equation gives the action law by applying both sides to $v$, and $\\rho (e)=I$ gives the identity law. Conversely a linear action defines linear maps $\\rho (g)$; the inverse action makes them invertible and the action law makes $\\rho$ a homomorphism. Its kernel records exactly those group elements invisible to the action.",
     "pitfall": "One vector being fixed does not mean a group element lies in the kernel. It must fix every vector. With column vectors the rightmost matrix acts first.",
-    "prompt": "Move a vector and the coordinate frame under a permutation. Compare composing the matrices with composing the corresponding actions.",
-    "machine": "representation",
+    "prompt": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "machine": "invariant-intertwiner",
     "parameters": {
       "mode": "permutation"
     },
@@ -7131,11 +7131,8 @@
         "answer": "Yes. That gives the trivial representation, which satisfies every relation but is not faithful for a nontrivial group."
       }
     ],
-    "prerequisites": [
-      "mh2220-permutation-matrices",
-      "foundations-linear-algebra"
-    ],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "prerequisites": ["foundations-linear-algebra"],
+    "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -7158,8 +7155,8 @@
     "theorem": "\\rho(gh)=\\rho(g)\\rho(h),\\qquad \\chi_{F[X]}(g)=|\\{x\\in X:gx=x\\}|\\quad(F=\\mathbb C).",
     "proof": "Both sides send $e_{x}$ to e_(ghx), so they agree on a basis. A permutation matrix has a 1 in the diagonal entry indexed by $x$ exactly when $gx=x$, giving the trace formula. The kernel of the permutation representation equals the kernel of the action on $X$ because basis vectors remain distinct.",
     "pitfall": "A drawing of three axes does not display an eight-dimensional representation faithfully as a geometric embedding. It can display its basis permutation and matrix exactly.",
-    "prompt": "In this three-point real permutation module, follow one coefficient through each permutation. For comparison, the cube lesson constructs separate permutation modules on its feature sets.",
-    "machine": "representation",
+    "prompt": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "machine": "invariant-intertwiner",
     "parameters": {
       "mode": "permutation"
     },
@@ -7193,7 +7190,7 @@
       }
     ],
     "prerequisites": ["ureca-linear-action"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -7216,8 +7213,8 @@
     "theorem": "v=\\frac{x+y+z}{3}(1,1,1)+\\left(v-\\frac{x+y+z}{3}(1,1,1)\\right),\\qquad \\rho(g)L=L,\\quad \\rho(g)W=W.",
     "proof": "Permutations fix (1,1,1) and preserve the sum of coordinates, hence preserve $L$ and $W$. Every vector has the displayed decomposition. If a constant vector has zero sum, its constant is zero over $R$ or $C$, so $L\\cap W=0$ and the decomposition is unique.",
     "pitfall": "Stability under one group element is not stability under the whole group unless that element generates it. Over a field of characteristic 3, the constant line lies inside the sum-zero subspace and this particular direct-sum formula fails.",
-    "prompt": "Change the vector coordinates and apply different permutations. Its mean stays fixed; subtracting that mean leaves a vector in the invariant sum-zero plane.",
-    "machine": "representation",
+    "prompt": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "machine": "invariant-intertwiner",
     "parameters": {
       "mode": "permutation"
     },
@@ -7250,7 +7247,7 @@
       }
     ],
     "prerequisites": ["ureca-permutation-module"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -7353,8 +7350,8 @@
     "theorem": "T\\text{ invertible}\\Longrightarrow \\rho_W(g)=T\\rho_V(g)T^{-1},\\qquad \\ker T\\le V,\\ \\operatorname{im}T\\le W\\text{ invariant}.",
     "proof": "For $v$ in ker $T$, equivariance gives $T\\rho _V(g)v=\\rho _W(g)Tv=0$. For $w=Tv$ in the image, $\\rho _W(g)w=T\\rho _V(g)v$ remains in the image. If $T$ is invertible, rearranging the intertwining equation gives simultaneous conjugacy for every $g$.",
     "pitfall": "A different conjugating matrix for each group element does not establish equivalence. One fixed invertible $T$ must work for the entire group.",
-    "prompt": "Change coordinates and permute them. Check that taking the mean before or after the permutation gives the same answer: the projection onto constants is an intertwiner, not an invertible change of basis.",
-    "machine": "representation",
+    "prompt": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "machine": "invariant-intertwiner",
     "parameters": {
       "mode": "permutation"
     },
@@ -7370,7 +7367,7 @@
     "navTitle": "Intertwiners",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "objective": "Verify one intertwiner across all generators and explain why element-by-element conjugators are insufficient.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -7387,7 +7384,8 @@
         "hint": "Use the intertwining equation on a vector killed by T.",
         "answer": "For $Tv=0$, $T\\rho(g)v=\\sigma(g)Tv=0$, so $\\rho(g)v$ remains in the kernel."
       }
-    ]
+    ],
+    "prerequisites": ["ureca-invariant-subspaces"]
   },
   {
     "id": "ureca-cyclic-eigenvalues",

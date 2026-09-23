@@ -537,5 +537,60 @@
     "counterexample": "The line ℝ(e₁+e₂) is not stable under diag(2,1): its image 2e₁+e₂ is not on that line. Stability under one operator does not imply stability under an unrelated operator.",
     "debrief": "The vector diagram checks one operator state. General quotient well-definedness needs submodule closure under every scalar, and M/ker f≅im f is proved in the guided lesson.",
     "fallback": "The matrix, vector image, invariant x-axis and induced quotient scalar are labelled in text next to the diagram."
+  },
+  "foundations-linear-algebra": {
+    "name": "Invariant-subspace and intertwiner lab",
+    "type": "checker",
+    "question": "How do matrix columns, kernel, image and rank–nullity describe a linear map?",
+    "prediction": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "objects": "D₈ acts from the left on column vectors in 𝔽² through R=[[0,−1],[1,0]] and S=diag(1,−1).",
+    "invariant": "Columns are basis images; dim ker A+dim im A=dim domain.",
+    "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
+    "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
+  },
+  "ureca-linear-action": {
+    "name": "Invariant-subspace and intertwiner lab",
+    "type": "checker",
+    "question": "Why do D₈ generator matrices give an invertible left action?",
+    "prediction": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "objects": "D₈ acts from the left on column vectors in 𝔽² through R=[[0,−1],[1,0]] and S=diag(1,−1).",
+    "invariant": "R⁴=S²=I and SRS=R⁻¹; group inverses map to inverse matrices.",
+    "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
+    "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
+  },
+  "ureca-permutation-module": {
+    "name": "Invariant-subspace and intertwiner lab",
+    "type": "checker",
+    "question": "Why does the vertex permutation module have dimension eight?",
+    "prediction": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "objects": "D₈ acts from the left on column vectors in 𝔽² through R=[[0,−1],[1,0]] and S=diag(1,−1).",
+    "invariant": "One basis vector per point; the permutation action moves all linear combinations.",
+    "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
+    "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
+  },
+  "ureca-invariant-subspaces": {
+    "name": "Invariant-subspace and intertwiner lab",
+    "type": "checker",
+    "question": "Which subspace survives the selected generators and field?",
+    "prediction": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "objects": "D₈ acts from the left on column vectors in 𝔽² through R=[[0,−1],[1,0]] and S=diag(1,−1).",
+    "invariant": "W is invariant iff all generators preserve it; the complex rotation eigenline fails under reflection.",
+    "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
+    "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
+  },
+  "ureca-intertwiners": {
+    "name": "Invariant-subspace and intertwiner lab",
+    "type": "checker",
+    "question": "Does one fixed T intertwine both D₈ generators?",
+    "prediction": "Choose field, acting generators, subspace and candidate map; predict invariance and intertwining before revealing equations.",
+    "objects": "D₈ acts from the left on column vectors in 𝔽² through R=[[0,−1],[1,0]] and S=diag(1,−1).",
+    "invariant": "TR=R⁻¹T and TS=ST must hold for one T; its kernel and image are invariant.",
+    "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
+    "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
   }
 }

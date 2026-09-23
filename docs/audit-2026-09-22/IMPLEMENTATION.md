@@ -247,3 +247,13 @@ Rings unit has authored competency evidence for its existing capstone.
   board distinguishes a nonunit acting invertibly on one module from a ring
   unit, and an exact nonsplit sequence from a split direct sum. Four concept
   rows and V14 have delivery evidence.
+
+- #57 promotes five Representations-unit lessons to guided teaching. V15 keeps
+  the D₈ quarter-turn and reflection matrices in view across field, subgroup,
+  invariant-line and intertwiner choices. The same basis change is checked on
+  both generators; a noninvertible equivariant projection exposes invariant
+  kernel and image. The complex rotation eigenline fails under reflection,
+  while the full representation remains irreducible. Four concept rows and V15
+  record delivered gates. The linear-algebra foundation row records its guided
+  bridge while retaining the requested split into dedicated prerequisites as
+  pending final-audit work.

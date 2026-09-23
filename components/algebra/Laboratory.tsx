@@ -40,6 +40,7 @@ import { PolynomialFactorisation } from "./PolynomialFactorisation";
 import { LocalisationMicroscope } from "./LocalisationMicroscope";
 import { IdealChainExplorer } from "./IdealChainExplorer";
 import { ModuleActionBoard } from "./ModuleActionBoard";
+import { InvariantIntertwinerLab } from "./InvariantIntertwinerLab";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -62,6 +63,7 @@ const laboratories: Record<
   "localisation-microscope": LocalisationMicroscope,
   "ideal-chain-explorer": IdealChainExplorer,
   "module-action-board": ModuleActionBoard,
+  "invariant-intertwiner": InvariantIntertwinerLab,
   "module-presentation": ModulePresentation,
   "axis-angle": AxisAngleLab,
   "plane-representation": PlaneRepresentationLab,
