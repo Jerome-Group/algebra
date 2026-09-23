@@ -238,3 +238,12 @@ Rings unit has authored competency evidence for its existing capstone.
   strictness witnesses, the finite/infinite cardinality boundary, and labelled
   Hilbert, Artinian local-decomposition and dimension theorem dependencies.
   Four concept rows and V11/V13 carry delivery evidence.
+
+- #55 promotes the four Modules unit lessons to guided teaching. V14 carries
+  one nonfree cyclic ℤ-module across a typed scalar action, presentation,
+  submodule/quotient and exactness/splitting stages. Live kernel, image,
+  vector/module annihilator and quotient readings come from the same model;
+  the operator-submodule lesson retains its invariant-line laboratory. The
+  board distinguishes a nonunit acting invertibly on one module from a ring
+  unit, and an exact nonsplit sequence from a split direct sum. Four concept
+  rows and V14 have delivery evidence.

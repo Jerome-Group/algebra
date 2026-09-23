@@ -4075,5 +4075,300 @@
       "explanation": "The successive finitely generated ideals strictly increase, contradicting ACC."
     },
     "connection": "The chain explorer keeps the ring/module context and theorem prerequisites visible."
+  },
+  "m3220-modules": {
+    "hook": "Can a nonunit of the ring act as an invertible operator?",
+    "objects": "A left R-module M is an abelian group with (rs)m=r(sm), (r+s)m=rm+sm, r(m+n)=rm+rn and 1m=m when R is unital. The action is a unital ring map R→End_Z(M). A right action instead gives Rᵒᵖ→End_Z(M).",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For a left action, which order expresses (rs)m?",
+      "choices": ["r(sm)", "s(rm)", "m(rs)"],
+      "answer": 0,
+      "explanation": "The product rs acts by first s, then r. A right action has different typing."
+    },
+    "examples": [
+      {
+        "title": "Unit versus nonunit on a cyclic module",
+        "steps": [
+          "Take R=ℤ and M=ℤ/3ℤ. Scalar 2 is not a unit of ℤ, but multiplication by 2 sends [0],[1],[2] to [0],[2],[1] and is its own inverse.",
+          "On the regular module ℤ, multiplication by 2 misses odd integers and is not invertible. A unit ±1 acts invertibly on every unital ℤ-module by its ring inverse."
+        ]
+      },
+      {
+        "title": "Action as a homomorphism",
+        "steps": [
+          "For M=ℤ/6ℤ, send r∈ℤ to the additive endomorphism [x]↦[rx].",
+          "Composition satisfies φ(rs)=φ(r)∘φ(s), and φ(1)=id. The kernel 6ℤ is the annihilator of the whole module."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Nonunit does not mean noninvertible action",
+      "explanation": "The assertion “only units act invertibly on every particular module” is false: 2 acts invertibly on ℤ/3ℤ. The correct universal statement is that units always act invertibly."
+    },
+    "proofSteps": [
+      "Module associativity and distributivity say precisely that r↦(m↦rm) is a ring homomorphism into additive endomorphisms, with multiplication given by composition.",
+      "If u∈R has inverse v, then u(vm)=(uv)m=m and v(um)=m, so u acts invertibly on every unital left module.",
+      "The converse for a fixed M fails because the action map need not detect nonunits: 2 acts bijectively on ℤ/3ℤ but not on ℤ.",
+      "For a right action m·r, the operator r acts by m↦mr and composition reverses products; this is a left action of the opposite ring Rᵒᵖ."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What is the correct statement about units and module actions?",
+      "choices": [
+        "Units always act invertibly; nonunits may do so on a particular module",
+        "A nonunit never acts invertibly",
+        "Every scalar acts invertibly"
+      ],
+      "answer": 0,
+      "explanation": "Ring inverses give operator inverses on all modules; a nonunit can still induce an invertible operator on a quotient."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "How does scalar 2 act on ℤ/3ℤ?",
+      "choices": [
+        "It swaps [1] and [2] and fixes [0]",
+        "It sends everything to [0]",
+        "It is not defined"
+      ],
+      "answer": 0,
+      "explanation": "2·[1]=[2] and 2·[2]=[1], so the induced endomorphism is its own inverse."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For a right R-action, what ring maps into End_Z(M) by r↦(m↦mr)?",
+      "choices": [
+        "Rᵒᵖ",
+        "R with the same multiplication order in every case",
+        "The zero ring only"
+      ],
+      "answer": 0,
+      "explanation": "Right-action composition reverses product order, so the homomorphism is typed from the opposite ring."
+    },
+    "connection": "Stable additive subgroups give submodules and well-defined quotient actions."
+  },
+  "m3220-submodules": {
+    "hook": "When does an additive subgroup support quotient scalar multiplication?",
+    "objects": "For a left R-module M, N≤M is a submodule when it is an additive subgroup and rN⊆N for every r∈R. Then r(m+N)=rm+N is a well-defined left action on M/N.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What extra condition turns an additive subgroup N into a submodule?",
+      "choices": [
+        "Closure under every scalar in R",
+        "Closure under one chosen scalar only",
+        "Finite cardinality"
+      ],
+      "answer": 0,
+      "explanation": "A full R-submodule must be stable under the entire ring action."
+    },
+    "examples": [
+      {
+        "title": "An operator module",
+        "steps": [
+          "Let F=ℚ, M=F² and T=diag(2,1). Give M the F[X]-action p(X)·v=p(T)v.",
+          "The line Fe₁ is stable under T and therefore every polynomial p(T), so it is an F[X]-submodule. The line F(e₁+e₂) is not T-stable because T(e₁+e₂)=2e₁+e₂ is not a scalar multiple."
+        ]
+      },
+      {
+        "title": "A quotient and its image",
+        "steps": [
+          "For f:ℤ→ℤ/6ℤ, f(n)=[n], the submodule ker f=6ℤ.",
+          "The map ℤ/6ℤ→im f sending n+6ℤ to [n] is well-defined, linear and bijective. This is the first module isomorphism theorem."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "One operator is not a whole algebra",
+      "explanation": "A subspace stable under a single operator T is a submodule for F[T]≅F[X]/ann(M), but need not be stable under an additional independently acting operator; check every generator of the acting algebra."
+    },
+    "proofSteps": [
+      "For N a submodule, if m′=m+n with n∈N then rm′−rm=rn∈N. Hence the quotient action is independent of representatives.",
+      "Distributive and associative module laws descend from M. The quotient map q:M→M/N is linear with kernel N.",
+      "For any linear f:M→P, ker f is a submodule, im f is a submodule, and [m]↦f(m) induces a well-defined bijection M/ker f→im f.",
+      "For an operator T, stability under T implies stability under all polynomials p(T) by addition and composition, but says nothing about unrelated operators."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is r(m+N) independent of a representative?",
+      "choices": [
+        "rN⊆N",
+        "N has finitely many elements",
+        "Every scalar is a unit"
+      ],
+      "answer": 0,
+      "explanation": "Changing m by n∈N changes rm by rn, which remains in N."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For T=diag(2,1) over ℚ, which line is an F[X]-submodule?",
+      "choices": ["ℚe₁", "ℚ(e₁+e₂)", "Every line"],
+      "answer": 0,
+      "explanation": "e₁ is an eigenvector, so all p(T) preserve its line. The diagonal line is not T-stable."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A subspace is stable under T but not U. Is it automatically a module over the algebra generated by T and U?",
+      "choices": [
+        "No, U must preserve it too",
+        "Yes, T-stability suffices",
+        "Only if the subspace is finite"
+      ],
+      "answer": 0,
+      "explanation": "Stability under one operator yields an F[T]-submodule, not a submodule for a larger acting algebra."
+    },
+    "connection": "Presentations encode generators and relations; exactness then records kernels and images."
+  },
+  "modules-generators": {
+    "hook": "When does a short exact sequence become a direct sum?",
+    "objects": "A presentation F₁→F₀→M→0 gives generators from F₀ and relations from im(F₁→F₀). Exactness at an object means incoming image equals outgoing kernel. A short exact 0→A→B→C→0 splits when there is a section C→B (equivalently a retraction B→A).",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Does one generator make ℤ/6ℤ a free ℤ-module?",
+      "choices": [
+        "No; 6e=0 is a nontrivial relation",
+        "Yes; every cyclic module is free",
+        "Only when 6 is a unit"
+      ],
+      "answer": 0,
+      "explanation": "Finite generation counts generators; freeness requires no nontrivial linear relations."
+    },
+    "examples": [
+      {
+        "title": "Cyclic presentation and nonsplitting",
+        "steps": [
+          "The presentation ℤ --×6→ ℤ→ℤ/6ℤ→0 has generator e=[1] and relation 6e=0.",
+          "The full sequence 0→ℤ --×6→ ℤ --q→ ℤ/6ℤ→0 is exact: ×6 is injective; im ×6=6ℤ=ker q; q is surjective.",
+          "It does not split as ℤ-modules: a section ℤ/6ℤ→ℤ sends [1] to a torsion element killed by 6, hence to 0; it cannot satisfy q∘s=id."
+        ]
+      },
+      {
+        "title": "A split model",
+        "steps": [
+          "For 0→ℤ --i→ ℤ⊕ℤ --p→ ℤ→0, let i(a)=(a,0) and p(a,b)=b.",
+          "The section s(b)=(0,b) satisfies p∘s=id. Every (a,b)=i(a)+s(b), and i(A)∩s(C)=0, so B≅A⊕C."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Exact does not mean split",
+      "explanation": "The sequence 0→ℤ --×6→ ℤ→ℤ/6ℤ→0 is exact but has no ℤ-linear section. Exactness alone does not identify its middle term with a direct sum."
+    },
+    "proofSteps": [
+      "In 0→A --i→ B --p→ C→0, exactness means i injective, ker p=im i and p surjective. Check each object, not just the middle one.",
+      "If a section s:C→B has p∘s=id, then for b∈B the difference b−s(p(b)) lies in ker p=im i. Write it uniquely as i(a), giving b=i(a)+s(c).",
+      "If i(a)=s(c), applying p gives c=0, then injectivity of i gives a=0. Thus the sum is direct and B≅A⊕C.",
+      "For the cyclic presentation, the relation 6e=0 proves nonfreeness; torsion-freeness of ℤ rules out a section of q."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which extra map proves a short exact sequence splits?",
+      "choices": [
+        "A section s:C→B with p∘s=id_C",
+        "Any nonzero map C→B",
+        "The quotient map p alone"
+      ],
+      "answer": 0,
+      "explanation": "A right inverse to p gives complementary copies of A and C."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "At the middle ℤ of 0→ℤ --×6→ ℤ --q→ ℤ/6ℤ→0, what is im(×6)=ker q?",
+      "choices": ["6ℤ", "{0}", "All of ℤ"],
+      "answer": 0,
+      "explanation": "Both sides are the multiples of 6; that is exactness at the middle object."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does the cyclic exact sequence fail to split over ℤ?",
+      "choices": [
+        "Any map ℤ/6ℤ→ℤ kills [1] because ℤ has no nonzero 6-torsion",
+        "It is not exact",
+        "ℤ/6ℤ has infinitely many elements"
+      ],
+      "answer": 0,
+      "explanation": "A section would send [1] to a nonzero integer killed by 6, impossible."
+    },
+    "connection": "Annihilators distinguish relations for one vector from relations killing the whole module."
+  },
+  "m3220-annihilator": {
+    "hook": "Which scalars kill one vector, and which kill every vector?",
+    "objects": "For a left R-module M, Ann_R(m)={r∈R:rm=0} is a left ideal. Ann_R(M)=⋂_{m∈M}Ann_R(m) is a two-sided ideal. In a commutative ring both are ideals; in a noncommutative ring keep the side explicit.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For a left R-module, what kind of ideal is Ann_R(m) in general?",
+      "choices": [
+        "A left ideal, not necessarily two-sided",
+        "Always a two-sided ideal",
+        "A right ideal only"
+      ],
+      "answer": 0,
+      "explanation": "If rm=0 then (sr)m=s(rm)=0; (rs)m need not vanish for a fixed m."
+    },
+    "examples": [
+      {
+        "title": "Two annihilators of ℤ/6ℤ",
+        "steps": [
+          "For M=ℤ/6ℤ, Ann_Z([2])=3ℤ because r[2]=0 iff 6|2r iff 3|r.",
+          "Ann_Z(M)=6ℤ because a scalar kills every class exactly when it kills [1]. Thus vector and module annihilators differ."
+        ]
+      },
+      {
+        "title": "Kernel, image and first isomorphism",
+        "steps": [
+          "Multiplication by 2 on M=ℤ/6ℤ has kernel {[0],[3]} and image {[0],[2],[4]}.",
+          "The induced map M/ker(×2)→im(×2) sends [x]+ker to [2x] and is a bijective ℤ-module map. Both quotient and image have three elements."
+        ]
+      },
+      {
+        "title": "An operator module",
+        "steps": [
+          "For M=ℚ² and T=diag(2,1), the F[X]-action is p(T). Ann(e₁)=(X−2), while Ann(M)=((X−2)(X−1)).",
+          "The second polynomial vanishes on both eigenspaces; X−2 alone does not kill e₂.",
+          "Let N=ℚ with X acting as multiplication by 2. Projection p:M→N, p(a,b)=a, is ℚ[X]-linear because p(T(a,b))=2a=X·p(a,b).",
+          "Here ker p=ℚe₂ and im p=N. The induced map M/ℚe₂→N is an isomorphism of ℚ[X]-modules, not merely of vector spaces."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "One annihilator need not kill the module",
+      "explanation": "3 kills [2] in ℤ/6ℤ but does not kill [1]. Inferring Ann(M)=Ann([2]) loses the distinction between one vector and the whole module."
+    },
+    "proofSteps": [
+      "Ann_R(m) is additive; if r kills m and s∈R, then (sr)m=s(rm)=0, so it is a left ideal.",
+      "Ann_R(M) is the kernel of the action homomorphism R→End_Z(M), hence two-sided; explicitly both sr and rs kill every x because r kills x and sx.",
+      "For multiplication by 2 on ℤ/6ℤ, solve 2x≡0 mod 6 to get kernel {0,3}; list outputs to get image {0,2,4}.",
+      "The first module isomorphism theorem identifies the quotient by that kernel with the image, and [x]+ker↦[2x] is well-defined by the kernel condition.",
+      "For operator modules, p(Tv)=2p(v) proves ℚ[X]-linearity for the projection to the eigenvalue-2 module; ker p=ℚe₂, so M/ker p≅ℚ as ℚ[X]-modules."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is Ann_R(M) two-sided although Ann_R(m) may only be left-sided?",
+      "choices": [
+        "A scalar in Ann_R(M) kills every vector, including sx",
+        "Every left ideal is two-sided",
+        "Every module is faithful"
+      ],
+      "answer": 0,
+      "explanation": "For r killing all M, (rs)x=r(sx)=0 and (sr)x=s(rx)=0."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For M=ℤ/6ℤ, what are Ann([2]) and Ann(M)?",
+      "choices": ["3ℤ and 6ℤ", "6ℤ and 3ℤ", "{0} and 6ℤ"],
+      "answer": 0,
+      "explanation": "2r≡0 mod 6 iff 3|r, while killing [1] requires 6|r."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "For T=diag(2,1) on M=ℚ² and X acting as 2 on N=ℚ, what does p(a,b)=a identify with N?",
+      "choices": [
+        "M/ℚe₂≅N as ℚ[X]-modules",
+        "M/Ann(e₁) as a set without module structure",
+        "M≅N directly"
+      ],
+      "answer": 0,
+      "explanation": "p(Tv)=2p(v) makes p a module map; its kernel is ℚe₂, and the first module isomorphism theorem gives M/ℚe₂≅N."
+    },
+    "connection": "The module action board carries the same cyclic object through presentation, scalar action, submodule and exactness checks."
   }
 }

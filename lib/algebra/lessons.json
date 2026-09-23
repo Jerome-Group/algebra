@@ -5926,10 +5926,10 @@
     "explanation": "A left $R$-module is an abelian group equipped with this action. The ring acts on itself by left multiplication; its submodules are left ideals. Matrix multiplication makes column vectors a module over the full matrix ring.",
     "id": "m3220-modules",
     "intuition": "A module turns ring elements into compatible additive transformations. Vector spaces are the special case where the scalars form a field.",
-    "machine": "module-presentation",
+    "machine": "module-action-board",
     "parameters": {},
     "pitfall": "Units of $R$ always induce invertible additive operators on an $R$-module. A nonunit may also act invertibly on a particular module: $2$ acts as its own inverse on $\\mathbb Z/3\\mathbb Z$, although it is not a unit of $\\mathbb Z$. On the regular module $R$, invertibility of left multiplication is equivalent to being a unit. We require $1v=v$ for unital modules.",
-    "prompt": "Predict multiplication by 2 on Z/3Z, then change the module to Z/6Z.",
+    "prompt": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
     "proof": "The module laws for matrices are exactly distributivity and associativity of matrix multiplication. For the regular module, closure under the scalar action is precisely closure under multiplication from the left.",
     "section": "§6.4, Definition 6.25 and Proposition 6.32, pp.87–89",
     "source": {
@@ -5981,8 +5981,8 @@
         "answer": "It is the zero operator, so it is not invertible on this nonzero module. Module axioms allow such scalar actions."
       }
     ],
-    "prerequisites": ["m3220-rings"],
-    "labScope": "Units act invertibly on every unital module. The displayed exception shows why the converse fails for a particular module; on the regular module Z, 2 is not surjective.",
+    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "labScope": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -6000,7 +6000,7 @@
       "mode": "invariant-subspace"
     },
     "pitfall": "A subspace need not be invariant. Under the full matrix ring acting on $F^n$, the only submodules are zero and the whole space; a single chosen operator can have many.",
-    "prompt": "Set the off-diagonal entry to zero and compare the two coordinate axes. Then introduce a shear term. Which axis stays invariant, and what does the quotient remember?",
+    "prompt": "For T=diag(2,1) on ℝ², predict whether the x-axis is stable and what T induces on the quotient by it. Then change the operator.",
     "proof": "If $v^{\\prime}=v+w$ with $w\\in W$, then $rv^{\\prime}-rv=rw\\in W$. Hence the quotient action is independent of representatives. Inverse image under the quotient map identifies submodules of $M/W$ with submodules of $M$ containing $W$.",
     "section": "§6.4, Definitions 6.30,6.33 and Proposition 6.34, pp.88–89",
     "source": {
@@ -6053,7 +6053,7 @@
       }
     ],
     "prerequisites": ["m3220-modules"],
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The vector diagram checks one operator state. General quotient well-definedness needs submodule closure under every scalar, and M/ker f≅im f is proved in the guided lesson.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },
@@ -6075,7 +6075,7 @@
     "connections": ["m3220-modules"],
     "exampleStatus": "Worked example here",
     "proofStatus": "Complete proof here",
-    "labScope": "Exactness at the middle Z is im(×n)=ker q=nZ. The finite table cannot alone prove injectivity on infinite Z; divisibility does.",
+    "labScope": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
     "navTitle": "Generators & exact sequences",
     "title": "Generation does not guarantee a basis",
     "intuition": "Module generators need not be independent. Quotients can introduce relations among them.",
@@ -6084,8 +6084,8 @@
     "theorem": "qs=\\operatorname{id}_Q\\Longrightarrow M=\\operatorname{im}i\\oplus\\operatorname{im}s",
     "proof": "For each $m$, write $m=(m-sq(m))+sq(m)$. The first term lies in $\\ker q=\\operatorname{im}i$, and the second lies in $\\operatorname{im}s$. If $s(x)$ also lies in $\\ker q$, then $x=qs(x)=0$, so the intersection is zero. Both summands are submodules because all maps are module maps.",
     "pitfall": "The cyclic module $\\mathbb Z/2\\mathbb Z$ is not free over $\\mathbb Z$: its nonzero generator satisfies the relation $2m=0$. Finite generation is not the same as finite length or freeness.",
-    "prompt": "For relation 6e=0, predict the kernel of the quotient map from Z.",
-    "machine": "module-presentation",
+    "prompt": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "machine": "module-action-board",
     "parameters": {
       "modulus": 6
     },
@@ -6114,12 +6114,12 @@
     "explanation": "For a commutative ring, the annihilator is an ideal, and the action factors through the quotient by it. For example integers modulo $n$, viewed as a module over the integers, have annihilator $n$ times the integers.",
     "id": "m3220-annihilator",
     "intuition": "A module homomorphism commutes with every scalar action. The annihilator records which scalars act as zero on the entire module.",
-    "machine": "module-presentation",
+    "machine": "module-action-board",
     "parameters": {
       "modulus": 6
     },
     "pitfall": "The annihilator of a single vector can be larger than the annihilator of the whole module. Specify which object is being killed.",
-    "prompt": "In Z/6Z compare ann(M)=6Z with the kernel of multiplication by 2.",
+    "prompt": "Choose n, scalar r, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
     "proof": "Changing $r$ by an annihilator element leaves every action unchanged, so the quotient action is well-defined. Submodules are exactly the same before and after this change of scalar ring because the actual transformations on $M$ are unchanged.",
     "section": "§6.4, Definition 6.33; Exercise 6.14, pp.89,94–95",
     "source": {
@@ -6171,8 +6171,8 @@
         "answer": "It is $2\\mathbb Z$: exactly even integers kill $[3]$."
       }
     ],
-    "prerequisites": ["m3220-submodules"],
-    "labScope": "The two objects have different types. The table computes a module endomorphism; integer multiples identify the ring ideal annihilating the entire module.",
+    "prerequisites": ["modules-generators"],
+    "labScope": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
   },

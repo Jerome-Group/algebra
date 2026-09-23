@@ -11,6 +11,7 @@ export const laboratoryKinds = [
   "polynomial-factorisation",
   "localisation-microscope",
   "ideal-chain-explorer",
+  "module-action-board",
   "module-presentation",
   "axis-angle",
   "plane-representation",
