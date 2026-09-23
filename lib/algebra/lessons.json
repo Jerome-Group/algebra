@@ -9347,8 +9347,8 @@
     "theorem": "U^*\\otimes_F V\\cong\\operatorname{Hom}_F(U,V),\\quad\\varphi\\otimes v\\mapsto[u\\mapsto\\varphi(u)v];\\qquad\\dim(U\\otimes_F V)=\\dim U\\dim V.",
     "proof": "Choose a basis $e_i$ of $U$ with dual basis $e_i^*$. The tensors $e_i^*\\otimes f_j$ map to the matrix units, so the displayed map is bijective. Its formula is independent of the chosen bases. For group modules, use $g\\varphi=\\varphi\\circ g^{-1}$ and $g(\\varphi\\otimes v)=g\\varphi\\otimes gv$; evaluation then proves equivariance.",
     "pitfall": "The balancing relation requires the correct left/right module sides. A general tensor is a sum of pure tensors; for example a rank-two matrix is not one outer product.",
-    "prompt": "Build two rank-one operators and add them. A basis matrix isolates exactly one input and one output coordinate.",
-    "machine": "diagram",
+    "prompt": "Choose cyclic right/left ℤ-modules, scalar and vectors; predict gcd generator order and both balanced expressions.",
+    "machine": "tensor-balancing",
     "parameters": {
       "nodes": [
         {
@@ -9415,8 +9415,8 @@
         "answer": "Its coefficient matrix is the identity, of rank two. A pure tensor has matrix $uv^{\\mathsf T}$, of rank at most one."
       }
     ],
-    "prerequisites": ["ureca-group-algebra"],
-    "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
+    "prerequisites": ["m3220-annihilator", "foundations-linear-algebra"],
+    "labScope": "The cyclic calculation illustrates the universal property. Arbitrary-ring existence follows from the quotient construction in the lesson; external ⊠ also carries a product-group action.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
   },
@@ -10168,7 +10168,7 @@
     "connections": ["ureca-character-bound-kernel"],
     "proofStatus": "Reconstructed complete proof here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["ureca-character-bound-kernel"],
+    "prerequisites": ["tensor-products", "ureca-character-bound-kernel"],
     "objective": "Next factor inner products of these product characters to prove which external products are irreducible.",
     "labScope": "Kronecker trace multiplication and the group action law are proved in the lesson. The grid reports the selected finite examples and distinguishes the external group action from tensor balancing.",
     "level": "Advanced",

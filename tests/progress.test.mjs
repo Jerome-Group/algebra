@@ -130,7 +130,7 @@ test("unit completion needs all guided lesson evidence plus the unit transfer ch
       lessons,
       all,
     ).complete,
-    false,
+    true,
   );
   const reference = lessons.find(
     (lesson) =>
@@ -170,6 +170,7 @@ test("promoted units have authored evidence for completion", () => {
     "representations",
     "characters",
     "tables",
+    "tensor",
   ]) {
     const unit = units.find((item) => item.id === id);
     assert.equal(unitCompletion(unit, lessons, all).complete, true, id);

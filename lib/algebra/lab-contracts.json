@@ -636,5 +636,16 @@
     "counterexample": "Simple successive layers of the natural T2(F)-module do not split: E12 sends e2 to e1.",
     "debrief": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
     "fallback": "Hypotheses, dimensions, blocks, radical and module layers are shown in labelled text and a table."
+  },
+  "tensor-products": {
+    "name": "Typed tensor balancing checker",
+    "type": "checker",
+    "question": "How do right and left module relations determine a tensor product?",
+    "prediction": "Choose cyclic right/left ℤ-modules, scalar and vectors; predict gcd generator order and both balanced expressions.",
+    "objects": "U=ℤ/mℤ as a right ℤ-module and V=ℤ/nℤ as a left ℤ-module with t=[1]⊗[1].",
+    "invariant": "(ur)⊗v=u⊗(rv); mt=nt=0 and ord(t)=gcd(m,n).",
+    "counterexample": "ℤ/2⊗_ℤℤ/3=0 despite two nonzero factors; a rank-two tensor sum is not pure.",
+    "debrief": "The cyclic calculation illustrates the universal property. Arbitrary-ring existence follows from the quotient construction in the lesson; external ⊠ also carries a product-group action.",
+    "fallback": "Generator relations, balanced expressions, order and pure-tensor value are labelled text and table entries."
   }
 }
