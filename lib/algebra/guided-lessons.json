@@ -2216,5 +2216,681 @@
       "explanation": "An equal pair of permutations would agree at e, forcing the corresponding group elements equal. Group order alone would not prove faithfulness."
     },
     "connection": "Regular left multiplication is one action among many. The action on three letters can have smaller degree; orbit and stabilizer tools compare such actions."
+  },
+  "mh2220-dihedral": {
+    "hook": "Reflect a triangle, then rotate it. Which written product records that chronology?",
+    "objects": "Dₙ acts on labelled vertices 0,…,n−1 of a regular n-gon, n≥3. Let r send i→i+1 and s send i→−i modulo n. Composition ab applies b first. Thus doing s then r is rs.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For n=4, where does r send vertex 3?",
+      "choices": ["0", "2", "3"],
+      "answer": 0,
+      "explanation": "Add one modulo four: 3+1≡0."
+    },
+    "examples": [
+      {
+        "title": "Triangle motions have six forms",
+        "steps": [
+          "For n=3, rotations e,r,r² move vertex 0 to 0,1,2 and preserve cyclic order.",
+          "The reflections s,rs,r²s also send 0 to 0,1,2, but reverse cyclic order.",
+          "Their images of labels plus orientation distinguish all six motions; a mere endpoint would not."
+        ]
+      },
+      {
+        "title": "Square chronology and reduction",
+        "steps": [
+          "On a square, do s first and r second: the product is rs, which sends i to 1−i.",
+          "Do r first and s second: sr sends i to −i−1, and direct calculation gives sr=r⁻¹s.",
+          "Reduce srrs by moving s right: sr²s=r⁻². This is a quarter-turn inverse squared, the half-turn."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Unlabelled shape hides the action",
+      "explanation": "A symmetric square looks unchanged after every symmetry. Without labelled vertices, seeing the same outline cannot determine whether the motion is e, r or s, nor the order of two moves."
+    },
+    "proofSteps": [
+      "The maps r(i)=i+1 and s(i)=−i satisfy rⁿ=e and s²=e by residue arithmetic.",
+      "For every vertex i, sr(i)=−i−1=r⁻¹s(i), proving sr=r⁻¹s as transformations.",
+      "Use sr=r⁻¹s to move all s letters right; cancel s² and reduce powers of r modulo n. Every word becomes rᵏ or rᵏs for 0≤k<n.",
+      "The n rotations preserve cyclic orientation; the n reflections reverse it. Within each family, the image of vertex 0 distinguishes k. Therefore all 2n forms are distinct for n≥3, and their multiplication law is (rᵃsᵇ)(rᶜsᵈ)=rᵃ⁺⁽⁻¹⁾ᵇᶜsᵇ⁺ᵈ, exponents modulo n and 2."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which convention makes “reflect, then rotate” equal rs?",
+      "choices": [
+        "The right factor acts first",
+        "The left factor acts first",
+        "Products are unordered"
+      ],
+      "answer": 0,
+      "explanation": "Composition rs applies s first, then r. Reversing the convention would change every word calculation."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "In D₄, what is sr²s?",
+      "choices": ["r²", "s", "e"],
+      "answer": 0,
+      "explanation": "Conjugation inverts r, so sr²s=r⁻²=r² modulo four."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A word in r,s reduces to rᵏs. What evidence distinguishes it from rᵏ?",
+      "choices": [
+        "It reverses cyclic orientation on labelled vertices",
+        "It sends vertex 0 to k",
+        "It has the same outline"
+      ],
+      "answer": 0,
+      "explanation": "Both may send vertex 0 to k. Orientation of the labelled cycle distinguishes the two families."
+    },
+    "connection": "A dihedral action is a homomorphism into permutations of the vertex labels. The next action unit formalizes that representation and its orbits."
+  },
+  "mh2220-actions": {
+    "hook": "The same S₃ element can move a letter but fix a group element. What changed?",
+    "objects": "A left action is G×X→X with e·x=x and (gh)·x=g·(h·x). The group G and acted-on set X are different types. For S₃, compare the three-letter action, left multiplication on S₃ and conjugation on S₃.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For (12) acting on the letters {1,2,3}, where does 2 go?",
+      "choices": ["1", "2", "3"],
+      "answer": 0,
+      "explanation": "The transposition swaps 1 and 2 and fixes 3."
+    },
+    "examples": [
+      {
+        "title": "A labelled triangle before the abstraction",
+        "steps": [
+          "Let r=(123) rotate labels 1→2→3→1 and s=(12) reflect by swapping labels 1 and 2; multiplication applies the right factor first.",
+          "On the full labelled set X={1,2,3}, the six motions send the ordered label triple (1,2,3) to e:(1,2,3), r:(2,3,1), r²:(3,1,2), s:(2,1,3), rs:(3,2,1), r²s:(1,3,2).",
+          "These six different maps form the action G=D₃≅S₃ on X. The physical triangle alone is insufficient to distinguish them without its labels."
+        ]
+      },
+      {
+        "title": "One group, three actions",
+        "steps": [
+          "For the natural action, (12) sends letters 1↔2 and fixes 3.",
+          "For the regular action on the six group elements, (12) sends e to (12) and has no fixed point.",
+          "For conjugation on the six group elements, (12) sends e to e. These orbit questions differ because X and the action formula differ."
+        ]
+      },
+      {
+        "title": "Verify a nongeometric action",
+        "steps": [
+          "Let S₃ act on itself by g·x=gxg⁻¹. The identity acts trivially.",
+          "The composite g·(h·x)=ghx h⁻¹g⁻¹=(gh)x(gh)⁻¹, so the action law holds.",
+          "Conjugacy classes, not physical trajectories, are its orbits."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A tempting failed action",
+      "explanation": "Define g⋆x=g⁻¹x on G itself. For noncommuting g,h, g⋆(h⋆x)=g⁻¹h⁻¹x=(hg)⁻¹x, while (gh)⋆x=(gh)⁻¹x=h⁻¹g⁻¹x. This is not a left action of a nonabelian G."
+    },
+    "proofSteps": [
+      "For any left action, define ρ(g):X→X by ρ(g)(x)=g·x.",
+      "The law gives ρ(g)ρ(h)(x)=g·(h·x)=(gh)·x, so ρ is a homomorphism into Sym(X).",
+      "The map ρ(g⁻¹) is inverse to ρ(g), since both composites act as e. Thus each group element acts bijectively.",
+      "Conversely any homomorphism G→Sym(X) gives a left action by evaluation."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which pair names the acted-on set and the group for regular left multiplication of S₃?",
+      "choices": ["G=S₃, X=S₃", "G={1,2,3}, X=S₃", "G=S₃, X={1,2,3}"],
+      "answer": 0,
+      "explanation": "The set can happen to equal the underlying group, but its role as X remains separate from the acting group."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Where does (12) send e under regular left multiplication and conjugation?",
+      "choices": ["(12) and e", "e and (12)", "(12) and (12)"],
+      "answer": 0,
+      "explanation": "Regular multiplication gives (12)e=(12); conjugation gives (12)e(12)⁻¹=e."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does g⋆x=g⁻¹x fail as a left action for nonabelian G?",
+      "choices": [
+        "Composition reverses gh",
+        "Identity fails",
+        "Every g⋆ is nonbijective"
+      ],
+      "answer": 0,
+      "explanation": "Each map is bijective and e works, but g⋆(h⋆x)=(hg)⁻¹x rather than (gh)⁻¹x."
+    },
+    "connection": "Once an action is fixed, a point has an orbit and stabilizer. The next lesson proves their size relation by a coset bijection."
+  },
+  "mh2220-orbit-stabilizer": {
+    "hook": "Why can six group elements give only three images of a point?",
+    "objects": "For a left G-action on X, Gₓ={g:g·x=x} is a subgroup, while G·x={g·x:g∈G} is a subset of X. Left cosets gGₓ correspond to orbit points; they are not quotient-group elements unless Gₓ is normal.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For S₃ on {1,2,3}, which object is a point stabilizer of 1?",
+      "choices": ["{e,(23)}", "{1,2,3}", "{e,(12),(13)}"],
+      "answer": 0,
+      "explanation": "The identity and (23) fix 1. A stabilizer is a subset of the acting group, not of the point set."
+    },
+    "examples": [
+      {
+        "title": "S₃ on three letters",
+        "steps": [
+          "The orbit of 1 is {1,2,3}; the stabilizer G₁={e,(23)} has two elements.",
+          "The three left cosets of G₁ map to 1,2,3 under gG₁↦g·1.",
+          "The count 3·2=6 is orbit–stabilizer. G₁ is not normal, so these cosets form a G-set, not a quotient group."
+        ]
+      },
+      {
+        "title": "A cube vertex",
+        "steps": [
+          "The 24 proper cube rotations act on eight vertices. Every vertex is reachable from any other, so its orbit has size eight.",
+          "Rotations fixing one chosen vertex cycle the three incident edges, giving a stabilizer of order three.",
+          "The product 8·3=24 checks the same theorem on a different geometric set."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A stabilizer is not the orbit",
+      "explanation": "For S₃ on three letters, the stabilizer of 1 has two group elements; the orbit has three letters. Treating the two as subgroups of the same object is a type error."
+    },
+    "proofSteps": [
+      "Map the left coset gGₓ to g·x. If gh and g represent the same coset with h∈Gₓ, then (gh)·x=g·(h·x)=g·x, so the map is well-defined.",
+      "If g·x=k·x, then k⁻¹g fixes x; hence gGₓ=kGₓ, proving injectivity.",
+      "Every orbit point is g·x by definition, proving surjectivity.",
+      "For finite G, coset counting gives |G·x|=[G:Gₓ]=|G|/|Gₓ|. This is a bijection of G-sets, with no normality claim."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What extra condition would make G/Gₓ a quotient group rather than only a coset G-set?",
+      "choices": [
+        "Gₓ is normal",
+        "Gₓ is nontrivial",
+        "The orbit is transitive"
+      ],
+      "answer": 0,
+      "explanation": "Orbit–stabilizer needs only a subgroup. Quotient multiplication additionally needs normality."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "S₃ acts on three letters. If |G₁|=2, what is |G·1|?",
+      "choices": ["3", "2", "6"],
+      "answer": 0,
+      "explanation": "The orbit has 6/2=3 points."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "A 24-element rotation group acts transitively on eight cube vertices. What is a vertex stabilizer size?",
+      "choices": ["3", "8", "24"],
+      "answer": 0,
+      "explanation": "Orbit–stabilizer gives 24/8=3. A stabilizer counts rotations, not vertices."
+    },
+    "connection": "Stabilizers at different points may be nontrivial even when the action kernel is trivial. The next two lessons separate these global and local properties."
+  },
+  "actions-faithful-transitive": {
+    "hook": "Can a group action move every point into one orbit while some nonidentity element fixes a point?",
+    "objects": "For a G-set X: faithful means only e fixes every x; transitive means one orbit equals X; free means every point stabilizer is {e}; regular means both free and transitive. Compare S₃ acting on three letters, on itself by left multiplication, and on itself by conjugation.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which test defines a faithful action?",
+      "choices": [
+        "The whole-action kernel is {e}",
+        "Every orbit is all of X",
+        "Every stabilizer is {e}"
+      ],
+      "answer": 0,
+      "explanation": "Faithfulness is global: only the identity may act trivially on every point. A faithful action may have nontrivial point stabilizers."
+    },
+    "examples": [
+      {
+        "title": "Faithful and transitive, but not free",
+        "steps": [
+          "S₃ on {1,2,3} is transitive because a permutation can send 1 to any letter.",
+          "It is faithful because a permutation fixing all three letters is identity.",
+          "The point stabilizer of 1 contains (23), so the action is not free or regular."
+        ]
+      },
+      {
+        "title": "Regular versus nontransitive",
+        "steps": [
+          "S₃ acting on itself by left multiplication is free: gx=x implies g=e. It is transitive: choose g=yx⁻¹ to send x to y.",
+          "Conjugation of S₃ on itself is faithful because its kernel is the center {e}.",
+          "Conjugation is not transitive: e is fixed by everyone and forms a singleton orbit."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Confusing one fixed point with a kernel",
+      "explanation": "Every g fixes e under conjugation, but many g move transpositions. A single fixed point does not put those elements in the whole-action kernel."
+    },
+    "proofSteps": [
+      "For any action, the kernel is ⋂ₓGₓ. Hence free implies faithful whenever X is nonempty, but faithful need not imply free.",
+      "Transitive means for every x,y some g sends x to y; it says nothing about the size of Gₓ.",
+      "If an action is free and transitive, each ordered pair x,y has exactly one mover: existence by transitivity and uniqueness since stabilizers are trivial. This is regularity.",
+      "In the natural S₃ action, a nonidentity transposition fixes one letter but cannot fix all three, proving faithful and transitive does not imply free."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which implication holds for a nonempty G-set?",
+      "choices": ["Free ⇒ faithful", "Faithful ⇒ free", "Transitive ⇒ free"],
+      "answer": 0,
+      "explanation": "A trivial stabilizer at every point makes the intersection trivial. The natural S₃ action disproves both tempting reverses."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "S₃ on three letters has orbit size 3 and point stabilizer size 2. Which properties hold?",
+      "choices": [
+        "Faithful and transitive, not free",
+        "Free and transitive",
+        "Faithful, free and nontransitive"
+      ],
+      "answer": 0,
+      "explanation": "The action is faithful and transitive, while (23) fixes 1."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Conjugation on S₃ fixes e but has kernel {e}. Which conclusion follows?",
+      "choices": [
+        "It is faithful but not transitive",
+        "It is nonfaithful and transitive",
+        "It is free"
+      ],
+      "answer": 0,
+      "explanation": "The whole kernel is the center, which is trivial, while e is a singleton orbit."
+    },
+    "connection": "The kernel is an intersection of all stabilizers. For one orbit, that intersection is the core of its point stabilizer; the next lesson checks when this differs from the whole-action kernel."
+  },
+  "actions-stabilizer-kernel-core": {
+    "hook": "A point stabilizer can be large while the action kernel is trivial. Where did the stabilizer elements go?",
+    "objects": "For a left G-set X, Gₓ fixes one point; kerρ=⋂ₓGₓ fixes all points. Core_G(H)=⋂g∈G gHg⁻¹. On the single orbit G·x, its action kernel is Core_G(Gₓ).",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For S₃ on {1,2,3}, which transposition fixes 1?",
+      "choices": ["(23)", "(12)", "(13)"],
+      "answer": 0,
+      "explanation": "(23) swaps the other two labels and fixes 1."
+    },
+    "examples": [
+      {
+        "title": "Three conjugate stabilizers",
+        "steps": [
+          "For S₃ on three letters, G₁={e,(23)}, G₂={e,(13)}, and G₃={e,(12)}.",
+          "These are conjugate: a permutation sending i to j carries Gᵢ to Gⱼ.",
+          "Their intersection is {e}, so a nontrivial point stabilizer coexists with a trivial whole-action kernel."
+        ]
+      },
+      {
+        "title": "One conjugation orbit is not the whole action",
+        "steps": [
+          "Under conjugation on S₃, the orbit of e is {e} and Gₑ=S₃. Its core is S₃ because all conjugates of the whole group are itself.",
+          "The whole-action kernel is Z(S₃)={e}; a transposition moves some other points.",
+          "Thus the core of a stabilizer computes the kernel on the selected orbit, not necessarily on all of X."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A core is not always the whole kernel",
+      "explanation": "At e under conjugation, Core_G(Gₑ)=S₃ while kerρ={e}. Replacing an intersection over every point by the stabilizer of a single orbit is valid only when that orbit is all of X."
+    },
+    "proofSteps": [
+      "For any g∈G, the stabilizer of g·x is gGₓg⁻¹: h fixes g·x iff g⁻¹hg fixes x.",
+      "Intersecting these stabilizers over all points of G·x gives ⋂g∈G gGₓg⁻¹=Core_G(Gₓ).",
+      "The whole-action kernel is the intersection over all X, equivalently the intersection of the orbit kernels.",
+      "If the action is transitive, one orbit is X and core equals whole kernel. Without transitivity, the selected core can be strictly larger."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "When does Core_G(Gₓ) necessarily equal the whole-action kernel?",
+      "choices": [
+        "When G·x=X",
+        "Whenever Gₓ is nontrivial",
+        "Whenever x is fixed"
+      ],
+      "answer": 0,
+      "explanation": "The core is the kernel on that orbit. They coincide if the selected orbit is the entire acted-on set."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For S₃ on {1,2,3}, what is G₁∩G₂∩G₃?",
+      "choices": ["{e}", "G₁", "S₃"],
+      "answer": 0,
+      "explanation": "Each nonidentity transposition fixes just one different letter, so none belongs to all three stabilizers."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Under conjugation on S₃ at x=e, what are Core_G(Gₑ) and kerρ?",
+      "choices": ["S₃ and {e}", "{e} and S₃", "Both S₃"],
+      "answer": 0,
+      "explanation": "The singleton orbit has all of S₃ as kernel, but the full conjugation action has kernel the trivial center."
+    },
+    "connection": "Orbit kernels and normal cores are useful in Sylow conjugacy and subgroup actions: a fixed coset can encode containment of one p-subgroup in a conjugate of another."
+  },
+  "groups-cauchy": {
+    "hook": "A prime divides the group order. Where must an element of that prime order hide?",
+    "objects": "Let G be finite and p a prime divisor of |G|. The set T of p-tuples (g₁,…,gₚ) with product e has |G|^(p−1) elements. Cyclic rotation of the entries acts on T.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "How many choices are free in a tuple of length p whose product must be e?",
+      "choices": ["p−1", "p", "1"],
+      "answer": 0,
+      "explanation": "Choose the first p−1 entries; the last is their inverse product."
+    },
+    "examples": [
+      {
+        "title": "A group of order six",
+        "steps": [
+          "For S₃, p=3 divides six, so Cauchy predicts an element of order three.",
+          "The two three-cycles (123) and (132) have order three. Counting alone predicts existence, not their exact names."
+        ]
+      },
+      {
+        "title": "A cyclic group of order ten",
+        "steps": [
+          "For C₁₀, p=5 divides ten. The element 2 modulo ten has additive order five.",
+          "The same group has an element of order two, namely 5 modulo ten, because 2 also divides ten."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A composite divisor needs more",
+      "explanation": "A₄ has order 12 but no element of order six. Cauchy applies to a prime divisor p, not an arbitrary divisor; Lagrange has no converse for element orders."
+    },
+    "proofSteps": [
+      "Choose T={(g₁,…,gₚ)∈Gᵖ:g₁⋯gₚ=e}. The first p−1 choices determine the last, so |T|=|G|^(p−1) is divisible by p.",
+      "Rotate a tuple cyclically. If its product is e, the rotated product g₂⋯gₚg₁=g₁⁻¹(g₁⋯gₚ)g₁=e; rotation preserves T and gives an action of Cₚ.",
+      "Every rotation orbit has size one or p. Fixed tuples are precisely (g,…,g) with gᵖ=e. Thus the number of such g is congruent to |T|≡0 modulo p.",
+      "The identity is one solution, so there are at least p solutions. Choose a nonidentity one; its order divides prime p and therefore equals p."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What must p be for the orbit argument to force a nonidentity element of order p?",
+      "choices": [
+        "A prime dividing finite |G|",
+        "Any divisor of |G|",
+        "A prime larger than |G|"
+      ],
+      "answer": 0,
+      "explanation": "Prime orbit sizes and divisibility of |T| use p prime and p∣|G|."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "Which element of additive C₁₀ has order five?",
+      "choices": ["2", "5", "0"],
+      "answer": 0,
+      "explanation": "The least positive k with 2k≡0 mod 10 is five."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does one identity tuple imply another fixed tuple?",
+      "choices": [
+        "The fixed tuple count is a positive multiple of p",
+        "Every tuple is fixed",
+        "The identity has order p"
+      ],
+      "answer": 0,
+      "explanation": "Orbit counting makes the fixed count divisible by p; one cannot be the whole count."
+    },
+    "connection": "Cauchy supplies the prime-order base case. Sylow existence upgrades it to the full p-power dividing |G|."
+  },
+  "mh2220-sylow-existence": {
+    "hook": "Does every prime power dividing a finite group order occur as a subgroup order?",
+    "objects": "Write |G|=pᵃm with p prime and p∤m. A Sylow p-subgroup has order pᵃ. We prove existence by induction on |G| using either a central subgroup of order p or a proper centralizer retaining pᵃ.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For |G|=24, what is the largest power of 2 dividing |G|?",
+      "choices": ["8", "4", "12"],
+      "answer": 0,
+      "explanation": "24=2³·3, so a Sylow 2-subgroup has order eight."
+    },
+    "examples": [
+      {
+        "title": "S₃ has two prime cases",
+        "steps": [
+          "For p=2, each subgroup generated by a transposition has order two; these are Sylow 2-subgroups.",
+          "For p=3, ⟨(123)⟩={e,(123),(132)} has order three and is Sylow."
+        ]
+      },
+      {
+        "title": "Cyclic group of order twelve",
+        "steps": [
+          "For p=2, the subgroup ⟨3⟩ in additive C₁₂ has order four.",
+          "For p=3, ⟨4⟩ has order three. Prime-power orders occur although an arbitrary divisor need not correspond to a subgroup in a general group."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A divisor is not a Sylow order",
+      "explanation": "In a group of order 12, a subgroup of order two is a 2-subgroup but is not Sylow: the largest 2-power dividing 12 is four. The theorem cannot be applied with an arbitrary divisor such as six."
+    },
+    "proofSteps": [
+      "Induct on |G|. If p divides |Z(G)|, Cauchy in the finite abelian center gives a central subgroup C of order p. Induction gives a subgroup of G/C of order p^(a−1); its preimage in G has order pᵃ.",
+      "Otherwise p does not divide |Z(G)|. The class equation |G|=|Z(G)|+Σ[G:C_G(x)] over noncentral classes implies at least one noncentral class size is not divisible by p.",
+      "For that x, C_G(x) is proper, and |C_G(x)|=|G|/[G:C_G(x)] still contains the full factor pᵃ. Induction inside C_G(x) gives a subgroup of order pᵃ.",
+      "The base case |G|=1 is vacuous for p dividing |G|. A subgroup of order pᵃ is maximal among p-subgroups because its order already contains the full p-part of |G|."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why does the chosen centralizer retain the full p-power pᵃ?",
+      "choices": [
+        "Its index is coprime to p",
+        "It is normal",
+        "Every centralizer is a p-group"
+      ],
+      "answer": 0,
+      "explanation": "A noncentral class with size not divisible by p has p-coprime index."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What orders must Sylow 2- and 3-subgroups of a group of order 24 have?",
+      "choices": ["8 and 3", "4 and 3", "8 and 9"],
+      "answer": 0,
+      "explanation": "24=2³·3."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If a central subgroup C has order p, what order must the subgroup in G/C have to lift to a Sylow subgroup of G?",
+      "choices": ["p^(a−1)", "pᵃ", "p"],
+      "answer": 0,
+      "explanation": "The preimage order multiplies by |C|=p."
+    },
+    "connection": "Existence provides the subgroups. The coset action next proves that every p-subgroup lies inside a conjugate of any chosen Sylow subgroup."
+  },
+  "mh2220-sylow-conjugacy": {
+    "hook": "Why can two maximal p-subgroups differ yet always have the same shape?",
+    "objects": "Let G be finite with |G|=pᵃm, p∤m. Choose Sylow Q of order pᵃ, and let a p-subgroup H act by left multiplication on the left cosets G/Q.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "If |G|=6 and |Q|=2, how many left cosets does G/Q have?",
+      "choices": ["3", "2", "6"],
+      "answer": 0,
+      "explanation": "The index is 6/2=3."
+    },
+    "examples": [
+      {
+        "title": "Three Sylow 2-subgroups of S₃",
+        "steps": [
+          "The subgroups ⟨(12)⟩, ⟨(23)⟩ and ⟨(13)⟩ all have order two.",
+          "Conjugation by a three-cycle permutes them. They are distinct but conjugate, so each is isomorphic to C₂."
+        ]
+      },
+      {
+        "title": "The unique Sylow 3-subgroup of S₃",
+        "steps": [
+          "Q=⟨(123)⟩ has order three and index two.",
+          "It is normal, so every conjugate is Q; there is exactly one Sylow 3-subgroup."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Equal order alone is too weak",
+      "explanation": "In D₄, the central half-turn subgroup ⟨r²⟩ and a reflection subgroup ⟨s⟩ both have order two; the first is central and cannot be conjugate to the second. Neither is a Sylow 2-subgroup of the order-eight group."
+    },
+    "proofSteps": [
+      "The coset set G/Q has m points, a number coprime to p. H acts on it by h·(gQ)=hgQ; each nontrivial H-orbit has size divisible by p.",
+      "Because the total number m is not divisible by p, at least one coset gQ is fixed by all of H.",
+      "Fixedness means hgQ=gQ for all h∈H, equivalently g⁻¹Hg≤Q. Thus every p-subgroup sits in a conjugate gQg⁻¹.",
+      "If H=P is itself Sylow, inclusion between two groups of order pᵃ is equality. Therefore P=gQg⁻¹. A Sylow subgroup is normal exactly when it is the unique Sylow subgroup."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What makes the fixed-coset argument work?",
+      "choices": [
+        "[G:Q] is coprime to p",
+        "Q is normal already",
+        "H has the same order as Q"
+      ],
+      "answer": 0,
+      "explanation": "The fixed point exists for any p-subgroup H because [G:Q] is p-coprime."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "How many Sylow 2-subgroups does S₃ have?",
+      "choices": ["3", "1", "2"],
+      "answer": 0,
+      "explanation": "Each transposition generates a different subgroup of order two."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why does a fixed coset gQ prove conjugacy when H is Sylow?",
+      "choices": [
+        "The inclusion g⁻¹Hg≤Q is between equal finite orders",
+        "All cosets are subgroups",
+        "Fixedness says H=Q literally"
+      ],
+      "answer": 0,
+      "explanation": "Containment plus equal order turns inclusion into equality."
+    },
+    "connection": "Conjugation on the Sylow set is transitive. Its stabilizer is a normalizer, giving the divisibility and congruence restrictions on the count."
+  },
+  "mh2220-sylow-counts": {
+    "hook": "Arithmetic says several Sylow counts are possible. Which ones can the group realize?",
+    "objects": "For |G|=pᵃm with p∤m, let nₚ be the number of Sylow p-subgroups. Fix one P. Conjugation on the Sylow set has stabilizer N_G(P), so nₚ=[G:N_G(P)].",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "For |G|=6 and p=2, what is m?",
+      "choices": ["3", "2", "6"],
+      "answer": 0,
+      "explanation": "6=2·3, so m=3."
+    },
+    "examples": [
+      {
+        "title": "S₃ separates candidates from reality",
+        "steps": [
+          "For |S₃|=6 and p=2, n₂ divides 3 and is 1 modulo 2: arithmetic allows 1 or 3.",
+          "The three transpositions generate three distinct order-two subgroups, so S₃ realizes n₂=3. Arithmetic alone did not decide."
+        ]
+      },
+      {
+        "title": "A forced normal Sylow subgroup",
+        "steps": [
+          "For |S₃|=6 and p=3, n₃ divides 2 and is 1 modulo 3.",
+          "Only n₃=1 survives; ⟨(123)⟩ is normal."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A permitted number need not occur",
+      "explanation": "For p=2 in S₃, the arithmetic candidate n₂=1 passes both congruence and divisibility, but S₃ has three Sylow 2-subgroups. The restrictions are necessary, not sufficient."
+    },
+    "proofSteps": [
+      "Sylow conjugacy makes the G-action on Sylow p-subgroups transitive. The stabilizer of P is N_G(P), so nₚ=[G:N_G(P)]. Since P≤N_G(P), this index divides [G:P]=m.",
+      "Let P itself act by conjugation on the Sylow set. P fixes itself. Suppose it fixes another Q; then P≤N_G(Q), making PQ a subgroup because Q is normal in PQ.",
+      "The order |PQ|=|P||Q|/|P∩Q| is a p-power. By maximality of a Sylow subgroup, PQ=P=Q. Hence P is the only fixed Sylow subgroup.",
+      "Every other P-orbit has size divisible by p. Counting the one fixed point modulo p gives nₚ≡1 mod p. These conditions restrict possibilities but do not ensure each candidate occurs."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why does nₚ divide m=[G:P]?",
+      "choices": [
+        "P≤N_G(P)",
+        "Every Sylow subgroup is normal",
+        "All candidates are realized"
+      ],
+      "answer": 0,
+      "explanation": "The normalizer contains P, so [G:N_G(P)] divides [G:P]."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For |G|=6 and p=2, which n₂ values survive arithmetic alone?",
+      "choices": ["1 and 3", "3 only", "1, 2 and 3"],
+      "answer": 0,
+      "explanation": "Divisors of m=3 are 1 and 3; both are 1 mod 2."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "If nₚ=1, what follows?",
+      "choices": [
+        "The unique Sylow p-subgroup is normal",
+        "G is cyclic",
+        "Every p-subgroup is normal"
+      ],
+      "answer": 0,
+      "explanation": "Conjugation preserves the Sylow set; its unique member is fixed by all g∈G."
+    },
+    "connection": "Small-group classification uses these restrictions together with Cauchy and conjugation action, rather than treating candidate counts as a classification."
+  },
+  "mh2220-small-groups": {
+    "hook": "Why do groups of order six have exactly two isomorphism types?",
+    "objects": "Let |G|=6. Cauchy supplies r of order three and s of order two. H=⟨r⟩ has index two, hence is normal. Conjugation by s is an automorphism of H, with only two possible images of r: r or r⁻¹.",
+    "prerequisiteCheck": {
+      "kind": "compute",
+      "question": "What is the index of an order-three subgroup in a group of order six?",
+      "choices": ["2", "3", "6"],
+      "answer": 0,
+      "explanation": "The index is 6/3=2."
+    },
+    "examples": [
+      {
+        "title": "Commuting generators give C₆",
+        "steps": [
+          "If srs⁻¹=r, then r and s commute. H∩⟨s⟩={e}, so the six products rⁱsʲ are distinct.",
+          "The element rs has order six, yielding G≅C₆."
+        ]
+      },
+      {
+        "title": "Inverting conjugation gives S₃",
+        "steps": [
+          "If srs⁻¹=r⁻¹, the relations r³=s²=e and srs=r⁻¹ describe triangle symmetries.",
+          "The six normal forms rⁱsʲ map distinctly to S₃ using r=(123), s=(12), so G≅D₃≅S₃."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Equal cardinality is not enough",
+      "explanation": "C₆ and S₃ both have six elements, but C₆ is abelian and S₃ is not. Drawing six vertices or checking size alone does not identify the group."
+    },
+    "proofSteps": [
+      "Cauchy gives elements r,s of orders 3,2. H=⟨r⟩ has index two and is normal; s lies outside H, H∩⟨s⟩={e}, and the products rⁱsʲ exhaust G.",
+      "Conjugation by s restricts to an automorphism of C₃. Such an automorphism sends generator r to r or r⁻¹. These are the only cases.",
+      "If srs⁻¹=r, generators commute. The product rs has order six, so G≅C₆.",
+      "If srs⁻¹=r⁻¹, the six distinct normal forms obey the dihedral relations. Sending r to (123) and s to (12) gives an isomorphism with S₃. This classification needs the conjugation action, not a premature name for an extension."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Why is H=⟨r⟩ normal in G?",
+      "choices": [
+        "It has index two",
+        "All prime-order subgroups are normal",
+        "It is cyclic"
+      ],
+      "answer": 0,
+      "explanation": "Every index-two subgroup is normal because the two left and right cosets are H and its complement."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "If srs⁻¹=r⁻¹, which familiar order-six group results?",
+      "choices": ["S₃", "C₆", "C₃×C₃"],
+      "answer": 0,
+      "explanation": "These are the triangle symmetry relations."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "What property distinguishes the two order-six types?",
+      "choices": [
+        "Whether s conjugates r to r or r⁻¹",
+        "The number of elements",
+        "Whether Cauchy applies"
+      ],
+      "answer": 0,
+      "explanation": "The two automorphisms of C₃ produce commuting or inverting multiplication."
+    },
+    "connection": "The same normal-subgroup and conjugation tools later organize groups of larger order and semidirect products."
   }
 }

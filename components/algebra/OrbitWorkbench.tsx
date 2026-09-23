@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
   actionModel,
+  actionPropertyGrid,
   permutationNames,
   type SymmetricAction,
 } from "@/lib/algebra/foundation-labs";
@@ -18,6 +19,7 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
     action === "letters" ? String(x + 1) : permutationNames[x];
   const groupSet = (entries: number[]) =>
     `{${entries.map((g) => permutationNames[g]).join(", ")}}`;
+  const properties = actionPropertyGrid();
   return (
     <div className="foundation-lab">
       <M
@@ -103,6 +105,30 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
               <th scope="row">{permutationNames[g]}</th>
               <td>{label(model.apply(g, point))}</td>
               <td>{model.apply(g, point) === point ? "yes" : "no"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <table>
+        <caption>Same group S₃, different action properties</caption>
+        <thead>
+          <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Faithful</th>
+            <th scope="col">Transitive</th>
+            <th scope="col">Free</th>
+            <th scope="col">Regular</th>
+          </tr>
+        </thead>
+        <tbody>
+          {properties.map((row) => (
+            <tr key={row.action}>
+              <th scope="row">{row.action}</th>
+              {[row.faithful, row.transitive, row.free, row.regular].map(
+                (holds, index) => (
+                  <td key={index}>{holds ? "yes" : "no"}</td>
+                ),
+              )}
             </tr>
           ))}
         </tbody>

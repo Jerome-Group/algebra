@@ -9,6 +9,7 @@ import {
   symmetricInverse,
   cosetModel,
   actionModel,
+  actionPropertyGrid,
   cyclicReachability,
   cyclicModule,
 } from "../lib/algebra/foundation-labs.ts";
@@ -102,6 +103,22 @@ test("S3 multiplication, quotient rejection and every action obey the same compo
   }
   assert.equal(actionModel("conjugation", 0).core.length, 6);
   assert.deepEqual(actionModel("conjugation", 0).kernel, [0]);
+  assert.deepEqual(
+    actionPropertyGrid().map(
+      ({ action, faithful, transitive, free, regular }) => [
+        action,
+        faithful,
+        transitive,
+        free,
+        regular,
+      ],
+    ),
+    [
+      ["letters", true, true, false, false],
+      ["regular", true, true, true, true],
+      ["conjugation", true, false, false, false],
+    ],
+  );
 });
 
 test("generator words and cyclic module kernels retain the displayed counterexamples", () => {

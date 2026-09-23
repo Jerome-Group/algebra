@@ -1158,7 +1158,7 @@
     },
     "pitfall": "Classification lists isomorphism types, not every possible naming of their elements. Similar diagrams do not collapse different types.",
     "prompt": "Compare $C_{4}$ and the Klein four-group by their element-order distributions.",
-    "proof": "Proof idea: Lagrange restricts possible element orders. For order 6, one finds elements a,b of orders 2,3. If they commute they generate $C_{6}$; otherwise conjugation by a inverts $b$, yielding the dihedral relations.",
+    "proof": "For |G|=6, Cauchy supplies r of order 3 and s of order 2. H=⟨r⟩ has index two, hence is normal; s is outside H, and the six elements rⁱsʲ with 0≤i<3 and 0≤j<2 are distinct. Conjugation by s acts as an automorphism of C₃, so srs⁻¹ is either r or r⁻¹. In the first case r and s commute and rs has order six, yielding C₆. In the second case r³=s²=e and srs=r⁻¹, the triangle-symmetry relations; mapping r to (123) and s to (12) identifies the six normal forms with S₃. These exhaust the possibilities.",
     "section": "3.6 · Proposition 3.42; classification table",
     "source": {
       "section": "3.6 · Proposition 3.42; classification table",
@@ -2635,7 +2635,7 @@
       "p": 2
     },
     "pitfall": "Lagrange's converse is false for general divisors; Sylow supplies the prime-power cases. A Sylow $p$-subgroup is maximal among $p$-subgroups, not necessarily among all proper subgroups.",
-    "prompt": "For $|S_4|=24$, determine the required orders of Sylow 2- and 3-subgroups.",
+    "prompt": "Choose p=2 or p=3; predict the required Sylow subgroup order and a class whose centralizer has that p-part.",
     "proof": "Write $|G|=p^a m$ with $p\\nmid m$. Let $G$ act by left multiplication on subsets of size $p^a$. Their number is $\\binom{p^a m}{p^a}$, which is congruent to $m$ modulo $p$: in $\\mathbb F_p[X]$, repeated use of $(1+X)^p=1+X^p$ gives $(1+X)^{p^a m}=(1+X^{p^a})^m$, and compare the coefficient of $X^{p^a}$. Thus some subset orbit has size not divisible by $p$. Its stabilizer $H$ has order divisible by $p^a$ by orbit–stabilizer. On the other hand, $H$ acts freely on the selected subset: left multiplication fixes an individual group element only for the identity. Its orbits there have size $|H|$, so $|H|$ divides $p^a$. The two divisibilities force $|H|=p^a$, proving existence. This proof uses finite subsets and finite-set counting; it makes no claim for infinite groups.",
     "section": "7.1 · Theorem 7.2; Corollary 7.3; Definition 7.6",
     "source": {
@@ -2661,7 +2661,7 @@
     "navTitle": "Sylow existence",
     "proofStatus": "Complete proof here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The table checks one finite group. The guided proof supplies both induction branches, including a central subgroup when p divides |Z(G)|.",
     "prerequisites": ["groups-cauchy", "mh2220-orbit-stabilizer"],
     "objective": "Explain where finiteness and the maximal power of p are used.",
     "level": "Foundation or bridge",
@@ -2693,7 +2693,7 @@
       "p": 2
     },
     "pitfall": "Arbitrary subgroups of the same order need not be conjugate. The maximal $p$-power hypothesis is essential.",
-    "prompt": "Follow the three Sylow 2-subgroups of $D_{6}$ under conjugation.",
+    "prompt": "For p=2 in S₃, choose distinct Sylow subgroups P and Q; predict the P-orbit sizes on G/Q and identify a fixed coset.",
     "proof": "Let $P$ be a Sylow $p$-subgroup and let $H$ be any $p$-subgroup. Make $H$ act on $G/P$ by left multiplication. Every orbit size divides $|H|$ by orbit–stabilizer, so is a power of $p$. Since $p$ does not divide $|G/P|$, at least one orbit has size one. Its fixed coset $gP$ satisfies $g^{-1}Hg\\le P$. Thus every $p$-subgroup is contained in a conjugate of $P$. If $H$ is Sylow, its order equals that of $P$, so the containment is equality. This proves conjugacy.",
     "section": "7.1 · Lemma 7.7; Theorem 7.8",
     "source": {
@@ -2719,7 +2719,7 @@
     "navTitle": "Sylow conjugacy",
     "proofStatus": "Complete proof here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Fixed gQ means g⁻¹Pg≤Q; equal Sylow orders force equality. The listed S₃ cosets illustrate the general proof.",
     "objective": "Reconstruct the proof from the action on G/P without memorizing the conclusion.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -2749,8 +2749,8 @@
       "p": 5
     },
     "pitfall": "The count of Sylow subgroups is not the count of elements of $p$-power order. For higher-order $p$-subgroups, intersections can contain nonidentity elements.",
-    "prompt": "Enter several group orders and list the divisors satisfying the congruence; distinguish forced normality from unresolved cases.",
-    "proof": "The divisibility comes from $n_p=[G$:$N_G(P)]$ and $P\\subseteq N_G(P)$. For the congruence, $P$ acts on the Sylow set by conjugation; $P$ itself is the only fixed point, and other orbits have sizes divisible by $p$. At order 30, distinct subgroups of order 5 or 3 meet only at $e$, so the alternative requires $24+20$ nonidentity elements.",
+    "prompt": "For p=2 in S₃, list the counts satisfying n₂∣3 and n₂≡1 mod 2; predict the actual count.",
+    "proof": "Conjugation is transitive on Sylow p-subgroups, and its stabilizer at P is N_G(P); hence n_p=[G:N_G(P)] divides [G:P]=m because P is contained in N_G(P). For the congruence, P acts by conjugation on the Sylow set and fixes itself. If P also fixes Q, then P normalizes Q and PQ is a subgroup. Its order |P||Q|/|P∩Q| is a p-power, so Sylow maximality forces PQ=P=Q. Thus P is the sole fixed point. Every other P-orbit has size divisible by p, giving n_p≡1 mod p. These are necessary conditions only. In S₃, n₂=1 and 3 both pass arithmetic, yet three transpositions generate three distinct Sylow 2-subgroups.",
     "section": "7.1 · Theorem 7.9; Examples 7.10, 7.12",
     "source": {
       "section": "7.1 · Theorem 7.9; Examples 7.10, 7.12",
@@ -2802,7 +2802,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "Normalizer and unique fixed-Sylow arguments prove the restrictions. Arithmetic provides necessary candidates, not an existence algorithm.",
     "objective": "Distinguish an admissible arithmetic count from a realized Sylow configuration.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",

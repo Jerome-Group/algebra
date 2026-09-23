@@ -383,5 +383,38 @@
     "counterexample": "S₃ embeds into S₆ by its regular action but already acts faithfully on three letters; degree six is not minimal.",
     "debrief": "The six-row table constructs the embedding and checks selected compositions. Associativity and evaluation at identity prove the theorem for every group, while the finite table alone proves only this example.",
     "fallback": "Every λg permutation, selected product, composition check and identity image are provided as labelled text and tables."
+  },
+  "mh2220-sylow-existence": {
+    "name": "Sylow existence class-equation workbench",
+    "type": "experiment",
+    "question": "Which centralizer retains the full p-power in S₃?",
+    "prediction": "Choose p=2 or p=3; predict the required Sylow subgroup order and a class whose centralizer has that p-part.",
+    "objects": "S₃ conjugacy classes, centralizers and explicit Sylow subgroups.",
+    "invariant": "The chosen centralizer for a class of p-coprime size retains the full p-part of |G|.",
+    "counterexample": "A proper centralizer whose index is divisible by p need not retain the full p-power.",
+    "debrief": "The table checks one finite group. The guided proof supplies both induction branches, including a central subgroup when p divides |Z(G)|.",
+    "fallback": "Every class, centralizer, subgroup and orbit is listed in tables and labelled text."
+  },
+  "mh2220-sylow-conjugacy": {
+    "name": "Sylow fixed-coset workbench",
+    "type": "experiment",
+    "question": "How does a fixed coset turn containment into conjugacy?",
+    "prediction": "For p=2 in S₃, choose distinct Sylow subgroups P and Q; predict the P-orbit sizes on G/Q and identify a fixed coset.",
+    "objects": "A Sylow p-subgroup P of S₃ acting by left multiplication on cosets of an independently chosen Sylow subgroup Q.",
+    "invariant": "Coset count [G:P] is coprime to p; P-orbit sizes are powers of p, so a fixed coset exists.",
+    "counterexample": "A set with size divisible by p can consist entirely of nontrivial p-orbits; the fixed-point inference then fails.",
+    "debrief": "Fixed gQ means g⁻¹Pg≤Q; equal Sylow orders force equality. The listed S₃ cosets illustrate the general proof.",
+    "fallback": "Cosets, orbit sizes and fixedness appear in a table and labelled text."
+  },
+  "mh2220-sylow-counts": {
+    "name": "Sylow arithmetic and conjugation solver",
+    "type": "checker",
+    "question": "Which Sylow counts pass arithmetic, and which occur in S₃?",
+    "prediction": "For p=2 in S₃, list the counts satisfying n₂∣3 and n₂≡1 mod 2; predict the actual count.",
+    "objects": "S₃ Sylow subgroups, their normalizer and conjugation orbits.",
+    "invariant": "nₚ=[G:N(P)] divides [G:P] and is 1 modulo p.",
+    "counterexample": "For p=2, n₂=1 passes arithmetic but S₃ has three distinct Sylow 2-subgroups.",
+    "debrief": "Normalizer and unique fixed-Sylow arguments prove the restrictions. Arithmetic provides necessary candidates, not an existence algorithm.",
+    "fallback": "The subgroup list, candidate list, normalizer, conjugation map and fixed set are labelled text and tables."
   }
 }
