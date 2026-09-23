@@ -592,5 +592,16 @@
     "counterexample": "The ℂ rotation eigenline fails under reflection; I and a singular matrix fail the intertwiner equation.",
     "debrief": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "fallback": "Exact generator equations and yes/no invariance checks are shown in text and an accessible table."
+  },
+  "representations-characters": {
+    "name": "S₃ character construction studio",
+    "type": "constructor",
+    "question": "How do representation traces construct the complete S₃ character table?",
+    "prediction": "Choose a stage, two representations and class weighting; predict a row, inner product or multiplicity before revealing it.",
+    "objects": "Complex left representations of S₃ on one- and two-dimensional spaces; class sizes 1,3,2.",
+    "invariant": "Point-permutation traces count fixed points; standard equals permutation minus trivial; class-weighted inner products give integral multiplicities.",
+    "counterexample": "Equal column weights give ⟨Std,Std⟩=5/3 rather than one.",
+    "debrief": "The displayed S₃ rows come from representations. Orthogonality for all finite groups requires its separate proof; Maschke and Schur retain their field hypotheses.",
+    "fallback": "Every class, trace, character row and multiplicity appears in labelled text and a table."
   }
 }

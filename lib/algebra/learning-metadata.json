@@ -2172,11 +2172,27 @@
     "conceptKind": "object"
   },
   "odyssey-schur": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["representations-maschke"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "odyssey-schur:boundaryCheck",
+        "statement": "What extra hypothesis gives the scalar endomorphism conclusion?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-schur:application",
+        "statement": "For nonzero T between irreducible V,W, what are ker T and im T?",
+        "level": "compute"
+      },
+      {
+        "id": "odyssey-schur:transfer",
+        "statement": "Why can R on the real C₃ plane be nonscalar while V stays irreducible?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Odyssey Y1", "URECA Y2"],
     "conceptKind": "theorem"
@@ -2222,32 +2238,80 @@
     "conceptKind": "object"
   },
   "representations-real-complex": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["ureca-invariant-subspaces"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "representations-real-complex:boundaryCheck",
+        "statement": "What changes when V=ℝ² is complexified?",
+        "level": "explain"
+      },
+      {
+        "id": "representations-real-complex:application",
+        "statement": "What is the characteristic polynomial of the 120° rotation matrix?",
+        "level": "compute"
+      },
+      {
+        "id": "representations-real-complex:transfer",
+        "statement": "Over ℂ, how many invariant eigenlines split this plane?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "representations-maschke": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
+    "estimatedMinutes": 20,
     "prerequisites": ["ureca-invariant-subspaces", "ureca-intertwiners"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "representations-maschke:boundaryCheck",
+        "statement": "Which hypothesis makes the average P available?",
+        "level": "explain"
+      },
+      {
+        "id": "representations-maschke:application",
+        "statement": "For the C₂ swap over ℚ, what is P(2,0) after averaging?",
+        "level": "compute"
+      },
+      {
+        "id": "representations-maschke:transfer",
+        "statement": "Why is ker P invariant after averaging?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus", "Odyssey Y1", "URECA Y2"],
     "conceptKind": "theorem"
   },
   "representations-characters": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "illustration",
+    "estimatedMinutes": 20,
+    "prerequisites": ["odyssey-schur", "representations-real-complex"],
+    "competencies": [
+      {
+        "id": "representations-characters:boundaryCheck",
+        "statement": "What weights appear in S₃ character inner products?",
+        "level": "explain"
+      },
+      {
+        "id": "representations-characters:application",
+        "statement": "What is the standard S₃ character on e, transpositions and 3-cycles?",
+        "level": "compute"
+      },
+      {
+        "id": "representations-characters:transfer",
+        "statement": "Does a 90° cube rotation have the same trace on space and on vertices?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["Beyond the syllabus", "Odyssey Y1", "URECA Y2"],
     "conceptKind": "object"
   },
