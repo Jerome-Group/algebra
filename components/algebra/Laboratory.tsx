@@ -41,6 +41,7 @@ import { LocalisationMicroscope } from "./LocalisationMicroscope";
 import { IdealChainExplorer } from "./IdealChainExplorer";
 import { ModuleActionBoard } from "./ModuleActionBoard";
 import { InvariantIntertwinerLab } from "./InvariantIntertwinerLab";
+import { CharacterConstruction } from "./CharacterConstruction";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -64,6 +65,7 @@ const laboratories: Record<
   "ideal-chain-explorer": IdealChainExplorer,
   "module-action-board": ModuleActionBoard,
   "invariant-intertwiner": InvariantIntertwinerLab,
+  "character-construction": CharacterConstruction,
   "module-presentation": ModulePresentation,
   "axis-angle": AxisAngleLab,
   "plane-representation": PlaneRepresentationLab,

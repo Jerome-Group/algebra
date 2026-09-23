@@ -4706,5 +4706,283 @@
       "explanation": "ρ′(g)Tv=Tρ(g)v remains in the image."
     },
     "connection": "Maschke and Schur need explicit field and irreducibility hypotheses."
+  },
+  "representations-maschke": {
+    "hook": "Can averaging turn a chosen projection into an equivariant one?",
+    "objects": "Let G be finite and V a finite-dimensional representation over a field F with |G| invertible in F. For an invariant W≤V, start with any F-linear projection P₀:V→W and average P=(1/|G|)Σ_g ρ(g)P₀ρ(g)⁻¹. This is a left action on columns.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "When can we divide by |G| in Maschke averaging?",
+      "choices": [
+        "When char F does not divide |G|",
+        "For every field",
+        "Only over ℝ"
+      ],
+      "answer": 0,
+      "explanation": "The group order must be a unit in the field."
+    },
+    "examples": [
+      {
+        "title": "A non-equivariant projection becomes equivariant",
+        "steps": [
+          "For C₂ swapping coordinates over ℚ, W=ℚ(1,1). Choose P₀(x,y)=(x,x), matrix [[1,0],[1,0]]. It fixes W but does not commute with the swap S.",
+          "The conjugate SP₀S=[[0,1],[0,1]]; their average P=[[1/2,1/2],[1/2,1/2]] maps (x,y) to ((x+y)/2,(x+y)/2).",
+          "P²=P, im P=W and ker P=ℚ(1,−1), an invariant complement."
+        ]
+      },
+      {
+        "title": "A nontrivial D₈ complement",
+        "steps": [
+          "In the two-dimensional real D₈ representation, the full space is irreducible, so its only invariant subspaces are 0 and V; Maschke still applies but gives only trivial complements here.",
+          "On V⊕ℝ with a trivial last coordinate, projection onto the last coordinate is equivariant, and its kernel V⊕0 is invariant."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Characteristic two obstruction",
+      "explanation": "For C₂ swapping coordinates on F₂², W=F₂(1,1) is invariant, but |G|=2=0 in F₂ so the average is undefined. The only nonzero invariant line is W, so W has no invariant one-dimensional complement."
+    },
+    "proofSteps": [
+      "For w∈W, every conjugate ρ(g)P₀ρ(g)⁻¹ fixes w, hence P|_W=id and im P=W.",
+      "Reindex g↦hg in the finite sum to show ρ(h)Pρ(h)⁻¹=P for every h; thus P commutes with G.",
+      "Since P has image W and fixes W, P²=P. Its kernel is invariant because P commutes with the action, and V=W⊕ker P.",
+      "The division by |G| requires char F∤|G|. The F₂ swap module exhibits failure when this hypothesis is removed."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which hypothesis makes the average P available?",
+      "choices": [
+        "|G| is invertible in F",
+        "V is one-dimensional",
+        "Every projection is equivariant"
+      ],
+      "answer": 0,
+      "explanation": "The scalar 1/|G| must exist."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For the C₂ swap over ℚ, what is P(2,0) after averaging?",
+      "choices": ["(1,1)", "(2,2)", "(0,0)"],
+      "answer": 0,
+      "explanation": "P(x,y)=((x+y)/2,(x+y)/2)."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why is ker P invariant after averaging?",
+      "choices": [
+        "Pρ(g)=ρ(g)P, so Pρ(g)v=0 when Pv=0",
+        "Every kernel is automatically invariant under any action",
+        "Only because V is finite"
+      ],
+      "answer": 0,
+      "explanation": "Equivariance, not mere linearity, preserves the kernel under G."
+    },
+    "connection": "Schur studies the equivariant maps between irreducible summands."
+  },
+  "odyssey-schur": {
+    "hook": "What survives of an intertwiner between irreducible representations?",
+    "objects": "For finite-dimensional left F-representations V and W, an intertwiner T obeys Tρ_V(g)=ρ_W(g)T. If V,W are irreducible, a nonzero T is an isomorphism. If F is algebraically closed and V=W, every T is scalar; over ℝ this last conclusion can fail.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What can a nonzero map between irreducibles have as kernel?",
+      "choices": ["Only 0", "Any invariant subspace", "All V"],
+      "answer": 0,
+      "explanation": "The kernel is invariant and cannot be all V for a nonzero map."
+    },
+    "examples": [
+      {
+        "title": "Kernel and image first",
+        "steps": [
+          "For nonzero equivariant T:V→W between irreducibles, ker T is invariant in V and im T invariant in W.",
+          "Irreducibility forces ker T=0 and im T=W, so T is an isomorphism without an algebraic-closure assumption."
+        ]
+      },
+      {
+        "title": "A real irreducible with nonscalar endomorphisms",
+        "steps": [
+          "Let C₃ act on V=ℝ² by a rotation R through 120°. Its characteristic polynomial X²+X+1 has no real root, so it has no invariant real line and V is irreducible.",
+          "R itself commutes with every power of R, so it is a nonscalar real equivariant endomorphism. In fact End_{ℝ[C₃]}(V)≅ℂ via aI+bR."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Scalar conclusion needs an eigenvalue",
+      "explanation": "Over ℝ, the nonscalar rotation endomorphism contradicts the claim that every irreducible endomorphism is a real scalar; no real eigenvalue exists to begin the usual scalar proof."
+    },
+    "proofSteps": [
+      "For equivariant T, ker T and im T are invariant: applying ρ to a kernel vector remains in ker, and acting on Tv remains in im.",
+      "When V,W are irreducible and T≠0, these invariant spaces force ker T=0 and im T=W; finite dimension gives an isomorphism.",
+      "If F is algebraically closed, T:V→V has an eigenvalue λ. The equivariant map T−λI has a nonzero kernel; irreducibility forces that kernel to be V, hence T=λI.",
+      "For ℝ² with a C₃ rotation, X²+X+1 has negative discriminant, so the eigenvalue step is unavailable over ℝ; R is a concrete nonscalar endomorphism."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What extra hypothesis gives the scalar endomorphism conclusion?",
+      "choices": [
+        "An algebraically closed field (with finite-dimensional V)",
+        "Only irreducibility over any field",
+        "Only a finite group"
+      ],
+      "answer": 0,
+      "explanation": "The usual proof chooses an eigenvalue in F."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "For nonzero T between irreducible V,W, what are ker T and im T?",
+      "choices": [
+        "0 and W",
+        "V and 0",
+        "Two arbitrary proper invariant subspaces"
+      ],
+      "answer": 0,
+      "explanation": "Irreducibility leaves no proper nonzero invariant kernel or image."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why can R on the real C₃ plane be nonscalar while V stays irreducible?",
+      "choices": [
+        "R has no real eigenline but commutes with the action",
+        "R has a real eigenvalue",
+        "Schur says every real endomorphism is scalar"
+      ],
+      "answer": 0,
+      "explanation": "The real endomorphism algebra may be larger than ℝ."
+    },
+    "connection": "Real and complex fields change which invariant lines exist."
+  },
+  "representations-real-complex": {
+    "hook": "Can the same two-dimensional action be irreducible over ℝ but reducible over ℂ?",
+    "objects": "Let C₃=⟨r | r³=1⟩ act from the left on column vectors in V=ℝ² by R=[[-1/2,−√3/2],[√3/2,−1/2]]. The complexification V_C=V⊗_ℝℂ has complex dimension 2, not 3.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is the real dimension of the displayed C₃ rotation representation?",
+      "choices": ["2", "3", "1"],
+      "answer": 0,
+      "explanation": "The displayed matrix is 2×2 and acts on the rotation plane."
+    },
+    "examples": [
+      {
+        "title": "Over the real field",
+        "steps": [
+          "R³=I and R²+R+I=0. Its characteristic polynomial X²+X+1 has no real root.",
+          "A proper nonzero invariant subspace of ℝ² would be a real eigenline, so V is irreducible over ℝ."
+        ]
+      },
+      {
+        "title": "After complexification",
+        "steps": [
+          "Let ω=e^{2πi/3}. Over ℂ, e₁−i e₂ is an eigenvector of R with eigenvalue ω, and e₁+i e₂ has eigenvalue ω².",
+          "The two distinct eigenlines split V_C as ℂ(e₁−i e₂)⊕ℂ(e₁+i e₂), so the complexified representation is reducible."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Do not borrow an ambient fixed axis",
+      "explanation": "A 3D picture with a fixed z-axis is a different representation: ℝ³ splits as axis⊕rotation plane. Its fixed axis cannot be used to claim that the 2D rotation plane is reducible over ℝ."
+    },
+    "proofSteps": [
+      "Compute det(XI−R)=X²+X+1, whose real discriminant is −3; there is no real eigenvalue or real invariant line.",
+      "The relation R²+R+I=0 implies R³=I, so the matrix defines a C₃ representation.",
+      "Over ℂ, factor X²+X+1=(X−ω)(X−ω²). The two displayed eigenvectors span distinct invariant lines and a direct sum.",
+      "Irreducibility therefore depends on the coefficient field even though the group, underlying real matrix and real dimension are fixed."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What changes when V=ℝ² is complexified?",
+      "choices": [
+        "The field becomes ℂ and the complex dimension remains 2",
+        "The group becomes C₄",
+        "The dimension becomes 3"
+      ],
+      "answer": 0,
+      "explanation": "Complexification preserves dimension while extending scalars."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the characteristic polynomial of the 120° rotation matrix?",
+      "choices": ["X²+X+1", "X²−1", "X³−1"],
+      "answer": 0,
+      "explanation": "Trace is −1 and determinant is 1."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Over ℂ, how many invariant eigenlines split this plane?",
+      "choices": ["Two", "None", "Three"],
+      "answer": 0,
+      "explanation": "The two distinct complex roots give complementary eigenlines."
+    },
+    "connection": "Characters record the traces of these linear actions."
+  },
+  "representations-characters": {
+    "hook": "Can a table row be built from a representation instead of memorised?",
+    "objects": "A complex character χ_V(g)=tr ρ_V(g) is constant on conjugacy classes and additive on direct sums; products give tensor-product characters. For S₃, class sizes are 1,3,2 and inner products use (1/6)Σ_C|C|χ(C)overline{ψ(C)}.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "What is the trace of a permutation matrix on F[Ω]?",
+      "choices": [
+        "Its number of fixed basis points",
+        "The number of group elements",
+        "Always the dimension"
+      ],
+      "answer": 0,
+      "explanation": "Only fixed basis vectors contribute diagonal 1 entries."
+    },
+    "examples": [
+      {
+        "title": "Construct S₃ irreducible rows",
+        "steps": [
+          "For S₃ acting on three letters over ℂ, the permutation trace is fixed-point count (3,1,0) on e, transpositions and 3-cycles.",
+          "The constant line contributes trivial (1,1,1), leaving standard (2,0,−1). Sign comes from parity: (1,−1,1). Weighted norms are 1 and pairwise inner products 0; 1²+1²+2²=6 proves completeness."
+        ]
+      },
+      {
+        "title": "Cube rotation and a genuinely complex row",
+        "steps": [
+          "For a 90° cube rotation about z, the spatial matrix has trace 1, the permutation of eight vertices has two 4-cycles and trace 0, and the induced permutation of four body diagonals is a 4-cycle with trace 0. These are different representations of one motion.",
+          "On the five S₄ classes (e,(12),(12)(34),(123),(1234)), the vertex character is (8,0,0,2,0)=1+sgn+Std+(Std⊗sgn), each constituent with multiplicity one by class-weighted inner product.",
+          "For the one-dimensional complex C₃ representation r↦ω=e^{2πi/3}, χ(r)=ω and χ(r²)=ω² are nonreal. Thus character values need not be real."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "Equal dimension is not equivalence",
+      "explanation": "The trivial and sign representations both have dimension one but differ on transpositions. A character remembers trace by class, not every matrix entry; for finite groups over ℂ, equal characters do imply equivalence, unlike equal dimensions alone."
+    },
+    "proofSteps": [
+      "tr(ABA⁻¹)=tr B, so χ(hgh⁻¹)=χ(g): a character is a class function.",
+      "Trace adds on block direct sums and multiplies on tensor products, explaining the S₃ row constructions and χ_{V⊗W}=χ_Vχ_W.",
+      "For S₃, the standard row equals point-permutation trace minus trivial. Class-weighted inner products show its norm one and orthogonality to trivial and sign.",
+      "Degree-squared sum 1²+1²+2²=|S₃| accounts for all complex irreducibles. The orthogonality theorem itself needs proof from matrix coefficients, not merely this finite table."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What weights appear in S₃ character inner products?",
+      "choices": [
+        "Conjugacy-class sizes 1,3,2",
+        "One per column",
+        "The representation dimensions"
+      ],
+      "answer": 0,
+      "explanation": "The sum over all six elements groups equal class values by class size."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the standard S₃ character on e, transpositions and 3-cycles?",
+      "choices": ["(2,0,−1)", "(3,1,0)", "(1,−1,1)"],
+      "answer": 0,
+      "explanation": "Subtract the trivial row from the three-point permutation trace."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Does a 90° cube rotation have the same trace on space and on vertices?",
+      "choices": [
+        "No; spatial trace is 1 and vertex permutation trace is 0",
+        "Yes; trace depends only on the motion",
+        "Both traces are 8"
+      ],
+      "answer": 0,
+      "explanation": "Trace depends on the chosen representation, not just the group element."
+    },
+    "connection": "Character tables use these constructed rows to measure decomposition and induction."
   }
 }

@@ -257,3 +257,13 @@ Rings unit has authored competency evidence for its existing capstone.
   record delivered gates. The linear-algebra foundation row records its guided
   bridge while retaining the requested split into dedicated prerequisites as
   pending final-audit work.
+
+- #59 promotes Maschke, Schur, real/complex C₃ and characters to guided
+  teaching. Averaging an explicitly non-equivariant C₂ projection yields an
+  invariant kernel and image, with the characteristic-two obstruction beside
+  it. Schur separates the kernel/image theorem from the algebraically closed
+  scalar conclusion; a real irreducible C₃ plane has nonscalar endomorphisms.
+  V16 constructs S₃ rows from trivial, sign and point-permutation traces,
+  subtracts the constant line, then uses class-weighted orthogonality and
+  tensor decomposition. Equal-column weighting produces a visible failure.
+  Four concept rows and V16 carry delivery evidence.

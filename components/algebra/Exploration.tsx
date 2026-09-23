@@ -18,7 +18,8 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
     lesson.machine === "localisation-microscope" ||
     lesson.machine === "ideal-chain-explorer" ||
     lesson.machine === "module-action-board" ||
-    lesson.machine === "invariant-intertwiner";
+    lesson.machine === "invariant-intertwiner" ||
+    lesson.machine === "character-construction";
   return (
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}

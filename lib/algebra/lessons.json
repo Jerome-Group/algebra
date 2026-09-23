@@ -8178,8 +8178,8 @@
     "theorem": "\\langle\\chi,\\psi\\rangle=\\frac1{|G|}\\sum_{g\\in G}\\chi(g)\\overline{\\psi(g)},\\qquad m_U=\\langle\\chi_V,\\chi_U\\rangle.",
     "proof": "For a permutation matrix, a diagonal entry equals 1 exactly when that basis object is fixed, proving the fixed-point formula. Trace is unchanged by conjugation, so characters are class functions. Proof idea for the multiplicity formula: average the action on Hom(U,V) to project onto equivariant maps; its trace is the displayed inner product. Complete reducibility and Schur’s lemma identify that dimension with the multiplicity of irreducible $U$.",
     "pitfall": "Character values are not always nonnegative or integers. Fixed-point counting applies specifically to permutation representations. Equal dimensions do not imply equivalent representations.",
-    "prompt": "Use the character table to tensor rows and verify dimensions. On paper compare a cube quarter-turn: its spatial trace is one and its trace on the four diagonal basis vectors is zero. The table lab is a separate character-arithmetic example.",
-    "machine": "characters",
+    "prompt": "Choose a stage, two representations and class weighting; predict a row, inner product or multiplicity before revealing it.",
+    "machine": "character-construction",
     "parameters": {
       "group": "S4",
       "classLabels": ["1^4", "2 1^2", "2^2", "3 1", "4"],
@@ -8254,7 +8254,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The displayed S₃ rows come from representations. Orthogonality for all finite groups requires its separate proof; Maschke and Schur retain their field hypotheses.",
     "objective": "Explain what a character retains, why it is a class function and why equal dimensions do not imply equivalent representations.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -8271,7 +8271,8 @@
         "hint": "Send its generator to one or minus one.",
         "answer": "The trivial and sign representations have rows $(1,1)$ and $(1,-1)$. Their dimensions agree, but their characters distinguish them."
       }
-    ]
+    ],
+    "prerequisites": ["odyssey-schur", "representations-real-complex"]
   },
   {
     "id": "actions-faithful-transitive",
