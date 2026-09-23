@@ -4984,5 +4984,141 @@
       "explanation": "Trace depends on the chosen representation, not just the group element."
     },
     "connection": "Character tables use these constructed rows to measure decomposition and induction."
+  },
+  "odyssey-character-table": {
+    "hook": "How is a character table constructed, and which rows actually come from modules?",
+    "objects": "Work over ℂ with finite G. A character is the trace of an actual representation, an irreducible character comes from an irreducible representation, and a virtual character is an integer difference of actual characters. For S₃ the classes e,(12),(123) have sizes 1,3,2.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "Which S₃ row follows from its three-point permutation module after removing constants?",
+      "choices": ["(2,0,−1)", "(3,1,0)", "(1,−1,1)"],
+      "answer": 0,
+      "explanation": "The permutation trace counts fixed points; subtract the trivial constant line."
+    },
+    "examples": [
+      {
+        "title": "Build the complete S₃ table",
+        "steps": [
+          "The trivial and sign rows are (1,1,1) and (1,−1,1). The three-point permutation character is (3,1,0), so the sum-zero standard row is (2,0,−1).",
+          "Weighting by sizes 1,3,2 gives each row norm one and distinct rows inner product zero. Their degrees satisfy 1²+1²+2²=6, exhausting the irreducibles.",
+          "Column orthogonality then gives Σ_χ χ(C)overline{χ(D)}=0 for different classes; for a class C the sum of squared absolute values is |C_G(g)|=6/|C|."
+        ]
+      },
+      {
+        "title": "Inflation from a quotient",
+        "steps": [
+          "For N=A₃◁S₃, the quotient is C₂. Pulling its two one-dimensional characters back along q:S₃→C₂ yields the trivial and sign characters of S₃.",
+          "Exactly the irreducible S₃ characters whose kernels contain A₃ arise this way; the standard character does not, because its representation is faithful."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A virtual row need not be an actual character",
+      "explanation": "Std−1=(1,−1,−2) is a virtual character, but its inner product with the trivial irreducible is −1, so it cannot be an actual character. A row-shaped class function is not automatically a representation trace."
+    },
+    "proofSteps": [
+      "Rows arise from explicit representations. For S₃, point-permutation trace minus the fixed constant line is the actual standard character, not an arbitrary formal subtraction.",
+      "Over ℂ, matrix-coefficient orthogonality gives ⟨χ_i,χ_j⟩=δ_ij; grouping the sum by classes introduces class-size weights.",
+      "The irreducible character matrix is square because irreducibles and conjugacy classes have equal counts. Row orthogonality plus invertibility yields column orthogonality, with centralizer size on the diagonal.",
+      "For q:G→G/N, pullback of a quotient representation is irreducible exactly when the quotient representation is; conversely an irreducible G-representation with N in its kernel factors uniquely through q. Thus inflation is a bijection onto that subset, not every irreducible of G."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which G-irreducibles are in the image of inflation from G/N?",
+      "choices": [
+        "Exactly those with N in the representation kernel",
+        "Every irreducible of G",
+        "Only those of dimension one"
+      ],
+      "answer": 0,
+      "explanation": "Factoring through the quotient is equivalent to N acting trivially."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the standard S₃ row and its weighted norm?",
+      "choices": [
+        "(2,0,−1) with norm 1",
+        "(2,0,−1) with norm 5/3",
+        "(3,1,0) with norm 1"
+      ],
+      "answer": 0,
+      "explanation": "(4+2)/6=1 using class sizes 1,3,2."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Can Std−1 be an actual S₃ character?",
+      "choices": [
+        "No; its trivial multiplicity would be −1",
+        "Yes; every integer class function is actual",
+        "Only over ℝ"
+      ],
+      "answer": 0,
+      "explanation": "Actual characters have nonnegative integer inner products with irreducible rows."
+    },
+    "connection": "Induction creates new representations from a subgroup; restriction checks them by reciprocity."
+  },
+  "odyssey-induction": {
+    "hook": "What does one induced vector do when a group element crosses coset copies?",
+    "objects": "Let G=S₃=⟨r=(123),s=(12)⟩, H=⟨s⟩≅C₂ and φ:H→ℂ× either trivial or sign. Choose left-coset transversal t₀=e,t₁=r,t₂=r². The induced left G-module Ind_H^G φ=ℂ[G]⊗_{ℂ[H]}ℂ_φ has basis u_i=t_i⊗1 and dimension [G:H]dim φ=3.",
+    "prerequisiteCheck": {
+      "kind": "recognise",
+      "question": "For g t_i=t_j h with h∈H, how does g act on u_i?",
+      "choices": ["φ(h)u_j", "u_i regardless of h", "φ(g)u_j even when g∉H"],
+      "answer": 0,
+      "explanation": "The subgroup correction h acts through the inducing character."
+    },
+    "examples": [
+      {
+        "title": "Every generator matrix from the transversal",
+        "steps": [
+          "r r^i=r^{i+1}, so r sends u₀→u₁→u₂→u₀. In the ordered basis its matrix is R=[[0,0,1],[1,0,0],[0,1,0]].",
+          "s r^i=r^{−i}s. For φ=sign_H, s sends u₀→−u₀, u₁→−u₂, u₂→−u₁, giving S=[[−1,0,0],[0,0,−1],[0,−1,0]]. For φ=trivial_H, remove those minus signs.",
+          "These matrices obey R³=S²=I and SRS=R⁻¹. The sign-induced trace on e, transpositions, 3-cycles is (3,−1,0)."
+        ]
+      },
+      {
+        "title": "Character formula and reciprocity",
+        "steps": [
+          "A fixed coset t_iH contributes tr φ(t_i⁻¹gt_i) when t_i⁻¹gt_i∈H; a moved coset contributes zero to the trace. For sign induction this gives (3,−1,0)=sgn_G+Std.",
+          "For target Std, ⟨Ind sign_H,Std⟩_G=(3·2+3·(−1)·0+2·0·(−1))/6=1. Restrict Std to H: character values (2,0), so ⟨sign_H,Res Std⟩_H=(2−0)/2=1."
+        ]
+      }
+    ],
+    "nonexample": {
+      "title": "A lost subgroup correction changes the representation",
+      "explanation": "If the minus sign of φ(s) is omitted, the s matrix has trace +1 and describes Ind trivial_H, not Ind sign_H. Coset movement alone cannot recover the induced character."
+    },
+    "proofSteps": [
+      "The tensor balance relation (gh)⊗v=g⊗hv makes the formula g t_i=t_j h imply g·u_i=t_j⊗φ(h)1. It is independent of the chosen expression in the induced module.",
+      "The three coset basis vectors give dimension 3. The displayed R and S follow by applying r and s to each t_i; their relations verify the S₃ action.",
+      "For any g, the trace is the sum over fixed cosets, each weighted by the trace of its H-correction. This derives the induced-character formula for this transversal.",
+      "Frobenius reciprocity sends a G-map F:Ind_H^G V→W to the H-map v↦F(1⊗v); conversely an H-map f:V→Res_H^G W gives g⊗v↦g·f(v). The balance relation makes the inverse well-defined."
+    ],
+    "boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "What determines the dimension of Ind_H^G V?",
+      "choices": ["[G:H]dim V", "|G|dim V without quotienting", "Always dim V"],
+      "answer": 0,
+      "explanation": "One copy of V occurs for each left coset."
+    },
+    "application": {
+      "kind": "compute",
+      "question": "What is the trace of s on Ind_H^G(sign_H)?",
+      "choices": ["−1", "+1", "−3"],
+      "answer": 0,
+      "explanation": "Only u₀ is fixed as a coset; its H-correction is s and sign_H(s)=−1."
+    },
+    "transfer": {
+      "kind": "transfer",
+      "question": "Why do Hom_G(Ind sign_H,Std) and Hom_H(sign_H,Res Std) have equal dimension?",
+      "choices": [
+        "Both are one by Frobenius reciprocity; the explicit characters confirm it",
+        "Because Ind and Res have equal dimensions",
+        "Because all S₃ representations are one-dimensional"
+      ],
+      "answer": 0,
+      "explanation": "The natural Hom-space isomorphism, not a numerical accident, is the theorem."
+    },
+    "connection": "Double cosets refine restriction of induced modules; H\\G/H has H and HrH in this example."
   }
 }

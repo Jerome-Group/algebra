@@ -603,5 +603,16 @@
     "counterexample": "Equal column weights give ⟨Std,Std⟩=5/3 rather than one.",
     "debrief": "The displayed S₃ rows come from representations. Orthogonality for all finite groups requires its separate proof; Maschke and Schur retain their field hypotheses.",
     "fallback": "Every class, trace, character row and multiplicity appears in labelled text and a table."
+  },
+  "odyssey-induction": {
+    "name": "S₃ induction and reciprocity workbench",
+    "type": "constructor",
+    "question": "How does a subgroup correction change an induced coset-basis vector and trace?",
+    "prediction": "Choose an H-character, acting element, coset basis vector and G target; predict motion, trace and both Hom dimensions.",
+    "objects": "G=S₃, H=⟨(12)⟩≅C₂, transversal e,r,r² and one-dimensional trivial or sign H-character over ℂ.",
+    "invariant": "dim Ind_H^G φ=3; the same H-correction determines generator matrices and induced trace; Frobenius reciprocity equates Hom dimensions.",
+    "counterexample": "Omitting sign_H(s)=−1 changes the s trace from −1 to +1 and misidentifies Ind sign_H as Ind trivial_H.",
+    "debrief": "Coset matrices and Hom dimensions verify this S₃ case; the natural Hom-space isomorphism in the lesson proves Frobenius reciprocity generally.",
+    "fallback": "Every coset image, generator matrix, character row and Hom dimension appears as labelled text and a table."
   }
 }

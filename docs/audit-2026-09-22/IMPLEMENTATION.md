@@ -267,3 +267,11 @@ Rings unit has authored competency evidence for its existing capstone.
   subtracts the constant line, then uses class-weighted orthogonality and
   tensor decomposition. Equal-column weighting produces a visible failure.
   Four concept rows and V16 carry delivery evidence.
+
+- #61 promotes the S₃ character-table and induction lessons to guided
+  teaching. The table lesson constructs rows, checks weighted row/column
+  orthogonality, proves the exact inflation subset, and rejects a virtual row
+  as an actual character. V17 follows Ind_{C₂}^{S₃} of trivial or sign across
+  the e,r,r² transversal, with both generator matrices, subgroup correction,
+  fixed-coset trace and matched Frobenius Hom dimensions. The audit keeps S₄,
+  D₄/Q₈, A₅ table constructions and a separate GL₂ route pending.

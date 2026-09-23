@@ -2198,22 +2198,54 @@
     "conceptKind": "theorem"
   },
   "odyssey-character-table": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
-    "estimatedMinutes": 15,
-    "prerequisites": ["odyssey-schur", "representations-maschke"],
-    "competencies": [],
+    "estimatedMinutes": 25,
+    "prerequisites": ["representations-characters", "odyssey-schur"],
+    "competencies": [
+      {
+        "id": "odyssey-character-table:boundaryCheck",
+        "statement": "Which G-irreducibles are in the image of inflation from G/N?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-character-table:application",
+        "statement": "What is the standard S₃ row and its weighted norm?",
+        "level": "compute"
+      },
+      {
+        "id": "odyssey-character-table:transfer",
+        "statement": "Can Std−1 be an actual S₃ character?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Odyssey Y1", "URECA Y2"],
     "conceptKind": "object"
   },
   "odyssey-induction": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
-    "visualisationType": "reference-diagram",
+    "prerequisites": ["odyssey-character-table"],
+    "competencies": [
+      {
+        "id": "odyssey-induction:boundaryCheck",
+        "statement": "What determines the dimension of Ind_H^G V?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-induction:application",
+        "statement": "What is the trace of s on Ind_H^G(sign_H)?",
+        "level": "compute"
+      },
+      {
+        "id": "odyssey-induction:transfer",
+        "statement": "Why do Hom_G(Ind sign_H,Std) and Hom_H(sign_H,Res Std) have equal dimension?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "constructor",
     "sourceCollections": ["Odyssey Y1"],
     "conceptKind": "object"
   },

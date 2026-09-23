@@ -169,6 +169,7 @@ test("promoted units have authored evidence for completion", () => {
     "modules",
     "representations",
     "characters",
+    "tables",
   ]) {
     const unit = units.find((item) => item.id === id);
     assert.equal(unitCompletion(unit, lessons, all).complete, true, id);

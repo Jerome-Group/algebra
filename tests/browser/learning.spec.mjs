@@ -92,8 +92,8 @@ test("reference teaching filter returns the explicit reference entries", async (
   await page
     .getByRole("combobox", { name: /^Teaching status/ })
     .selectOption("reference-only");
-  await expect(page.getByRole("status")).toHaveText("24 matching concepts");
-  await expect(page.locator(".atlas-results > li")).toHaveCount(24);
+  await expect(page.getByRole("status")).toHaveText("23 matching concepts");
+  await expect(page.locator(".atlas-results > li")).toHaveCount(23);
 });
 
 test("guided checkpoints diagnose an error and keep the source/reference path available", async ({
