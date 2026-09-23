@@ -5768,7 +5768,7 @@
       "n": 8
     },
     "pitfall": "Commutativity matters: in a matrix ring nilpotent matrices need not belong to the Jacobson radical. Even in a commutative ring, a nil ideal and a nilpotent ideal are different; the Artinian hypothesis supplies a uniform exponent for this radical.",
-    "prompt": "Multiply 2 repeatedly modulo 8 and compare the sequence of elements with the descending ideals (2), (4), (0).",
+    "prompt": "Predict the powers of 2 in ℤ/8ℤ and whether the same radical claim holds for M₂(F₂).",
     "proof": "A nilpotent belongs to every prime ideal: if $x^n\\in P$, primality repeatedly gives $x\\in P$. The reverse inclusion uses existence of a prime disjoint from the powers of a nonnilpotent element, usually proved by a maximality argument. For commutative Artinian rings, radical nilpotence is a further structural theorem imported here. Stabilization of $J^n$ alone does not prove it is zero; applying the finite-generation version of Nakayama would first require an independent finite-generation argument. We do not use Artinian implies Noetherian to justify a proof of that same implication.",
     "section": "§6.3, Lemma 6.23; Exercises 6.6,6.13, pp.84–85,94",
     "source": {
@@ -5795,7 +5795,7 @@
     "navTitle": "Nilradical",
     "proofStatus": "Theorem imported · proof dependencies",
     "exampleStatus": "Worked example here",
-    "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
+    "labScope": "The finite tables verify these rings. The general prime-intersection reverse inclusion needs prime avoidance of a power set, and Artinian radical nilpotence is a separate structural theorem.",
     "objective": "Explain why a collection of nilpotent elements need not have one common vanishing power without extra hypotheses.",
     "level": "Foundation or bridge",
     "conventions": "Throughout this lesson R is a commutative ring with identity. The set of nilpotent elements need not be an ideal in a noncommutative ring.",
@@ -5811,6 +5811,11 @@
         "question": "What extra conclusion does a nilpotent ideal give beyond a nil ideal?",
         "hint": "Compare the order of the quantifiers.",
         "answer": "A nilpotent ideal has one fixed exponent for all products of ideal elements. In a nil ideal, each element has some vanishing power, which may depend on that element."
+      },
+      {
+        "question": "Does E₁₂²=0 imply E₁₂ belongs to J(M₂(F₂))?",
+        "hint": "Check the commutativity hypothesis and the radical of a full matrix algebra over a field.",
+        "answer": "No. M₂(F₂) is noncommutative and semisimple, so its Jacobson radical is zero, although E₁₂ is nilpotent. The commutative nilradical theorem cannot be applied."
       }
     ]
   },
@@ -7094,7 +7099,7 @@
       "pdfPages": "2–3"
     },
     "intuition": "A group can move a finite set; a representation moves vectors while respecting addition and scalar multiplication. Choosing a basis turns the action into matrices, without changing the underlying action.",
-    "definition": "\\rho:G\\to\\mathrm{GL}(V),\\qquad \\rho(gh)=\\rho(g)\\rho(h),\\qquad g\\cdot v=\\rho(g)v.",
+    "definition": "V\\text{ a finite-dimensional }F\\text{-space of dimension }d,\\quad\\rho:G\\to\\mathrm{GL}_d(F),\\quad\\rho(gh)=\\rho(g)\\rho(h),\\quad g\\cdot v=\\rho(g)v.",
     "explanation": "This companion uses column vectors and left actions. James–Liebeck uses row vectors and right actions; translate conventions before comparing matrix products. A linear action automatically gives invertible maps because the action of $g^{-1}$ reverses the action of $g$. A representation is faithful when only the identity acts as the identity on every vector.",
     "theorem": "g\\cdot(h\\cdot v)=(gh)\\cdot v,\\qquad \\rho(g)^{-1}=\\rho(g^{-1}),\\qquad \\rho\\text{ faithful}\\iff\\ker\\rho=\\{e\\}.",
     "proof": "The homomorphism equation gives the action law by applying both sides to $v$, and $\\rho (e)=I$ gives the identity law. Conversely a linear action defines linear maps $\\rho (g)$; the inverse action makes them invertible and the action law makes $\\rho$ a homomorphism. Its kernel records exactly those group elements invisible to the action.",
@@ -8880,7 +8885,9 @@
       "steps": [
         "For $D_4$ acting on four vertices, $\\Delta=\\{0,2\\}$ is a block.",
         "Every symmetry either preserves $\\Delta$ or sends it to $\\{1,3\\}$.",
-        "The action is transitive but imprimitive. The intermediate subgroup has order $4$, between a vertex stabilizer of order $2$ and $D_4$ of order $8$."
+        "The action is transitive but imprimitive. The intermediate subgroup has order $4$, between a vertex stabilizer of order $2$ and $D_4$ of order $8$.",
+        "For a singleton action X={x}, the only nonempty block is X itself, so there is no nontrivial block; nevertheless Gₓ=G is not a proper maximal subgroup. This is why |X|≥2 is indispensable.",
+        "For the square, the setwise stabilizer H of {0,2} has G₀<H<D₄. The block–subgroup correspondence gives a concrete witness to imprimitivity."
       ]
     },
     "connections": [
@@ -8916,6 +8923,11 @@
         "question": "Why do we exclude a one-point action from the maximal-stabilizer equivalence?",
         "hint": "Its stabilizer is the whole group.",
         "answer": "The whole group is not a proper maximal subgroup of itself. Requiring degree at least two removes this boundary case."
+      },
+      {
+        "question": "In the square action, what subgroup witnesses that the point stabilizer is not maximal?",
+        "hint": "Use the setwise stabilizer of the opposite-vertex block {0,2}.",
+        "answer": "Its setwise stabilizer H has order four, while G₀ has order two and D₄ order eight; thus G₀<H<D₄. The corresponding nontrivial block is {0,2}."
       }
     ]
   },
@@ -9678,7 +9690,7 @@
     "intuition": "Traces are sums of roots of unity. That arithmetic information forces divisibility that linear algebra alone does not reveal.",
     "definition": "\\alpha\\text{ algebraic integer}\\iff f(\\alpha)=0\\text{ for some monic }f\\in\\mathbb Z[X].",
     "explanation": "Algebraic integers form a ring, and a rational algebraic integer is an ordinary integer. Since a finite-order complex matrix has roots of unity as eigenvalues, every character value is an algebraic integer. For an irreducible character, the scalar by which a conjugacy-class sum acts is also an algebraic integer.",
-    "theorem": "\\frac{|g^G|\\chi(g)}{\\chi(1)}\\text{ is an algebraic integer};\\qquad\\chi(1)\\mid|G|\\quad(\\chi\\text{ irreducible over }\\mathbb C).",
+    "theorem": "G\\text{ finite},\\quad\\chi\\in\\operatorname{Irr}_{\\mathbb C}(G):\\quad \\frac{|g^G|\\chi(g)}{\\chi(1)}\\text{ is an algebraic integer};\\qquad\\chi(1)\\mid|G|.",
     "proof": "Class sums multiply with integer structure constants in the center of $\\mathbb CG$. Their scalar actions satisfy monic integer polynomials, by the characteristic polynomial of this multiplication. Row orthogonality expresses $|G|/\\chi(1)$ as a sum of products of these algebraic integers with conjugate character values. It is rational, so it is an integer.",
     "pitfall": "Character values need not be rational or integral as ordinary numbers. Divisibility concerns the degree of a complex irreducible character, not an arbitrary representation dimension.",
     "prompt": "Compare degrees with the group order, then compare ordinary integer character values with the golden-ratio values in the alternating group of degree five.",
@@ -9783,7 +9795,7 @@
     "theorem": "|g^G|=p^r>1\\Longrightarrow G\\text{ not simple};\\qquad |G|=p^aq^b\\Longrightarrow G\\text{ solvable}.",
     "proof": "This is a roadmap, not a proof of the character-theoretic lemma. Import the theorem that a nonabelian finite simple group has no nontrivial prime-power conjugacy class. For a hypothetical nonabelian simple group of order $p^aq^b$ with both primes present, choose $1\\ne z\\in Z(Q)$ for a Sylow $q$-subgroup $Q$. Since $Q\\le C_G(z)$, its class size is a power of $p$; simplicity forces $Z(G)=1$, so that size is greater than one, contradicting the imported theorem. Prime-power groups are excluded by their nontrivial centers. Now induct on group order: every proper nontrivial normal subgroup and its quotient have orders involving at most the same two primes, hence are solvable; extensions of solvable groups are solvable. The scalar preimage $\\{g:\\rho(g)\\text{ is scalar}\\}$ used in proofs of the imported lemma is not the ordinary kernel $\\{g:\\rho(g)=I\\}$.",
     "pitfall": "Do not confuse this theorem with the orbit-counting lemma also named after Burnside. A group of prime-power order has nontrivial center; the class-size argument addresses the two-prime case.",
-    "prompt": "Follow the centralizer index: a central element of a Sylow subgroup leaves only the other prime in its conjugacy-class size.",
+    "prompt": "Predict the class size of a nonidentity element central in a Sylow subgroup before checking the centralizer index.",
     "machine": "diagram",
     "parameters": {
       "nodes": [
@@ -9849,7 +9861,7 @@
     ],
     "proofStatus": "Theorem imported · proof roadmap here",
     "exampleStatus": "Worked example here",
-    "labScope": "Proof map for solvability, using the imported prime-power class-size obstruction. This is distinct from Burnside’s coloring lemma.",
+    "labScope": "The displayed chain proves the reduction to the imported character-theoretic class-size lemma and then induction; the S3 table is an illustration, not a proof of that lemma.",
     "objective": "No necklace controls appear; a reader can follow why a Sylow-central element produces a prime-power class size.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -10124,7 +10136,7 @@
     "intuition": "Can a character have maximum absolute value away from the kernel?",
     "definition": "|\\chi_\\pi(g)|\\leq \\chi_\\pi(1)=d,\\quad \\pi(g)=I\\iff\\chi_\\pi(g)=d,\\quad \\pi(g)=\\lambda I\\iff|\\chi_\\pi(g)|=d",
     "explanation": "For a finite group representation over C, π(g) has finite order and is diagonalizable. Its d eigenvalues lie on the unit circle. The triangle inequality gives the bound. The ordinary equality and absolute equality have different conclusions.",
-    "theorem": "g\\in\\ker\\pi\\iff\\chi_\\pi(g)=d\\quad\\text{(without absolute value)}",
+    "theorem": "G\\text{ finite},\\quad\\pi:G\\to\\mathrm{GL}_d(\\mathbb C),\\ d\\ge1:\\quad g\\in\\ker\\pi\\iff\\chi_\\pi(g)=d\\quad\\text{(without absolute value)}.",
     "proof": "If g has order m, π(g)^m=I. Over C, x^m−1 has distinct roots, so π(g) diagonalizes with mth-root eigenvalues ζ₁,…,ζ_d. Each |ζ_j|=1. The triangle inequality yields |Σζ_j|≤Σ|ζ_j|=d. If Σζ_j=d, all real parts must equal one, hence every ζ_j=1 and π(g)=I. If |Σζ_j|=d, equality in the triangle inequality makes all ζ_j share one phase λ, so π(g)=λI. The converse in each case is immediate.",
     "pitfall": "Never replace χ(g)=d by |χ(g)|=d in the kernel test: −I is scalar but not identity.",
     "prompt": "For the D₈ half-turn r², predict χ(r²), |χ(r²)| and whether r² is in the kernel.",
@@ -10228,7 +10240,7 @@
     "intuition": "Could a direct product have an irreducible representation that is missing from the tensor list?",
     "definition": "\\operatorname{Irr}(G\\times H)=\\{\\pi_i\\boxtimes\\rho_j:\\pi_i\\in\\operatorname{Irr}(G),\\rho_j\\in\\operatorname{Irr}(H)\\}",
     "explanation": "For finite groups over C, irreducible characters of G and H form orthonormal lists. External products give candidates for G×H. Factoring the product-group inner product proves each candidate irreducible. A sum of squared degrees equal to |G×H| leaves no missing irreducibles.",
-    "theorem": "\\langle\\chi_i\\psi_j,\\chi_k\\psi_\\ell\\rangle_{G\\times H}=\\delta_{ik}\\delta_{j\\ell},\\quad \\sum_{i,j}(d_i e_j)^2=|G||H|",
+    "theorem": "G,H\\text{ finite; complex finite-dimensional representations}:\\quad \\langle\\chi_i\\psi_j,\\chi_k\\psi_\\ell\\rangle_{G\\times H}=\\delta_{ik}\\delta_{j\\ell},\\quad \\sum_{i,j}(d_i e_j)^2=|G||H|.",
     "proof": "Write χ_{i,j}(g,h)=χ_i(g)ψ_j(h). The inner-product sum over G×H separates into one sum over G and one over H. Each factor inner product is Kronecker delta, so the product is δ_{ik}δ_{jℓ}. This proves the candidates are irreducible and pairwise inequivalent. Compute Σ_{i,j}(d_i e_j)²=(Σ_i d_i²)(Σ_j e_j²)=|G||H|. For finite groups over C, all irreducible squared degrees sum to the group order. The candidates use the whole total, so no further irreducible can occur.",
     "pitfall": "The product character formula alone is not a completeness proof; the degree-squared sum is essential.",
     "prompt": "Predict the number and degree-squared total for C₃×D₈ before viewing the accounting table.",

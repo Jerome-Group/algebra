@@ -889,7 +889,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "reference-diagram",
+    "visualisationType": "proof-animation",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "theorem"
   },
@@ -1783,7 +1783,7 @@
     "estimatedMinutes": 15,
     "prerequisites": [],
     "competencies": [],
-    "visualisationType": "illustration",
+    "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },

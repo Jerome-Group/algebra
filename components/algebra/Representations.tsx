@@ -5,6 +5,10 @@ import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
 import { CubeScene } from "./Cube";
 import {
+  composePermutations,
+  permutationMatrix,
+} from "@/lib/algebra/permutation-matrices";
+import {
   matrixTex,
   det,
   cycleTex,
@@ -209,7 +213,7 @@ export function PermutationLab() {
       new Set(q).size === n &&
       q.every((x) => Number.isInteger(x) && x >= 0 && x < n),
     pp = ok ? p : [0, 1],
-    comp = ok && okQ ? q.map((x) => p[x]) : pp;
+    comp = ok && okQ ? composePermutations(p, q) : pp;
   const x = (i: number, N: number) => 70 + (i * 420) / (N - 1);
   return (
     <div>
@@ -283,9 +287,7 @@ export function PermutationLab() {
           {okQ && (
             <M block>{`pq=${cycleTex(comp)}\\quad\\text{(apply q first)}`}</M>
           )}
-          <M
-            block
-          >{`P_p=${matrixTex(p.map((_, i) => p.map((v) => (v === i ? 1 : 0))))}`}</M>
+          <M block>{`P_p=${matrixTex(permutationMatrix(p))}`}</M>
           <p>
             <Prose>
               {

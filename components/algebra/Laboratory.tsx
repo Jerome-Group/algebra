@@ -45,6 +45,8 @@ import { InductionReciprocityLab } from "./InductionReciprocityLab";
 import { WedderburnLayerLab } from "./WedderburnLayerLab";
 import { InvariantIntertwinerLab } from "./InvariantIntertwinerLab";
 import { CharacterConstruction } from "./CharacterConstruction";
+import { BurnsideClassLab } from "./BurnsideClassLab";
+import { NilradicalLab } from "./NilradicalLab";
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -113,10 +115,20 @@ const laboratories: Record<
     ),
   representation: RepresentationLab,
   characters: CharacterLab,
-  ring: RingLab,
+  ring: ({ lesson }) =>
+    lesson.id === "m3220-nilradical" ? (
+      <NilradicalLab />
+    ) : (
+      <RingLab lesson={lesson} />
+    ),
   polynomial: PolynomialLab,
   field: FieldLab,
-  diagram: StructureLab,
+  diagram: ({ lesson }) =>
+    lesson.id === "characters-burnside" ? (
+      <BurnsideClassLab />
+    ) : (
+      <StructureLab lesson={lesson} />
+    ),
 };
 export default function Laboratory({ l }: { l: Lesson }) {
   const Component = laboratories[l.machine];
