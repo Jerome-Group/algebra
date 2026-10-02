@@ -19,3 +19,7 @@ Reviewed meaningful exact square composition, lesson-stage navigation, retained 
 ## Pending release gates
 
 Issue asks “Every lesson and feature inspected in in-app browser before and after” and “Existing production Site/domain deployed ... with a tested rollback path.” The interim 177-pass/50-failure browser run is honestly recorded as failure evidence; final rebuilt browser/in-app sweeps must match the final lesson/UI hashes. Machine-map ledger paths and pending audit flags do not establish passes. Required PR checks, independent dependency/implementation review, resolved threads, protected squash merge, existing Sites identity/access, production journeys and tested production rollback still need executed release evidence and truthful issue ticks. These are outstanding release work, not missing-code findings.
+
+## Fresh committed Spec review
+
+Independent review pinned `685bcd6f2ac1e3797a2a5ea4f8653f777e158cd2`, against the same protected-main base. No confirmed actionable implementation defect or unasked scope. Direct checks preserve all 150 ordered identifiers/source records and 316 inherited assessments; complete guided fields, aligned acyclic prerequisites and final UI inspection hashes were confirmed. Sampled mathematical teaching included extensions, Wedderburn and Nakayama; the separate full mathematics review remains the 150-guide semantic evidence. Combined verification, protected merge and production deployment/rollback were explicitly pending release gates.

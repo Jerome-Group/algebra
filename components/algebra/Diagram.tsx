@@ -2,7 +2,7 @@
 
 import { useId, useState, type CSSProperties, type SVGProps } from "react";
 
-/** Fit geometry to its panel; keep original label sizes available on phones. */
+// SVG labels scale with geometry; original coordinates need a separate reading view.
 export function Diagram({ children, ...props }: SVGProps<SVGSVGElement>) {
   const [readable, setReadable] = useState(false);
   const id = useId();

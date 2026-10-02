@@ -221,6 +221,17 @@ function componentInventory() {
     });
 }
 
+export const verificationLayers = [
+  "map",
+  "math",
+  "render",
+  "browser",
+  "types",
+  "build",
+  "engineering",
+  "all",
+];
+
 export const actionKinds = [
   "button",
   "textbox",
@@ -280,7 +291,7 @@ export const commands = [
   {
     name: "verify",
     arguments: [
-      "--layer map|math|render|browser|types|build|engineering|all",
+      `--layer ${verificationLayers.join("|")}`,
       "--evidence path",
       "--url origin (external browser verification server)",
       "--built (standalone browser uses production Worker); all always uses built Worker unless --url",
@@ -329,16 +340,7 @@ export const commands = [
       },
       layer: {
         type: "string",
-        enum: [
-          "map",
-          "math",
-          "render",
-          "browser",
-          "types",
-          "build",
-          "engineering",
-          "all",
-        ],
+        enum: verificationLayers,
       },
       url: {
         type: "string",

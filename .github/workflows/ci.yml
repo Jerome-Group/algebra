@@ -19,7 +19,7 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       # Actions are pinned to a commit, not a tag, so a moved tag cannot change what runs here.
       # Dependabot is what moves these pins forward (.github/dependabot.yml).

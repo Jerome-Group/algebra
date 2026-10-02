@@ -139,7 +139,7 @@
       },
       {
         "file": "components/algebra/Diagram.tsx",
-        "sha256": "7ba04dd9827658f6588a8b8ad06dac13e111cd385db617fe0608a5953bfdc963"
+        "sha256": "e77e142d18501f85437695d465b645129feebf6deb7f2c09246f3998f912d133"
       },
       {
         "file": "components/algebra/Exploration.tsx",
@@ -1028,7 +1028,7 @@
       "ureca-faithful-direct-product"
     ],
     "independentMathematicalReview": "docs/research/independent-mathematics-review.md",
-    "automatedFinalStatus": "Exact final combined verifier pending; prior complete pre-sizing run passed 230 browser cases; final sizing suite independently passed 162 cases.",
+    "automatedFinalStatus": "Combined post-sizing run: all engineering/math/render layers passed, 391/392 browser cases passed; artifact-directory collision repaired, final rerun pending.",
     "responsiveGeometry": {
       "independentLayouts": 450,
       "widths": [320, 375, 768],
@@ -1039,7 +1039,10 @@
       "automatedCases": 162,
       "automatedPassed": 162,
       "automatedEvidence": "outputs/sizing-tests"
-    }
+    },
+    "runtimeEquivalentNonBehavioralChanges": [
+      "Diagram comment refined to explain the original-label coordinate constraint after the inspected build; no runtime statement changed."
+    ]
   },
   "production": {
     "status": "pending new version deployment"

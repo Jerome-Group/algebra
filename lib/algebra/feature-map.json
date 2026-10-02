@@ -15,7 +15,7 @@
     },
     {
       "file": ".github/workflows/ci.yml",
-      "sha256": "b5c1d02ddd76a0c5a1c13e64d85ad5a1bb5a125a956b5e8e9a625393a54904b2"
+      "sha256": "f6d330f81efb55f4c98e46a38dfa84697cf7dc2b6cddb0421373cfbcf31d632f"
     },
     {
       "file": ".github/workflows/conformance.yml",
@@ -207,7 +207,7 @@
     },
     {
       "file": "components/algebra/Diagram.tsx",
-      "sha256": "7ba04dd9827658f6588a8b8ad06dac13e111cd385db617fe0608a5953bfdc963"
+      "sha256": "e77e142d18501f85437695d465b645129feebf6deb7f2c09246f3998f912d133"
     },
     {
       "file": "components/algebra/Exploration.tsx",
@@ -771,7 +771,7 @@
     },
     {
       "file": "docs/research/browser-inspection.json",
-      "sha256": "729267a60b2915cefda63a1d85f817c0088398a1b08aa1521fe221ee2fd04314"
+      "sha256": "be335cda10c234a87d2c0f4456ac550db818072a9495cecf3282a49b4f69efc4"
     },
     {
       "file": "docs/research/independent-mathematics-review.md",
@@ -799,11 +799,11 @@
     },
     {
       "file": "docs/research/spec-review.md",
-      "sha256": "9b07f743ecc4078e58f00580dfa8a99ebccbf24942a4a393730292a6c8141000"
+      "sha256": "3d08c2be662a042848af1c1663a43329a6a54c42c11a89bd85c030c5e9dea784"
     },
     {
       "file": "docs/research/standards-review.md",
-      "sha256": "0a0c6856916d2b5ab8f48951316a2c41e8c8e1c043333325b5ca679365136371"
+      "sha256": "cc354f56805239379020b9466f77c81819b1566a705d97aa38bed43cad9fcee3"
     },
     {
       "file": "docs/research/teaching-audit.json",
@@ -811,7 +811,7 @@
     },
     {
       "file": "docs/research/verification-audit.md",
-      "sha256": "99fb33d5d61cf7861d710e25b1d16ee5102eae5c2fb45fd22c3cfc8d4a3aa242"
+      "sha256": "ecd7418f72a7513ee1a17a3015602dc15b14850f20b8874af52065c38b7eeeb9"
     },
     {
       "file": "docs/research/visual-sizing-review.md",
@@ -1063,11 +1063,11 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "b0548ec7387d36f3649015eeecad60fb81c3cf5395245f31464a984678b5740f"
+      "sha256": "60a08f395bba278c57afcb02f24e83f67f0313aad81aa0f27ec35aa6d2dcde62"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "4e59e34a141330ae5891ebedde9255fa3035542d5ab8bf224c6f323356c02897"
+      "sha256": "8958fa9286e4679a656346e9b8e6282923fbdc1ac1e9bb9ff4934671b05d7891"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1207,7 +1207,7 @@
     },
     {
       "file": "tests/feature-map.test.mjs",
-      "sha256": "6b0d40bd2d38fb49242f901a1d1e6157e7dc4b5d8e616444a43c86cd5de6ed76"
+      "sha256": "341752420959a9d67036008e3feb310e728a9856014aaef4471f515f963a9625"
     },
     {
       "file": "tests/fixed-colorings.test.mjs",

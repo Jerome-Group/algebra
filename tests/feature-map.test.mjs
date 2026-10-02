@@ -3,12 +3,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import {
   buildMap,
   validateMap,
   mapPath,
   commands,
+  root,
 } from "../scripts/algebra-map.mjs";
 
 test("feature map is current and covers every lesson, unit, component and source contract", () => {
@@ -67,6 +68,79 @@ test("CLI input and evidence IO failures remain structured without corrupting th
     const result = JSON.parse(failedEvidence.stdout);
     assert.ok(result.errors.some((error) => error.code === "EISDIR"));
     assert.ok(!result.evidence.some((item) => item.kind === "result-file"));
+  } finally {
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
+});
+
+test("concurrent browser verifications preserve separate evidence", async () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-parallel-"));
+  try {
+    fs.mkdirSync(path.join(fixture, "tests"));
+    fs.mkdirSync(path.join(fixture, "lib/algebra"), { recursive: true });
+    for (const file of fs.readdirSync(path.join(root, "lib/algebra"))) {
+      if (file.endsWith(".json") && file !== "feature-map.json")
+        fs.copyFileSync(
+          path.join(root, "lib/algebra", file),
+          path.join(fixture, "lib/algebra", file),
+        );
+    }
+    fs.mkdirSync(path.join(fixture, "components/algebra"), { recursive: true });
+    for (const file of ["WebMCP.tsx", "Laboratory.tsx"])
+      fs.copyFileSync(
+        path.join(root, "components/algebra", file),
+        path.join(fixture, "components/algebra", file),
+      );
+    const runner = path.join(fixture, "node_modules/@playwright/test/cli.js");
+    fs.mkdirSync(path.dirname(runner), { recursive: true });
+    // Simulate a runner clearing its output at startup, as Playwright does.
+    fs.writeFileSync(
+      runner,
+      `const fs=require('node:fs'),path=require('node:path');
+       const dir=process.env.ALGEBRA_EVIDENCE_DIR;
+       fs.rmSync(dir,{recursive:true,force:true});fs.mkdirSync(dir,{recursive:true});
+       fs.writeFileSync(path.join(dir,'case-'+process.pid+'.json'),'{}');
+       setTimeout(()=>{},100);`,
+    );
+    const execute = () =>
+      new Promise((resolve, reject) => {
+        const environment = { ...process.env, ALGEBRA_MAP_ROOT: fixture };
+        delete environment.ALGEBRA_EVIDENCE_DIR;
+        const child = spawn(
+          process.execPath,
+          [
+            "scripts/algebra.mjs",
+            "verify",
+            "--layer",
+            "browser",
+            "--url",
+            "http://localhost:5175",
+          ],
+          { cwd: root, env: environment },
+        );
+        let stdout = "";
+        child.stdout.on("data", (chunk) => (stdout += chunk));
+        child.on("error", reject);
+        child.on("close", (code) => {
+          try {
+            assert.equal(code, 0, stdout);
+            resolve(JSON.parse(stdout));
+          } catch (error) {
+            reject(error);
+          }
+        });
+      });
+    const results = await Promise.all([execute(), execute()]);
+    const directories = results.map((result) => {
+      assert.equal(result.ok, true);
+      const evidence = result.evidence.find(
+        (entry) => entry.kind === "browser-artifacts",
+      );
+      assert.ok(evidence);
+      assert.equal(fs.readdirSync(evidence.path).length, 1);
+      return evidence.path;
+    });
+    assert.notEqual(directories[0], directories[1]);
   } finally {
     fs.rmSync(fixture, { recursive: true, force: true });
   }

@@ -8,13 +8,14 @@ import {
   validateMap,
   commands,
   actionKinds,
+  verificationLayers,
   root,
   mapPath,
 } from "./algebra-map.mjs";
 
 const args = process.argv.slice(2),
   command = args.shift() ?? "help";
-const option = (name, fallback) => {
+const option = (args, name, fallback) => {
   const index = args.indexOf(`--${name}`);
   return index < 0 ? fallback : args[index + 1];
 };
@@ -28,34 +29,30 @@ const envelope = {
   evidence: [],
   errors: [],
 };
-let map;
-const resolveLesson = (id) => {
+const resolveLesson = (map, id) => {
   const lesson = map.lessons.find(
     (lesson) => lesson.id === id || lesson.aliases?.includes(id),
   );
   if (!lesson) throw Error(`Unknown lesson: ${id}`);
   return lesson;
 };
-function runCheck(name, executable, arguments_, environment = {}) {
+function runCheck(root, name, executable, arguments_, environment = {}) {
   const execution = spawnSync(executable, arguments_, {
     cwd: root,
     encoding: "utf8",
     maxBuffer: 20 * 1024 * 1024,
     env: { ...process.env, ...environment },
   });
-  const check = {
+  return {
     name,
     status: execution.status === 0 ? "passed" : "failed",
     exitCode: execution.status,
     output: `${execution.stdout ?? ""}${execution.stderr ?? ""}`,
     error: execution.error?.message,
   };
-  envelope.checks.push(check);
-  if (check.status !== "passed") envelope.ok = false;
 }
-async function inspect() {
-  const lesson = resolveLesson(args[0]);
-  const url = new URL(option("url", "http://127.0.0.1:5173"));
+async function inspect(lesson, { origin, action, sequence }) {
+  const url = new URL(origin);
   if (!["http:", "https:"].includes(url.protocol))
     throw Error("URL must use HTTP or HTTPS");
   const { chromium } = await import("@playwright/test");
@@ -82,8 +79,6 @@ async function inspect() {
     await page.locator(".laboratory-loading").waitFor({ state: "hidden" });
     if (await page.locator(".laboratory-load-error").count())
       throw Error("Laboratory failed to load");
-    const action = option("action"),
-      sequence = option("actions");
     if (action && sequence) throw Error("Use --action or --actions, not both");
     const actions = sequence
       ? JSON.parse(sequence)
@@ -216,7 +211,7 @@ async function inspect() {
       });
       await page.keyboard.press("Escape");
     }
-    envelope.result = {
+    const result = {
       ...(await page.locator(".algebra-app").evaluate((app) => ({
         route: location.hash,
         heading: app.querySelector("h1")?.textContent,
@@ -252,20 +247,21 @@ async function inspect() {
       }))),
       customChoices,
     };
-    envelope.evidence.push({
+    const evidence = {
       kind: "browser-observation",
       isolatedContext: true,
       actions,
       effects:
         "Fresh browser state discarded on exit; no personal storage loaded",
-    });
+    };
+    return { result, evidence };
   } finally {
     await browser.close();
   }
 }
 
 try {
-  map = buildMap();
+  const map = buildMap();
   envelope.provenance = {
     sourceDigest: createHash("sha256")
       .update(JSON.stringify(map.sources))
@@ -299,7 +295,7 @@ try {
       claims: "inventory only",
     });
   } else if (command === "list") {
-    const query = option("query", "").toLocaleLowerCase();
+    const query = option(args, "query", "").toLocaleLowerCase();
     envelope.result = map.lessons
       .filter((lesson) =>
         JSON.stringify([
@@ -320,7 +316,7 @@ try {
         routes,
       }));
   } else if (command === "lesson") {
-    const lesson = resolveLesson(args[0]);
+    const lesson = resolveLesson(map, args[0]);
     const content = JSON.parse(
       fs.readFileSync(path.join(root, "lib/algebra/lessons.json"), "utf8"),
     ).find((item) => item.id === lesson.id);
@@ -333,11 +329,11 @@ try {
       )[lesson.id] ?? null;
     envelope.result = { ...lesson, content, guided };
   } else if (command === "prerequisites") {
-    const lesson = resolveLesson(args[0]),
+    const lesson = resolveLesson(map, args[0]),
       found = new Map();
     const visit = (id) => {
       if (found.has(id)) return;
-      const item = resolveLesson(id);
+      const item = resolveLesson(map, id);
       found.set(id, {
         id,
         title: item.title,
@@ -353,30 +349,30 @@ try {
       prerequisites: [...found.values()],
       effects: "read only; does not award mastery",
     };
-  } else if (command === "inspect") await inspect();
-  else if (command === "verify") {
-    const layer = option("layer", "map");
-    if (
-      ![
-        "map",
-        "math",
-        "render",
-        "browser",
-        "types",
-        "build",
-        "engineering",
-        "all",
-      ].includes(layer)
-    )
+  } else if (command === "inspect") {
+    const inspection = await inspect(resolveLesson(map, args[0]), {
+      origin: option(args, "url", "http://127.0.0.1:5173"),
+      action: option(args, "action"),
+      sequence: option(args, "actions"),
+    });
+    envelope.result = inspection.result;
+    envelope.evidence.push(inspection.evidence);
+  } else if (command === "verify") {
+    const layer = option(args, "layer", "map");
+    if (!verificationLayers.includes(layer))
       throw Error("Unknown verification layer");
     if (["build", "engineering", "all"].includes(layer))
-      runCheck("production-build", process.execPath, [
-        "node_modules/vinext/dist/cli.js",
-        "build",
-      ]);
+      envelope.checks.push(
+        runCheck(root, "production-build", process.execPath, [
+          "node_modules/vinext/dist/cli.js",
+          "build",
+        ]),
+      );
     if (["engineering", "all"].includes(layer)) {
-      runCheck("formatting", "npm", ["run", "format:check"]);
-      runCheck("lint", "npm", ["run", "lint"]);
+      envelope.checks.push(
+        runCheck(root, "formatting", "npm", ["run", "format:check"]),
+      );
+      envelope.checks.push(runCheck(root, "lint", "npm", ["run", "lint"]));
     }
     if (layer === "map" || layer === "all") {
       const errors = validateMap(map);
@@ -395,41 +391,67 @@ try {
       envelope.ok &&= errors.length === 0 && current;
     }
     if (layer === "types" || layer === "all")
-      runCheck("typescript-contracts", process.execPath, [
-        "node_modules/typescript/bin/tsc",
-        "--noEmit",
-      ]);
+      envelope.checks.push(
+        runCheck(root, "typescript-contracts", process.execPath, [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit",
+        ]),
+      );
     const tests = map.tests.filter(
       (file) =>
         !file.endsWith("ui-components.test.mjs") &&
         !file.endsWith("rendered-html.test.mjs"),
     );
     if (layer === "math" || layer === "all")
-      runCheck("mathematical-and-content-suites", process.execPath, [
-        "--test",
-        ...tests,
-      ]);
+      envelope.checks.push(
+        runCheck(root, "mathematical-and-content-suites", process.execPath, [
+          "--test",
+          ...tests,
+        ]),
+      );
     if (layer === "render" || layer === "all")
-      runCheck("built-artifact-and-component-rendering", process.execPath, [
-        "--test",
-        "tests/ui-components.test.mjs",
-        "tests/rendered-html.test.mjs",
-      ]);
+      envelope.checks.push(
+        runCheck(
+          root,
+          "built-artifact-and-component-rendering",
+          process.execPath,
+          [
+            "--test",
+            "tests/ui-components.test.mjs",
+            "tests/rendered-html.test.mjs",
+          ],
+        ),
+      );
     if (layer === "browser" || layer === "all") {
-      const origin = option("url", process.env.ALGEBRA_TEST_ORIGIN);
+      const origin = option(args, "url", process.env.ALGEBRA_TEST_ORIGIN);
       if (origin && !["http:", "https:"].includes(new URL(origin).protocol))
         throw Error("Browser URL must use HTTP or HTTPS");
-      runCheck(
-        "browser-interactions",
-        process.execPath,
-        ["node_modules/@playwright/test/cli.js", "test"],
-        origin
-          ? { ALGEBRA_TEST_ORIGIN: origin }
-          : layer === "all" || args.includes("--built")
-            ? { ALGEBRA_BUILT_WORKER: "1" }
-            : {},
+      const browserArtifacts =
+        process.env.ALGEBRA_EVIDENCE_DIR ??
+        path.join(root, "outputs", `verification-${started}-${process.pid}`);
+      envelope.checks.push(
+        runCheck(
+          root,
+          "browser-interactions",
+          process.execPath,
+          ["node_modules/@playwright/test/cli.js", "test"],
+          {
+            ALGEBRA_EVIDENCE_DIR: browserArtifacts,
+            ...(origin
+              ? { ALGEBRA_TEST_ORIGIN: origin }
+              : layer === "all" || args.includes("--built")
+                ? { ALGEBRA_BUILT_WORKER: "1" }
+                : {}),
+          },
+        ),
       );
+      if (fs.existsSync(browserArtifacts))
+        envelope.evidence.push({
+          kind: "browser-artifacts",
+          path: path.resolve(browserArtifacts),
+        });
     }
+    envelope.ok &&= envelope.checks.every((check) => check.status === "passed");
     envelope.result = {
       layer,
       catalogue: {
@@ -462,7 +484,7 @@ try {
   });
 }
 envelope.durationMs = Date.now() - started;
-const evidencePath = option("evidence");
+const evidencePath = option(args, "evidence");
 if (evidencePath) {
   try {
     const destination = path.resolve(evidencePath);
