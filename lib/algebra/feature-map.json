@@ -75,7 +75,7 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "af58b70f2061f378815b8464dacd4cd85d55cffa2520196d7a78d3c123151e1a"
+      "sha256": "ee4a79a44f2af1af919c5b872566cc79a8a233bc6336b4afa2031927badabbd9"
     },
     {
       "file": "README.md",
@@ -767,15 +767,23 @@
     },
     {
       "file": "docs/overhaul-plan.json",
-      "sha256": "6980aafe7c357e8b911261ee7e85d9f1fad23377619a2b3dd8decc0f3fd2e7e6"
+      "sha256": "529b753e0be8bdc211b7ee5e7691cae7173b7860264cc925d0c34ede8cbebcaf"
+    },
+    {
+      "file": "docs/release-verification.json",
+      "sha256": "d56e5d60ebf3d88bab39e7ded0d70ba33299a19a0e329dfdf00c807f2418f378"
+    },
+    {
+      "file": "docs/release-verification.md",
+      "sha256": "a9774f3b29de394aa6f87b92b900cb4044d6d37796ef7100929a11e06e826769"
     },
     {
       "file": "docs/research/browser-inspection.json",
-      "sha256": "dbd233cfd885c5422e1acc67719abbe3318531d44a8a5078649fcca1343c3282"
+      "sha256": "9a4527322c59e89b716e65fc18b942bfa302fdc8bad389ec90df39feaf557203"
     },
     {
       "file": "docs/research/dependency-readiness.md",
-      "sha256": "c7482013c9538649917ff153c333ddc0bf372056a550899fe9a8db4f3795e328"
+      "sha256": "8bdb7c42c73a35fe6cd8c9f3310f01c3566784a1cf778b52512a52840cec80ef"
     },
     {
       "file": "docs/research/independent-mathematics-review.md",
@@ -787,7 +795,7 @@
     },
     {
       "file": "docs/research/learning-experience.md",
-      "sha256": "ff72484c46e579eef48fcb3ba4b8758113f5b5c9749b7ff5bb97f51f90c9e9a9"
+      "sha256": "1f3b9824609771fc8b50751645f0ab0e0cf32b61adb34ba122f044947ad8c4bf"
     },
     {
       "file": "docs/research/mathematics-and-learning.md",
@@ -795,11 +803,11 @@
     },
     {
       "file": "docs/research/persistence-and-delivery.md",
-      "sha256": "76c6473b4b326912c5973341783d6aae6d202b7b4cc401c4a8ac232cc9cd9330"
+      "sha256": "945243e788444c799a6a978a6dd679ff128b1d61ed1f3e607e5d9ef4017bf167"
     },
     {
       "file": "docs/research/release-review.md",
-      "sha256": "f29c04df64bceee09f8bf946dda3dd59ced09c7f2735c34b716f884c00c21c7d"
+      "sha256": "e7b553cf14bae62116b73cf5c17f64e40df8643fa11247e297782d40452149cd"
     },
     {
       "file": "docs/research/spec-review.md",
@@ -807,7 +815,7 @@
     },
     {
       "file": "docs/research/standards-review.md",
-      "sha256": "9312cca75a04b28da506069dc8a7a78987bdf054ba7c791d6eaa3fbf5a3aad1d"
+      "sha256": "f7d7f97a109e028e29f90bb785a6ae474e9040206f90a0dbd009e3c37489542f"
     },
     {
       "file": "docs/research/teaching-audit.json",
@@ -815,7 +823,7 @@
     },
     {
       "file": "docs/research/verification-audit.md",
-      "sha256": "3bb210187a12384cf11dca69d651b3a4385ae52e780b1aa1ea9a371dec8e74b9"
+      "sha256": "d0ab5ffba91f1cbca84e2dd714e1743cce5bf5d48608da4235e5b655008c9348"
     },
     {
       "file": "docs/research/visual-sizing-review.md",

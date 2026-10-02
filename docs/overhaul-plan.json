@@ -94,7 +94,11 @@
         "all production lessons and learning journeys",
         "honest issue criteria and release report"
       ],
-      "evidence": ["docs/release-verification.md"]
+      "evidence": [
+        "docs/release-verification.md",
+        "docs/release-verification.json",
+        "docs/research/browser-inspection.json"
+      ]
     }
   ]
 }

@@ -29,3 +29,7 @@ The built baseline separately passed 157 browser cases, including all 150 lesson
 Development-only hydration failures were traced to shared optimized-dependency caches while builds and SSR checks ran concurrently. The development cache now lives separately under `.wrangler/`; release sweeps use a built Worker and its matching static assets. Failed attempts are not counted as inspections.
 
 Private course PDFs were not copied, reopened or newly certified. Retained citations preserve their existing access permissions. Account services are not active in this public deployment; existing device progress, resume and saved square-element keys remain. Exact source identity and public access must be verified again at release.
+
+## Later release evidence — 2026-10-03
+
+The earlier review scope and pending statements above remain historical. Final protected CI, independent production verification, in-app coverage, native provenance and the tested version 7 → 8 → 7 restoration are recorded in [the release record](../release-verification.md). This later record is release-owner evidence, not a claim that this earlier reviewer executed those later checks.

@@ -19,7 +19,7 @@
   },
   "after": {
     "origin": "http://127.0.0.1:5175",
-    "runtime": "production Worker build from current reviewed working source",
+    "runtime": "Historical local built Worker inspection before the production navigation-focus repair; inspected file hashes retained below.",
     "sourceHashes": [
       {
         "file": ".openai/hosting.json",
@@ -1028,7 +1028,7 @@
       "ureca-faithful-direct-product"
     ],
     "independentMathematicalReview": "docs/research/independent-mathematics-review.md",
-    "automatedFinalStatus": "Exact patched local full run passed 117 Node tests and 392 browser cases; remote assertions also passed, but job cancelled at ten-minute upload/cleanup boundary. Repaired CI pending.",
+    "automatedFinalStatus": "Final reviewed focus-repair head passed protected CI: 110 mathematical/content and eight render Node cases; 395 built Worker browser cases. Final restored v7 production independently passed all395 cases. See docs/release-verification.json.",
     "responsiveGeometry": {
       "independentLayouts": 450,
       "widths": [320, 375, 768],
@@ -1064,7 +1064,1440 @@
     }
   },
   "production": {
-    "status": "pending new version deployment"
+    "status": "production-verified",
+    "sourceTree": "bac9dbdf7fd0cecea949c7aae1139a2f3710409c",
+    "sitesCommit": "6e9190020bcb8a665e3a9dabde83786892b4d90f",
+    "versionId": "appgprj_6a9f5e3039108191a1f2d9598aedd130~appgver_557c68342dcc8191bbfc8c57ca8662a0",
+    "activeVersionNumber": 7,
+    "origin": "https://algebra.jeromegroup.org",
+    "domainAndPublicRevisionUnchanged": true,
+    "releaseRecord": "docs/release-verification.json",
+    "inApp": {
+      "browser": "Codex in-app browser",
+      "url": "https://algebra.jeromegroup.org",
+      "versionNumber": 7,
+      "afterRollback": true,
+      "guided": {
+        "lessons": 150,
+        "widths": [320, 1280],
+        "height": 900,
+        "snapshots": 300,
+        "sixStagesPerLesson": true,
+        "pageOverflows": 0,
+        "mathErrors": 0
+      },
+      "laboratories": {
+        "routes": 150,
+        "width": 320,
+        "height": 900,
+        "modelsRevealedWherePredictionRequired": true,
+        "predictionActions": 62,
+        "integratedRevealButtonsRemainVisibleAfterResults": 22,
+        "displayedControls": 1323,
+        "pageOverflows": 0,
+        "mathErrors": 0,
+        "loadErrors": 0
+      },
+      "retainedViews": {
+        "lessons": 150,
+        "views": ["understand", "example", "theorem", "proof"],
+        "width": 320,
+        "snapshots": 600,
+        "pageOverflows": 0,
+        "mathErrors": 0
+      },
+      "mainModes": {
+        "routes": ["home", "learn", "explore", "reference", "sources"],
+        "width": 320,
+        "pageOverflows": 0,
+        "mathErrors": 0
+      },
+      "perLesson": [
+        {
+          "id": "foundations-functions",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "foundations-fibers",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "foundations-quotient-rules",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-axioms",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-inverse-order",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-subgroups",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-generators",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-congruence",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-units",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-dihedral",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-permutations",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-cyclic",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-homomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-isomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-permutation-matrices",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-alternating",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-cosets",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-lagrange",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-euler-fermat",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "groups-cauchy",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-small-groups",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-cayley-embedding",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-normal",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-quotient",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-real-circle",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-automorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-centralizer-normalizer",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-direct-product",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-semidirect",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-commutator",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-first-isomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-second-isomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-third-isomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-correspondence",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-finite-abelian",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-quaternion",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-actions",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-orbit-stabilizer",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-conjugacy",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-coset-action",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-double-cosets",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-burnside",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-necklaces",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-cycle-index",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-solid-colorings",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-sylow-existence",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-sylow-conjugacy",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-sylow-counts",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-simple-composition",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-p-groups",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "mh2220-finite-matrices",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-rings",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-subrings",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-units",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-characteristic",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-domains",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-algebraic",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-quadratic-integers",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-norm-trace",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-ring-hom",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-ideals",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-ideal-arithmetic",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-quotient-ring",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-first-ring-isomorphism",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-ring-correspondence",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-maximal",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-prime",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-crt",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-fractions",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-localization",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-prime-localization",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-localization-variants",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-euclidean",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-gaussian-division",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-pid",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-prime-irreducible",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-ufd",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-polynomial",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-polynomial-division",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-roots",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-irreducibility-tests",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-gauss",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-eisenstein",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-polynomial-ufd",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-noetherian",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-hilbert",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-krull",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-jacobson",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-nilradical",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-artinian",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-artinian-decomposition",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-modules",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-submodules",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "modules-generators",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-annihilator",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-module-chains",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-nakayama",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-dvr",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "m3220-finite-field-four",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-linear-groups",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-flags",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-schur",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-character-table",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-induction",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "odyssey-frobenius",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "foundations-linear-algebra",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-linear-action",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-permutation-module",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-invariant-subspaces",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-group-algebra",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-intertwiners",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-cyclic-eigenvalues",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-signed-permutations",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-generator-words",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-four-actions",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-orbit-stabilizer",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-diagonals-s4",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "cube-direct-product",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "orthogonal-metric-orientation",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "orthogonal-plane",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "orthogonal-axis-angle",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "representations-square-modes",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "representations-real-complex",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "representations-maschke",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "representations-characters",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-faithful-transitive",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-stabilizer-kernel-core",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-regular-conjugation",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-cube-burnside",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-cycle-lenses",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "linear-bruhat",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "linear-projective",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-primitive",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "group-complements",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "group-extensions",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "group-solvable",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "group-nilpotent",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "tensor-products",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "algebra-wedderburn",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "algebra-radical",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "characters-integrality",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "characters-burnside",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "actions-frobenius",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "linear-quotient",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "quadratic-quotient",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-character-bound-kernel",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-external-tensor-products",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-direct-product-irreducibles",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-product-kernel-scalar-matching",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        },
+        {
+          "id": "ureca-faithful-direct-product",
+          "guidedWidths": [320, 1280],
+          "laboratoryWidth": 320,
+          "retainedViews": ["understand", "example", "theorem", "proof"],
+          "observedPageOverflow": false,
+          "observedMathRenderingError": false,
+          "observedLaboratoryLoadError": false
+        }
+      ],
+      "retention": "Condensed executed observation ledger. Full live DOM snapshots were inspected in the browser session; this is not a persisted raw snapshot archive."
+    },
+    "automatedBrowser": {
+      "url": "https://algebra.jeromegroup.org",
+      "versionNumber": 7,
+      "afterRollback": true,
+      "passed": 395,
+      "failed": 0,
+      "shards": [
+        {
+          "shard": "1/2",
+          "passed": 200,
+          "failed": 0,
+          "durationMs": 251154,
+          "report": "outputs/production-final-browser-1.json",
+          "reportSha256": "c35728f43edd60b3a5074a0c3acc88ef787a38c12594a96fb4a15b5944a0b382",
+          "artifacts": "outputs/verification-1790977265821-5089",
+          "inspectedSourceDigest": "4f088b793d07c4745745759acdcc0fb292d5e966e178b0167c163bc6381f4189",
+          "localBuildServerSha256": "ecab8f8f68bec30a33de5a0889bc3cfea4c7b2a20acfb121cd40f8c624e39318"
+        },
+        {
+          "shard": "2/2",
+          "passed": 195,
+          "failed": 0,
+          "durationMs": 137672,
+          "report": "outputs/production-final-browser-2.json",
+          "reportSha256": "c725291317859adeb6c9a19b9e5506d38ecd188780dc29abe9cb8cf917c11314",
+          "artifacts": "outputs/verification-1790977265821-5090",
+          "inspectedSourceDigest": "4f088b793d07c4745745759acdcc0fb292d5e966e178b0167c163bc6381f4189",
+          "localBuildServerSha256": "ecab8f8f68bec30a33de5a0889bc3cfea4c7b2a20acfb121cd40f8c624e39318"
+        }
+      ],
+      "scope": "All test files and cases across both shards. Disposable browser contexts. Reports carry a local build hash, not downloaded deployed-byte identity."
+    }
   },
   "limits": [
     "Private original course files not reopened or newly certified.",

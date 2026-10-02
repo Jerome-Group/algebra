@@ -20,3 +20,7 @@ No remaining confirmed actionable defect in the focused release review. Source a
 ## Release limits
 
 Full 116-test Node/230-case browser rerun, final source/inspection hash agreement, remote required-check success and actual CI duration are not independently executed here. Earlier failed contrast runs remain failure evidence. Live Sites identity/access, production journeys and tested deployment rollback require release-owner evidence. Device progress backup is one reversible previous record, with JSON export; no import UI or distributed transaction guarantee is claimed. Independent mathematics review supplies mathematical coverage; this focused review does not re-prove all 150 guides.
+
+## Later release evidence — 2026-10-03
+
+The earlier review scope and pending statements above remain historical. Final protected CI, independent production verification, in-app coverage, native provenance and the tested version 7 → 8 → 7 restoration are recorded in [the release record](../release-verification.md). This later record is release-owner evidence, not a claim that this earlier reviewer executed those later checks.
