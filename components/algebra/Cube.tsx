@@ -469,7 +469,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <p className="lab-explain">
           {set === "mixed"
             ? `The selected point lies in an orbit of size ${orb.length}. Vertices and faces form two separate orbits, so the action is faithful but not transitive.`
-            : `Every ${set === "diagonals" ? "unoriented diagonal" : set.slice(0, -1)} is reachable.`}{" "}
+            : `Every ${set === "diagonals" ? "unoriented diagonal" : set === "vertices" ? "vertex" : set.slice(0, -1)} is reachable.`}{" "}
           Each destination in this orbit is reached by exactly {stab.length}{" "}
           group elements:{" "}
           <M>{`${G.length}=${orb.length}\\cdot ${stab.length}`}</M>.{" "}
