@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -33,7 +34,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
           </Prose>
         </p>
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 440 320"
         role="img"
@@ -103,7 +104,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
             >{`${i ? "Tv" : "v"}=(${p.join(",")})`}</SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="three-cols">
           <Range

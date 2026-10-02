@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
@@ -44,7 +45,7 @@ export function ColoringLab() {
           ]}
         />
       </div>
-      <svg
+      <Diagram
         viewBox="0 0 560 400"
         className="math-svg"
         role="group"
@@ -87,7 +88,7 @@ export function ColoringLab() {
             </g>
           );
         })}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="two-cols">
           <Range

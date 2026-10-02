@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
@@ -100,7 +101,7 @@ export function CayleyReachability({ lesson }: { lesson: Lesson }) {
             : "Nonexample: a nonzero element need not generate the whole group."}
         </p>
       </div>
-      <svg
+      <Diagram
         viewBox="0 0 360 330"
         role="img"
         aria-label={`Cayley graph of C${size}, with edges adding ${generator}; current vertex ${current}, shortest word length ${model.words.get(current)?.length ?? "unreachable"}. Reachability, lengths and words are listed in the table.`}
@@ -175,7 +176,7 @@ export function CayleyReachability({ lesson }: { lesson: Lesson }) {
             </g>
           );
         })}
-      </svg>
+      </Diagram>
       <p>
         Arrows add g. Pale fills vary with shortest word length; the table gives
         the exact number. Thick outlines mark reachable vertices; dashed

@@ -1,0 +1,1074 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "claimBoundary": "Executed in-app DOM/render inspection, not a learner study or certification of all parameter combinations. Semantic review is separate.",
+  "baseline": {
+    "runtimeCommit": "acb8486",
+    "origin": "http://127.0.0.1:5174",
+    "productionInitialLessonCount": 143,
+    "repositoryLessonCount": 150,
+    "inAppLessonSnapshots": 150,
+    "formulaErrors": 0,
+    "pageOverflows": 0,
+    "automatedBrowserCases": {
+      "passed": 157,
+      "failed": 0,
+      "evidence": "outputs/baseline-worker-results.json"
+    },
+    "inAppLaboratorySnapshots": 150
+  },
+  "after": {
+    "origin": "http://127.0.0.1:5175",
+    "runtime": "production Worker build from current reviewed working source",
+    "sourceHashes": [
+      {
+        "file": ".openai/hosting.json",
+        "sha256": "85916ab4f63973471f2ecbc4a911c64a6979ca26f9dcbec866c043993f4d4459"
+      },
+      {
+        "file": "app/algebra.css",
+        "sha256": "f289fd92d16420d811d97cf3398ce7a77e7d5a2177a06ed21f57c6f09def8495"
+      },
+      {
+        "file": "app/chatgpt-auth.ts",
+        "sha256": "17a965f8948b21510cdf8ecbd70c5fdf58100e10970463f6a8fd2cc4795f8044"
+      },
+      {
+        "file": "app/globals.css",
+        "sha256": "622abecaa5e94003046d2acc1301fb7cc526f653375fdb050b01b23d8cafe4be"
+      },
+      {
+        "file": "app/laboratories.css",
+        "sha256": "53f2693e59e3ab26adcdc94a36496c3596c0a2800fa380a99222c60b97145984"
+      },
+      {
+        "file": "app/layout.tsx",
+        "sha256": "cce9ec4a4b1b16bf7aa359b0b81893c6826b2e64f942b7e2ecdc5d86ca9cea9d"
+      },
+      {
+        "file": "app/page.tsx",
+        "sha256": "c438b46bda0a2c16b5168c746051ce75968d7e2d62041bf681e1f281e4ad974c"
+      },
+      {
+        "file": "app/responsive.css",
+        "sha256": "367329c6d09672a79800bc4873cf1f99573690918fc922fcd8269df3def53559"
+      },
+      {
+        "file": "app/studio.css",
+        "sha256": "1d3c6161bfb55ab4981850adef970833a9b84c2f5c856cedac0edfbdfd7cdde8"
+      },
+      {
+        "file": "build/sites-vite-plugin.ts",
+        "sha256": "81b7cbfaeb970611572256aba0e313425beb3809f6426f63750696c15d9c756b"
+      },
+      {
+        "file": "components/algebra/Algebra.tsx",
+        "sha256": "1e624eddde47181c4d005b9350b267df59b3c16906e3527241a84f45d19bcaa0"
+      },
+      {
+        "file": "components/algebra/Bridges.tsx",
+        "sha256": "4131bdf1e9830eaf2a4e36f033f3b24e7a2d69656c9989f087aab8a3979965c6"
+      },
+      {
+        "file": "components/algebra/BurnsideClassLab.tsx",
+        "sha256": "c8973986e5620150388abac8576ab5d9adf065c68371845d9caba7e6ddb97674"
+      },
+      {
+        "file": "components/algebra/CayleyEmbedding.tsx",
+        "sha256": "336b873d0c28f1742ae190e659c46d446382c79430101e4caf0689af99d8167e"
+      },
+      {
+        "file": "components/algebra/CayleyReachability.tsx",
+        "sha256": "e2807439d32e43376638a371525392743eb3b56ee347e24cb1be858189e855a2"
+      },
+      {
+        "file": "components/algebra/CayleyRelations.tsx",
+        "sha256": "52e8437f1b26544031dc979d09dc6327f27cf23dc8b63925a6bb156b59710f79"
+      },
+      {
+        "file": "components/algebra/CharacterConstruction.tsx",
+        "sha256": "cca1ee03af6eb349c72b216b4d97d6be438ae02d57fc6cc98823db24c3c2cb94"
+      },
+      {
+        "file": "components/algebra/Checkpoint.tsx",
+        "sha256": "bae4802e141788ba05f646fa9cd07eb1ca0fc1bd491c9e261fefa10efc163dbf"
+      },
+      {
+        "file": "components/algebra/Coloring.tsx",
+        "sha256": "2dd7d3e1e6cd5af3576e44e7b60f2d09a5025cfefcbfca5701fb33e89755c1b6"
+      },
+      {
+        "file": "components/algebra/ColoringAxisDiagram.tsx",
+        "sha256": "49c291692073a1a77abcab0d9238146114b3a1c5fa5886c2723a86c2dee42630"
+      },
+      {
+        "file": "components/algebra/ColoringLedgerView.tsx",
+        "sha256": "84a846c941670e0e4ce30f3b179de81140a1f006a13985c604627d577c8a74d2"
+      },
+      {
+        "file": "components/algebra/ConceptLibrary.tsx",
+        "sha256": "4cbaedd5a7f25d62ce6ba2aa60b62074f6946fe2314e0eaeb7dd07fbcb546888"
+      },
+      {
+        "file": "components/algebra/ConceptLink.tsx",
+        "sha256": "88c0041e6350cf823beb730a3e3b0bbda374cfea522361a3339c986bb23d557b"
+      },
+      {
+        "file": "components/algebra/Conjugation.tsx",
+        "sha256": "d950549281c0ae18949d8bc48afa424f235623202cbdbc8e63a87038cc56afd3"
+      },
+      {
+        "file": "components/algebra/CosetConstructor.tsx",
+        "sha256": "dce45bddbb9c28bad5265752e9056c723053a690af09f933a69676093b91db21"
+      },
+      {
+        "file": "components/algebra/Cube.tsx",
+        "sha256": "d738717316f91cb93010c1fa995373b82454c0759014a35cbdca627ace585490"
+      },
+      {
+        "file": "components/algebra/CubeColoringLab.tsx",
+        "sha256": "43b7faa4bc730d46f57fb5dd3ddf0a4916077398d9a4a6a995a4588fd9e648db"
+      },
+      {
+        "file": "components/algebra/CyclicEigenvalues.tsx",
+        "sha256": "e257d0a21e2268626f216135339cc24153bf00ab861859288957054b3f0c1698"
+      },
+      {
+        "file": "components/algebra/CyclicSubgroups.tsx",
+        "sha256": "aee96389bb6033bb7099e6d11fd8fd21cd562464d27baca3d9c3f9a44e8da2d9"
+      },
+      {
+        "file": "components/algebra/Diagram.tsx",
+        "sha256": "e77e142d18501f85437695d465b645129feebf6deb7f2c09246f3998f912d133"
+      },
+      {
+        "file": "components/algebra/Exploration.tsx",
+        "sha256": "5f2532e466b59f905bd203450d258e1825dcfdf079ad8ebbc85ec31257f36258"
+      },
+      {
+        "file": "components/algebra/FiniteLinearGroups.tsx",
+        "sha256": "f7ef0b6385506f2d9dfe8026eede226dc791a989551830d6ad5af434e3b71edd"
+      },
+      {
+        "file": "components/algebra/FixedColoringLab.tsx",
+        "sha256": "433bd755878e878477192458d8e66f1253362b4a6efb6e3975a3f54c4506f4f0"
+      },
+      {
+        "file": "components/algebra/FunctionFibers.tsx",
+        "sha256": "ac4de59ec9d04377f43bc328c28174ff33b83dbc1726a877a7848107ffdbe486"
+      },
+      {
+        "file": "components/algebra/Groups.tsx",
+        "sha256": "c9a9dbe68a5bed8c83d9f06f3d07c538956e57525c81ee167fa13bc2a0e1b32a"
+      },
+      {
+        "file": "components/algebra/GuidedReader.tsx",
+        "sha256": "1f675f8abf99f74773cbc020434c7854d8fd5b84f8ddcf28cbf983229cf45589"
+      },
+      {
+        "file": "components/algebra/IdealChainExplorer.tsx",
+        "sha256": "ee8da3117f27636b3dbd3b12559be62b2400e20e6f4c02bab305c514dd5207cd"
+      },
+      {
+        "file": "components/algebra/IdealQuotientLattice.tsx",
+        "sha256": "13105bad4ba69195afce6d5eec2d56a35f652655a9e5a96051f019a057ed59c6"
+      },
+      {
+        "file": "components/algebra/InductionReciprocityLab.tsx",
+        "sha256": "fbf4c11deb6f6f79328e4e8be9b3ddb7db237991221126f375cbf30af5cfb34f"
+      },
+      {
+        "file": "components/algebra/InterfaceControls.ts",
+        "sha256": "74c7a2cea0bdd6685fa1e415d27ab83edab539577262a7082dd94598c178c526"
+      },
+      {
+        "file": "components/algebra/InvariantIntertwinerLab.tsx",
+        "sha256": "d30032d40d3893472eba35c5dafc4a7a10981a2c1ca65229ab6dd1023a14e64d"
+      },
+      {
+        "file": "components/algebra/Laboratory.tsx",
+        "sha256": "810aab5ed66e7bf003ddbcb1a1d6b35e2caef0577ad849fe0ea71dca0dcddd8d"
+      },
+      {
+        "file": "components/algebra/LaboratoryControls.tsx",
+        "sha256": "1dd0e8eecdb2578de2c5adac80cb5bae31eb5a62bc73342b673c9ebdf54d6441"
+      },
+      {
+        "file": "components/algebra/LaboratoryGallery.tsx",
+        "sha256": "e21922d9d72db186f07fb99e09556d9b3bb436deeb62f3688272e57bb7723a7d"
+      },
+      {
+        "file": "components/algebra/LaboratoryLoadBoundary.tsx",
+        "sha256": "cf352e963c73dc4708dd0ec1ba3497dce8b29395ad5cdace1a9d8e40ff96f76a"
+      },
+      {
+        "file": "components/algebra/LearningHome.tsx",
+        "sha256": "7a87d272c52a0d3e07b6ccd4471dda1b21a33a55a50b6d33b25c11bf5a462a7a"
+      },
+      {
+        "file": "components/algebra/LearningProgress.tsx",
+        "sha256": "69ab828641f3eb771988c69ee351bf1441e3c7f4467f677115e3429b447f584f"
+      },
+      {
+        "file": "components/algebra/LearningRoutes.tsx",
+        "sha256": "287b9d9575a075e579697dcb02db955e3698cfa56c11669bfe235e58b925437f"
+      },
+      {
+        "file": "components/algebra/LessonReader.tsx",
+        "sha256": "9961424fb48bf2555f9047e40b32689e5b7610d2eb8c27cc846a355f54eececf"
+      },
+      {
+        "file": "components/algebra/LocalisationMicroscope.tsx",
+        "sha256": "79add9ddd2dd6049124a8dd2d0d8074fabb032a04f85a6bd972d66d8da9bac08"
+      },
+      {
+        "file": "components/algebra/Math.tsx",
+        "sha256": "9075815739ca9f42f27bf28282b4f66524394f08894f3ba08e5c0d6406268f5a"
+      },
+      {
+        "file": "components/algebra/ModuleActionBoard.tsx",
+        "sha256": "bacbcc9b93ac3c7eab75f06c1f9469a5400542d76a68f2c9d0974785020728f0"
+      },
+      {
+        "file": "components/algebra/ModulePresentation.tsx",
+        "sha256": "bcb589c94d6fff2a75e7ca905a3b8e2278204d37eee34e7ad9837ccdd8226263"
+      },
+      {
+        "file": "components/algebra/Modules.tsx",
+        "sha256": "1f126168ca3f23a698f6be7b9157c154d418b46ecd1d3af561fcdfc2133a0886"
+      },
+      {
+        "file": "components/algebra/NilradicalLab.tsx",
+        "sha256": "77d37c4a68ce2e0d7da3e2823ceaeaebdfbf1cdde08b098939b08fda60b1a39c"
+      },
+      {
+        "file": "components/algebra/OperationChecker.tsx",
+        "sha256": "a4c284211655f5a5449c71194dd854cc33a5cbabc206201337525d9c0eb4e461"
+      },
+      {
+        "file": "components/algebra/OrbitWorkbench.tsx",
+        "sha256": "25ea96ab6161eb35b4188a4ecc49a2242ee06bb9ee2284000c2362affa520005"
+      },
+      {
+        "file": "components/algebra/OrthogonalGeometry.tsx",
+        "sha256": "3c39ac2252bc15c7b25deabbccfe7c3fe3f3ef8bd0c6a8340488736dcac410dd"
+      },
+      {
+        "file": "components/algebra/PolygonColoringLab.tsx",
+        "sha256": "873052ff202fd70fef234f1fe703b3d402415e41c2c6574597133da1a59476ff"
+      },
+      {
+        "file": "components/algebra/PolynomialFactorisation.tsx",
+        "sha256": "8c22d259e9650e3f23e25f03ae87e850c20fe14b56c493b57041e8e28c896e43"
+      },
+      {
+        "file": "components/algebra/QuadraticIntegers.tsx",
+        "sha256": "b814baf1093767ba5814e8a15d58bfce3dc9f0260b3cc097a384acde01bc7b23"
+      },
+      {
+        "file": "components/algebra/ReferenceAtlas.tsx",
+        "sha256": "12a91a33fdfd110d0f7ea3ecd8d5cf96109a0bac753fa8016c342b5945e49f35"
+      },
+      {
+        "file": "components/algebra/RepresentationJourney.tsx",
+        "sha256": "7aca62db055697443617df5e315935514c3c9c23fbd6d8546620ce31920babdf"
+      },
+      {
+        "file": "components/algebra/RepresentationObject.tsx",
+        "sha256": "7257966584ffdf5d92ac5fbe55b2bc92e814186c542dae8ad690a2bbe580309f"
+      },
+      {
+        "file": "components/algebra/Representations.tsx",
+        "sha256": "dffbc37d586156e94966403430f33bbe362cc53a33fa29a06d60e2054f59941d"
+      },
+      {
+        "file": "components/algebra/Rings.tsx",
+        "sha256": "c4de8145b05ed0b3b42a3316d0bae0a32099c5fb4229b83080fcf4c656039c08"
+      },
+      {
+        "file": "components/algebra/RotationLessons.tsx",
+        "sha256": "914f8b8811d40f1ed83a57bd294de76155efd6d3dd12630ad8d48fdafa2844c7"
+      },
+      {
+        "file": "components/algebra/SemidirectProducts.tsx",
+        "sha256": "c55811e5a0b80b698fa46fd912c094ce7ac8e5f9e7bbfc2a9e95ec4a11ab35c7"
+      },
+      {
+        "file": "components/algebra/SourceCoverage.tsx",
+        "sha256": "8be0d0a5d70625c21107e6325537b4cf82447ffae0199d6ac6c56eb8df5b1b7d"
+      },
+      {
+        "file": "components/algebra/Sources.tsx",
+        "sha256": "0dbbae97b3f709c646d6c97fbcd770c77354cbbc3b8cc3542b9ff2afea385da9"
+      },
+      {
+        "file": "components/algebra/SquareModes.tsx",
+        "sha256": "ffe20483e4de0608909d2e23d54880092472bfca7227d056b99afd32d9f1300a"
+      },
+      {
+        "file": "components/algebra/Structure.tsx",
+        "sha256": "3a2f2dc3933037f1b1e31a68c4d06bc93b76d8ca7df163056289aa1335f8cbf8"
+      },
+      {
+        "file": "components/algebra/SvgMath.tsx",
+        "sha256": "9b6707df51016c658005076d4225a78a80639bade7e6169be9f050a2eb1ce31d"
+      },
+      {
+        "file": "components/algebra/SylowArithmetic.tsx",
+        "sha256": "924e6bd62d380eb1493bee0347695a4f9d402625474fb74f89fcdda99f4e352b"
+      },
+      {
+        "file": "components/algebra/SylowWorkbench.tsx",
+        "sha256": "4c08e890c7f2d8357d0c4801949076a8ac97780eccb8bec0f3b76c14bf995288"
+      },
+      {
+        "file": "components/algebra/SymmetryDesk.tsx",
+        "sha256": "4536c80998faa70a7e35553e0130434886c4a5a6ea07c8a47c52e59ff37603cb"
+      },
+      {
+        "file": "components/algebra/TensorBalancingLab.tsx",
+        "sha256": "2aa691c961cb78f4c4ddfdc06add71b510932ed5244d5c54fae67d4888f951c6"
+      },
+      {
+        "file": "components/algebra/UrecaCharacterBound.tsx",
+        "sha256": "2c5ee718b88ee38b99ddb26cfa5aef1a646bbfcf85968eaed54ed8611248d2c4"
+      },
+      {
+        "file": "components/algebra/UrecaDirectProducts.tsx",
+        "sha256": "ba02866d2face2aafc645f9f3646565c4d69b748cafa216b6718022c3be78c06"
+      },
+      {
+        "file": "components/algebra/UrecaExternalTensor.tsx",
+        "sha256": "6a7799bde09d14915edc312f4a4060b062b508cf945bf8c22ae95aa5b7c01737"
+      },
+      {
+        "file": "components/algebra/UrecaIrreducibles.tsx",
+        "sha256": "1c3810a516bd2cadd9ca4aa80e92c8e0e97e9cfd512d744f9c3bbffda548e0c9"
+      },
+      {
+        "file": "components/algebra/UrecaLabControls.tsx",
+        "sha256": "bcbcdddd02b6560d0313d83046246a0df1e49a1ae7be0e22168077ec3ff15faa"
+      },
+      {
+        "file": "components/algebra/UrecaScalarKernel.tsx",
+        "sha256": "398158d62e7533beeda422b8d15f950a91ac9f614c1f95222f17ff4d90e8b903"
+      },
+      {
+        "file": "components/algebra/WebMCP.tsx",
+        "sha256": "b96ec43ff92621ccea5838d97281e3ae0bc878771c71f3b9a975a7df6b1fc03a"
+      },
+      {
+        "file": "components/algebra/WedderburnLayerLab.tsx",
+        "sha256": "9457fbe00147361100cd34a2d53c1dde92aa5fa68a0d9097e15844dca1314440"
+      },
+      {
+        "file": "components/ui/accordion.tsx",
+        "sha256": "a4f153089ba886dfcf73fac26b5c01ca933fa12fbe88df6fb723912bfffdfbb0"
+      },
+      {
+        "file": "components/ui/alert-dialog.tsx",
+        "sha256": "9a8d950f2b9b4352d5ebb762fb44d5c28c2d353aa29712071973656a8736e311"
+      },
+      {
+        "file": "components/ui/alert.tsx",
+        "sha256": "2cc59b5f7bda91c1670884b1bf46bfc8a2a6f226cef184f5762acc037188885b"
+      },
+      {
+        "file": "components/ui/aspect-ratio.tsx",
+        "sha256": "b1c157886236782cb92d8fbcd4749532aaf6d8aabefd6e157ca40358f902f407"
+      },
+      {
+        "file": "components/ui/attachment.tsx",
+        "sha256": "ae8a25dd1a896d3964e3ef54d97e51221b418cde287dfd794428b89951c5c790"
+      },
+      {
+        "file": "components/ui/avatar.tsx",
+        "sha256": "58a846bf1617b94b9681921db9b8461d0145f311424663d11678a06b6153cb34"
+      },
+      {
+        "file": "components/ui/badge.tsx",
+        "sha256": "46a0de5224f6a5d5d63d45246534288518dce888f031064bff925bbc7fe6ad97"
+      },
+      {
+        "file": "components/ui/breadcrumb.tsx",
+        "sha256": "d4c0831bba2212e778248f54a6ace6ef378df8bba4616d1abf27787a31eabae5"
+      },
+      {
+        "file": "components/ui/bubble.tsx",
+        "sha256": "870cc0c5cfc8a515053f7e41e706a6bd017a909b45f1305fd3b164a52cc4483b"
+      },
+      {
+        "file": "components/ui/button-group.tsx",
+        "sha256": "784c89d8ee683e1bc972ae69e6ea8225a7f63abe22aa1b5fc3423ae8a2a399c0"
+      },
+      {
+        "file": "components/ui/button.tsx",
+        "sha256": "cc36af0f8b5019c33cc039fbf03bb952a513072b15b55b53c592b78af3e5f4c4"
+      },
+      {
+        "file": "components/ui/calendar.tsx",
+        "sha256": "3855fbe0d3f8ad3a4b93071f98b76a9f6782d46ec8b05f5d2ddbee1e4e39bc84"
+      },
+      {
+        "file": "components/ui/card.tsx",
+        "sha256": "c48dd3b96be90a7066f1aebf294f0af9d00ebcdc367d5d4aca55429ade570c1c"
+      },
+      {
+        "file": "components/ui/carousel.tsx",
+        "sha256": "b7ea0dda3903d972c186f739e23da61f547bc83b5a0bf13b16856577846d5fc3"
+      },
+      {
+        "file": "components/ui/chart.tsx",
+        "sha256": "45aa5ea4a386f4fb5b8869ff4bab3a08cf89255190ee322043baf84c3e950b6a"
+      },
+      {
+        "file": "components/ui/checkbox.tsx",
+        "sha256": "b23ab9d4deeedf2ac8f512c368361ede681aa383437ef48563a6f9b7dbe95f27"
+      },
+      {
+        "file": "components/ui/collapsible.tsx",
+        "sha256": "c6598e5584f4258b5d9fefadbc5ad6a66888ad58729f4b634a0bb2d9c513188b"
+      },
+      {
+        "file": "components/ui/combobox.tsx",
+        "sha256": "2d68e78b2dc7e38a085f222dede60a80b4f8229a6e91732c484605e204d46735"
+      },
+      {
+        "file": "components/ui/command.tsx",
+        "sha256": "361193df1e3d64a9e9b5048f045264782fcb387aab3f00f2b805fdcbf538b16a"
+      },
+      {
+        "file": "components/ui/context-menu.tsx",
+        "sha256": "2cf1fcf59df0649a3e2a126d1df2f639145f6b6bf5689ee54af1f40ab1245017"
+      },
+      {
+        "file": "components/ui/dialog.tsx",
+        "sha256": "dce39c6adc47d997bd2567f8b7a72f466b0134715105cd42f9194007b8ecdb14"
+      },
+      {
+        "file": "components/ui/direction.tsx",
+        "sha256": "84ae2ad658207f0e0f367978e5508cd8027cd00c29c41d3d13db21a708c3d1e6"
+      },
+      {
+        "file": "components/ui/drawer.tsx",
+        "sha256": "cb6eaf58eb0757ca91af284e5d925b89a42ad7eb19cb3f44c575a3487aa9350f"
+      },
+      {
+        "file": "components/ui/dropdown-menu.tsx",
+        "sha256": "98f0dcdae38225b73734aceeb9213dd751fea2c72ea520df31003cd133deac8a"
+      },
+      {
+        "file": "components/ui/empty.tsx",
+        "sha256": "ae95bdcf367a076ae02e7925f14522a148798f72d9651749c6d55497dba584c0"
+      },
+      {
+        "file": "components/ui/field.tsx",
+        "sha256": "ba67d76f017ac059fc86cf8c344e0b2991c4322d3619e125498c19b87f6eefbd"
+      },
+      {
+        "file": "components/ui/form.tsx",
+        "sha256": "315b46bb75ab7d1c6061b5d750aa4bedf6e7a455e15e2d7f9182f053d5972b1e"
+      },
+      {
+        "file": "components/ui/hover-card.tsx",
+        "sha256": "f5d8df42c59370ec14d61bcc54f7d68e9bb7dfa0d6a872b2f7cffc2aafbf23b8"
+      },
+      {
+        "file": "components/ui/input-group.tsx",
+        "sha256": "6afbd58fea4c438e6252dc4568bddc122e84ababead4ad5cee50ace01100c9a0"
+      },
+      {
+        "file": "components/ui/input-otp.tsx",
+        "sha256": "161946daa89f0eda2575b9271c0494e35807c4ffb55598a49f67160c17fec299"
+      },
+      {
+        "file": "components/ui/input.tsx",
+        "sha256": "8c4612a7c41319ac5049daa3b34b080f9784b6245c17780eb87c127e58e473db"
+      },
+      {
+        "file": "components/ui/item.tsx",
+        "sha256": "6e2144d6d87142dbbe56d568810bf546318c8aa661447ebb0d76ebbf382cb45f"
+      },
+      {
+        "file": "components/ui/kbd.tsx",
+        "sha256": "6088c3a5432338b1719c17e9b5d0e1fa74fd1f66060f248fc88909d33a82cd13"
+      },
+      {
+        "file": "components/ui/label.tsx",
+        "sha256": "a476e41f08b9de5bd447de66a33d8bc2ad18f2fa6b96c064778bab4b6f439f4c"
+      },
+      {
+        "file": "components/ui/marker.tsx",
+        "sha256": "3d798763f094b2bb5e7ade2d5cd1b9bab498bc8ca7fd4cfaf4e5835bdedc34a0"
+      },
+      {
+        "file": "components/ui/menubar.tsx",
+        "sha256": "9243af8afcea03703398ccd1c2a8c0a87ad6cbaf2bd272fb609f5b79fe46aebb"
+      },
+      {
+        "file": "components/ui/message-scroller.tsx",
+        "sha256": "bb7660a248e4e9589c3816c7c1c199ea1381a70d2c8476ae895b567a7a4d86cf"
+      },
+      {
+        "file": "components/ui/message.tsx",
+        "sha256": "9d2952bf3b641081f09aa2739535e6bbd1be0a4946789752a2c20d8aaef43185"
+      },
+      {
+        "file": "components/ui/native-select.tsx",
+        "sha256": "007516b111fca8c98a6c40c94ab91bb68cc5b52afce1ed1f5e510c3d86e7347c"
+      },
+      {
+        "file": "components/ui/navigation-menu.tsx",
+        "sha256": "889d358a77de88e9cb6f39ea4895ea4c76eaf01d731b74e44f1c41e97a78a044"
+      },
+      {
+        "file": "components/ui/pagination.tsx",
+        "sha256": "374ad135c3d4ff3ec080a0009cd9745cdd0e12faa89d2b0e86074f11e5127fd1"
+      },
+      {
+        "file": "components/ui/popover.tsx",
+        "sha256": "31c350309ff5d3034e6ecf1b0eda75ba8855bdbf987fc7ad6d71f0ef07c5a447"
+      },
+      {
+        "file": "components/ui/progress.tsx",
+        "sha256": "c8c26e8f5f041c3cdf4915347dc1d9c022f9448f149990fadcaf303e952fa57d"
+      },
+      {
+        "file": "components/ui/radio-group.tsx",
+        "sha256": "fe5ce39636d0818c2bf9c4eebddff893d1225fa2c81b5fa4bb8cbb39a8c913ce"
+      },
+      {
+        "file": "components/ui/resizable.tsx",
+        "sha256": "bc63958467aa00557c551bb0d96a5ae4c965c1e1ba2380e595949d933b132f7c"
+      },
+      {
+        "file": "components/ui/scroll-area.tsx",
+        "sha256": "8bd9d986b2844c9a87de825c6de4787b6739b36c3dc9a05ccf3eb107160e4043"
+      },
+      {
+        "file": "components/ui/select.tsx",
+        "sha256": "0b796a108a4eb5ba52d9ad938b7aea36dc56ae66c703a6d0a23dbc24f96daff3"
+      },
+      {
+        "file": "components/ui/separator.tsx",
+        "sha256": "6da346505c8629a4668420d2a5ca48891383bbe0b0ceb14163537c671879427e"
+      },
+      {
+        "file": "components/ui/sheet.tsx",
+        "sha256": "63863cf2df8f8973e52b3459ac9bdbf81be1262dbc70eb53d5271ffb03488e16"
+      },
+      {
+        "file": "components/ui/sidebar.tsx",
+        "sha256": "4a8d73e7730a2b1fcecfca31299ed26db65c2307b84197a59c6ec7c01c7ad28e"
+      },
+      {
+        "file": "components/ui/skeleton.tsx",
+        "sha256": "ba48dd5be5a6a1378bd4e011028654b5bf419f1e7d20ee4b9f8330c1264e7239"
+      },
+      {
+        "file": "components/ui/slider.tsx",
+        "sha256": "492b8aabfb7efbba14802b78693d990d8856c81f8257cbbd9fd8268c1bb787b5"
+      },
+      {
+        "file": "components/ui/sonner.tsx",
+        "sha256": "13ccc9b0fe4248e622f83a1d3b2f0566b72b5e04162d7d0c8db8945ecc71b55f"
+      },
+      {
+        "file": "components/ui/spinner.tsx",
+        "sha256": "3e6e6e8d37fb4069f8e43e55318f8db06fbc36e6c8be0096da3c9337c1c798b9"
+      },
+      {
+        "file": "components/ui/switch.tsx",
+        "sha256": "386d4d4deb39f34126f9700fe9bf5393d238485dd94018bba9d154dda84c62ae"
+      },
+      {
+        "file": "components/ui/table.tsx",
+        "sha256": "20e5a7f224959c6b75802995706a97e9da171f693d4b6b1b436388fcd9df96f3"
+      },
+      {
+        "file": "components/ui/tabs.tsx",
+        "sha256": "865d0194331b9b2be36723fa79d3575dc83078b4cb941cafee87cb72fc2cff46"
+      },
+      {
+        "file": "components/ui/textarea.tsx",
+        "sha256": "253cdeb487c73beaaccdf47fc163e36e7d5b7ae6ddf09a4f64998a109a112979"
+      },
+      {
+        "file": "components/ui/toggle-group.tsx",
+        "sha256": "69f643e889e933f05c1439084480d8646f66a161c7d1cf0730ee926382ade35e"
+      },
+      {
+        "file": "components/ui/toggle.tsx",
+        "sha256": "ba4d0b0a2b2fee75dc36dfc19e32082e721024b919050c97fd5dc70faa924e16"
+      },
+      {
+        "file": "components/ui/tooltip.tsx",
+        "sha256": "a0784eb77831a799fad7991df4f1b666f876201565a80175e1aa68733574a2e4"
+      },
+      {
+        "file": "db/index.ts",
+        "sha256": "95cc96305ad0e9f36853cc89276034ab24910b587a9a15c28d90caf814f2dcc2"
+      },
+      {
+        "file": "db/schema.ts",
+        "sha256": "13ddacbf0be50e054d450a6c642b7fdc1aa943fd6b99084711e07e58b600390d"
+      },
+      {
+        "file": "drizzle/meta/_journal.json",
+        "sha256": "90cb374e093894d0efce6f1830d873a42aadd8ba49d2f024495e5cb2e1c8c303"
+      },
+      {
+        "file": "hooks/use-mobile.ts",
+        "sha256": "ad0936f84f1df79d3697bfbff9c18f8ad58431c1cbaf2359c6a853b0fcc9f28b"
+      },
+      {
+        "file": "lib/algebra/capstone-assessments.json",
+        "sha256": "575e8e05a261a348843cb9367360c1bffe8d2062e284ebd9594bb61e6c6ee965"
+      },
+      {
+        "file": "lib/algebra/cayley-words.ts",
+        "sha256": "ca7abfa1063ed7eb6f1ae79f0e071033950b2b4dd43d200796fc0e4d2131673e"
+      },
+      {
+        "file": "lib/algebra/character-construction.ts",
+        "sha256": "4d0997e458cb2d94476d872535c341d6c7244c7302c3a3ebd1cc15264e028608"
+      },
+      {
+        "file": "lib/algebra/direct-products.ts",
+        "sha256": "1fbb3d1b33124aef9a5cf1a0d5ac900bf24ad46e43f3c3ecd2192e8a278c2efb"
+      },
+      {
+        "file": "lib/algebra/engine.ts",
+        "sha256": "02da8a006acdc4d4de45280771fbe89bf62ac0339f04795c7b4c915063200d69"
+      },
+      {
+        "file": "lib/algebra/fixed-colorings.ts",
+        "sha256": "2b933f1cdd699ce0b3b0377c8c0f94222aeca85d2f45e02a09b4b84135ff2e6e"
+      },
+      {
+        "file": "lib/algebra/foundation-labs.ts",
+        "sha256": "6bcfa6678c4a277e8d03bf01382474ac280335f6e4b2c0bcbbb14f9148e661e8"
+      },
+      {
+        "file": "lib/algebra/guided-lessons.json",
+        "sha256": "29d673c14d2f19cb4f106287bc99bdb9a90e05543673a608196ee2a85df180f6"
+      },
+      {
+        "file": "lib/algebra/guided.ts",
+        "sha256": "adb3274df2ea8f2f01ad24976c51ec3c8fa327e8b5e03043cdf4b925ba916d67"
+      },
+      {
+        "file": "lib/algebra/ideal-chains.ts",
+        "sha256": "50fc80d8713f0d9ff651c611bc6a26093a2a5b4d27b0f17dba7452f6f7ba7366"
+      },
+      {
+        "file": "lib/algebra/ideal-quotients.ts",
+        "sha256": "f1e7bd706a145fb1b8a7fe19e7e1ad406600e4eda823604cd18a9cc6ca84a214"
+      },
+      {
+        "file": "lib/algebra/induction-restriction.ts",
+        "sha256": "766c5756d80250322ea96a2550f43e713d82a6f6a6c78fbeaef7870584f51a3b"
+      },
+      {
+        "file": "lib/algebra/invariant-intertwiner.ts",
+        "sha256": "1c71f84a07206fbc62f1f5386b4dff3ddf4509797c0b3d1b41451ef8293bbff3"
+      },
+      {
+        "file": "lib/algebra/lab-contracts.json",
+        "sha256": "54a70dd92fd1600988cbe5793534d8968b31de8743f372d1c2936789a237736b"
+      },
+      {
+        "file": "lib/algebra/lab-contracts.ts",
+        "sha256": "647faf8baa0a4281de0d9dadca051d25ebbb8e9028962d69aec1bd95de1db848"
+      },
+      {
+        "file": "lib/algebra/laboratory-types.ts",
+        "sha256": "8b6a92b8a10a6abd7085a513c88ae26fb2cbdcab99c18228be54aeda542e81f1"
+      },
+      {
+        "file": "lib/algebra/learning-metadata.json",
+        "sha256": "cacc747dbbaeca34918a957a799e7d809445196f3bbb664288c9f2ac16f8610d"
+      },
+      {
+        "file": "lib/algebra/learning.ts",
+        "sha256": "fa99395c801d29ff0569e567fb676e809ae26d068c59460900cbe2e8508d0a88"
+      },
+      {
+        "file": "lib/algebra/lessons.json",
+        "sha256": "c1667c71aa803eba105f3433e00bf603849d520f935669e15f261421a1dc7cb5"
+      },
+      {
+        "file": "lib/algebra/localisation-model.ts",
+        "sha256": "22fc7c2bc8da562f05b8faed2299040b536e3d1f8b87e8d0b090440c7f5dbf0a"
+      },
+      {
+        "file": "lib/algebra/module-action-board.ts",
+        "sha256": "9231a600bba3d50b870b8b3fa5d667259e876e829e8a1dc246c2cc94102bcfa3"
+      },
+      {
+        "file": "lib/algebra/navigation.ts",
+        "sha256": "743c424749c2edf6a4850d290dc3ce4b70f4493ff90e58de4abc264ba660cb03"
+      },
+      {
+        "file": "lib/algebra/nilradical.ts",
+        "sha256": "b5715aed5d1546c07cbca21210f927fdb164903b44803c33b6e5ee9627434e53"
+      },
+      {
+        "file": "lib/algebra/orthogonal-geometry.ts",
+        "sha256": "766f3c8a097ca61ed539009d9e140582f2c48adc4e80eee4e652a686c3f856e8"
+      },
+      {
+        "file": "lib/algebra/permutation-matrices.ts",
+        "sha256": "422dca45a48c43be2e0eb6f27ba6eea4acd227f66ad57d84a0686ed03cab1f7a"
+      },
+      {
+        "file": "lib/algebra/polynomial-factorisation.ts",
+        "sha256": "f6cbef848e1fd12d97e74380c7591b074ad273316c40032c38e9ec5466876701"
+      },
+      {
+        "file": "lib/algebra/progress-storage.ts",
+        "sha256": "74ee807b140ba1489e0be1437ba973fc37dfb50129387dd8762346bd98dc564c"
+      },
+      {
+        "file": "lib/algebra/progress.ts",
+        "sha256": "5d45bdef039d176d5e8eb6a7d9440e5eef2bf31f07ff5d4b51c1d41337dbf91b"
+      },
+      {
+        "file": "lib/algebra/quotients.ts",
+        "sha256": "1b55ecb4f68005eb05b8fe0408f0a3fed0857dc5f7df53715b55350657c9cafb"
+      },
+      {
+        "file": "lib/algebra/reading-views.ts",
+        "sha256": "cc10fa6ef0c883c1f4147a9866588ac70ff99b300f650c0c7962ff3db079f03a"
+      },
+      {
+        "file": "lib/algebra/rotation-config.ts",
+        "sha256": "8a115bd478048dcf963110ba03cb5a2cfd47c1bc0ce7546f685f6692d3a780b6"
+      },
+      {
+        "file": "lib/algebra/rotations.ts",
+        "sha256": "ca643502801fb5becdf8cf4bf08e07a3cf6016268bb0d2325003ed7cb82f6221"
+      },
+      {
+        "file": "lib/algebra/routes.ts",
+        "sha256": "9112051421617adb1caeddbc3669c730b7110e9990636ba82fd4dd14c1fbe66a"
+      },
+      {
+        "file": "lib/algebra/search.ts",
+        "sha256": "edc4a433d14c2721a99e473dd9c337339a83c0e44979048e5eda805a5b9e60b6"
+      },
+      {
+        "file": "lib/algebra/semidirect-product.ts",
+        "sha256": "21ce7b0cd83ce5dbef761b2756e3325ec884a1fd5e9eb15c096a7f19d91f027f"
+      },
+      {
+        "file": "lib/algebra/source-gaps.json",
+        "sha256": "94f0ebd0cf71a1110e1ca1ea515f715ca1699131047cc6a37da6ebe81afbaeb9"
+      },
+      {
+        "file": "lib/algebra/sylow-workbench.ts",
+        "sha256": "9cb908b2f583ebafcff0d4bd6a88341ad226cfd9f537d655aa8dae3b47f87ae5"
+      },
+      {
+        "file": "lib/algebra/tensor-balancing.ts",
+        "sha256": "d4d1e9b02785b6217e5abeb0ffb02cf1b77034f325b9b9fdbcd9952134c6df05"
+      },
+      {
+        "file": "lib/algebra/units.json",
+        "sha256": "4cf6defbd2bd9a9dea9595b46b8d0d21e594b7cc003fba1f173823ef29e6a39e"
+      },
+      {
+        "file": "lib/algebra/wedderburn-layers.ts",
+        "sha256": "d383ee4db06b5f1e3ca80727e4a5001b1d97d6cfc211f7aba53052964538fd05"
+      },
+      {
+        "file": "lib/utils.ts",
+        "sha256": "53f3d3d070f0a9082934da25b875f9499855c2b0693868dd28be8c23d8730f68"
+      },
+      {
+        "file": "package-lock.json",
+        "sha256": "6992c6f15109cb80d2ee43dc42cdce23626a8462bd23081e1343774da803bd16"
+      },
+      {
+        "file": "package.json",
+        "sha256": "c392f2136d80e55dd01fc3433af27e3e7bcc9132dc3f5282177156de69ae5dbd"
+      },
+      {
+        "file": "postcss.config.mjs",
+        "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+      },
+      {
+        "file": "public/favicon.svg",
+        "sha256": "41fb1a123a86d4cb4cc30069dd8618e514e0e9730e6ff51e4c926662b105088c"
+      },
+      {
+        "file": "public/file.svg",
+        "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307"
+      },
+      {
+        "file": "public/globe.svg",
+        "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9"
+      },
+      {
+        "file": "public/logo.png",
+        "sha256": "73eb7b4c2c566c2ce22011297f8c5fddc738602160b7e91cce110e2df6b62c0f"
+      },
+      {
+        "file": "public/og.png",
+        "sha256": "ad2e9ce00aa723d122021d5168ed60cd5f7dd50ad051ddb25b4c1e10c4f6ba80"
+      },
+      {
+        "file": "public/window.svg",
+        "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
+      },
+      {
+        "file": "tsconfig.json",
+        "sha256": "be18523b23b78b6e1a876ddd107d330f0168bddf09d751b57e0b5edce69c66f3"
+      },
+      {
+        "file": "vendor/shadcn-tailwind-4.13.0.LICENSE.md",
+        "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+      },
+      {
+        "file": "vendor/shadcn-tailwind-4.13.0.css",
+        "sha256": "bc7d83425702955b4cb67cb14ede9d603f9d912376d57a2d81d661094d2a782a"
+      },
+      {
+        "file": "vite.config.ts",
+        "sha256": "adbd2b317141c24d21a367223b4faab583e9455ae3b0a31c09d002e763942394"
+      },
+      {
+        "file": "worker/index.ts",
+        "sha256": "a612ff9364c5f0583cdf6b4962bde27a29406667f962c9537c417405e7655b95"
+      },
+      {
+        "file": "worker/runtime.d.ts",
+        "sha256": "67b65c3841c0919436f6f623c1138e0d9e5ad1ff306b59688b3a2b7a37218306"
+      }
+    ],
+    "desktop": {
+      "width": 1280,
+      "height": 900,
+      "lessons": 150,
+      "formulaErrors": 0,
+      "pageOverflows": 0,
+      "sixStageReaders": 150,
+      "snapshotLengthRange": [10375, 26298]
+    },
+    "mobile": {
+      "width": 320,
+      "height": 900,
+      "lessons": 150,
+      "formulaErrors": 0,
+      "pageOverflows": 0,
+      "sixStageReaders": 150,
+      "snapshotLengthRange": [4160, 23483]
+    },
+    "laboratories": {
+      "routes": 150,
+      "formulaErrors": 0,
+      "pageOverflows": 0,
+      "loadingErrors": 0,
+      "displayedControls": 1262,
+      "predictionGates": "entered and activated wherever available",
+      "width": 320,
+      "height": 900,
+      "snapshotLengthRange": [2291, 14026]
+    },
+    "lessonIds": [
+      "foundations-functions",
+      "foundations-fibers",
+      "foundations-quotient-rules",
+      "mh2220-axioms",
+      "mh2220-inverse-order",
+      "mh2220-subgroups",
+      "mh2220-generators",
+      "mh2220-congruence",
+      "mh2220-units",
+      "mh2220-dihedral",
+      "mh2220-permutations",
+      "mh2220-cyclic",
+      "mh2220-homomorphism",
+      "mh2220-isomorphism",
+      "mh2220-permutation-matrices",
+      "mh2220-alternating",
+      "mh2220-cosets",
+      "mh2220-lagrange",
+      "mh2220-euler-fermat",
+      "groups-cauchy",
+      "mh2220-small-groups",
+      "mh2220-cayley-embedding",
+      "mh2220-normal",
+      "mh2220-quotient",
+      "mh2220-real-circle",
+      "mh2220-automorphism",
+      "mh2220-centralizer-normalizer",
+      "mh2220-direct-product",
+      "mh2220-semidirect",
+      "mh2220-commutator",
+      "mh2220-first-isomorphism",
+      "mh2220-second-isomorphism",
+      "mh2220-third-isomorphism",
+      "mh2220-correspondence",
+      "mh2220-finite-abelian",
+      "mh2220-quaternion",
+      "mh2220-actions",
+      "mh2220-orbit-stabilizer",
+      "mh2220-conjugacy",
+      "mh2220-coset-action",
+      "mh2220-double-cosets",
+      "mh2220-burnside",
+      "mh2220-necklaces",
+      "mh2220-cycle-index",
+      "mh2220-solid-colorings",
+      "mh2220-sylow-existence",
+      "mh2220-sylow-conjugacy",
+      "mh2220-sylow-counts",
+      "mh2220-simple-composition",
+      "mh2220-p-groups",
+      "mh2220-finite-matrices",
+      "m3220-rings",
+      "m3220-subrings",
+      "m3220-units",
+      "m3220-characteristic",
+      "m3220-domains",
+      "m3220-algebraic",
+      "m3220-quadratic-integers",
+      "m3220-norm-trace",
+      "m3220-ring-hom",
+      "m3220-ideals",
+      "m3220-ideal-arithmetic",
+      "m3220-quotient-ring",
+      "m3220-first-ring-isomorphism",
+      "m3220-ring-correspondence",
+      "m3220-maximal",
+      "m3220-prime",
+      "m3220-crt",
+      "m3220-fractions",
+      "m3220-localization",
+      "m3220-prime-localization",
+      "m3220-localization-variants",
+      "m3220-euclidean",
+      "m3220-gaussian-division",
+      "m3220-pid",
+      "m3220-prime-irreducible",
+      "m3220-ufd",
+      "m3220-polynomial",
+      "m3220-polynomial-division",
+      "m3220-roots",
+      "m3220-irreducibility-tests",
+      "m3220-gauss",
+      "m3220-eisenstein",
+      "m3220-polynomial-ufd",
+      "m3220-noetherian",
+      "m3220-hilbert",
+      "m3220-krull",
+      "m3220-jacobson",
+      "m3220-nilradical",
+      "m3220-artinian",
+      "m3220-artinian-decomposition",
+      "m3220-modules",
+      "m3220-submodules",
+      "modules-generators",
+      "m3220-annihilator",
+      "m3220-module-chains",
+      "m3220-nakayama",
+      "m3220-dvr",
+      "m3220-finite-field-four",
+      "odyssey-linear-groups",
+      "odyssey-flags",
+      "odyssey-schur",
+      "odyssey-character-table",
+      "odyssey-induction",
+      "odyssey-frobenius",
+      "foundations-linear-algebra",
+      "ureca-linear-action",
+      "ureca-permutation-module",
+      "ureca-invariant-subspaces",
+      "ureca-group-algebra",
+      "ureca-intertwiners",
+      "ureca-cyclic-eigenvalues",
+      "cube-signed-permutations",
+      "cube-generator-words",
+      "cube-four-actions",
+      "cube-orbit-stabilizer",
+      "cube-diagonals-s4",
+      "cube-direct-product",
+      "orthogonal-metric-orientation",
+      "orthogonal-plane",
+      "orthogonal-axis-angle",
+      "representations-square-modes",
+      "representations-real-complex",
+      "representations-maschke",
+      "representations-characters",
+      "actions-faithful-transitive",
+      "actions-stabilizer-kernel-core",
+      "actions-regular-conjugation",
+      "actions-cube-burnside",
+      "actions-cycle-lenses",
+      "linear-bruhat",
+      "linear-projective",
+      "actions-primitive",
+      "group-complements",
+      "group-extensions",
+      "group-solvable",
+      "group-nilpotent",
+      "tensor-products",
+      "algebra-wedderburn",
+      "algebra-radical",
+      "characters-integrality",
+      "characters-burnside",
+      "actions-frobenius",
+      "linear-quotient",
+      "quadratic-quotient",
+      "ureca-character-bound-kernel",
+      "ureca-external-tensor-products",
+      "ureca-direct-product-irreducibles",
+      "ureca-product-kernel-scalar-matching",
+      "ureca-faithful-direct-product"
+    ],
+    "independentMathematicalReview": "docs/research/independent-mathematics-review.md",
+    "automatedFinalStatus": "Exact patched local full run passed 117 Node tests and 392 browser cases; remote assertions also passed, but job cancelled at ten-minute upload/cleanup boundary. Repaired CI pending.",
+    "responsiveGeometry": {
+      "independentLayouts": 450,
+      "widths": [320, 375, 768],
+      "diagramLabsWithReadableLabels": 78,
+      "labelKeyboardPanPasses": 78,
+      "confirmedRemainingDefects": 0,
+      "report": "docs/research/visual-sizing-review.md",
+      "automatedCases": 162,
+      "automatedPassed": 162,
+      "automatedEvidence": "outputs/sizing-tests"
+    },
+    "retainedReadingViews": {
+      "lessons": 150,
+      "viewsPerLesson": ["understand", "example", "theorem", "proof"],
+      "snapshots": 600,
+      "width": 320,
+      "formulaErrors": 0,
+      "pageOverflows": 0,
+      "note": "Some retained views are prose-only; formal definitions remain elsewhere on the page and complete teaching is in the guided view."
+    },
+    "mainModes": {
+      "routes": ["home", "learn", "explore", "reference", "sources"],
+      "width": 320,
+      "formulaErrors": 0,
+      "pageOverflows": 0
+    },
+    "patchedRuntime": {
+      "react": "19.2.8",
+      "reactDom": "19.2.8",
+      "rsc": "19.2.8",
+      "builtServerOldVersionOccurrences": 0,
+      "builtServerUsesInstalledRsc": true
+    }
+  },
+  "production": {
+    "status": "pending new version deployment"
+  },
+  "limits": [
+    "Private original course files not reopened or newly certified.",
+    "No measured learner-outcome claim.",
+    "Desktop/mobile inspection does not exhaust every dynamic parameter combination."
+  ]
+}

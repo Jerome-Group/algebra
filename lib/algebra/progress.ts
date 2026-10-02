@@ -6,7 +6,11 @@ import capstones from "./capstone-assessments.json" with { type: "json" };
 
 export const progressStorageKey = "algebra-competency-progress-v1";
 export type Attempt = { revision: string; choice: number; submissions: number };
-export type Progress = { version: 1; attempts: Record<string, Attempt> };
+export type Progress = {
+  version: 1;
+  attempts: Record<string, Attempt>;
+  archived?: Record<string, Attempt[]>;
+};
 export type AssessmentRegistry = Record<string, Assessment>;
 export const emptyProgress = (): Progress => ({ version: 1, attempts: {} });
 export const assessmentRevision = (assessment: Assessment) =>
@@ -37,41 +41,80 @@ export function assessmentRegistry(lessons: Lesson[]): AssessmentRegistry {
     registry["route:ureca-representation-theory"] = representationRoute;
   return registry;
 }
+function validAttempt(value: unknown): value is Attempt {
+  if (!value || typeof value !== "object") return false;
+  const attempt = value as Attempt;
+  return (
+    typeof attempt.revision === "string" &&
+    Number.isSafeInteger(attempt.choice) &&
+    attempt.choice >= 0 &&
+    Number.isSafeInteger(attempt.submissions) &&
+    attempt.submissions > 0
+  );
+}
+export function progressRecordSupported(serialized: string | null): boolean {
+  if (serialized === null) return true;
+  try {
+    const value = JSON.parse(serialized);
+    return (
+      value?.version === 1 &&
+      !!value.attempts &&
+      typeof value.attempts === "object" &&
+      !Array.isArray(value.attempts) &&
+      Object.values(value.attempts).every(validAttempt) &&
+      (value.archived === undefined ||
+        (!!value.archived &&
+          typeof value.archived === "object" &&
+          !Array.isArray(value.archived) &&
+          Object.values(value.archived).every(
+            (history) => Array.isArray(history) && history.every(validAttempt),
+          )))
+    );
+  } catch {
+    return false;
+  }
+}
 export function readProgress(
   serialized: string | null,
   registry: AssessmentRegistry,
 ): Progress {
   const clean = emptyProgress();
-  if (!serialized) return clean;
-  try {
-    const value = JSON.parse(serialized);
+  if (!serialized || !progressRecordSupported(serialized)) return clean;
+  const value = JSON.parse(serialized);
+  const archived: Record<string, Attempt[]> = {};
+  const preserve = (id: string, attempt: Attempt) => {
+    const history = Object.hasOwn(archived, id) ? archived[id] : [];
     if (
-      value?.version !== 1 ||
-      !value.attempts ||
-      typeof value.attempts !== "object" ||
-      Array.isArray(value.attempts)
+      !history.some((item) => JSON.stringify(item) === JSON.stringify(attempt))
     )
-      return clean;
-    for (const [id, assessment] of Object.entries(registry)) {
-      const attempt = value.attempts[id];
-      if (
-        attempt &&
-        attempt.revision === assessmentRevision(assessment) &&
-        Number.isInteger(attempt.choice) &&
-        attempt.choice >= 0 &&
-        attempt.choice < assessment.choices.length &&
-        Number.isSafeInteger(attempt.submissions) &&
-        attempt.submissions > 0
-      )
-        clean.attempts[id] = {
-          revision: attempt.revision,
-          choice: attempt.choice,
-          submissions: attempt.submissions,
-        };
-    }
-  } catch {
-    /* A malformed or future device record must not grant competency. */
+      Object.defineProperty(archived, id, {
+        value: [...history, { ...attempt }],
+        enumerable: true,
+        configurable: true,
+      });
+  };
+  if (
+    value.archived &&
+    typeof value.archived === "object" &&
+    !Array.isArray(value.archived)
+  ) {
+    for (const [id, history] of Object.entries(value.archived))
+      if (Array.isArray(history))
+        for (const attempt of history)
+          if (validAttempt(attempt)) preserve(id, attempt);
   }
+  for (const [id, attempt] of Object.entries(value.attempts)) {
+    if (!validAttempt(attempt)) continue;
+    const assessment = Object.hasOwn(registry, id) ? registry[id] : undefined;
+    if (
+      assessment &&
+      attempt.revision === assessmentRevision(assessment) &&
+      attempt.choice < assessment.choices.length
+    )
+      clean.attempts[id] = { ...attempt };
+    else preserve(id, attempt);
+  }
+  if (Object.keys(archived).length) clean.archived = archived;
   return clean;
 }
 export function submitAttempt(
@@ -80,7 +123,7 @@ export function submitAttempt(
   id: string,
   choice: number,
 ): Progress {
-  const assessment = registry[id];
+  const assessment = Object.hasOwn(registry, id) ? registry[id] : undefined;
   if (
     !assessment ||
     !Number.isInteger(choice) ||
@@ -94,6 +137,7 @@ export function submitAttempt(
       ? Math.min(previous.submissions + 1, Number.MAX_SAFE_INTEGER)
       : 1;
   return {
+    ...progress,
     version: 1,
     attempts: {
       ...progress.attempts,

@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useRef, useState } from "react";
 import {
@@ -96,7 +97,7 @@ export function CubeScene({
   };
   return (
     <div className="cube-scene vector-scene">
-      <svg
+      <Diagram
         viewBox="0 0 560 400"
         role="group"
         tabIndex={0}
@@ -274,7 +275,7 @@ export function CubeScene({
               </g>
             );
           })}
-      </svg>
+      </Diagram>
       <span className="scene-hint">
         <Move3D size={14} /> Drag to orbit · select a label
       </span>
@@ -468,7 +469,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <p className="lab-explain">
           {set === "mixed"
             ? `The selected point lies in an orbit of size ${orb.length}. Vertices and faces form two separate orbits, so the action is faithful but not transitive.`
-            : `Every ${set === "diagonals" ? "unoriented diagonal" : set.slice(0, -1)} is reachable.`}{" "}
+            : `Every ${set === "diagonals" ? "unoriented diagonal" : set === "vertices" ? "vertex" : set.slice(0, -1)} is reachable.`}{" "}
           Each destination in this orbit is reached by exactly {stab.length}{" "}
           group elements:{" "}
           <M>{`${G.length}=${orb.length}\\cdot ${stab.length}`}</M>.{" "}

@@ -132,3 +132,69 @@ test("unavailable storage retains usable session assessment feedback", async ({
     "only for this session",
   );
 });
+
+test("earlier evidence survives revised assessments, export and reversible reset", async ({
+  page,
+}) => {
+  const key = "algebra-competency-progress-v1";
+  const historic = {
+    version: 1,
+    attempts: {
+      "foundations-functions:boundaryCheck": {
+        revision: "previous assessment",
+        choice: 0,
+        submissions: 2,
+      },
+    },
+  };
+  await page.addInitScript(
+    ({ key, historic }) => {
+      if (!localStorage.getItem(key))
+        localStorage.setItem(key, JSON.stringify(historic));
+    },
+    { key, historic },
+  );
+  await page.goto("/#home");
+  await expect(page.getByText(/1 earlier assessment records/)).toBeVisible();
+  const downloading = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Export progress backup" }).click();
+  const download = await downloading;
+  expect(download.suggestedFilename()).toBe("algebra-progress-backup.json");
+  await page.getByRole("button", { name: "Reset learning progress" }).click();
+  await page.getByRole("button", { name: "Clear my progress" }).click();
+  await expect(
+    page.getByRole("button", { name: "Restore previous progress" }),
+  ).toBeEnabled();
+  await page.reload();
+  await page.getByRole("button", { name: "Restore previous progress" }).click();
+  expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(
+    JSON.stringify(historic),
+  );
+  await expect(page.getByText(/1 earlier assessment records/)).toBeVisible();
+});
+
+test("unsupported saved records remain unchanged during new session answers", async ({
+  page,
+}) => {
+  const raw = '{"version":2,"attempts":{"unreadable":"preserve"}}';
+  await page.addInitScript(
+    (raw) => localStorage.setItem("algebra-competency-progress-v1", raw),
+    raw,
+  );
+  await page.goto("/#foundations-functions");
+  await answer(page, "foundations-functions", "boundaryCheck");
+  expect(
+    await page.evaluate(() =>
+      localStorage.getItem("algebra-competency-progress-v1"),
+    ),
+  ).toBe(raw);
+  await page
+    .getByRole("link", { name: "Abstract Algebra", exact: true })
+    .click();
+  await expect(
+    page.getByText(/Saved data is unreadable or from a newer version/),
+  ).toBeVisible();
+  await expect(
+    page.getByText(/New answers last only this session/),
+  ).toBeVisible();
+});

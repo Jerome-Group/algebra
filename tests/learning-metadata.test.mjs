@@ -55,12 +55,7 @@ test("every lesson has explicit valid learning metadata and resolved acyclic pre
 });
 
 test("reference entries cannot increase guided completion totals", () => {
-  const reference = lessons.find(
-    (lesson) => learningMetadata(lesson).teachingStatus === "reference-only",
-  );
-  assert.ok(reference);
-  assert.equal(guidedLessons([reference]).length, 0);
-  const unknown = { ...reference, id: "new-unreviewed-entry" };
+  const unknown = { ...lessons[0], id: "new-unreviewed-entry" };
   assert.equal(learningMetadata(unknown).teachingStatus, "reference-only");
   assert.equal(guidedLessons([unknown]).length, 0);
 });

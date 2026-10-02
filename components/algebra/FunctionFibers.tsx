@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import { fiberModel } from "@/lib/algebra/foundation-labs";
 import type { Lesson } from "@/lib/algebra/engine";
@@ -29,7 +30,7 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
           <option value={3}>3 (remainder classes)</option>
         </select>
       </label>
-      <svg
+      <Diagram
         viewBox="0 0 360 260"
         role="img"
         aria-label="Function arrows from six labelled inputs to three labelled outputs; the same values appear in the table"
@@ -74,7 +75,7 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
             </text>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <table>
         <caption>Function values and equivalence classes</caption>
         <thead>

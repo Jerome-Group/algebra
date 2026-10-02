@@ -85,15 +85,20 @@ test("unit context and heading focus survive Back and forward", async ({
   );
 });
 
-test("reference teaching filter returns the explicit reference entries", async ({
+test("reference teaching filter reports empty results after every entry has a guided lesson", async ({
   page,
 }) => {
   await page.goto("/#reference");
   await page
     .getByRole("combobox", { name: /^Teaching status/ })
     .selectOption("reference-only");
-  await expect(page.getByRole("status")).toHaveText("23 matching concepts");
-  await expect(page.locator(".atlas-results > li")).toHaveCount(23);
+  await expect(page.getByRole("status")).toHaveText("0 matching concepts");
+  await expect(page.locator(".atlas-results > li")).toHaveCount(0);
+  await page
+    .getByRole("combobox", { name: /^Teaching status/ })
+    .selectOption("guided");
+  await expect(page.getByRole("status")).toHaveText("150 matching concepts");
+  await expect(page.locator(".atlas-results > li")).toHaveCount(150);
 });
 
 test("guided checkpoints diagnose an error and keep the source/reference path available", async ({

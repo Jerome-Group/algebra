@@ -512,3 +512,110 @@
 .algebra-app {
   overflow-x: clip;
 }
+
+/* Diagram bounds use their viewBox, not the width of a standalone laboratory. */
+.algebra-app .visual-panel {
+  container-type: inline-size;
+  min-width: 0;
+}
+.algebra-app .visual-panel select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.algebra-app .exploration.compact .visual-panel > div,
+.algebra-app .right-lab .visual-panel,
+.algebra-app .right-lab .exploration .visual-panel > div {
+  max-height: none;
+  overflow: visible;
+}
+.algebra-app .diagram {
+  width: 100%;
+  min-width: 0;
+  grid-column: 1 / -1;
+  padding: 12px;
+}
+.algebra-app .diagram-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #344a5b;
+  font-size: 14px;
+}
+.algebra-app .diagram-tools button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #9db7c6;
+  border-radius: 6px;
+  background: #f0f6fa;
+  color: #174c7c;
+}
+.algebra-app .diagram-viewport {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border-radius: 6px;
+}
+.algebra-app .diagram-viewport:focus-visible {
+  outline: 3px solid #2457bc;
+  outline-offset: 2px;
+}
+.algebra-app .diagram-viewport > svg {
+  display: block;
+  width: 100%;
+  max-width: var(--diagram-fit-width);
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: auto;
+  margin-inline: auto;
+}
+.algebra-app .diagram-viewport[data-readable="true"] > svg {
+  width: var(--diagram-label-width);
+  max-width: none;
+}
+.algebra-app .exploration.compact .visual-panel > div:has(> .diagram) {
+  display: block;
+}
+.algebra-app .visual-panel :is(.two-cols, .three-cols, .coset-map) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.algebra-app .visual-panel :is(.two-cols, .three-cols, .coset-map) > * {
+  min-width: 0;
+}
+.algebra-app .visual-panel .three-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.algebra-app .element-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(64px, 100%), 1fr));
+}
+.algebra-app .element-grid button {
+  min-width: 0;
+  min-height: 44px;
+}
+@container (max-width: 480px) {
+  .algebra-app
+    .visual-panel
+    :is(.two-cols, .three-cols, .coset-map, .coset-tiles, .matrix-controls) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 1100px) {
+  .algebra-app .study-workspace,
+  .algebra-app .study-workspace:has(.exploration.expanded),
+  .algebra-app
+    .study-workspace:has(.exploration-actions button[aria-expanded="false"]) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .algebra-app .right-lab {
+    position: static;
+    width: 100%;
+    border: 0;
+    padding: 0;
+  }
+}

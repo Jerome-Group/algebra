@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useId, useMemo, useState } from "react";
 import {
@@ -219,7 +220,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         <span className="lab-tag">{N} elements</span>
       </div>
       {mode === "subgroups" || mode === "sylow" ? (
-        <svg
+        <Diagram
           className="math-svg"
           viewBox="0 0 560 430"
           role="img"
@@ -303,7 +304,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               </>
             );
           })()}
-        </svg>
+        </Diagram>
       ) : mode === "cosets" ? (
         <div className="coset-map">
           <p className="visual-kicker">
@@ -373,7 +374,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           </Table>
         </div>
       ) : (
-        <svg
+        <Diagram
           className="math-svg"
           viewBox="0 0 560 430"
           role="img"
@@ -454,7 +455,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               </SvgMath>
             </g>
           ))}
-        </svg>
+        </Diagram>
       )}
       <div className="lab-controls">
         <button className="quotient-toggle" onClick={() => setBoth(!both)}>
@@ -668,7 +669,7 @@ export function PolygonLab() {
           Reset
         </button>
       </div>
-      <svg
+      <Diagram
         viewBox="0 0 560 420"
         className="math-svg"
         role="img"
@@ -724,7 +725,7 @@ export function PolygonLab() {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <M
           block
@@ -785,7 +786,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
           onChange={setK}
         />
       </div>
-      <svg
+      <Diagram
         viewBox="0 0 560 400"
         className="math-svg"
         aria-label="Fibers of a cyclic group map"
@@ -823,7 +824,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <M
           block

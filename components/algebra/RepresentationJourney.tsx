@@ -106,8 +106,8 @@ export function RepresentationJourney({
         Carry the faithful complex two-dimensional D₈ square action through
         Maschke, Schur, characters, inner products, tables and direct products.
         D₈ has eight elements; matrices act on columns and products apply the
-        right factor first. The early pages are worked illustrations; only
-        authored guided checkpoints record competencies.
+        right factor first. Each step has guided teaching and diagnostic
+        checkpoints. Demonstrated competencies contribute to progress.
       </p>
       <p>
         <a href={`#${representationRouteId}`}>Direct link to this route</a> ·

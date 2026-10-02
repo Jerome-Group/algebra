@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -55,7 +56,7 @@ export function SquareModesLab() {
           <Prose>{" Apply $s$ "}</Prose>
         </button>
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 400"
         role="img"
@@ -77,7 +78,7 @@ export function SquareModesLab() {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="two-cols">
           {v.map((x, i) => (

@@ -5,7 +5,8 @@ import test, { after } from "node:test";
 import { fileURLToPath } from "node:url";
 
 import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToStaticMarkup, renderToPipeableStream } from "react-dom/server";
+import { PassThrough } from "node:stream";
 import { createServer } from "vite";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -86,6 +87,26 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.match(first, /--skeleton-width:70%/);
 });
 
+function renderLoadedMarkup(element) {
+  return new Promise((resolve, reject) => {
+    let html = "";
+    const output = new PassThrough();
+    output.on("data", (chunk) => {
+      html += chunk.toString();
+    });
+    output.on("end", () => resolve(html));
+    output.on("error", reject);
+    const stream = renderToPipeableStream(element, {
+      onAllReady() {
+        stream.pipe(output);
+      },
+      onError(error) {
+        reject(error);
+      },
+    });
+  });
+}
+
 test("all laboratory entry points render valid dynamic mathematics inside their provider", async () => {
   const [{ default: Laboratory }, { LaboratoryProvider }] = await Promise.all([
     vite.ssrLoadModule("/components/algebra/Laboratory.tsx"),
@@ -95,7 +116,7 @@ test("all laboratory entry points render valid dynamic mathematics inside their 
     await readFile(path.join(root, "lib/algebra/lessons.json"), "utf8"),
   );
   for (const lesson of lessons) {
-    const html = renderToStaticMarkup(
+    const html = await renderLoadedMarkup(
       React.createElement(
         LaboratoryProvider,
         null,
@@ -140,5 +161,31 @@ test("every guided reader renders all checkpoints and retains accessible mathema
     assert.match(html, /<math/, lesson.id);
     assert.doesNotMatch(html, /class="katex-error"/, lesson.id);
     assert.match(html, /Rigour and sources/, lesson.id);
+  }
+});
+
+test("production manifest keeps laboratory implementations out of eager shell imports", async () => {
+  const manifest = JSON.parse(
+    await readFile(path.join(root, "dist/client/.vite/manifest.json"), "utf8"),
+  );
+  const shell = manifest["components/algebra/Algebra.tsx"];
+  const eager = new Set();
+  const visit = (key) => {
+    if (eager.has(key)) return;
+    eager.add(key);
+    for (const dependency of manifest[key]?.imports ?? []) visit(dependency);
+  };
+  visit("components/algebra/Algebra.tsx");
+  for (const component of [
+    "Groups",
+    "Rings",
+    "Cube",
+    "FunctionFibers",
+    "TensorBalancingLab",
+  ]) {
+    const key = `components/algebra/${component}.tsx`;
+    assert.ok(shell.dynamicImports.includes(key), key);
+    assert.equal(eager.has(key), false, key);
+    assert.ok(manifest[key].isDynamicEntry, key);
   }
 });

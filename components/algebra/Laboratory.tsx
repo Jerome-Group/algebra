@@ -1,52 +1,237 @@
 "use client";
+import { lazy, type ComponentType } from "react";
 import { type Lesson } from "@/lib/algebra/engine";
-import { LinearQuotientLab, QuadraticQuotientLab } from "./Bridges";
-import Cube from "./Cube";
-import { GroupLab, PolygonLab, HomomorphismLab } from "./Groups";
-import { RingLab, ProductLab, PolynomialLab, FieldLab } from "./Rings";
-import {
-  OrthogonalLab,
-  PermutationLab,
-  RepresentationLab,
-  CharacterLab,
-} from "./Representations";
-import { StructureLab } from "./Structure";
-import { ConjugationLab } from "./Conjugation";
-import { ColoringLab } from "./Coloring";
-import { QuadraticLab } from "./QuadraticIntegers";
-import { CyclicLab } from "./CyclicEigenvalues";
-import { MatrixFiniteLab } from "./FiniteLinearGroups";
-import { SylowCalculator } from "./SylowArithmetic";
-import { SemidirectLab } from "./SemidirectProducts";
-import { ModuleLab } from "./Modules";
-import { SquareModesLab } from "./SquareModes";
-import { AxisAngleLab, PlaneRepresentationLab } from "./RotationLessons";
-import type { ComponentType } from "react";
 import type { LaboratoryKind } from "@/lib/algebra/laboratory-types";
-import { FunctionFiberLab } from "./FunctionFibers";
-import { OperationChecker } from "./OperationChecker";
-import { CayleyReachability } from "./CayleyReachability";
-import { GeneratorRelationLab } from "./CayleyRelations";
-import { CayleyEmbeddingLab } from "./CayleyEmbedding";
-import { CosetConstructor } from "./CosetConstructor";
-import { OrbitWorkbench } from "./OrbitWorkbench";
-import { UrecaDirectProducts } from "./UrecaDirectProducts";
-import { ModulePresentation } from "./ModulePresentation";
-import { FixedColoringLab } from "./FixedColoringLab";
-import { MetricOrientationLab, PlaneReflectionLab } from "./OrthogonalGeometry";
-import { SylowWorkbench } from "./SylowWorkbench";
-import { IdealQuotientLattice } from "./IdealQuotientLattice";
-import { PolynomialFactorisation } from "./PolynomialFactorisation";
-import { LocalisationMicroscope } from "./LocalisationMicroscope";
-import { IdealChainExplorer } from "./IdealChainExplorer";
-import { ModuleActionBoard } from "./ModuleActionBoard";
-import { TensorBalancingLab } from "./TensorBalancingLab";
-import { InductionReciprocityLab } from "./InductionReciprocityLab";
-import { WedderburnLayerLab } from "./WedderburnLayerLab";
-import { InvariantIntertwinerLab } from "./InvariantIntertwinerLab";
-import { CharacterConstruction } from "./CharacterConstruction";
-import { BurnsideClassLab } from "./BurnsideClassLab";
-import { NilradicalLab } from "./NilradicalLab";
+import { LaboratoryLoadBoundary } from "./LaboratoryLoadBoundary";
+const LinearQuotientLab = lazy(() =>
+  import("./Bridges").then((module) => ({ default: module.LinearQuotientLab })),
+);
+const QuadraticQuotientLab = lazy(() =>
+  import("./Bridges").then((module) => ({
+    default: module.QuadraticQuotientLab,
+  })),
+);
+const Cube = lazy(() => import("./Cube"));
+const GroupLab = lazy(() =>
+  import("./Groups").then((module) => ({ default: module.GroupLab })),
+);
+const PolygonLab = lazy(() =>
+  import("./Groups").then((module) => ({ default: module.PolygonLab })),
+);
+const HomomorphismLab = lazy(() =>
+  import("./Groups").then((module) => ({ default: module.HomomorphismLab })),
+);
+const RingLab = lazy(() =>
+  import("./Rings").then((module) => ({ default: module.RingLab })),
+);
+const ProductLab = lazy(() =>
+  import("./Rings").then((module) => ({ default: module.ProductLab })),
+);
+const PolynomialLab = lazy(() =>
+  import("./Rings").then((module) => ({ default: module.PolynomialLab })),
+);
+const FieldLab = lazy(() =>
+  import("./Rings").then((module) => ({ default: module.FieldLab })),
+);
+const OrthogonalLab = lazy(() =>
+  import("./Representations").then((module) => ({
+    default: module.OrthogonalLab,
+  })),
+);
+const PermutationLab = lazy(() =>
+  import("./Representations").then((module) => ({
+    default: module.PermutationLab,
+  })),
+);
+const RepresentationLab = lazy(() =>
+  import("./Representations").then((module) => ({
+    default: module.RepresentationLab,
+  })),
+);
+const CharacterLab = lazy(() =>
+  import("./Representations").then((module) => ({
+    default: module.CharacterLab,
+  })),
+);
+const StructureLab = lazy(() =>
+  import("./Structure").then((module) => ({ default: module.StructureLab })),
+);
+const ConjugationLab = lazy(() =>
+  import("./Conjugation").then((module) => ({
+    default: module.ConjugationLab,
+  })),
+);
+const ColoringLab = lazy(() =>
+  import("./Coloring").then((module) => ({ default: module.ColoringLab })),
+);
+const QuadraticLab = lazy(() =>
+  import("./QuadraticIntegers").then((module) => ({
+    default: module.QuadraticLab,
+  })),
+);
+const CyclicLab = lazy(() =>
+  import("./CyclicEigenvalues").then((module) => ({
+    default: module.CyclicLab,
+  })),
+);
+const MatrixFiniteLab = lazy(() =>
+  import("./FiniteLinearGroups").then((module) => ({
+    default: module.MatrixFiniteLab,
+  })),
+);
+const SylowCalculator = lazy(() =>
+  import("./SylowArithmetic").then((module) => ({
+    default: module.SylowCalculator,
+  })),
+);
+const SemidirectLab = lazy(() =>
+  import("./SemidirectProducts").then((module) => ({
+    default: module.SemidirectLab,
+  })),
+);
+const ModuleLab = lazy(() =>
+  import("./Modules").then((module) => ({ default: module.ModuleLab })),
+);
+const SquareModesLab = lazy(() =>
+  import("./SquareModes").then((module) => ({
+    default: module.SquareModesLab,
+  })),
+);
+const AxisAngleLab = lazy(() =>
+  import("./RotationLessons").then((module) => ({
+    default: module.AxisAngleLab,
+  })),
+);
+const PlaneRepresentationLab = lazy(() =>
+  import("./RotationLessons").then((module) => ({
+    default: module.PlaneRepresentationLab,
+  })),
+);
+const FunctionFiberLab = lazy(() =>
+  import("./FunctionFibers").then((module) => ({
+    default: module.FunctionFiberLab,
+  })),
+);
+const OperationChecker = lazy(() =>
+  import("./OperationChecker").then((module) => ({
+    default: module.OperationChecker,
+  })),
+);
+const CayleyReachability = lazy(() =>
+  import("./CayleyReachability").then((module) => ({
+    default: module.CayleyReachability,
+  })),
+);
+const GeneratorRelationLab = lazy(() =>
+  import("./CayleyRelations").then((module) => ({
+    default: module.GeneratorRelationLab,
+  })),
+);
+const CayleyEmbeddingLab = lazy(() =>
+  import("./CayleyEmbedding").then((module) => ({
+    default: module.CayleyEmbeddingLab,
+  })),
+);
+const CosetConstructor = lazy(() =>
+  import("./CosetConstructor").then((module) => ({
+    default: module.CosetConstructor,
+  })),
+);
+const OrbitWorkbench = lazy(() =>
+  import("./OrbitWorkbench").then((module) => ({
+    default: module.OrbitWorkbench,
+  })),
+);
+const UrecaDirectProducts = lazy(() =>
+  import("./UrecaDirectProducts").then((module) => ({
+    default: module.UrecaDirectProducts,
+  })),
+);
+const ModulePresentation = lazy(() =>
+  import("./ModulePresentation").then((module) => ({
+    default: module.ModulePresentation,
+  })),
+);
+const FixedColoringLab = lazy(() =>
+  import("./FixedColoringLab").then((module) => ({
+    default: module.FixedColoringLab,
+  })),
+);
+const MetricOrientationLab = lazy(() =>
+  import("./OrthogonalGeometry").then((module) => ({
+    default: module.MetricOrientationLab,
+  })),
+);
+const PlaneReflectionLab = lazy(() =>
+  import("./OrthogonalGeometry").then((module) => ({
+    default: module.PlaneReflectionLab,
+  })),
+);
+const SylowWorkbench = lazy(() =>
+  import("./SylowWorkbench").then((module) => ({
+    default: module.SylowWorkbench,
+  })),
+);
+const IdealQuotientLattice = lazy(() =>
+  import("./IdealQuotientLattice").then((module) => ({
+    default: module.IdealQuotientLattice,
+  })),
+);
+const PolynomialFactorisation = lazy(() =>
+  import("./PolynomialFactorisation").then((module) => ({
+    default: module.PolynomialFactorisation,
+  })),
+);
+const LocalisationMicroscope = lazy(() =>
+  import("./LocalisationMicroscope").then((module) => ({
+    default: module.LocalisationMicroscope,
+  })),
+);
+const IdealChainExplorer = lazy(() =>
+  import("./IdealChainExplorer").then((module) => ({
+    default: module.IdealChainExplorer,
+  })),
+);
+const ModuleActionBoard = lazy(() =>
+  import("./ModuleActionBoard").then((module) => ({
+    default: module.ModuleActionBoard,
+  })),
+);
+const TensorBalancingLab = lazy(() =>
+  import("./TensorBalancingLab").then((module) => ({
+    default: module.TensorBalancingLab,
+  })),
+);
+const InductionReciprocityLab = lazy(() =>
+  import("./InductionReciprocityLab").then((module) => ({
+    default: module.InductionReciprocityLab,
+  })),
+);
+const WedderburnLayerLab = lazy(() =>
+  import("./WedderburnLayerLab").then((module) => ({
+    default: module.WedderburnLayerLab,
+  })),
+);
+const InvariantIntertwinerLab = lazy(() =>
+  import("./InvariantIntertwinerLab").then((module) => ({
+    default: module.InvariantIntertwinerLab,
+  })),
+);
+const CharacterConstruction = lazy(() =>
+  import("./CharacterConstruction").then((module) => ({
+    default: module.CharacterConstruction,
+  })),
+);
+const BurnsideClassLab = lazy(() =>
+  import("./BurnsideClassLab").then((module) => ({
+    default: module.BurnsideClassLab,
+  })),
+);
+const NilradicalLab = lazy(() =>
+  import("./NilradicalLab").then((module) => ({
+    default: module.NilradicalLab,
+  })),
+);
 const laboratories: Record<
   LaboratoryKind,
   ComponentType<{ lesson: Lesson }>
@@ -133,5 +318,9 @@ const laboratories: Record<
 export default function Laboratory({ l }: { l: Lesson }) {
   const Component = laboratories[l.machine];
   if (!Component) throw Error(`Unknown laboratory: ${l.machine}`);
-  return <Component lesson={l} />;
+  return (
+    <LaboratoryLoadBoundary key={l.id} title={l.title}>
+      <Component lesson={l} />
+    </LaboratoryLoadBoundary>
+  );
 }

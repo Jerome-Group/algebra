@@ -88,10 +88,12 @@ test("malformed, future, unknown and invalid progress cannot grant credit", () =
         unknown: valid.attempts[id],
       },
     };
-    assert.deepEqual(
-      readProgress(JSON.stringify(data), registry),
-      emptyProgress(),
-    );
+    const restored = readProgress(JSON.stringify(data), registry);
+    assert.deepEqual(restored.attempts, {});
+    assert.equal(demonstrated(restored, registry).size, 0);
+    if (bad.choice === 99 || bad.revision === "stale")
+      assert.deepEqual(restored.archived.unknown, [valid.attempts[id]]);
+    else assert.deepEqual(restored, emptyProgress());
   }
   for (const choice of [-1, NaN, Infinity, 99])
     assert.deepEqual(
@@ -132,10 +134,7 @@ test("unit completion needs all guided lesson evidence plus the unit transfer ch
     ).complete,
     true,
   );
-  const reference = lessons.find(
-    (lesson) =>
-      !Object.keys(registry).some((key) => key.startsWith(`${lesson.id}:`)),
-  );
+  const reference = { ...lessons[0], id: "unreviewed-reference" };
   assert.equal(lessonCompletion(reference, all).complete, false);
   const fibers = lessons.find((lesson) => lesson.id === "foundations-fibers");
   assert.equal(prerequisitesMet(fibers, new Set(), lessons), false);

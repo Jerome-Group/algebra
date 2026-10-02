@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { matrixTex, permutation } from "@/lib/algebra/engine";
@@ -144,7 +145,7 @@ export function PlaneRepresentationLab({ lesson }: { lesson: Lesson }) {
         />
         <span className="lab-tag">Same C₃ action · no fixed extra axis</span>
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 400 340"
         role="img"
@@ -169,7 +170,7 @@ export function PlaneRepresentationLab({ lesson }: { lesson: Lesson }) {
           strokeWidth="3"
         />
         <circle cx={x} cy={y} r="7" fill="#d65332" />
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <Range
           label="Generator power"
