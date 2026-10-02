@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -37,7 +38,7 @@ export function QuadraticLab() {
           ]}
         />
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 400"
         role="img"
@@ -89,7 +90,7 @@ export function QuadraticLab() {
         <SvgMath x={292 + re * scale} y={214 + im * scale} fill="#e2bd78">
           {"\\bar z"}
         </SvgMath>
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="two-cols">
           <Range

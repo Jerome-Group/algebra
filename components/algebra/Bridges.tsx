@@ -24,7 +24,7 @@ export function LinearQuotientLab() {
           <h3>Domain · select a vector</h3>
           <div
             className="vector-grid"
-            style={{ gridTemplateColumns: `repeat(${prime},1fr)` }}
+            style={{ gridTemplateColumns: `repeat(${prime},minmax(0,1fr))` }}
           >
             {model.points.map((point, i) => (
               <button
@@ -52,7 +52,7 @@ export function LinearQuotientLab() {
           <h3>Image · one point per fiber</h3>
           <div
             className="vector-grid"
-            style={{ gridTemplateColumns: `repeat(${prime},1fr)` }}
+            style={{ gridTemplateColumns: `repeat(${prime},minmax(0,1fr))` }}
           >
             {model.points.map((point, i) => (
               <div

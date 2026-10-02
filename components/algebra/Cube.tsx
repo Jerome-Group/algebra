@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useRef, useState } from "react";
 import {
@@ -96,7 +97,7 @@ export function CubeScene({
   };
   return (
     <div className="cube-scene vector-scene">
-      <svg
+      <Diagram
         viewBox="0 0 560 400"
         role="group"
         tabIndex={0}
@@ -274,7 +275,7 @@ export function CubeScene({
               </g>
             );
           })}
-      </svg>
+      </Diagram>
       <span className="scene-hint">
         <Move3D size={14} /> Drag to orbit · select a label
       </span>

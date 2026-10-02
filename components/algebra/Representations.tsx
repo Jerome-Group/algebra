@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -99,7 +100,7 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
       {dim === "3" ? (
         <CubeScene matrix={m} set="vertices" selected={0} onSelect={() => {}} />
       ) : (
-        <svg
+        <Diagram
           className="math-svg"
           viewBox="0 0 560 420"
           role="img"
@@ -154,7 +155,7 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
               </SvgMath>
             </g>
           ))}
-        </svg>
+        </Diagram>
       )}
       <div className="lab-controls">
         <Range
@@ -244,7 +245,7 @@ export function PermutationLab() {
           </p>
         )}
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 330"
         role="img"
@@ -278,7 +279,7 @@ export function PermutationLab() {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       {ok && (
         <div className="lab-controls">
           <M
@@ -341,7 +342,7 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
           <Prose>{"Permutation module $\\mathbb R ^{3}$"}</Prose>
         </span>
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 410"
         role="img"
@@ -371,7 +372,7 @@ export function RepresentationLab({ lesson }: { lesson: Lesson }) {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="three-cols">
           {[

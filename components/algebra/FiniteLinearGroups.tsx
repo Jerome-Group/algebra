@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -34,7 +35,7 @@ export function MatrixFiniteLab() {
           outside its span (2 choices). Act on the three nonzero vectors.
         </p>
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 380"
         role="img"
@@ -63,7 +64,7 @@ export function MatrixFiniteLab() {
             </SvgMath>
           </g>
         ))}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <div className="finite-matrices">
           {mats.map((m, i) => (

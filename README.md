@@ -25,9 +25,32 @@ Build and run the existing checks on macOS or Linux:
 ```sh
 npm run format:check
 npm run lint
-npx vinext build
+npm run build
 node --test tests/*.test.mjs
 ```
+
+The ordinary build is portable. Retained `scripts/build-verified.sh` and
+`scripts/install-ci.sh` provide the older managed Linux workflow.
+
+Agent entry point (JSON results, failures exit 1):
+
+```sh
+npm run agent -- help
+npm run agent -- list --query symmetry
+npm run agent -- lesson mh2220-dihedral
+npm run agent -- prerequisites representations-maschke
+npm run agent -- map --write
+npm run agent -- verify --layer all --evidence outputs/release-verification.json
+```
+
+The generated `lib/algebra/feature-map.json` inventories every lesson, route, prerequisite,
+laboratory and verification obligation. Regenerate it after source changes; CI rejects drift.
+`inspect <lesson-id> --url <origin>` observes an isolated browser with exact accessible-label
+actions; `help` describes prerequisites and read/write effects. Install its browser once with
+`npx playwright install chromium`. `ALGEBRA_TEST_ORIGIN` runs browser checks against a matching
+built application or production; default browser checks start local Vite. Verification artifacts
+are written under ignored `outputs/`. Passing automation and independent mathematics review
+are separate release gates. See `docs/overhaul-plan.json` and `docs/research/`.
 
 The retained `install:ci` and `build` wrappers target the Linux Sites environment.
 The commands above work directly on the MacBook Pro. See `MAP.md` for the source layout.

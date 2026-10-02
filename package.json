@@ -3,17 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.13.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
+    "agent": "node scripts/algebra.mjs",
+    "typecheck": "tsc --noEmit",
     "install:ci": "bash scripts/install-ci.sh",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
-    "build": "bash scripts/build-verified.sh",
+    "build": "vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .sites-runtime",
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate",
-    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"worker/**/*.ts\" \"hooks/**/*.ts\" \"examples/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\"",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,json}\" \"tests/**/*.mjs\" \"scripts/**/*.mjs\" \"build/**/*.ts\" \"db/**/*.ts\" \"worker/**/*.ts\" \"hooks/**/*.ts\" \"examples/**/*.ts\" \"*.{ts,mjs,json}\" .github/workflows/ci.yml README.md MAP.md CONTEXT.md \"docs/adr/*.md\"",
     "test:browser": "playwright test"
   },
   "dependencies": {
@@ -47,6 +49,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@cloudflare/vite-plugin": "1.54.6",
+    "@cloudflare/workers-types": "5.20261002.1",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/katex": "^0.16.8",

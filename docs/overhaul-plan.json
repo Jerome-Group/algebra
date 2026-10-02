@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "issue": "https://github.com/Jerome-Group/algebra/issues/75",
+  "scope": "existing 150 concepts and features",
+  "featureMap": "lib/algebra/feature-map.json",
+  "teachingAudit": "docs/research/teaching-audit.json",
+  "releaseGates": [
+    {
+      "priority": 0,
+      "id": "discover",
+      "requirements": [
+        "repo and historical failures",
+        "production and immutable baseline",
+        "all lesson routes",
+        "architecture and persistence",
+        "protected PRs and Sites identity"
+      ],
+      "evidence": [
+        "docs/research/verification-audit.md",
+        "docs/research/mathematics-and-learning.md",
+        "docs/research/persistence-and-delivery.md",
+        "docs/research/learning-experience.md"
+      ]
+    },
+    {
+      "priority": 0,
+      "id": "mathematical-trust",
+      "requirements": [
+        "preserve syllabus and reviewed provenance",
+        "complete teaching scaffolding",
+        "align hypotheses and examples",
+        "acyclic prerequisites",
+        "independent semantic review"
+      ],
+      "evidence": [
+        "docs/research/teaching-audit.json",
+        "tests/teaching-semantic.test.mjs"
+      ]
+    },
+    {
+      "priority": 0,
+      "id": "preserve-data",
+      "requirements": [
+        "stable storage and access",
+        "archive revised evidence",
+        "protected malformed and future records",
+        "export and reversible restore",
+        "cross-tab and denied-storage cases"
+      ],
+      "evidence": [
+        "tests/progress-storage.test.mjs",
+        "tests/browser/progress.spec.mjs",
+        "tests/browser/navigation.spec.mjs"
+      ]
+    },
+    {
+      "priority": 1,
+      "id": "cohesive-learning",
+      "requirements": [
+        "immediate meaningful activity",
+        "definitions to proof and transfer",
+        "complementary exact laboratories",
+        "keyboard touch reflow reduced motion",
+        "loading error and recovery",
+        "bounded diagrams, original-size labels and inner control wrapping"
+      ],
+      "evidence": [
+        "tests/browser/studio.spec.mjs",
+        "tests/browser/catalogue.spec.mjs",
+        "tests/browser/laboratory-loading.spec.mjs",
+        "tests/browser/visual-sizing.spec.mjs",
+        "docs/research/visual-sizing-review.md"
+      ]
+    },
+    {
+      "priority": 0,
+      "id": "verify-and-review",
+      "requirements": [
+        "discoverable structured CLI",
+        "generated map drift checks",
+        "engineering mathematical rendered browser layers",
+        "independent standards and spec review",
+        "required PR checks and protections"
+      ],
+      "command": "npm run agent -- verify --layer all --evidence outputs/release-verification.json"
+    },
+    {
+      "priority": 0,
+      "id": "release",
+      "requirements": [
+        "reviewed GitHub source mapping",
+        "original Sites identity domain and public access",
+        "archive-backed tested rollback",
+        "all production lessons and learning journeys",
+        "honest issue criteria and release report"
+      ],
+      "evidence": ["docs/release-verification.md"]
+    }
+  ]
+}

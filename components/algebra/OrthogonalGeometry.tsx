@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import { matrixTex, type Mat } from "@/lib/algebra/engine";
 import {
@@ -51,7 +52,7 @@ export function PlaneReflectionLab() {
           </select>
         </label>
       </div>
-      <svg
+      <Diagram
         viewBox="0 0 400 340"
         className="math-svg"
         role="img"
@@ -91,7 +92,7 @@ export function PlaneReflectionLab() {
         <text x="205" y="160">
           x-axis · F fixed line
         </text>
-      </svg>
+      </Diagram>
       <div className="live-mathematics" aria-live="polite">
         <M
           block
@@ -130,7 +131,7 @@ function MetricGeometryVisual({
   return dimension === 3 ? (
     <CubeScene matrix={matrix} set="vertices" selected={0} />
   ) : (
-    <svg
+    <Diagram
       viewBox="0 0 400 180"
       role="img"
       aria-label="Plane reflection F fixes the horizontal x-axis and reverses the vertical direction"
@@ -140,7 +141,7 @@ function MetricGeometryVisual({
       <text x="220" y="82">
         fixed x-axis
       </text>
-    </svg>
+    </Diagram>
   );
 }
 

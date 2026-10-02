@@ -19,7 +19,7 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       # Actions are pinned to a commit, not a tag, so a moved tag cannot change what runs here.
       # Dependabot is what moves these pins forward (.github/dependabot.yml).
@@ -60,23 +60,14 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci
-      - name: Check formatting
-        run: npm run format:check
-      - name: Lint the application
-        run: npm run lint
-      - name: Build the application
-        run: npx vinext build
-      - name: Test the application
-        run: node --test tests/*.test.mjs
-
       - name: Install browser for accessibility and navigation checks
         run: npx playwright install --with-deps chromium
-      - name: Check browser navigation, reflow and accessibility
-        run: npm run test:browser
-      - name: Retain browser screenshots and accessibility evidence
+      - name: Verify engineering, mathematics and built learning flows
+        run: npm run agent -- verify --layer all --evidence outputs/verification.json
+      - name: Retain verification, screenshots and accessibility evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: browser-evidence
-          path: outputs/playwright
+          path: outputs/
           if-no-files-found: ignore

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useLearningProgress } from "./LearningProgress";
-import { lessonCompletion } from "@/lib/algebra/progress";
 import type { Lesson } from "@/lib/algebra/engine";
 import type { ProductMode } from "@/lib/algebra/navigation";
+import { lessonCompletion } from "@/lib/algebra/progress";
+import { ProgressDataControls, useLearningProgress } from "./LearningProgress";
+import { SymmetryDesk } from "./SymmetryDesk";
 
 export function LearningHome({
   lessons,
@@ -18,105 +19,134 @@ export function LearningHome({
   const { mastered, reset, storageAvailable } = useLearningProgress();
   const [resetting, setResetting] = useState(false);
   const results = lessons.map((lesson) => lessonCompletion(lesson, mastered));
+  const demonstrated = results.reduce((sum, item) => sum + item.count, 0);
+  const total = results.reduce((sum, item) => sum + item.total, 0);
   return (
     <section className="learning-home">
-      <p className="section-kicker">ABSTRACT ALGEBRA · A MATHEMATICAL STUDIO</p>
-      <h1 id="mode-heading" tabIndex={-1}>
-        What stays the same
-        <br />
-        when everything moves?
-      </h1>
-      <p className="home-intro">
-        Build a group. Follow a fiber. Find the hidden structure in a symmetry.
-        Start with a question, then learn to prove the answer.
-      </p>
-      <div className="home-paths">
-        <button onClick={() => navigate("learn")}>
-          <strong>Learn</strong>
-          <span>
-            Short units, worked examples and mathematical checkpoints.
-          </span>
-        </button>
-        <button onClick={() => navigate("explore")}>
-          <strong>Explore</strong>
-          <span>Construct objects and test predictions in a laboratory.</span>
-        </button>
-        <button onClick={() => navigate("reference")}>
-          <strong>Reference</strong>
-          <span>
-            Search the full atlas by topic, source and teaching depth.
-          </span>
-        </button>
-        <button onClick={() => navigate("sources")}>
-          <strong>Sources</strong>
-          <span>
-            See coverage and its limits across four source collections.
-          </span>
-        </button>
+      <div className="studio-introduction">
+        <p className="section-kicker">ABSTRACT ALGEBRA · THE LEARNING STUDIO</p>
+        <h1 id="mode-heading" tabIndex={-1}>
+          Explore a pattern.
+          <br />
+          Build an argument.
+        </h1>
+        <p>
+          Groups, rings, fields and representations. Start with a concrete
+          object; learn exactly what makes its mathematics work.
+        </p>
       </div>
-      <section className="featured-challenge">
-        <p className="section-kicker">A QUESTION TO BEGIN WITH</p>
-        <h2>Why can cosets sometimes multiply—and sometimes not?</h2>
-        <p>
-          One class has many representatives. If you choose another
-          representative, will the answer change?
-        </p>
-        <button onClick={() => open("mh2220-quotient")}>
-          Investigate quotient groups →
-        </button>
-      </section>
-      <section className="device-progress">
-        <h2>Your demonstrated competencies</h2>
-        <p role="status">
-          {results.reduce((sum, item) => sum + item.count, 0)} of{" "}
-          {results.reduce((sum, item) => sum + item.total, 0)} currently
-          assessed competencies ·{" "}
-          {results.filter((item) => item.complete).length} guided lessons
-          complete.
-        </p>
-        <p>
-          {storageAvailable
-            ? "Saved only in this browser. Page visits do not count; revised assessments require new evidence."
-            : "Browser storage is unavailable. Progress lasts only for this session."}
-        </p>
-        {resetting ? (
-          <>
+      <div className="studio-start">
+        <SymmetryDesk open={open} />
+        <div className="studio-learning">
+          <section className="resume-learning">
+            <p className="section-kicker">YOUR NEXT STEP</p>
+            <h2>
+              {resume
+                ? "Pick up your argument."
+                : "Start with the foundations."}
+            </h2>
             <p>
-              Clear all submitted competency and capstone evidence on this
-              device?
+              {resume
+                ? `Your place: ${resume.navTitle || resume.title}.`
+                : "Functions and equivalence explain what a rule must do before it can define an algebraic structure."}
             </p>
             <button
-              onClick={() => {
-                reset();
-                setResetting(false);
-              }}
+              className="studio-primary"
+              onClick={() => open(resume?.id || "foundations-functions")}
             >
-              Clear my progress
+              {resume
+                ? `Return to ${resume.navTitle || resume.title}`
+                : "Start with functions and fibers"}
             </button>
-            <button onClick={() => setResetting(false)}>
-              Keep my progress
+            <button onClick={() => navigate("learn")}>
+              Choose a learning unit
             </button>
-          </>
-        ) : (
-          <button onClick={() => setResetting(true)}>
-            Reset learning progress
+          </section>
+          <section className="device-progress">
+            <h2>Your demonstrated competencies</h2>
+            <p role="status">
+              {demonstrated} of {total} currently assessed competencies ·{" "}
+              {results.filter((item) => item.complete).length} guided lessons
+              complete.
+            </p>
+            <progress
+              value={demonstrated}
+              max={Math.max(total, 1)}
+              aria-label="Demonstrated competencies"
+            />
+            <p>
+              {storageAvailable
+                ? "Saved in this browser. Page visits do not count; each checkpoint asks for mathematical reasoning."
+                : "Saving unavailable. Progress lasts only for this session."}
+            </p>
+            <ProgressDataControls />
+            {resetting ? (
+              <div className="reset-confirmation">
+                <p>
+                  Clear submitted competency and capstone evidence on this
+                  device? You can restore the previous record.
+                </p>
+                <button
+                  onClick={() => {
+                    reset();
+                    setResetting(false);
+                  }}
+                >
+                  Clear my progress
+                </button>
+                <button onClick={() => setResetting(false)}>
+                  Keep my progress
+                </button>
+              </div>
+            ) : (
+              <button onClick={() => setResetting(true)}>
+                Reset learning progress
+              </button>
+            )}
+          </section>
+        </div>
+      </div>
+      <div className="home-paths">
+        {(
+          [
+            [
+              "learn",
+              "Learn",
+              "Follow a short unit: objects, examples, proofs, then a capstone.",
+            ],
+            [
+              "explore",
+              "Explore",
+              "Predict, manipulate and explain what a laboratory preserves.",
+            ],
+            [
+              "reference",
+              "Reference",
+              "Find a definition, hypothesis, proof or connected idea.",
+            ],
+            [
+              "sources",
+              "Sources",
+              "Trace the mathematics to its sources and proof boundaries.",
+            ],
+          ] as const
+        ).map(([mode, title, description]) => (
+          <button key={mode} onClick={() => navigate(mode)}>
+            <strong>{title}</strong>
+            <span>{description}</span>
           </button>
-        )}
-      </section>
-      <section className="resume-learning">
-        <h2>Continue learning</h2>
-        {resume ? (
-          <button onClick={() => open(resume.id)}>
-            Return to {resume.navTitle || resume.title} →
-          </button>
-        ) : (
-          <>
-            <p>Your place is saved on this device when you open a lesson.</p>
-            <button onClick={() => open("foundations-functions")}>
-              Start with functions and fibers →
-            </button>
-          </>
-        )}
+        ))}
+      </div>
+      <section className="featured-challenge">
+        <p className="section-kicker">ANOTHER WAY IN</p>
+        <h2>Why can cosets sometimes multiply—and sometimes not?</h2>
+        <p>
+          One class has many representatives. Change the representative: does
+          the answer change?
+        </p>
+        <button onClick={() => open("mh2220-quotient")}>
+          Investigate quotient groups
+        </button>
       </section>
     </section>
   );

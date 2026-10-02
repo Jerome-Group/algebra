@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import {
   dihedralCharacter,
   dihedralEigenvalues,
@@ -19,7 +20,7 @@ export function UrecaCharacterBound({ state }: { state: UrecaSelection }) {
       <DihedralElementControl state={state} />
       <section>
         <h3>Finite-order eigenvalue polygon</h3>
-        <svg
+        <Diagram
           viewBox="0 0 260 250"
           role="img"
           aria-label={`Two unit-circle eigenvalues of ${dihedralElements[element]}, listed below as text`}
@@ -43,7 +44,7 @@ export function UrecaCharacterBound({ state }: { state: UrecaSelection }) {
           <text x="30" y="119">
             −1
           </text>
-        </svg>
+        </Diagram>
         <div className="live-mathematics" aria-live="polite">
           <p>
             Eigenvalues:{" "}

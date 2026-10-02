@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
@@ -74,7 +75,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
   return (
     <div>
       <div className="structure-map">
-        <svg
+        <Diagram
           viewBox={`0 0 560 ${Math.max(410, 140 * Math.ceil(nodes.length / 2))}`}
           role="img"
           aria-label="Mathematical structure relationships"
@@ -129,7 +130,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               </div>
             </foreignObject>
           ))}
-        </svg>
+        </Diagram>
       </div>
       <div className="lab-controls">
         {normEdges.length > 0 && (

@@ -1,0 +1,44 @@
+# Verification audit — issue #75
+
+Baseline: `acb8486`, inspected 2026-10-03. This audit separates inventory from executed evidence; generating a map does not establish mathematical correctness or browser coverage.
+
+## Baseline findings
+
+- Catalogue: 150 lessons; 79 guided, 40 worked illustrations, 23 reference entries, eight proof roadmaps. Six source collections, five subjects, 16 units, 99 prerequisite edges and 237 competencies. Unit membership covers 67 distinct lessons. There are 62 curated laboratory contracts; all 150 entries have laboratory dispatch.
+- All 88 existing Node tests passed. Their strongest universal assertions check source formula parsing, initial laboratory rendering and guided checkpoints. They do not exercise every dynamic parameter combination.
+- Browser baseline previously covered only five foundation workspaces. It did not establish all-lesson navigation, dynamic laboratory boundaries, complete mobile reflow, persistence reload, or browser-tool behavior.
+- The historical audit ledger asserts 143 concept dispositions. Its passing checks do not establish coverage of the current 150-entry catalogue.
+- `mh2220-homomorphism` and `algebra-wedderburn` cannot satisfy their prerequisite filter even when every existing competency is demonstrated: their prerequisites include entries with no assessable competencies. This is a readiness representation gap; awarding unassessed mastery would conceal it.
+- Baseline TypeScript check fails on three missing Cloudflare runtime declarations: `cloudflare:workers`, `Fetcher`, `D1Database`. Production transpilation alone had not caught the absence of a typecheck gate.
+- Direct Node import of `progress.ts` fails because its TypeScript imports omit extensions. Existing tests correctly load those modules through Vite. The agent CLI uses a separate Node-compatible interface rather than relying on accidental module resolution.
+- Eight WebMCP tools exist only when the browser exposes `modelContext`. Agents without that API need a discoverable executable interface.
+
+## Preservation boundary
+
+Baseline device data: `algebra-competency-progress-v1`, `algebra-resume-v1`, and `algebra-ureca-square-element-v1`. Other laboratory predictions and parameters are transient. The authentication helper has no active consumer; no existing account flow or cloud-save claim was inferred. External source access and original source links remain part of the contract.
+
+## Verification added
+
+The generated feature map records source-level routes, prerequisites, controls, state declarations, contracts, content references and command effects. The CLI distinguishes source inspection from actual browser observations and executed checks. Its browser actions run in a fresh disposable context, never a personal account or saved learning state.
+
+The catalogue browser suite covers every lesson and laboratory entry, available prediction gates, select/range endpoints, available failure-state buttons, keyboard interaction, and 375-pixel reflow. It retains screenshots and structured observations. These checks establish the named paths, not all parameter combinations or every mathematical claim. Existing mathematical suites remain the semantic evidence; existing foundation browser checks supply accessibility evidence for their five specified cases.
+
+Initial browser attempt failed before execution because Chromium was absent. This is environment evidence, not 150 application defects. Subsequent executed browser outcomes are recorded separately in ignored `outputs/` evidence and the issue acceptance record.
+
+## Executed browser evidence
+
+The immutable baseline built Worker at `acb8486` passed 157 browser cases in 90.7 seconds: all 150 catalogue entries, five foundation laboratory cases and two navigation cases. Each catalogue case retained desktop and 375-pixel screenshots and structured control observations. Four additional custom-select/slider boundary cases passed. The runtime was an isolated original production build; current test-fixture source hashes are distinct from that baseline runtime revision. Earlier Vite attempts failed to hydrate because competing preview processes reused optimized dependency caches; those failures are retained as preview-environment observations.
+
+An interim overhaul built Worker passed all 150 catalogue cases but the complete suite returned 177 passes and 50 failures in 4.7 minutes. Most failures identified two new theme contrast regressions; another retained an obsolete expectation of 23 reference-only entries after guided promotion. These are actual failure evidence, not a release pass. The final source and production artifact must be rerun after fixes. `outputs/overhaul-worker-results.json` and associated screenshots/traces retain the interim run; ignored output paths are local evidence and CI artifact material, not committed release assertions.
+
+The agent CLI independently replayed the axis-angle spinbutton from 120° to 0° to 360° in an isolated browser: successful structured result, zero math parse errors, identity rotation output. The machine map links the final browser inspection ledger when available and assigns every lesson explicit browser-source-match and semantic-review gap IDs. Merely creating that ledger or passing structural map tests does not discharge these gaps; the results and lesson/UI hashes must match the inspected release snapshot.
+
+The first complete final verifier passed build, formatting, catalogue/map integrity, typecheck, 108 mathematical/content tests and eight built/render tests. Its browser suite passed 229 of 230 cases: the remaining unit-capstone case found a real contrast conflict between the general article button rule and the new checkpoint colors. The checkpoint override now explicitly scopes the application. Lint also found five errors in generated React dependency-cache files, not authored application code; generated `.wrangler/` and evidence output are now excluded. The authored-source lint passes with ten inherited unused-variable warnings. These failures are retained in `outputs/release-verification.json` until the corrected final run replaces the release result; a separate copy retains the failed evidence.
+
+All 150 immutable-baseline laboratory routes were also inspected in the in-app browser, including prediction gates, DOM mathematics and page overflow. A CDP mouse-event timeout was resolved through the page's exact-labelled WebMCP interaction; that attempted click was not counted as a successful inspection. All 150 original laboratory views then rendered without observed formula errors or page overflow.
+
+The corrected pre-sizing complete verifier passed every layer: 108 mathematical/content tests, eight built/render tests and 230 browser cases, with authored-source formatting, lint, map integrity and typecheck passing. Runtime was the built Worker; result duration 293718ms. The five prior generated-cache lint errors and one capstone contrast failure remain recorded in `outputs/final-first-failed-verification.json`.
+
+A subsequent user-reported sizing audit deliberately checked inside fitted outer pages. It confirmed 94 generic short vertical scrollers, 40 excessive tablet diagrams, eight clipped cube grids, three cramped selector layouts and 41 lessons with small diagram labels. Repairs add an intrinsic bounded diagram view, optional original-size labels in a labelled keyboard-pannable region, local container control stacking, auto-fit cube buttons, tablet workspace stacking and bounded native selects. One final Nilradical select defect was found by the new suite after the first repair and fixed. Final independent 450-layout audit plus 78 label-mode and cube interaction checks passed. New responsive suite: 162/162 passed. Root in-app inspection of the final runtime separately covered every teaching page at 1280 and 320 pixels (300 snapshots) and every laboratory at 320 pixels (150 snapshots), zero mathematical parse errors, page overflow or laboratory loading errors. This does not substitute for independent mathematical review.
+
+The practical CLI and CI now run the responsive suite with the other browser flows. The exact final combined verification result is required before protected merge; generated map entries link the final inspection hashes and responsive evidence, without inferring a pass from those links.

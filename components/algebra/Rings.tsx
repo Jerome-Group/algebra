@@ -1,4 +1,5 @@
 "use client";
+import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { mod, gcd, divisors, palette, type Lesson } from "@/lib/algebra/engine";
@@ -234,7 +235,7 @@ export function ProductLab({ lesson }: { lesson: Lesson }) {
           ])}
         />
       </div>
-      <svg
+      <Diagram
         className="math-svg"
         viewBox="0 0 560 430"
         aria-label="Product group grid"
@@ -278,7 +279,7 @@ export function ProductLab({ lesson }: { lesson: Lesson }) {
             );
           }),
         )}
-      </svg>
+      </Diagram>
       <div className="lab-controls">
         <Range
           label={"Integer / diagonal step $a$"}
@@ -791,7 +792,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
               />
             </div>
           </div>
-          <svg
+          <Diagram
             viewBox="0 0 560 400"
             className="math-svg"
             role="img"
@@ -834,7 +835,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
             <SvgMath x={290 + a * 17} y={215 + b * 17} fill="#a7a1ff">
               {"\\bar z"}
             </SvgMath>
-          </svg>
+          </Diagram>
           <div className="lab-controls">
             <M
               block

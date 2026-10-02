@@ -395,7 +395,8 @@
         "hint": "Back-substitute the Euclidean algorithm.",
         "answer": "It is $4\\mathbb Z$: $4=12-8$, while every combination of eight and twelve is divisible by four."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-subgroups"]
   },
   {
     "definition": "a\\equiv b\\pmod n\\iff a-b\\in n\\mathbb Z,\\qquad [a]+[b]=[a+b]",
@@ -509,7 +510,8 @@
         "hint": "Check the square of each unit.",
         "answer": "All four units square to one. A cyclic group of order four must have a generator of order four; none exists here."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-congruence", "mh2220-subgroups"]
   },
   {
     "definition": "D_n=\\langle r,s\\mid r^n=s^2=e,\\ srs=r^{-1}\\rangle=\\{r^is^j:0\\le i<n,\\ j\\in\\{0,1\\}\\}",
@@ -564,7 +566,8 @@
         "hint": "Matrices act on column vectors from the rightmost factor first.",
         "answer": "The product is $rs$: it sends $v$ to $r(s(v))$. Chronological order and written product order run oppositely."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-generators"]
   },
   {
     "definition": "S_n=\\operatorname{Bij}(\\{1,\\ldots,n\\}),\\qquad (\\sigma\\tau)(i)=\\sigma(\\tau(i))",
@@ -618,7 +621,7 @@
         "answer": "The order is $\\operatorname{lcm}(3,2)=6$. Its sign is $(+1)(-1)=-1$."
       }
     ],
-    "prerequisites": ["mh2220-subgroups"],
+    "prerequisites": ["foundations-functions", "mh2220-inverse-order"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -676,7 +679,8 @@
         "hint": "Its generator exponent must be twelve divided by four.",
         "answer": "The unique subgroup is $\\langle g^3\\rangle=\\{1,g^3,g^6,g^9\\}$."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-generators", "mh2220-inverse-order"]
   },
   {
     "definition": "\\phi:G\\to H,\\quad \\phi(xy)=\\phi(x)\\phi(y),\\qquad \\ker\\phi=\\{g:\\phi(g)=e_H\\}",
@@ -731,7 +735,7 @@
         "answer": "It preserves addition and is well-defined modulo six. Its kernel is $\\{[0],[3]\\}$ and its image is $\\{[0],[2],[4]\\}$."
       }
     ],
-    "prerequisites": ["mh2220-permutations"],
+    "prerequisites": ["mh2220-permutations", "mh2220-subgroups"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -790,7 +794,8 @@
         "hint": "Compare element orders.",
         "answer": "The first group contains an element of order four; every element of the second has order at most two. Isomorphisms preserve orders, so these equal-size groups are not isomorphic."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-homomorphism"]
   },
   {
     "definition": "P_\\sigma e_j=e_{\\sigma(j)},\\qquad (P_\\sigma)_{ij}=\\delta_{i,\\sigma(j)}",
@@ -903,7 +908,7 @@
         "answer": "It is $(-1)^4=+1$; a five-cycle is even."
       }
     ],
-    "prerequisites": ["mh2220-permutation-matrices"]
+    "prerequisites": ["mh2220-permutation-matrices", "mh2220-homomorphism"]
   },
   {
     "definition": "gH=\\{gh:h\\in H\\},\\qquad Hg=\\{hg:h\\in H\\},\\qquad gH=kH\\iff k^{-1}g\\in H",
@@ -1037,7 +1042,8 @@
         "hint": "Apply the theorem to its cyclic subgroup.",
         "answer": "Its order must be one of $1,2,3,6,9,18$. This is a list of necessary possibilities, not a guarantee that all occur."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-cosets"]
   },
   {
     "definition": "\\varphi(n)=|(\\mathbb Z/n\\mathbb Z)^\\times|,\\qquad \\gcd(a,n)=1",
@@ -1093,7 +1099,8 @@
         "hint": "Check the gcd before applying the theorem.",
         "answer": "No. Three is not a unit modulo fifteen. In fact its positive powers remain divisible by three and therefore cannot be congruent to one modulo fifteen."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-units", "mh2220-lagrange"]
   },
   {
     "track": "MH2220",
@@ -1184,7 +1191,7 @@
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
-    "prerequisites": ["groups-cauchy", "mh2220-normal"],
+    "prerequisites": ["mh2220-sylow-counts"],
     "objective": "Classify order-six groups with every existence and normality step justified.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
@@ -1256,6 +1263,11 @@
         "hint": "Cayley gives an embedding, not automatically minimality.",
         "answer": "It gives degree three. Minimality needs a separate observation: $S_1$ and $S_2$ have orders one and two and contain no element of order three."
       }
+    ],
+    "prerequisites": [
+      "mh2220-generators",
+      "mh2220-permutations",
+      "mh2220-homomorphism"
     ]
   },
   {
@@ -1337,7 +1349,7 @@
         "answer": "Yes. Commutativity gives $ghg^{-1}=h$, so conjugation preserves every subgroup."
       }
     ],
-    "prerequisites": ["mh2220-orbit-stabilizer"],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-cosets"],
     "labScope": "Left/right coset equality tests the same condition. The displayed checks are finite; the proof identifies all homomorphism kernels as normal.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -1435,11 +1447,31 @@
     "references": [],
     "navTitle": "Circle quotient",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Identify the kernel of each map and explain why the two quotient descriptions are isomorphic.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["mh2220-first-isomorphism"],
+    "worked": {
+      "title": "Same point after whole turns",
+      "steps": [
+        "The real numbers 1/4 and 5/4 differ by one.",
+        "Both map to exp(πi/2)=i, so they represent the same point of R/Z."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What point corresponds to 1/2+Z?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "exp(2πi·1/2)=exp(πi)=−1."
+      },
+      {
+        "question": "Why is t→exp(2πit) not injective on R?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Its nontrivial kernel is Z. Quotienting by exactly this kernel removes the duplication."
+      }
+    ]
   },
   {
     "definition": "\\operatorname{Aut}(G)=\\{\\phi:G\\xrightarrow{\\sim}G\\},\\qquad c_g(x)=gxg^{-1},\\qquad \\operatorname{Inn}(G)=\\{c_g:g\\in G\\}",
@@ -1503,11 +1535,35 @@
       }
     ],
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Specify an automorphism by its effect on generators and check that all defining relations are preserved.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-isomorphism",
+      "mh2220-cyclic",
+      "mh2220-first-isomorphism"
+    ],
+    "worked": {
+      "title": "Generators control cyclic automorphisms",
+      "steps": [
+        "In C₈=⟨g⟩, sending g to g³ determines gᵏ→g³ᵏ.",
+        "Since gcd(3,8)=1 this is bijective; composing it with itself gives exponent nine, hence the identity modulo eight."
+      ]
+    },
+    "practice": [
+      {
+        "question": "How many automorphisms does C₈ have?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The admissible exponents are 1,3,5,7."
+      },
+      {
+        "question": "Which group elements give the identity conjugation map?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Conjugation by g fixes every x exactly when g commutes with every x."
+      }
+    ]
   },
   {
     "definition": "C_G(x)=\\{g:gx=xg\\},\\quad N_G(H)=\\{g:gHg^{-1}=H\\},\\quad Z(G)=\\bigcap_{x\\in G}C_G(x)",
@@ -1562,7 +1618,8 @@
         "hint": "Conjugation either preserves or inverts the generator.",
         "answer": "The image has two elements: identity and inversion. The centralizer is the four rotations, while the normalizer is all eight square symmetries."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-normal", "mh2220-first-isomorphism"]
   },
   {
     "definition": "(g,h)(g',h')=(gg',hh'),\\qquad o((g,h))=\\operatorname{lcm}(o(g),o(h))",
@@ -1645,7 +1702,8 @@
         "hint": "When do both coordinates return to zero?",
         "answer": "Its order is $\\operatorname{lcm}(2,4)=4$, while the group has eight elements. It is not a generator."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-normal", "mh2220-subgroups"]
   },
   {
     "definition": "\\alpha:H\\to\\operatorname{Aut}(N),\\qquad (n,h)(n',h')=(n\\,\\alpha(h)(n'),hh')",
@@ -1702,6 +1760,11 @@
         "hint": "Compare the two groups obtained from the same pair of factors.",
         "answer": "Different actions give different multiplication laws: one choice produces a nonabelian group and the trivial action produces an abelian group. The factors alone do not determine the semidirect product."
       }
+    ],
+    "prerequisites": [
+      "mh2220-direct-product",
+      "mh2220-actions",
+      "mh2220-automorphism"
     ]
   },
   {
@@ -1757,7 +1820,8 @@
         "hint": "Apply the map to all four factors.",
         "answer": "The image is $f(a)f(b)f(a)^{-1}f(b)^{-1}=1$ because the target factors commute. It therefore kills the subgroup generated by all commutators."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-normal", "mh2220-quotient"]
   },
   {
     "definition": "\\overline\\phi:G/\\ker\\phi\\to\\operatorname{im}\\phi,\\qquad g\\ker\\phi\\longmapsto\\phi(g)",
@@ -1812,7 +1876,11 @@
         "answer": "The inclusion $2\\mathbb Z\\hookrightarrow\\mathbb Z$ has trivial kernel but image $2\\mathbb Z$, not all of the stated codomain. The induced map is onto its image only."
       }
     ],
-    "prerequisites": ["mh2220-quotient"],
+    "prerequisites": [
+      "mh2220-quotient",
+      "mh2220-homomorphism",
+      "mh2220-isomorphism"
+    ],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -1896,7 +1964,8 @@
         "hint": "Look at the ambient subgroup containing both factors.",
         "answer": "Assuming $N$ is normal in $G$ ensures $HN$ is a subgroup and $N$ is normal in it. Thus the quotient exists and the restricted quotient map is a homomorphism."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-first-isomorphism"]
   },
   {
     "definition": "N\\le M\\le G,\\quad N,M\\trianglelefteq G,\\qquad (G/N)/(M/N)\\cong G/M",
@@ -1951,7 +2020,8 @@
         "hint": "The first quotient is $G/N$.",
         "answer": "To form that quotient group, $N$ must be normal in all of $G$. Normality is not transitive, so this must be checked separately."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-first-isomorphism"]
   },
   {
     "definition": "N\\trianglelefteq G,\\quad \\{H\\le G:N\\le H\\}\\longleftrightarrow\\{K\\le G/N\\},\\qquad H\\mapsto H/N,\\quad K\\mapsto\\pi^{-1}(K)",
@@ -2007,7 +2077,8 @@
         "hint": "Every inverse image contains the kernel.",
         "answer": "It does not contain the nontrivial subgroup $N$, so it cannot be the inverse image of a quotient subgroup."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-first-isomorphism"]
   },
   {
     "definition": "G\\cong\\prod_i C_{p_i^{a_i}}\\cong C_{d_1}\\times\\cdots\\times C_{d_r},\\qquad d_1\\mid d_2\\mid\\cdots\\mid d_r",
@@ -2030,7 +2101,7 @@
       "pdfPages": "9, 10, 12",
       "pages": "105, 106, 108"
     },
-    "theorem": "|G|=p^a\\Longrightarrow G\\cong C_{p^{\\lambda_1}}\\times\\cdots\\times C_{p^{\\lambda_r}},\\qquad \\lambda_1+\\cdots+\\lambda_r=a",
+    "theorem": "G\\text{ finite abelian},\\ |G|=p^a\\Longrightarrow G\\cong C_{p^{\\lambda_1}}\\times\\cdots\\times C_{p^{\\lambda_r}},\\qquad \\lambda_1+\\cdots+\\lambda_r=a",
     "title": "Finite abelian groups decompose into cyclic pieces",
     "track": "MH2220",
     "subject": "Groups & symmetry",
@@ -2062,7 +2133,8 @@
         "hint": "Separate the two-primary part from the three-primary part.",
         "answer": "The possibilities are $C_4\\times C_3\\cong C_{12}$ and $C_2\\times C_2\\times C_3\\cong C_2\\times C_6$. The classification theorem ensures the list is exhaustive."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-cyclic", "mh2220-direct-product"]
   },
   {
     "definition": "Q_8=\\langle a,b\\mid a^4=e,\\ a^2=b^2,\\ ba=a^{-1}b\\rangle=\\{\\pm1,\\pm i,\\pm j,\\pm k\\}",
@@ -2099,11 +2171,35 @@
     "references": [],
     "navTitle": "Order eight",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Distinguish D₄ from Q₈ without relying on their size or ordinary character table.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-small-groups",
+      "mh2220-finite-abelian",
+      "mh2220-normal"
+    ],
+    "worked": {
+      "title": "Count involutions",
+      "steps": [
+        "In Q₈, −1 is the unique element of order two; ±i,±j,±k have order four.",
+        "In D₄ the half-turn and all four reflections have order two, giving five involutions. Therefore Q₈ and D₄ are not isomorphic."
+      ]
+    },
+    "practice": [
+      {
+        "question": "How many involutions does D₄ have?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Count the four reflections and the half-turn."
+      },
+      {
+        "question": "Why is a group in which every element squares to e abelian?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The inverse-of-product law gives ab=ba when each factor and their product is its own inverse."
+      }
+    ]
   },
   {
     "definition": "G\\times X\\to X,\\quad (g,x)\\mapsto g\\cdot x,\\qquad e\\cdot x=x,\\quad (gh)\\cdot x=g\\cdot(h\\cdot x)",
@@ -2181,7 +2277,11 @@
         "answer": "It is transitive, but has kernel and each point stabilizer equal to $\\{e,r^2\\}$. Therefore it is neither faithful nor free."
       }
     ],
-    "prerequisites": ["mh2220-cosets"],
+    "prerequisites": [
+      "mh2220-cosets",
+      "mh2220-homomorphism",
+      "mh2220-permutations"
+    ],
     "labScope": "These are three different actions of one group. Orbit–stabilizer follows from a coset bijection, not merely from seeing equal products of counts.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -2298,6 +2398,10 @@
         "hint": "Write $gxg^{-1}$ using commutativity with $x$.",
         "answer": "If $x$ commutes with every $g$, then $gxg^{-1}=x$ for all $g$. Conversely, being fixed under every conjugation means commuting with the entire group."
       }
+    ],
+    "prerequisites": [
+      "mh2220-orbit-stabilizer",
+      "mh2220-centralizer-normalizer"
     ]
   },
   {
@@ -2322,7 +2426,7 @@
       "pdfPages": "6",
       "pages": "116"
     },
-    "theorem": "[G:\\operatorname{core}_G(H)]\\mid [G:H]!,\\qquad \\operatorname{core}_G(H)\\trianglelefteq G",
+    "theorem": "n=[G:H]<\\infty:\\quad [G:\\operatorname{core}_G(H)]\\mid n!,\\qquad\\operatorname{core}_G(H)\\trianglelefteq G",
     "title": "Coset actions and the core",
     "track": "MH2220",
     "subject": "Maps & quotients",
@@ -2354,6 +2458,11 @@
         "hint": "A normal subgroup is equal to all its conjugates.",
         "answer": "The action is on two cosets and has kernel $A_3$. In this case the coset set also carries the quotient group structure $S_3/A_3$."
       }
+    ],
+    "prerequisites": [
+      "mh2220-actions",
+      "mh2220-cosets",
+      "mh2220-first-isomorphism"
     ]
   },
   {
@@ -2392,11 +2501,31 @@
     "references": [],
     "navTitle": "Double cosets",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Compute both a double coset and its cardinality from the intersection formula.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["mh2220-cosets", "mh2220-orbit-stabilizer"],
+    "worked": {
+      "title": "Two double cosets in S₃",
+      "steps": [
+        "Let H=⟨s⟩ with s=(12), and r=(123).",
+        "The double cosets are H={e,s} and HrH={r,r²,rs,r²s}; they have sizes two and four."
+      ]
+    },
+    "practice": [
+      {
+        "question": "If |H|=|K|=2 and |H∩gKg⁻¹|=1, what is |HgK|?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The product formula gives 2·2/1=4."
+      },
+      {
+        "question": "What happens if K={e}?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Hg{e}=Hg. A set partition still does not require normality."
+      }
+    ]
   },
   {
     "definition": "\\operatorname{Fix}(g)=\\{x\\in X:g\\cdot x=x\\},\\qquad |X/G|=\\frac1{|G|}\\sum_{g\\in G}|\\operatorname{Fix}(g)|",
@@ -2453,7 +2582,8 @@
         "hint": "A coloring can be constant on a whole cycle.",
         "answer": "It can move vertices carrying the same color. A coloring is fixed when every cycle is monochromatic, so vertex fixed points and coloring fixed points are different counts."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-permutations"]
   },
   {
     "definition": "N(n,q)=\\frac1n\\sum_{k=0}^{n-1}q^{\\gcd(n,k)}",
@@ -2510,7 +2640,8 @@
         "hint": "Does the experiment require every available color to be used?",
         "answer": "There is no requirement to use both colors. The two monochromatic colorings are included. Prescribing an exact color inventory is a different counting problem."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-burnside", "mh2220-dihedral"]
   },
   {
     "definition": "Z_G(a_1,\\ldots,a_n)=\\frac1{|G|}\\sum_{g\\in G}\\prod_{j=1}^n a_j^{c_j(g)},\\quad c_j(g)=\\text{number of length-}j\\text{ cycles}",
@@ -2534,7 +2665,7 @@
       "pdfPages": "114",
       "pages": "114"
     },
-    "theorem": "\\frac1{r!}\\sum_{\\sigma\\in S_r}q^{c(\\sigma)}=\\binom{q+r-1}{r},\\qquad \\sum_{\\sigma\\in S_r}x^{c(\\sigma)}=\\prod_{j=0}^{r-1}(x+j)",
+    "theorem": "\\text{For integers }r\\ge0,\\ q\\ge1:\\quad \\frac1{r!}\\sum_{\\sigma\\in S_r}q^{c(\\sigma)}=\\binom{q+r-1}{r},\\qquad \\sum_{\\sigma\\in S_r}x^{c(\\sigma)}=\\prod_{j=0}^{r-1}(x+j)",
     "title": "Cycle counts turn permutations into counting polynomials",
     "track": "MH2220",
     "subject": "Groups & symmetry",
@@ -2566,7 +2697,8 @@
         "hint": "A fixed coloring must be constant on the cycle.",
         "answer": "All three positions must receive the same color. Independent choices at each position would count colorings that the cycle does not fix."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-burnside", "mh2220-permutations"]
   },
   {
     "definition": "T(q)=\\frac{q^4+11q^2}{12},\\qquad C(q)=\\frac{q^8+17q^4+6q^2}{24}",
@@ -2622,7 +2754,8 @@
         "hint": "Count the fixed endpoints of the rotation axis.",
         "answer": "Two vertices are fixed and the other six form two three-cycles. Thus there are four cycles in total."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-burnside", "cube-four-actions"]
   },
   {
     "definition": "|G|=p^a m,\\quad p\\nmid m,\\qquad \\operatorname{Syl}_p(G)=\\{P\\le G:|P|=p^a\\}",
@@ -2736,7 +2869,8 @@
         "hint": "Sum the orbit sizes.",
         "answer": "Every nontrivial orbit has size divisible by p. If all orbits were nontrivial, their sum would be divisible by p, contradicting the size of the set."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-sylow-existence", "mh2220-orbit-stabilizer"]
   },
   {
     "definition": "|G|=p^a m,\\ p\\nmid m\\quad\\Longrightarrow\\quad n_p\\mid m,\\qquad n_p\\equiv1\\pmod p",
@@ -2819,6 +2953,11 @@
         "hint": "It divides three and is one modulo five.",
         "answer": "The only possibility is one, so its Sylow five-subgroup is normal."
       }
+    ],
+    "prerequisites": [
+      "mh2220-sylow-conjugacy",
+      "mh2220-centralizer-normalizer",
+      "mh2220-lagrange"
     ]
   },
   {
@@ -2884,11 +3023,35 @@
       }
     ],
     "proofStatus": "Theorem imported · proof roadmap here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Identify a composition series and distinguish its factors from its subgroups.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-normal",
+      "mh2220-quotient",
+      "mh2220-correspondence"
+    ],
+    "worked": {
+      "title": "The layers of S₄",
+      "steps": [
+        "Use S₄≥A₄≥V₄≥C₂≥{e}; each term is normal in the preceding term.",
+        "The quotient orders are 2,3,2,2, so the simple factors are C₂,C₃,C₂,C₂."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What are the factor orders in the displayed S₄ series?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Take successive order ratios 24/12,12/4,4/2,2/1."
+      },
+      {
+        "question": "Does the multiset of composition factors determine a finite group?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Jordan–Hölder proves invariance of factors, not classification of how extensions assemble them."
+      }
+    ]
   },
   {
     "definition": "|G|=p^a,\\quad a\\ge1\\quad\\Longrightarrow\\quad |Z(G)|\\equiv0\\pmod p,\\qquad Z(G)\\ne\\{e\\}",
@@ -2902,7 +3065,7 @@
     },
     "pitfall": "A nontrivial center does not imply that the whole $p$-group is abelian. $D_{4}$ and $Q_{8}$ are nonabelian 2-groups.",
     "prompt": "Use the class equation for $D_{4}$ or $Q_{8}$ and locate the central involution.",
-    "proof": "In the class equation, noncentral class sizes are indices of proper centralizers and hence positive powers of $p$. Thus $p$ divides $|Z(G)|$. If $G$ is simple its nontrivial center must be $G$, making it abelian; a finite simple abelian group has prime order.",
+    "proof": "Assume G is a nontrivial finite p-group, |G|=p^a with a≥1. In the class equation, noncentral class sizes are indices of proper centralizers and hence positive powers of $p$. Thus $p$ divides $|Z(G)|$. If $G$ is simple its nontrivial center must be $G$, making it abelian; a finite simple abelian group has prime order.",
     "section": "7.1 · Theorem 7.13; course compilation Exercise 6.8",
     "source": {
       "title": "MH2220_Course_Notes_2025.pdf",
@@ -2987,7 +3150,8 @@
         "hint": "Reduce the class equation modulo p.",
         "answer": "Every noncentral class has size a positive power of p greater than one. Hence the center size is divisible by p; since it contains the identity, it has at least p elements."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-conjugacy", "mh2220-lagrange"]
   },
   {
     "definition": "|\\mathrm{GL}_n(\\mathbb F_p)|=\\prod_{i=0}^{n-1}(p^n-p^i),\\qquad U_n(\\mathbb F_p)=\\{I+A:A\\text{ strictly upper triangular}\\}",
@@ -3044,6 +3208,11 @@
         "hint": "Repeat the column count.",
         "answer": "There are three choices for the first nonzero column and two for the second outside its span, giving six."
       }
+    ],
+    "prerequisites": [
+      "odyssey-linear-groups",
+      "mh2220-sylow-conjugacy",
+      "mh2220-cayley-embedding"
     ]
   },
   {
@@ -3109,7 +3278,7 @@
         "answer": "It is closed and has additive inverses, but does not contain $1$. Thus it is a nonunital subring under conventions allowing these, and is not a unital subring sharing the integer identity."
       }
     ],
-    "prerequisites": ["mh2220-congruence"],
+    "prerequisites": ["mh2220-congruence", "mh2220-axioms"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -3195,7 +3364,8 @@
         "hint": "Use the corner example.",
         "answer": "No. Its internal identity can differ from the ambient one, or it can have no identity at all. The chosen subring convention must specify the requirement."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-rings"]
   },
   {
     "definition": "R^\\times=\\{u:\\exists v,\\ uv=vu=1\\},\\qquad a\\ne0\\text{ is a zero divisor}\\iff\\exists b\\ne0,\\ ab=0\\text{ or }ba=0",
@@ -3330,7 +3500,8 @@
         "hint": "Multiply the classes of two and three.",
         "answer": "No. They would be nonzero with product zero, contradicting the domain property of a field."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-rings", "m3220-units"]
   },
   {
     "definition": "\\text{field}\\Rightarrow\\text{integral domain};\\qquad D\\text{ domain}\\iff D\\ne0,\\ 1\\in D,\\ ab=ba,\\ ab=0\\Rightarrow a=0\\text{ or }b=0",
@@ -3463,7 +3634,12 @@
         "answer": "No. The degree of an intermediate extension divides the total finite degree, and two does not divide three."
       }
     ],
-    "prerequisites": ["m3220-irreducibility-tests"],
+    "prerequisites": [
+      "m3220-domains",
+      "m3220-irreducibility-tests",
+      "m3220-polynomial",
+      "m3220-quotient-ring"
+    ],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -3505,11 +3681,31 @@
     "references": [],
     "navTitle": "Quadratic integers",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Determine the correct integral basis and verify that a proposed element is an algebraic integer.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-algebraic"],
+    "worked": {
+      "title": "A hidden integral half-step",
+      "steps": [
+        "For D=5, ω=(1+√5)/2 satisfies ω²−ω−1=0.",
+        "It is an algebraic integer although its coordinates in the basis 1,√5 are halves. O_K=Z[ω]."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is ω² when ω=(1+√5)/2?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Substitute D=5 in ω²=ω+(D−1)/4."
+      },
+      {
+        "question": "Is the coefficient plane for positive D a complex lattice picture?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "For positive D both embeddings are real; a coefficient drawing must be labelled accordingly."
+      }
+    ]
   },
   {
     "definition": "\\overline{a+b\\sqrt D}=a-b\\sqrt D,\\quad N(a+b\\sqrt D)=a^2-Db^2,\\quad\\operatorname{Tr}(a+b\\sqrt D)=2a",
@@ -3548,11 +3744,31 @@
     "references": [],
     "navTitle": "Norm & trace",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Decide whether a quadratic integer is a unit and give its inverse when it is.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-quadratic-integers"],
+    "worked": {
+      "title": "A Gaussian unit",
+      "steps": [
+        "N(i)=i(−i)=1. The conjugate −i is its inverse.",
+        "In Z[i], norm-one elements are ±1,±i."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What are trace and norm of 3+2√2?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Trace adds the conjugates; norm multiplies them: 6 and 9−8=1."
+      },
+      {
+        "question": "Why does norm one certify an inverse in O_K?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Conjugation preserves O_K; multiplying by the conjugate produces one."
+      }
+    ]
   },
   {
     "definition": "\\varphi(a+b)=\\varphi(a)+\\varphi(b),\\quad\\varphi(ab)=\\varphi(a)\\varphi(b),\\quad\\ker\\varphi=\\{a:\\varphi(a)=0\\}",
@@ -3617,7 +3833,7 @@
         "answer": "The kernel is $(X-1)$. The remainder on division by $X-1$ is the constant $p(1)$, so vanishing at one is equivalent to divisibility."
       }
     ],
-    "prerequisites": ["m3220-domains"],
+    "prerequisites": ["m3220-ideals", "mh2220-homomorphism"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -3702,7 +3918,7 @@
         "answer": "Only the zero ideal and the whole field. A nonzero ideal contains a unit and therefore contains one and every element."
       }
     ],
-    "prerequisites": ["m3220-ring-hom"],
+    "prerequisites": ["m3220-units"],
     "labScope": "The tables compute finite examples and their inclusion order. The general correspondence comes from ideal preimages under R→R/I; two-sided absorption proves multiplication descends.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -3773,7 +3989,8 @@
         "hint": "Write one as a sum of an element of each ideal.",
         "answer": "Choose $a\\in I,b\\in J$ with $a+b=1$. For $x\\in I\\cap J$, $x=xa+xb$ lies in $IJ$. The reverse inclusion always holds, so equality follows."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-ideals"]
   },
   {
     "definition": "R/I=\\{a+I:a\\in R\\},\\quad(a+I)(b+I)=ab+I,\\quad(a+I)+(b+I)=a+b+I",
@@ -3839,7 +4056,7 @@
         "answer": "Exactly those with $a\\ne0$. Their inverse is $a^{-1}-ba^{-2}\\varepsilon$. If $a=0$, every product has constant term zero."
       }
     ],
-    "prerequisites": ["m3220-ideals"],
+    "prerequisites": ["m3220-ideals", "foundations-quotient-rules"],
     "labScope": "The selected finite quotient verifies examples. The proof of representative independence uses two-sided ideal absorption, not just the observed multiplication table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -3926,7 +4143,8 @@
         "hint": "Changing representatives adds an element of I.",
         "answer": "Exactly when $I\\subseteq\\ker\\varphi$. The descended map is injective exactly when this inclusion is equality, and surjectivity depends on the original image."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-ring-hom", "m3220-quotient-ring"]
   },
   {
     "definition": "\\frac{I+S}{I}\\cong\\frac{S}{I\\cap S},\\qquad \\frac{R/I}{J/I}\\cong R/J\\quad(I\\subseteq J)",
@@ -4019,7 +4237,8 @@
         "hint": "Take the inverse image of zero.",
         "answer": "It is the kernel $12\\mathbb Z$. Every lifted ideal contains this kernel."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-first-ring-isomorphism"]
   },
   {
     "definition": "M\\text{ maximal}\\iff M\\ne R\\text{ and }(M\\subseteq J\\triangleleft R\\Rightarrow J=M\\text{ or }J=R)",
@@ -4085,7 +4304,8 @@
         "hint": "Look for a proper ideal strictly between it and the whole ring.",
         "answer": "No. $(4)\\subsetneq(2)\\subsetneq\\mathbb Z$. Equivalently, the nonzero class of two is not invertible modulo four."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-quotient-ring", "m3220-domains"]
   },
   {
     "definition": "P\\ne R,\\qquad ab\\in P\\Rightarrow a\\in P\\text{ or }b\\in P",
@@ -4151,7 +4371,8 @@
         "hint": "Identify its quotient.",
         "answer": "The quotient is the integers themselves, a domain. It is not maximal since the integers are not a field."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-maximal"]
   },
   {
     "definition": "I_i+I_j=R\\ (i\\ne j)\\Longrightarrow R/\\bigcap_iI_i\\cong\\prod_iR/I_i,\\qquad \\bigcap_iI_i=\\prod_iI_i",
@@ -4217,7 +4438,7 @@
         "answer": "No. It would make $x$ both even and odd. Without comaximality, arbitrary component residues need not be compatible."
       }
     ],
-    "prerequisites": ["m3220-quotient-ring"],
+    "prerequisites": ["m3220-ideal-arithmetic", "m3220-first-ring-isomorphism"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -4309,7 +4530,11 @@
         "answer": "The denominator must be a non-zero-divisor. Merely being nonzero is not sufficient outside domains."
       }
     ],
-    "prerequisites": ["m3220-first-ring-isomorphism"]
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "m3220-domains",
+      "foundations-quotient-rules"
+    ]
   },
   {
     "definition": "S^{-1}R=\\{r/s:r\\in R,s\\in S\\},\\qquad r\\mapsto r/1,\\qquad(s/1)^{-1}=1/s",
@@ -4493,7 +4718,7 @@
         "answer": "It belongs to the ring but is not a unit, because its reduced numerator is divisible by three."
       }
     ],
-    "prerequisites": ["m3220-localization"]
+    "prerequisites": ["m3220-localization", "m3220-prime"]
   },
   {
     "definition": "F[X,X^{-1}]=\\left\\{\\sum_{k=m}^n a_kX^k:m,n\\in\\mathbb Z\\right\\}",
@@ -4542,11 +4767,31 @@
     ],
     "navTitle": "Other localisations",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Explain why localization can identify a nonzero element with zero.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-localization", "m3220-polynomial", "m3220-units"],
+    "worked": {
+      "title": "Invert three modulo six",
+      "steps": [
+        "In R=Z/6Z, invert S={1,3}. Since 3·2=0 and 3 becomes a unit, two becomes zero.",
+        "Reduction modulo two sends both denominators to one and identifies S⁻¹R with F₂."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What does 2/1 become when three is inverted in Z/6Z?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "3·2=0 and invertibility of three force 2=0."
+      },
+      {
+        "question": "Why is F[X,X⁻¹] smaller than F(X)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The first ring inverts powers of X; the fraction field inverts every nonzero polynomial."
+      }
+    ]
   },
   {
     "definition": "a=bq+r,\\quad r=0\\ \\text{or}\\ \\nu(r)<\\nu(b),\\qquad \\nu(a)\\le\\nu(ab)\\ (a,b\\ne0)",
@@ -4632,7 +4877,11 @@
         "answer": "Take $u=-1$ and $v=3$. Substitution gives $-84+90=6$."
       }
     ],
-    "prerequisites": ["m3220-first-ring-isomorphism"]
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "m3220-domains",
+      "m3220-ideals"
+    ]
   },
   {
     "definition": "z=wq+r,\\qquad q\\in\\mathbb Z[i],\\qquad N(r)\\le\\tfrac12N(w)<N(w)\\quad(w\\ne0)",
@@ -4700,7 +4949,8 @@
         "hint": "Each coordinate error is at most one half.",
         "answer": "The squared distance is at most $1/4+1/4=1/2$. Multiplying by the divisor gives a remainder norm at most half the divisor norm, hence strictly smaller."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-euclidean", "m3220-norm-trace"]
   },
   {
     "definition": "R\\text{ PID}\\iff R\\text{ a domain and }\\forall I\\triangleleft R,\\ \\exists a\\in R,\\ I=(a)",
@@ -4797,7 +5047,7 @@
     "prerequisites": ["m3220-euclidean"]
   },
   {
-    "definition": "p\\text{ prime}:\\ p\\mid ab\\Rightarrow p\\mid a\\text{ or }p\\mid b;\\quad p\\text{ irreducible}:\\ p=ab\\Rightarrow a\\in R^\\times\\text{ or }b\\in R^\\times",
+    "definition": "R\\text{ a domain},\\quad p\\ne0,\\ p\\notin R^\\times;\\quad p\\text{ prime}:\\ p\\mid ab\\Rightarrow p\\mid a\\text{ or }p\\mid b;\\quad p\\text{ irreducible}:\\ p=ab\\Rightarrow a\\in R^\\times\\text{ or }b\\in R^\\times",
     "explanation": "Both definitions require a nonzero nonunit in a domain. Primes are always irreducible. In a PID the converse holds because an ideal lying above an irreducible principal ideal would provide a factorization.",
     "id": "m3220-prime-irreducible",
     "intuition": "Irreducible means an element cannot itself be broken into smaller nonunits. Prime means it can detect a factor in every product it divides.",
@@ -4878,7 +5128,8 @@
         "hint": "Use the maximality argument for a principal ideal.",
         "answer": "Being a PID suffices. A general domain does not, as this quadratic example shows."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-pid"]
   },
   {
     "definition": "6=2\\cdot3=(1+\\sqrt{-5})(1-\\sqrt{-5})\\quad\\text{in }\\mathbb Z[\\sqrt{-5}]",
@@ -4972,7 +5223,7 @@
         "answer": "The factors differ only by the units minus one. UFD uniqueness is up to reordering and multiplication by units."
       }
     ],
-    "prerequisites": ["m3220-pid"]
+    "prerequisites": ["m3220-pid", "m3220-prime-irreducible"]
   },
   {
     "definition": "[X^k](fg)=\\sum_{i+j=k}a_ib_j,\\qquad \\deg0=-\\infty",
@@ -5038,7 +5289,7 @@
         "answer": "The product is $5X+1$, of degree one. The usual degree-sum equality needs nonzero leading-coefficient products, as in a domain."
       }
     ],
-    "prerequisites": ["m3220-crt"],
+    "prerequisites": ["m3220-rings"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -5107,7 +5358,7 @@
         "answer": "No integer polynomial quotient can cancel the coefficient of $X$ using an even leading coefficient. Field division works over the rationals but need not stay in the integers."
       }
     ],
-    "prerequisites": ["m3220-ufd"],
+    "prerequisites": ["m3220-ufd", "m3220-polynomial", "m3220-domains"],
     "labScope": "The displayed cancellation steps verify the selected finite example. General existence and uniqueness require a field or monic divisor; a nonunit leading coefficient can block division.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -5176,7 +5427,8 @@
         "hint": "Differentiate formally and reduce the coefficient.",
         "answer": "It is zero. Therefore a derivative test must retain its characteristic hypotheses; vanishing derivative does not imply a constant polynomial."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-polynomial-division", "m3220-polynomial"]
   },
   {
     "definition": "\\deg f\\in\\{2,3\\},\\ F\\text{ a field}:\\quad f\\text{ reducible}\\iff\\exists a\\in F,\\ f(a)=0",
@@ -5241,7 +5493,11 @@
         "answer": "Yes. At zero its value is one; at one its value is also one. With no root it has no linear factor, which suffices for degree three."
       }
     ],
-    "prerequisites": ["m3220-eisenstein", "m3220-polynomial-division"],
+    "prerequisites": [
+      "m3220-eisenstein",
+      "m3220-polynomial-division",
+      "m3220-roots"
+    ],
     "labScope": "The finite worked cases show exact factors, roots, content and certificates. They do not constitute a general factorisation algorithm; the guided proof supplies the general theorem.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -5311,7 +5567,7 @@
         "answer": "Its coefficients have gcd one, so it is primitive, but its leading coefficient is two, so it is not monic."
       }
     ],
-    "prerequisites": ["m3220-polynomial-division"]
+    "prerequisites": ["m3220-polynomial-division", "m3220-ufd"]
   },
   {
     "definition": "f=X^n+c_{n-1}X^{n-1}+\\cdots+c_0,\\quad p\\mid c_i\\ (i<n),\\quad p^2\\nmid c_0",
@@ -5468,7 +5724,8 @@
         "hint": "One concerns factorization of elements; the other all ideals.",
         "answer": "Unique factorization controls elements up to units. The PID property asserts that every ideal has one generator. The former does not imply the latter."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-gauss", "m3220-pid", "m3220-ufd"]
   },
   {
     "definition": "I_1\\subseteq I_2\\subseteq\\cdots\\Longrightarrow\\exists N,\\ \\forall n\\ge N,\\ I_n=I_N",
@@ -5561,7 +5818,7 @@
   },
   {
     "definition": "R\\text{ Noetherian}\\Longrightarrow R[X_1,\\ldots,X_n]\\text{ Noetherian}\\quad(n<\\infty)",
-    "explanation": "Quotients by proper ideals preserve the ascending chain condition through ideal correspondence. In particular every proper quotient of a polynomial ring in finitely many variables over a field is Noetherian.",
+    "explanation": "Quotients by proper ideals preserve the ascending chain condition through ideal correspondence. In particular every proper quotient of a polynomial ring in finitely many variables over a field is Noetherian. The separate geometric consequence is V((f₁,…,fₘ))=V(f₁)∩⋯∩V(fₘ): a point vanishes on the generated ideal exactly when all the generators vanish.",
     "id": "m3220-hilbert",
     "intuition": "Adding finitely many polynomial coordinates does not destroy finite generation of ideals. Even a complicated algebraic set can be cut out by finitely many equations.",
     "machine": "diagram",
@@ -5604,7 +5861,7 @@
       "pdfPages": "79–81",
       "pages": "79–81"
     },
-    "theorem": "I=(f_1,\\ldots,f_m)\\Longrightarrow V(I)=V(f_1)\\cap\\cdots\\cap V(f_m)",
+    "theorem": "R\\text{ commutative unital Noetherian},\\ n<\\infty:\\quad R[X_1,\\ldots,X_n]\\text{ Noetherian}",
     "title": "Hilbert's basis theorem",
     "track": "MH3220",
     "subject": "Rings & arithmetic",
@@ -5627,11 +5884,31 @@
     ],
     "navTitle": "Hilbert’s basis theorem",
     "proofStatus": "Theorem imported · proof roadmap here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Explain why controlling leading coefficients alone is not the whole proof.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-noetherian", "m3220-polynomial"],
+    "worked": {
+      "title": "Finite-variable inheritance",
+      "steps": [
+        "Z is Noetherian because every ideal is principal.",
+        "Hilbert gives Z[X,Y] Noetherian, though the ideal (2,X) already shows it is not a PID."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Is Z[X,Y] Noetherian?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Apply Hilbert twice from Z."
+      },
+      {
+        "question": "Why can an infinite variable ring fail ACC even over a field?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Every polynomial has finite support; the unbounded number of variables creates the chain."
+      }
+    ]
   },
   {
     "definition": "\\dim R=\\sup\\{n:\\mathfrak p_0\\subsetneq\\mathfrak p_1\\subsetneq\\cdots\\subsetneq\\mathfrak p_n,\\ \\mathfrak p_i\\text{ prime}\\}",
@@ -5692,11 +5969,31 @@
     "references": [],
     "navTitle": "Krull dimension",
     "proofStatus": "Theorem imported · proof roadmap here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Recognize when a diagram establishes only a lower bound.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-prime", "m3220-pid"],
+    "worked": {
+      "title": "Dimension of Z",
+      "steps": [
+        "The prime ideals are (0) and (p) for prime integers p.",
+        "Every nonzero prime is maximal, so (0)⊊(p) has length one and no chain is longer."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is dim Z?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Zero is prime and nonzero primes are maximal."
+      },
+      {
+        "question": "Why is a field dimension zero?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The zero ideal is prime in a field; there are no strict prime inclusions."
+      }
+    ]
   },
   {
     "definition": "J(R)=\\bigcap_{\\mathfrak m\\text{ maximal}}\\mathfrak m,\\qquad x\\in J(R)\\iff\\forall r\\in R,\\ 1-rx\\in R^\\times",
@@ -5736,7 +6033,7 @@
     "navTitle": "Jacobson radical",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["m3220-noetherian"],
+    "prerequisites": ["m3220-maximal", "m3220-units"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Test whether an element is in J(R) using the displayed criterion with the correct quantifier.",
     "level": "Foundation or bridge",
@@ -5817,7 +6114,8 @@
         "hint": "Check the commutativity hypothesis and the radical of a full matrix algebra over a field.",
         "answer": "No. M₂(F₂) is noncommutative and semisimple, so its Jacobson radical is zero, although E₁₂ is nilpotent. The commutative nilradical theorem cannot be applied."
       }
-    ]
+    ],
+    "prerequisites": ["m3220-prime", "m3220-jacobson"]
   },
   {
     "definition": "I_1\\supseteq I_2\\supseteq\\cdots\\Longrightarrow\\exists N,\\ \\forall n\\ge N,\\ I_n=I_N",
@@ -5866,12 +6164,31 @@
     ],
     "navTitle": "Artinian rings",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
-    "prerequisites": ["m3220-nakayama"],
+    "exampleStatus": "Worked example here",
+    "prerequisites": ["m3220-noetherian"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Identify which finite-generation claims have actually been proved at each stage.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "worked": {
+      "title": "Integers descend forever",
+      "steps": [
+        "(2)⊋(4)⊋(8)⊋… in Z, since 2ᵏ is not divisible by 2ᵏ⁺¹.",
+        "Z is Noetherian because all ideals are principal, yet this descending chain proves it is not Artinian."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Which is properly contained in (4) inside Z?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Multiples of eight are multiples of four, but four is not a multiple of eight."
+      },
+      {
+        "question": "Why is Q Artinian although infinite?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Any nonzero ideal in a field contains an inverse multiple giving one."
+      }
+    ]
   },
   {
     "definition": "R/J(R)\\cong\\prod_{i=1}^m R/\\mathfrak m_i,\\qquad R\\cong\\prod_{i=1}^m R/\\mathfrak m_i^N\\quad(N\\text{ sufficiently large})",
@@ -5897,7 +6214,7 @@
       "pdfPages": "85–86",
       "pages": "85–86"
     },
-    "theorem": "\\mathbb Z/12\\mathbb Z\\cong\\mathbb Z/4\\mathbb Z\\times\\mathbb F_3,\\qquad \\dim R=0\\quad(R\\text{ Artinian})",
+    "theorem": "R\\text{ commutative nonzero unital Artinian}:\\quad\\dim R=0;\\qquad\\mathbb Z/12\\mathbb Z\\cong\\mathbb Z/4\\mathbb Z\\times\\mathbb F_3",
     "title": "Artinian rings split into local pieces",
     "track": "MH3220",
     "subject": "Rings & arithmetic",
@@ -5920,11 +6237,31 @@
     ],
     "navTitle": "Local decomposition",
     "proofStatus": "Theorem imported · proof roadmap here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Recover a ring element from its local-factor coordinates and distinguish R from R/J(R).",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": ["m3220-artinian", "m3220-nilradical", "m3220-crt"],
+    "worked": {
+      "title": "Split twelve into local pieces",
+      "steps": [
+        "Z/12Z≅Z/4Z×F₃ by CRT.",
+        "The first factor is local with maximal ideal {0,2}; the second is a field and local with zero maximal ideal."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Which local factors reconstruct Z/12Z?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The coprime factors four and three preserve all twelve classes."
+      },
+      {
+        "question": "Why does an Artinian ring have dimension zero?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The imported Artinian structure theorem leaves no strict prime inclusions."
+      }
+    ]
   },
   {
     "definition": "(r+s)v=rv+sv,\\quad r(v+w)=rv+rw,\\quad(rs)v=r(sv),\\quad1v=v\\text{ if }R\\text{ is unital}",
@@ -5986,7 +6323,10 @@
         "answer": "It is the zero operator, so it is not invertible on this nonzero module. Module axioms allow such scalar actions."
       }
     ],
-    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "foundations-linear-algebra"
+    ],
     "labScope": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -6176,7 +6516,7 @@
         "answer": "It is $2\\mathbb Z$: exactly even integers kill $[3]$."
       }
     ],
-    "prerequisites": ["modules-generators"],
+    "prerequisites": ["modules-generators", "m3220-first-ring-isomorphism"],
     "labScope": "The board computes finite cyclic-module states. General quotient, first-isomorphism and splitting claims require the authored proof, not just the table.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -6240,12 +6580,31 @@
     "references": [],
     "navTitle": "Module chains",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
-    "prerequisites": ["tensor-products"],
+    "exampleStatus": "Worked example here",
+    "prerequisites": ["m3220-submodules", "m3220-artinian-decomposition"],
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Explain why finite length supplies both chain conditions, and identify which converse hypotheses are needed.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "worked": {
+      "title": "A finite-dimensional vector space",
+      "steps": [
+        "In F³, every strict subspace inclusion changes dimension by at least one.",
+        "Both ascending and descending chains therefore have at most three strict steps."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What bounds strict subspace steps in F³?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Each strict inclusion changes dimension."
+      },
+      {
+        "question": "Why must the filtration used in the proof be finite?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Infinite direct sums of one-dimensional spaces give a counterexample to unrestricted iteration."
+      }
+    ]
   },
   {
     "definition": "M\\text{ finitely generated},\\quad J(R)M=M\\Longrightarrow M=0",
@@ -6307,7 +6666,11 @@
     "navTitle": "Nakayama",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["modules-generators", "m3220-jacobson"],
+    "prerequisites": [
+      "modules-generators",
+      "m3220-jacobson",
+      "m3220-annihilator"
+    ],
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Explain every hypothesis and use M/𝔪M to lift a generating set.",
     "level": "Foundation or bridge",
@@ -6328,7 +6691,7 @@
     ]
   },
   {
-    "definition": "v:F^\\times\\twoheadrightarrow\\mathbb Z,\\quad v(xy)=v(x)+v(y),\\quad v(x+y)\\ge\\min\\{v(x),v(y)\\},\\quad R=\\{x:v(x)\\ge0\\}",
+    "definition": "v:F^\\times\\twoheadrightarrow\\mathbb Z,\\quad v(0)=\\infty,\\quad v(xy)=v(x)+v(y),\\quad v(x+y)\\ge\\min\\{v(x),v(y)\\},\\quad R=\\{x\\in F:v(x)\\ge0\\}",
     "explanation": "Set $v(0)=\\infty$. If $t$ has value 1, every nonzero field element is a unit times an integer power of $t$. The resulting valuation ring is a local PID and has Krull dimension one. For the rational numbers, counting powers of $p$ gives the localization of the integers at $p$.",
     "id": "m3220-dvr",
     "intuition": "A discrete valuation measures the exponent of one distinguished prime direction. Units have exponent zero; ideals correspond to lower bounds on that exponent.",
@@ -6373,7 +6736,7 @@
       "pdfPages": "95–96",
       "pages": "95–96"
     },
-    "theorem": "x=ut^{v(x)},\\quad R^\\times=\\{x:v(x)=0\\},\\quad I\\ne0\\Longrightarrow I=(t^n),\\qquad v_p(a/b)=v_p(a)-v_p(b)",
+    "theorem": "x\\in F^\\times:\\ x=ut^{v(x)},\\quad R^\\times=\\{x:v(x)=0\\},\\quad 0\\ne I\\triangleleft R\\Longrightarrow I=(t^n)\\ (n\\ge0),\\qquad v_p(a/b)=v_p(a)-v_p(b)\\ (ab\\ne0)",
     "title": "Discrete valuations: one exponent controls the ideals",
     "track": "MH3220",
     "subject": "Rings & arithmetic",
@@ -6396,11 +6759,35 @@
     ],
     "navTitle": "Discrete valuations",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Determine units and ideal inclusion from valuations, with the direction of inclusion correct.",
     "level": "Advanced reference",
-    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
+    "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital.",
+    "prerequisites": [
+      "m3220-prime-localization",
+      "m3220-pid",
+      "m3220-localization"
+    ],
+    "worked": {
+      "title": "A rational valuation",
+      "steps": [
+        "For v₃ on Q, 18/5 has value two and 2/9 has value minus two.",
+        "The first lies in Z₍₃₎ and is a nonunit; the second lies outside it."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is v₃(18/5)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Eighteen has two factors of three; five has none."
+      },
+      {
+        "question": "Which ideal is smaller: (t²) or (t³)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Every t³ multiple is a t² multiple; t² itself has insufficient valuation for (t³)."
+      }
+    ]
   },
   {
     "definition": "\\mathbb F_4=\\mathbb F_2[X]/(X^2+X+1)=\\{0,1,\\alpha,1+\\alpha\\},\\qquad\\alpha^2=\\alpha+1",
@@ -6466,7 +6853,11 @@
         "answer": "The square is $\\alpha^2+1=\\alpha$. The inverse is $\\alpha$ because their product is one."
       }
     ],
-    "prerequisites": ["m3220-algebraic"],
+    "prerequisites": [
+      "m3220-quotient-ring",
+      "m3220-irreducibility-tests",
+      "m3220-maximal"
+    ],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "level": "Foundation or bridge",
     "conventions": "Rings may be noncommutative or lack an identity unless this statement says otherwise. A ring map need not preserve 1 unless explicitly required. Domains and fields are nonzero, commutative and unital; modules over a unital ring are unital."
@@ -6547,6 +6938,11 @@
         "hint": "Compute its determinant.",
         "answer": "The determinant is zero, so it is not invertible and is not in GL. It is a valid linear map, but cannot represent an invertible group action."
       }
+    ],
+    "prerequisites": [
+      "foundations-linear-algebra",
+      "mh2220-first-isomorphism",
+      "m3220-domains"
     ]
   },
   {
@@ -6634,11 +7030,31 @@
       }
     ],
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Determine the stabilizer shape of a specified partial flag.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["odyssey-linear-groups", "mh2220-orbit-stabilizer"],
+    "worked": {
+      "title": "Preserve the standard flag",
+      "steps": [
+        "A matrix preserving ⟨e₁⟩ has its first column in that line.",
+        "Preserving ⟨e₁,e₂⟩ also keeps the second column in that plane, forcing all entries below the diagonal to zero."
+      ]
+    },
+    "practice": [
+      {
+        "question": "Which matrices stabilize the standard flag?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Upper triangular columns preserve the standard prefixes."
+      },
+      {
+        "question": "Why is the action transitive?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "An adapted basis constructs a matrix carrying one flag to another."
+      }
+    ]
   },
   {
     "id": "odyssey-schur",
@@ -6656,7 +7072,7 @@
     "intuition": "An equivariant map cannot carve a nontrivial invariant piece out of an irreducible representation. It either loses everything or identifies the whole representation with another.",
     "definition": "T\\rho_V(g)=\\rho_W(g)T\\quad(g\\in G),\\qquad T\\in\\operatorname{Hom}_G(V,W).",
     "explanation": "Let $V$ and $W$ be nonzero irreducible modules. The kernel and image of an equivariant map are invariant subspaces. Irreducibility therefore leaves only two possibilities for each. Over the complex numbers, finite dimension gives the stronger scalar-endomorphism statement, since an endomorphism has an eigenvalue.",
-    "theorem": "T\\ne0\\Longrightarrow T:V\\overset{\\sim}{\\longrightarrow}W,\\qquad \\operatorname{End}_G(V)=\\mathbb C I_V\\quad(V\\text{ irreducible, finite-dimensional over }\\mathbb C).",
+    "theorem": "V,W\\text{ nonzero irreducible}:\\ T\\ne0\\Longrightarrow T:V\\overset{\\sim}{\\longrightarrow}W;\\quad V\\text{ finite-dimensional over }\\mathbb C:\\ \\operatorname{End}_G(V)=\\mathbb C I_V",
     "proof": "If $T$ is nonzero then its kernel cannot be all of $V$ and its image cannot be zero; irreducibility gives ker $T=0$ and im $T=W$. For a complex equivariant endomorphism choose an eigenvalue $\\lambda$. The map $T-\\lambda I$ is equivariant and has a nonzero kernel; the first statement forces $T-\\lambda I=0$.",
     "pitfall": "The scalar conclusion need not hold over the real numbers. Nonzero vector spaces are required in the definition of irreducibility.",
     "prompt": "Compare a nonzero map between irreducible modules with a projection from a reducible module. Which invariant kernel is permitted?",
@@ -7010,11 +7426,35 @@
     "references": [],
     "navTitle": "Frobenius reciprocity",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Compute a decomposition using restriction data and verify its total dimension.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "odyssey-induction",
+      "ureca-intertwiners",
+      "odyssey-character-table"
+    ],
+    "worked": {
+      "title": "Recover the map from the identity copy",
+      "steps": [
+        "For a G-map F:FG⊗_FH W→V, define f(w)=F(1⊗w).",
+        "For h∈H, F(1⊗hw)=F(h⊗w)=hF(1⊗w), so f is H-equivariant."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is the sign multiplicity in Res_H Std for H=C₂ in S₃?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "On H the standard character is (2,0); the inner product with (1,−1) is one."
+      },
+      {
+        "question": "Why is evaluation at the identity copy sufficient?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "All other coset copies are G-translates."
+      }
+    ]
   },
   {
     "track": "URECA Y2",
@@ -7137,7 +7577,7 @@
         "answer": "Yes. That gives the trivial representation, which satisfies every relation but is not faithful for a nontrivial group."
       }
     ],
-    "prerequisites": ["foundations-linear-algebra"],
+    "prerequisites": ["foundations-linear-algebra", "mh2220-actions"],
     "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -7195,7 +7635,7 @@
         "answer": "The vector $e_1+e_2+e_3$ is fixed. More generally, in a transitive permutation action a fixed vector has equal coefficients at all points."
       }
     ],
-    "prerequisites": ["ureca-linear-action"],
+    "prerequisites": ["ureca-linear-action", "mh2220-permutations"],
     "labScope": "Checking a generating set proves this finite D₈ case. General claims require generator and field hypotheses stated in the lesson.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -7332,7 +7772,7 @@
         "answer": "It projects onto the sign subspace where $s$ acts by minus one. The two idempotents sum to one and their product is zero."
       }
     ],
-    "prerequisites": ["m3220-annihilator"],
+    "prerequisites": ["m3220-modules", "ureca-linear-action"],
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -7447,6 +7887,11 @@
         "hint": "Compare it with its derivative.",
         "answer": "Its derivative is $mX^{m-1}$, nonzero at every root of $X^m-1$. Therefore the polynomial has no repeated roots. In characteristic dividing m this argument fails."
       }
+    ],
+    "prerequisites": [
+      "ureca-linear-action",
+      "foundations-linear-algebra",
+      "mh2220-cyclic"
     ]
   },
   {
@@ -7512,11 +7957,31 @@
     "aliases": ["ureca-cube-symmetry"],
     "navTitle": "Signed permutations",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Recover the signed data from a matrix and explain why every such matrix preserves the cube.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["orthogonal-metric-orientation", "mh2220-permutations"],
+    "worked": {
+      "title": "Count coordinate choices",
+      "steps": [
+        "A cube symmetry permutes the three pairs of opposite faces, determining a permutation of coordinate axes.",
+        "Each positive normal may go to either sign, giving 3!·2³=48 distinct orthogonal matrices."
+      ]
+    },
+    "practice": [
+      {
+        "question": "How many orientation-preserving cube symmetries exist?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Half of the eight sign choices for each axis permutation give determinant +1."
+      },
+      {
+        "question": "Why is −I₃ outside SO(3)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Its three negative eigenvalues multiply to −1."
+      }
+    ]
   },
   {
     "id": "cube-generator-words",
@@ -7572,11 +8037,35 @@
     "references": [],
     "navTitle": "Words of motions",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Verify AB≠BA on a specific vector and explain why listed relations need not be a complete presentation.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "cube-signed-permutations",
+      "mh2220-generators",
+      "mh2220-orbit-stabilizer"
+    ],
+    "worked": {
+      "title": "Reach all face directions",
+      "steps": [
+        "The quarter-turns A about x and B about z move e₃ among ±e₁,±e₂,±e₃.",
+        "This gives an orbit of six face directions. B fixes e₃ and has four distinct powers."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What are ABe₁ and BAe₁?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Use the displayed columns of A and B in the stated order."
+      },
+      {
+        "question": "Why does the orbit/stabilizer argument prove equality rather than just containment?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Both lower and upper size bounds are required."
+      }
+    ]
   },
   {
     "id": "cube-four-actions",
@@ -7631,7 +8120,11 @@
     "navTitle": "Four cube actions",
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["mh2220-first-isomorphism"],
+    "prerequisites": [
+      "cube-signed-permutations",
+      "mh2220-actions",
+      "mh2220-first-isomorphism"
+    ],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Explain why −I is invisible on unoriented diagonals but not on vertices.",
     "level": "Foundation or bridge",
@@ -7694,11 +8187,31 @@
     "references": [],
     "navTitle": "Fix one object",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Identify which stabilizer motions exchange the endpoints of an edge or diagonal.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["cube-four-actions", "mh2220-orbit-stabilizer"],
+    "worked": {
+      "title": "Fix one face under rotations",
+      "steps": [
+        "The 24 rotations move a chosen face among all six faces.",
+        "Its stabilizer has size 24/6=4: rotations by multiples of 90 degrees about its normal axis."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is an edge stabilizer size in the rotation group?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Twenty-four rotations divided by twelve edges gives two."
+      },
+      {
+        "question": "Why does adjoining inversion double every listed stabilizer?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Each action remains transitive on the same object set."
+      }
+    ]
   },
   {
     "id": "cube-diagonals-s4",
@@ -7746,11 +8259,31 @@
     "references": [],
     "navTitle": "Rotations & diagonals",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Explain why a spatial quarter-turn has determinant +1 but an odd permutation on the diagonals.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["cube-four-actions", "mh2220-first-isomorphism"],
+    "worked": {
+      "title": "Find the faithful rotation action",
+      "steps": [
+        "The kernel on diagonal lines in the full group is {I,−I}.",
+        "Among rotations only I remains, since det(−I)=−1. Thus rotations inject into S₄."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is the order of the diagonal image of the full group?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "First isomorphism gives 48/2=24."
+      },
+      {
+        "question": "Why is the restricted rotation kernel trivial?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Intersect the known full kernel with SO(3)."
+      }
+    ]
   },
   {
     "id": "cube-direct-product",
@@ -7788,11 +8321,31 @@
     "references": [],
     "navTitle": "Rotation & inversion",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Recover both coordinates of a full cube symmetry and explain why they are independent.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["cube-diagonals-s4", "mh2220-direct-product"],
+    "worked": {
+      "title": "Factor a reflection",
+      "steps": [
+        "Let Q=diag(1,1,−1). Its determinant is −1.",
+        "With J=−I, JQ=diag(−1,−1,1) is a half-turn. Thus Q=J(JQ)."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What is J·diag(1,1,−1)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Multiply each diagonal entry by −1."
+      },
+      {
+        "question": "What separates the two factors uniquely?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The determinant detects whether inversion must be included."
+      }
+    ]
   },
   {
     "id": "orthogonal-metric-orientation",
@@ -7850,7 +8403,8 @@
         "hint": "Write the transformed inner product as a matrix product.",
         "answer": "It gives $(Qu)^{\\mathsf T}(Qv)=u^{\\mathsf T}Q^{\\mathsf T}Qv=u^{\\mathsf T}v$ for every pair of column vectors."
       }
-    ]
+    ],
+    "prerequisites": ["foundations-linear-algebra", "mh2220-homomorphism"]
   },
   {
     "id": "orthogonal-plane",
@@ -7907,7 +8461,8 @@
         "hint": "They agree when rotation by theta equals rotation by minus theta.",
         "answer": "Exactly when $2\\theta$ is a multiple of $2\\pi$, so $\\theta$ is zero or pi modulo a full turn."
       }
-    ]
+    ],
+    "prerequisites": ["orthogonal-metric-orientation", "mh2220-semidirect"]
   },
   {
     "id": "orthogonal-axis-angle",
@@ -7964,7 +8519,8 @@
         "hint": "Substitute zero into Rodrigues’ formula.",
         "answer": "The sine term vanishes and the coefficient of the axis projection is zero, leaving the identity for every unit axis."
       }
-    ]
+    ],
+    "prerequisites": ["orthogonal-plane", "odyssey-linear-groups"]
   },
   {
     "id": "representations-square-modes",
@@ -8022,7 +8578,8 @@
         "hint": "Compute the mean and alternating coefficient.",
         "answer": "The parts are $(1,1,1,1)$, $(1,-1,1,-1)$ and $(2,0,-2,0)$, whose sum is the original vector."
       }
-    ]
+    ],
+    "prerequisites": ["ureca-permutation-module", "ureca-invariant-subspaces"]
   },
   {
     "id": "representations-real-complex",
@@ -8079,7 +8636,7 @@
         "answer": "No. The three-dimensional direct sum is reducible. This does not contradict irreducibility of the original two-dimensional plane representation."
       }
     ],
-    "prerequisites": ["ureca-invariant-subspaces"],
+    "prerequisites": ["ureca-invariant-subspaces", "ureca-cyclic-eigenvalues"],
     "labScope": "C₃ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis. This experiment tests the displayed example; the lesson supplies the general argument.",
     "level": "Foundation or bridge",
     "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
@@ -8278,7 +8835,12 @@
         "answer": "The trivial and sign representations have rows $(1,1)$ and $(1,-1)$. Their dimensions agree, but their characters distinguish them."
       }
     ],
-    "prerequisites": ["odyssey-schur", "representations-real-complex"]
+    "prerequisites": [
+      "odyssey-schur",
+      "representations-real-complex",
+      "ureca-linear-action",
+      "ureca-cyclic-eigenvalues"
+    ]
   },
   {
     "id": "actions-faithful-transitive",
@@ -8334,7 +8896,8 @@
         "hint": "A kernel element belongs to every stabilizer; free actions can have several orbits.",
         "answer": "It is faithful because all stabilizers are trivial. It need not be transitive: two disjoint copies of a regular action give a free action with two orbits."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-orbit-stabilizer"]
   },
   {
     "id": "actions-stabilizer-kernel-core",
@@ -8352,7 +8915,7 @@
     "intuition": "A stabilizer describes what one chosen object cannot detect. Intersecting stabilizers asks what the entire observation system cannot detect.",
     "definition": "G_{g\\cdot x}=gG_xg^{-1},\\qquad\\ker\\phi_{G/H}=\\operatorname{core}_G(H)=\\bigcap_{g\\in G}gHg^{-1}.",
     "explanation": "For a transitive action, choose $x$ and set $H=G_{x}$. The action is equivalent to left multiplication on $G/H$. A single stabilizer $H$ need not be normal: moving the chosen object conjugates its stabilizer. The kernel is the largest normal subgroup contained in $H$. In the rotation action on a face, $H$ has order 4 while the kernel is trivial.",
-    "theorem": "G/H\\longrightarrow G\\cdot x,\\quad gH\\longmapsto g\\cdot x\\quad\\text{is a }G\\text{-equivariant bijection}.",
+    "theorem": "H=G_x\\Longrightarrow G/H\\xrightarrow[\\ gH\\mapsto g\\cdot x\\ ]{\\cong}G\\cdot x\\quad\\text{as }G\\text{-sets}",
     "proof": "The coset-to-orbit map is well-defined and bijective by the criterion $h^{-1}g\\in H$. An element $a$ fixes every coset exactly when $agH=gH$ for all $g$, equivalently $g^{-1}ag\\in H$. Intersect these conditions over $G$. Every normal subgroup contained in $H$ lies in all conjugates of $H$.",
     "pitfall": "A nontrivial stabilizer does not mean the action is unfaithful. Kernel elements must fix every object, rather than just the selected one.",
     "prompt": "Choose identity under conjugation; compare its stabilizer core with the action kernel.",
@@ -8390,7 +8953,8 @@
         "hint": "One condition fixes one point; the other fixes the entire set.",
         "answer": "Stabilizers impose point-specific equations. The kernel imposes all those equations at once, so it is independent of which point is selected for inspection."
       }
-    ]
+    ],
+    "prerequisites": ["actions-faithful-transitive", "mh2220-coset-action"]
   },
   {
     "id": "actions-regular-conjugation",
@@ -8446,7 +9010,8 @@
         "hint": "Compute both formulas at the identity.",
         "answer": "Conjugation does: $geg^{-1}=e$. Left translation sends e to g, so only the identity acting element fixes it."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-actions", "mh2220-conjugacy"]
   },
   {
     "id": "actions-cube-burnside",
@@ -8541,11 +9106,31 @@
     "references": [],
     "navTitle": "Cube colorings",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Recover 57 versus 56 three-color face-coloring orbits from the displayed group action.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["mh2220-burnside", "cube-four-actions"],
+    "worked": {
+      "title": "Two-color face count",
+      "steps": [
+        "Rotations on six faces have total cycle-count polynomial k⁶+3k⁴+12k³+8k².",
+        "At k=2 the average is (64+48+96+32)/24=10 orbits."
+      ]
+    },
+    "practice": [
+      {
+        "question": "How many rotational two-color face orbits are there?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Apply the displayed Burnside polynomial at two."
+      },
+      {
+        "question": "Why can a face-moving motion fix a coloring?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Fixed configurations are not the same as fixed individual positions."
+      }
+    ]
   },
   {
     "id": "actions-cycle-lenses",
@@ -8590,11 +9175,35 @@
     "references": [],
     "navTitle": "Cycle structures",
     "proofStatus": "Proof sketch here",
-    "exampleStatus": "Example not yet developed",
+    "exampleStatus": "Worked example here",
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Explain exactly when observed permutation order is smaller than group-element order.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-permutations",
+      "cube-four-actions",
+      "mh2220-first-isomorphism"
+    ],
+    "worked": {
+      "title": "An invisible inversion",
+      "steps": [
+        "Inversion has order two in the full cube group.",
+        "On diagonal lines its induced permutation is identity, of order one."
+      ]
+    },
+    "practice": [
+      {
+        "question": "What order does inversion have on diagonal lines?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Every unoriented diagonal line is preserved, so the permutation is identity."
+      },
+      {
+        "question": "If g has order six and its cyclic kernel intersection has size two, what is the image order?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The cyclic quotient has order six divided by two."
+      }
+    ]
   },
   {
     "id": "linear-bruhat",
@@ -8707,7 +9316,24 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Decide the 2×2 cell and exhibit valid triangular factors, not just its cardinality.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "odyssey-flags",
+      "mh2220-double-cosets",
+      "mh2220-permutations"
+    ],
+    "practice": [
+      {
+        "question": "Which cell contains [[1,2],[0,3]] over Q?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The matrix is invertible upper triangular."
+      },
+      {
+        "question": "What certifies uniqueness of the permutation?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "These ranks are preserved by triangular transformations and encode the pivot permutation."
+      }
+    ]
   },
   {
     "id": "linear-projective",
@@ -8809,7 +9435,24 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Compute the quotient order and state exactly which earlier theorems support simplicity.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "odyssey-linear-groups",
+      "mh2220-quotient",
+      "actions-primitive"
+    ],
+    "practice": [
+      {
+        "question": "What is |PSL₂(F₅)|?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "480/((5−1)gcd(2,4))=60."
+      },
+      {
+        "question": "Why cannot one transfer PSL simplicity directly to SL?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Quotienting removes central symmetries; the original group may retain them."
+      }
+    ]
   },
   {
     "id": "actions-primitive",
@@ -8840,7 +9483,7 @@
     "intuition": "An action can look transitive on points yet move larger packets intact. A block is one such packet.",
     "definition": "\\Delta\\subseteq X\\text{ a block}\\iff\\Delta\\ne\\varnothing,\\quad g\\Delta=\\Delta\\text{ or }g\\Delta\\cap\\Delta=\\varnothing\\quad(\\forall g\\in G).",
     "explanation": "Assume $X$ is a transitive $G$-set with $|X|\\ge2$ and fix $x\\in X$. Blocks containing $x$ correspond to subgroups between $G_x$ and $G$: a subgroup $H$ gives $Hx$. The trivial blocks are singletons and $X$. An action is primitive when no other blocks exist. Double transitivity means transitivity on ordered pairs of distinct points.",
-    "theorem": "|X|\\ge2:\\quad X\\text{ primitive}\\iff G_x\\text{ proper maximal in }G;\\qquad\\text{doubly transitive}\\Rightarrow\\text{primitive}.",
+    "theorem": "G\\curvearrowright X\\text{ transitive},\\ |X|\\ge2:\\quad X\\text{ primitive}\\iff G_x\\text{ proper maximal in }G;\\qquad\\text{doubly transitive}\\Rightarrow\\text{primitive}",
     "proof": "For a block $\\Delta$ containing $x$, its setwise stabilizer $H$ contains $G_x$: a translate by an element fixing x meets $\\Delta$, hence equals it. Transitivity lets every y in $\\Delta$ be written gx; that translate also meets $\\Delta$, so g belongs to H and $\\Delta=Hx$. Conversely take $G_x\\le H\\le G$. If $gHx$ meets $Hx$, write $gh_1x=h_2x$; then $h_2^{-1}gh_1\\in G_x\\le H$, so $g\\in H$ and $gHx=Hx$. Thus Hx is a block, and its setwise stabilizer is H by the same argument. The trivial blocks correspond to $G_x$ and G. For degree at least two, having no intermediate blocks is therefore equivalent to $G_x$ being proper maximal. In a doubly transitive action, if a block contains distinct x,y, the stabilizer of x sends y to every other point while preserving the block, so the block is all of X.",
     "pitfall": "Primitive does not mean regular or faithful. A prime-degree transitive action is primitive, but need not be doubly transitive. We exclude degree one: its point stabilizer is the whole group, not a proper maximal subgroup.",
     "prompt": "Compare the square action with the triangle action. Opposite pairs form blocks for the square.",
@@ -8929,7 +9572,8 @@
         "hint": "Use the setwise stabilizer of the opposite-vertex block {0,2}.",
         "answer": "Its setwise stabilizer H has order four, while G₀ has order two and D₄ order eight; thus G₀<H<D₄. The corresponding nontrivial block is {0,2}."
       }
-    ]
+    ],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-coset-action"]
   },
   {
     "id": "group-complements",
@@ -8960,7 +9604,7 @@
     "intuition": "A normal subgroup can obstruct splitting. Coprime size and index remove that obstruction.",
     "definition": "N\\trianglelefteq G,\\quad \\gcd(|N|,[G:N])=1;\\qquad H\\text{ complements }N\\iff G=NH,\\ N\\cap H=1.",
     "explanation": "For a finite group, a Hall subgroup has order coprime to its index. Schur–Zassenhaus says that a normal Hall subgroup has a complement, so the group is a semidirect product. Existence of a complement and conjugacy of complements are separate assertions; the latter has an elementary treatment when the normal subgroup or quotient is solvable.",
-    "theorem": "N\\trianglelefteq G\\text{ a Hall subgroup}\\Longrightarrow G\\cong N\\rtimes H\\text{ for some }|H|=[G:N].",
+    "theorem": "G\\text{ finite},\\ N\\trianglelefteq G\\text{ Hall}\\Longrightarrow G\\cong N\\rtimes H\\text{ for some complement }|H|=[G:N]",
     "proof": "Induct on $|G|$. The Frattini argument reduces to a smaller normalizer unless a chosen Sylow subgroup of $N$ is normal in $G$. Continue reducing to an abelian normal subgroup. Its extension defect is a $2$-cocycle; averaging over the quotient annihilates the defect because the quotient order is invertible on the abelian Hall subgroup. A corrected section is a homomorphism and yields the complement.",
     "pitfall": "Normality is essential to this splitting statement. A semidirect product need not be direct, and without coprimality a complement can fail to exist.",
     "prompt": "Compare the normal subgroup of order three in the triangle group with the subgroup of order two in the cyclic group of order four.",
@@ -9027,7 +9671,20 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Show explicitly why the order-two subgroup of C₄ has no complement.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": ["mh2220-semidirect", "mh2220-sylow-conjugacy"],
+    "practice": [
+      {
+        "question": "What complements A₃ in S₃?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Orders three and two multiply to six and the intersection is trivial."
+      },
+      {
+        "question": "Why does the C₄ example not contradict the theorem?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "It fails the Hall coprimality hypothesis."
+      }
+    ]
   },
   {
     "id": "group-extensions",
@@ -9058,7 +9715,7 @@
     "intuition": "Choose one representative in each quotient class. Their products need not equal the representative of the product; the discrepancy is useful data.",
     "definition": "1\\to N\\to E\\xrightarrow{\\pi}H\\to1,\\quad t(1)=1,\\quad f(a,b)=t(a)t(b)t(ab)^{-1}\\in N.",
     "explanation": "A section is initially only a set map. Conjugation by $t(a)$ gives $\\varphi(a)\\in\\operatorname{Aut}(N)$. Associativity imposes compatibility between $\\varphi$ and $f$. If $N=A$ is abelian, the action is a genuine homomorphism and the defect is an additive $2$-cocycle. Replacing the section changes the cocycle by a coboundary.",
-    "theorem": "a\\cdot f(b,c)-f(ab,c)+f(a,bc)-f(a,b)=0;\\qquad H^2(H,A)=Z^2(H,A)/B^2(H,A).",
+    "theorem": "A\\text{ abelian with fixed }H\\text{-action}:\\quad a\\cdot f(b,c)-f(ab,c)+f(a,bc)-f(a,b)=0;\\quad H^2(H,A)=Z^2(H,A)/B^2(H,A)",
     "proof": "Expand $t(a)t(b)t(c)$ in its two associations to derive the cocycle identity. Under $t^{\\prime}(a)=c(a)t(a)$, calculate the new defect: $f^{\\prime}(a,b)=f(a,b)+c(a)+a\\cdot c(b)-c(ab)$. Thus a class is zero exactly when a representative section can be corrected to a homomorphism. For nonabelian kernels, retain the full factor pair; the induced map to $\\operatorname{Out}(N)$ is independent of the section.",
     "pitfall": "Equivalent extensions must respect the specified kernel and quotient maps. Isomorphic middle groups can define inequivalent extensions. A factor pair need not give an action into $\\operatorname{Aut}(N)$ without an inner-automorphism correction.",
     "prompt": "Use carries in addition modulo four as the defect for a section of its quotient modulo two.",
@@ -9129,7 +9786,24 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Compute the carry cocycle and explain why changing a section need not change the extension class.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-semidirect",
+      "mh2220-quotient",
+      "mh2220-automorphism"
+    ],
+    "practice": [
+      {
+        "question": "What is the section defect at (1,1) in C₄→C₂?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Two representatives of one add to two, whereas the representative of zero is zero."
+      },
+      {
+        "question": "What does vanishing of the extension class say?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "A coboundary can be removed by changing representatives."
+      }
+    ]
   },
   {
     "id": "group-solvable",
@@ -9160,7 +9834,7 @@
     "intuition": "One commutator subgroup removes the abelian information. Solvability means that repeating this process eventually leaves nothing.",
     "definition": "G^{(0)}=G,\\qquad G^{(i+1)}=[G^{(i)},G^{(i)}],\\qquad G\\text{ solvable}\\iff G^{(r)}=1\\text{ for some }r.",
     "explanation": "Solvability is equivalent to admitting a finite subnormal series with abelian factors. It passes to subgroups and quotients, and if both a normal subgroup and its quotient are solvable, so is the whole group. For finite groups it is equivalent to having only prime-order composition factors, or elementary abelian chief factors.",
-    "theorem": "G\\text{ finite solvable},\\ |G|=mn,\\ (m,n)=1\\Longrightarrow\\text{Hall subgroups of order }m\\text{ exist, are conjugate, and contain every }m\\text{-subgroup}.",
+    "theorem": "G\\text{ finite solvable},\\ |G|=mn,\\ \\gcd(m,n)=1:\\quad\\text{Hall subgroups of order }m\\text{ exist and are conjugate};\\quad\\text{each subgroup with prime divisors among those of }m\\text{ lies in some such Hall subgroup}",
     "proof": "For the derived-series criterion, each abelian factor forces the next commutator subgroup into the next term. Closure under extensions follows by first descending into the solvable kernel and then through its derived series. For Hall existence and conjugacy, induct using a minimal normal subgroup: in a solvable group it is elementary abelian. Pass to the quotient, then lift and use coprime splitting or the corresponding elementary induction.",
     "pitfall": "Solvable is weaker than nilpotent. The factors in a solvable series are abelian; the whole group need not be. Hall existence for every coprime divisor characterises finite solvable groups, but one Hall subgroup alone does not.",
     "prompt": "Follow the derived series of the symmetric group on four points; compare with the group on three points.",
@@ -9228,7 +9902,25 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Prove closure under extensions and distinguish solvable from nilpotent.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-commutator",
+      "mh2220-simple-composition",
+      "mh2220-second-isomorphism",
+      "mh2220-third-isomorphism"
+    ],
+    "practice": [
+      {
+        "question": "What is the second derived subgroup of S₃?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The first is cyclic A₃, whose commutator subgroup is trivial."
+      },
+      {
+        "question": "When does an extension of solvable groups stay solvable?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The derived series first enters the kernel and then terminates inside it."
+      }
+    ]
   },
   {
     "id": "group-nilpotent",
@@ -9325,7 +10017,25 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Distinguish derived length from nilpotency class and use the Frattini quotient to test generators.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "mh2220-p-groups",
+      "group-solvable",
+      "mh2220-direct-product",
+      "mh2220-conjugacy"
+    ],
+    "practice": [
+      {
+        "question": "What is the nilpotence class of Q₈?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "It is nonabelian but its quotient by its center is abelian."
+      },
+      {
+        "question": "Why do normal Sylows of distinct primes commute?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Normality and coprime orders provide both ingredients."
+      }
+    ]
   },
   {
     "id": "tensor-products",
@@ -9356,7 +10066,7 @@
     "intuition": "A tensor product packages every bilinear calculation into one linear object. Pure tensors are building blocks, not every possible tensor.",
     "definition": "(u+u^{\\prime})\\otimes v=u\\otimes v+u^{\\prime}\\otimes v,\\quad u\\otimes(v+v^{\\prime})=u\\otimes v+u\\otimes v^{\\prime},\\quad (ur)\\otimes v=u\\otimes(rv).",
     "explanation": "For a right $R$-module $U$ and a left $R$-module $V$, the tensor product is generated by symbols $u\\otimes v$ subject to additivity and the balancing relation. Over a field, bases give a product basis. For finite-dimensional $U$, a dual vector and a vector define the rank-one map $u\\mapsto\\varphi(u)v$. Precisely, every additive-in-each-variable map $b:U\\times V\\to A$ to an abelian group with $b(ur,v)=b(u,rv)$ factors uniquely through an additive map $U\\otimes_R V\\to A$. Over a noncommutative ring this tensor product is an abelian group; an additional scalar action requires additional structure.",
-    "theorem": "U^*\\otimes_F V\\cong\\operatorname{Hom}_F(U,V),\\quad\\varphi\\otimes v\\mapsto[u\\mapsto\\varphi(u)v];\\qquad\\dim(U\\otimes_F V)=\\dim U\\dim V.",
+    "theorem": "U,V\\text{ finite-dimensional }F\\text{-spaces}:\\quad U^*\\otimes_F V\\cong\\operatorname{Hom}_F(U,V),\\quad\\varphi\\otimes v\\mapsto[u\\mapsto\\varphi(u)v];\\quad\\dim(U\\otimes_F V)=\\dim U\\dim V",
     "proof": "Choose a basis $e_i$ of $U$ with dual basis $e_i^*$. The tensors $e_i^*\\otimes f_j$ map to the matrix units, so the displayed map is bijective. Its formula is independent of the chosen bases. For group modules, use $g\\varphi=\\varphi\\circ g^{-1}$ and $g(\\varphi\\otimes v)=g\\varphi\\otimes gv$; evaluation then proves equivariance.",
     "pitfall": "The balancing relation requires the correct left/right module sides. A general tensor is a sum of pure tensors; for example a rank-two matrix is not one outer product.",
     "prompt": "Choose cyclic right/left ℤ-modules, scalar and vectors; predict gcd generator order and both balanced expressions.",
@@ -9461,7 +10171,7 @@
     "intuition": "A semisimple algebra looks complicated until its simple modules reveal independent matrix blocks.",
     "definition": "M\\text{ semisimple}\\iff M=\\bigoplus_i S_i\\text{ with each }S_i\\text{ simple}.",
     "explanation": "Here all algebras are finite-dimensional over a field and have an identity, and modules are finite-dimensional and unital. A module is semisimple exactly when each submodule has a complement. An algebra is semisimple exactly when its regular left module is semisimple. Matrix blocks classify the resulting algebra, while multiplicities classify its modules.",
-    "theorem": "A\\text{ semisimple}\\iff A\\cong\\prod_i M_{n_i}(D_i),\\qquad D_i\\text{ finite-dimensional division algebras}.",
+    "theorem": "A\\text{ finite-dimensional unital over }F:\\quad A\\text{ semisimple}\\iff A\\cong\\prod_i M_{n_i}(D_i),\\quad D_i\\text{ finite-dimensional division }F\\text{-algebras}",
     "proof": "Decompose the regular module into isotypic pieces $n_iS_i$. Schur gives zero homomorphisms between nonisomorphic simple modules and division rings of endomorphisms on each simple. Thus its endomorphism ring is a product of matrix rings. Right multiplication identifies $A^{\\mathrm{op}}$ with $\\operatorname{End}_A(A)$; taking opposite rings recovers the claimed decomposition. Over an algebraically closed field, the division algebras are the field itself.",
     "pitfall": "Semisimple does not mean commutative. A simple algebra may have many proper left ideals: simplicity excludes proper nonzero two-sided ideals. The finite-dimensional hypothesis matters.",
     "prompt": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
@@ -9531,7 +10241,12 @@
     ],
     "proofStatus": "Theorem imported · proof roadmap here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["m3220-artinian"],
+    "prerequisites": [
+      "m3220-artinian",
+      "m3220-module-chains",
+      "m3220-annihilator",
+      "odyssey-schur"
+    ],
     "labScope": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
     "objective": "Distinguish algebra blocks, dimensions of simple modules and multiplicities in the regular module.",
     "level": "Advanced reference",
@@ -9566,7 +10281,7 @@
     "intuition": "The radical collects the obstruction to semisimplicity. Removing it leaves exactly the matrix blocks seen by simple modules.",
     "definition": "J(A)=\\bigcap_{S\\text{ simple}}\\operatorname{Ann}_A(S)=\\bigcap_{L\\text{ maximal left ideal}}L.",
     "explanation": "For a finite-dimensional unital algebra, the Jacobson radical is nilpotent, is the largest nilpotent two-sided ideal, and is the smallest left submodule of the regular module with semisimple quotient. The quotient $A/J(A)$ is semisimple and has the same simple modules as $A$. These descriptions fit the commutative radical picture into noncommutative representation theory.",
-    "theorem": "\\operatorname{rad}M=J(A)M,\\quad\\operatorname{soc}M=\\{m:J(A)m=0\\},\\quad\\operatorname{soc}^rM=\\{m:J(A)^rm=0\\}.",
+    "theorem": "A\\text{ finite-dimensional unital},\\ M\\text{ finite-dimensional unital}:\\quad\\operatorname{rad}M=J(A)M,\\quad\\operatorname{soc}M=\\{m:J(A)m=0\\},\\quad\\operatorname{soc}^rM=\\{m:J(A)^rm=0\\}",
     "proof": "A nilpotent ideal annihilates every simple module: otherwise its image is the whole module, and iteration contradicts nilpotence. Intersecting annihilators therefore contains all nilpotent ideals. Finite length and the semisimple quotient show this intersection is itself nilpotent. For a module, pass to the quotient by $J(A)M$ and use the semisimplicity of $A/J(A)$; the socle is the part already annihilated by the radical.",
     "pitfall": "The radical is nilpotent here because the algebra is finite-dimensional. For a general commutative ring the nilradical need not be nilpotent. Nilpotent elements need not individually form an ideal in a noncommutative algebra.",
     "prompt": "Choose M2(F), T2(F) or F[C2], a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
@@ -9653,9 +10368,13 @@
         }
       }
     ],
-    "proofStatus": "Proof sketch here",
+    "proofStatus": "Displayed layer formulas proved using imported semisimple-quotient theorem",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["algebra-wedderburn"],
+    "prerequisites": [
+      "algebra-wedderburn",
+      "m3220-jacobson",
+      "m3220-annihilator"
+    ],
     "labScope": "Finite matrix states prove only the examples. Artin–Wedderburn requires semisimplicity; the radical quotient does not split every extension and opposite-ring typing remains in the general proof.",
     "objective": "Compute a radical/socle filtration and identify the nonsplit extension data that the layer dimensions omit.",
     "level": "Advanced reference",
@@ -9761,7 +10480,24 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Explain why |G|/χ(1) is both rational and an algebraic integer.",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "odyssey-character-table",
+      "ureca-character-bound-kernel",
+      "m3220-algebraic"
+    ],
+    "practice": [
+      {
+        "question": "For standard S₃ at a three-cycle, what is |class|χ(g)/χ(1)?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "The class has two elements, character value −1, degree two."
+      },
+      {
+        "question": "Why is a rational algebraic integer an ordinary integer?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "Apply the rational-root divisibility argument to a monic integer polynomial."
+      }
+    ]
   },
   {
     "id": "characters-burnside",
@@ -9871,6 +10607,13 @@
         "hint": "A singleton class would make z central.",
         "answer": "A nonidentity central element generates a nontrivial central normal subgroup. A nonabelian simple group has trivial center, so the chosen nonidentity z cannot have a singleton class."
       }
+    ],
+    "prerequisites": [
+      "characters-integrality",
+      "group-solvable",
+      "mh2220-p-groups",
+      "mh2220-conjugacy",
+      "odyssey-schur"
     ]
   },
   {
@@ -9902,7 +10645,7 @@
     "intuition": "If no nonidentity motion fixes two points, the motions fixing no point assemble into a normal subgroup after adding the identity.",
     "definition": "G\\curvearrowright X\\text{ transitive},\\qquad|\\operatorname{Fix}_X(g)|\\le1\\quad(g\\ne1).",
     "explanation": "For a finite faithful permutation group satisfying this condition, the identity together with the fixed-point-free elements is the Frobenius kernel. It is a regular normal subgroup. A point stabilizer is a complement, so the group is a semidirect product. The closure assertion is the surprising part: it does not follow just by inspecting fixed points of a product.",
-    "theorem": "N=\\{1\\}\\cup\\{g:\\operatorname{Fix}_X(g)=\\varnothing\\}\\trianglelefteq G,\\qquad G=N\\rtimes G_x.",
+    "theorem": "G\\text{ finite, action faithful transitive},\\ |X|>1,\\ |\\operatorname{Fix}_X(g)|\\le1\\ (g\\ne1):\\quad N=\\{1\\}\\cup\\{g:\\operatorname{Fix}_X(g)=\\varnothing\\}\\trianglelefteq G,\\quad G=N\\rtimes G_x",
     "proof": "Let the point stabilizer be $H$. Distinct conjugates intersect trivially, so induction of nontrivial characters of $H$ has tightly controlled inner products. Frobenius reciprocity constructs a character whose kernel is exactly the claimed set. This proves closure and normality; the count then shows $|N|=|X|$, giving regularity and the complement.",
     "pitfall": "The fixed-point condition must hold for every nonidentity group element. A merely transitive action need not have such a kernel. The word “Frobenius” here names a permutation-group theorem, distinct from reciprocity.",
     "prompt": "Consider affine transformations of a finite prime field. Nonidentity translations fix no point; a nontranslation fixes exactly one.",
@@ -9973,7 +10716,26 @@
     "labScope": "Concept map: arrows record the stated relationships. Calculations in the study task are worked on paper; this map is not a symbolic solver.",
     "objective": "Verify the fixed-point condition and identify the kernel and complement in AGL₁(𝔽₅).",
     "level": "Advanced reference",
-    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+    "conventions": "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement.",
+    "prerequisites": [
+      "odyssey-frobenius",
+      "mh2220-semidirect",
+      "mh2220-actions",
+      "actions-faithful-transitive",
+      "odyssey-character-table"
+    ],
+    "practice": [
+      {
+        "question": "Where does x→2x+1 fix a point in F₅?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "(1−2)x=1 gives −x=1, hence x=4."
+      },
+      {
+        "question": "What step is supplied by Frobenius’s theorem rather than counting?",
+        "hint": "Identify the objects and the hypothesis needed before calculating.",
+        "answer": "A cardinality calculation alone cannot establish subgroup multiplication."
+      }
+    ]
   },
   {
     "id": "linear-quotient",
@@ -10039,7 +10801,8 @@
         "hint": "Set the first coordinate to 2; the second coordinate is arbitrary in the field.",
         "answer": "It is $(2,0)+\\ker T=\\{(2,t):t\\in\\mathbb F_3\\}=\\{(2,0),(2,1),(2,2)\\}$. It is an affine coset, not a subspace because it does not contain zero."
       }
-    ]
+    ],
+    "prerequisites": ["foundations-linear-algebra", "m3220-submodules"]
   },
   {
     "id": "quadratic-quotient",
@@ -10095,7 +10858,7 @@
     ],
     "proofStatus": "Proof sketch here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["m3220-finite-field-four"],
+    "prerequisites": ["m3220-finite-field-four", "m3220-crt"],
     "labScope": "Change the controls to test this finite example. The calculation illustrates the stated result; the proof establishes its general scope.",
     "objective": "Diagnose all three ring types from factorization of the modulus and verify the diagnosis arithmetically.",
     "level": "Foundation or bridge",
@@ -10128,7 +10891,7 @@
     "connections": [],
     "proofStatus": "Reconstructed complete proof here",
     "exampleStatus": "Worked example here",
-    "prerequisites": [],
+    "prerequisites": ["representations-characters", "ureca-cyclic-eigenvalues"],
     "objective": "Carry the scalar-equality distinction into the external tensor product: reciprocal nonidentity scalars can cancel.",
     "labScope": "The eigenvalue argument above proves the general bound. A plotted or tabulated equality alone illustrates it; only equality of the actual trace with degree proves kernel membership.",
     "level": "Advanced",
@@ -10232,7 +10995,11 @@
     "connections": ["ureca-external-tensor-products"],
     "proofStatus": "Reconstructed complete proof here",
     "exampleStatus": "Worked example here",
-    "prerequisites": ["ureca-external-tensor-products"],
+    "prerequisites": [
+      "ureca-external-tensor-products",
+      "representations-maschke",
+      "odyssey-character-table"
+    ],
     "objective": "Now one can test faithfulness of each irreducible product using the actual scalar-preimage kernel rather than factor kernels alone.",
     "labScope": "The lesson proves factorisation and completeness. The dashboard gives an exact count for the selected small groups; no picture substitutes for the character-inner-product proof.",
     "level": "Advanced",

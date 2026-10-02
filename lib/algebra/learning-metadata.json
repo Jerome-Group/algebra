@@ -81,7 +81,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-subgroups"],
     "competencies": [
       {
         "id": "mh2220-generators:boundaryCheck",
@@ -130,21 +130,53 @@
     "conceptKind": "object"
   },
   "mh2220-units": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-congruence", "mh2220-subgroups"],
+    "competencies": [
+      {
+        "id": "mh2220-units:boundaryCheck",
+        "statement": "Is every nonzero residue a unit?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-units:application",
+        "statement": "What is the inverse of [5] modulo twelve?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-units:transfer",
+        "statement": "Why does φ(p²)=p²−p for a prime p?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-permutations": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-subgroups"],
-    "competencies": [],
+    "prerequisites": ["foundations-functions", "mh2220-inverse-order"],
+    "competencies": [
+      {
+        "id": "mh2220-permutations:boundaryCheck",
+        "statement": "Must disjoint cycles have distinct lengths?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-permutations:application",
+        "statement": "What is the order of (123)(45)?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-permutations:transfer",
+        "statement": "Why can equal cycle type be changed by conjugation?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
@@ -153,7 +185,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-generators", "mh2220-inverse-order"],
     "competencies": [
       {
         "id": "mh2220-cyclic:boundaryCheck",
@@ -176,21 +208,53 @@
     "conceptKind": "object"
   },
   "mh2220-permutation-matrices": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["mh2220-permutations", "foundations-linear-algebra"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "mh2220-permutation-matrices:boundaryCheck",
+        "statement": "Does Pσ act by (vσ(1),…,vσ(n))?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-permutation-matrices:application",
+        "statement": "What is the trace of P(123) on three labels?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-permutation-matrices:transfer",
+        "statement": "Why is the representation faithful?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-alternating": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-permutation-matrices"],
-    "competencies": [],
+    "prerequisites": ["mh2220-permutation-matrices", "mh2220-homomorphism"],
+    "competencies": [
+      {
+        "id": "mh2220-alternating:boundaryCheck",
+        "statement": "For which n does |Aₙ|=n!/2 hold?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-alternating:application",
+        "statement": "What is the sign of (1234)(56)?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-alternating:transfer",
+        "statement": "Why is Aₙ normal?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -199,7 +263,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-cosets"],
     "competencies": [
       {
         "id": "mh2220-lagrange:boundaryCheck",
@@ -222,11 +286,27 @@
     "conceptKind": "theorem"
   },
   "mh2220-euler-fermat": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-units", "mh2220-lagrange"],
+    "competencies": [
+      {
+        "id": "mh2220-euler-fermat:boundaryCheck",
+        "statement": "What premise is needed for a^φ(n)≡1 mod n?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-euler-fermat:application",
+        "statement": "What is 7⁸ modulo fifteen?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-euler-fermat:transfer",
+        "statement": "Does Fermat aᵖ≡a require p∤a?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -235,7 +315,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 18,
-    "prerequisites": ["mh2220-generators"],
+    "prerequisites": [
+      "mh2220-generators",
+      "mh2220-permutations",
+      "mh2220-homomorphism"
+    ],
     "competencies": [
       {
         "id": "mh2220-cayley-embedding:boundaryCheck",
@@ -258,11 +342,27 @@
     "conceptKind": "theorem"
   },
   "mh2220-real-circle": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-first-isomorphism"],
+    "competencies": [
+      {
+        "id": "mh2220-real-circle:boundaryCheck",
+        "statement": "Is the interval [0,1] literally a unique representative set?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-real-circle:application",
+        "statement": "What point corresponds to 1/2+Z?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-real-circle:transfer",
+        "statement": "Why is t→exp(2πit) not injective on R?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -294,31 +394,83 @@
     "conceptKind": "object"
   },
   "cube-signed-permutations": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["orthogonal-metric-orientation", "mh2220-permutations"],
+    "competencies": [
+      {
+        "id": "cube-signed-permutations:boundaryCheck",
+        "statement": "Does every element of O(3) preserve this cube?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-signed-permutations:application",
+        "statement": "How many orientation-preserving cube symmetries exist?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-signed-permutations:transfer",
+        "statement": "Why is −I₃ outside SO(3)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "cube-generator-words": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "cube-signed-permutations",
+      "mh2220-generators",
+      "mh2220-orbit-stabilizer"
+    ],
+    "competencies": [
+      {
+        "id": "cube-generator-words:boundaryCheck",
+        "statement": "Does seeing relations A⁴=B⁴=I prove these generate all rotations?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-generator-words:application",
+        "statement": "What are ABe₁ and BAe₁?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-generator-words:transfer",
+        "statement": "Why does the orbit/stabilizer argument prove equality rather than just containment?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "cube-diagonals-s4": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["cube-four-actions", "mh2220-first-isomorphism"],
+    "competencies": [
+      {
+        "id": "cube-diagonals-s4:boundaryCheck",
+        "statement": "Does equal order alone prove two groups are isomorphic?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-diagonals-s4:application",
+        "statement": "What is the order of the diagonal image of the full group?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-diagonals-s4:transfer",
+        "statement": "Why is the restricted rotation kernel trivial?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
@@ -327,7 +479,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 18,
-    "prerequisites": [],
+    "prerequisites": ["foundations-linear-algebra", "mh2220-homomorphism"],
     "competencies": [
       {
         "id": "orthogonal-metric-orientation:boundaryCheck",
@@ -353,7 +505,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 18,
-    "prerequisites": ["orthogonal-metric-orientation"],
+    "prerequisites": ["orthogonal-metric-orientation", "mh2220-semidirect"],
     "competencies": [
       {
         "id": "orthogonal-plane:boundaryCheck",
@@ -379,7 +531,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 18,
-    "prerequisites": ["orthogonal-plane"],
+    "prerequisites": ["orthogonal-plane", "odyssey-linear-groups"],
     "competencies": [
       {
         "id": "orthogonal-axis-angle:boundaryCheck",
@@ -428,41 +580,109 @@
     "conceptKind": "object"
   },
   "mh2220-commutator": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-normal", "mh2220-quotient"],
+    "competencies": [
+      {
+        "id": "mh2220-commutator:boundaryCheck",
+        "statement": "When is G/G′ trivial?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-commutator:application",
+        "statement": "What is S₃/S₃′?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-commutator:transfer",
+        "statement": "A homomorphism f:G→A has abelian target. What is forced?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-finite-abelian": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-cyclic", "mh2220-direct-product"],
+    "competencies": [
+      {
+        "id": "mh2220-finite-abelian:boundaryCheck",
+        "statement": "Which hypotheses does this classification require?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-finite-abelian:application",
+        "statement": "How many abelian groups of order eight occur up to isomorphism?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-finite-abelian:transfer",
+        "statement": "Are C₄×C₃ and C₁₂ isomorphic?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
   "mh2220-quaternion": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-small-groups",
+      "mh2220-finite-abelian",
+      "mh2220-normal"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-quaternion:boundaryCheck",
+        "statement": "Does Q₈ contain a subgroup generated by an involution outside its center?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-quaternion:application",
+        "statement": "How many involutions does D₄ have?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-quaternion:transfer",
+        "statement": "Why is a group in which every element squares to e abelian?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-centralizer-normalizer": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-normal", "mh2220-first-isomorphism"],
+    "competencies": [
+      {
+        "id": "mh2220-centralizer-normalizer:boundaryCheck",
+        "statement": "When is H normal in G?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-centralizer-normalizer:application",
+        "statement": "What is N_S₃(A₃)?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-centralizer-normalizer:transfer",
+        "statement": "Why is C_G(H) normal in N_G(H)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -471,7 +691,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-cosets"],
+    "prerequisites": [
+      "mh2220-cosets",
+      "mh2220-homomorphism",
+      "mh2220-permutations"
+    ],
     "competencies": [
       {
         "id": "mh2220-actions:boundaryCheck",
@@ -520,11 +744,30 @@
     "conceptKind": "object"
   },
   "mh2220-conjugacy": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-orbit-stabilizer",
+      "mh2220-centralizer-normalizer"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-conjugacy:boundaryCheck",
+        "statement": "What finiteness premise makes the class equation a sum of integers?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-conjugacy:application",
+        "statement": "How large is a transposition class in S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-conjugacy:transfer",
+        "statement": "When is Cl(x) a singleton?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -533,7 +776,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-permutations"],
     "competencies": [
       {
         "id": "mh2220-burnside:boundaryCheck",
@@ -559,7 +802,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["mh2220-burnside"],
+    "prerequisites": ["mh2220-burnside", "mh2220-dihedral"],
     "competencies": [
       {
         "id": "mh2220-necklaces:boundaryCheck",
@@ -585,7 +828,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["mh2220-burnside"],
+    "prerequisites": ["mh2220-burnside", "mh2220-permutations"],
     "competencies": [
       {
         "id": "mh2220-cycle-index:boundaryCheck",
@@ -611,7 +854,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["mh2220-burnside"],
+    "prerequisites": ["mh2220-burnside", "cube-four-actions"],
     "competencies": [
       {
         "id": "mh2220-solid-colorings:boundaryCheck",
@@ -634,21 +877,57 @@
     "conceptKind": "object"
   },
   "cube-four-actions": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-first-isomorphism"],
-    "competencies": [],
+    "prerequisites": [
+      "cube-signed-permutations",
+      "mh2220-actions",
+      "mh2220-first-isomorphism"
+    ],
+    "competencies": [
+      {
+        "id": "cube-four-actions:boundaryCheck",
+        "statement": "Which object type makes inversion invisible?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-four-actions:application",
+        "statement": "What is the full diagonal-action kernel?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-four-actions:transfer",
+        "statement": "Why can a faithful group have a nonfaithful action?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "cube-orbit-stabilizer": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["cube-four-actions", "mh2220-orbit-stabilizer"],
+    "competencies": [
+      {
+        "id": "cube-orbit-stabilizer:boundaryCheck",
+        "statement": "Can one divide by all six faces without proving transitivity?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-orbit-stabilizer:application",
+        "statement": "What is an edge stabilizer size in the rotation group?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-orbit-stabilizer:transfer",
+        "statement": "Why does adjoining inversion double every listed stabilizer?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "technique"
@@ -683,7 +962,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["actions-faithful-transitive"],
+    "prerequisites": ["actions-faithful-transitive", "mh2220-coset-action"],
     "competencies": [
       {
         "id": "actions-stabilizer-kernel-core:boundaryCheck",
@@ -706,51 +985,141 @@
     "conceptKind": "object"
   },
   "actions-regular-conjugation": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-actions", "mh2220-conjugacy"],
+    "competencies": [
+      {
+        "id": "actions-regular-conjugation:boundaryCheck",
+        "statement": "Does trivial action kernel imply every point stabilizer is trivial?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-regular-conjugation:application",
+        "statement": "What is the conjugation stabilizer of e?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-regular-conjugation:transfer",
+        "statement": "When is the conjugation action faithful?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "experiment",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "actions-cube-burnside": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-burnside", "cube-four-actions"],
+    "competencies": [
+      {
+        "id": "actions-cube-burnside:boundaryCheck",
+        "statement": "Must every available color be used?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-cube-burnside:application",
+        "statement": "How many rotational two-color face orbits are there?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-cube-burnside:transfer",
+        "statement": "Why can a face-moving motion fix a coloring?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "technique"
   },
   "actions-cycle-lenses": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-permutations",
+      "cube-four-actions",
+      "mh2220-first-isomorphism"
+    ],
+    "competencies": [
+      {
+        "id": "actions-cycle-lenses:boundaryCheck",
+        "statement": "Is order preserved by every action?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-cycle-lenses:application",
+        "statement": "What order does inversion have on diagonal lines?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-cycle-lenses:transfer",
+        "statement": "If g has order six and its cyclic kernel intersection has size two, what is the image order?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "actions-primitive": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-coset-action"],
+    "competencies": [
+      {
+        "id": "actions-primitive:boundaryCheck",
+        "statement": "Which assumptions support the maximal-stabilizer criterion?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-primitive:application",
+        "statement": "Is {0,2} a block for the four-cycle action?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-primitive:transfer",
+        "statement": "Why does double transitivity force primitivity?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
   "actions-frobenius": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-frobenius",
+      "mh2220-semidirect",
+      "mh2220-actions",
+      "actions-faithful-transitive",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "actions-frobenius:boundaryCheck",
+        "statement": "What condition is required for every nonidentity element?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-frobenius:application",
+        "statement": "Where does x→2x+1 fix a point in F₅?",
+        "level": "explain"
+      },
+      {
+        "id": "actions-frobenius:transfer",
+        "statement": "What step is supplied by Frobenius’s theorem rather than counting?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
@@ -785,7 +1154,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-sylow-existence"],
+    "prerequisites": ["mh2220-sylow-existence", "mh2220-orbit-stabilizer"],
     "competencies": [
       {
         "id": "mh2220-sylow-conjugacy:boundaryCheck",
@@ -811,7 +1180,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-sylow-conjugacy"],
+    "prerequisites": [
+      "mh2220-sylow-conjugacy",
+      "mh2220-centralizer-normalizer",
+      "mh2220-lagrange"
+    ],
     "competencies": [
       {
         "id": "mh2220-sylow-counts:boundaryCheck",
@@ -834,111 +1207,323 @@
     "conceptKind": "theorem"
   },
   "mh2220-simple-composition": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-normal",
+      "mh2220-quotient",
+      "mh2220-correspondence"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-simple-composition:boundaryCheck",
+        "statement": "Can a simple group have proper nontrivial subgroups?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-simple-composition:application",
+        "statement": "What are the factor orders in the displayed S₄ series?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-simple-composition:transfer",
+        "statement": "Does the multiset of composition factors determine a finite group?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
   },
   "mh2220-p-groups": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-conjugacy", "mh2220-lagrange"],
+    "competencies": [
+      {
+        "id": "mh2220-p-groups:boundaryCheck",
+        "statement": "Which p-groups have to be simple?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-p-groups:application",
+        "statement": "What is |Z(Q₈)|?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-p-groups:transfer",
+        "statement": "Why is Cₚ² not simple?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "group-complements": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-semidirect", "mh2220-sylow-conjugacy"],
+    "competencies": [
+      {
+        "id": "group-complements:boundaryCheck",
+        "statement": "What does Schur–Zassenhaus existence require here?",
+        "level": "explain"
+      },
+      {
+        "id": "group-complements:application",
+        "statement": "What complements A₃ in S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "group-complements:transfer",
+        "statement": "Why does the C₄ example not contradict the theorem?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
   "group-solvable": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-commutator",
+      "mh2220-simple-composition",
+      "mh2220-second-isomorphism",
+      "mh2220-third-isomorphism"
+    ],
+    "competencies": [
+      {
+        "id": "group-solvable:boundaryCheck",
+        "statement": "Does solvable mean abelian?",
+        "level": "explain"
+      },
+      {
+        "id": "group-solvable:application",
+        "statement": "What is the second derived subgroup of S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "group-solvable:transfer",
+        "statement": "When does an extension of solvable groups stay solvable?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
   "group-nilpotent": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-p-groups",
+      "group-solvable",
+      "mh2220-direct-product",
+      "mh2220-conjugacy"
+    ],
+    "competencies": [
+      {
+        "id": "group-nilpotent:boundaryCheck",
+        "statement": "Is every solvable finite group nilpotent?",
+        "level": "explain"
+      },
+      {
+        "id": "group-nilpotent:application",
+        "statement": "What is the nilpotence class of Q₈?",
+        "level": "explain"
+      },
+      {
+        "id": "group-nilpotent:transfer",
+        "statement": "Why do normal Sylows of distinct primes commute?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
   "characters-burnside": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "characters-integrality",
+      "group-solvable",
+      "mh2220-p-groups",
+      "mh2220-conjugacy",
+      "odyssey-schur"
+    ],
+    "competencies": [
+      {
+        "id": "characters-burnside:boundaryCheck",
+        "statement": "Does the prime-power class obstruction include a singleton central class?",
+        "level": "explain"
+      },
+      {
+        "id": "characters-burnside:application",
+        "statement": "What does order 72 guarantee?",
+        "level": "explain"
+      },
+      {
+        "id": "characters-burnside:transfer",
+        "statement": "Why can a Sylow-central z have a p-power class size?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "proof-animation",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "theorem"
   },
   "mh2220-finite-matrices": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-linear-groups",
+      "mh2220-sylow-conjugacy",
+      "mh2220-cayley-embedding"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-finite-matrices:boundaryCheck",
+        "statement": "Why restrict the coefficient field to Fₚ here?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-finite-matrices:application",
+        "statement": "How many matrices are in U₃(F₂)?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-finite-matrices:transfer",
+        "statement": "Why does Cayley plus Sylow containment produce a unitriangular embedding?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "odyssey-linear-groups": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "foundations-linear-algebra",
+      "mh2220-first-isomorphism",
+      "m3220-domains"
+    ],
+    "competencies": [
+      {
+        "id": "odyssey-linear-groups:boundaryCheck",
+        "statement": "Which coefficient premise supports det≠0 as the inverse test?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-linear-groups:application",
+        "statement": "What is |GL₂(F₂)|?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-linear-groups:transfer",
+        "statement": "What distinguishes two matrices in the same SL coset?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Odyssey Y1"],
     "conceptKind": "object"
   },
   "odyssey-flags": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["odyssey-linear-groups", "mh2220-orbit-stabilizer"],
+    "competencies": [
+      {
+        "id": "odyssey-flags:boundaryCheck",
+        "statement": "Is GL₃/B generally a quotient group?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-flags:application",
+        "statement": "Which matrices stabilize the standard flag?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-flags:transfer",
+        "statement": "Why is the action transitive?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Odyssey Y1"],
     "conceptKind": "object"
   },
   "linear-bruhat": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-flags",
+      "mh2220-double-cosets",
+      "mh2220-permutations"
+    ],
+    "competencies": [
+      {
+        "id": "linear-bruhat:boundaryCheck",
+        "statement": "Are the Bruhat cells ordinary left cosets?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-bruhat:application",
+        "statement": "Which cell contains [[1,2],[0,3]] over Q?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-bruhat:transfer",
+        "statement": "What certifies uniqueness of the permutation?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "technique"
   },
   "linear-projective": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-linear-groups",
+      "mh2220-quotient",
+      "actions-primitive"
+    ],
+    "competencies": [
+      {
+        "id": "linear-projective:boundaryCheck",
+        "statement": "Which small fields are exceptional for PSL₂ simplicity?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-projective:application",
+        "statement": "What is |PSL₂(F₅)|?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-projective:transfer",
+        "statement": "Why cannot one transfer PSL simplicity directly to SL?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
@@ -947,7 +1532,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-permutations"],
+    "prerequisites": ["mh2220-permutations", "mh2220-subgroups"],
     "competencies": [
       {
         "id": "mh2220-homomorphism:boundaryCheck",
@@ -973,7 +1558,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-homomorphism"],
     "competencies": [
       {
         "id": "mh2220-isomorphism:boundaryCheck",
@@ -999,7 +1584,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-quotient"],
+    "prerequisites": [
+      "mh2220-quotient",
+      "mh2220-homomorphism",
+      "mh2220-isomorphism"
+    ],
     "competencies": [
       {
         "id": "mh2220-first-isomorphism:boundaryCheck",
@@ -1025,7 +1614,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-first-isomorphism"],
     "competencies": [
       {
         "id": "mh2220-second-isomorphism:boundaryCheck",
@@ -1051,7 +1640,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-first-isomorphism"],
     "competencies": [
       {
         "id": "mh2220-third-isomorphism:boundaryCheck",
@@ -1077,7 +1666,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
+    "prerequisites": ["mh2220-first-isomorphism"],
     "competencies": [
       {
         "id": "mh2220-correspondence:boundaryCheck",
@@ -1103,7 +1692,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-ideals"],
+    "prerequisites": ["m3220-ideals", "mh2220-homomorphism"],
     "competencies": [
       {
         "id": "m3220-ring-hom:boundaryCheck",
@@ -1152,21 +1741,53 @@
     "conceptKind": "theorem"
   },
   "m3220-ring-correspondence": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "competencies": [
+      {
+        "id": "m3220-ring-correspondence:boundaryCheck",
+        "statement": "What makes (R/I)/(J/I) meaningful?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ring-correspondence:application",
+        "statement": "How many elements are in (Z/12Z)/((4)/(12))?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ring-correspondence:transfer",
+        "statement": "Why can two ideals have the same image without containing I?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
   },
   "linear-quotient": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["foundations-linear-algebra", "m3220-submodules"],
+    "competencies": [
+      {
+        "id": "linear-quotient:boundaryCheck",
+        "statement": "Which target is always isomorphic to V/ker T?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-quotient:application",
+        "statement": "For T(x,y)=x+y, what is ker T?",
+        "level": "explain"
+      },
+      {
+        "id": "linear-quotient:transfer",
+        "statement": "For a 4-dimensional domain and 1-dimensional kernel, what is dim im T?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "experiment",
     "sourceCollections": ["Algebra", "MH3220"],
     "conceptKind": "theorem"
@@ -1201,7 +1822,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-orbit-stabilizer"],
+    "prerequisites": ["mh2220-orbit-stabilizer", "mh2220-cosets"],
     "competencies": [
       {
         "id": "mh2220-normal:boundaryCheck",
@@ -1250,11 +1871,31 @@
     "conceptKind": "object"
   },
   "mh2220-automorphism": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-isomorphism",
+      "mh2220-cyclic",
+      "mh2220-first-isomorphism"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-automorphism:boundaryCheck",
+        "statement": "Must every automorphism be inner?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-automorphism:application",
+        "statement": "How many automorphisms does C₈ have?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-automorphism:transfer",
+        "statement": "Which group elements give the identity conjugation map?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "technique"
@@ -1263,7 +1904,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 22,
-    "prerequisites": ["mh2220-direct-product", "mh2220-actions"],
+    "prerequisites": [
+      "mh2220-direct-product",
+      "mh2220-actions",
+      "mh2220-automorphism"
+    ],
     "competencies": [
       {
         "id": "mh2220-semidirect:boundaryCheck",
@@ -1286,21 +1931,57 @@
     "conceptKind": "object"
   },
   "mh2220-coset-action": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-actions",
+      "mh2220-cosets",
+      "mh2220-first-isomorphism"
+    ],
+    "competencies": [
+      {
+        "id": "mh2220-coset-action:boundaryCheck",
+        "statement": "Does this action need H normal?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-coset-action:application",
+        "statement": "What is the core of ⟨(12)⟩ in S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-coset-action:transfer",
+        "statement": "If H has finite index n, what bounds [G:core(H)]?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
   },
   "mh2220-double-cosets": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["mh2220-cosets", "mh2220-orbit-stabilizer"],
+    "competencies": [
+      {
+        "id": "mh2220-double-cosets:boundaryCheck",
+        "statement": "Must double cosets have equal cardinality?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-double-cosets:application",
+        "statement": "If |H|=|K|=2 and |H∩gKg⁻¹|=1, what is |HgK|?",
+        "level": "explain"
+      },
+      {
+        "id": "mh2220-double-cosets:transfer",
+        "statement": "What happens if K={e}?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH2220"],
     "conceptKind": "object"
@@ -1309,7 +1990,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-ideals"],
+    "prerequisites": ["m3220-ideals", "foundations-quotient-rules"],
     "competencies": [
       {
         "id": "m3220-quotient-ring:boundaryCheck",
@@ -1335,7 +2016,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 22,
-    "prerequisites": ["mh2220-normal"],
+    "prerequisites": ["mh2220-normal", "mh2220-subgroups"],
     "competencies": [
       {
         "id": "mh2220-direct-product:boundaryCheck",
@@ -1358,31 +2039,83 @@
     "conceptKind": "object"
   },
   "m3220-crt": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-quotient-ring"],
-    "competencies": [],
+    "prerequisites": ["m3220-ideal-arithmetic", "m3220-first-ring-isomorphism"],
+    "competencies": [
+      {
+        "id": "m3220-crt:boundaryCheck",
+        "statement": "What hypothesis makes the ordinary CRT map surjective?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-crt:application",
+        "statement": "What solves x≡2 mod 3 and x≡1 mod 4 modulo twelve?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-crt:transfer",
+        "statement": "Why are Z/12Z and Z/3Z×Z/4Z isomorphic as rings?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "cube-direct-product": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["cube-diagonals-s4", "mh2220-direct-product"],
+    "competencies": [
+      {
+        "id": "cube-direct-product:boundaryCheck",
+        "statement": "Which property makes this a direct rather than merely semidirect product?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-direct-product:application",
+        "statement": "What is J·diag(1,1,−1)?",
+        "level": "explain"
+      },
+      {
+        "id": "cube-direct-product:transfer",
+        "statement": "What separates the two factors uniquely?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
   },
   "group-extensions": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "mh2220-semidirect",
+      "mh2220-quotient",
+      "mh2220-automorphism"
+    ],
+    "competencies": [
+      {
+        "id": "group-extensions:boundaryCheck",
+        "statement": "When is the additive cocycle formula used?",
+        "level": "explain"
+      },
+      {
+        "id": "group-extensions:application",
+        "statement": "What is the section defect at (1,1) in C₄→C₂?",
+        "level": "explain"
+      },
+      {
+        "id": "group-extensions:transfer",
+        "statement": "What does vanishing of the extension class say?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
@@ -1391,7 +2124,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["mh2220-congruence"],
+    "prerequisites": ["mh2220-congruence", "mh2220-axioms"],
     "competencies": [
       {
         "id": "m3220-rings:boundaryCheck",
@@ -1414,11 +2147,27 @@
     "conceptKind": "object"
   },
   "m3220-subrings": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-rings"],
+    "competencies": [
+      {
+        "id": "m3220-subrings:boundaryCheck",
+        "statement": "Must a subring contain 1 of the parent in this course convention?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-subrings:application",
+        "statement": "What is the identity of {diag(a,0)}?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-subrings:transfer",
+        "statement": "Why is 2Z a subring but not a field?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1450,11 +2199,27 @@
     "conceptKind": "object"
   },
   "m3220-domains": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
     "prerequisites": ["m3220-units"],
-    "competencies": [],
+    "competencies": [
+      {
+        "id": "m3220-domains:boundaryCheck",
+        "statement": "Which premise converts injectivity to surjectivity?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-domains:application",
+        "statement": "Is Z/5Z a field?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-domains:transfer",
+        "statement": "Why does the argument fail for Z?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
@@ -1486,61 +2251,157 @@
     "conceptKind": "object"
   },
   "m3220-ideal-arithmetic": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-ideals"],
+    "competencies": [
+      {
+        "id": "m3220-ideal-arithmetic:boundaryCheck",
+        "statement": "Is IJ always I∩J?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ideal-arithmetic:application",
+        "statement": "What is (6)+(10) in Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-ideal-arithmetic:transfer",
+        "statement": "Why does I+J=R imply I∩J⊆IJ in a commutative unital ring?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-maximal": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-quotient-ring", "m3220-domains"],
+    "competencies": [
+      {
+        "id": "m3220-maximal:boundaryCheck",
+        "statement": "Which ring hypotheses are used in the field-quotient characterization?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-maximal:application",
+        "statement": "Is (7) maximal in Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-maximal:transfer",
+        "statement": "Does maximal mean the ideal has maximal cardinality?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-prime": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-maximal"],
+    "competencies": [
+      {
+        "id": "m3220-prime:boundaryCheck",
+        "statement": "Must a prime ideal be proper?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-prime:application",
+        "statement": "Is (0) prime in Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-prime:transfer",
+        "statement": "Why is every maximal ideal prime in this setting?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-jacobson": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-noetherian"],
-    "competencies": [],
+    "prerequisites": ["m3220-maximal", "m3220-units"],
+    "competencies": [
+      {
+        "id": "m3220-jacobson:boundaryCheck",
+        "statement": "Must every radical element be nilpotent?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-jacobson:application",
+        "statement": "What is J(Z/12Z)?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-jacobson:transfer",
+        "statement": "Why is 1−rx a unit for all r when x∈J?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-quadratic-integers": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-algebraic"],
+    "competencies": [
+      {
+        "id": "m3220-quadratic-integers:boundaryCheck",
+        "statement": "What assumptions does the displayed integral-basis theorem use?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-quadratic-integers:application",
+        "statement": "What is ω² when ω=(1+√5)/2?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-quadratic-integers:transfer",
+        "statement": "Is the coefficient plane for positive D a complex lattice picture?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-norm-trace": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-quadratic-integers"],
+    "competencies": [
+      {
+        "id": "m3220-norm-trace:boundaryCheck",
+        "statement": "Is norm always positive in a real quadratic field?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-norm-trace:application",
+        "statement": "What are trace and norm of 3+2√2?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-norm-trace:transfer",
+        "statement": "Why does norm one certify an inverse in O_K?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1549,7 +2410,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "m3220-domains",
+      "foundations-quotient-rules"
+    ],
     "competencies": [
       {
         "id": "m3220-fractions:boundaryCheck",
@@ -1575,7 +2440,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "m3220-domains",
+      "m3220-ideals"
+    ],
     "competencies": [
       {
         "id": "m3220-euclidean:boundaryCheck",
@@ -1598,11 +2467,27 @@
     "conceptKind": "technique"
   },
   "m3220-gaussian-division": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-euclidean", "m3220-norm-trace"],
+    "competencies": [
+      {
+        "id": "m3220-gaussian-division:boundaryCheck",
+        "statement": "What premise is needed to divide z/w?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-gaussian-division:application",
+        "statement": "For z=3,w=1+i,q=2−i, what is r?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-gaussian-division:transfer",
+        "statement": "Why is Z[i] a PID?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
@@ -1634,11 +2519,27 @@
     "conceptKind": "object"
   },
   "m3220-prime-irreducible": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-pid"],
+    "competencies": [
+      {
+        "id": "m3220-prime-irreducible:boundaryCheck",
+        "statement": "What is required of a prime or irreducible element?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-prime-irreducible:application",
+        "statement": "Is three prime in Z[√−5]?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-prime-irreducible:transfer",
+        "statement": "Why do irreducibles become prime in a PID?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1647,7 +2548,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-pid"],
+    "prerequisites": ["m3220-pid", "m3220-prime-irreducible"],
     "competencies": [
       {
         "id": "m3220-ufd:boundaryCheck",
@@ -1699,7 +2600,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-localization"],
+    "prerequisites": ["m3220-localization", "m3220-prime"],
     "competencies": [
       {
         "id": "m3220-prime-localization:boundaryCheck",
@@ -1722,11 +2623,27 @@
     "conceptKind": "technique"
   },
   "m3220-localization-variants": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-localization", "m3220-polynomial", "m3220-units"],
+    "competencies": [
+      {
+        "id": "m3220-localization-variants:boundaryCheck",
+        "statement": "Must a localization map be injective?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-localization-variants:application",
+        "statement": "What does 2/1 become when three is inverted in Z/6Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-localization-variants:transfer",
+        "statement": "Why is F[X,X⁻¹] smaller than F(X)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
@@ -1758,111 +2675,300 @@
     "conceptKind": "technique"
   },
   "m3220-hilbert": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-noetherian", "m3220-polynomial"],
+    "competencies": [
+      {
+        "id": "m3220-hilbert:boundaryCheck",
+        "statement": "Does Hilbert apply to infinitely many variables?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-hilbert:application",
+        "statement": "Is Z[X,Y] Noetherian?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-hilbert:transfer",
+        "statement": "Why can an infinite variable ring fail ACC even over a field?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
   },
   "m3220-krull": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-prime", "m3220-pid"],
+    "competencies": [
+      {
+        "id": "m3220-krull:boundaryCheck",
+        "statement": "Does one length-two chain alone prove dimension exactly two?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-krull:application",
+        "statement": "What is dim Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-krull:transfer",
+        "statement": "Why is a field dimension zero?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
   "m3220-nilradical": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-prime", "m3220-jacobson"],
+    "competencies": [
+      {
+        "id": "m3220-nilradical:boundaryCheck",
+        "statement": "Is Nil(R)=J(R) for every commutative ring?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-nilradical:application",
+        "statement": "What is 6² modulo twelve?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-nilradical:transfer",
+        "statement": "Why is using finite-generation Nakayama before proving finite generation invalid?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "checker",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-artinian": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["m3220-nakayama"],
-    "competencies": [],
+    "prerequisites": ["m3220-noetherian"],
+    "competencies": [
+      {
+        "id": "m3220-artinian:boundaryCheck",
+        "statement": "Does Noetherian imply Artinian?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-artinian:application",
+        "statement": "Which is properly contained in (4) inside Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-artinian:transfer",
+        "statement": "Why is Q Artinian although infinite?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-artinian-decomposition": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-artinian", "m3220-nilradical", "m3220-crt"],
+    "competencies": [
+      {
+        "id": "m3220-artinian-decomposition:boundaryCheck",
+        "statement": "May R be replaced by R/J without losing data?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-artinian-decomposition:application",
+        "statement": "Which local factors reconstruct Z/12Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-artinian-decomposition:transfer",
+        "statement": "Why does an Artinian ring have dimension zero?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
   "m3220-dvr": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "m3220-prime-localization",
+      "m3220-pid",
+      "m3220-localization"
+    ],
+    "competencies": [
+      {
+        "id": "m3220-dvr:boundaryCheck",
+        "statement": "What does v(x)=0 mean for nonzero x in the valuation ring?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-dvr:application",
+        "statement": "What is v₃(18/5)?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-dvr:transfer",
+        "statement": "Which ideal is smaller: (t²) or (t³)?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-characteristic": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-rings", "m3220-units"],
+    "competencies": [
+      {
+        "id": "m3220-characteristic:boundaryCheck",
+        "statement": "Can a domain have characteristic six?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-characteristic:application",
+        "statement": "What is char(Z/8Z)?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-characteristic:transfer",
+        "statement": "A finite field has 27 elements. What is its characteristic?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-algebraic": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-irreducibility-tests"],
-    "competencies": [],
+    "prerequisites": [
+      "m3220-domains",
+      "m3220-irreducibility-tests",
+      "m3220-polynomial",
+      "m3220-quotient-ring"
+    ],
+    "competencies": [
+      {
+        "id": "m3220-algebraic:boundaryCheck",
+        "statement": "Why require D not a rational square?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-algebraic:application",
+        "statement": "What is (1+√2)⁻¹?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-algebraic:transfer",
+        "statement": "What is the norm of 3+2√2?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "m3220-finite-field-four": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-algebraic"],
-    "competencies": [],
+    "prerequisites": [
+      "m3220-quotient-ring",
+      "m3220-irreducibility-tests",
+      "m3220-maximal"
+    ],
+    "competencies": [
+      {
+        "id": "m3220-finite-field-four:boundaryCheck",
+        "statement": "Is a four-element field the same ring as Z/4Z?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-finite-field-four:application",
+        "statement": "What is α(α+1) in F₄?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-finite-field-four:transfer",
+        "statement": "Why is every quotient class represented by a+bα?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
   },
   "quadratic-quotient": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-finite-field-four"],
-    "competencies": [],
+    "prerequisites": ["m3220-finite-field-four", "m3220-crt"],
+    "competencies": [
+      {
+        "id": "quadratic-quotient:boundaryCheck",
+        "statement": "When is the quotient a field?",
+        "level": "explain"
+      },
+      {
+        "id": "quadratic-quotient:application",
+        "statement": "In F₂[X]/((X+1)²), what is (α+1)²?",
+        "level": "explain"
+      },
+      {
+        "id": "quadratic-quotient:transfer",
+        "statement": "What distinguishes distinct-root splitting from a repeated root?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Algebra", "MH3220"],
     "conceptKind": "object"
   },
   "m3220-polynomial": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-crt"],
-    "competencies": [],
+    "prerequisites": ["m3220-rings"],
+    "competencies": [
+      {
+        "id": "m3220-polynomial:boundaryCheck",
+        "statement": "When does degree addition hold for nonzero factors as stated?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-polynomial:application",
+        "statement": "What is the X coefficient of (1+2X)(3+X)?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-polynomial:transfer",
+        "statement": "Why does X²−X over F₂ refute polynomial/function identification?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1871,7 +2977,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-ufd"],
+    "prerequisites": ["m3220-ufd", "m3220-polynomial", "m3220-domains"],
     "competencies": [
       {
         "id": "m3220-polynomial-division:boundaryCheck",
@@ -1894,11 +3000,27 @@
     "conceptKind": "technique"
   },
   "m3220-roots": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-polynomial-division", "m3220-polynomial"],
+    "competencies": [
+      {
+        "id": "m3220-roots:boundaryCheck",
+        "statement": "Which hypotheses bound the sum of root multiplicities?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-roots:application",
+        "statement": "What is the multiplicity of one in (X−1)²(X+2) over Q?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-roots:transfer",
+        "statement": "Why can X²−1 have four roots modulo eight?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -1907,7 +3029,11 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-eisenstein", "m3220-polynomial-division"],
+    "prerequisites": [
+      "m3220-eisenstein",
+      "m3220-polynomial-division",
+      "m3220-roots"
+    ],
     "competencies": [
       {
         "id": "m3220-irreducibility-tests:boundaryCheck",
@@ -1933,7 +3059,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-polynomial-division"],
+    "prerequisites": ["m3220-polynomial-division", "m3220-ufd"],
     "competencies": [
       {
         "id": "m3220-gauss:boundaryCheck",
@@ -1982,21 +3108,57 @@
     "conceptKind": "theorem"
   },
   "m3220-polynomial-ufd": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["m3220-gauss", "m3220-pid", "m3220-ufd"],
+    "competencies": [
+      {
+        "id": "m3220-polynomial-ufd:boundaryCheck",
+        "statement": "Does being a UFD imply being a PID?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-polynomial-ufd:application",
+        "statement": "Why is (2,X) proper in Z[X]?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-polynomial-ufd:transfer",
+        "statement": "For a domain R, when is R[X] a PID?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "technique"
   },
   "m3220-nakayama": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["modules-generators", "m3220-jacobson"],
-    "competencies": [],
+    "prerequisites": [
+      "modules-generators",
+      "m3220-jacobson",
+      "m3220-annihilator"
+    ],
+    "competencies": [
+      {
+        "id": "m3220-nakayama:boundaryCheck",
+        "statement": "Can finite generation be omitted?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-nakayama:application",
+        "statement": "Why is 1−rₙ invertible for rₙ∈J(R)?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-nakayama:transfer",
+        "statement": "If M/N=m(M/N) and M/N is finitely generated over local R, what follows?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "theorem"
@@ -2005,7 +3167,10 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["m3220-first-ring-isomorphism"],
+    "prerequisites": [
+      "m3220-first-ring-isomorphism",
+      "foundations-linear-algebra"
+    ],
     "competencies": [
       {
         "id": "m3220-modules:boundaryCheck",
@@ -2057,7 +3222,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["modules-generators"],
+    "prerequisites": ["modules-generators", "m3220-first-ring-isomorphism"],
     "competencies": [
       {
         "id": "m3220-annihilator:boundaryCheck",
@@ -2080,11 +3245,27 @@
     "conceptKind": "object"
   },
   "m3220-module-chains": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["tensor-products"],
-    "competencies": [],
+    "prerequisites": ["m3220-submodules", "m3220-artinian-decomposition"],
+    "competencies": [
+      {
+        "id": "m3220-module-chains:boundaryCheck",
+        "statement": "Does Artinian imply Noetherian for every module?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-module-chains:application",
+        "statement": "What bounds strict subspace steps in F³?",
+        "level": "explain"
+      },
+      {
+        "id": "m3220-module-chains:transfer",
+        "statement": "Why must the filtration used in the proof be finite?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["MH3220"],
     "conceptKind": "object"
@@ -2093,7 +3274,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["foundations-linear-algebra"],
+    "prerequisites": ["foundations-linear-algebra", "mh2220-actions"],
     "competencies": [
       {
         "id": "ureca-linear-action:boundaryCheck",
@@ -2119,7 +3300,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["ureca-linear-action"],
+    "prerequisites": ["ureca-linear-action", "mh2220-permutations"],
     "competencies": [
       {
         "id": "ureca-permutation-module:boundaryCheck",
@@ -2194,11 +3375,31 @@
     "conceptKind": "object"
   },
   "ureca-cyclic-eigenvalues": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "ureca-linear-action",
+      "foundations-linear-algebra",
+      "mh2220-cyclic"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-cyclic-eigenvalues:boundaryCheck",
+        "statement": "What makes the displayed complex decomposition valid?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-cyclic-eigenvalues:application",
+        "statement": "What is 1+i²+(−i)²?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-cyclic-eigenvalues:transfer",
+        "statement": "Is an eigenspace of r automatically invariant under all G?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
@@ -2282,21 +3483,57 @@
     "conceptKind": "object"
   },
   "odyssey-frobenius": {
-    "teachingStatus": "reference-only",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-induction",
+      "ureca-intertwiners",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "odyssey-frobenius:boundaryCheck",
+        "statement": "Does the Hom-space version require complex semisimple representations?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-frobenius:application",
+        "statement": "What is the sign multiplicity in Res_H Std for H=C₂ in S₃?",
+        "level": "explain"
+      },
+      {
+        "id": "odyssey-frobenius:transfer",
+        "statement": "Why is evaluation at the identity copy sufficient?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Odyssey Y1"],
     "conceptKind": "theorem"
   },
   "representations-square-modes": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": ["ureca-permutation-module", "ureca-invariant-subspaces"],
+    "competencies": [
+      {
+        "id": "representations-square-modes:boundaryCheck",
+        "statement": "Must a rotation eigenline be invariant under the dihedral group?",
+        "level": "explain"
+      },
+      {
+        "id": "representations-square-modes:application",
+        "statement": "What are dim T,dim L,dim U?",
+        "level": "explain"
+      },
+      {
+        "id": "representations-square-modes:transfer",
+        "statement": "Why is U irreducible over R?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "illustration",
     "sourceCollections": ["Beyond the syllabus"],
     "conceptKind": "object"
@@ -2305,7 +3542,7 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["ureca-invariant-subspaces"],
+    "prerequisites": ["ureca-invariant-subspaces", "ureca-cyclic-eigenvalues"],
     "competencies": [
       {
         "id": "representations-real-complex:boundaryCheck",
@@ -2357,7 +3594,12 @@
     "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 20,
-    "prerequisites": ["odyssey-schur", "representations-real-complex"],
+    "prerequisites": [
+      "odyssey-schur",
+      "representations-real-complex",
+      "ureca-linear-action",
+      "ureca-cyclic-eigenvalues"
+    ],
     "competencies": [
       {
         "id": "representations-characters:boundaryCheck",
@@ -2380,21 +3622,57 @@
     "conceptKind": "object"
   },
   "characters-integrality": {
-    "teachingStatus": "proof-roadmap",
+    "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
-    "competencies": [],
+    "prerequisites": [
+      "odyssey-character-table",
+      "ureca-character-bound-kernel",
+      "m3220-algebraic"
+    ],
+    "competencies": [
+      {
+        "id": "characters-integrality:boundaryCheck",
+        "statement": "Which characters satisfy the degree-divisibility theorem stated here?",
+        "level": "explain"
+      },
+      {
+        "id": "characters-integrality:application",
+        "statement": "For standard S₃ at a three-cycle, what is |class|χ(g)/χ(1)?",
+        "level": "explain"
+      },
+      {
+        "id": "characters-integrality:transfer",
+        "statement": "Why is a rational algebraic integer an ordinary integer?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["Algebra", "Odyssey Y1"],
     "conceptKind": "object"
   },
   "ureca-group-algebra": {
-    "teachingStatus": "worked-illustration",
+    "teachingStatus": "guided",
     "courseTier": "foundation",
     "estimatedMinutes": 15,
-    "prerequisites": ["m3220-annihilator"],
-    "competencies": [],
+    "prerequisites": ["m3220-modules", "ureca-linear-action"],
+    "competencies": [
+      {
+        "id": "ureca-group-algebra:boundaryCheck",
+        "statement": "Must formal group basis symbols have distinct operators in every module?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-group-algebra:application",
+        "statement": "What is (1+g)² in F₂[C₂]?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-group-algebra:transfer",
+        "statement": "Why must FG-modules be unital to recover a representation?",
+        "level": "transfer"
+      }
+    ],
     "visualisationType": "reference-diagram",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "object"
@@ -2429,7 +3707,12 @@
     "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["m3220-artinian"],
+    "prerequisites": [
+      "m3220-artinian",
+      "m3220-module-chains",
+      "m3220-annihilator",
+      "odyssey-schur"
+    ],
     "competencies": [
       {
         "id": "algebra-wedderburn:boundaryCheck",
@@ -2455,7 +3738,11 @@
     "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["algebra-wedderburn"],
+    "prerequisites": [
+      "algebra-wedderburn",
+      "m3220-jacobson",
+      "m3220-annihilator"
+    ],
     "competencies": [
       {
         "id": "algebra-radical:boundaryCheck",
@@ -2637,7 +3924,7 @@
     "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": [],
+    "prerequisites": ["representations-characters", "ureca-cyclic-eigenvalues"],
     "competencies": [
       {
         "id": "ureca-character-bound-kernel:boundaryCheck",
@@ -2689,7 +3976,11 @@
     "teachingStatus": "guided",
     "courseTier": "advanced",
     "estimatedMinutes": 25,
-    "prerequisites": ["ureca-external-tensor-products"],
+    "prerequisites": [
+      "ureca-external-tensor-products",
+      "representations-maschke",
+      "odyssey-character-table"
+    ],
     "competencies": [
       {
         "id": "ureca-direct-product-irreducibles:boundaryCheck",
