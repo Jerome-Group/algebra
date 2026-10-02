@@ -131,7 +131,7 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "1e624eddde47181c4d005b9350b267df59b3c16906e3527241a84f45d19bcaa0"
+      "sha256": "86ced3fd5386f3afd4888b2e5e32001de3dbd550baf1e0ef8cfd1aa17d8346d5"
     },
     {
       "file": "components/algebra/Bridges.tsx",
@@ -815,7 +815,7 @@
     },
     {
       "file": "docs/research/verification-audit.md",
-      "sha256": "00a0db97708fbf1e01ec60eaef956ab9b8eeaf6696d4592af9d66411b42becd0"
+      "sha256": "3bb210187a12384cf11dca69d651b3a4385ae52e780b1aa1ea9a371dec8e74b9"
     },
     {
       "file": "docs/research/visual-sizing-review.md",
@@ -856,6 +856,10 @@
     {
       "file": "hooks/use-mobile.ts",
       "sha256": "ad0936f84f1df79d3697bfbff9c18f8ad58431c1cbaf2359c6a853b0fcc9f28b"
+    },
+    {
+      "file": "hooks/use-navigation-focus.ts",
+      "sha256": "ecc19f5eebddaeb72bd83b872348f4a1b589ee5950e8cb56a52e1f0b94e3309c"
     },
     {
       "file": "lib/algebra/capstone-assessments.json",
@@ -1152,6 +1156,10 @@
     {
       "file": "tests/browser/module-action-board.spec.mjs",
       "sha256": "8da6c320401c18ae254442118d632d9315260a57139675bd12e60ec0f2174d48"
+    },
+    {
+      "file": "tests/browser/navigation-focus.spec.mjs",
+      "sha256": "134f1ba027045b580ac1f5363142ba96965774abf1ca1c8b908b2fae55c20249"
     },
     {
       "file": "tests/browser/navigation.spec.mjs",
@@ -2425,7 +2433,8 @@
         "./LessonReader",
         "./LaboratoryControls",
         "./WebMCP",
-        "./RepresentationObject"
+        "./RepresentationObject",
+        "@/hooks/use-navigation-focus"
       ],
       "states": [
         {

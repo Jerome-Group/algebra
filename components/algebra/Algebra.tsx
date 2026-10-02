@@ -27,6 +27,7 @@ import { LessonReader } from "./LessonReader";
 import { LaboratoryProvider } from "./LaboratoryControls";
 import { useLearningTools } from "./WebMCP";
 import { RepresentationObjectProvider } from "./RepresentationObject";
+import { useNavigationFocus } from "@/hooks/use-navigation-focus";
 const lessons = data as Lesson[];
 const subjects = [
   "Groups & symmetry",
@@ -47,6 +48,7 @@ export default function Algebra() {
   );
 }
 function LearningExperience() {
+  const focusHeading = useNavigationFocus();
   const { mastered } = useLearningProgress();
   const [id, setId] = useState("foundations-functions"),
     [subject, setSubject] = useState(subjects[0]),
@@ -80,31 +82,31 @@ function LearningExperience() {
   useEffect(() => {
     current.current = lesson;
   }, [lesson]);
-  const selectLesson = useCallback((target: string) => {
-    const next = lessons.find(
-      (l) => l.id === target || l.aliases?.includes(target),
-    );
-    if (!next) throw Error("Unknown concept");
-    setId(next.id);
-    setLaboratory(false);
-    setResumeId(next.id);
-    try {
-      localStorage.setItem("algebra-resume-v1", next.id);
-    } catch {
-      /* Storage may be disabled. */
-    }
-    setSubject(next.subject || subjects[0]);
-    setExpanded(next.family);
-    setTab("guided");
-    setView("lesson");
-    setMenu(false);
-    setQuery("");
+  const selectLesson = useCallback(
+    (target: string) => {
+      const next = lessons.find(
+        (l) => l.id === target || l.aliases?.includes(target),
+      );
+      if (!next) throw Error("Unknown concept");
+      setId(next.id);
+      setLaboratory(false);
+      setResumeId(next.id);
+      try {
+        localStorage.setItem("algebra-resume-v1", next.id);
+      } catch {
+        /* Storage may be disabled. */
+      }
+      setSubject(next.subject || subjects[0]);
+      setExpanded(next.family);
+      setTab("guided");
+      setView("lesson");
+      setMenu(false);
+      setQuery("");
 
-    requestAnimationFrame(() => {
-      document.getElementById("lesson-heading")?.focus({ preventScroll: true });
-      window.scrollTo({ top: 0 });
-    });
-  }, []);
+      focusHeading("lesson-heading");
+    },
+    [focusHeading],
+  );
   const open = useCallback(
     (target: string, unit?: string) => {
       if (
@@ -117,15 +119,15 @@ function LearningExperience() {
     },
     [selectLesson],
   );
-  const navigate = useCallback((mode: ProductMode) => {
-    if (location.hash !== `#${mode}`) history.pushState({}, "", `#${mode}`);
-    setView(mode);
-    setMenu(false);
-    requestAnimationFrame(() => {
-      document.getElementById("mode-heading")?.focus({ preventScroll: true });
-      window.scrollTo({ top: 0 });
-    });
-  }, []);
+  const navigate = useCallback(
+    (mode: ProductMode) => {
+      if (location.hash !== `#${mode}`) history.pushState({}, "", `#${mode}`);
+      setView(mode);
+      setMenu(false);
+      focusHeading("mode-heading");
+    },
+    [focusHeading],
+  );
   const openLab = useCallback(
     (target: string) => {
       history.pushState({}, "", `#lab:${target}`);
@@ -145,9 +147,7 @@ function LearningExperience() {
         } catch {
           /* Optional device progress. */
         }
-        requestAnimationFrame(() =>
-          document.getElementById("mode-heading")?.focus(),
-        );
+        focusHeading("mode-heading");
       } else if (
         lessons.some(
           (l) => l.id === destination.id || l.aliases?.includes(destination.id),
@@ -169,7 +169,7 @@ function LearningExperience() {
       window.removeEventListener("hashchange", sync);
       window.removeEventListener("popstate", sync);
     };
-  }, [selectLesson]);
+  }, [selectLesson, focusHeading]);
   useEffect(() => {
     if (!menu) return;
     const close = (event: KeyboardEvent) => {
