@@ -26,3 +26,7 @@ A fresh two-axis review pinned `685bcd6f2ac1e3797a2a5ea4f8653f777e158cd2`. Its S
 Parallel verifier runs exposed a shared artifact-directory collision: the application assertions passed, but another runner removed the active trace directory. Each CLI browser run now defaults to a unique output directory and reports it as structured evidence; an explicit environment override remains supported. A concurrent isolated-runner regression checks that both evidence sets survive.
 
 Independent delta review at `99ef6b063561b569121057d84a63477869674e3f` confirmed the four earlier findings resolved and identified one additional contract omission: build/type layers can overwrite production artifacts, build cache and TypeScript incremental state. The public verifier write-effects declaration now explicitly names those conditional durable writes; feature-map regeneration retains them for agents.
+
+## Later release evidence — 2026-10-03
+
+The earlier review scope and pending statements above remain historical. Final protected CI, independent production verification, in-app coverage, native provenance and the tested version 7 → 8 → 7 restoration are recorded in [the release record](../release-verification.md). This later record is release-owner evidence, not a claim that this earlier reviewer executed those later checks.

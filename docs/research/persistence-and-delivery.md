@@ -29,3 +29,7 @@ Measured on 3 October using minified `dist/client/assets` plus Python gzip (comp
 Independent review additionally reproduced partial undo failure: saving the reverse backup could succeed before restoring primary storage failed. The existing backup envelope now journals both records before any primary change; reload distinguishes failed restoration from successful reversal. Fifteen focused progress/store tests independently pass, including supported/future raw records and failed null-target removal across reload and retry.
 
 The completed teaching corpus's eager `Algebra-C5QBO9DI.js` artifact measures 1,535,761 bytes / 410,888 gzip; the immutable baseline measures 1,640,669 / 444,991 with the same Node gzip default. This is about 6.4% fewer minified bytes and 7.7% fewer compressed bytes despite adding 71 guided teaching contracts. It remains a substantial eager corpus and still triggers the default chunk warning. These artifact-size comparisons establish no device/network latency or learner outcome.
+
+## Later release evidence — 2026-10-03
+
+The earlier review scope and pending statements above remain historical. Final protected CI, independent production verification, in-app coverage, native provenance and the tested version 7 → 8 → 7 restoration are recorded in [the release record](../release-verification.md). This later record is release-owner evidence, not a claim that this earlier reviewer executed those later checks.
