@@ -1028,7 +1028,7 @@
       "ureca-faithful-direct-product"
     ],
     "independentMathematicalReview": "docs/research/independent-mathematics-review.md",
-    "automatedFinalStatus": "All-layer isolated pre-security run passed 117 Node tests and 392 browser cases; patched-source full run pending.",
+    "automatedFinalStatus": "Exact patched local full run passed 117 Node tests and 392 browser cases; remote assertions also passed, but job cancelled at ten-minute upload/cleanup boundary. Repaired CI pending.",
     "responsiveGeometry": {
       "independentLayouts": 450,
       "widths": [320, 375, 768],

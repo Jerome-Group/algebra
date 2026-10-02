@@ -15,7 +15,7 @@
     },
     {
       "file": ".github/workflows/ci.yml",
-      "sha256": "f6d330f81efb55f4c98e46a38dfa84697cf7dc2b6cddb0421373cfbcf31d632f"
+      "sha256": "e05ee2eef8b6ed68ea33e462fcb1890b3f4426a8783b1f9882abd7c347e0232c"
     },
     {
       "file": ".github/workflows/conformance.yml",
@@ -75,11 +75,11 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "53de1d115807412ed23ada57a91be0cb13f3e85825e3844fe6672c6dc6a30a8f"
+      "sha256": "af58b70f2061f378815b8464dacd4cd85d55cffa2520196d7a78d3c123151e1a"
     },
     {
       "file": "README.md",
-      "sha256": "c516e08fcd56ce64516fb6b978d1e143d895fa0355e91baf20c89b58a8fe0d74"
+      "sha256": "f677fe7b1663f1a6c50611312383cbbd0db3f0bd836d0066b8d1299584e3f8d7"
     },
     {
       "file": "SECURITY.md",
@@ -771,11 +771,11 @@
     },
     {
       "file": "docs/research/browser-inspection.json",
-      "sha256": "86bf644387cffd4abf6eb09c10b6b88e4333269e434585c5dce1f281bcb4c473"
+      "sha256": "dbd233cfd885c5422e1acc67719abbe3318531d44a8a5078649fcca1343c3282"
     },
     {
       "file": "docs/research/dependency-readiness.md",
-      "sha256": "838f98d471a53651abaca0534f7dad818a136568898476396110c451ee4546ff"
+      "sha256": "c7482013c9538649917ff153c333ddc0bf372056a550899fe9a8db4f3795e328"
     },
     {
       "file": "docs/research/independent-mathematics-review.md",
@@ -815,7 +815,7 @@
     },
     {
       "file": "docs/research/verification-audit.md",
-      "sha256": "79fb48983fbe2788fb9265697111f608942eb7e6804fd1a27ba71d79f9d323d5"
+      "sha256": "00a0db97708fbf1e01ec60eaef956ab9b8eeaf6696d4592af9d66411b42becd0"
     },
     {
       "file": "docs/research/visual-sizing-review.md",
@@ -1067,11 +1067,11 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "4e7354d7a8454116b39cf3d45bb201897b256be246b2bb23d469aa3607cea893"
+      "sha256": "afa1208f1b077937091d5c75a347da112c174a6864d13c9d98dacfd2fc2b4d7c"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "d770107e138e15228b5d7fb9baa9af6270ab2738a05a90b308eea98fb7ac6cbd"
+      "sha256": "09d1fbf48026c9c6ed8821d40a91b7eca94d6f0c30058f244420b661bd4ae5eb"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1099,7 +1099,7 @@
     },
     {
       "file": "tests/browser/catalogue.spec.mjs",
-      "sha256": "22961327b0a45affc8109da8da053de9f27d7ff33b150ce61411612bc7b9677a"
+      "sha256": "806bcfa78369348695f78b16cebbc9f4a66da2e28dda6929c41f30ab46afef2b"
     },
     {
       "file": "tests/browser/cayley-words.spec.mjs",
@@ -1211,7 +1211,7 @@
     },
     {
       "file": "tests/feature-map.test.mjs",
-      "sha256": "341752420959a9d67036008e3feb310e728a9856014aaef4471f515f963a9625"
+      "sha256": "2a29191dfa76f7fec8a26bf28fd47a8b458a5c7d0e43750eedfee9f2465d889c"
     },
     {
       "file": "tests/fixed-colorings.test.mjs",
@@ -1635,6 +1635,11 @@
             "type": "boolean",
             "description": "Explicitly regenerate map file"
           },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
+          },
           "built": {
             "type": "boolean",
             "description": "Standalone browser checks against already-built Worker"
@@ -1730,6 +1735,11 @@
           "write": {
             "type": "boolean",
             "description": "Explicitly regenerate map file"
+          },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
           },
           "built": {
             "type": "boolean",
@@ -1827,6 +1837,11 @@
             "type": "boolean",
             "description": "Explicitly regenerate map file"
           },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
+          },
           "built": {
             "type": "boolean",
             "description": "Standalone browser checks against already-built Worker"
@@ -1922,6 +1937,11 @@
           "write": {
             "type": "boolean",
             "description": "Explicitly regenerate map file"
+          },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
           },
           "built": {
             "type": "boolean",
@@ -2019,6 +2039,11 @@
             "type": "boolean",
             "description": "Explicitly regenerate map file"
           },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
+          },
           "built": {
             "type": "boolean",
             "description": "Standalone browser checks against already-built Worker"
@@ -2036,6 +2061,7 @@
       "arguments": [
         "--layer map|math|render|browser|types|build|engineering|dependencies|all",
         "--evidence path",
+        "--shard i/n (browser layer only; partial suite coverage)",
         "--url origin (external browser verification server)",
         "--built (standalone browser uses production Worker); all always uses built Worker unless --url"
       ],
@@ -2136,6 +2162,11 @@
           "write": {
             "type": "boolean",
             "description": "Explicitly regenerate map file"
+          },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
           },
           "built": {
             "type": "boolean",
@@ -2245,6 +2276,11 @@
           "write": {
             "type": "boolean",
             "description": "Explicitly regenerate map file"
+          },
+          "shard": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
+            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
           },
           "built": {
             "type": "boolean",

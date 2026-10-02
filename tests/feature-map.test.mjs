@@ -175,3 +175,51 @@ test("agent CLI provides structured results, effects and actionable failure code
   assert.equal(failure.status, 1);
   assert.match(JSON.parse(failure.stdout).errors[0].message, /Unknown lesson/);
 });
+
+test("CLI rejects malformed or misplaced browser shards before launching checks", () => {
+  const help = spawnSync(process.execPath, ["scripts/algebra.mjs", "help"], {
+    encoding: "utf8",
+  });
+  assert.equal(help.status, 0);
+  const schema = JSON.parse(help.stdout).result.commands.find(
+    (command) => command.name === "verify",
+  ).inputSchema.properties.shard;
+  const pattern = new RegExp(schema.pattern);
+  for (const shard of ["1/2", "2/2", "100/200"])
+    assert.equal(pattern.test(shard), true, shard);
+  for (const shard of ["0/2", "1/0", "1.5/2", "1/2x", "01/2", "1/2;echo bad"])
+    assert.equal(pattern.test(shard), false, shard);
+  const run = (...args) =>
+    spawnSync(process.execPath, ["scripts/algebra.mjs", "verify", ...args], {
+      encoding: "utf8",
+    });
+  for (const shard of [
+    "0/2",
+    "1/0",
+    "3/2",
+    "1.5/2",
+    "1/2x",
+    "01/2",
+    "1/9007199254740992",
+    "1/2;echo bad",
+  ]) {
+    const execution = run("--layer", "browser", "--built", "--shard", shard);
+    assert.equal(execution.status, 1, shard);
+    const result = JSON.parse(execution.stdout);
+    assert.deepEqual(result.checks, []);
+    assert.match(result.errors[0].message, /Shard must/);
+  }
+  for (const args of [
+    ["--layer", "browser", "--shard"],
+    ["--layer", "all", "--shard", "1/2"],
+  ]) {
+    const execution = run(...args);
+    assert.equal(execution.status, 1);
+    const result = JSON.parse(execution.stdout);
+    assert.deepEqual(result.checks, []);
+    assert.match(
+      result.errors[0].message,
+      /Shard must|requires --layer browser/,
+    );
+  }
+});

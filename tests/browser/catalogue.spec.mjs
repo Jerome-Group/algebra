@@ -10,6 +10,7 @@ const testCatalogueSha256 = createHash("sha256")
   .update(catalogueSource)
   .digest("hex");
 
+test.describe.configure({ mode: "parallel" });
 test.use({ hasTouch: true });
 
 for (const lesson of lessons) {

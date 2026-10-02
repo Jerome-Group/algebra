@@ -361,6 +361,18 @@ try {
     const layer = option(args, "layer", "map");
     if (!verificationLayers.includes(layer))
       throw Error("Unknown verification layer");
+    const shard = option(args, "shard");
+    if (args.includes("--shard")) {
+      if (layer !== "browser") throw Error("--shard requires --layer browser");
+      const parts =
+        typeof shard === "string" && shard.match(/^([1-9]\d*)\/([1-9]\d*)$/);
+      if (
+        !parts ||
+        !parts.slice(1).every((part) => Number.isSafeInteger(Number(part))) ||
+        Number(parts[1]) > Number(parts[2])
+      )
+        throw Error("Shard must be positive safe integers i/n with i <= n");
+    }
     if (["build", "engineering", "all"].includes(layer))
       envelope.checks.push(
         runCheck(root, "production-build", process.execPath, [
@@ -442,7 +454,11 @@ try {
           root,
           "browser-interactions",
           process.execPath,
-          ["node_modules/@playwright/test/cli.js", "test"],
+          [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            ...(shard ? [`--shard=${shard}`] : []),
+          ],
           {
             ALGEBRA_EVIDENCE_DIR: browserArtifacts,
             ...(origin
@@ -462,13 +478,15 @@ try {
     envelope.ok &&= envelope.checks.every((check) => check.status === "passed");
     envelope.result = {
       layer,
+      ...(shard ? { shard } : {}),
       catalogue: {
         lessons: map.lessons.length,
         units: map.units.length,
         features: map.features.length,
       },
-      coverage:
-        "Only named executed checks are verified. Passing a route sweep proves entry rendering, not every parameter or mathematical claim.",
+      coverage: shard
+        ? `Partial browser coverage: shard ${shard} only; all shards must pass for complete suite coverage. Passing a route sweep proves entry rendering, not every parameter or mathematical claim.`
+        : "Only named executed checks are verified. Passing a route sweep proves entry rendering, not every parameter or mathematical claim.",
     };
   } else throw Error(`Unknown command: ${command}`);
 } catch (error) {

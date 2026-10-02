@@ -294,6 +294,7 @@ export const commands = [
     arguments: [
       `--layer ${verificationLayers.join("|")}`,
       "--evidence path",
+      "--shard i/n (browser layer only; partial suite coverage)",
       "--url origin (external browser verification server)",
       "--built (standalone browser uses production Worker); all always uses built Worker unless --url",
     ],
@@ -365,6 +366,12 @@ export const commands = [
           "Replay exact labelled UI actions in one fresh isolated context",
       },
       write: { type: "boolean", description: "Explicitly regenerate map file" },
+      shard: {
+        type: "string",
+        pattern: "^[1-9][0-9]*/[1-9][0-9]*$",
+        description:
+          "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard",
+      },
       built: {
         type: "boolean",
         description: "Standalone browser checks against already-built Worker",
