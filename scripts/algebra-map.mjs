@@ -303,6 +303,8 @@ export const commands = [
     ],
     reads: ["source", "built artifact", "isolated browser"],
     writes: [
+      "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
+      "tsconfig.tsbuildinfo for types or all",
       "evidence file when requested",
       "ignored browser evidence",
       "isolated browser storage",

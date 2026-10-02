@@ -803,7 +803,7 @@
     },
     {
       "file": "docs/research/standards-review.md",
-      "sha256": "cc354f56805239379020b9466f77c81819b1566a705d97aa38bed43cad9fcee3"
+      "sha256": "9312cca75a04b28da506069dc8a7a78987bdf054ba7c791d6eaa3fbf5a3aad1d"
     },
     {
       "file": "docs/research/teaching-audit.json",
@@ -1063,7 +1063,7 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "60a08f395bba278c57afcb02f24e83f67f0313aad81aa0f27ec35aa6d2dcde62"
+      "sha256": "3439f2b52ba70416359eec8969d9c9295003ae5f412fef040a0f49e5b29a30b9"
     },
     {
       "file": "scripts/algebra.mjs",
@@ -2038,6 +2038,8 @@
       ],
       "reads": ["source", "built artifact", "isolated browser"],
       "writes": [
+        "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
+        "tsconfig.tsbuildinfo for types or all",
         "evidence file when requested",
         "ignored browser evidence",
         "isolated browser storage"
