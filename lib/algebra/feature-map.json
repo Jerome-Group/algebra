@@ -771,7 +771,11 @@
     },
     {
       "file": "docs/research/browser-inspection.json",
-      "sha256": "be335cda10c234a87d2c0f4456ac550db818072a9495cecf3282a49b4f69efc4"
+      "sha256": "86bf644387cffd4abf6eb09c10b6b88e4333269e434585c5dce1f281bcb4c473"
+    },
+    {
+      "file": "docs/research/dependency-readiness.md",
+      "sha256": "838f98d471a53651abaca0534f7dad818a136568898476396110c451ee4546ff"
     },
     {
       "file": "docs/research/independent-mathematics-review.md",
@@ -811,7 +815,7 @@
     },
     {
       "file": "docs/research/verification-audit.md",
-      "sha256": "ecd7418f72a7513ee1a17a3015602dc15b14850f20b8874af52065c38b7eeeb9"
+      "sha256": "79fb48983fbe2788fb9265697111f608942eb7e6804fd1a27ba71d79f9d323d5"
     },
     {
       "file": "docs/research/visual-sizing-review.md",
@@ -1023,11 +1027,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "ea3b246abbbf86a51811223ccc2fb44a87b87ea4e67cb7525c59c4d7921f486d"
+      "sha256": "6992c6f15109cb80d2ee43dc42cdce23626a8462bd23081e1343774da803bd16"
     },
     {
       "file": "package.json",
-      "sha256": "2b7d41a4535cfdef6f2cacb01689a65edde6a3e1ffe976daa091f7f6e3af0d65"
+      "sha256": "c392f2136d80e55dd01fc3433af27e3e7bcc9132dc3f5282177156de69ae5dbd"
     },
     {
       "file": "playwright.config.ts",
@@ -1063,11 +1067,11 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "3439f2b52ba70416359eec8969d9c9295003ae5f412fef040a0f49e5b29a30b9"
+      "sha256": "4e7354d7a8454116b39cf3d45bb201897b256be246b2bb23d469aa3607cea893"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "8958fa9286e4679a656346e9b8e6282923fbdc1ac1e9bb9ff4934671b05d7891"
+      "sha256": "d770107e138e15228b5d7fb9baa9af6270ab2738a05a90b308eea98fb7ac6cbd"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1574,6 +1578,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -1669,6 +1674,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -1764,6 +1770,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -1859,6 +1866,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -1954,6 +1962,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -2025,7 +2034,7 @@
     {
       "name": "verify",
       "arguments": [
-        "--layer map|math|render|browser|types|build|engineering|all",
+        "--layer map|math|render|browser|types|build|engineering|dependencies|all",
         "--evidence path",
         "--url origin (external browser verification server)",
         "--built (standalone browser uses production Worker); all always uses built Worker unless --url"
@@ -2034,9 +2043,15 @@
         "Node 24",
         "installed dependencies",
         "production build for render",
-        "Playwright Chromium for browser"
+        "Playwright Chromium for browser",
+        "npm registry access for dependencies or all"
       ],
-      "reads": ["source", "built artifact", "isolated browser"],
+      "reads": [
+        "source",
+        "built artifact",
+        "isolated browser",
+        "dependency advisories"
+      ],
       "writes": [
         "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
         "tsconfig.tsbuildinfo for types or all",
@@ -2065,6 +2080,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },
@@ -2173,6 +2189,7 @@
               "types",
               "build",
               "engineering",
+              "dependencies",
               "all"
             ]
           },

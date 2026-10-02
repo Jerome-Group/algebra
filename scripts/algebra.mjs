@@ -374,6 +374,14 @@ try {
       );
       envelope.checks.push(runCheck(root, "lint", "npm", ["run", "lint"]));
     }
+    if (["dependencies", "all"].includes(layer))
+      envelope.checks.push(
+        runCheck(root, "dependency-high-severity-audit", "npm", [
+          "audit",
+          "--audit-level=high",
+          "--json",
+        ]),
+      );
     if (layer === "map" || layer === "all") {
       const errors = validateMap(map);
       const current =

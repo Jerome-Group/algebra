@@ -229,6 +229,7 @@ export const verificationLayers = [
   "types",
   "build",
   "engineering",
+  "dependencies",
   "all",
 ];
 
@@ -300,8 +301,14 @@ export const commands = [
       "installed dependencies",
       "production build for render",
       "Playwright Chromium for browser",
+      "npm registry access for dependencies or all",
     ],
-    reads: ["source", "built artifact", "isolated browser"],
+    reads: [
+      "source",
+      "built artifact",
+      "isolated browser",
+      "dependency advisories",
+    ],
     writes: [
       "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
       "tsconfig.tsbuildinfo for types or all",
