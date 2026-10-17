@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { randomUUID } from "node:crypto";
 
 const cases = [
   ["mh2220-burnside", "Fixed-point table", "= 4 orbits"],
@@ -85,10 +86,30 @@ test("cycle-index inventory and cube feature controls change the mathematics", a
   await expect(cube.getByRole("table")).toContainText("face-axis quarter-turn");
 });
 
-test("counting competency and capstone evidence persist without granting premature unit completion", async ({
+test("signed-in counting competency and capstone evidence persist without granting premature unit completion", async ({
   page,
-}) => {
+  request,
+  baseURL,
+}, testInfo) => {
+  test.skip(
+    process.env.ALGEBRA_ACCOUNT_FIXTURE !== "1" ||
+      !["127.0.0.1", "localhost", "[::1]"].includes(new URL(baseURL).hostname),
+    "Requires an explicitly owned loopback Worker/D1 fixture. This does not prove hosted provider sign-in or gateway header stripping.",
+  );
+  testInfo.annotations.push({
+    type: "identity",
+    description:
+      "Local synthetic trusted-header fixture. No provider sign-in proof.",
+  });
+  const owner = `counting-${randomUUID()}`;
+  const headers = {
+    "oai-authenticated-user-id": owner,
+    "oai-authenticated-user-email": `${owner}@local.example.test`,
+  };
+  await page.setExtraHTTPHeaders(headers);
   await page.goto("/#mh2220-burnside");
+  const account = page.locator("[data-account-phase]");
+  await expect(account).toHaveAttribute("data-account-phase", "ready");
   const reader = page.locator(".guided-reader");
   const boundary = reader.locator(".learning-checkpoint").nth(1);
   await boundary
@@ -98,6 +119,14 @@ test("counting competency and capstone evidence persist without granting prematu
   await expect(reader.locator(".competency-progress")).toContainText(
     "1 of 3 competencies demonstrated",
   );
+  await expect(account).toHaveAttribute("data-account-phase", "ready");
+  const savedBoundary = await request.get("/api/progress", { headers });
+  expect(savedBoundary.status()).toBe(200);
+  expect(
+    (await savedBoundary.json()).record.document.progress.attempts[
+      "mh2220-burnside:boundaryCheck"
+    ],
+  ).toMatchObject({ choice: 1, submissions: 1 });
   await page.reload();
   await expect(reader.locator(".competency-progress")).toContainText(
     "1 of 3 competencies demonstrated",
@@ -120,6 +149,14 @@ test("counting competency and capstone evidence persist without granting prematu
   await expect(unit.locator(".competency-progress")).not.toContainText(
     "Unit complete",
   );
+  await expect(account).toHaveAttribute("data-account-phase", "ready");
+  const savedCapstone = await request.get("/api/progress", { headers });
+  expect(savedCapstone.status()).toBe(200);
+  expect(
+    (await savedCapstone.json()).record.document.progress.attempts[
+      "unit:counting"
+    ],
+  ).toMatchObject({ choice: 1, submissions: 1 });
   await page.reload();
   await expect(unit.locator(".competency-progress")).toContainText(
     "Capstone demonstrated",
