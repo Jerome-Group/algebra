@@ -36,6 +36,7 @@ Agent entry point (JSON results, failures exit 1):
 
 ```sh
 npm run agent -- help
+npm run agent -- help --command inspect
 npm run agent -- list --query symmetry
 npm run agent -- lesson mh2220-dihedral
 npm run agent -- prerequisites representations-maschke
@@ -44,12 +45,15 @@ npm run agent -- verify --layer all --evidence outputs/release-verification.json
 npm run agent -- verify --layer browser --built --shard 1/2 --evidence outputs/browser-1.json
 ```
 
+Use [.agents/skills/verify/SKILL.md](.agents/skills/verify/SKILL.md) for an owned Worker,
+read-only doctor, five scoped journey groups and cleanup that retains evidence.
 The generated `lib/algebra/feature-map.json` inventories every lesson, route, prerequisite,
 laboratory and verification obligation. Regenerate it after source changes; CI rejects drift.
-`inspect <lesson-id> --url <origin>` observes an isolated browser with exact accessible-label
-actions; `help` describes prerequisites and read/write effects. Install its browser once with
+`inspect <lesson-id> --owner <marker>` observes an isolated browser with exact accessible-label
+actions; compact `help` and `help --command NAME` describe contracts and effects. Install its browser once with
 `npx playwright install chromium`. `ALGEBRA_TEST_ORIGIN` runs browser checks against a matching
-built application or production; default browser checks start local Vite. Verification artifacts
+built application or production; ordinary browser checks own a fresh local instance. Local external
+targets require their live owner marker. Verification artifacts
 are written under ignored `outputs/`. Passing automation and independent mathematics review
 are separate release gates. `--shard i/n` accepts positive safe integers with `i <= n`,
 only for `--layer browser`; a passing shard provides partial coverage. CI builds once,
