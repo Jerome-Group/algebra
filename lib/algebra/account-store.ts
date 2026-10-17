@@ -4,6 +4,7 @@ import {
   emptyAccountData,
   emptyAccountDocument,
   emptyLegacyRecords,
+  importAccountData,
   legacyKeys,
   legacyPreview,
   type AccountData,
@@ -109,9 +110,7 @@ export function accountProgressStore({
     for (const draft of drafts) {
       try {
         display = applyAccountOperation(display, draft.operation, registry);
-      } catch {
-        /* Invalidated questions remain exportable as unsaved operations. */
-      }
+      } catch {}
     }
     snapshot = {
       ...snapshot,
@@ -424,17 +423,15 @@ export function accountProgressStore({
     for (const item of drafts) {
       try {
         draft = applyAccountOperation(draft, item.operation, registry);
-      } catch {
-        /* The export separately retains every unsaved operation. */
-      }
+      } catch {}
     }
     const memoryDraft = snapshot.account
       ? drafts.length
         ? { progress: draft.progress, preferences: draft.preferences }
         : null
       : { progress: guest.progress, preferences: guest.preferences };
-    const imported = applyAccountOperation(
-      snapshot.acknowledged ?? emptyAccountDocument(),
+    const imported = importAccountData(
+      snapshot.acknowledged ?? emptyAccountData(),
       { kind: "import", legacy: records, draft: memoryDraft },
       registry,
     );

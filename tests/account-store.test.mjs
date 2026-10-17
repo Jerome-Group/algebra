@@ -31,12 +31,12 @@ const view = (
   ...(acknowledgement ? { acknowledgement } : {}),
 });
 const tick = () => new Promise((resolve) => setImmediate(resolve));
-function fixture() {
+function fixture(records = domain.emptyLegacyRecords()) {
   const requests = [];
   const store = accountProgressStore({
     registry,
     readLegacy: () => ({
-      records: domain.emptyLegacyRecords(),
+      records,
       unreadableKeys: [],
     }),
     fetcher: (url, init) =>
@@ -216,6 +216,64 @@ test("unsupported account rows stay exportable, permit temporary reasoning, and 
   assert.equal(store.getSnapshot().phase, "unsupported");
   assert.equal(store.getSnapshot().progress.attempts.example.choice, 0);
   assert.equal(JSON.parse(store.exportRecords()).unsupportedAccountRecord, raw);
+});
+
+test("supported revision-ceiling accounts preview and export retained records without writes", async (t) => {
+  const attempt = {
+    revision: JSON.stringify(question),
+    choice: 0,
+    submissions: 2,
+  };
+  const document = {
+    ...domain.emptyAccountDocument(),
+    revision: Number.MAX_SAFE_INTEGER,
+    progress: {
+      version: 1,
+      attempts: {
+        example: attempt,
+        retired: { revision: "obsolete", choice: 0, submissions: 1 },
+      },
+      archived: {
+        example: [{ revision: "earlier", choice: 0, submissions: 1 }],
+      },
+    },
+    preferences: { resumeLessonId: null, squareElement: 2 },
+  };
+  const records = {
+    ...domain.emptyLegacyRecords(),
+    [domain.legacyKeys[0]]: JSON.stringify({
+      version: 1,
+      attempts: { example: { ...attempt, choice: 1, submissions: 7 } },
+    }),
+    [domain.progressBackupKey]: "{malformed backup kept verbatim",
+    [domain.resumeStorageKey]: "foundations-functions",
+    [domain.squareStorageKey]: "7",
+  };
+  for (const action of ["export", "preview"])
+    await t.test(action, async () => {
+      const { store, requests } = fixture(records);
+      const loading = store.load();
+      requests[0].resolve(view("A", document));
+      await loading;
+      assert.equal(store.getSnapshot().phase, "ready");
+      if (action === "preview") store.previewLegacy();
+      const exported = JSON.parse(store.exportRecords());
+      assert.deepEqual(exported.acknowledgedAccountState, document);
+      assert.deepEqual(exported.rawLegacyRecords, records);
+      assert.deepEqual(exported.unsavedDraft.operations, []);
+      assert.deepEqual(store.getSnapshot().legacy.summary, {
+        currentAnswers: 1,
+        archivedAnswers: 3,
+        preferences: {
+          resumeLessonId: "foundations-functions",
+          squareElement: 2,
+        },
+      });
+      assert.deepEqual(store.getSnapshot().acknowledged, document);
+      assert.equal(requests.length, 1);
+      assert.equal(requests[0].init.method, undefined);
+      store.dispose();
+    });
 });
 
 test("same-account stale GET cannot roll back acknowledged progress and a current 401 clears it", async () => {

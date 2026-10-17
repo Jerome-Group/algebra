@@ -240,9 +240,7 @@ export function legacyPreview(
         preserve(backup.data.record);
         preserve(backup.data.restoreTarget ?? null);
       }
-    } catch {
-      /* Raw backup stays available for export. */
-    }
+    } catch {}
   }
   statuses.push({
     key: progressBackupKey,
@@ -315,6 +313,37 @@ function mergeProgress(account: Progress, incoming: Progress): Progress {
     version: 1,
     attempts,
     ...(Object.keys(archived).length ? { archived } : {}),
+  };
+}
+
+export function importAccountData(
+  data: AccountData,
+  operation: Extract<AccountOperation, { kind: "import" }>,
+  registry: AssessmentRegistry,
+): AccountData {
+  const preview = legacyPreview(operation.legacy, registry);
+  let progress = readProgress(JSON.stringify(data.progress), registry);
+  for (const incoming of preview.candidates)
+    progress = mergeProgress(progress, incoming);
+  if (operation.draft)
+    progress = mergeProgress(
+      progress,
+      readProgress(JSON.stringify(operation.draft.progress), registry),
+    );
+  return {
+    progress,
+    preferences: {
+      resumeLessonId:
+        data.preferences.resumeLessonId ??
+        preview.preferences.resumeLessonId ??
+        operation.draft?.preferences.resumeLessonId ??
+        null,
+      squareElement:
+        data.preferences.squareElement ??
+        preview.preferences.squareElement ??
+        operation.draft?.preferences.squareElement ??
+        null,
+    },
   };
 }
 
@@ -397,32 +426,10 @@ export function applyAccountOperation(
           "The reset can no longer be undone after another save.",
         );
       return { ...base, ...document.previous.data };
-    case "import": {
-      const preview = legacyPreview(operation.legacy, registry);
-      let progress = base.progress;
-      for (const incoming of preview.candidates)
-        progress = mergeProgress(progress, incoming);
-      if (operation.draft)
-        progress = mergeProgress(
-          progress,
-          readProgress(JSON.stringify(operation.draft.progress), registry),
-        );
+    case "import":
       return {
         ...base,
-        progress,
-        preferences: {
-          resumeLessonId:
-            base.preferences.resumeLessonId ??
-            preview.preferences.resumeLessonId ??
-            operation.draft?.preferences.resumeLessonId ??
-            null,
-          squareElement:
-            base.preferences.squareElement ??
-            preview.preferences.squareElement ??
-            operation.draft?.preferences.squareElement ??
-            null,
-        },
+        ...importAccountData(document, operation, registry),
       };
-    }
   }
 }
