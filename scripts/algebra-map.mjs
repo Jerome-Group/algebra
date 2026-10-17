@@ -15,6 +15,7 @@ export const mapPath = path.join(root, "lib/algebra/feature-map.json");
 function sourceHashes() {
   const excluded = (file) =>
     file === "lib/algebra/feature-map.json" ||
+    file.startsWith(".github/") ||
     file === "next-env.d.ts" ||
     /(^|\/)(node_modules|outputs|dist|private-notes|student-data|course-materials|\.wrangler|\.sites-runtime|\.git)(\/|$)/.test(
       file,

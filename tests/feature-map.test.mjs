@@ -73,6 +73,56 @@ test("CLI input and evidence IO failures remain structured without corrupting th
   }
 });
 
+test("workflow pin changes preserve the map while product and driver changes invalidate it", () => {
+  const fixture = fs.mkdtempSync(
+    path.join(os.tmpdir(), "algebra-map-boundary-"),
+  );
+  const run = (...args) =>
+    spawnSync(process.execPath, ["scripts/algebra.mjs", ...args], {
+      encoding: "utf8",
+      env: { ...process.env, ALGEBRA_MAP_ROOT: fixture },
+      maxBuffer: 8 * 1024 * 1024,
+    });
+  try {
+    for (const { file } of buildMap().sources) {
+      fs.mkdirSync(path.dirname(path.join(fixture, file)), { recursive: true });
+      fs.cpSync(path.join(root, file), path.join(fixture, file), {
+        verbatimSymlinks: true,
+      });
+    }
+    const workflow = path.join(fixture, ".github/workflows/ci.yml");
+    fs.mkdirSync(path.dirname(workflow), { recursive: true });
+    fs.copyFileSync(path.join(root, ".github/workflows/ci.yml"), workflow);
+    assert.equal(run("map", "--write").status, 0);
+    const original = fs.readFileSync(workflow, "utf8");
+    fs.writeFileSync(
+      workflow,
+      original.replace(/@[a-f0-9]{40}/, `@${"a".repeat(40)}`),
+    );
+    assert.equal(run("verify", "--layer", "map").status, 0);
+    for (const file of [
+      "components/algebra/Algebra.tsx",
+      "scripts/algebra.mjs",
+    ]) {
+      const target = path.join(fixture, file);
+      const content = fs.readFileSync(target);
+      fs.appendFileSync(target, "\n");
+      const result = run("verify", "--layer", "map");
+      assert.equal(result.status, 1, file);
+      assert.equal(
+        JSON.parse(result.stdout).checks.find(
+          (check) => check.name === "feature-map-current",
+        ).status,
+        "failed",
+        file,
+      );
+      fs.writeFileSync(target, content);
+    }
+  } finally {
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
+});
+
 test("concurrent browser verifications preserve separate evidence", async () => {
   const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-parallel-"));
   try {
