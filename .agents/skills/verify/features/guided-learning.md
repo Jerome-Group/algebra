@@ -2,7 +2,8 @@
 
 ## Sub-features
 
-Checkpoint reasoning, prerequisite and competency feedback, staged reading, proof recall and unit context.
+Checkpoint reasoning, prerequisite and competency feedback, staged reading, proof recall,
+unit context and capstone completion.
 
 ## How to get to it (user POV)
 
@@ -18,6 +19,10 @@ survive navigation. Use a disposable context for answers; a selected radio alone
 
 ## Gotchas
 
-Completion requires submitted competency answers; opening a lesson proves only reading position.
-Account persistence belongs to the progress feature. Passing scripted answers does not certify
-unaided mastery or an independent mathematics review.
+Before you begin gives no competency credit. Credit follows the latest correct submission for
+the current assessment revision; a later incorrect submission removes it. Signed-in credit waits
+for server acknowledgement. A unit completes only after every lesson's competencies and its
+Unit capstone are correct. The accounts-progress group owns the scripted completion, capstone
+and persistence checks in `tests/browser/progress.spec.mjs`; this group's pass alone does not
+cover them. Opening a lesson proves only reading position. Passing scripted answers does not
+certify unaided mastery or an independent mathematics review.
