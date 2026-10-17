@@ -608,20 +608,14 @@ try {
         await check("mathematical-and-content-suites", process.execPath, [
           "--test",
           ...map.tests.filter(
-            (file) =>
-              !file.endsWith("ui-components.test.mjs") &&
-              !file.endsWith("rendered-html.test.mjs"),
+            (file) => !file.endsWith("ui-components.test.mjs"),
           ),
         ]);
       if (["render", "all"].includes(layer))
         await check(
           "built-artifact-and-component-rendering",
           process.execPath,
-          [
-            "--test",
-            "tests/ui-components.test.mjs",
-            "tests/rendered-html.test.mjs",
-          ],
+          ["--test", "tests/ui-components.test.mjs"],
         );
       if (["browser", "all"].includes(layer)) {
         const errors = validateMap(map, { group: options.feature });

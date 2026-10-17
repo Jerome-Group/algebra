@@ -1,6 +1,37 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+const developmentPreviewMeta =
+  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
+
+test("renders preview metadata and crawler-readable social images", async ({
+  request,
+}) => {
+  const response = await request.get("/", {
+    headers: { accept: "text/html" },
+  });
+
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"] ?? "").toMatch(/^text\/html\b/i);
+  const html = await response.text();
+  expect(html).toMatch(developmentPreviewMeta);
+  expect(html).toMatch(
+    /<meta(?=[^>]*property="og:title")(?=[^>]*content="Abstract Algebra")[^>]*>/,
+  );
+  expect(html).toMatch(
+    /<meta(?=[^>]*property="og:image")(?=[^>]*content="https:\/\/algebra\.jeromegroup\.org\/og\.png")[^>]*>/,
+  );
+  expect(html).toMatch(
+    /<meta(?=[^>]*name="twitter:card")(?=[^>]*content="summary_large_image")[^>]*>/,
+  );
+  expect(html).toMatch(
+    /<meta(?=[^>]*name="twitter:image")(?=[^>]*content="https:\/\/algebra\.jeromegroup\.org\/og\.png")[^>]*>/,
+  );
+  expect(html).toMatch(
+    /<link(?=[^>]*rel="apple-touch-icon")(?=[^>]*href="[^"]*logo\.png")[^>]*>/,
+  );
+});
+
 for (const mode of ["home", "learn", "explore", "reference", "sources"]) {
   test(`${mode} reflows at required widths and has no serious accessibility failures`, async ({
     page,
