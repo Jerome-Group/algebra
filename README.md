@@ -11,6 +11,12 @@ The interface pairs mathematical chapters and progressive notes with visual labo
 See [source coverage](docs/source-coverage.md) for the complete 17-section group-to-character reading route.
 Course documents are excluded; access-controlled notes links are retained.
 
+Reading stays public. Sign in with ChatGPT to save competency progress, reading position and
+the shared square preference across devices. Guest answers last only for the session. Account
+feedback distinguishes unsaved work, acknowledged saves, conflicts and expired sign-in.
+Home provides explicit preview/import of old browser records and a lossless backup export.
+Signing in preserves the original browser bytes and imports nothing automatically.
+
 ## Local development
 
 Use Node.js 24 or newer, then:
@@ -31,6 +37,10 @@ node --test tests/*.test.mjs
 
 The ordinary build is portable. Retained `scripts/build-verified.sh` and
 `scripts/install-ci.sh` provide the older managed Linux workflow.
+
+For account verification, use the owned built-Worker launch in the verification skill.
+It migrates an empty isolated D1 database before starting and enables local synthetic identities.
+Hosted ChatGPT login and gateway identity-header stripping need separate production proof.
 
 Agent entry point (JSON results, failures exit 1):
 

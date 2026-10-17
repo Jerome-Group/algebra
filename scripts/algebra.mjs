@@ -646,6 +646,15 @@ try {
             ...(await observeIdentity(origin, buildIdentity(root), owner)),
             ownership: owner?.ownerFile ?? "external",
             kind: owner?.kind ?? "external",
+            auth: owner?.accountFixture
+              ? "guest and synthetic trusted identity fixture"
+              : "guest; provider sign-in unverified",
+            backend: owner?.accountFixture
+              ? "isolated migrated local D1"
+              : "target backend unverified",
+            accountCoverage: owner?.accountFixture
+              ? "local fixture cases enabled; hosted provider and gateway checks unverified"
+              : "local account fixture cases unreachable; provider checks unverified",
           };
           requireOwnerIdentity(envelope.target, owner);
           envelope.checks.push({
@@ -673,6 +682,7 @@ try {
               ALGEBRA_RUN_EVIDENCE: "",
               ALGEBRA_REPORT_FILE: reportFile,
               ALGEBRA_LOCAL_OWNER: owner?.ownerFile ?? "",
+              ALGEBRA_ACCOUNT_FIXTURE: owner?.accountFixture ? "1" : "0",
               ALGEBRA_AUDIT_KIND: owner?.kind ?? "external",
               ALGEBRA_AUDIT_SOURCE_MATCH: envelope.target.sourceMatch,
               ALGEBRA_AUDIT_SOURCE_DIGEST:

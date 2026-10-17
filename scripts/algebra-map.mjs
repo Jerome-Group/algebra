@@ -327,6 +327,12 @@ export function buildMap() {
       "export, reset confirmation and restore previous record",
     ],
     [
+      "account-progress",
+      "all modes",
+      "LearningProgress",
+      "ChatGPT sign-in, acknowledged saves, legacy import, conflicts and retry",
+    ],
+    [
       "diagram-reading",
       "SVG laboratories",
       "Diagram",
@@ -337,8 +343,16 @@ export function buildMap() {
     route,
     component: `components/algebra/${component}.tsx`,
     interactions,
-    prerequisites: [],
-    reads: ["catalogue", "current UI state"],
+    prerequisites:
+      id === "account-progress" ? ["ChatGPT sign-in for durable saves"] : [],
+    reads:
+      id === "account-progress"
+        ? [
+            "Sites identity",
+            "account-owned progress",
+            "explicit legacy preview",
+          ]
+        : ["catalogue", "current UI state"],
     writes: {
       home: [
         "history",
@@ -377,8 +391,13 @@ export function buildMap() {
       "lesson-compass": ["focus", "scroll", "transient proof visibility"],
       "progress-backup": [
         "backup download",
-        "progress reset/restore",
-        "previous-record backup",
+        "authenticated progress reset/restore",
+        "explicit account import; legacy browser bytes remain unchanged",
+      ],
+      "account-progress": [
+        "native sign-in/sign-out navigation",
+        "account-owned progress and preferences after acknowledgement",
+        "temporary guest session state",
       ],
       "diagram-reading": ["transient diagram size", "local horizontal scroll"],
     }[id],
@@ -422,44 +441,35 @@ export function buildMap() {
     laboratoryDispatch: dispatch,
     persistence: [
       {
-        key: "algebra-competency-progress-v1",
-        owner: "LearningProgress",
-        scope: "device",
+        key: "account_progress",
+        owner: "Sites authenticated user subject",
+        scope: "account",
         shape:
-          "version 1; attempts keyed by assessment; revision, choice, submissions",
-        effects: "submit/reset; storage-event sync",
+          "schema version 1; monotonic revision, progress/history, resume/square preferences, reset backup and 64 operation receipts",
+        effects:
+          "authenticated compare-and-swap; explicit conflict recovery; immutable retry; no guest database writes",
       },
-      {
-        key: "algebra-resume-v1",
-        owner: "Algebra",
-        scope: "device",
-        shape: "lesson ID",
-        effects: "lesson navigation",
-      },
-      {
-        key: "algebra-ureca-square-element-v1",
-        owner: "RepresentationObject",
-        scope: "device",
-        shape: "D8 element index",
-        effects: "shared representation selection; storage-event sync",
-      },
-      ...(fs.existsSync(path.join(root, "lib/algebra/progress-storage.ts"))
-        ? [
-            {
-              key: "algebra-competency-progress-v1-backup",
-              owner: "progress-storage",
-              scope: "device",
-              shape: "version 1; previous raw record",
-              effects: "reversible progress writes; restore previous record",
-            },
-          ]
-        : []),
+      ...[
+        ["algebra-competency-progress-v1", "version 1 assessment record"],
+        ["algebra-competency-progress-v1-backup", "version 1 raw backup"],
+        ["algebra-resume-v1", "lesson ID"],
+        ["algebra-ureca-square-element-v1", "D8 element index"],
+      ].map(([key, shape]) => ({
+        key,
+        owner: "account-store legacy reader",
+        scope: "legacy device record",
+        shape,
+        effects:
+          "read-only explicit preview/export/import; original bytes remain unchanged",
+      })),
     ],
     access: {
-      application: "public single page",
+      application: "public reading; personal saves require ChatGPT sign-in",
       sourceLinks: "external access-controlled Drive links retained",
-      authHelper: "app/chatgpt-auth.ts; no active consumers in baseline",
-      laboratoryWork: "transient baseline, except shared D8 element",
+      authHelper:
+        "app/chatgpt-auth.ts; trusted Sites subject owns /api/progress",
+      laboratoryWork:
+        "temporary experiments; acknowledged resume and shared D8 preference belong to the account",
     },
     lessons: lessons.map((lesson) => ({
       id: lesson.id,

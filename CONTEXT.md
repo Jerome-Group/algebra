@@ -20,3 +20,12 @@ referenced file or grant permission to copy it.
 **Source location**: printed page numbering belongs to the source; PDF numbering starts at one in the linked file.
 
 **Deeper note**: a collapsed extension with its own result and page citation.
+
+**Account progress**: an acknowledged learning record owned by the authenticated Sites user
+subject. Guest answers are temporary session state.
+
+**Draft**: an unsaved operation kept in memory. Feedback about an answer does not acknowledge
+an account save.
+
+**Legacy record**: existing browser bytes retained for explicit preview, export or import.
+Signing in never imports them automatically.
