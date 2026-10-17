@@ -34,13 +34,21 @@ test("modes, atlas filters, aliases and browser history retain usable destinatio
   await expect(page.locator(".reference-atlas")).toBeVisible();
 });
 
-test("competencies synchronize between two tabs without losing earlier submissions", async ({
+test("guest competencies remain private to their current page session", async ({
   page,
   context,
 }) => {
   const other = await context.newPage();
   await page.goto("/#foundations-functions");
   await other.goto("/#foundations-functions");
+  await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
+  await expect(other.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
   const submit = async (target, field) => {
     const checkpoint = target
       .locator(".guided-reader .learning-checkpoint")
@@ -61,18 +69,18 @@ test("competencies synchronize between two tabs without losing earlier submissio
   await submit(page, "boundaryCheck");
   await expect(
     other.locator(".guided-reader .competency-progress"),
-  ).toContainText("1 of 3");
+  ).toContainText("0 of 3");
   await submit(other, "application");
   await expect(
     page.locator(".guided-reader .competency-progress"),
-  ).toContainText("2 of 3");
+  ).toContainText("1 of 3");
   await submit(page, "transfer");
   await expect(
     other.locator(".guided-reader .competency-progress"),
-  ).toContainText("3 of 3");
+  ).toContainText("1 of 3");
   await other.reload();
   await expect(
     other.locator(".guided-reader .competency-progress"),
-  ).toContainText("3 of 3");
+  ).toContainText("0 of 3");
   await other.close();
 });

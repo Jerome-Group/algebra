@@ -27,9 +27,6 @@ for (const lesson of lessons) {
         "true",
       );
       await expect(page.locator("#lesson-heading")).toBeVisible();
-      expect(
-        await page.evaluate(() => localStorage.getItem("algebra-resume-v1")),
-      ).toBe(lesson.id);
       await expect(page.locator(".katex-error")).toHaveCount(0);
       if (route.startsWith("#lab:")) {
         const start = page.getByRole("button", {
