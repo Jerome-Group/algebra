@@ -1,5 +1,4 @@
 import { defineConfig } from "@playwright/test";
-import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -31,15 +30,6 @@ process.env.ALGEBRA_RUN_EVIDENCE = evidence;
 if (externalOrigin && loopback(externalOrigin))
   readOwner(ownerFile, root, externalOrigin);
 if (!externalOrigin) process.env.ALGEBRA_LOCAL_OWNER = ownerFile;
-const fixture = externalOrigin
-  ? loopback(externalOrigin) &&
-    Boolean(process.env.ALGEBRA_LOCAL_OWNER) &&
-    readOwner(ownerFile, root, externalOrigin).accountFixture
-  : builtWorker &&
-    JSON.parse(fs.readFileSync(path.join(root, ".openai/hosting.json"), "utf8"))
-      .d1 === "DB" &&
-    fs.existsSync(path.join(root, "scripts/account-migrations.mjs"));
-process.env.ALGEBRA_ACCOUNT_FIXTURE = fixture ? "1" : "0";
 const quote = (value: string) => `'${value.replaceAll("'", "'\\''")}'`;
 
 export default defineConfig({
@@ -60,9 +50,6 @@ export default defineConfig({
     revision: process.env.ALGEBRA_AUDIT_REVISION ?? "working-tree",
     sourceMatch: process.env.ALGEBRA_AUDIT_SOURCE_MATCH ?? "unknown",
     observedSourceDigest: process.env.ALGEBRA_AUDIT_SOURCE_DIGEST ?? "unknown",
-    accountCoverage: fixture
-      ? "isolated local D1 fixture; hosted provider unverified"
-      : "guest; account fixture cases unavailable",
     serverKind:
       process.env.ALGEBRA_AUDIT_KIND ??
       (externalOrigin

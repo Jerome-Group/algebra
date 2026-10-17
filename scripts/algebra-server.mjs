@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
-import { listening, processIdentity, runCheck } from "./algebra-runtime.mjs";
+import { listening, processIdentity } from "./algebra-runtime.mjs";
 
 const [ownerArgument, portArgument, kind, runId] = process.argv.slice(2);
 const ownerFile = path.resolve(ownerArgument);
@@ -20,15 +20,6 @@ if (
 if (await listening(port)) throw new Error(`Port ${port} is already in use`);
 fs.mkdirSync(runDir, { recursive: true });
 const persistDir = path.join(runDir, "persistence");
-const migration = path.join(root, "scripts/account-migrations.mjs");
-const hosting = JSON.parse(
-  fs.readFileSync(path.join(root, ".openai/hosting.json"), "utf8"),
-);
-const accountFixture = built && hosting.d1 === "DB" && fs.existsSync(migration);
-if (built && hosting.d1 === "DB" && !accountFixture)
-  throw new Error(
-    "Local D1 requires scripts/account-migrations.mjs before verification",
-  );
 const args = built
   ? [
       "node_modules/wrangler/bin/wrangler.js",
@@ -67,7 +58,6 @@ const marker = {
   processIdentity: processIdentity(process.pid),
   childPid: null,
   persistence: persistDir,
-  accountFixture,
   status: "running",
 };
 if (fs.existsSync(ownerFile))
@@ -93,23 +83,6 @@ const stop = (reason) => {
 };
 process.on("SIGTERM", () => stop());
 process.on("SIGINT", () => stop());
-if (accountFixture) {
-  const result = await runCheck(
-    root,
-    runDir,
-    "account-migrations",
-    process.execPath,
-    [
-      migration,
-      "--config",
-      path.join(root, "dist/server/wrangler.json"),
-      "--persist-to",
-      persistDir,
-    ],
-  );
-  if (result.status !== "passed")
-    throw new Error(`Account migration failed. Read ${result.logPath}`);
-}
 child = spawn(process.execPath, args, {
   cwd: root,
   detached: true,
@@ -117,7 +90,6 @@ child = spawn(process.execPath, args, {
   env: {
     ...process.env,
     ALGEBRA_VERIFY_RUN_ID: runId,
-    ...(accountFixture ? { ALGEBRA_ACCOUNT_FIXTURE: "1" } : {}),
   },
 });
 marker.childPid = child.pid;

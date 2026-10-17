@@ -1051,7 +1051,7 @@
     },
     {
       "file": "playwright.config.ts",
-      "sha256": "bffc14a0efdfde8752ebdfc5edebe227b9ca1e2a06faf9342eda2ee6a2055a94"
+      "sha256": "979528a08c62f4e88711aaf9bc68c31f320fd3526e1dcf735dea5cbc9c5f5a19"
     },
     {
       "file": "postcss.config.mjs",
@@ -1107,11 +1107,11 @@
     },
     {
       "file": "scripts/algebra-server.mjs",
-      "sha256": "17032e8d5f149c7a3ba87865b1a42251801bf1110d1c555b4704feed3313c7ba"
+      "sha256": "8a3aa4fb47cbebeb0233f234fe161621d9dbdf09307bff3ada1f5a4a477d2089"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "8763e1b15ffb0421a84a23c753a1edb023f301fb09bbf970abb607993a4c10a7"
+      "sha256": "b40eb42572b55f3e6983e6b1ce5d9ddf7a2718c0f01480331c680f0bf1911da2"
     },
     {
       "file": "scripts/build-verified.sh",

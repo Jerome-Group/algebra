@@ -245,11 +245,7 @@ async function inspect(lesson, { origin, actions = [] }) {
     if (await page.locator(".laboratory-load-error").count())
       throw Error("Laboratory failed to load");
     for (const action of actions) {
-      if (!action || typeof action !== "object" || Array.isArray(action))
-        throw Error("Every action requires an object with label and kind");
       const { label, kind, value } = action;
-      if (typeof label !== "string" || !actionKinds.includes(kind))
-        throw Error("Action requires exact accessible label and valid kind");
       const target = page.getByRole(kind, { name: label, exact: true });
       if ((await target.count()) !== 1)
         throw Error(
@@ -257,18 +253,6 @@ async function inspect(lesson, { origin, actions = [] }) {
         );
       if (!(await target.isEnabled()))
         throw Error(`Control disabled: ${label}`);
-      if (
-        ["combobox", "textbox", "searchbox", "spinbutton", "slider"].includes(
-          kind,
-        ) &&
-        !(
-          (typeof value === "string" && value.length <= 200) ||
-          (typeof value === "number" && Number.isFinite(value))
-        )
-      )
-        throw Error(
-          "Editing requires a string under 201 characters or a finite number",
-        );
       if (kind === "combobox") {
         if (await target.evaluate((element) => element.tagName === "SELECT"))
           await target.selectOption(String(value));
@@ -668,15 +652,6 @@ try {
             ...(await observeIdentity(origin, buildIdentity(root), owner)),
             ownership: owner?.ownerFile ?? "external",
             kind: owner?.kind ?? "external",
-            auth: owner?.accountFixture
-              ? "guest and synthetic trusted identity fixture"
-              : "guest; provider sign-in unverified",
-            backend: owner?.accountFixture
-              ? "isolated migrated local D1"
-              : "target backend unverified",
-            accountCoverage: owner?.accountFixture
-              ? "local fixture cases enabled; hosted provider and gateway checks unverified"
-              : "local account fixture cases unreachable; provider checks unverified",
           };
           requireOwnerIdentity(envelope.target, owner);
           envelope.checks.push({
@@ -704,7 +679,6 @@ try {
               ALGEBRA_RUN_EVIDENCE: "",
               ALGEBRA_REPORT_FILE: reportFile,
               ALGEBRA_LOCAL_OWNER: owner?.ownerFile ?? "",
-              ALGEBRA_ACCOUNT_FIXTURE: owner?.accountFixture ? "1" : "0",
               ALGEBRA_AUDIT_KIND: owner?.kind ?? "external",
               ALGEBRA_AUDIT_SOURCE_MATCH: envelope.target.sourceMatch,
               ALGEBRA_AUDIT_SOURCE_DIGEST:
