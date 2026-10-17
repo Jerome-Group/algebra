@@ -1203,7 +1203,7 @@
     },
     {
       "file": "tests/browser/fixed-colorings.spec.mjs",
-      "sha256": "5b80d4b677db8fb090246135e0e6f02612d9a9fab31388d1eabe44e9aeb86789"
+      "sha256": "c52a4971e03bd05cb1573804761636655552e990288c07cf8235e0ef426054d8"
     },
     {
       "file": "tests/browser/foundation-labs.spec.mjs",
@@ -1227,7 +1227,7 @@
     },
     {
       "file": "tests/browser/learning.spec.mjs",
-      "sha256": "3d432ede8e2f1431b649f637aa7bebd5bd8eb2ce9a737aa2bc0e26e21482ae59"
+      "sha256": "04f3f4ee936b1d81e3f2b6e9140a34551650e2cb795ea3198ff0289fc438e496"
     },
     {
       "file": "tests/browser/localisation-chains.spec.mjs",
