@@ -36,6 +36,21 @@ const actionSchema = {
     kind: { enum: actionKinds },
     value: { type: ["string", "number"] },
   },
+  allOf: [
+    {
+      if: {
+        properties: {
+          kind: {
+            enum: ["combobox", "textbox", "searchbox", "spinbutton", "slider"],
+          },
+        },
+      },
+      then: {
+        required: ["value"],
+        properties: { value: { maxLength: 200 } },
+      },
+    },
+  ],
 };
 const targetFlags = {
   url: { ...text("Application origin"), format: "origin" },
@@ -208,6 +223,8 @@ function validate(value, schema, name) {
   if (typeof value === "string") {
     if (schema.minLength && value.length < schema.minLength)
       throw inputError(`${name} requires a nonempty value`);
+    if (schema.maxLength !== undefined && [...value].length > schema.maxLength)
+      throw inputError(`${name} exceeds ${schema.maxLength} characters`);
     if (schema.pattern && !new RegExp(schema.pattern).test(value))
       throw inputError(`${name} has an invalid format`);
     if (schema.format === "origin") {
@@ -237,13 +254,14 @@ function validate(value, schema, name) {
       value > schema.maximum)
   )
     throw inputError(`${name} is outside its allowed range`);
-  if (schema.type === "object") {
-    if (!value || Array.isArray(value))
-      throw inputError(`${name} requires an object`);
+  if (schema.type === "object" && (!value || Array.isArray(value)))
+    throw inputError(`${name} requires an object`);
+  if (value && typeof value === "object" && !Array.isArray(value)) {
     for (const key of Object.keys(value)) {
-      if (!schema.properties[key])
+      if (Object.hasOwn(schema.properties ?? {}, key))
+        validate(value[key], schema.properties[key], `${name}.${key}`);
+      else if (schema.additionalProperties === false)
         throw inputError(`${name} has unknown property ${key}`);
-      validate(value[key], schema.properties[key], `${name}.${key}`);
     }
     for (const key of schema.required ?? [])
       if (!(key in value)) throw inputError(`${name} requires ${key}`);
@@ -252,19 +270,18 @@ function validate(value, schema, name) {
     value.forEach((item, index) =>
       validate(item, schema.items, `${name}[${index}]`),
     );
-  if (
-    schema === actionSchema &&
-    ["combobox", "textbox", "searchbox", "spinbutton", "slider"].includes(
-      value.kind,
-    ) &&
-    !(
-      (typeof value.value === "string" && value.value.length <= 200) ||
-      (typeof value.value === "number" && Number.isFinite(value.value))
-    )
-  )
-    throw inputError(
-      `${name} requires a string under 201 characters or a finite numeric value for editing`,
-    );
+  for (const constraint of schema.allOf ?? [])
+    validate(value, constraint, name);
+  if (schema.if) {
+    let matches = true;
+    try {
+      validate(value, schema.if, name);
+    } catch (error) {
+      if (error.code !== "INVALID_INPUT") throw error;
+      matches = false;
+    }
+    if (matches && schema.then) validate(value, schema.then, name);
+  }
 }
 export function parseArguments(argv) {
   const [name = "help", ...args] = argv;

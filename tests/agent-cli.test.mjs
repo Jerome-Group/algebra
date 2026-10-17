@@ -12,6 +12,7 @@ import {
   requireOwnerIdentity,
 } from "../scripts/algebra-identity.mjs";
 import { runCheck, readOwner } from "../scripts/algebra-runtime.mjs";
+import { parseArguments } from "../scripts/algebra-contract.mjs";
 
 const execute = (args, environment = {}) => {
   const child = spawnSync(process.execPath, ["scripts/algebra.mjs", ...args], {
@@ -58,9 +59,39 @@ test("static help remains available when catalogue and installed dependencies ar
   }
 });
 
-test("invalid command inputs refuse all effects including a requested evidence write", () => {
+test("command parsing preserves supported actions and refuses invalid input before effects", () => {
   const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-input-"));
   try {
+    const editingKinds = [
+      "combobox",
+      "textbox",
+      "searchbox",
+      "spinbutton",
+      "slider",
+    ];
+    for (const action of [
+      ...editingKinds.flatMap((kind) =>
+        ["", "x".repeat(200), "😀".repeat(200), 0].map((value) => ({
+          kind,
+          label: "Prediction",
+          value,
+        })),
+      ),
+      ...["button", "checkbox", "radio"].flatMap((kind) => [
+        { kind, label: "Prediction" },
+        { kind, label: "Prediction", value: "x".repeat(201) },
+      ]),
+    ])
+      for (const flag of ["action", "actions"]) {
+        const value = flag === "action" ? action : [action];
+        const parsed = parseArguments([
+          "inspect",
+          "foundations-functions",
+          `--${flag}`,
+          JSON.stringify(value),
+        ]);
+        assert.deepEqual(parsed.values[flag], value);
+      }
     const evidence = path.join(fixture, "must-not-exist.json");
     for (const args of [
       ["map", "--write", "--unexpected", "yes"],
@@ -80,12 +111,17 @@ test("invalid command inputs refuse all effects including a requested evidence w
       ["verify", "--layer", "browser", "--shard", "1/9007199254740992"],
       ["launch", "--port", "22"],
       ["lesson"],
-      [
-        "inspect",
-        "foundations-functions",
-        "--actions",
-        '[{"kind":"textbox","label":"Prediction"}]',
-      ],
+      ...editingKinds.flatMap((kind) =>
+        [undefined, "x".repeat(201), "😀".repeat(201)].flatMap((value) => {
+          const action = { kind, label: "Prediction", value };
+          return ["action", "actions"].map((flag) => [
+            "inspect",
+            "foundations-functions",
+            `--${flag}`,
+            JSON.stringify(flag === "action" ? action : [action]),
+          ]);
+        }),
+      ),
       [
         "inspect",
         "foundations-functions",
