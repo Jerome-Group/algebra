@@ -28,7 +28,7 @@ Keep the original Site identifier; a GitHub import is not a Sites deployment.
 ## Code standards
 
 `CODING_STANDARDS.md` is the full version: the burden is on the code, not on docs — names,
-placement and small cohesive units carry the *what*, and docs carry only the *why*. `MAP.md` is
+placement and small cohesive units carry the _what_, and docs carry only the _why_. `MAP.md` is
 required at the root and updated in the same pull request as any top-level change.
 
 ## How work flows
@@ -64,6 +64,11 @@ not this repository's. The full rule and the verified allowlist are in
 
 Where a piece of work starts, what hands on to what, and where research and prototypes live. See
 `docs/agents/workflow.md` before inventing a route.
+
+### Verification
+
+Use `.agents/skills/verify/SKILL.md` to launch, drive and clean up an owned application.
+Read its feature file for the changed journey. Source-map presence is not executed coverage.
 
 ### Issue tracker
 

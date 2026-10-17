@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { runCheck } from "../scripts/algebra-runtime.mjs";
 import {
   buildMap,
   validateMap,
@@ -123,74 +124,27 @@ test("workflow pin changes preserve the map while product and driver changes inv
   }
 });
 
-test("concurrent browser verifications preserve separate evidence", async () => {
+test("concurrent check processes preserve separate complete logs", async () => {
   const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-parallel-"));
   try {
-    fs.mkdirSync(path.join(fixture, "tests"));
-    fs.mkdirSync(path.join(fixture, "lib/algebra"), { recursive: true });
-    for (const file of fs.readdirSync(path.join(root, "lib/algebra"))) {
-      if (file.endsWith(".json") && file !== "feature-map.json")
-        fs.copyFileSync(
-          path.join(root, "lib/algebra", file),
-          path.join(fixture, "lib/algebra", file),
-        );
-    }
-    fs.mkdirSync(path.join(fixture, "components/algebra"), { recursive: true });
-    for (const file of ["WebMCP.tsx", "Laboratory.tsx"])
-      fs.copyFileSync(
-        path.join(root, "components/algebra", file),
-        path.join(fixture, "components/algebra", file),
-      );
-    const runner = path.join(fixture, "node_modules/@playwright/test/cli.js");
-    fs.mkdirSync(path.dirname(runner), { recursive: true });
-    // Simulate a runner clearing its output at startup, as Playwright does.
-    fs.writeFileSync(
-      runner,
-      `const fs=require('node:fs'),path=require('node:path');
-       const dir=process.env.ALGEBRA_EVIDENCE_DIR;
-       fs.rmSync(dir,{recursive:true,force:true});fs.mkdirSync(dir,{recursive:true});
-       fs.writeFileSync(path.join(dir,'case-'+process.pid+'.json'),'{}');
-       setTimeout(()=>{},100);`,
+    const results = await Promise.all(
+      ["one", "two"].map((value) =>
+        runCheck(root, path.join(fixture, value), "child", process.execPath, [
+          "-e",
+          `process.stdout.write(${JSON.stringify(value)}.repeat(20000))`,
+        ]),
+      ),
     );
-    const execute = () =>
-      new Promise((resolve, reject) => {
-        const environment = { ...process.env, ALGEBRA_MAP_ROOT: fixture };
-        delete environment.ALGEBRA_EVIDENCE_DIR;
-        const child = spawn(
-          process.execPath,
-          [
-            "scripts/algebra.mjs",
-            "verify",
-            "--layer",
-            "browser",
-            "--url",
-            "http://localhost:5175",
-          ],
-          { cwd: root, env: environment },
-        );
-        let stdout = "";
-        child.stdout.on("data", (chunk) => (stdout += chunk));
-        child.on("error", reject);
-        child.on("close", (code) => {
-          try {
-            assert.equal(code, 0, stdout);
-            resolve(JSON.parse(stdout));
-          } catch (error) {
-            reject(error);
-          }
-        });
-      });
-    const results = await Promise.all([execute(), execute()]);
-    const directories = results.map((result) => {
-      assert.equal(result.ok, true);
-      const evidence = result.evidence.find(
-        (entry) => entry.kind === "browser-artifacts",
+    for (const [index, result] of results.entries()) {
+      assert.equal(result.status, "passed");
+      assert.equal(result.outputTruncated, true);
+      assert.ok(result.output.length <= 6000);
+      assert.equal(
+        fs.readFileSync(result.logPath, "utf8"),
+        ["one", "two"][index].repeat(20000),
       );
-      assert.ok(evidence);
-      assert.equal(fs.readdirSync(evidence.path).length, 1);
-      return evidence.path;
-    });
-    assert.notEqual(directories[0], directories[1]);
+    }
+    assert.notEqual(results[0].logPath, results[1].logPath);
   } finally {
     fs.rmSync(fixture, { recursive: true, force: true });
   }
@@ -227,9 +181,13 @@ test("agent CLI provides structured results, effects and actionable failure code
 });
 
 test("CLI rejects malformed or misplaced browser shards before launching checks", () => {
-  const help = spawnSync(process.execPath, ["scripts/algebra.mjs", "help"], {
-    encoding: "utf8",
-  });
+  const help = spawnSync(
+    process.execPath,
+    ["scripts/algebra.mjs", "help", "--command", "verify"],
+    {
+      encoding: "utf8",
+    },
+  );
   assert.equal(help.status, 0);
   const schema = JSON.parse(help.stdout).result.commands.find(
     (command) => command.name === "verify",
@@ -257,7 +215,7 @@ test("CLI rejects malformed or misplaced browser shards before launching checks"
     assert.equal(execution.status, 1, shard);
     const result = JSON.parse(execution.stdout);
     assert.deepEqual(result.checks, []);
-    assert.match(result.errors[0].message, /Shard must/);
+    assert.equal(result.errors[0].code, "INVALID_INPUT");
   }
   for (const args of [
     ["--layer", "browser", "--shard"],
@@ -267,9 +225,6 @@ test("CLI rejects malformed or misplaced browser shards before launching checks"
     assert.equal(execution.status, 1);
     const result = JSON.parse(execution.stdout);
     assert.deepEqual(result.checks, []);
-    assert.match(
-      result.errors[0].message,
-      /Shard must|requires --layer browser/,
-    );
+    assert.equal(result.errors[0].code, "INVALID_INPUT");
   }
 });

@@ -2,6 +2,34 @@
   "version": 1,
   "sources": [
     {
+      "file": ".agents/skills/verify/SKILL.md",
+      "sha256": "6820349bea020a8d1e5bdce1e35ac950cd5d2fdeac85a5f93807ef43d54e44a7"
+    },
+    {
+      "file": ".agents/skills/verify/features/README.md",
+      "sha256": "83ce5cebc6d1b8cbd3a576217448a5204ac9eb19ccf46c49f301942604d5ab69"
+    },
+    {
+      "file": ".agents/skills/verify/features/accounts-progress.md",
+      "sha256": "d196bf8cb0470afbb4616eeaf6bae2f40bd5818b9882de6adff9f5ff34b5ac46"
+    },
+    {
+      "file": ".agents/skills/verify/features/agent-access.md",
+      "sha256": "a33a125dad76a9a7c095f8bf47f9d26508bf64e46cb058bd7f75802e186928b7"
+    },
+    {
+      "file": ".agents/skills/verify/features/discovery.md",
+      "sha256": "63e0b9aff0adb9025a97d19a6101a4f9a947779bc810ae408b8cab62a80dab0a"
+    },
+    {
+      "file": ".agents/skills/verify/features/guided-learning.md",
+      "sha256": "8724c09650b163060d73a75a72f8ddc31336e011c4b12db341fff2ffa22bdd53"
+    },
+    {
+      "file": ".agents/skills/verify/features/laboratories.md",
+      "sha256": "ef72a0061970c7a59f8ec0d9accc3912a8c110f32110baf9ba0f657e8036222b"
+    },
+    {
       "file": ".editorconfig",
       "sha256": "474a9bc3d4cbf3abb19164cf895542675f0c20625ebd1e23b117caab0bfbd78d"
     },
@@ -23,7 +51,7 @@
     },
     {
       "file": "AGENTS.md",
-      "sha256": "a8b913960b1c267b5de8cbf3827da4a369a263cf3977f34e66e512fa0fed6222"
+      "sha256": "5a6e820fffb7500f67e729c56f3871bdbc174fd8080757162ef2a791988643e9"
     },
     {
       "file": "CLAUDE.md",
@@ -55,11 +83,11 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "ee4a79a44f2af1af919c5b872566cc79a8a233bc6336b4afa2031927badabbd9"
+      "sha256": "20eed3dc4ac65a46c2c64d1cd60468c5119b7b10961b3becc1703aba91a629cd"
     },
     {
       "file": "README.md",
-      "sha256": "f677fe7b1663f1a6c50611312383cbbd0db3f0bd836d0066b8d1299584e3f8d7"
+      "sha256": "a8ff1c491382a3b886ce66b065c5e383e9fe45c10de2b8f1ec7c44ab161445b2"
     },
     {
       "file": "SECURITY.md",
@@ -72,6 +100,10 @@
     {
       "file": "app/algebra.css",
       "sha256": "f289fd92d16420d811d97cf3398ce7a77e7d5a2177a06ed21f57c6f09def8495"
+    },
+    {
+      "file": "app/api/build/route.ts",
+      "sha256": "f302980226dc0d36979993e5f2bd02f9f1c77d19e08df720e31dae0e2ab89b4c"
     },
     {
       "file": "app/chatgpt-auth.ts",
@@ -1019,7 +1051,7 @@
     },
     {
       "file": "playwright.config.ts",
-      "sha256": "3af4362ecc9e32b32393f348e4c56a03239574ab098c415cbad7af360ea773fd"
+      "sha256": "979528a08c62f4e88711aaf9bc68c31f320fd3526e1dcf735dea5cbc9c5f5a19"
     },
     {
       "file": "postcss.config.mjs",
@@ -1050,12 +1082,36 @@
       "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
     },
     {
+      "file": "scripts/algebra-contract.mjs",
+      "sha256": "73aca06cc1d94317e016205373a1cb9e5004542be5c26f7227efb61b49f81ca6"
+    },
+    {
+      "file": "scripts/algebra-features.mjs",
+      "sha256": "bef47d315841c44d1fc2df1b432888c131437ef0272f4015e96d307c4c59fa2d"
+    },
+    {
+      "file": "scripts/algebra-identity.mjs",
+      "sha256": "871b665f6c234f4c101927d039cda0c626ab02d82bc0a22b75e9561fbfeb3e48"
+    },
+    {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "0de791960f1af9b426036d1fd6afeb6f12038411fa9a57c0b571970b8bd2454b"
+      "sha256": "42c00d9bfd4ddfd14b36c42c76d89abd0fdf1133728e82dd040e4d185683b643"
+    },
+    {
+      "file": "scripts/algebra-playwright-setup.mjs",
+      "sha256": "a27e3715808116ccc7ec33bb15f879da368f32422724db2701a13d7f43ed8e7b"
+    },
+    {
+      "file": "scripts/algebra-runtime.mjs",
+      "sha256": "ac577fa4b6cb6cfae9a5ce1c085bd536944a9506452ea2b72e00e2105724eb3b"
+    },
+    {
+      "file": "scripts/algebra-server.mjs",
+      "sha256": "8a3aa4fb47cbebeb0233f234fe161621d9dbdf09307bff3ada1f5a4a477d2089"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "09d1fbf48026c9c6ed8821d40a91b7eca94d6f0c30058f244420b661bd4ae5eb"
+      "sha256": "80f0202f60567b743e449c91e5d851060a1ef98ef58ff29255dde0a20d865474"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1068,6 +1124,10 @@
     {
       "file": "scripts/sites-env.sh",
       "sha256": "df86ebfc27d2f00860036658e933ac0ddd7b5f6879aa5d51218f0863c7e1fb60"
+    },
+    {
+      "file": "tests/agent-cli.test.mjs",
+      "sha256": "51d7ce1ff829edf54969bbbb7d47dc00337a468fd8bf9a81feb79f26abd3638f"
     },
     {
       "file": "tests/algebra.test.mjs",
@@ -1127,7 +1187,7 @@
     },
     {
       "file": "tests/browser/learning.spec.mjs",
-      "sha256": "d47c59568a7f68ffff4028a8a6bc141826f4b4463c79a9e2f6359230d8f39392"
+      "sha256": "3d432ede8e2f1431b649f637aa7bebd5bd8eb2ce9a737aa2bc0e26e21482ae59"
     },
     {
       "file": "tests/browser/localisation-chains.spec.mjs",
@@ -1203,7 +1263,7 @@
     },
     {
       "file": "tests/feature-map.test.mjs",
-      "sha256": "66ec0d879834771404bcd962e00cc803899b104ffaa3d0b4724be3dfc44ab606"
+      "sha256": "c1a418ac508877906959643a355caab1bac213c70de843009c67ec8612dac035"
     },
     {
       "file": "tests/fixed-colorings.test.mjs",
@@ -1282,10 +1342,6 @@
       "sha256": "58e5d79f52f8e3d73cef35afb80b333edb99505402ab9724af661c640106ed98"
     },
     {
-      "file": "tests/rendered-html.test.mjs",
-      "sha256": "dfaa6c14896b89fb3cdbd4f5ad474e27a436cd6bc55a3e65f446fb2426e36b7a"
-    },
-    {
       "file": "tests/review-regressions.test.mjs",
       "sha256": "dcf641f6e525ad8e2b0e666463bfa77faa3d1e034c1870e543d0f35cf5f160b6"
     },
@@ -1319,7 +1375,7 @@
     },
     {
       "file": "tsconfig.json",
-      "sha256": "be18523b23b78b6e1a876ddd107d330f0168bddf09d751b57e0b5edce69c66f3"
+      "sha256": "9ee254b6f6ec1db160069dff8a55ee1bacacaf42f73573ded7a0654dab07e2f3"
     },
     {
       "file": "vendor/shadcn-tailwind-4.13.0.LICENSE.md",
@@ -1331,7 +1387,7 @@
     },
     {
       "file": "vite.config.ts",
-      "sha256": "adbd2b317141c24d21a367223b4faab583e9455ae3b0a31c09d002e763942394"
+      "sha256": "faa1bf205f4b56205d44ebb28b5e8682255f61441097b424c2324b145dcd6ddd"
     },
     {
       "file": "worker/index.ts",
@@ -1372,6 +1428,33 @@
         "progress reset/restore",
         "backup download"
       ],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1382,6 +1465,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["history", "resume lesson", "capstone progress"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1392,6 +1502,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["history", "resume lesson"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1402,6 +1539,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["transient filters", "history", "resume lesson"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1412,6 +1576,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["external source navigation on link activation"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1426,6 +1617,33 @@
         "competency progress",
         "history",
         "resume lesson"
+      ],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
       ],
       "evidence": "source-inspection"
     },
@@ -1442,6 +1660,32 @@
         "history",
         "resume lesson"
       ],
+      "verification": [
+        {
+          "group": "laboratories",
+          "sources": [
+            "components/algebra/Exploration.tsx",
+            "components/algebra/Laboratory.tsx",
+            "components/algebra/RepresentationJourney.tsx",
+            "components/algebra/SymmetryDesk.tsx",
+            "components/algebra/Diagram.tsx"
+          ],
+          "journeys": [
+            "tests/browser/catalogue.spec.mjs",
+            "tests/browser/visual-sizing.spec.mjs",
+            "tests/browser/orthogonal-geometry.spec.mjs",
+            "tests/browser/studio.spec.mjs",
+            "tests/browser/ureca.spec.mjs",
+            "tests/browser/laboratory-loading.spec.mjs"
+          ],
+          "assertions": [
+            "Every lesson and laboratory can enter",
+            "Responsive diagram geometry",
+            "Selected mathematical outcomes",
+            "Prediction, reveal and load recovery"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1452,6 +1696,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["transient filters", "history", "resume lesson"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1462,6 +1733,26 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["competency progress"],
+      "verification": [
+        {
+          "group": "guided-learning",
+          "sources": [
+            "components/algebra/Checkpoint.tsx",
+            "components/algebra/GuidedReader.tsx",
+            "lib/algebra/guided.ts",
+            "lib/algebra/learning.ts"
+          ],
+          "journeys": [
+            "tests/browser/learning.spec.mjs",
+            "tests/browser/studio.spec.mjs"
+          ],
+          "assertions": [
+            "Checkpoint reasoning feedback",
+            "Proof recall and keyboard stages",
+            "Unit context and heading focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1472,6 +1763,32 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["shared D8 selection", "route capstone progress"],
+      "verification": [
+        {
+          "group": "laboratories",
+          "sources": [
+            "components/algebra/Exploration.tsx",
+            "components/algebra/Laboratory.tsx",
+            "components/algebra/RepresentationJourney.tsx",
+            "components/algebra/SymmetryDesk.tsx",
+            "components/algebra/Diagram.tsx"
+          ],
+          "journeys": [
+            "tests/browser/catalogue.spec.mjs",
+            "tests/browser/visual-sizing.spec.mjs",
+            "tests/browser/orthogonal-geometry.spec.mjs",
+            "tests/browser/studio.spec.mjs",
+            "tests/browser/ureca.spec.mjs",
+            "tests/browser/laboratory-loading.spec.mjs"
+          ],
+          "assertions": [
+            "Every lesson and laboratory can enter",
+            "Responsive diagram geometry",
+            "Selected mathematical outcomes",
+            "Prediction, reveal and load recovery"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1482,6 +1799,36 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["effects of explicitly invoked tool"],
+      "verification": [
+        {
+          "group": "agent-access",
+          "sources": [
+            "components/algebra/WebMCP.tsx",
+            "components/algebra/InterfaceControls.ts",
+            "components/algebra/LaboratoryControls.tsx",
+            "scripts/algebra.mjs",
+            "scripts/algebra-contract.mjs",
+            "scripts/algebra-map.mjs",
+            "scripts/algebra-features.mjs",
+            "scripts/algebra-identity.mjs",
+            "scripts/algebra-runtime.mjs",
+            "scripts/algebra-server.mjs",
+            "scripts/algebra-playwright-setup.mjs",
+            "app/api/build/route.ts",
+            "playwright.config.ts",
+            "vite.config.ts"
+          ],
+          "journeys": [
+            "tests/browser/webmcp.spec.mjs",
+            "tests/browser/agent-cli.spec.mjs"
+          ],
+          "assertions": [
+            "Injected WebMCP controls and interactions execute",
+            "CLI discovers and drives exact accessible controls",
+            "Runtime build identity is observed separately from source matching"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1492,6 +1839,33 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["history", "resume lesson"],
+      "verification": [
+        {
+          "group": "discovery",
+          "sources": [
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/LearningRoutes.tsx",
+            "components/algebra/LaboratoryGallery.tsx",
+            "components/algebra/ReferenceAtlas.tsx",
+            "components/algebra/SourceCoverage.tsx",
+            "components/algebra/LessonReader.tsx",
+            "components/algebra/ConceptLibrary.tsx",
+            "lib/algebra/navigation.ts",
+            "lib/algebra/routes.ts"
+          ],
+          "journeys": [
+            "tests/browser/navigation.spec.mjs",
+            "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/learning.spec.mjs"
+          ],
+          "assertions": [
+            "Mode, alias and history destinations",
+            "Atlas filters",
+            "Responsive navigation and focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1505,6 +1879,32 @@
         "transient square element",
         "history/resume on lesson opening"
       ],
+      "verification": [
+        {
+          "group": "laboratories",
+          "sources": [
+            "components/algebra/Exploration.tsx",
+            "components/algebra/Laboratory.tsx",
+            "components/algebra/RepresentationJourney.tsx",
+            "components/algebra/SymmetryDesk.tsx",
+            "components/algebra/Diagram.tsx"
+          ],
+          "journeys": [
+            "tests/browser/catalogue.spec.mjs",
+            "tests/browser/visual-sizing.spec.mjs",
+            "tests/browser/orthogonal-geometry.spec.mjs",
+            "tests/browser/studio.spec.mjs",
+            "tests/browser/ureca.spec.mjs",
+            "tests/browser/laboratory-loading.spec.mjs"
+          ],
+          "assertions": [
+            "Every lesson and laboratory can enter",
+            "Responsive diagram geometry",
+            "Selected mathematical outcomes",
+            "Prediction, reveal and load recovery"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1515,6 +1915,26 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["focus", "scroll", "transient proof visibility"],
+      "verification": [
+        {
+          "group": "guided-learning",
+          "sources": [
+            "components/algebra/Checkpoint.tsx",
+            "components/algebra/GuidedReader.tsx",
+            "lib/algebra/guided.ts",
+            "lib/algebra/learning.ts"
+          ],
+          "journeys": [
+            "tests/browser/learning.spec.mjs",
+            "tests/browser/studio.spec.mjs"
+          ],
+          "assertions": [
+            "Checkpoint reasoning feedback",
+            "Proof recall and keyboard stages",
+            "Unit context and heading focus"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1529,6 +1949,28 @@
         "progress reset/restore",
         "previous-record backup"
       ],
+      "verification": [
+        {
+          "group": "accounts-progress",
+          "sources": [
+            "app/chatgpt-auth.ts",
+            "lib/algebra/progress.ts",
+            "lib/algebra/progress-storage.ts",
+            "components/algebra/LearningProgress.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/RepresentationObject.tsx"
+          ],
+          "journeys": [
+            "tests/browser/progress.spec.mjs",
+            "tests/browser/navigation.spec.mjs"
+          ],
+          "assertions": [
+            "Existing device progress persists and synchronizes",
+            "Device backup, reset and recovery",
+            "Account persistence and hosted sign-in are unimplemented and unverified"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
     },
     {
@@ -1539,693 +1981,371 @@
       "prerequisites": [],
       "reads": ["catalogue", "current UI state"],
       "writes": ["transient diagram size", "local horizontal scroll"],
+      "verification": [
+        {
+          "group": "laboratories",
+          "sources": [
+            "components/algebra/Exploration.tsx",
+            "components/algebra/Laboratory.tsx",
+            "components/algebra/RepresentationJourney.tsx",
+            "components/algebra/SymmetryDesk.tsx",
+            "components/algebra/Diagram.tsx"
+          ],
+          "journeys": [
+            "tests/browser/catalogue.spec.mjs",
+            "tests/browser/visual-sizing.spec.mjs",
+            "tests/browser/orthogonal-geometry.spec.mjs",
+            "tests/browser/studio.spec.mjs",
+            "tests/browser/ureca.spec.mjs",
+            "tests/browser/laboratory-loading.spec.mjs"
+          ],
+          "assertions": [
+            "Every lesson and laboratory can enter",
+            "Responsive diagram geometry",
+            "Selected mathematical outcomes",
+            "Prediction, reveal and load recovery"
+          ]
+        }
+      ],
       "evidence": "source-inspection"
+    }
+  ],
+  "verificationGroups": [
+    {
+      "id": "discovery",
+      "featureIds": [
+        "home",
+        "learn",
+        "explore",
+        "reference",
+        "sources",
+        "lesson",
+        "library",
+        "navigation"
+      ],
+      "sources": [
+        "components/algebra/Algebra.tsx",
+        "components/algebra/LearningHome.tsx",
+        "components/algebra/LearningRoutes.tsx",
+        "components/algebra/LaboratoryGallery.tsx",
+        "components/algebra/ReferenceAtlas.tsx",
+        "components/algebra/SourceCoverage.tsx",
+        "components/algebra/LessonReader.tsx",
+        "components/algebra/ConceptLibrary.tsx",
+        "lib/algebra/navigation.ts",
+        "lib/algebra/routes.ts"
+      ],
+      "journeys": [
+        "tests/browser/navigation.spec.mjs",
+        "tests/browser/navigation-focus.spec.mjs",
+        "tests/browser/learning.spec.mjs"
+      ],
+      "assertions": [
+        "Mode, alias and history destinations",
+        "Atlas filters",
+        "Responsive navigation and focus"
+      ]
+    },
+    {
+      "id": "guided-learning",
+      "featureIds": ["assessment", "lesson-compass"],
+      "sources": [
+        "components/algebra/Checkpoint.tsx",
+        "components/algebra/GuidedReader.tsx",
+        "lib/algebra/guided.ts",
+        "lib/algebra/learning.ts"
+      ],
+      "journeys": [
+        "tests/browser/learning.spec.mjs",
+        "tests/browser/studio.spec.mjs"
+      ],
+      "assertions": [
+        "Checkpoint reasoning feedback",
+        "Proof recall and keyboard stages",
+        "Unit context and heading focus"
+      ]
+    },
+    {
+      "id": "laboratories",
+      "featureIds": [
+        "laboratory",
+        "representation-journey",
+        "symmetry-desk",
+        "diagram-reading"
+      ],
+      "sources": [
+        "components/algebra/Exploration.tsx",
+        "components/algebra/Laboratory.tsx",
+        "components/algebra/RepresentationJourney.tsx",
+        "components/algebra/SymmetryDesk.tsx",
+        "components/algebra/Diagram.tsx"
+      ],
+      "journeys": [
+        "tests/browser/catalogue.spec.mjs",
+        "tests/browser/visual-sizing.spec.mjs",
+        "tests/browser/orthogonal-geometry.spec.mjs",
+        "tests/browser/studio.spec.mjs",
+        "tests/browser/ureca.spec.mjs",
+        "tests/browser/laboratory-loading.spec.mjs"
+      ],
+      "assertions": [
+        "Every lesson and laboratory can enter",
+        "Responsive diagram geometry",
+        "Selected mathematical outcomes",
+        "Prediction, reveal and load recovery"
+      ]
+    },
+    {
+      "id": "accounts-progress",
+      "featureIds": ["progress-backup"],
+      "sources": [
+        "app/chatgpt-auth.ts",
+        "lib/algebra/progress.ts",
+        "lib/algebra/progress-storage.ts",
+        "components/algebra/LearningProgress.tsx",
+        "components/algebra/LearningHome.tsx",
+        "components/algebra/RepresentationObject.tsx"
+      ],
+      "journeys": [
+        "tests/browser/progress.spec.mjs",
+        "tests/browser/navigation.spec.mjs"
+      ],
+      "assertions": [
+        "Existing device progress persists and synchronizes",
+        "Device backup, reset and recovery",
+        "Account persistence and hosted sign-in are unimplemented and unverified"
+      ],
+      "prerequisites": [
+        "Disposable browser contexts",
+        "Current implementation stores progress on the device; no account backend is verified"
+      ]
+    },
+    {
+      "id": "agent-access",
+      "featureIds": ["webmcp"],
+      "sources": [
+        "components/algebra/WebMCP.tsx",
+        "components/algebra/InterfaceControls.ts",
+        "components/algebra/LaboratoryControls.tsx",
+        "scripts/algebra.mjs",
+        "scripts/algebra-contract.mjs",
+        "scripts/algebra-map.mjs",
+        "scripts/algebra-features.mjs",
+        "scripts/algebra-identity.mjs",
+        "scripts/algebra-runtime.mjs",
+        "scripts/algebra-server.mjs",
+        "scripts/algebra-playwright-setup.mjs",
+        "app/api/build/route.ts",
+        "playwright.config.ts",
+        "vite.config.ts"
+      ],
+      "journeys": [
+        "tests/browser/webmcp.spec.mjs",
+        "tests/browser/agent-cli.spec.mjs"
+      ],
+      "assertions": [
+        "Injected WebMCP controls and interactions execute",
+        "CLI discovers and drives exact accessible controls",
+        "Runtime build identity is observed separately from source matching"
+      ]
     }
   ],
   "commands": [
     {
       "name": "help",
-      "arguments": [],
-      "prerequisites": ["Node 24", "installed dependencies"],
-      "reads": ["command contracts"],
+      "reads": ["static contracts"],
       "writes": [],
+      "arguments": ["--command", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [],
         "properties": {
-          "id": {
+          "command": {
             "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
-          },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
+            "minLength": 1,
+            "description": "One command full schema and effects",
             "enum": [
+              "help",
               "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
+              "list",
+              "lesson",
+              "prerequisites",
+              "inspect",
+              "doctor",
+              "launch",
+              "stop",
+              "verify"
             ]
           },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
-          "write": {
+          "json": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
-          },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
-            "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     {
       "name": "map",
-      "arguments": ["--write (regenerate tracked map)"],
-      "prerequisites": ["Node 24", "installed dependencies"],
       "reads": ["catalogue", "component source"],
-      "writes": ["feature-map.json only with --write"],
+      "writes": ["feature-map.json with --write"],
+      "arguments": ["--write", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [],
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
-          },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
           "write": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
+            "description": "Regenerate tracked feature-map.json"
           },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
+          "json": {
             "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     {
       "name": "list",
-      "arguments": ["--query text"],
-      "prerequisites": ["Node 24", "installed dependencies"],
       "reads": ["lesson metadata"],
       "writes": [],
+      "arguments": ["--query", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [],
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
-          },
           "query": {
             "type": "string",
-            "description": "Case-insensitive lesson search for list"
+            "description": "Case-insensitive lesson search"
           },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
-          "write": {
+          "json": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
-          },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
-            "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     {
       "name": "lesson",
-      "arguments": ["lesson ID or alias"],
-      "prerequisites": ["Node 24", "installed dependencies", "known lesson"],
       "reads": ["lesson content", "teaching metadata", "laboratory contract"],
       "writes": [],
+      "arguments": ["lesson ID or alias", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
         "properties": {
           "id": {
             "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
+            "minLength": 1,
+            "description": "Lesson ID or alias"
           },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
-          "write": {
+          "json": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
-          },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
-            "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     {
       "name": "prerequisites",
-      "arguments": ["lesson ID or alias"],
-      "prerequisites": ["Node 24", "installed dependencies", "known lesson"],
       "reads": ["transitive prerequisite graph"],
       "writes": [],
+      "arguments": ["lesson ID or alias", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
         "properties": {
           "id": {
             "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
+            "minLength": 1,
+            "description": "Lesson ID or alias"
           },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
-          "write": {
+          "json": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
-          },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
-            "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "verify",
-      "arguments": [
-        "--layer map|math|render|browser|types|build|engineering|dependencies|all",
-        "--evidence path",
-        "--shard i/n (browser layer only; partial suite coverage)",
-        "--url origin (external browser verification server)",
-        "--built (standalone browser uses production Worker); all always uses built Worker unless --url"
-      ],
-      "prerequisites": [
-        "Node 24",
-        "installed dependencies",
-        "production build for render",
-        "Playwright Chromium for browser",
-        "npm registry access for dependencies or all"
-      ],
-      "reads": [
-        "source",
-        "built artifact",
-        "isolated browser",
-        "dependency advisories"
-      ],
-      "writes": [
-        "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
-        "tsconfig.tsbuildinfo for types or all",
-        "evidence file when requested",
-        "ignored browser evidence",
-        "isolated browser storage"
-      ],
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
-          },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
-          },
-          "action": {
-            "type": "object",
-            "required": ["label", "kind"],
-            "properties": {
-              "label": { "type": "string" },
-              "kind": {
-                "enum": [
-                  "button",
-                  "textbox",
-                  "searchbox",
-                  "combobox",
-                  "checkbox",
-                  "radio",
-                  "slider",
-                  "spinbutton"
-                ]
-              },
-              "value": { "type": ["string", "number"] }
-            }
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["label", "kind"],
-              "properties": {
-                "label": { "type": "string" },
-                "kind": {
-                  "enum": [
-                    "button",
-                    "textbox",
-                    "searchbox",
-                    "combobox",
-                    "checkbox",
-                    "radio",
-                    "slider",
-                    "spinbutton"
-                  ]
-                },
-                "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
-          },
-          "write": {
-            "type": "boolean",
-            "description": "Explicitly regenerate map file"
-          },
-          "shard": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
-          },
-          "built": {
-            "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
-          },
-          "evidence": {
-            "type": "string",
-            "description": "Optional output evidence path"
-          }
-        },
-        "additionalProperties": false
+        }
       }
     },
     {
       "name": "inspect",
-      "arguments": [
-        "lesson ID",
-        "--url origin",
-        "--action JSON",
-        "--actions JSON-array"
-      ],
-      "prerequisites": [
-        "Node 24",
-        "installed dependencies",
-        "running app",
-        "Playwright Chromium",
-        "known lesson"
-      ],
       "reads": ["rendered controls", "mathematical output"],
-      "writes": [
-        "navigation and optional action in fresh disposable browser context"
+      "writes": ["actions in a disposable browser context"],
+      "arguments": [
+        "lesson ID or alias",
+        "--url",
+        "--owner",
+        "--action",
+        "--actions",
+        "--json",
+        "--evidence path"
       ],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
       "inputSchema": {
         "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
         "properties": {
           "id": {
             "type": "string",
-            "description": "Lesson ID or alias for lesson, prerequisites and inspect"
-          },
-          "query": {
-            "type": "string",
-            "description": "Case-insensitive lesson search for list"
-          },
-          "layer": {
-            "type": "string",
-            "enum": [
-              "map",
-              "math",
-              "render",
-              "browser",
-              "types",
-              "build",
-              "engineering",
-              "dependencies",
-              "all"
-            ]
+            "minLength": 1,
+            "description": "Lesson ID or alias"
           },
           "url": {
             "type": "string",
-            "format": "uri",
-            "description": "Application origin for isolated inspect or external browser verification"
+            "minLength": 1,
+            "description": "Application origin",
+            "format": "origin"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Owned local server marker returned by launch"
           },
           "action": {
             "type": "object",
             "required": ["label", "kind"],
+            "additionalProperties": false,
             "properties": {
-              "label": { "type": "string" },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact accessible label"
+              },
               "kind": {
                 "enum": [
                   "button",
@@ -2239,15 +2359,41 @@
                 ]
               },
               "value": { "type": ["string", "number"] }
-            }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "combobox",
+                        "textbox",
+                        "searchbox",
+                        "spinbutton",
+                        "slider"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "required": ["value"],
+                  "properties": { "value": { "maxLength": 200 } }
+                }
+              }
+            ]
           },
           "actions": {
             "type": "array",
             "items": {
               "type": "object",
               "required": ["label", "kind"],
+              "additionalProperties": false,
               "properties": {
-                "label": { "type": "string" },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Exact accessible label"
+                },
                 "kind": {
                   "enum": [
                     "button",
@@ -2261,29 +2407,247 @@
                   ]
                 },
                 "value": { "type": ["string", "number"] }
-              }
-            },
-            "description": "Replay exact labelled UI actions in one fresh isolated context"
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "combobox",
+                          "textbox",
+                          "searchbox",
+                          "spinbutton",
+                          "slider"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": ["value"],
+                    "properties": { "value": { "maxLength": 200 } }
+                  }
+                }
+              ]
+            }
           },
-          "write": {
+          "json": {
             "type": "boolean",
-            "description": "Explicitly regenerate map file"
+            "description": "JSON is always emitted"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
+          }
+        }
+      }
+    },
+    {
+      "name": "doctor",
+      "reads": [
+        "runtime",
+        "dependency files",
+        "browser executable",
+        "build",
+        "target identity"
+      ],
+      "writes": [],
+      "arguments": [
+        "--url",
+        "--owner",
+        "--built",
+        "--port",
+        "--json",
+        "--evidence path"
+      ],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Application origin",
+            "format": "origin"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Owned local server marker returned by launch"
+          },
+          "built": {
+            "type": "boolean",
+            "description": "Use the existing production Worker build"
+          },
+          "port": {
+            "type": "integer",
+            "minimum": 1024,
+            "maximum": 65535,
+            "description": "Exclusive local port. Defaults to 5176 for Worker or 5173 for Vite"
+          },
+          "json": {
+            "type": "boolean",
+            "description": "JSON is always emitted"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
+          }
+        }
+      }
+    },
+    {
+      "name": "launch",
+      "reads": ["build or development source"],
+      "writes": ["owned local server", "isolated persistence", "run evidence"],
+      "arguments": ["--built", "--port", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "built": {
+            "type": "boolean",
+            "description": "Use the existing production Worker build"
+          },
+          "port": {
+            "type": "integer",
+            "minimum": 1024,
+            "maximum": 65535,
+            "description": "Exclusive local port. Defaults to 5176 for Worker or 5173 for Vite"
+          },
+          "json": {
+            "type": "boolean",
+            "description": "JSON is always emitted"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
+          }
+        }
+      }
+    },
+    {
+      "name": "stop",
+      "reads": ["owned server marker"],
+      "writes": ["stops only its owned server; retains evidence"],
+      "arguments": ["--owner", "--json", "--evidence path"],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["owner"],
+        "properties": {
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Owned local server marker returned by launch"
+          },
+          "json": {
+            "type": "boolean",
+            "description": "JSON is always emitted"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
+          }
+        }
+      }
+    },
+    {
+      "name": "verify",
+      "reads": ["source", "build", "isolated browser", "dependency advisories"],
+      "writes": [
+        "build for build, engineering or all",
+        "TypeScript cache for types or all",
+        "unique evidence and isolated browser persistence"
+      ],
+      "arguments": [
+        "--layer",
+        "--feature",
+        "--shard",
+        "--url",
+        "--owner",
+        "--built",
+        "--port",
+        "--json",
+        "--evidence path"
+      ],
+      "prerequisites": ["Node 24+", "installed dependencies where required"],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "layer": {
+            "type": "string",
+            "enum": [
+              "map",
+              "math",
+              "render",
+              "browser",
+              "types",
+              "build",
+              "engineering",
+              "dependencies",
+              "all"
+            ],
+            "default": "map"
+          },
+          "feature": {
+            "type": "string",
+            "enum": [
+              "discovery",
+              "guided-learning",
+              "laboratories",
+              "accounts-progress",
+              "agent-access"
+            ],
+            "description": "Named browser journey group; partial application coverage"
           },
           "shard": {
             "type": "string",
             "pattern": "^[1-9][0-9]*/[1-9][0-9]*$",
-            "description": "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard"
+            "description": "Browser-only positive safe integers i/n with i <= n"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Application origin",
+            "format": "origin"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Owned local server marker returned by launch"
           },
           "built": {
             "type": "boolean",
-            "description": "Standalone browser checks against already-built Worker"
+            "description": "Use the existing production Worker build"
+          },
+          "port": {
+            "type": "integer",
+            "minimum": 1024,
+            "maximum": 65535,
+            "description": "Exclusive local port. Defaults to 5176 for Worker or 5173 for Vite"
+          },
+          "json": {
+            "type": "boolean",
+            "description": "JSON is always emitted"
           },
           "evidence": {
             "type": "string",
-            "description": "Optional output evidence path"
+            "minLength": 1,
+            "description": "Optional result file; written only after valid input"
           }
-        },
-        "additionalProperties": false
+        }
       }
     }
   ],
@@ -22375,6 +22739,7 @@
     }
   ],
   "tests": [
+    "tests/agent-cli.test.mjs",
     "tests/algebra.test.mjs",
     "tests/audit-ledger.test.mjs",
     "tests/cayley-words.test.mjs",
@@ -22400,7 +22765,6 @@
     "tests/progress.test.mjs",
     "tests/proof-dependencies.test.mjs",
     "tests/quotients.test.mjs",
-    "tests/rendered-html.test.mjs",
     "tests/review-regressions.test.mjs",
     "tests/semidirect-product.test.mjs",
     "tests/sylow-workbench.test.mjs",

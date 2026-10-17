@@ -1,57 +1,220 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { commands, actionKinds, parseArguments } from "./algebra-contract.mjs";
 import {
-  buildMap,
-  validateMap,
-  commands,
-  actionKinds,
-  verificationLayers,
-  root,
-  mapPath,
-} from "./algebra-map.mjs";
+  buildIdentity,
+  observeIdentity,
+  requireOwnerIdentity,
+} from "./algebra-identity.mjs";
+import {
+  launchServer,
+  stopServer,
+  readOwner,
+  loopback,
+  newRun,
+  listening,
+  runCheck,
+} from "./algebra-runtime.mjs";
 
-const args = process.argv.slice(2),
-  command = args.shift() ?? "help";
-const option = (args, name, fallback) => {
-  const index = args.indexOf(`--${name}`);
-  return index < 0 ? fallback : args[index + 1];
-};
+const root = path.resolve(
+  process.env.ALGEBRA_MAP_ROOT ??
+    fileURLToPath(new URL("../", import.meta.url)),
+);
 const started = Date.now();
 const envelope = {
   version: 1,
-  command,
+  command: process.argv[2] ?? "help",
   ok: true,
   result: null,
   checks: [],
   evidence: [],
   errors: [],
 };
+let options;
+let runDir;
+const check = async (name, executable, args, environment, timeout) => {
+  runDir ??= newRun(root);
+  const result = await runCheck(
+    root,
+    runDir,
+    name,
+    executable,
+    args,
+    environment,
+    timeout,
+  );
+  if (result.status === "passed") {
+    result.output = "";
+    result.outputTruncated = result.outputBytes > 0;
+    result.inlineOutput = "omitted-on-success; read logPath";
+  }
+  envelope.checks.push(result);
+  return result;
+};
 const resolveLesson = (map, id) => {
   const lesson = map.lessons.find(
     (lesson) => lesson.id === id || lesson.aliases?.includes(id),
   );
-  if (!lesson) throw Error(`Unknown lesson: ${id}`);
+  if (!lesson)
+    throw Object.assign(
+      new Error(`Unknown lesson: ${id}. Use list to find lesson IDs`),
+      { code: "UNKNOWN_LESSON" },
+    );
   return lesson;
 };
-function runCheck(root, name, executable, arguments_, environment = {}) {
-  const execution = spawnSync(executable, arguments_, {
-    cwd: root,
-    encoding: "utf8",
-    maxBuffer: 20 * 1024 * 1024,
-    env: { ...process.env, ...environment },
-  });
+function targetOptions(values) {
+  const ownerFile = values.owner ?? process.env.ALGEBRA_LOCAL_OWNER;
+  const owner = ownerFile ? readOwner(ownerFile, root, values.url) : null;
+  const origin = values.url ?? owner?.origin ?? process.env.ALGEBRA_TEST_ORIGIN;
+  return { owner, origin };
+}
+async function doctor(values) {
+  const checks = [];
+  const record = (name, usable, detail, remedy) =>
+    checks.push({
+      name,
+      status: usable ? "passed" : "failed",
+      detail,
+      ...(usable ? {} : { remedy }),
+    });
+  record(
+    "runtime",
+    Number(process.versions.node.split(".")[0]) >= 24,
+    process.version,
+    "Install Node.js 24 or newer",
+  );
+  const dependencies = [
+    "typescript/lib/typescript.js",
+    "@playwright/test/cli.js",
+    "vinext/dist/cli.js",
+    "wrangler/bin/wrangler.js",
+  ];
+  const missing = dependencies.filter(
+    (file) => !fs.existsSync(path.join(root, "node_modules", file)),
+  );
+  record(
+    "dependencies",
+    missing.length === 0,
+    missing.length ? missing : "Required dependency entry points exist",
+    "Run npm ci in this checkout",
+  );
+  try {
+    const { chromium } = await import("@playwright/test");
+    record(
+      "browser",
+      fs.existsSync(chromium.executablePath()),
+      chromium.executablePath(),
+      "Run npx playwright install chromium",
+    );
+  } catch (error) {
+    record(
+      "browser",
+      false,
+      error.message,
+      "Run npm ci and npx playwright install chromium",
+    );
+  }
+  let expected;
+  try {
+    expected = buildIdentity(root);
+  } catch (error) {
+    record(
+      "source-inputs",
+      false,
+      error.message,
+      "Restore the application and dependency input files",
+    );
+  }
+  const artifact = path.join(root, "dist/server/index.js");
+  const identityFile = path.join(root, "dist/build-identity.json");
+  let builtIdentity;
+  try {
+    builtIdentity = JSON.parse(fs.readFileSync(identityFile, "utf8"));
+  } catch {}
+  const buildUsable =
+    fs.existsSync(artifact) &&
+    builtIdentity?.sourceDigest === expected?.sourceDigest;
+  const target = targetOptions(values);
+  const requiresBuild = values.built || target.owner?.kind === "built";
+  if (requiresBuild)
+    record(
+      "build",
+      buildUsable,
+      {
+        artifact: fs.existsSync(artifact),
+        sourceMatch: buildUsable
+          ? "matched"
+          : builtIdentity
+            ? "mismatched"
+            : "unknown",
+      },
+      "Run verify --layer build, then launch --built",
+    );
+  else
+    checks.push({
+      name: "build",
+      status: "not-required",
+      available: fs.existsSync(artifact),
+      sourceMatch: buildUsable
+        ? "matched"
+        : builtIdentity
+          ? "mismatched"
+          : "unknown",
+    });
+  let identity;
+  if (target.origin) {
+    identity = expected
+      ? await observeIdentity(target.origin, expected, target.owner)
+      : null;
+    record(
+      "target",
+      Boolean(identity?.observed),
+      identity,
+      "Launch the expected application and use its origin",
+    );
+    if (loopback(target.origin))
+      record(
+        "target-ownership",
+        Boolean(target.owner),
+        target.owner?.ownerFile ?? "Local target has no ownership marker",
+        "Run launch and pass --owner",
+      );
+    if (target.owner)
+      record(
+        "target-run-identity",
+        identity?.localRunId === target.owner.runId,
+        identity?.localRunId ?? "unknown",
+        "Stop and launch a fresh owned target",
+      );
+    if (identity)
+      record(
+        "target-source-match",
+        identity.sourceMatch === "matched",
+        identity.sourceMatch,
+        "Rebuild and restart the expected source before claiming a source match",
+      );
+  } else {
+    const port = values.port ?? (values.built ? 5176 : 5173);
+    record(
+      "target-port",
+      !(await listening(port)),
+      { port },
+      "Choose an unused --port",
+    );
+  }
+  envelope.checks.push(...checks);
+  envelope.ok = checks.every((check) =>
+    ["passed", "not-required"].includes(check.status),
+  );
   return {
-    name,
-    status: execution.status === 0 ? "passed" : "failed",
-    exitCode: execution.status,
-    output: `${execution.stdout ?? ""}${execution.stderr ?? ""}`,
-    error: execution.error?.message,
+    readOnly: true,
+    target: identity ?? target.owner ?? null,
   };
 }
-async function inspect(lesson, { origin, action, sequence }) {
+async function inspect(lesson, { origin, actions = [] }) {
   const url = new URL(origin);
   if (!["http:", "https:"].includes(url.protocol))
     throw Error("URL must use HTTP or HTTPS");
@@ -59,6 +222,8 @@ async function inspect(lesson, { origin, action, sequence }) {
   const browser = await chromium.launch();
   try {
     const page = await browser.newPage();
+    page.setDefaultTimeout(15000);
+    page.setDefaultNavigationTimeout(30000);
     await page.goto(new URL(`/#lab:${lesson.id}`, url).href);
     await page.locator('.algebra-app[data-ready="true"]').waitFor();
     const start = page.getByRole("button", {
@@ -79,19 +244,8 @@ async function inspect(lesson, { origin, action, sequence }) {
     await page.locator(".laboratory-loading").waitFor({ state: "hidden" });
     if (await page.locator(".laboratory-load-error").count())
       throw Error("Laboratory failed to load");
-    if (action && sequence) throw Error("Use --action or --actions, not both");
-    const actions = sequence
-      ? JSON.parse(sequence)
-      : action
-        ? [JSON.parse(action)]
-        : [];
-    if (!Array.isArray(actions)) throw Error("--actions requires a JSON array");
     for (const action of actions) {
-      if (!action || typeof action !== "object" || Array.isArray(action))
-        throw Error("Every action requires an object with label and kind");
       const { label, kind, value } = action;
-      if (typeof label !== "string" || !actionKinds.includes(kind))
-        throw Error("Action requires exact accessible label and valid kind");
       const target = page.getByRole(kind, { name: label, exact: true });
       if ((await target.count()) !== 1)
         throw Error(
@@ -99,18 +253,6 @@ async function inspect(lesson, { origin, action, sequence }) {
         );
       if (!(await target.isEnabled()))
         throw Error(`Control disabled: ${label}`);
-      if (
-        ["combobox", "textbox", "searchbox", "spinbutton", "slider"].includes(
-          kind,
-        ) &&
-        !(
-          (typeof value === "string" && value.length <= 200) ||
-          (typeof value === "number" && Number.isFinite(value))
-        )
-      )
-        throw Error(
-          "Editing requires a string under 201 characters or a finite number",
-        );
       if (kind === "combobox") {
         if (await target.evaluate((element) => element.tagName === "SELECT"))
           await target.selectOption(String(value));
@@ -261,259 +403,352 @@ async function inspect(lesson, { origin, action, sequence }) {
 }
 
 try {
-  const map = buildMap();
-  envelope.provenance = {
-    sourceDigest: createHash("sha256")
-      .update(JSON.stringify(map.sources))
-      .digest("hex"),
-    sourceFiles: map.sources.length,
-    sourceManifest: "lib/algebra/feature-map.json",
-  };
-
+  const parsed = parseArguments(process.argv.slice(2));
+  const command = parsed.command;
+  options = parsed.values;
   if (command === "help")
     envelope.result = {
-      commands,
+      commands: options.command
+        ? commands.filter((item) => item.name === options.command)
+        : commands.map(({ name, arguments: args, reads, writes }) => ({
+            name,
+            arguments: args,
+            reads,
+            writes,
+          })),
       actionKinds,
       output:
-        "JSON envelope on stdout; failures exit 1. Source map and runtime inspections have separate evidence. verify all builds then runs its exact production Worker on isolated port 5176; standalone browser defaults to Vite, or use --built or --url. --json is accepted for clarity; JSON is always emitted.",
+        "Use help --command NAME for exact schemas. One JSON envelope on stdout. Failure exits 1. Input errors have code INVALID_INPUT and cause no effects. Doctor is read-only. Local browser targets require a live owner marker. Launch returns --owner; stop retains evidence. Feature and shard selection are partial coverage. Unknown runtime identity never establishes a source match.",
+      errors: [
+        "INVALID_INPUT",
+        "UNKNOWN_LESSON",
+        "UNOWNED_LOCAL_TARGET",
+        "INVALID_OWNER",
+        "PORT_IN_USE",
+        "SERVER_START_FAILED",
+        "INVALID_MAP",
+        "COMMAND_FAILED",
+        "EVIDENCE_IO",
+      ],
     };
-  else if (command === "map") {
-    if (args.includes("--write")) {
-      const { format } = await import("prettier");
-      fs.writeFileSync(
-        mapPath,
-        await format(JSON.stringify(map), { parser: "json" }),
+  else if (command === "doctor") envelope.result = await doctor(options);
+  else if (command === "stop")
+    envelope.result = await stopServer(options.owner, root);
+  else if (command === "launch") {
+    if (
+      options.built &&
+      !fs.existsSync(path.join(root, "dist/server/index.js"))
+    )
+      throw new Error(
+        "Production build missing. Run verify --layer build first",
       );
-      envelope.result = {
-        path: path.relative(root, mapPath),
-        lessons: map.lessons.length,
-        features: map.features.length,
-      };
-    } else envelope.result = map;
+    envelope.result = await launchServer(root, options);
     envelope.evidence.push({
-      kind: "source-inspection",
-      claims: "inventory only",
+      kind: "owned-server",
+      ownerFile: envelope.result.ownerFile,
+      path: envelope.result.runDir,
     });
-  } else if (command === "list") {
-    const query = option(args, "query", "").toLocaleLowerCase();
-    envelope.result = map.lessons
-      .filter((lesson) =>
-        JSON.stringify([
-          lesson.id,
-          lesson.title,
-          lesson.navTitle,
-          lesson.subject,
-          lesson.aliases,
-        ])
-          .toLocaleLowerCase()
-          .includes(query),
-      )
-      .map(({ id, title, subject, metadata, routes }) => ({
-        id,
-        title,
-        subject,
-        status: metadata.teachingStatus,
-        routes,
-      }));
-  } else if (command === "lesson") {
-    const lesson = resolveLesson(map, args[0]);
-    const content = JSON.parse(
-      fs.readFileSync(path.join(root, "lib/algebra/lessons.json"), "utf8"),
-    ).find((item) => item.id === lesson.id);
-    const guided =
-      JSON.parse(
-        fs.readFileSync(
-          path.join(root, "lib/algebra/guided-lessons.json"),
-          "utf8",
-        ),
-      )[lesson.id] ?? null;
-    envelope.result = { ...lesson, content, guided };
-  } else if (command === "prerequisites") {
-    const lesson = resolveLesson(map, args[0]),
-      found = new Map();
-    const visit = (id) => {
-      if (found.has(id)) return;
-      const item = resolveLesson(map, id);
-      found.set(id, {
-        id,
-        title: item.title,
-        teachingStatus: item.metadata.teachingStatus,
-        competencies: item.metadata.competencies,
-        prerequisites: item.metadata.prerequisites,
+  } else {
+    const { buildMap, validateMap, mapPath } =
+      await import("./algebra-map.mjs");
+    const map = buildMap();
+    envelope.provenance = {
+      sourceDigest: createHash("sha256")
+        .update(JSON.stringify(map.sources))
+        .digest("hex"),
+      sourceFiles: map.sources.length,
+      sourceManifest: "lib/algebra/feature-map.json",
+      claims: "Local source inventory only",
+    };
+    if (command === "map") {
+      if (options.write) {
+        const { format } = await import("prettier");
+        fs.writeFileSync(
+          mapPath,
+          await format(JSON.stringify(map), { parser: "json" }),
+        );
+        envelope.result = {
+          path: path.relative(root, mapPath),
+          lessons: map.lessons.length,
+          features: map.features.length,
+        };
+      } else envelope.result = map;
+      envelope.evidence.push({
+        kind: "source-inspection",
+        claims: "inventory only",
       });
-      item.metadata.prerequisites.forEach(visit);
-    };
-    lesson.metadata.prerequisites.forEach(visit);
-    envelope.result = {
-      lesson: lesson.id,
-      prerequisites: [...found.values()],
-      effects: "read only; does not award mastery",
-    };
-  } else if (command === "inspect") {
-    const inspection = await inspect(resolveLesson(map, args[0]), {
-      origin: option(args, "url", "http://127.0.0.1:5173"),
-      action: option(args, "action"),
-      sequence: option(args, "actions"),
-    });
-    envelope.result = inspection.result;
-    envelope.evidence.push(inspection.evidence);
-  } else if (command === "verify") {
-    const layer = option(args, "layer", "map");
-    if (!verificationLayers.includes(layer))
-      throw Error("Unknown verification layer");
-    const shard = option(args, "shard");
-    if (args.includes("--shard")) {
-      if (layer !== "browser") throw Error("--shard requires --layer browser");
-      const parts =
-        typeof shard === "string" && shard.match(/^([1-9]\d*)\/([1-9]\d*)$/);
-      if (
-        !parts ||
-        !parts.slice(1).every((part) => Number.isSafeInteger(Number(part))) ||
-        Number(parts[1]) > Number(parts[2])
-      )
-        throw Error("Shard must be positive safe integers i/n with i <= n");
-    }
-    if (["build", "engineering", "all"].includes(layer))
-      envelope.checks.push(
-        runCheck(root, "production-build", process.execPath, [
+    } else if (command === "list") {
+      const query = (options.query ?? "").toLocaleLowerCase();
+      envelope.result = map.lessons
+        .filter((lesson) =>
+          JSON.stringify([
+            lesson.id,
+            lesson.title,
+            lesson.navTitle,
+            lesson.subject,
+            lesson.aliases,
+          ])
+            .toLocaleLowerCase()
+            .includes(query),
+        )
+        .map(({ id, title, subject, metadata, routes }) => ({
+          id,
+          title,
+          subject,
+          status: metadata.teachingStatus,
+          routes,
+        }));
+    } else if (command === "lesson") {
+      const lesson = resolveLesson(map, options.id);
+      const content = JSON.parse(
+        fs.readFileSync(path.join(root, "lib/algebra/lessons.json"), "utf8"),
+      ).find((item) => item.id === lesson.id);
+      const guided =
+        JSON.parse(
+          fs.readFileSync(
+            path.join(root, "lib/algebra/guided-lessons.json"),
+            "utf8",
+          ),
+        )[lesson.id] ?? null;
+      envelope.result = { ...lesson, content, guided };
+    } else if (command === "prerequisites") {
+      const lesson = resolveLesson(map, options.id),
+        found = new Map();
+      const visit = (id) => {
+        if (found.has(id)) return;
+        const item = resolveLesson(map, id);
+        found.set(id, {
+          id,
+          title: item.title,
+          teachingStatus: item.metadata.teachingStatus,
+          competencies: item.metadata.competencies,
+          prerequisites: item.metadata.prerequisites,
+        });
+        item.metadata.prerequisites.forEach(visit);
+      };
+      lesson.metadata.prerequisites.forEach(visit);
+      envelope.result = {
+        lesson: lesson.id,
+        prerequisites: [...found.values()],
+        effects: "read only; does not award mastery",
+      };
+    } else if (command === "inspect") {
+      const lesson = resolveLesson(map, options.id);
+      const target = targetOptions(options);
+      const origin = target.origin ?? "http://127.0.0.1:5173";
+      if (loopback(origin) && !target.owner) readOwner(null, root);
+      envelope.target = {
+        ...(await observeIdentity(origin, buildIdentity(root), target.owner)),
+        auth: "guest",
+        backend:
+          target.owner?.kind === "built"
+            ? "isolated local Worker"
+            : "unverified target backend",
+        ownership: target.owner?.ownerFile ?? "external",
+      };
+      requireOwnerIdentity(envelope.target, target.owner);
+      const inspection = await inspect(lesson, {
+        origin,
+        actions: options.actions ?? (options.action ? [options.action] : []),
+      });
+      envelope.result = {
+        ...inspection.result,
+        coverage: "observational; selected controls and output only",
+      };
+      envelope.evidence.push(inspection.evidence);
+    } else if (command === "verify") {
+      const layer = options.layer;
+      if (["build", "engineering", "all"].includes(layer))
+        await check("production-build", process.execPath, [
           "node_modules/vinext/dist/cli.js",
           "build",
-        ]),
-      );
-    if (["engineering", "all"].includes(layer)) {
-      envelope.checks.push(
-        runCheck(root, "formatting", "npm", ["run", "format:check"]),
-      );
-      envelope.checks.push(runCheck(root, "lint", "npm", ["run", "lint"]));
-    }
-    if (["dependencies", "all"].includes(layer))
-      envelope.checks.push(
-        runCheck(root, "dependency-high-severity-audit", "npm", [
-          "audit",
-          "--audit-level=high",
-          "--json",
-        ]),
-      );
-    if (layer === "map" || layer === "all") {
-      const errors = validateMap(map);
-      const current =
-        fs.existsSync(mapPath) &&
-        JSON.stringify(JSON.parse(fs.readFileSync(mapPath, "utf8"))) ===
-          JSON.stringify(map);
-      envelope.checks.push(
-        {
-          name: "catalogue-integrity",
-          status: errors.length ? "failed" : "passed",
-          errors,
-        },
-        { name: "feature-map-current", status: current ? "passed" : "failed" },
-      );
-      envelope.ok &&= errors.length === 0 && current;
-    }
-    if (layer === "types" || layer === "all")
-      envelope.checks.push(
-        runCheck(root, "typescript-contracts", process.execPath, [
+        ]);
+      if (["engineering", "all"].includes(layer)) {
+        await check("formatting", "npm", ["run", "format:check"]);
+        await check("lint", "npm", ["run", "lint"]);
+      }
+      if (["dependencies", "all"].includes(layer))
+        await check(
+          "dependency-high-severity-audit",
+          "npm",
+          ["audit", "--audit-level=high", "--json"],
+          {},
+          60000,
+        );
+      if (["map", "all"].includes(layer)) {
+        const errors = validateMap(map);
+        const current =
+          fs.existsSync(mapPath) &&
+          JSON.stringify(JSON.parse(fs.readFileSync(mapPath, "utf8"))) ===
+            JSON.stringify(map);
+        envelope.checks.push(
+          {
+            name: "catalogue-integrity",
+            status: errors.length ? "failed" : "passed",
+            errors,
+          },
+          {
+            name: "feature-map-current",
+            status: current ? "passed" : "failed",
+            ...(current
+              ? {}
+              : {
+                  remedy:
+                    "Regenerate with map --write after source integration",
+                }),
+          },
+        );
+      }
+      if (["types", "all"].includes(layer))
+        await check("typescript-contracts", process.execPath, [
           "node_modules/typescript/bin/tsc",
           "--noEmit",
-        ]),
-      );
-    const tests = map.tests.filter(
-      (file) =>
-        !file.endsWith("ui-components.test.mjs") &&
-        !file.endsWith("rendered-html.test.mjs"),
-    );
-    if (layer === "math" || layer === "all")
-      envelope.checks.push(
-        runCheck(root, "mathematical-and-content-suites", process.execPath, [
+        ]);
+      if (["math", "all"].includes(layer))
+        await check("mathematical-and-content-suites", process.execPath, [
           "--test",
-          ...tests,
-        ]),
-      );
-    if (layer === "render" || layer === "all")
-      envelope.checks.push(
-        runCheck(
-          root,
+          ...map.tests.filter(
+            (file) => !file.endsWith("ui-components.test.mjs"),
+          ),
+        ]);
+      if (["render", "all"].includes(layer))
+        await check(
           "built-artifact-and-component-rendering",
           process.execPath,
-          [
-            "--test",
-            "tests/ui-components.test.mjs",
-            "tests/rendered-html.test.mjs",
-          ],
-        ),
-      );
-    if (layer === "browser" || layer === "all") {
-      const origin = option(args, "url", process.env.ALGEBRA_TEST_ORIGIN);
-      if (origin && !["http:", "https:"].includes(new URL(origin).protocol))
-        throw Error("Browser URL must use HTTP or HTTPS");
-      const browserArtifacts =
-        process.env.ALGEBRA_EVIDENCE_DIR ??
-        path.join(root, "outputs", `verification-${started}-${process.pid}`);
-      envelope.checks.push(
-        runCheck(
-          root,
-          "browser-interactions",
-          process.execPath,
-          [
-            "node_modules/@playwright/test/cli.js",
-            "test",
-            ...(shard ? [`--shard=${shard}`] : []),
-          ],
-          {
-            ALGEBRA_EVIDENCE_DIR: browserArtifacts,
-            ...(origin
-              ? { ALGEBRA_TEST_ORIGIN: origin }
-              : layer === "all" || args.includes("--built")
-                ? { ALGEBRA_BUILT_WORKER: "1" }
-                : {}),
-          },
-        ),
-      );
-      if (fs.existsSync(browserArtifacts))
-        envelope.evidence.push({
-          kind: "browser-artifacts",
-          path: path.resolve(browserArtifacts),
-        });
+          ["--test", "tests/ui-components.test.mjs"],
+        );
+      if (["browser", "all"].includes(layer)) {
+        const errors = validateMap(map, { group: options.feature });
+        if (errors.length)
+          throw Object.assign(
+            new Error(
+              `Verification map has unresolved links: ${errors.join("; ")}`,
+            ),
+            { code: "INVALID_MAP" },
+          );
+        const group = options.feature
+          ? map.verificationGroups.find((group) => group.id === options.feature)
+          : null;
+        const target = targetOptions(options);
+        let owned;
+        runDir ??= newRun(root);
+        try {
+          if (!target.origin)
+            owned = await launchServer(root, {
+              built: options.built || layer === "all",
+              port: options.port,
+              runDir: path.join(runDir, "server"),
+            });
+          const origin = target.origin ?? owned.origin;
+          const owner = target.owner ?? owned;
+          if (loopback(origin) && !owner) readOwner(null, root);
+          envelope.target = {
+            ...(await observeIdentity(origin, buildIdentity(root), owner)),
+            ownership: owner?.ownerFile ?? "external",
+            kind: owner?.kind ?? "external",
+          };
+          requireOwnerIdentity(envelope.target, owner);
+          envelope.checks.push({
+            name: "target-source-identity",
+            status:
+              envelope.target.sourceMatch === "matched" ? "passed" : "failed",
+            detail: envelope.target.sourceMatch,
+            remedy:
+              "Build and run expected sources or report this target only as an unmatched observation",
+          });
+          const artifacts = path.join(runDir, "browser");
+          const reportFile = path.join(runDir, "playwright-report.json");
+          await check(
+            "browser-interactions",
+            process.execPath,
+            [
+              "node_modules/@playwright/test/cli.js",
+              "test",
+              ...(group?.journeys ?? []),
+              ...(options.shard ? [`--shard=${options.shard}`] : []),
+            ],
+            {
+              ALGEBRA_TEST_ORIGIN: origin,
+              ALGEBRA_EVIDENCE_DIR: artifacts,
+              ALGEBRA_RUN_EVIDENCE: "",
+              ALGEBRA_REPORT_FILE: reportFile,
+              ALGEBRA_LOCAL_OWNER: owner?.ownerFile ?? "",
+              ALGEBRA_AUDIT_KIND: owner?.kind ?? "external",
+              ALGEBRA_AUDIT_SOURCE_MATCH: envelope.target.sourceMatch,
+              ALGEBRA_AUDIT_SOURCE_DIGEST:
+                envelope.target.observed?.sourceDigest ?? "unknown",
+            },
+            8 * 60_000,
+          );
+          if (fs.existsSync(reportFile)) {
+            const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
+            envelope.browserResults = report.stats;
+            envelope.evidence.push({
+              kind: "browser-report",
+              path: reportFile,
+            });
+            if (
+              report.stats.expected +
+                report.stats.unexpected +
+                report.stats.flaky ===
+              0
+            )
+              envelope.checks.push({
+                name: "browser-cases-executed",
+                status: "failed",
+                detail:
+                  "No browser case executed. Choose a populated shard or feature",
+              });
+          }
+          if (fs.existsSync(artifacts))
+            envelope.evidence.push({
+              kind: "browser-artifacts",
+              path: artifacts,
+            });
+        } finally {
+          if (owned)
+            envelope.evidence.push({
+              kind: "server-cleanup",
+              ...(await stopServer(owned.ownerFile, root)),
+            });
+        }
+      }
+      envelope.ok = envelope.checks.every((check) => check.status === "passed");
+      envelope.result = {
+        layer,
+        ...(options.feature
+          ? {
+              feature: options.feature,
+              journeys: map.verificationGroups.find(
+                (group) => group.id === options.feature,
+              ).journeys,
+            }
+          : {}),
+        ...(options.shard ? { shard: options.shard } : {}),
+        catalogue: {
+          lessons: map.lessons.length,
+          units: map.units.length,
+          features: map.features.length,
+        },
+        partial: Boolean(options.feature || options.shard || layer !== "all"),
+        coverage: `Only named executed checks are verified.${options.feature ? ` Feature ${options.feature} is partial application coverage.` : ""}${options.shard ? ` Shard ${options.shard} is partial suite coverage; all shards must pass.` : ""} Route entry checks do not establish every mathematical claim. Hosted provider sign-in and gateway identity stripping require separate live evidence.`,
+      };
     }
-    envelope.ok &&= envelope.checks.every((check) => check.status === "passed");
-    envelope.result = {
-      layer,
-      ...(shard ? { shard } : {}),
-      catalogue: {
-        lessons: map.lessons.length,
-        units: map.units.length,
-        features: map.features.length,
-      },
-      coverage: shard
-        ? `Partial browser coverage: shard ${shard} only; all shards must pass for complete suite coverage. Passing a route sweep proves entry rendering, not every parameter or mathematical claim.`
-        : "Only named executed checks are verified. Passing a route sweep proves entry rendering, not every parameter or mathematical claim.",
-    };
-  } else throw Error(`Unknown command: ${command}`);
-} catch (error) {
-  envelope.ok = false;
-  envelope.errors.push({ message: error.message });
-}
-try {
-  const artifact = path.join(root, "dist/server/index.js");
-  if (envelope.provenance && fs.existsSync(artifact))
-    envelope.provenance.artifact = {
-      file: "dist/server/index.js",
-      sha256: createHash("sha256")
-        .update(fs.readFileSync(artifact))
-        .digest("hex"),
-    };
+  }
 } catch (error) {
   envelope.ok = false;
   envelope.errors.push({
-    code: error.code ?? "ARTIFACT_IO",
+    code: error.code ?? "COMMAND_FAILED",
     message: error.message,
+    ...(error.logPath ? { logPath: error.logPath } : {}),
   });
 }
+if (runDir && fs.existsSync(runDir))
+  envelope.evidence.push({ kind: "run-directory", path: runDir });
 envelope.durationMs = Date.now() - started;
-const evidencePath = option(args, "evidence");
-if (evidencePath) {
+if (options?.evidence) {
   try {
-    const destination = path.resolve(evidencePath);
+    const destination = path.resolve(options.evidence);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     const evidence = { kind: "result-file", path: destination };
     fs.writeFileSync(
@@ -533,5 +768,5 @@ if (evidencePath) {
     });
   }
 }
-process.stdout.write(`${JSON.stringify(envelope, null, 2)}\n`);
+process.stdout.write(JSON.stringify(envelope, null, 2) + "\n");
 process.exitCode = envelope.ok ? 0 : 1;
