@@ -43,6 +43,31 @@
 .algebra-header .library-toggle {
   color: white;
 }
+.account-progress-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 12px 28px;
+  border-bottom: 1px solid var(--studio-line);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.account-progress-status p {
+  flex: 1 1 360px;
+  margin: 0;
+}
+.account-progress-status :is(a, button) {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.progress-data-controls [aria-label="Legacy import preview"] {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--studio-line);
+  overflow-wrap: anywhere;
+}
 .algebra-layout {
   grid-template-columns: 245px minmax(0, 1fr);
 }

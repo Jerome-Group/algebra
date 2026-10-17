@@ -3,15 +3,15 @@
   "sources": [
     {
       "file": ".agents/skills/verify/SKILL.md",
-      "sha256": "6820349bea020a8d1e5bdce1e35ac950cd5d2fdeac85a5f93807ef43d54e44a7"
+      "sha256": "23d470a7bf08d10728b49e24c8ab0132829cfa003f76ecf40695ad69474cef95"
     },
     {
       "file": ".agents/skills/verify/features/README.md",
-      "sha256": "83ce5cebc6d1b8cbd3a576217448a5204ac9eb19ccf46c49f301942604d5ab69"
+      "sha256": "4f0461dd405eab650f0bc54a24a5d79db1babea15b6fa9dfb252c2b33e1129ce"
     },
     {
       "file": ".agents/skills/verify/features/accounts-progress.md",
-      "sha256": "d196bf8cb0470afbb4616eeaf6bae2f40bd5818b9882de6adff9f5ff34b5ac46"
+      "sha256": "432cd78a8b4fd7b56d802d0b4306efbed7ee1aebda04362367cb02534d2e2fee"
     },
     {
       "file": ".agents/skills/verify/features/agent-access.md",
@@ -43,7 +43,7 @@
     },
     {
       "file": ".openai/hosting.json",
-      "sha256": "85916ab4f63973471f2ecbc4a911c64a6979ca26f9dcbec866c043993f4d4459"
+      "sha256": "2263e6751223216cd75fd23c8309d897ec052a721e64b766f115666df6f574b5"
     },
     {
       "file": ".prettierignore",
@@ -67,7 +67,7 @@
     },
     {
       "file": "CONTEXT.md",
-      "sha256": "89375f266232f5c8b078252df3eec13c706a741370fb94a0cc16d9c4f5b7c879"
+      "sha256": "2a6c221dc7166b7aebc89008d7a2cb3124521bab7b3d3b5204287cdaa341ea1f"
     },
     {
       "file": "CONTRIBUTING.md",
@@ -83,11 +83,11 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "20eed3dc4ac65a46c2c64d1cd60468c5119b7b10961b3becc1703aba91a629cd"
+      "sha256": "c7c375b1a7a73c2f83a26ee377a4d7cff4f5908bc543d084b5096e83868f0ecc"
     },
     {
       "file": "README.md",
-      "sha256": "a8ff1c491382a3b886ce66b065c5e383e9fe45c10de2b8f1ec7c44ab161445b2"
+      "sha256": "6fe01916003b321c5d6354adfef6742e91e83fb15e5e14ed4f6243c547cc9d25"
     },
     {
       "file": "SECURITY.md",
@@ -106,8 +106,12 @@
       "sha256": "f302980226dc0d36979993e5f2bd02f9f1c77d19e08df720e31dae0e2ab89b4c"
     },
     {
+      "file": "app/api/progress/route.ts",
+      "sha256": "5452b9ecbadd4dba08222f9a24979a834016a013dc466c6589d5636fbe80f9b5"
+    },
+    {
       "file": "app/chatgpt-auth.ts",
-      "sha256": "17a965f8948b21510cdf8ecbd70c5fdf58100e10970463f6a8fd2cc4795f8044"
+      "sha256": "14947aad1056a26c976c6dc131b5cde1c7d8a7fa5cab96d3db2203f5e3d3a1ae"
     },
     {
       "file": "app/globals.css",
@@ -131,7 +135,7 @@
     },
     {
       "file": "app/studio.css",
-      "sha256": "1d3c6161bfb55ab4981850adef970833a9b84c2f5c856cedac0edfbdfd7cdde8"
+      "sha256": "b70010f5211d721efa229902fc1b055b77524f596c29bba4eda9bf6c8eb13c7f"
     },
     {
       "file": "build/sites-vite-plugin.ts",
@@ -143,7 +147,7 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "86ced3fd5386f3afd4888b2e5e32001de3dbd550baf1e0ef8cfd1aa17d8346d5"
+      "sha256": "5a8e4995cf0b98b4700239bdbcd69eaeeaf78a3dc682aaa5f0a717833beba106"
     },
     {
       "file": "components/algebra/Bridges.tsx",
@@ -171,7 +175,7 @@
     },
     {
       "file": "components/algebra/Checkpoint.tsx",
-      "sha256": "bae4802e141788ba05f646fa9cd07eb1ca0fc1bd491c9e261fefa10efc163dbf"
+      "sha256": "879336ad1289962d7dc35c702ef0e098e963cfc533fd8755b08b6a2336fbdc6b"
     },
     {
       "file": "components/algebra/Coloring.tsx",
@@ -283,11 +287,11 @@
     },
     {
       "file": "components/algebra/LearningHome.tsx",
-      "sha256": "7a87d272c52a0d3e07b6ccd4471dda1b21a33a55a50b6d33b25c11bf5a462a7a"
+      "sha256": "fae348b066b0cdcf94d14d7f38e0d6d5c5a0562fdbb2e9515de8fa763e40d621"
     },
     {
       "file": "components/algebra/LearningProgress.tsx",
-      "sha256": "69ab828641f3eb771988c69ee351bf1441e3c7f4467f677115e3429b447f584f"
+      "sha256": "e4158afce5e1107a3b9ff048d87702ecdd814f03e85fb5cdf763100fc4877ac7"
     },
     {
       "file": "components/algebra/LearningRoutes.tsx",
@@ -351,11 +355,11 @@
     },
     {
       "file": "components/algebra/RepresentationJourney.tsx",
-      "sha256": "7aca62db055697443617df5e315935514c3c9c23fbd6d8546620ce31920babdf"
+      "sha256": "5756c1950cd33b110791dfc281bb220cb746a8f9d83cee02088df47c6721337c"
     },
     {
       "file": "components/algebra/RepresentationObject.tsx",
-      "sha256": "7257966584ffdf5d92ac5fbe55b2bc92e814186c542dae8ad690a2bbe580309f"
+      "sha256": "6cab39da6493dcd70386c0f359b2bb4c4ab50e2e9451d18e153048ef699e5b6e"
     },
     {
       "file": "components/algebra/Representations.tsx",
@@ -679,7 +683,7 @@
     },
     {
       "file": "db/schema.ts",
-      "sha256": "13ddacbf0be50e054d450a6c642b7fdc1aa943fd6b99084711e07e58b600390d"
+      "sha256": "fcb071dbc8180d83f63a06bfb452660d6139d4c15342bc6e7621e60eabf3b224"
     },
     {
       "file": "design-qa.md",
@@ -712,6 +716,10 @@
     {
       "file": "docs/adr/0007-scope-learning-map-away-from-forge-metadata.md",
       "sha256": "6f99f8200caf286af980933dc5661da4b522c5d9903a154f07fdc906a05af536"
+    },
+    {
+      "file": "docs/adr/0008-keep-account-learning-state-in-one-revisioned-record.md",
+      "sha256": "275bf2a5bd6156ed076277390ce0a9c1b85be0e4aa819aa4b58bf65a0348232a"
     },
     {
       "file": "docs/agents/acceptance-criteria.md",
@@ -850,8 +858,16 @@
       "sha256": "af081f7384aaeb0082cf422e29f139d137ca2f6a57c69b2c37b9fb1f8479867b"
     },
     {
+      "file": "drizzle/0000_account_progress.sql",
+      "sha256": "ee512fa4f7dc74cf1c18cc7d295813c2c82bb45610b6bdb8907fcf51d7687ba1"
+    },
+    {
+      "file": "drizzle/meta/0000_snapshot.json",
+      "sha256": "db72d377e941d885cee30d93221c74596dae4f47f1cef8dccba0d21a4289999b"
+    },
+    {
       "file": "drizzle/meta/_journal.json",
-      "sha256": "90cb374e093894d0efce6f1830d873a42aadd8ba49d2f024495e5cb2e1c8c303"
+      "sha256": "d4b81b7ca9b83b66b31c5ff807752078a144f22cc0779a8a41b74ef6367b60ad"
     },
     {
       "file": "eslint-suppressions.json",
@@ -872,6 +888,18 @@
     {
       "file": "hooks/use-navigation-focus.ts",
       "sha256": "ecc19f5eebddaeb72bd83b872348f4a1b589ee5950e8cb56a52e1f0b94e3309c"
+    },
+    {
+      "file": "lib/algebra/account-progress.ts",
+      "sha256": "7be330b549cd27bf90ac1f8cecda00491a0351f664000c31c4c6d9a4a7102e42"
+    },
+    {
+      "file": "lib/algebra/account-server.ts",
+      "sha256": "b47b7100e8b4e5e29b899f271378a4e47e0a006617c4c4db75d5124413389da5"
+    },
+    {
+      "file": "lib/algebra/account-store.ts",
+      "sha256": "9f9cea7c28d303312f1d57aed4938815b5dc40bc34f908435047d347a002ab0c"
     },
     {
       "file": "lib/algebra/capstone-assessments.json",
@@ -978,10 +1006,6 @@
       "sha256": "f6cbef848e1fd12d97e74380c7591b074ad273316c40032c38e9ec5466876701"
     },
     {
-      "file": "lib/algebra/progress-storage.ts",
-      "sha256": "74ee807b140ba1489e0be1437ba973fc37dfb50129387dd8762346bd98dc564c"
-    },
-    {
       "file": "lib/algebra/progress.ts",
       "sha256": "5d45bdef039d176d5e8eb6a7d9440e5eef2bf31f07ff5d4b51c1d41337dbf91b"
     },
@@ -1051,7 +1075,7 @@
     },
     {
       "file": "playwright.config.ts",
-      "sha256": "979528a08c62f4e88711aaf9bc68c31f320fd3526e1dcf735dea5cbc9c5f5a19"
+      "sha256": "bffc14a0efdfde8752ebdfc5edebe227b9ca1e2a06faf9342eda2ee6a2055a94"
     },
     {
       "file": "postcss.config.mjs",
@@ -1082,12 +1106,16 @@
       "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
     },
     {
+      "file": "scripts/account-migrations.mjs",
+      "sha256": "85592ece8563b837603af1b4c9df70e04f59c9550b11212433c8a7ed657fc95d"
+    },
+    {
       "file": "scripts/algebra-contract.mjs",
       "sha256": "73aca06cc1d94317e016205373a1cb9e5004542be5c26f7227efb61b49f81ca6"
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "bef47d315841c44d1fc2df1b432888c131437ef0272f4015e96d307c4c59fa2d"
+      "sha256": "7990dd096d7e9948b1e97e07faffa622bf88b63e7b8ecf1c7d4b280232fa347a"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1095,7 +1123,7 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "42c00d9bfd4ddfd14b36c42c76d89abd0fdf1133728e82dd040e4d185683b643"
+      "sha256": "2424bbc78ef200ed1661aa5a7c70b26c749bc3e4c9684fd5e1bf52fb37520c08"
     },
     {
       "file": "scripts/algebra-playwright-setup.mjs",
@@ -1107,11 +1135,11 @@
     },
     {
       "file": "scripts/algebra-server.mjs",
-      "sha256": "8a3aa4fb47cbebeb0233f234fe161621d9dbdf09307bff3ada1f5a4a477d2089"
+      "sha256": "17032e8d5f149c7a3ba87865b1a42251801bf1110d1c555b4704feed3313c7ba"
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "80f0202f60567b743e449c91e5d851060a1ef98ef58ff29255dde0a20d865474"
+      "sha256": "7624ab20e620d0a80d5747597beded1667a8149706e29d0d9f911a2ecbef2a2b"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1126,6 +1154,14 @@
       "sha256": "df86ebfc27d2f00860036658e933ac0ddd7b5f6879aa5d51218f0863c7e1fb60"
     },
     {
+      "file": "tests/account-progress.test.mjs",
+      "sha256": "08779d360f5d64f27b8463bc9e1214eb3573ca1e3404d8e32e9ea8b2140557ba"
+    },
+    {
+      "file": "tests/account-store.test.mjs",
+      "sha256": "3d9ec662f344f70367bf335f28ebe24dbedbf8c8186c448340dda2c8d432c57a"
+    },
+    {
       "file": "tests/agent-cli.test.mjs",
       "sha256": "51d7ce1ff829edf54969bbbb7d47dc00337a468fd8bf9a81feb79f26abd3638f"
     },
@@ -1138,12 +1174,16 @@
       "sha256": "858c9528caa43edc61ae412fee8cc974311b4ab1a9b2c73063a89f041130cbfa"
     },
     {
+      "file": "tests/browser/account-progress.spec.mjs",
+      "sha256": "9aecfde85af1562fc2614b2b74a496837dc06ffe194dfb60a6eaf748e498ffdb"
+    },
+    {
       "file": "tests/browser/agent-cli.spec.mjs",
       "sha256": "facf4464c29ee448863184b6a3784f373776b4340f7396acf45574e099ab37a6"
     },
     {
       "file": "tests/browser/catalogue.spec.mjs",
-      "sha256": "806bcfa78369348695f78b16cebbc9f4a66da2e28dda6929c41f30ab46afef2b"
+      "sha256": "1009ce1c46d9e7f81ac1fd12e5b68b995fa518791a8d27bf61c617b9495a107f"
     },
     {
       "file": "tests/browser/cayley-words.spec.mjs",
@@ -1163,7 +1203,7 @@
     },
     {
       "file": "tests/browser/fixed-colorings.spec.mjs",
-      "sha256": "5b80d4b677db8fb090246135e0e6f02612d9a9fab31388d1eabe44e9aeb86789"
+      "sha256": "c52a4971e03bd05cb1573804761636655552e990288c07cf8235e0ef426054d8"
     },
     {
       "file": "tests/browser/foundation-labs.spec.mjs",
@@ -1187,7 +1227,7 @@
     },
     {
       "file": "tests/browser/learning.spec.mjs",
-      "sha256": "3d432ede8e2f1431b649f637aa7bebd5bd8eb2ce9a737aa2bc0e26e21482ae59"
+      "sha256": "04f3f4ee936b1d81e3f2b6e9140a34551650e2cb795ea3198ff0289fc438e496"
     },
     {
       "file": "tests/browser/localisation-chains.spec.mjs",
@@ -1203,7 +1243,7 @@
     },
     {
       "file": "tests/browser/navigation.spec.mjs",
-      "sha256": "92c28a475a7b4c77eaf3f0a7813593d8a4fef0975f80c1c9f73b04083b718a20"
+      "sha256": "7bd24d876d63b75345754421d105612bb102b57c8fd3b5333d37a4b0fbcfdb8a"
     },
     {
       "file": "tests/browser/orthogonal-geometry.spec.mjs",
@@ -1215,7 +1255,7 @@
     },
     {
       "file": "tests/browser/progress.spec.mjs",
-      "sha256": "1ab7afe56bfa25b53466ea62caaa553186c8a2b6b909b2c3d54c8075cb02732c"
+      "sha256": "9d603c298cf3ce5519e3889c88956949a2539c73b3dbbf7fe72561753034d9f2"
     },
     {
       "file": "tests/browser/semidirect-product.spec.mjs",
@@ -1235,7 +1275,7 @@
     },
     {
       "file": "tests/browser/ureca.spec.mjs",
-      "sha256": "5a283e4497437bc71763b75d0f6dc651e149eb1c81418e0d59aeeceb9c3b32e2"
+      "sha256": "323ab9b9e00fcc98115b5b2b0cdb6c95068e396fb7189512c3fd89873dc31a0c"
     },
     {
       "file": "tests/browser/visual-sizing.spec.mjs",
@@ -1324,10 +1364,6 @@
     {
       "file": "tests/polynomial-factorisation.test.mjs",
       "sha256": "64f8c48b59b1b9af0665f458edfda3fdb6ea98f404abf7ebd761702c27299cdf"
-    },
-    {
-      "file": "tests/progress-storage.test.mjs",
-      "sha256": "d06bcd2d135217de7d77cb9b653e2b563ca41dd303c0836a258e5a4361affa6a"
     },
     {
       "file": "tests/progress.test.mjs",
@@ -1946,8 +1982,8 @@
       "reads": ["catalogue", "current UI state"],
       "writes": [
         "backup download",
-        "progress reset/restore",
-        "previous-record backup"
+        "authenticated progress reset/restore",
+        "explicit account import; legacy browser bytes remain unchanged"
       ],
       "verification": [
         {
@@ -1955,19 +1991,79 @@
           "sources": [
             "app/chatgpt-auth.ts",
             "lib/algebra/progress.ts",
-            "lib/algebra/progress-storage.ts",
+            "lib/algebra/account-progress.ts",
+            "lib/algebra/account-server.ts",
+            "lib/algebra/account-store.ts",
+            "app/api/progress/route.ts",
+            "db/schema.ts",
+            "drizzle/0000_account_progress.sql",
+            "scripts/account-migrations.mjs",
+            ".openai/hosting.json",
             "components/algebra/LearningProgress.tsx",
             "components/algebra/LearningHome.tsx",
             "components/algebra/RepresentationObject.tsx"
           ],
           "journeys": [
+            "tests/browser/account-progress.spec.mjs",
             "tests/browser/progress.spec.mjs",
             "tests/browser/navigation.spec.mjs"
           ],
           "assertions": [
-            "Existing device progress persists and synchronizes",
-            "Device backup, reset and recovery",
-            "Account persistence and hosted sign-in are unimplemented and unverified"
+            "Guest reading and temporary answers require no account",
+            "Trusted identity, strict validation and account isolation",
+            "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+            "Explicit legacy preview/import/export, reset and recovery",
+            "Hosted provider sign-in and gateway header stripping require separate production proof"
+          ]
+        }
+      ],
+      "evidence": "source-inspection"
+    },
+    {
+      "id": "account-progress",
+      "route": "all modes",
+      "component": "components/algebra/LearningProgress.tsx",
+      "interactions": "ChatGPT sign-in, acknowledged saves, legacy import, conflicts and retry",
+      "prerequisites": ["ChatGPT sign-in for durable saves"],
+      "reads": [
+        "Sites identity",
+        "account-owned progress",
+        "explicit legacy preview"
+      ],
+      "writes": [
+        "native sign-in/sign-out navigation",
+        "account-owned progress and preferences after acknowledgement",
+        "temporary guest session state"
+      ],
+      "verification": [
+        {
+          "group": "accounts-progress",
+          "sources": [
+            "app/chatgpt-auth.ts",
+            "lib/algebra/progress.ts",
+            "lib/algebra/account-progress.ts",
+            "lib/algebra/account-server.ts",
+            "lib/algebra/account-store.ts",
+            "app/api/progress/route.ts",
+            "db/schema.ts",
+            "drizzle/0000_account_progress.sql",
+            "scripts/account-migrations.mjs",
+            ".openai/hosting.json",
+            "components/algebra/LearningProgress.tsx",
+            "components/algebra/LearningHome.tsx",
+            "components/algebra/RepresentationObject.tsx"
+          ],
+          "journeys": [
+            "tests/browser/account-progress.spec.mjs",
+            "tests/browser/progress.spec.mjs",
+            "tests/browser/navigation.spec.mjs"
+          ],
+          "assertions": [
+            "Guest reading and temporary answers require no account",
+            "Trusted identity, strict validation and account isolation",
+            "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+            "Explicit legacy preview/import/export, reset and recovery",
+            "Hosted provider sign-in and gateway header stripping require separate production proof"
           ]
         }
       ],
@@ -2097,27 +2193,38 @@
     },
     {
       "id": "accounts-progress",
-      "featureIds": ["progress-backup"],
+      "featureIds": ["progress-backup", "account-progress"],
       "sources": [
         "app/chatgpt-auth.ts",
         "lib/algebra/progress.ts",
-        "lib/algebra/progress-storage.ts",
+        "lib/algebra/account-progress.ts",
+        "lib/algebra/account-server.ts",
+        "lib/algebra/account-store.ts",
+        "app/api/progress/route.ts",
+        "db/schema.ts",
+        "drizzle/0000_account_progress.sql",
+        "scripts/account-migrations.mjs",
+        ".openai/hosting.json",
         "components/algebra/LearningProgress.tsx",
         "components/algebra/LearningHome.tsx",
         "components/algebra/RepresentationObject.tsx"
       ],
       "journeys": [
+        "tests/browser/account-progress.spec.mjs",
         "tests/browser/progress.spec.mjs",
         "tests/browser/navigation.spec.mjs"
       ],
       "assertions": [
-        "Existing device progress persists and synchronizes",
-        "Device backup, reset and recovery",
-        "Account persistence and hosted sign-in are unimplemented and unverified"
+        "Guest reading and temporary answers require no account",
+        "Trusted identity, strict validation and account isolation",
+        "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+        "Explicit legacy preview/import/export, reset and recovery",
+        "Hosted provider sign-in and gateway header stripping require separate production proof"
       ],
       "prerequisites": [
-        "Disposable browser contexts",
-        "Current implementation stores progress on the device; no account backend is verified"
+        "Owned built Worker with an empty, migrated and isolated D1 database",
+        "Explicit loopback trusted-header fixture for synthetic accounts",
+        "Hosted ChatGPT sign-in for actual personal account data"
       ]
     },
     {
@@ -2802,7 +2909,6 @@
           "binding": "[laboratory, setLaboratory]",
           "initialExpression": "false"
         },
-        { "binding": "[resumeId, setResumeId]", "initialExpression": "null" },
         {
           "binding": "[expanded, setExpanded]",
           "initialExpression": "\"Groups & generators\""
@@ -2811,7 +2917,7 @@
       "controls": [
         {
           "kind": "a",
-          "line": 199,
+          "line": 197,
           "attributes": {
             "className": "\"skip-link\"",
             "href": "\"#concept\"",
@@ -2820,7 +2926,7 @@
         },
         {
           "kind": "a",
-          "line": 210,
+          "line": 208,
           "attributes": {
             "className": "\"wordmark\"",
             "href": "\"#home\"",
@@ -2829,7 +2935,7 @@
         },
         {
           "kind": "a",
-          "line": 239,
+          "line": 237,
           "attributes": {
             "key": "{mode}",
             "href": "{`#${mode}`}",
@@ -2839,7 +2945,7 @@
         },
         {
           "kind": "button",
-          "line": 265,
+          "line": 263,
           "attributes": {
             "id": "\"library-toggle\"",
             "className": "\"library-toggle\"",
@@ -2849,7 +2955,7 @@
         },
         {
           "kind": "button",
-          "line": 338,
+          "line": 337,
           "attributes": {
             "aria-label": "{`Previous: ${siblings[index - 1]?.navTitle || \"start of route\"}`}",
             "disabled": "{index <= 0}",
@@ -2858,17 +2964,17 @@
         },
         {
           "kind": "button",
-          "line": 347,
+          "line": 346,
           "attributes": {
             "aria-label": "{`Next: ${siblings[index + 1]?.navTitle || \"end of route\"}`}",
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
-        { "kind": "summary", "line": 359, "attributes": {} },
+        { "kind": "summary", "line": 358, "attributes": {} },
         {
           "kind": "button",
-          "line": 396,
+          "line": 395,
           "attributes": {
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() => open(siblings[index + 1].id, activeRoute?.id)}"
@@ -3227,7 +3333,7 @@
       "controls": [
         {
           "kind": "input",
-          "line": 49,
+          "line": 57,
           "attributes": {
             "type": "\"radio\"",
             "name": "{group}",
@@ -3238,7 +3344,7 @@
         },
         {
           "kind": "button",
-          "line": 63,
+          "line": 71,
           "attributes": {
             "type": "\"submit\"",
             "disabled": "{choice === null}"
@@ -4545,16 +4651,19 @@
         {
           "kind": "button",
           "line": 102,
-          "attributes": { "onClick": "{() => setResetting(true)}" }
+          "attributes": {
+            "onClick": "{() => setResetting(true)}",
+            "disabled": "{\n                  !(\n                    phase === \"guest\" ||\n                    (phase === \"ready\" && draftCount === 0)\n                  )\n                }"
+          }
         },
         {
           "kind": "button",
-          "line": 134,
+          "line": 142,
           "attributes": { "key": "{mode}", "onClick": "{() => navigate(mode)}" }
         },
         {
           "kind": "button",
-          "line": 147,
+          "line": 155,
           "attributes": { "onClick": "{() => open(\"mh2220-quotient\")}" }
         }
       ],
@@ -4566,22 +4675,68 @@
         "react",
         "@/lib/algebra/engine",
         "@/lib/algebra/progress",
-        "@/lib/algebra/progress-storage"
+        "@/lib/algebra/account-store"
       ],
       "states": [],
       "controls": [
         {
+          "kind": "a",
+          "line": 123,
+          "attributes": {
+            "href": "\"/signout-with-chatgpt?return_to=%2F\"",
+            "target": "\"_top\"",
+            "onClick": "{clearIdentity}"
+          }
+        },
+        {
+          "kind": "a",
+          "line": 132,
+          "attributes": {
+            "href": "\"/signin-with-chatgpt?return_to=%2F\"",
+            "target": "\"_top\""
+          }
+        },
+        {
           "kind": "button",
-          "line": 120,
+          "line": 137,
+          "attributes": { "type": "\"button\"", "onClick": "{retry}" }
+        },
+        {
+          "kind": "button",
+          "line": 142,
+          "attributes": { "type": "\"button\"", "onClick": "{discard}" }
+        },
+        {
+          "kind": "button",
+          "line": 147,
+          "attributes": { "type": "\"button\"", "onClick": "{refresh}" }
+        },
+        {
+          "kind": "button",
+          "line": 201,
           "attributes": { "type": "\"button\"", "onClick": "{download}" }
         },
         {
           "kind": "button",
-          "line": 123,
+          "line": 204,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{undo}",
             "disabled": "{!canUndo}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 207,
+          "attributes": { "type": "\"button\"", "onClick": "{previewLegacy}" }
+        },
+        {
+          "kind": "button",
+          "line": 242,
+          "attributes": {
+            "type": "\"button\"",
+            "onClick": "{importLegacy}",
+            "disabled": "{phase !== \"ready\"}"
           }
         }
       ],
@@ -5459,7 +5614,7 @@
         },
         {
           "kind": "select",
-          "line": 118,
+          "line": 119,
           "attributes": {
             "value": "{element}",
             "onChange": "{(event) =>\n            setElement(dihedralIndex(Number(event.target.value)))\n          }"
@@ -5467,12 +5622,12 @@
         },
         {
           "kind": "button",
-          "line": 151,
+          "line": 152,
           "attributes": { "onClick": "{() => open(stage.id)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 164,
+          "line": 165,
           "attributes": {
             "competencyId": "\"route:ureca-representation-theory\"",
             "title": "\"URECA route capstone\"",
@@ -5484,7 +5639,11 @@
     },
     {
       "file": "components/algebra/RepresentationObject.tsx",
-      "dependencies": ["react", "@/lib/algebra/direct-products"],
+      "dependencies": [
+        "react",
+        "@/lib/algebra/direct-products",
+        "./LearningProgress"
+      ],
       "states": [],
       "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -6744,39 +6903,46 @@
   },
   "persistence": [
     {
+      "key": "account_progress",
+      "owner": "Sites authenticated user subject",
+      "scope": "account",
+      "shape": "schema version 1; monotonic revision, progress/history, resume/square preferences, reset backup and 64 operation receipts",
+      "effects": "authenticated compare-and-swap; explicit conflict recovery; immutable retry; no guest database writes"
+    },
+    {
       "key": "algebra-competency-progress-v1",
-      "owner": "LearningProgress",
-      "scope": "device",
-      "shape": "version 1; attempts keyed by assessment; revision, choice, submissions",
-      "effects": "submit/reset; storage-event sync"
-    },
-    {
-      "key": "algebra-resume-v1",
-      "owner": "Algebra",
-      "scope": "device",
-      "shape": "lesson ID",
-      "effects": "lesson navigation"
-    },
-    {
-      "key": "algebra-ureca-square-element-v1",
-      "owner": "RepresentationObject",
-      "scope": "device",
-      "shape": "D8 element index",
-      "effects": "shared representation selection; storage-event sync"
+      "owner": "account-store legacy reader",
+      "scope": "legacy device record",
+      "shape": "version 1 assessment record",
+      "effects": "read-only explicit preview/export/import; original bytes remain unchanged"
     },
     {
       "key": "algebra-competency-progress-v1-backup",
-      "owner": "progress-storage",
-      "scope": "device",
-      "shape": "version 1; previous raw record",
-      "effects": "reversible progress writes; restore previous record"
+      "owner": "account-store legacy reader",
+      "scope": "legacy device record",
+      "shape": "version 1 raw backup",
+      "effects": "read-only explicit preview/export/import; original bytes remain unchanged"
+    },
+    {
+      "key": "algebra-resume-v1",
+      "owner": "account-store legacy reader",
+      "scope": "legacy device record",
+      "shape": "lesson ID",
+      "effects": "read-only explicit preview/export/import; original bytes remain unchanged"
+    },
+    {
+      "key": "algebra-ureca-square-element-v1",
+      "owner": "account-store legacy reader",
+      "scope": "legacy device record",
+      "shape": "D8 element index",
+      "effects": "read-only explicit preview/export/import; original bytes remain unchanged"
     }
   ],
   "access": {
-    "application": "public single page",
+    "application": "public reading; personal saves require ChatGPT sign-in",
     "sourceLinks": "external access-controlled Drive links retained",
-    "authHelper": "app/chatgpt-auth.ts; no active consumers in baseline",
-    "laboratoryWork": "transient baseline, except shared D8 element"
+    "authHelper": "app/chatgpt-auth.ts; trusted Sites subject owns /api/progress",
+    "laboratoryWork": "temporary experiments; acknowledged resume and shared D8 preference belong to the account"
   },
   "lessons": [
     {
@@ -22739,6 +22905,8 @@
     }
   ],
   "tests": [
+    "tests/account-progress.test.mjs",
+    "tests/account-store.test.mjs",
     "tests/agent-cli.test.mjs",
     "tests/algebra.test.mjs",
     "tests/audit-ledger.test.mjs",
@@ -22761,7 +22929,6 @@
     "tests/orthogonal-geometry.test.mjs",
     "tests/permutation-matrices.test.mjs",
     "tests/polynomial-factorisation.test.mjs",
-    "tests/progress-storage.test.mjs",
     "tests/progress.test.mjs",
     "tests/proof-dependencies.test.mjs",
     "tests/quotients.test.mjs",

@@ -111,7 +111,8 @@ export function RepresentationJourney({
       </p>
       <p>
         <a href={`#${representationRouteId}`}>Direct link to this route</a> ·
-        Shared D₈ square object is kept on this device as you open its labs.
+        The shared D₈ square object follows you through its labs. Sign in to
+        save your selection across devices; guest selections last this session.
       </p>
       <label>
         Same representation, selected element {dihedralElements[element]}

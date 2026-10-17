@@ -6,6 +6,7 @@ import { type Lesson } from "@/lib/algebra/engine";
 import { Prose } from "./Math";
 import {
   LearningProgressProvider,
+  AccountProgressStatus,
   useLearningProgress,
 } from "./LearningProgress";
 import Exploration from "./Exploration";
@@ -39,17 +40,22 @@ const subjects = [
 export default function Algebra() {
   return (
     <LaboratoryProvider>
-      <RepresentationObjectProvider>
-        <LearningProgressProvider lessons={lessons}>
-          <LearningExperience />
-        </LearningProgressProvider>
-      </RepresentationObjectProvider>
+      <LearningProgressProvider lessons={lessons}>
+        <RepresentationObjectProvider>
+          <AccountLearningExperience />
+        </RepresentationObjectProvider>
+      </LearningProgressProvider>
     </LaboratoryProvider>
   );
 }
+function AccountLearningExperience() {
+  const { account } = useLearningProgress();
+  return <LearningExperience key={account?.id ?? "guest"} />;
+}
 function LearningExperience() {
   const focusHeading = useNavigationFocus();
-  const { mastered } = useLearningProgress();
+  const { mastered, preferences, setResume, phase } = useLearningProgress();
+  const resumeId = preferences.resumeLessonId;
   const [id, setId] = useState("foundations-functions"),
     [subject, setSubject] = useState(subjects[0]),
     [query, setQuery] = useState(""),
@@ -58,7 +64,6 @@ function LearningExperience() {
     [menu, setMenu] = useState(false),
     [view, setView] = useState("home"),
     [laboratory, setLaboratory] = useState(false),
-    [resumeId, setResumeId] = useState<string | null>(null),
     [expanded, setExpanded] = useState<string | undefined>(
       "Groups & generators",
     );
@@ -82,6 +87,9 @@ function LearningExperience() {
   useEffect(() => {
     current.current = lesson;
   }, [lesson]);
+  useEffect(() => {
+    if (phase === "ready" && view === "lesson") setResume(lesson.id);
+  }, [phase, view, lesson.id, setResume]);
   const selectLesson = useCallback(
     (target: string) => {
       const next = lessons.find(
@@ -90,12 +98,7 @@ function LearningExperience() {
       if (!next) throw Error("Unknown concept");
       setId(next.id);
       setLaboratory(false);
-      setResumeId(next.id);
-      try {
-        localStorage.setItem("algebra-resume-v1", next.id);
-      } catch {
-        /* Storage may be disabled. */
-      }
+      setResume(next.id);
       setSubject(next.subject || subjects[0]);
       setExpanded(next.family);
       setTab("guided");
@@ -105,7 +108,7 @@ function LearningExperience() {
 
       focusHeading("lesson-heading");
     },
-    [focusHeading],
+    [focusHeading, setResume],
   );
   const open = useCallback(
     (target: string, unit?: string) => {
@@ -142,11 +145,6 @@ function LearningExperience() {
       if (destination.mode !== "lesson") {
         setView(destination.mode);
         setMenu(false);
-        try {
-          setResumeId(localStorage.getItem("algebra-resume-v1"));
-        } catch {
-          /* Optional device progress. */
-        }
         focusHeading("mode-heading");
       } else if (
         lessons.some(
@@ -271,6 +269,7 @@ function LearningExperience() {
           {menu ? <X size={18} /> : <Search size={18} />} Concepts
         </button>
       </header>
+      <AccountProgressStatus />
       <div
         className={`algebra-layout ${view !== "lesson" ? "mode-layout" : ""}`}
       >

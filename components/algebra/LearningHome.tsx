@@ -16,7 +16,7 @@ export function LearningHome({
   open: (id: string) => void;
   navigate: (mode: ProductMode) => void;
 }) {
-  const { mastered, reset, storageAvailable } = useLearningProgress();
+  const { mastered, reset, phase, draftCount } = useLearningProgress();
   const [resetting, setResetting] = useState(false);
   const results = lessons.map((lesson) => lessonCompletion(lesson, mastered));
   const demonstrated = results.reduce((sum, item) => sum + item.count, 0);
@@ -75,16 +75,16 @@ export function LearningHome({
               aria-label="Demonstrated competencies"
             />
             <p>
-              {storageAvailable
-                ? "Saved in this browser. Page visits do not count; each checkpoint asks for mathematical reasoning."
-                : "Saving unavailable. Progress lasts only for this session."}
+              Page visits do not count; each checkpoint asks for mathematical
+              reasoning.
             </p>
             <ProgressDataControls />
             {resetting ? (
               <div className="reset-confirmation">
                 <p>
                   Clear submitted competency and capstone evidence on this
-                  device? You can restore the previous record.
+                  account or guest session? You can restore this reset until the
+                  next change.
                 </p>
                 <button
                   onClick={() => {
@@ -99,7 +99,15 @@ export function LearningHome({
                 </button>
               </div>
             ) : (
-              <button onClick={() => setResetting(true)}>
+              <button
+                onClick={() => setResetting(true)}
+                disabled={
+                  !(
+                    phase === "guest" ||
+                    (phase === "ready" && draftCount === 0)
+                  )
+                }
+              >
                 Reset learning progress
               </button>
             )}

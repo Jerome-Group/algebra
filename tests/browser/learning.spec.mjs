@@ -123,12 +123,16 @@ test("reference teaching filter reports empty results after every entry has a gu
   await page
     .getByRole("combobox", { name: /^Teaching status/ })
     .selectOption("reference-only");
-  await expect(page.getByRole("status")).toHaveText("0 matching concepts");
+  await expect(page.locator(".reference-atlas").getByRole("status")).toHaveText(
+    "0 matching concepts",
+  );
   await expect(page.locator(".atlas-results > li")).toHaveCount(0);
   await page
     .getByRole("combobox", { name: /^Teaching status/ })
     .selectOption("guided");
-  await expect(page.getByRole("status")).toHaveText("150 matching concepts");
+  await expect(page.locator(".reference-atlas").getByRole("status")).toHaveText(
+    "150 matching concepts",
+  );
   await expect(page.locator(".atlas-results > li")).toHaveCount(150);
 });
 

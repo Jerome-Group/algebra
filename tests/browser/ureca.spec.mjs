@@ -93,6 +93,10 @@ test("integrated URECA route carries one D8 representation through nine stages",
   page,
 }) => {
   await page.goto("/#route-ureca-representation-theory");
+  await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
   const route = page.locator(".representation-journey");
   await expect(route.locator("ol > li")).toHaveCount(9);
   await expect(route).toContainText("D₈ square");
@@ -103,10 +107,18 @@ test("integrated URECA route carries one D8 representation through nine stages",
   });
   await selected.selectOption("1");
   await expect(route).toContainText("Character sample: χ(r) = tr ρ(r) = 0");
-  await page.reload();
+  await page.evaluate(() => {
+    location.hash = "#home";
+  });
+  await expect(page.locator(".learning-home")).toBeVisible();
+  await page.evaluate(() => {
+    location.hash = "#route-ureca-representation-theory";
+  });
   await expect(selected).toHaveValue("1");
   await route.getByRole("button", { name: "Open this step" }).nth(5).click();
-  await page.goto("/#lab:ureca-external-tensor-products");
+  await page.evaluate(() => {
+    location.hash = "#lab:ureca-external-tensor-products";
+  });
   await page
     .getByRole("textbox", { name: "Your mathematical prediction" })
     .fill("The trace remains zero for this selected square rotation.");
@@ -115,7 +127,9 @@ test("integrated URECA route carries one D8 representation through nine stages",
   await expect(lab.getByRole("combobox", { name: /D₈ element h/ })).toHaveValue(
     "1",
   );
-  await page.goto("/#route-ureca-representation-theory");
+  await page.evaluate(() => {
+    location.hash = "#route-ureca-representation-theory";
+  });
   await expect(selected).toHaveValue("1");
   const capstone = route.getByRole("group", { name: /URECA route capstone/ });
   await capstone
@@ -124,7 +138,8 @@ test("integrated URECA route carries one D8 representation through nine stages",
   await route.getByRole("button", { name: "Check reasoning" }).click();
   await expect(route).toContainText("Route capstone demonstrated");
   await page.reload();
-  await expect(route).toContainText("Route capstone demonstrated");
+  await expect(route).not.toContainText("Route capstone demonstrated");
+  await expect(selected).toHaveValue("2");
   await route.getByRole("button", { name: "Open this step" }).last().click();
   await expect(page.locator(".guided-reader")).toBeVisible();
   await expect(page.locator("#lesson-heading")).toContainText("faithful");

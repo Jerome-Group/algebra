@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 const guides = JSON.parse(
   readFileSync(
     new URL("../../lib/algebra/guided-lessons.json", import.meta.url),
@@ -27,14 +28,20 @@ async function answer(page, lessonId, field, correct = true) {
     .check();
   await checkpoint.getByRole("button", { name: "Check reasoning" }).click();
 }
-test("submitted competencies survive reload; correction, prerequisite readiness and reset are real", async ({
+const navigate = (page, hash) =>
+  page.evaluate((value) => {
+    location.hash = value;
+  }, hash);
+
+test("guest checkpoints distinguish prerequisite checks, reasoning, reversible reset and session lifetime", async ({
   page,
 }) => {
   const id = "foundations-functions";
   await page.goto(`/#${id}`);
-  await expect(
-    page.locator(".guided-reader .competency-progress"),
-  ).toContainText("0 of 3");
+  await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
   await answer(page, id, "prerequisiteCheck");
   await expect(
     page.locator(".guided-reader .competency-progress"),
@@ -48,10 +55,6 @@ test("submitted competencies survive reload; correction, prerequisite readiness 
   await expect(
     page.locator(".guided-reader .competency-progress"),
   ).toContainText("Lesson complete");
-  await page.reload();
-  await expect(
-    page.locator(".guided-reader .competency-progress"),
-  ).toContainText("3 of 3");
   await page.getByRole("link", { name: "Reference", exact: true }).click();
   await page
     .getByRole("checkbox", { name: /prerequisites demonstrated/i })
@@ -60,30 +63,49 @@ test("submitted competencies survive reload; correction, prerequisite readiness 
   await page
     .getByRole("link", { name: "Abstract Algebra", exact: true })
     .click();
-  await expect(page.locator(".device-progress [role=status]")).toContainText(
-    "3 of",
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "3",
   );
   await page.getByRole("button", { name: "Reset learning progress" }).click();
   await page.getByRole("button", { name: "Keep my progress" }).click();
-  await expect(page.locator(".device-progress [role=status]")).toContainText(
-    "3 of",
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "3",
   );
   await page.getByRole("button", { name: "Reset learning progress" }).click();
   await page.getByRole("button", { name: "Clear my progress" }).click();
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "0",
+  );
+  await page.getByRole("button", { name: "Restore previous progress" }).click();
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "3",
+  );
   await page.reload();
-  await expect(page.locator(".device-progress [role=status]")).toContainText(
-    "0 of",
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "0",
   );
 });
-test("unit completion requires its transfer checkpoint and every guided competency", async ({
+
+test("guest unit completion requires all guided competencies and its capstone", async ({
   page,
 }) => {
+  await page.goto("/#home");
+  await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
   for (const id of [
     "foundations-functions",
     "foundations-fibers",
     "foundations-quotient-rules",
   ]) {
-    await page.goto(`/#${id}`);
+    await navigate(page, `#${id}`);
+    await expect(page.locator("#lesson-heading")).toBeVisible();
     for (const field of ["boundaryCheck", "application", "transfer"])
       await answer(page, id, field);
   }
@@ -104,23 +126,26 @@ test("unit completion requires its transfer checkpoint and every guided competen
       ["serious", "critical"].includes(item.impact),
     ),
   ).toEqual([]);
-  await page.reload();
-  await expect(unit.locator(".competency-progress")).toContainText(
-    "Unit complete",
-  );
 });
-test("unavailable storage retains usable session assessment feedback", async ({
+
+test("guest learning works with browser storage denied and performs no device writes", async ({
   page,
 }) => {
   await page.addInitScript(() => {
+    window.__accountTestWrites = 0;
     Storage.prototype.setItem = () => {
-      throw new Error("Storage disabled");
+      window.__accountTestWrites++;
+      throw new Error("No new browser writes");
     };
     Storage.prototype.getItem = () => {
       throw new Error("Storage disabled");
     };
   });
   await page.goto("/#foundations-functions");
+  await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+    "data-account-phase",
+    "guest",
+  );
   await answer(page, "foundations-functions", "boundaryCheck");
   await expect(
     page.locator(".guided-reader .competency-progress"),
@@ -131,70 +156,59 @@ test("unavailable storage retains usable session assessment feedback", async ({
   await expect(page.locator(".device-progress")).toContainText(
     "only for this session",
   );
+  await page
+    .getByRole("button", { name: "Preview legacy browser records" })
+    .click();
+  await expect(page.getByText(/Browser access failed/)).toBeVisible();
+  expect(await page.evaluate(() => window.__accountTestWrites)).toBe(0);
 });
 
-test("earlier evidence survives revised assessments, export and reversible reset", async ({
+test("all four original records remain byte exact and exportable without automatic import", async ({
   page,
 }) => {
-  const key = "algebra-competency-progress-v1";
-  const historic = {
-    version: 1,
-    attempts: {
-      "foundations-functions:boundaryCheck": {
-        revision: "previous assessment",
-        choice: 0,
-        submissions: 2,
-      },
-    },
+  const records = {
+    "algebra-competency-progress-v1":
+      '{ "version": 9, "attempts": {"future":"preserve"} }',
+    "algebra-competency-progress-v1-backup": '{ "broken": ',
+    "algebra-resume-v1": "foundations-fibers",
+    "algebra-ureca-square-element-v1": "7",
   };
-  await page.addInitScript(
-    ({ key, historic }) => {
-      if (!localStorage.getItem(key))
-        localStorage.setItem(key, JSON.stringify(historic));
-    },
-    { key, historic },
-  );
+  await page.addInitScript((values) => {
+    for (const [key, value] of Object.entries(values))
+      localStorage.setItem(key, value);
+  }, records);
   await page.goto("/#home");
-  await expect(page.getByText(/1 earlier assessment records/)).toBeVisible();
+  await expect(page.locator(".device-progress progress")).toHaveAttribute(
+    "value",
+    "0",
+  );
+  await page
+    .getByRole("button", { name: "Preview legacy browser records" })
+    .click();
+  await expect(
+    page.getByRole("region", { name: "Legacy import preview" }),
+  ).toContainText("export only");
+  await expect(
+    page.getByRole("button", { name: "Import preview into this account" }),
+  ).toBeDisabled();
   const downloading = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export progress backup" }).click();
   const download = await downloading;
-  expect(download.suggestedFilename()).toBe("algebra-progress-backup.json");
-  await page.getByRole("button", { name: "Reset learning progress" }).click();
-  await page.getByRole("button", { name: "Clear my progress" }).click();
-  await expect(
-    page.getByRole("button", { name: "Restore previous progress" }),
-  ).toBeEnabled();
-  await page.reload();
-  await page.getByRole("button", { name: "Restore previous progress" }).click();
-  expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(
-    JSON.stringify(historic),
-  );
-  await expect(page.getByText(/1 earlier assessment records/)).toBeVisible();
-});
-
-test("unsupported saved records remain unchanged during new session answers", async ({
-  page,
-}) => {
-  const raw = '{"version":2,"attempts":{"unreadable":"preserve"}}';
-  await page.addInitScript(
-    (raw) => localStorage.setItem("algebra-competency-progress-v1", raw),
-    raw,
-  );
-  await page.goto("/#foundations-functions");
+  const exported = JSON.parse(await readFile(await download.path(), "utf8"));
+  expect(exported.rawLegacyRecords).toEqual(records);
+  expect(exported.acknowledgedAccountState).toBeNull();
+  expect(
+    await page.evaluate(
+      (keys) =>
+        Object.fromEntries(keys.map((key) => [key, localStorage.getItem(key)])),
+      Object.keys(records),
+    ),
+  ).toEqual(records);
+  await navigate(page, "#foundations-functions");
   await answer(page, "foundations-functions", "boundaryCheck");
   expect(
     await page.evaluate(() =>
       localStorage.getItem("algebra-competency-progress-v1"),
     ),
-  ).toBe(raw);
-  await page
-    .getByRole("link", { name: "Abstract Algebra", exact: true })
-    .click();
-  await expect(
-    page.getByText(/Saved data is unreadable or from a newer version/),
-  ).toBeVisible();
-  await expect(
-    page.getByText(/New answers last only this session/),
-  ).toBeVisible();
+  ).toBe(records["algebra-competency-progress-v1"]);
 });

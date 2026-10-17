@@ -14,8 +14,11 @@ export function Checkpoint({
   competencyId?: string;
 }) {
   const group = useId();
-  const { progress, mastered, submit } = useLearningProgress();
-  const saved = competencyId ? progress.attempts[competencyId] : undefined;
+  const { progress, mastered, submit, account, acknowledged } =
+    useLearningProgress();
+  const saved = competencyId
+    ? (account ? acknowledged?.progress : progress)?.attempts[competencyId]
+    : undefined;
   const [choice, setChoice] = useState<number | null>(null);
   const [result, setResult] = useState<boolean | null>(null);
   return (
@@ -32,11 +35,16 @@ export function Checkpoint({
       {saved && (
         <p className="saved-checkpoint">
           {mastered.has(competencyId!)
-            ? "Demonstrated on this device"
+            ? "Demonstrated reasoning"
             : "Review needed"}{" "}
           · {saved.submissions} submitted attempt
           {saved.submissions === 1 ? "" : "s"}. Latest submitted reasoning
           determines progress.
+          {account &&
+          competencyId &&
+          acknowledged?.progress.attempts[competencyId] === saved
+            ? " Saved to your account."
+            : " Temporary session answer."}
         </p>
       )}
       <fieldset aria-describedby={`${group}-feedback`}>
