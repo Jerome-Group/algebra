@@ -53,7 +53,8 @@ on this instance; each journey gets an isolated browser context. For a targeted 
 accessible labels using `--actions`. `help --command inspect` gives the full action schema.
 
 Use `help` for compact discovery and `help --command NAME` for one exact schema. Unknown flags,
-bad IDs and invalid actions fail before effects. `--feature` and `--shard` are partial coverage.
+bad IDs and malformed action shapes fail before effects. Runtime UI rejection can follow navigation
+or earlier actions in the disposable context. `--feature` and `--shard` are partial coverage.
 For a release, run the required complete gates with `verify --layer all`; a feature pass does
 not replace them. External `--url` targets require separate authorization for personal writes.
 
