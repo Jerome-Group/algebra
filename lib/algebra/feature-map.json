@@ -706,6 +706,10 @@
       "sha256": "8ca395aa0889702912789e4c4176c7d30cc831146eb204d0519588082a15abe0"
     },
     {
+      "file": "docs/adr/0006-bound-glob-recursion-with-a-pinned-fork.md",
+      "sha256": "cc5956c75d2d5947088488475dd69d719e4955376e7247c4dc04cf33dda0a5a7"
+    },
+    {
       "file": "docs/agents/acceptance-criteria.md",
       "sha256": "35199255df1658038e66e122845ef6248ae713c91914483ebf6ceb9084e651c3"
     },
@@ -1039,11 +1043,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "6992c6f15109cb80d2ee43dc42cdce23626a8462bd23081e1343774da803bd16"
+      "sha256": "323d340075351d7b82ea5f02d0bdb89ed186210463bf23d82702f373cd9c17f8"
     },
     {
       "file": "package.json",
-      "sha256": "c392f2136d80e55dd01fc3433af27e3e7bcc9132dc3f5282177156de69ae5dbd"
+      "sha256": "36496d7eab8ac8e15ff187df2fdcff4fb884fcb7bce9fb37f4e645610cdabe3f"
     },
     {
       "file": "playwright.config.ts",
@@ -1224,6 +1228,10 @@
     {
       "file": "tests/character-construction.test.mjs",
       "sha256": "ef4ecac11571ecbc77fbe24344f450980ac32d71f37494c77c1e4fcd3193fccb"
+    },
+    {
+      "file": "tests/dependency-boundaries.test.mjs",
+      "sha256": "9b94ac52864a096186f753af6bd635e919bfb1d2ce68f8f1de7fc584ba949eb0"
     },
     {
       "file": "tests/feature-map.test.mjs",
@@ -22403,6 +22411,7 @@
     "tests/audit-ledger.test.mjs",
     "tests/cayley-words.test.mjs",
     "tests/character-construction.test.mjs",
+    "tests/dependency-boundaries.test.mjs",
     "tests/feature-map.test.mjs",
     "tests/fixed-colorings.test.mjs",
     "tests/foundation-labs.test.mjs",

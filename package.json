@@ -73,8 +73,9 @@
   },
   "type": "module",
   "overrides": {
+    "braces": "npm:@dieub/braces-depth-guard@3.0.3-pn.3",
+    "sharp": "0.35.5",
     "miniflare": {
-      "sharp": "0.35.4",
       "undici": "7.29.1"
     },
     "vinext": {
