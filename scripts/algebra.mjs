@@ -678,6 +678,7 @@ try {
               ALGEBRA_AUDIT_SOURCE_DIGEST:
                 envelope.target.observed?.sourceDigest ?? "unknown",
             },
+            8 * 60_000,
           );
           if (fs.existsSync(reportFile)) {
             const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));

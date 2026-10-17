@@ -1111,7 +1111,7 @@
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "743d05365b1c06e77457c0b2924aa5b48d55a03a5f7723a32c682be08cb8b0c9"
+      "sha256": "80f0202f60567b743e449c91e5d851060a1ef98ef58ff29255dde0a20d865474"
     },
     {
       "file": "scripts/build-verified.sh",
