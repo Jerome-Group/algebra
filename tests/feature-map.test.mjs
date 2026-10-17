@@ -26,7 +26,7 @@ test("feature map is current and covers every lesson, unit, component and source
   }
   assert.ok(map.components.some((component) => component.controls.length));
   for (const file of [
-    "hooks/use-mobile.ts",
+    "hooks/use-navigation-focus.ts",
     "components/ui/select.tsx",
     "public/logo.png",
     "package-lock.json",
