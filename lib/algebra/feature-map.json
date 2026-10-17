@@ -1083,7 +1083,7 @@
     },
     {
       "file": "scripts/algebra-contract.mjs",
-      "sha256": "c457e3bd5208bae0923c130533c6720354a3acf0374fb31f943742429f17f18f"
+      "sha256": "73aca06cc1d94317e016205373a1cb9e5004542be5c26f7227efb61b49f81ca6"
     },
     {
       "file": "scripts/algebra-features.mjs",
@@ -1111,7 +1111,7 @@
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "b40eb42572b55f3e6983e6b1ce5d9ddf7a2718c0f01480331c680f0bf1911da2"
+      "sha256": "743d05365b1c06e77457c0b2924aa5b48d55a03a5f7723a32c682be08cb8b0c9"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1127,7 +1127,7 @@
     },
     {
       "file": "tests/agent-cli.test.mjs",
-      "sha256": "0cb60626de5e201e92125dffd2231fc739ea3fdcf846a0dd554f37720b05ec65"
+      "sha256": "51d7ce1ff829edf54969bbbb7d47dc00337a468fd8bf9a81feb79f26abd3638f"
     },
     {
       "file": "tests/algebra.test.mjs",
@@ -1187,7 +1187,7 @@
     },
     {
       "file": "tests/browser/learning.spec.mjs",
-      "sha256": "d47c59568a7f68ffff4028a8a6bc141826f4b4463c79a9e2f6359230d8f39392"
+      "sha256": "3d432ede8e2f1431b649f637aa7bebd5bd8eb2ce9a737aa2bc0e26e21482ae59"
     },
     {
       "file": "tests/browser/localisation-chains.spec.mjs",
@@ -1340,10 +1340,6 @@
     {
       "file": "tests/quotients.test.mjs",
       "sha256": "58e5d79f52f8e3d73cef35afb80b333edb99505402ab9724af661c640106ed98"
-    },
-    {
-      "file": "tests/rendered-html.test.mjs",
-      "sha256": "dfaa6c14896b89fb3cdbd4f5ad474e27a436cd6bc55a3e65f446fb2426e36b7a"
     },
     {
       "file": "tests/review-regressions.test.mjs",
@@ -2357,7 +2353,28 @@
                 ]
               },
               "value": { "type": ["string", "number"] }
-            }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "combobox",
+                        "textbox",
+                        "searchbox",
+                        "spinbutton",
+                        "slider"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "required": ["value"],
+                  "properties": { "value": { "maxLength": 200 } }
+                }
+              }
+            ]
           },
           "actions": {
             "type": "array",
@@ -2384,7 +2401,28 @@
                   ]
                 },
                 "value": { "type": ["string", "number"] }
-              }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "combobox",
+                          "textbox",
+                          "searchbox",
+                          "spinbutton",
+                          "slider"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": ["value"],
+                    "properties": { "value": { "maxLength": 200 } }
+                  }
+                }
+              ]
             }
           },
           "json": {
@@ -22721,7 +22759,6 @@
     "tests/progress.test.mjs",
     "tests/proof-dependencies.test.mjs",
     "tests/quotients.test.mjs",
-    "tests/rendered-html.test.mjs",
     "tests/review-regressions.test.mjs",
     "tests/semidirect-product.test.mjs",
     "tests/sylow-workbench.test.mjs",
