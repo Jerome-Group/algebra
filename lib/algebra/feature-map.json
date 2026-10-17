@@ -355,7 +355,7 @@
     },
     {
       "file": "components/algebra/RepresentationJourney.tsx",
-      "sha256": "7aca62db055697443617df5e315935514c3c9c23fbd6d8546620ce31920babdf"
+      "sha256": "5756c1950cd33b110791dfc281bb220cb746a8f9d83cee02088df47c6721337c"
     },
     {
       "file": "components/algebra/RepresentationObject.tsx",
@@ -5614,7 +5614,7 @@
         },
         {
           "kind": "select",
-          "line": 118,
+          "line": 119,
           "attributes": {
             "value": "{element}",
             "onChange": "{(event) =>\n            setElement(dihedralIndex(Number(event.target.value)))\n          }"
@@ -5622,12 +5622,12 @@
         },
         {
           "kind": "button",
-          "line": 151,
+          "line": 152,
           "attributes": { "onClick": "{() => open(stage.id)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 164,
+          "line": 165,
           "attributes": {
             "competencyId": "\"route:ureca-representation-theory\"",
             "title": "\"URECA route capstone\"",
