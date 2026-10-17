@@ -21,3 +21,14 @@ Account switching clears in-memory private state. Browser records remain read-on
 an explicit import. Unsupported stored versions stay exportable. The migration is additive,
 so an application rollback leaves rows intact; an older application can lack account features.
 Local trusted-header fixtures prove application behavior and do not prove hosted provider login.
+
+Finish every request through one bounded discard of unread body bytes. Local Worker runs lost
+413 responses when an upload remained unread or was cancelled, matching the reported
+[workerd service-binding reset](https://github.com/cloudflare/workerd/issues/7634). Keep the
+1,900,000-byte JSON limit; discarded bytes are never buffered or parsed. Allow at most twice
+that limit, 3,800,000 additional bytes, and two seconds for cleanup. This admits one moderately
+oversized upload while bounding each rejected request's extra network work and wait. It also
+protects early authentication, origin and media-type responses. Beyond either cleanup budget,
+cancel the stream; affected runtimes can still lose the response, but no mutation is applied.
+An unsettled cancellation acknowledgement cannot extend the cleanup deadline.
+Do not drain arbitrary uploads to EOF or retry a rejected POST to conceal a transport failure.

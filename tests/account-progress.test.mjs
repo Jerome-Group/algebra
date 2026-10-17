@@ -241,3 +241,35 @@ test("an originating-account mismatch rejects before database access even when s
   assert.equal((await response.json()).code, "account_changed");
   assert.match(response.headers.get("cache-control"), /private, no-store/);
 });
+
+test("rejected uploads cancel beyond the discard byte and time budgets", async (t) => {
+  for (const [name, firstChunkBytes, cancellationStalls] of [
+    ["byte budget", domain.accountByteLimit * 2 + 1, false],
+    ["stalled upload and cancellation", 1, true],
+  ])
+    await t.test(name, { timeout: 5000 }, async () => {
+      let cancelled = false;
+      const body = new ReadableStream({
+        start(controller) {
+          controller.enqueue(new Uint8Array(firstChunkBytes));
+        },
+        cancel() {
+          cancelled = true;
+          if (cancellationStalls) return new Promise(() => {});
+        },
+      });
+      const response = await handleAccountProgress({
+        request: new Request("https://algebra.example/api/progress", {
+          method: "POST",
+          body,
+          duplex: "half",
+        }),
+        user: null,
+        db: undefined,
+        registry,
+      });
+      assert.equal(response.status, 401);
+      assert.equal(cancelled, true);
+      assert.match(response.headers.get("cache-control"), /private, no-store/);
+    });
+});

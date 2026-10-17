@@ -719,7 +719,7 @@
     },
     {
       "file": "docs/adr/0008-keep-account-learning-state-in-one-revisioned-record.md",
-      "sha256": "1567474d33204191762548310fe3e1c1b89ca2ac56c71fc23edec3446e1035e6"
+      "sha256": "275bf2a5bd6156ed076277390ce0a9c1b85be0e4aa819aa4b58bf65a0348232a"
     },
     {
       "file": "docs/agents/acceptance-criteria.md",
@@ -895,7 +895,7 @@
     },
     {
       "file": "lib/algebra/account-server.ts",
-      "sha256": "9e8cbbf97367e0d6fef3a8c819e164e70be1ed2ffa2bdeefece2a921f13fa404"
+      "sha256": "b47b7100e8b4e5e29b899f271378a4e47e0a006617c4c4db75d5124413389da5"
     },
     {
       "file": "lib/algebra/account-store.ts",
@@ -1155,7 +1155,7 @@
     },
     {
       "file": "tests/account-progress.test.mjs",
-      "sha256": "c7ebf98d65287e8f00f6f3bd1119cca575fcd6251d8658eef4d0eefebf3fec20"
+      "sha256": "08779d360f5d64f27b8463bc9e1214eb3573ca1e3404d8e32e9ea8b2140557ba"
     },
     {
       "file": "tests/account-store.test.mjs",
@@ -1175,7 +1175,7 @@
     },
     {
       "file": "tests/browser/account-progress.spec.mjs",
-      "sha256": "4d79f8ec8ea69edede9325363eb728375eade851142b323ba7663e7dfbd2290e"
+      "sha256": "9aecfde85af1562fc2614b2b74a496837dc06ffe194dfb60a6eaf748e498ffdb"
     },
     {
       "file": "tests/browser/agent-cli.spec.mjs",

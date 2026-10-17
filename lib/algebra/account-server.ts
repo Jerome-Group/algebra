@@ -78,15 +78,17 @@ async function boundedBody(request: Request): Promise<unknown> {
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
   let length = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    length += value.byteLength;
-    if (length > accountByteLimit) {
-      await reader.cancel();
-      throw new RangeError("Request exceeds the account size limit.");
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      length += value.byteLength;
+      if (length > accountByteLimit)
+        throw new RangeError("Request exceeds the account size limit.");
+      chunks.push(value);
     }
-    chunks.push(value);
+  } finally {
+    reader.releaseLock();
   }
   const bytes = new Uint8Array(length);
   let position = 0;
@@ -95,6 +97,38 @@ async function boundedBody(request: Request): Promise<unknown> {
     position += chunk.byteLength;
   }
   return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
+}
+
+async function discardRequestRemainder(request: Request) {
+  const body = request.body;
+  if (!body || body.locked) return;
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const deadline = new Promise<void>((resolve) => {
+    timer = setTimeout(() => {
+      controller.abort();
+      resolve();
+    }, 2000);
+  });
+  let discardedBytes = 0;
+  try {
+    await Promise.race([
+      body
+        .pipeTo(
+          new WritableStream<Uint8Array>({
+            write(chunk) {
+              discardedBytes += chunk.byteLength;
+              if (discardedBytes > accountByteLimit * 2) controller.abort();
+            },
+          }),
+          { signal: controller.signal },
+        )
+        .catch(() => {}),
+      deadline,
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function fingerprint(mutation: AccountMutation) {
@@ -107,17 +141,29 @@ async function fingerprint(mutation: AccountMutation) {
   ).join("");
 }
 
-export async function handleAccountProgress({
-  request,
-  user,
-  db,
-  registry,
-}: {
+type AccountRequest = {
   request: Request;
   user: ChatGPTUser | null;
   db: D1Database | undefined;
   registry: AssessmentRegistry;
-}): Promise<Response> {
+};
+
+export async function handleAccountProgress(
+  input: AccountRequest,
+): Promise<Response> {
+  try {
+    return await respondToAccountProgress(input);
+  } finally {
+    await discardRequestRemainder(input.request);
+  }
+}
+
+async function respondToAccountProgress({
+  request,
+  user,
+  db,
+  registry,
+}: AccountRequest): Promise<Response> {
   if (request.method === "GET" && !user)
     return personalResponse({ kind: "guest" });
   if (!user)

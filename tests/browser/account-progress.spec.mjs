@@ -133,18 +133,29 @@ test.describe("local built Worker and real D1 with synthetic trusted Sites heade
         })
       ).status(),
     ).toBe(415);
-    expect(
-      (
-        await request.post("/api/progress", {
-          headers: {
-            ...headers(owner),
-            Origin: new URL(baseURL).origin,
-            "Content-Type": "application/json",
-          },
-          data: " ".repeat(1_900_001),
-        })
-      ).status(),
-    ).toBe(413);
+    for (const [bytes, extraHeaders, expectedStatus] of [
+      [1_900_001, headers(owner), 413],
+      [3_000_000, headers(owner), 413],
+      [3_000_000, {}, 401],
+      [
+        3_000_000,
+        { ...headers(owner), Origin: "https://different.example" },
+        403,
+      ],
+      [3_000_000, { ...headers(owner), "Content-Type": "text/plain" }, 415],
+    ])
+      expect(
+        (
+          await request.post("/api/progress", {
+            headers: {
+              Origin: new URL(baseURL).origin,
+              "Content-Type": "application/json",
+              ...extraHeaders,
+            },
+            data: " ".repeat(bytes),
+          })
+        ).status(),
+      ).toBe(expectedStatus);
     expect((await state(request, owner)).revision).toBe(0);
     await page.goto(`/#${lessonId}`);
     await expect(page.locator("#lesson-heading")).toBeVisible();
