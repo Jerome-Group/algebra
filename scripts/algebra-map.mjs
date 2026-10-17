@@ -222,169 +222,13 @@ function componentInventory() {
     });
 }
 
-export const verificationLayers = [
-  "map",
-  "math",
-  "render",
-  "browser",
-  "types",
-  "build",
-  "engineering",
-  "dependencies",
-  "all",
-];
-
-export const actionKinds = [
-  "button",
-  "textbox",
-  "searchbox",
-  "combobox",
-  "checkbox",
-  "radio",
-  "slider",
-  "spinbutton",
-];
-
-const actionSchema = {
-  type: "object",
-  required: ["label", "kind"],
-  properties: {
-    label: { type: "string" },
-    kind: { enum: actionKinds },
-    value: { type: ["string", "number"] },
-  },
-};
-export const commands = [
-  {
-    name: "help",
-    arguments: [],
-    prerequisites: [],
-    reads: ["command contracts"],
-    writes: [],
-  },
-  {
-    name: "map",
-    arguments: ["--write (regenerate tracked map)"],
-    prerequisites: ["Node 24", "installed dependencies"],
-    reads: ["catalogue", "component source"],
-    writes: ["feature-map.json only with --write"],
-  },
-  {
-    name: "list",
-    arguments: ["--query text"],
-    prerequisites: [],
-    reads: ["lesson metadata"],
-    writes: [],
-  },
-  {
-    name: "lesson",
-    arguments: ["lesson ID or alias"],
-    prerequisites: ["known lesson"],
-    reads: ["lesson content", "teaching metadata", "laboratory contract"],
-    writes: [],
-  },
-  {
-    name: "prerequisites",
-    arguments: ["lesson ID or alias"],
-    prerequisites: ["known lesson"],
-    reads: ["transitive prerequisite graph"],
-    writes: [],
-  },
-  {
-    name: "verify",
-    arguments: [
-      `--layer ${verificationLayers.join("|")}`,
-      "--evidence path",
-      "--shard i/n (browser layer only; partial suite coverage)",
-      "--url origin (external browser verification server)",
-      "--built (standalone browser uses production Worker); all always uses built Worker unless --url",
-    ],
-    prerequisites: [
-      "installed dependencies",
-      "production build for render",
-      "Playwright Chromium for browser",
-      "npm registry access for dependencies or all",
-    ],
-    reads: [
-      "source",
-      "built artifact",
-      "isolated browser",
-      "dependency advisories",
-    ],
-    writes: [
-      "dist/ production artifacts and .wrangler/ build cache for build, engineering or all",
-      "tsconfig.tsbuildinfo for types or all",
-      "evidence file when requested",
-      "ignored browser evidence",
-      "isolated browser storage",
-    ],
-  },
-  {
-    name: "inspect",
-    arguments: [
-      "lesson ID",
-      "--url origin",
-      "--action JSON",
-      "--actions JSON-array",
-    ],
-    prerequisites: ["running app", "Playwright Chromium", "known lesson"],
-    reads: ["rendered controls", "mathematical output"],
-    writes: [
-      "navigation and optional action in fresh disposable browser context",
-    ],
-  },
-].map((command) => ({
-  ...command,
-  prerequisites: [
-    ...new Set(["Node 24", "installed dependencies", ...command.prerequisites]),
-  ],
-  inputSchema: {
-    type: "object",
-    properties: {
-      id: {
-        type: "string",
-        description: "Lesson ID or alias for lesson, prerequisites and inspect",
-      },
-      query: {
-        type: "string",
-        description: "Case-insensitive lesson search for list",
-      },
-      layer: {
-        type: "string",
-        enum: verificationLayers,
-      },
-      url: {
-        type: "string",
-        format: "uri",
-        description:
-          "Application origin for isolated inspect or external browser verification",
-      },
-      action: actionSchema,
-      actions: {
-        type: "array",
-        items: actionSchema,
-        description:
-          "Replay exact labelled UI actions in one fresh isolated context",
-      },
-      write: { type: "boolean", description: "Explicitly regenerate map file" },
-      shard: {
-        type: "string",
-        pattern: "^[1-9][0-9]*/[1-9][0-9]*$",
-        description:
-          "Browser layer only; positive safe integers i/n with i <= n; verifies only this shard",
-      },
-      built: {
-        type: "boolean",
-        description: "Standalone browser checks against already-built Worker",
-      },
-      evidence: {
-        type: "string",
-        description: "Optional output evidence path",
-      },
-    },
-    additionalProperties: false,
-  },
-}));
+export {
+  commands,
+  actionKinds,
+  verificationLayers,
+} from "./algebra-contract.mjs";
+import { commands, featureGroups } from "./algebra-contract.mjs";
+import { verificationGroups } from "./algebra-features.mjs";
 
 export function buildMap() {
   const lessons = json("lessons"),
@@ -538,6 +382,14 @@ export function buildMap() {
       ],
       "diagram-reading": ["transient diagram size", "local horizontal scroll"],
     }[id],
+    verification: verificationGroups
+      .filter((group) => group.featureIds.includes(id))
+      .map(({ id, sources, journeys, assertions }) => ({
+        group: id,
+        sources,
+        journeys,
+        assertions,
+      })),
     evidence: "source-inspection",
   }));
   return {
@@ -563,6 +415,7 @@ export function buildMap() {
         "CLI verify JSON includes executed checks, exit status, artifact hashes and source snapshot digest. CI retains those results and Playwright evidence; inspect them alongside this inventory.",
     },
     features,
+    verificationGroups: structuredClone(verificationGroups),
     commands,
     browserTools: browserToolInventory(),
     components,
@@ -679,7 +532,7 @@ export function buildMap() {
   };
 }
 
-export function validateMap(map) {
+export function validateMap(map, { group: selectedGroup } = {}) {
   const errors = [],
     ids = new Set(map.lessons.map((lesson) => lesson.id));
   const visit = (id, trail = []) => {
@@ -713,5 +566,83 @@ export function validateMap(map) {
   for (const unit of map.units)
     for (const id of unit.lessons)
       if (!ids.has(id)) errors.push(`Unknown unit member ${unit.id} -> ${id}`);
+  const groups = map.verificationGroups ?? [];
+  const featureIds = new Set(map.features.map((feature) => feature.id));
+  const grouped = groups.flatMap((group) => group.featureIds);
+  for (const id of featureGroups)
+    if (groups.filter((group) => group.id === id).length !== 1)
+      errors.push(`Missing or duplicate verification group ${id}`);
+  for (const group of groups) {
+    if (selectedGroup && group.id !== selectedGroup) continue;
+    if (!featureGroups.includes(group.id))
+      errors.push(`Unknown verification group ${group.id}`);
+    if (
+      !group.featureIds.length ||
+      !group.sources.length ||
+      !group.journeys.length
+    )
+      errors.push(`Empty verification links ${group.id}`);
+    for (const id of group.featureIds)
+      if (!featureIds.has(id))
+        errors.push(`Unknown feature reference ${group.id} -> ${id}`);
+    for (const file of [...group.sources, ...group.journeys]) {
+      if (
+        !map.sources.some((source) => source.file === file) ||
+        !fs.existsSync(path.join(root, file))
+      )
+        errors.push(`Missing verification path ${group.id} -> ${file}`);
+    }
+    for (const file of group.journeys) {
+      if (!/^tests\/browser\/[^/]+\.spec\.mjs$/.test(file))
+        errors.push(`Invalid journey path ${group.id} -> ${file}`);
+      else if (fs.existsSync(path.join(root, file))) {
+        const source = ts.createSourceFile(
+          file,
+          read(file),
+          ts.ScriptTarget.Latest,
+          true,
+          ts.ScriptKind.JS,
+        );
+        let executable = false;
+        const visit = (node) => {
+          if (
+            ts.isCallExpression(node) &&
+            node.expression.getText(source) === "test"
+          )
+            executable = true;
+          ts.forEachChild(node, visit);
+        };
+        visit(source);
+        if (!executable)
+          errors.push(`Journey has no executable tests ${group.id} -> ${file}`);
+      }
+    }
+  }
+  for (const feature of map.features) {
+    if (grouped.filter((id) => id === feature.id).length !== 1)
+      errors.push(`Missing or duplicate feature coverage ${feature.id}`);
+    const group = groups.find((group) => group.featureIds.includes(feature.id));
+    if (selectedGroup && group?.id !== selectedGroup) continue;
+    if (!group?.sources.includes(feature.component))
+      errors.push(
+        `Feature source is not linked ${feature.id} -> ${feature.component}`,
+      );
+    if (
+      JSON.stringify(feature.verification ?? []) !==
+      JSON.stringify(
+        group
+          ? [
+              {
+                group: group.id,
+                sources: group.sources,
+                journeys: group.journeys,
+                assertions: group.assertions,
+              },
+            ]
+          : [],
+      )
+    )
+      errors.push(`Feature verification links differ ${feature.id}`);
+  }
   return errors;
 }
