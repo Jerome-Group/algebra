@@ -6,26 +6,6 @@
       "sha256": "474a9bc3d4cbf3abb19164cf895542675f0c20625ebd1e23b117caab0bfbd78d"
     },
     {
-      "file": ".github/dependabot.yml",
-      "sha256": "1f05bfe7f7e193cce3b6a8b1aaead383720edd99d94e0246d47442555ebd153f"
-    },
-    {
-      "file": ".github/workflows/auto-merge-conformance-pin.yml",
-      "sha256": "12db3a854c46dde75eb840becb3e5d74cb5f940978efaa8a568c3904a97f6a84"
-    },
-    {
-      "file": ".github/workflows/ci.yml",
-      "sha256": "e05ee2eef8b6ed68ea33e462fcb1890b3f4426a8783b1f9882abd7c347e0232c"
-    },
-    {
-      "file": ".github/workflows/conformance.yml",
-      "sha256": "ca56108a7abe47abb179d1ef9acac1f37459ffb6c2bc9c8664a0a0d61c085ba2"
-    },
-    {
-      "file": ".github/workflows/stamp-issue-labels.yml",
-      "sha256": "eb235cb139bb4f5f2455d059ab77cf15226d3856230bb48feaf90aaece89041d"
-    },
-    {
       "file": ".gitignore",
       "sha256": "82761077319b6e6d20307d5b97ee981c4decce6d34caf3287f2423183174a57d"
     },
@@ -710,6 +690,10 @@
       "sha256": "cc5956c75d2d5947088488475dd69d719e4955376e7247c4dc04cf33dda0a5a7"
     },
     {
+      "file": "docs/adr/0007-scope-learning-map-away-from-forge-metadata.md",
+      "sha256": "6f99f8200caf286af980933dc5661da4b522c5d9903a154f07fdc906a05af536"
+    },
+    {
       "file": "docs/agents/acceptance-criteria.md",
       "sha256": "35199255df1658038e66e122845ef6248ae713c91914483ebf6ceb9084e651c3"
     },
@@ -1083,7 +1067,7 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "afa1208f1b077937091d5c75a347da112c174a6864d13c9d98dacfd2fc2b4d7c"
+      "sha256": "0de791960f1af9b426036d1fd6afeb6f12038411fa9a57c0b571970b8bd2454b"
     },
     {
       "file": "scripts/algebra.mjs",
@@ -1235,7 +1219,7 @@
     },
     {
       "file": "tests/feature-map.test.mjs",
-      "sha256": "2a29191dfa76f7fec8a26bf28fd47a8b458a5c7d0e43750eedfee9f2465d889c"
+      "sha256": "11c66e8102fe84c2e180f463bd31047e49719a734209bbda5ff6ff9bffbc692b"
     },
     {
       "file": "tests/fixed-colorings.test.mjs",
