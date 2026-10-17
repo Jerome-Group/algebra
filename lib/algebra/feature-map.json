@@ -19,7 +19,7 @@
     },
     {
       "file": ".prettierignore",
-      "sha256": "b370ce555d02d4f70fb5d0f2e1b0feffa64faba15d585e9ba852d21571e9d790"
+      "sha256": "1cb1ea4629db46ec6dd7328e7fdcbab2da5057b3f10a27c828aa83a6fceb2483"
     },
     {
       "file": "AGENTS.md",
@@ -466,10 +466,6 @@
       "sha256": "b7ea0dda3903d972c186f739e23da61f547bc83b5a0bf13b16856577846d5fc3"
     },
     {
-      "file": "components/ui/chart.tsx",
-      "sha256": "45aa5ea4a386f4fb5b8869ff4bab3a08cf89255190ee322043baf84c3e950b6a"
-    },
-    {
       "file": "components/ui/checkbox.tsx",
       "sha256": "b23ab9d4deeedf2ac8f512c368361ede681aa383437ef48563a6f9b7dbe95f27"
     },
@@ -578,10 +574,6 @@
       "sha256": "31c350309ff5d3034e6ecf1b0eda75ba8855bdbf987fc7ad6d71f0ef07c5a447"
     },
     {
-      "file": "components/ui/progress.tsx",
-      "sha256": "c8c26e8f5f041c3cdf4915347dc1d9c022f9448f149990fadcaf303e952fa57d"
-    },
-    {
       "file": "components/ui/radio-group.tsx",
       "sha256": "fe5ce39636d0818c2bf9c4eebddff893d1225fa2c81b5fa4bb8cbb39a8c913ce"
     },
@@ -604,10 +596,6 @@
     {
       "file": "components/ui/sheet.tsx",
       "sha256": "63863cf2df8f8973e52b3459ac9bdbf81be1262dbc70eb53d5271ffb03488e16"
-    },
-    {
-      "file": "components/ui/sidebar.tsx",
-      "sha256": "4a8d73e7730a2b1fcecfca31299ed26db65c2307b84197a59c6ec7c01c7ad28e"
     },
     {
       "file": "components/ui/skeleton.tsx",
@@ -839,7 +827,7 @@
     },
     {
       "file": "eslint.config.mjs",
-      "sha256": "c847c5c5e7a099c9b2a51d63357b4bfcfb8c0c6c0e92e9af7a023893ef17593a"
+      "sha256": "db055d79c8b03b012f0acf4ec957471253d72c6ff49c0aab9404d4d38b06e6a0"
     },
     {
       "file": "examples/d1/app/api/notes/route.ts",
@@ -848,10 +836,6 @@
     {
       "file": "examples/d1/db/schema.ts",
       "sha256": "7b84082968fd047d76b36c46ec8f1ecfff8fd3710e62eae52d3e48fb7b4a2e98"
-    },
-    {
-      "file": "hooks/use-mobile.ts",
-      "sha256": "ad0936f84f1df79d3697bfbff9c18f8ad58431c1cbaf2359c6a853b0fcc9f28b"
     },
     {
       "file": "hooks/use-navigation-focus.ts",
@@ -1027,11 +1011,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "323d340075351d7b82ea5f02d0bdb89ed186210463bf23d82702f373cd9c17f8"
+      "sha256": "aa3da63ffbedf0bde42e0cc9bdc0a4d4cdb0491623a864c5f1c76ae26cc247f7"
     },
     {
       "file": "package.json",
-      "sha256": "36496d7eab8ac8e15ff187df2fdcff4fb884fcb7bce9fb37f4e645610cdabe3f"
+      "sha256": "61ab1f30dfc185729936cf34e1f1943fc5e633396c6a36e584fc13bc6ebe4e13"
     },
     {
       "file": "playwright.config.ts",
@@ -1219,7 +1203,7 @@
     },
     {
       "file": "tests/feature-map.test.mjs",
-      "sha256": "11c66e8102fe84c2e180f463bd31047e49719a734209bbda5ff6ff9bffbc692b"
+      "sha256": "66ec0d879834771404bcd962e00cc803899b104ffaa3d0b4724be3dfc44ab606"
     },
     {
       "file": "tests/fixed-colorings.test.mjs",
@@ -1323,7 +1307,7 @@
     },
     {
       "file": "tests/ui-components.test.mjs",
-      "sha256": "900187b381560f00b4ffef4955c4eb63d17b09c94b048a62ef3b796f93441250"
+      "sha256": "f9867aa28c15dd03de5673ddf50593d6dab2fe3da0734801fb451f29f54003b9"
     },
     {
       "file": "tests/ureca-direct-products.test.mjs",
