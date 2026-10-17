@@ -3,7 +3,7 @@
   "sources": [
     {
       "file": ".agents/skills/verify/SKILL.md",
-      "sha256": "23d470a7bf08d10728b49e24c8ab0132829cfa003f76ecf40695ad69474cef95"
+      "sha256": "3ca9a216cc27469c9d4feeda4df93b7981349f9900efd9eb9a63cb7b776aee14"
     },
     {
       "file": ".agents/skills/verify/features/README.md",
@@ -15,7 +15,7 @@
     },
     {
       "file": ".agents/skills/verify/features/agent-access.md",
-      "sha256": "a33a125dad76a9a7c095f8bf47f9d26508bf64e46cb058bd7f75802e186928b7"
+      "sha256": "09e9e87b64f60dc9b649a287d11c4ed587385fc0fbd7b58810c40ccf0563f9d6"
     },
     {
       "file": ".agents/skills/verify/features/discovery.md",
@@ -23,7 +23,7 @@
     },
     {
       "file": ".agents/skills/verify/features/guided-learning.md",
-      "sha256": "8724c09650b163060d73a75a72f8ddc31336e011c4b12db341fff2ffa22bdd53"
+      "sha256": "ade258e9e42ffc4141037a04f1d02e43ae3097a0fe91318be7160fdb510e7999"
     },
     {
       "file": ".agents/skills/verify/features/laboratories.md",
