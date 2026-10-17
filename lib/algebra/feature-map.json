@@ -1087,7 +1087,7 @@
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "93fd143ccbbed89fca247d6fe9aebbd0e97443d8a5ac01b53b48ef51592894ba"
+      "sha256": "bef47d315841c44d1fc2df1b432888c131437ef0272f4015e96d307c4c59fa2d"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1804,6 +1804,8 @@
           "group": "agent-access",
           "sources": [
             "components/algebra/WebMCP.tsx",
+            "components/algebra/InterfaceControls.ts",
+            "components/algebra/LaboratoryControls.tsx",
             "scripts/algebra.mjs",
             "scripts/algebra-contract.mjs",
             "scripts/algebra-map.mjs",
@@ -1813,14 +1815,15 @@
             "scripts/algebra-server.mjs",
             "scripts/algebra-playwright-setup.mjs",
             "app/api/build/route.ts",
-            "playwright.config.ts"
+            "playwright.config.ts",
+            "vite.config.ts"
           ],
           "journeys": [
             "tests/browser/webmcp.spec.mjs",
             "tests/browser/agent-cli.spec.mjs"
           ],
           "assertions": [
-            "Declared browser tools execute",
+            "Injected WebMCP controls and interactions execute",
             "CLI discovers and drives exact accessible controls",
             "Runtime build identity is observed separately from source matching"
           ]
@@ -2122,6 +2125,8 @@
       "featureIds": ["webmcp"],
       "sources": [
         "components/algebra/WebMCP.tsx",
+        "components/algebra/InterfaceControls.ts",
+        "components/algebra/LaboratoryControls.tsx",
         "scripts/algebra.mjs",
         "scripts/algebra-contract.mjs",
         "scripts/algebra-map.mjs",
@@ -2131,14 +2136,15 @@
         "scripts/algebra-server.mjs",
         "scripts/algebra-playwright-setup.mjs",
         "app/api/build/route.ts",
-        "playwright.config.ts"
+        "playwright.config.ts",
+        "vite.config.ts"
       ],
       "journeys": [
         "tests/browser/webmcp.spec.mjs",
         "tests/browser/agent-cli.spec.mjs"
       ],
       "assertions": [
-        "Declared browser tools execute",
+        "Injected WebMCP controls and interactions execute",
         "CLI discovers and drives exact accessible controls",
         "Runtime build identity is observed separately from source matching"
       ]

@@ -113,6 +113,8 @@ export const verificationGroups = [
     featureIds: ["webmcp"],
     sources: [
       "components/algebra/WebMCP.tsx",
+      "components/algebra/InterfaceControls.ts",
+      "components/algebra/LaboratoryControls.tsx",
       "scripts/algebra.mjs",
       "scripts/algebra-contract.mjs",
       "scripts/algebra-map.mjs",
@@ -123,13 +125,14 @@ export const verificationGroups = [
       "scripts/algebra-playwright-setup.mjs",
       "app/api/build/route.ts",
       "playwright.config.ts",
+      "vite.config.ts",
     ],
     journeys: [
       "tests/browser/webmcp.spec.mjs",
       "tests/browser/agent-cli.spec.mjs",
     ],
     assertions: [
-      "Declared browser tools execute",
+      "Injected WebMCP controls and interactions execute",
       "CLI discovers and drives exact accessible controls",
       "Runtime build identity is observed separately from source matching",
     ],
