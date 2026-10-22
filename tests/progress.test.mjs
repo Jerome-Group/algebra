@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { createServer } from "vite";
 const vite = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   appType: "custom",
   server: { middlewareMode: true, hmr: false, ws: false },
 });

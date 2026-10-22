@@ -6,6 +6,7 @@ import { group, normal, subgroups, order } from "../lib/algebra/engine.ts";
 import { createServer } from "vite";
 const vite = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   appType: "custom",
   server: { middlewareMode: true, hmr: false, ws: false },
 });
