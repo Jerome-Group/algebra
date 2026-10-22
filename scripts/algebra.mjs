@@ -418,7 +418,7 @@ try {
           })),
       actionKinds,
       output:
-        "Use help --command NAME for exact schemas. One JSON envelope on stdout. Failure exits 1. Input errors have code INVALID_INPUT and cause no effects. Doctor is read-only. Local browser targets require a live owner marker. Launch returns --owner; stop retains evidence. Feature and shard selection are partial coverage. Unknown runtime identity never establishes a source match.",
+        "Use help --command NAME for exact schemas. One JSON envelope on stdout. Failure exits 1. Input errors have code INVALID_INPUT and cause no effects. Doctor is read-only. Local browser targets require a live owner marker. Launch returns --owner; stop retains evidence. For a full release, verify --layer all --port PORT builds, launches and stops its own production Worker. Full verification rejects --owner, --url, ALGEBRA_LOCAL_OWNER and ALGEBRA_TEST_ORIGIN. Existing targets require --layer browser. Feature and shard selection are partial coverage. Unknown runtime identity never establishes a source match.",
       errors: [
         "INVALID_INPUT",
         "UNKNOWN_LESSON",

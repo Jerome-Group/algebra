@@ -3,7 +3,7 @@
   "sources": [
     {
       "file": ".agents/skills/verify/SKILL.md",
-      "sha256": "3ca9a216cc27469c9d4feeda4df93b7981349f9900efd9eb9a63cb7b776aee14"
+      "sha256": "571112d71b543d428f192c57179df52de35759c5e27778a0b34f4bbbbbff1032"
     },
     {
       "file": ".agents/skills/verify/features/README.md",
@@ -1119,7 +1119,7 @@
     },
     {
       "file": "scripts/algebra-contract.mjs",
-      "sha256": "73aca06cc1d94317e016205373a1cb9e5004542be5c26f7227efb61b49f81ca6"
+      "sha256": "1e6e76da7199f73ab48374593a0e2512ead0183f52817157ca54d15d02de7b8a"
     },
     {
       "file": "scripts/algebra-features.mjs",
@@ -1147,7 +1147,7 @@
     },
     {
       "file": "scripts/algebra.mjs",
-      "sha256": "7624ab20e620d0a80d5747597beded1667a8149706e29d0d9f911a2ecbef2a2b"
+      "sha256": "a120e4e56b2391b857d56fc91d751df1cb815acf66c73414575f13d05248d86c"
     },
     {
       "file": "scripts/build-verified.sh",
@@ -1171,7 +1171,7 @@
     },
     {
       "file": "tests/agent-cli.test.mjs",
-      "sha256": "98eea5a790dc106fec18d5006bc087879fa182b9d2ef658c7122f0f2037de228"
+      "sha256": "9d5fdffa074915b292619cab79843349aa5c9e5552d6cb38d99d615499eb9d3b"
     },
     {
       "file": "tests/algebra.test.mjs",
@@ -2730,7 +2730,8 @@
               "dependencies",
               "all"
             ],
-            "default": "map"
+            "default": "map",
+            "description": "all builds, launches and stops its own production Worker. It rejects --owner, --url, ALGEBRA_LOCAL_OWNER and ALGEBRA_TEST_ORIGIN. Use --port for an unused local port. Existing targets require browser."
           },
           "feature": {
             "type": "string",

@@ -55,8 +55,8 @@ accessible labels using `--actions`. `help --command inspect` gives the full act
 Use `help` for compact discovery and `help --command NAME` for one exact schema. Unknown flags,
 bad IDs and malformed action shapes fail before effects. Runtime UI rejection can follow navigation
 or earlier actions in the disposable context. `--feature` and `--shard` are partial coverage.
-For a release, run the required complete gates with `verify --layer all`; a feature pass does
-not replace them. External `--url` targets require separate authorization for personal writes.
+For a release, run the [full release](#full-release) pass after cleanup. A feature pass does
+not replace it. External `--url` targets require separate authorization for personal writes.
 
 ## Evidence
 
@@ -81,6 +81,23 @@ test -s "$ALGEBRA_PROOF/discovery.json"
 Run cleanup after failed iterations too. Stop validates the marker's process identity; never kill
 by process name or remove another run's state. Confirm `ok: true`, the recorded origin no longer
 answers, and every result and referenced artifact still exists. Retain proof and failed attempts.
+
+## Full release
+
+Complete cleanup of the manually launched pass first. Unset `ALGEBRA_LOCAL_OWNER` and
+`ALGEBRA_TEST_ORIGIN` before the full pass.
+
+```sh
+mkdir -p outputs
+ALGEBRA_RELEASE_PROOF=$(mktemp -d "$PWD/outputs/release-XXXXXX")
+unset ALGEBRA_LOCAL_OWNER ALGEBRA_TEST_ORIGIN
+node scripts/algebra.mjs verify --layer all --port 5180 --evidence "$ALGEBRA_RELEASE_PROOF/release.json" > "$ALGEBRA_RELEASE_PROOF/release.stdout.json"
+```
+
+Choose another unused port if needed. Full verification builds, launches its own production
+Worker, runs all gates, then stops that Worker. It rejects `--owner`, `--url`,
+`ALGEBRA_LOCAL_OWNER` and `ALGEBRA_TEST_ORIGIN` before build or evidence effects. Use
+`--layer browser` for an existing target. Require `ok: true` and retained evidence for every gate.
 
 ## Helpers
 

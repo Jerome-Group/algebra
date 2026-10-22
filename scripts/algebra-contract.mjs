@@ -148,7 +148,13 @@ const definitions = [
   {
     name: "verify",
     flags: {
-      layer: { type: "string", enum: verificationLayers, default: "map" },
+      layer: {
+        type: "string",
+        enum: verificationLayers,
+        default: "map",
+        description:
+          "all builds, launches and stops its own production Worker. It rejects --owner, --url, ALGEBRA_LOCAL_OWNER and ALGEBRA_TEST_ORIGIN. Use --port for an unused local port. Existing targets require browser.",
+      },
       feature: {
         type: "string",
         enum: featureGroups,
@@ -335,6 +341,16 @@ export function parseArguments(argv) {
   if (values.owner && (values.built || values.port))
     throw inputError("--owner cannot combine with --built or --port");
   if (name === "verify") {
+    if (
+      values.layer === "all" &&
+      (values.owner ||
+        values.url ||
+        process.env.ALGEBRA_LOCAL_OWNER ||
+        process.env.ALGEBRA_TEST_ORIGIN)
+    )
+      throw inputError(
+        "verify --layer all builds and owns its Worker. Remove --owner, --url, ALGEBRA_LOCAL_OWNER and ALGEBRA_TEST_ORIGIN. Choose an unused --port if needed",
+      );
     if (values.shard || values.feature) {
       if (values.layer !== "browser")
         throw inputError("--shard and --feature require --layer browser");
