@@ -83,7 +83,7 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "6264d132b475ca479b35a2c25c3b5d9f1f964d8ddcf36bd679fbcd4c2f035a3c"
+      "sha256": "bd0cc9c0401c3cf0875a8551c4b5d50bea57064f11d3adcb7f9337127f6b0986"
     },
     {
       "file": "README.md",
@@ -1075,11 +1075,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "62f02d640ff61fd6d8dbeb390901b6ab0c4aac998c014bd4cb667a71b799f955"
+      "sha256": "cd28c71d4193dc5f8687100c3f1ea67dfe492587e545a69ea0177a64225e0bf7"
     },
     {
       "file": "package.json",
-      "sha256": "fb6edf2c5d7a7c01c5f67ebc62b3040a85775bf0f4a79484f39d085787b76363"
+      "sha256": "1edc11b2805d87b8accb6c1944d662fde50b3f1596019de8301741f3a8092702"
     },
     {
       "file": "playwright.config.ts",
