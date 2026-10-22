@@ -7,7 +7,7 @@ files live in `scripts/algebra-features.mjs`. A group pass proves only its execu
 | Feature                                       | User-facing scope                                                               |
 | --------------------------------------------- | ------------------------------------------------------------------------------- |
 | [Discovery](discovery.md)                     | Home, units, laboratories, reference, sources, lessons and concept navigation   |
-| [Guided learning](guided-learning.md)         | Checkpoint feedback, reading stages, proof recall and learning context          |
+| [Guided learning](guided-learning.md)         | Checkpoint feedback, proof recall, argument writing, support and transfer       |
 | [Laboratories](laboratories.md)               | Catalogue entry, diagrams, square actions, representation journeys and recovery |
-| [Accounts and progress](accounts-progress.md) | ChatGPT-owned progress/preferences, explicit legacy import, export and recovery |
+| [Accounts and progress](accounts-progress.md) | Owned progress and arguments, explicit import/export, conflicts and recovery    |
 | [Agent access](agent-access.md)               | CLI discovery, declared interactions, browser tools and build provenance        |
