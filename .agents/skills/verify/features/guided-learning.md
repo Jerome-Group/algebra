@@ -13,9 +13,11 @@ press Check reasoning. Move through the reading stages and use the lesson compas
 ## Driving it with Playwright
 
 Run `node scripts/algebra.mjs verify --layer browser --feature guided-learning --owner "$ALGEBRA_OWNER" --evidence "$ALGEBRA_PROOF/guided-learning.json"`.
-The learning and studio journeys check correct and incorrect feedback, keyboard stages, proof
-recall and heading focus across Back and Forward. Expect unit position and lesson context to
-survive navigation. Use a disposable context for answers; a selected radio alone is not a submission.
+The learning and studio journeys check correct and incorrect feedback, the Prove compass button
+by keyboard, proof recall and heading focus across Back and Forward. For changes to other compass
+destinations, operate each affected button and check that its section receives focus.
+Expect unit position and lesson context to survive navigation. Use a disposable context for answers;
+a selected radio alone is not a submission.
 
 ## Gotchas
 

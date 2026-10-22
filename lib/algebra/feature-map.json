@@ -19,11 +19,11 @@
     },
     {
       "file": ".agents/skills/verify/features/discovery.md",
-      "sha256": "63e0b9aff0adb9025a97d19a6101a4f9a947779bc810ae408b8cab62a80dab0a"
+      "sha256": "2ce0937b6786943d89dcfe0f8f9d32044d79af39c3f3c17ea191b2999d7ac98c"
     },
     {
       "file": ".agents/skills/verify/features/guided-learning.md",
-      "sha256": "ade258e9e42ffc4141037a04f1d02e43ae3097a0fe91318be7160fdb510e7999"
+      "sha256": "eafacdaed9d57ea997a75c82a1c00aef705e3878015098926925fd8d7e0244be"
     },
     {
       "file": ".agents/skills/verify/features/laboratories.md",
@@ -1119,7 +1119,7 @@
     },
     {
       "file": "scripts/algebra-identity.mjs",
-      "sha256": "871b665f6c234f4c101927d039cda0c626ab02d82bc0a22b75e9561fbfeb3e48"
+      "sha256": "f470b2c04c53756ab525c5fd9f029b4f24d4d2b7e0994d2f9b6445b954d87d29"
     },
     {
       "file": "scripts/algebra-map.mjs",
@@ -1163,7 +1163,7 @@
     },
     {
       "file": "tests/agent-cli.test.mjs",
-      "sha256": "51d7ce1ff829edf54969bbbb7d47dc00337a468fd8bf9a81feb79f26abd3638f"
+      "sha256": "98eea5a790dc106fec18d5006bc087879fa182b9d2ef658c7122f0f2037de228"
     },
     {
       "file": "tests/algebra.test.mjs",

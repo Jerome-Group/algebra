@@ -11,6 +11,7 @@ export function buildIdentity(root) {
       const file = path.posix.join(directory, entry.name);
       if (entry.isDirectory()) visit(file);
       else if (
+        entry.name !== ".DS_Store" &&
         !file.endsWith(".tsbuildinfo") &&
         file !== "lib/algebra/feature-map.json" &&
         !/(^|\/)\.env/.test(file)

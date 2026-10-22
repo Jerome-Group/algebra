@@ -265,6 +265,22 @@ test("source identity changes for application, verification and dependency input
   }
 });
 
+test("Finder metadata does not change source identity", () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-identity-"));
+  try {
+    fs.mkdirSync(path.join(fixture, "components"));
+    fs.mkdirSync(path.join(fixture, "lib"));
+    fs.writeFileSync(path.join(fixture, "components/Reader.tsx"), "one");
+    const expected = buildIdentity(fixture);
+    for (const directory of ["components", "lib"]) {
+      fs.writeFileSync(path.join(fixture, directory, ".DS_Store"), "Finder");
+      assert.deepEqual(buildIdentity(fixture), expected);
+    }
+  } finally {
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
+});
+
 test("unowned and stale markers cannot drive or stop local processes", () => {
   assert.throws(
     () =>
