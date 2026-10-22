@@ -83,7 +83,7 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "c7c375b1a7a73c2f83a26ee377a4d7cff4f5908bc543d084b5096e83868f0ecc"
+      "sha256": "6264d132b475ca479b35a2c25c3b5d9f1f964d8ddcf36bd679fbcd4c2f035a3c"
     },
     {
       "file": "README.md",
@@ -883,7 +883,7 @@
     },
     {
       "file": "eslint.config.mjs",
-      "sha256": "db055d79c8b03b012f0acf4ec957471253d72c6ff49c0aab9404d4d38b06e6a0"
+      "sha256": "87a51ae7defb4fd9a4136ca628ce2ad5f3f40438da84642535abaf6560b42b13"
     },
     {
       "file": "examples/d1/app/api/notes/route.ts",
@@ -1394,6 +1394,10 @@
       "sha256": "36acca5d911db1b37b648beb4c4512b36a53958effb7a445252212a8daae5d3f"
     },
     {
+      "file": "tests/source-boundaries.test.mjs",
+      "sha256": "08250f47fdbb034397a97872db5fa4a5ece30f28803923056130d8ee18ad8b8d"
+    },
+    {
       "file": "tests/sylow-workbench.test.mjs",
       "sha256": "3d45ed7d7525c99983357b7c9dbf2c6999c25ae8d1905e09dca6819d0aad3868"
     },
@@ -1419,7 +1423,7 @@
     },
     {
       "file": "tsconfig.json",
-      "sha256": "9ee254b6f6ec1db160069dff8a55ee1bacacaf42f73573ded7a0654dab07e2f3"
+      "sha256": "58f96a9efb848e8ca7bb013a193b5a9a43db540bb135abcde496d303e27cc76a"
     },
     {
       "file": "vendor/shadcn-tailwind-4.13.0.LICENSE.md",
@@ -22971,6 +22975,7 @@
     "tests/quotients.test.mjs",
     "tests/review-regressions.test.mjs",
     "tests/semidirect-product.test.mjs",
+    "tests/source-boundaries.test.mjs",
     "tests/sylow-workbench.test.mjs",
     "tests/teaching-semantic.test.mjs",
     "tests/tensor-balancing.test.mjs",

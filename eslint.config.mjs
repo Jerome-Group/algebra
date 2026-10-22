@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     ".wrangler/**",
     "outputs/**",
+    "work/**",
   ]),
   {
     files: ["components/ui/**/*.{ts,tsx}"],
