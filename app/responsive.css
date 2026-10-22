@@ -126,28 +126,11 @@
     padding: 0 20px;
     gap: 12px;
   }
-  .library-toggle {
-    display: flex;
-    margin-left: auto;
-  }
+
   .header-sources {
     margin-left: 0;
   }
-  .algebra-layout {
-    display: block;
-  }
-  .concept-library {
-    display: none;
-    position: fixed;
-    inset: 82px 0 0;
-    width: 100%;
-    height: calc(100dvh - 82px);
-    z-index: 40;
-    background: #fbfbfd;
-  }
-  .concept-library.is-open {
-    display: flex;
-  }
+
   .concept-main {
     padding: 28px 20px;
   }
@@ -232,9 +215,7 @@
   .concept-main {
     padding: 22px;
   }
-  .algebra-layout {
-    grid-template-columns: 210px minmax(0, 1fr);
-  }
+
   .header-context {
     display: none;
   }
@@ -295,20 +276,6 @@
     width: 28px;
     height: 28px;
   }
-  .header-sources,
-  .library-toggle {
-    font-size: 13px;
-    padding: 6px;
-    gap: 5px;
-  }
-  .algebra-layout {
-    display: block;
-  }
-  .concept-library {
-    top: 56px;
-    height: calc(100vh - 56px);
-    width: 260px;
-  }
   .concept-main {
     padding: 20px 16px;
   }
@@ -362,25 +329,6 @@
   }
 }
 @media (max-width: 1150px) and (min-width: 761px) {
-  .algebra-layout {
-    display: block;
-  }
-  .library-toggle {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  .concept-library {
-    display: none;
-    position: fixed;
-    z-index: 50;
-    left: 0;
-    width: 240px;
-    box-shadow: 10px 0 30px #14151918;
-  }
-  .concept-library.is-open {
-    display: block;
-  }
   .header-context {
     display: none;
   }
@@ -486,12 +434,7 @@
     padding-bottom: 8px;
   }
 }
-@media (max-width: 1150px) {
-  .algebra-app .concept-library {
-    top: var(--algebra-header-height, 100px);
-    height: calc(100dvh - var(--algebra-header-height, 100px));
-  }
-}
+
 .concept-heading > div {
   min-width: 0;
 }

@@ -67,11 +67,14 @@ async function accountView(
   return { kind: "account", user, record };
 }
 
-async function boundedBody(request: Request): Promise<unknown> {
+export async function boundedBody(
+  request: Request,
+  byteLimit = accountByteLimit,
+): Promise<unknown> {
   const announced = request.headers.get("content-length");
   if (
     announced !== null &&
-    (!/^\d+$/.test(announced) || Number(announced) > accountByteLimit)
+    (!/^\d+$/.test(announced) || Number(announced) > byteLimit)
   )
     throw new RangeError("Request exceeds the account size limit.");
   if (!request.body) throw new Error("A JSON body is required.");
@@ -83,7 +86,7 @@ async function boundedBody(request: Request): Promise<unknown> {
       const { done, value } = await reader.read();
       if (done) break;
       length += value.byteLength;
-      if (length > accountByteLimit)
+      if (length > byteLimit)
         throw new RangeError("Request exceeds the account size limit.");
       chunks.push(value);
     }
@@ -99,7 +102,10 @@ async function boundedBody(request: Request): Promise<unknown> {
   return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
 }
 
-async function discardRequestRemainder(request: Request) {
+export async function discardRequestRemainder(
+  request: Request,
+  byteLimit = accountByteLimit,
+) {
   const body = request.body;
   if (!body || body.locked) return;
   const controller = new AbortController();
@@ -118,7 +124,7 @@ async function discardRequestRemainder(request: Request) {
           new WritableStream<Uint8Array>({
             write(chunk) {
               discardedBytes += chunk.byteLength;
-              if (discardedBytes > accountByteLimit * 2) controller.abort();
+              if (discardedBytes > byteLimit * 2) controller.abort();
             },
           }),
           { signal: controller.signal },

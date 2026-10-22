@@ -6,6 +6,7 @@ import {
   useMemo,
   useSyncExternalStore,
 } from "react";
+import { ArgumentProvider } from "./ArgumentContext";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
   assessmentRegistry,
@@ -93,7 +94,7 @@ export function LearningProgressProvider({
         exportRecords: store.exportRecords,
       }}
     >
-      {children}
+      <ArgumentProvider store={store.arguments}>{children}</ArgumentProvider>
     </ProgressContext.Provider>
   );
 }

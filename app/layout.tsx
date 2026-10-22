@@ -4,6 +4,7 @@ import "./algebra.css";
 import "./laboratories.css";
 import "./responsive.css";
 import "./studio.css";
+import "./argument.css";
 import "katex/dist/katex.min.css";
 
 const title = "Abstract Algebra";

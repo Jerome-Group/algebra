@@ -17,6 +17,7 @@
   background: #122d3e;
   color: white;
   padding: 14px 28px;
+  flex-wrap: wrap;
   border-bottom: 0;
 }
 .wordmark {
@@ -68,9 +69,7 @@
   border: 1px solid var(--studio-line);
   overflow-wrap: anywhere;
 }
-.algebra-layout {
-  grid-template-columns: 245px minmax(0, 1fr);
-}
+
 .concept-library {
   top: var(--algebra-header-height, 70px);
   height: calc(100dvh - var(--algebra-header-height, 70px));
@@ -509,9 +508,7 @@ summary:focus-visible {
   .studio-start {
     gap: 18px;
   }
-  .algebra-layout {
-    grid-template-columns: 220px minmax(0, 1fr);
-  }
+
   .concept-main {
     padding: 24px;
   }
@@ -535,13 +532,7 @@ summary:focus-visible {
   .wordmark {
     font-size: 18px;
   }
-  .algebra-layout {
-    display: block;
-  }
-  .concept-library {
-    top: var(--algebra-header-height, 110px);
-    height: calc(100dvh - var(--algebra-header-height, 110px));
-  }
+
   .mode-layout .concept-main,
   .concept-main {
     padding: 24px 18px 60px;

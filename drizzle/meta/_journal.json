@@ -8,6 +8,13 @@
       "when": 1792263244151,
       "tag": "0000_account_progress",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792699484163,
+      "tag": "0001_argument_records",
+      "breakpoints": true
     }
   ]
 }

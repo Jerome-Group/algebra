@@ -1,3 +1,4 @@
+import { argumentStore } from "./argument-store";
 import {
   accountResponseSchema,
   applyAccountOperation,
@@ -103,6 +104,7 @@ export function accountProgressStore({
     delivery: Delivery | null;
   } | null = null;
   let transmitting = false;
+  let argumentOwner: string | null | undefined;
   const listeners = new Set<() => void>();
   const emit = (patch: Partial<Snapshot>) => {
     snapshot = { ...snapshot, ...patch };
@@ -127,7 +129,11 @@ export function accountProgressStore({
     };
     listeners.forEach((listener) => listener());
   };
-  const clearPrivate = () => {
+  const clearPrivate = (clearArguments = true) => {
+    if (clearArguments) {
+      argumentOwner = undefined;
+      argumentsResource.clear();
+    }
     generation++;
     guest = emptyAccountDocument();
     drafts = [];
@@ -149,14 +155,42 @@ export function accountProgressStore({
     });
   };
 
+  const argumentsResource = argumentStore({
+    fetcher,
+    uuid,
+    identity: () => ({
+      active,
+      generation,
+      accountId: snapshot.account?.id ?? null,
+      confirmed:
+        snapshot.phase !== "loading" &&
+        argumentOwner !== undefined &&
+        argumentOwner === (snapshot.account?.id ?? null),
+    }),
+    expireIdentity: () => {
+      expireIdentity();
+      void refresh();
+    },
+  });
+  const confirmArguments = (accountId: string | null) => {
+    if (argumentOwner === accountId) argumentsResource.restore();
+    else {
+      argumentsResource.clear();
+      argumentOwner = accountId;
+    }
+    if (accountId) void argumentsResource.load();
+    else argumentsResource.guest();
+  };
+
   const refresh = async (discard = false) => {
+    argumentsResource.conceal();
     if (discard) {
       concealed = null;
-      clearPrivate();
+      clearPrivate(false);
       emit({ acknowledged: null, unsupportedRecord: null, legacy: null });
     } else if (snapshot.account) {
       concealed = { snapshot, guest, drafts, delivery };
-      clearPrivate();
+      clearPrivate(false);
       emit({
         phase: "loading",
         message:
@@ -208,6 +242,7 @@ export function accountProgressStore({
             ? "Sign-in expired. Private progress and unsaved changes were cleared. Sign in again to save."
             : "Guest session. Answers and preferences last only for this session. Sign in to save across devices.",
         });
+        confirmArguments(null);
         return;
       }
       const account = value.data;
@@ -227,7 +262,8 @@ export function accountProgressStore({
               "Save outcome is unknown after checking sign-in. Retry the same operation or export unsaved changes.",
           };
       } else concealed = null;
-      if (snapshot.account?.id !== account.user.id) clearPrivate();
+      if (snapshot.account?.id !== account.user.id)
+        clearPrivate(argumentOwner !== account.user.id);
       if (account.record.kind === "unsupported") {
         emit({
           account: account.user,
@@ -252,6 +288,7 @@ export function accountProgressStore({
             : "Account progress loaded. Changes save to this ChatGPT account.",
         });
       } else emit({});
+      confirmArguments(account.user.id);
     } catch (error) {
       if (
         !active ||
@@ -266,6 +303,7 @@ export function accountProgressStore({
             ? error.message
             : "Account progress could not load. Answers remain unsaved.",
       });
+      if (argumentOwner === null) confirmArguments(null);
     }
   };
 
@@ -452,6 +490,7 @@ export function accountProgressStore({
     });
   };
   return {
+    arguments: argumentsResource,
     subscribe(listener: () => void) {
       listeners.add(listener);
       return () => {

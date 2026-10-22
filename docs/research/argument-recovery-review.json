@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "targetId": "ureca-constructions-induction-adjunction",
+  "guideDigest": "883a48b67be3faea2691c1947d65cac59ec25e128a62e6406ede10db3f292338",
+  "digestEncoding": "SHA256 of UTF-8 JSON.stringify(balancingRecovery), including ordered edition bindings",
+  "review": {
+    "date": "2026-10-23",
+    "reviewer": "gpt-6.1-sol @max",
+    "independentOfAuthor": true,
+    "verdict": "pass",
+    "scope": "The three balancing-recovery steps and the exact teaching editions below. This is not a fresh review of every lesson or of private URECA notes.",
+    "calculation": [
+      "Let phi:A->B be a unital ring map, V a unital left A-module, W a unital left B-module, and alpha:V->Res_A^B W an A-linear map.",
+      "B is a left B, right A bimodule with c.b=cb and b.a=b phi(a). Compatibility is (cb)phi(a)=c(b phi(a)) by associativity.",
+      "The pair map f(b,v)=b alpha(v) is biadditive by distributivity and additivity of alpha. It is balanced because (b phi(a))alpha(v)=b(phi(a)alpha(v))=b alpha(av). No factors are commuted.",
+      "The tensor quotient universal property therefore gives an additive map F_alpha:B tensor_A V->W. B-linearity and the two inverse identities remain obligations in the rest of the adjunction proof.",
+      "The cyclic-integer laboratory illustrates finite balancing examples. It does not prove the arbitrary-ring adjunction."
+    ],
+    "sources": [
+      {
+        "url": "https://stacks.math.columbia.edu/tag/09LL",
+        "use": "Tensor relations and the universal property"
+      },
+      {
+        "url": "https://stacks.math.columbia.edu/tag/0FQM",
+        "use": "Bimodule tensor actions; translate the stated right-module convention explicitly"
+      },
+      {
+        "url": "https://stacks.math.columbia.edu/tag/09LN",
+        "use": "Right-module tensor-Hom statement; the left-module calculation above was checked directly"
+      }
+    ]
+  },
+  "editions": [
+    {
+      "lessonId": "ureca-constructions-induction-adjunction",
+      "digest": "b62db3397f9e40aaa9186ba6eeb1eea21f45aa86d3949d26ad2e7536bee32788"
+    },
+    {
+      "lessonId": "ureca-constructions-tensor-coset-identification",
+      "digest": "f119bb6f967e3527b58fde6c8b63f0de1cc9c08d6488f394874c71e4e36f1779"
+    },
+    {
+      "lessonId": "tensor-products",
+      "digest": "09daee994ebe6fc8b208079d54e0f2b09567310772404c56f2ba05caea7205a0"
+    }
+  ],
+  "existingLessonReviews": [
+    {
+      "path": "docs/research/ureca-constructions-induction-review.md",
+      "sha256": "328e7a9a6dd02ed7a3c70cf8c7d7403c8d981b50ab263a173d46d47407474511"
+    },
+    {
+      "path": "docs/research/ureca-constructions-tables-review.md",
+      "sha256": "7c242e131a6cc4603939c51e55d3aad9e9df6d183285032ff08ada81b4b44a0f"
+    }
+  ]
+}
