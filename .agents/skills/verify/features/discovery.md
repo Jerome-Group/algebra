@@ -28,7 +28,8 @@ Concept kind, Course tier, Source collection, Visualisation type, Study time and
 demonstrated individually in Reference; check the results and clear each filter. Open a workspace
 from Explore. Expand a source status and the complete citation library in Sources. For lesson
 paging changes, operate Previous, Next and In this chapter. Retain the action results and screenshots.
-The registered group alone does not exercise those controls.
+The registered group exercises footer Next during the capstone journey. It does not exercise
+every control listed above.
 
 ## Gotchas
 
