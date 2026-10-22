@@ -8,7 +8,8 @@ reading position and square preference, explicit legacy import/export, reset and
 ## How to get to it (user POV)
 
 Open any lesson without signing in. Use Sign in with ChatGPT to save personal state. On
-`/#foundations-functions`, submit Check reasoning and wait for Saved to your ChatGPT account.
+`/#foundations-functions`, answer Check the hypothesis, submit its Check reasoning button and
+wait for Saved to your ChatGPT account. Before you begin is an uncredited prerequisite check.
 Reload or open a fresh browser context signed into that account. Home offers Export progress
 backup, Preview legacy browser records, explicit import, reset confirmation and restore.
 

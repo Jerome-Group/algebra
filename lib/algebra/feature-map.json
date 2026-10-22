@@ -11,7 +11,7 @@
     },
     {
       "file": ".agents/skills/verify/features/accounts-progress.md",
-      "sha256": "432cd78a8b4fd7b56d802d0b4306efbed7ee1aebda04362367cb02534d2e2fee"
+      "sha256": "0ee43b6bc0a14fd3d99e59638294a59ee6792f28bdf623853f791ecbb211039a"
     },
     {
       "file": ".agents/skills/verify/features/agent-access.md",
@@ -19,7 +19,7 @@
     },
     {
       "file": ".agents/skills/verify/features/discovery.md",
-      "sha256": "8babe9226f232255a10f59e1632efd2d45c0798436a8620b6673ad8fe96e41f3"
+      "sha256": "3dd72413a0124c49622993bd923e48f34b0258e567d3cfa23d8abbdd05839162"
     },
     {
       "file": ".agents/skills/verify/features/guided-learning.md",
