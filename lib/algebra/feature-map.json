@@ -87,7 +87,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "6fe01916003b321c5d6354adfef6742e91e83fb15e5e14ed4f6243c547cc9d25"
+      "sha256": "29ad65f3ad3b746cd87a94fab3aee568dceeba591e20cc635d20714bf35a0e9f"
     },
     {
       "file": "SECURITY.md",
@@ -811,7 +811,7 @@
     },
     {
       "file": "docs/release-verification.md",
-      "sha256": "a9774f3b29de394aa6f87b92b900cb4044d6d37796ef7100929a11e06e826769"
+      "sha256": "4c703ffb292864bf44e6d580650c539aa3566681b50eeacd774dbe4c2770c872"
     },
     {
       "file": "docs/research/browser-inspection.json",
