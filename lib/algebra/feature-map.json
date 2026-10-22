@@ -1067,11 +1067,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "aa3da63ffbedf0bde42e0cc9bdc0a4d4cdb0491623a864c5f1c76ae26cc247f7"
+      "sha256": "642f20b7e7efd6121a7d6ad27ae4b13149531f9cd9837020962b54f787feaede"
     },
     {
       "file": "package.json",
-      "sha256": "61ab1f30dfc185729936cf34e1f1943fc5e633396c6a36e584fc13bc6ebe4e13"
+      "sha256": "6dc34bd8e10b42e33cf6f446f90520801429c0681da9b01b5ccd5c8977898094"
     },
     {
       "file": "playwright.config.ts",
