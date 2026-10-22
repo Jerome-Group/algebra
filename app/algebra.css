@@ -272,6 +272,14 @@
 .algebra-layout.with-library {
   grid-template-columns: 245px minmax(0, 1fr);
 }
+@media (max-width: 1150px) {
+  .algebra-layout.with-library {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .algebra-layout > .concept-library {
+    display: none;
+  }
+}
 .concept-library {
   position: sticky;
   display: flex;

@@ -99,7 +99,7 @@
     },
     {
       "file": "app/algebra.css",
-      "sha256": "57e476539ce085d234794a67f9fb6e390e228727cc701ed4b6eac2305c5f4660"
+      "sha256": "2777a613ad1314278282441437f9c3476793926f1061245e38da17f512809b97"
     },
     {
       "file": "app/api/arguments/route.ts",
@@ -139,7 +139,7 @@
     },
     {
       "file": "app/responsive.css",
-      "sha256": "6cedb0bdbfe033a3add1d836d265b92d54a9289ec8b1010e36caff5500bb6321"
+      "sha256": "b95deb5138301059d10c2a54c8cdd7e9b74d85bed4b545c59e09110502ca4289"
     },
     {
       "file": "app/studio.css",
@@ -1427,7 +1427,7 @@
     },
     {
       "file": "tests/browser/sidebar.spec.mjs",
-      "sha256": "983469a0420a716e7ae941f2b8e001bae70fbe4a7c1dd4a30966ab9f933f1d1b"
+      "sha256": "a5e17bd9549a8c79e734a4abefeb993bcfc54c5eb5d7953b136f6c771396df2a"
     },
     {
       "file": "tests/browser/studio.spec.mjs",

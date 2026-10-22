@@ -1,5 +1,61 @@
 import { test, expect } from "@playwright/test";
 
+test("narrow layout stays usable before the responsive coordinator commits", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    window.pendingMediaChanges = [];
+    window.holdMediaChanges = false;
+    const match = window.matchMedia.bind(window);
+    window.matchMedia = (query) => {
+      const media = match(query);
+      const add = media.addEventListener.bind(media);
+      const remove = media.removeEventListener.bind(media);
+      const wrapped = new Map();
+      media.addEventListener = (type, listener, options) => {
+        if (type !== "change") return add(type, listener, options);
+        const deliver = (event) => {
+          const invoke = () =>
+            typeof listener === "function"
+              ? listener.call(media, event)
+              : listener.handleEvent(event);
+          if (window.holdMediaChanges) window.pendingMediaChanges.push(invoke);
+          else invoke();
+        };
+        wrapped.set(listener, deliver);
+        add(type, deliver, options);
+      };
+      media.removeEventListener = (type, listener, options) =>
+        remove(type, wrapped.get(listener) ?? listener, options);
+      return media;
+    };
+  });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/#lab:foundations-functions");
+  await expect(
+    page.getByRole("button", { name: "Collapse concepts", exact: true }),
+  ).toBeVisible();
+  await page.evaluate(() => {
+    window.holdMediaChanges = true;
+  });
+  await page.setViewportSize({ width: 320, height: 1000 });
+  const bounds = await page.locator(".visual-panel").boundingBox();
+  expect(bounds.width).toBeGreaterThan(260);
+  expect(bounds.x).toBeLessThan(40);
+  await expect(
+    page.locator(".algebra-layout > .concept-library"),
+  ).not.toBeVisible();
+  await page.evaluate(() => {
+    window.holdMediaChanges = false;
+    for (const deliver of window.pendingMediaChanges.splice(0)) deliver();
+  });
+  await page.getByRole("button", { name: "Concepts", exact: true }).click();
+  await expect(
+    page.getByRole("dialog", { name: "Concept library", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+});
+
 test("encoded public aliases open their canonical lesson and laboratory", async ({
   page,
 }) => {
