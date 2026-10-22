@@ -43,3 +43,15 @@ does not establish correctness.
 
 **Source reconciliation**: a private comparison of retained source bytes with reviewed dispositions.
 Administrative records, duplicate renders, candidates and preparation retain their own status.
+
+**Argument sheet**: personal proof reconstruction for a public concept, with blocks of writing,
+questions and self-review. It grants no competency credit.
+
+**Teaching edition**: retained objects, statement, conventions and ordered proof passages tied
+to an argument sheet. A digest identifies the retained bytes; it does not prove correctness.
+
+**Support consultation**: a chosen prerequisite or laboratory visited while retaining the active
+argument and its unit return. It is optional and does not impose the prerequisite closure.
+
+**Argument acknowledgement**: server confirmation of one captured operation and revision.
+Later typing remains unsaved; ambiguous delivery retries the same captured operation.

@@ -17,6 +17,25 @@ feedback distinguishes unsaved work, acknowledged saves, conflicts and expired s
 Home provides explicit preview/import of old browser records and a lossless backup export.
 Signing in preserves the original browser bytes and imports nothing automatically.
 
+The concept sidebar spans every learning mode. Collapse it on a wide screen; open its labelled
+dialog on a smaller screen. All 227 lessons, across six subjects, remain browsable.
+
+Choose **Work on this argument** from a lesson to reconstruct a proof in blocks, keep questions,
+compare retained teaching and consult selected prerequisites or laboratories. Return to your
+writing with its unit context intact. Writing and self-review award no competency credit;
+the existing transfer check and unit capstone retain their assessment rules.
+
+Argument writing has its own explicit Save, conflict recovery and backup controls. Guest writing
+lasts only in the current page; export before reloading or signing in. Preview an argument backup,
+select one sheet, then save its fresh copy explicitly. Argument backups and deletion are separate
+from progress backups, reset and undo. Older teaching editions remain attached to their original
+writing and are labelled when current teaching differs.
+
+Arguments are limited to 128 saved sheets and 4 MiB per account, 32 blocks and 96 KiB per complete
+sheet. A block allows 16 KiB of writing and a 2 KiB question. Imports allow 8 MiB. Rejected saves
+retain writing for correction or export. Unknown delivery retries the same captured save; its
+operation window is 24 hours, with at most 4096 retained acknowledgements. Nothing is silently evicted.
+
 ## Local development
 
 Use Node.js 24 or newer, then:
@@ -55,7 +74,7 @@ npm run agent -- lesson mh2220-dihedral
 npm run agent -- prerequisites representations-maschke
 npm run agent -- map --write
 npm run agent -- verify --layer all --evidence outputs/release-verification.json
-npm run agent -- verify --layer browser --built --shard 1/3 --evidence outputs/browser-1.json
+npm run agent -- verify --layer browser --built --shard 1/4 --evidence outputs/browser-1.json
 ```
 
 Use [.agents/skills/verify/SKILL.md](.agents/skills/verify/SKILL.md) for an owned Worker,
@@ -70,7 +89,7 @@ targets require their live owner marker. Verification artifacts
 are written under ignored `outputs/`. Passing automation and independent mathematics review
 are separate release gates. `--shard i/n` accepts positive safe integers with `i <= n`,
 only for `--layer browser`; a passing shard provides partial coverage. CI builds once,
-then runs three browser shards against that uploaded production artifact. Its required
+then runs four browser shards against that uploaded production artifact. Its required
 `checks` status passes only when engineering and every browser shard succeed.
 See `docs/overhaul-plan.json` and `docs/research/`.
 

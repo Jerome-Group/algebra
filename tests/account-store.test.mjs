@@ -41,17 +41,27 @@ function fixture(records = domain.emptyLegacyRecords()) {
       unreadableKeys: [],
     }),
     fetcher: (url, init) =>
-      new Promise((resolve, reject) =>
-        requests.push({
-          url,
-          init,
-          resolve: (body, status = 200) =>
-            resolve(
-              body instanceof Response ? body : Response.json(body, { status }),
-            ),
-          reject,
-        }),
-      ),
+      url === "/api/arguments"
+        ? Promise.resolve(
+            Response.json({
+              kind: "account",
+              accountId: init.headers["X-Expected-Account-Id"],
+              records: [],
+            }),
+          )
+        : new Promise((resolve, reject) =>
+            requests.push({
+              url,
+              init,
+              resolve: (body, status = 200) =>
+                resolve(
+                  body instanceof Response
+                    ? body
+                    : Response.json(body, { status }),
+                ),
+              reject,
+            }),
+          ),
   });
   return { requests, store };
 }

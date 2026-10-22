@@ -278,6 +278,12 @@ export function buildMap() {
       "guided, overview, example, theorem, proof reading views",
     ],
     [
+      "argument-workspace",
+      "#work:<lesson-id>",
+      "ArgumentDesk",
+      "proof blocks, questions, comparison, chosen support, transfer and explicit argument backups",
+    ],
+    [
       "laboratory",
       "#lab:<lesson-id>",
       "Exploration",
@@ -369,6 +375,13 @@ export function buildMap() {
         "competency progress",
         "history",
         "resume lesson",
+      ],
+      "argument-workspace": [
+        "temporary guest writing",
+        "explicit owner-scoped argument saves, copies and deletion",
+        "argument backup download and previewed import",
+        "public support and unit history",
+        "existing transfer competency after assessment submission",
       ],
       laboratory: [
         "transient experimental state",

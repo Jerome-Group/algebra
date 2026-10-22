@@ -14,33 +14,29 @@ import { ConceptLibrary } from "./ConceptLibrary";
 import { ConceptLink } from "./ConceptLink";
 import { LearningRoutes } from "./LearningRoutes";
 import type { ReadingView } from "@/lib/algebra/reading-views";
-import { learningRoutes, type LearningUnit } from "@/lib/algebra/routes";
+import { learningRoutes } from "@/lib/algebra/routes";
 import { SourceCoverage } from "./SourceCoverage";
 import { LearningHome } from "./LearningHome";
 import { ReferenceAtlas } from "./ReferenceAtlas";
 import { LaboratoryGallery } from "./LaboratoryGallery";
 import {
-  parseDestination,
   capstoneTargetId,
   productModes,
-  type CapstoneDestination,
-  type ProductMode,
   type ViewMode,
 } from "@/lib/algebra/navigation";
 import { LessonReader } from "./LessonReader";
 import { LaboratoryProvider } from "./LaboratoryControls";
 import { useLearningTools } from "./WebMCP";
 import { RepresentationObjectProvider } from "./RepresentationObject";
-import { useNavigationFocus } from "@/hooks/use-navigation-focus";
+import { useAlgebraNavigation } from "@/hooks/use-algebra-navigation";
+import { useConceptSidebar } from "@/hooks/use-concept-sidebar";
+import { curriculumSubjects as subjects } from "@/lib/algebra/argument-catalogue";
+import {
+  ArgumentDesk,
+  ArgumentReturnBar,
+  ArgumentStartLink,
+} from "./ArgumentDesk";
 const lessons = data as Lesson[];
-const subjects = [
-  "Groups & symmetry",
-  "Maps & quotients",
-  "Rings & arithmetic",
-  "Fields & polynomials",
-  "Modules & representations",
-];
-type Screen = { mode: ViewMode } | CapstoneDestination;
 export default function Algebra() {
   return (
     <LaboratoryProvider>
@@ -57,23 +53,52 @@ function AccountLearningExperience() {
   return <LearningExperience key={account?.id ?? "guest"} />;
 }
 function LearningExperience() {
-  const focusHeading = useNavigationFocus();
-  const [screen, setScreen] = useState<Screen>({ mode: "home" });
-  const view = screen.mode === "capstone" ? "learn" : screen.mode;
-  const setView = useCallback((mode: ViewMode) => setScreen({ mode }), []);
   const { mastered, preferences, setResume, phase } = useLearningProgress();
   const resumeId = preferences.resumeLessonId;
-  const [id, setId] = useState("foundations-functions"),
-    [subject, setSubject] = useState(subjects[0]),
-    [query, setQuery] = useState(""),
-    [tab, setTab] = useState<ReadingView>("guided"),
-    [route, setRoute] = useState("actions"),
-    [menu, setMenu] = useState(false),
-    [laboratory, setLaboratory] = useState(false),
-    [expanded, setExpanded] = useState<string | undefined>(
-      "Groups & generators",
-    );
-  const lesson = lessons.find((l) => l.id === id) || lessons[0];
+  const [subject, setSubject] = useState(subjects[0]);
+  const [query, setQuery] = useState("");
+  const [ready, setReady] = useState(false);
+  const [tab, setTab] = useState<ReadingView>("guided");
+  const [expanded, setExpanded] = useState<string | undefined>(
+    "Groups & generators",
+  );
+  const {
+    narrow,
+    expanded: conceptsExpanded,
+    modalOpen,
+    dialog,
+    toggleButton,
+    toggle: toggleConcepts,
+    show: showConcepts,
+    dismiss: dismissConcepts,
+    closeForNavigation,
+    containFocus,
+  } = useConceptSidebar();
+  const selectLesson = useCallback(
+    (next: Lesson) => {
+      setResume(next.id);
+      setSubject(next.subject || subjects[0]);
+      setExpanded(next.family);
+      setTab("guided");
+      setQuery("");
+    },
+    [setResume],
+  );
+  const {
+    destination: screen,
+    unitId,
+    lesson,
+    open,
+    navigate,
+    openLab,
+    openCapstone,
+    openWork,
+    requestFocus,
+  } = useAlgebraNavigation(closeForNavigation, selectLesson);
+  const view = screen.mode === "capstone" ? "learn" : screen.mode;
+  const id = lesson.id;
+  const route = unitId ?? "";
+  const laboratory = screen.mode === "lesson" && screen.laboratory;
   const current = useRef(lesson);
   const header = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -88,6 +113,7 @@ function LearningExperience() {
     const observer = new ResizeObserver(updateHeight);
     observer.observe(element);
     element.parentElement?.setAttribute("data-ready", "true");
+    setReady(true);
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
@@ -96,114 +122,53 @@ function LearningExperience() {
   useEffect(() => {
     if (phase === "ready" && view === "lesson") setResume(lesson.id);
   }, [phase, view, lesson.id, setResume]);
-  const selectLesson = useCallback(
-    (target: string) => {
-      const next = lessons.find(
-        (l) => l.id === target || l.aliases?.includes(target),
-      );
-      if (!next) throw Error("Unknown concept");
-      setId(next.id);
-      setLaboratory(false);
-      setResume(next.id);
-      setSubject(next.subject || subjects[0]);
-      setExpanded(next.family);
-      setTab("guided");
-      setView("lesson");
-      setMenu(false);
-      setQuery("");
-
-      focusHeading("lesson-heading");
+  const setView = useCallback(
+    (mode: ViewMode) => {
+      if (mode === "lesson") open(lesson.id, unitId ?? undefined);
+      else navigate(mode);
     },
-    [focusHeading, setResume, setView],
+    [lesson.id, unitId, open, navigate],
   );
-  const open = useCallback(
-    (target: string, unit?: string) => {
-      if (
-        location.hash !== `#${target}` ||
-        history.state?.unit !== (unit ?? null)
-      )
-        history.pushState({ unit: unit ?? null }, "", `#${target}`);
-      setRoute(unit ?? "");
-      selectLesson(target);
+  const searchConcepts = useCallback(
+    (value: string) => {
+      setQuery(value);
+      showConcepts();
     },
-    [selectLesson],
+    [showConcepts],
   );
-  const navigate = useCallback(
-    (mode: ProductMode) => {
-      if (location.hash !== `#${mode}`) history.pushState({}, "", `#${mode}`);
-      setView(mode);
-      setMenu(false);
-      focusHeading("mode-heading");
+  useLearningTools({
+    lessons,
+    current,
+    open,
+    setTab,
+    setView,
+    setQuery: searchConcepts,
+  });
+  const openUnitCapstone = useCallback(
+    (id: string) => {
+      const unit = learningRoutes.find((entry) => entry.id === id);
+      if (unit) openCapstone(unit);
     },
-    [focusHeading, setView],
+    [openCapstone],
   );
-  const openCapstone = useCallback(
-    (unit: LearningUnit) => {
-      const target = capstoneTargetId(unit);
-      if (location.hash !== `#${target}`)
-        history.pushState({}, "", `#${target}`);
-      setScreen({ mode: "capstone", unit });
-      setMenu(false);
-      focusHeading(target, { scroll: "target" });
-    },
-    [focusHeading],
+  const library = (
+    <ConceptLibrary
+      hidden={!narrow && !conceptsExpanded}
+      ready={ready}
+      {...{
+        lessons,
+        subjects,
+        id,
+        subject,
+        query,
+        expanded,
+        open,
+        setSubject,
+        setQuery,
+        setExpanded,
+      }}
+    />
   );
-  const openLab = useCallback(
-    (target: string) => {
-      history.pushState({}, "", `#lab:${target}`);
-      selectLesson(target);
-      setLaboratory(true);
-    },
-    [selectLesson],
-  );
-  useEffect(() => {
-    const sync = () => {
-      const destination = parseDestination(location.hash);
-      if (destination.mode === "capstone") {
-        setScreen(destination);
-        setMenu(false);
-        focusHeading(capstoneTargetId(destination.unit), { scroll: "target" });
-      } else if (destination.mode !== "lesson") {
-        setView(destination.mode);
-        setMenu(false);
-        focusHeading("mode-heading");
-      } else if (
-        lessons.some(
-          (l) => l.id === destination.id || l.aliases?.includes(destination.id),
-        )
-      ) {
-        setRoute(
-          typeof history.state?.unit === "string" ? history.state.unit : "",
-        );
-        selectLesson(destination.id);
-        setLaboratory(destination.laboratory);
-      } else {
-        setView("reference");
-      }
-    };
-    sync();
-    window.addEventListener("hashchange", sync);
-    window.addEventListener("popstate", sync);
-    return () => {
-      window.removeEventListener("hashchange", sync);
-      window.removeEventListener("popstate", sync);
-    };
-  }, [selectLesson, focusHeading, setView]);
-  useEffect(() => {
-    if (!menu) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenu(false);
-        document.getElementById("library-toggle")?.focus();
-      }
-    };
-    document
-      .querySelector<HTMLInputElement>('[aria-label="Search concepts"]')
-      ?.focus();
-    document.addEventListener("keydown", close);
-    return () => document.removeEventListener("keydown", close);
-  }, [menu]);
-  useLearningTools({ lessons, current, open, setTab, setView, setQuery });
   const activeRoute = learningRoutes.find(
     (item) => item.id === route && item.lessons.includes(id),
   );
@@ -284,40 +249,78 @@ function LearningExperience() {
         <button
           id="library-toggle"
           className="library-toggle"
-          aria-expanded={menu}
-          onClick={() => setMenu(!menu)}
+          ref={toggleButton}
+          aria-controls="concept-library"
+          aria-haspopup={narrow ? "dialog" : undefined}
+          aria-expanded={narrow ? modalOpen : conceptsExpanded}
+          aria-label={
+            narrow
+              ? "Concepts"
+              : conceptsExpanded
+                ? "Collapse concepts"
+                : "Expand concepts"
+          }
+          onClick={toggleConcepts}
+          disabled={!ready}
         >
-          {menu ? <X size={18} /> : <Search size={18} />} Concepts
+          {(narrow ? modalOpen : conceptsExpanded) ? (
+            <X size={18} />
+          ) : (
+            <Search size={18} />
+          )}{" "}
+          Concepts
         </button>
+        <ArgumentReturnBar navigate={openWork} />
       </header>
       <AccountProgressStatus />
-      <div
-        className={`algebra-layout ${view !== "lesson" ? "mode-layout" : ""}`}
-      >
-        {(view === "lesson" || menu) && (
-          <ConceptLibrary
-            {...{
-              lessons,
-              subjects,
-              id,
-              subject,
-              query,
-              menu,
-              expanded,
-              open,
-              setSubject,
-              setQuery,
-              setExpanded,
-            }}
-          />
-        )}
-        <main
-          id="concept"
-          tabIndex={-1}
-          className="concept-main"
-          inert={menu || undefined}
+      {narrow && (
+        <dialog
+          ref={dialog}
+          className="library-dialog"
+          aria-label="Concept library"
+          onKeyDown={containFocus}
+          onCancel={(event) => {
+            event.preventDefault();
+            dismissConcepts();
+          }}
+          onClick={(event) => {
+            if (event.target !== event.currentTarget) return;
+            const bounds = event.currentTarget.getBoundingClientRect();
+            if (
+              event.clientX < bounds.left ||
+              event.clientX > bounds.right ||
+              event.clientY < bounds.top ||
+              event.clientY > bounds.bottom
+            )
+              dismissConcepts();
+          }}
         >
-          {view === "home" ? (
+          <button
+            className="library-close"
+            onClick={dismissConcepts}
+            aria-label="Close concepts"
+          >
+            <X size={18} /> Close
+          </button>
+          {library}
+        </dialog>
+      )}
+      <div
+        className={`algebra-layout ${view !== "lesson" ? "mode-layout" : ""} ${!narrow && conceptsExpanded ? "with-library" : ""}`}
+      >
+        {!narrow && library}
+        <main id="concept" tabIndex={-1} className="concept-main">
+          {screen.mode === "work" ? (
+            <ArgumentDesk
+              targetId={screen.targetId}
+              unitId={screen.unitId}
+              support={screen.support}
+              navigate={openWork}
+              openLesson={open}
+              openCapstone={openUnitCapstone}
+              requestFocus={requestFocus}
+            />
+          ) : view === "home" ? (
             <LearningHome
               lessons={lessons}
               resume={lessons.find((entry) => entry.id === resumeId)}
@@ -399,6 +402,11 @@ function LearningExperience() {
                     ))}
                 </div>
               </details>
+              <ArgumentStartLink
+                lessonId={lesson.id}
+                unitId={activeRoute?.id}
+                navigate={openWork}
+              />
               {laboratory ? (
                 <Exploration key={lesson.id} lesson={lesson} />
               ) : (

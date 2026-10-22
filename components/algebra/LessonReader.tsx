@@ -13,12 +13,14 @@ export function LessonReader({
   tab,
   setTab,
   open,
+  openExperiment,
 }: {
   lesson: Lesson;
   lessons: Lesson[];
   tab: ReadingView;
   setTab: (s: ReadingView) => void;
   open: (id: string) => void;
+  openExperiment?: () => void;
 }) {
   const learning = learningMetadata(lesson);
   const guide = guidedContent(lesson.id);
@@ -111,6 +113,7 @@ export function LessonReader({
                   <button
                     className="open-experiment"
                     onClick={() => {
+                      if (openExperiment) return openExperiment();
                       const experiment = document.getElementById("experiment");
                       experiment?.scrollIntoView({ block: "start" });
                       experiment?.focus({ preventScroll: true });

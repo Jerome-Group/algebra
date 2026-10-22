@@ -67,7 +67,7 @@
     },
     {
       "file": "CONTEXT.md",
-      "sha256": "5bf8bed84ed202018ae0cb6418d61367ccd9a204ee0213a8614e69feca9130ab"
+      "sha256": "db75da2ddcd4595d0a874e226f12da1c0d45a710b3b602556607533665b066bb"
     },
     {
       "file": "CONTRIBUTING.md",
@@ -83,11 +83,11 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "6dd74084e5cdbbbac3a437a57c681d78211aa9bab5f3f06907fe4c5ee3169755"
+      "sha256": "bcc517fde4ed4445412f0a8f5513337d0d66b6ba0d4841405531ae786f5bb5f3"
     },
     {
       "file": "README.md",
-      "sha256": "20f2f93b8ef0a1761516a47f355fc11e3e1c668c51a72152fa3e64df9a67f517"
+      "sha256": "0bfaf010e9194f6d59dae45b5b7f511a71fc22cac0611624e7010ed8ae31a4ca"
     },
     {
       "file": "SECURITY.md",
@@ -99,7 +99,11 @@
     },
     {
       "file": "app/algebra.css",
-      "sha256": "053ea351472e5a8caf25dc2f527625f71caad07c461bc4a102f072b93685ae2f"
+      "sha256": "57e476539ce085d234794a67f9fb6e390e228727cc701ed4b6eac2305c5f4660"
+    },
+    {
+      "file": "app/api/arguments/route.ts",
+      "sha256": "173b21dbfe0245d9d8f17c345c1e196d83f2bbe62bf539d126d1181b6e27534c"
     },
     {
       "file": "app/api/build/route.ts",
@@ -108,6 +112,10 @@
     {
       "file": "app/api/progress/route.ts",
       "sha256": "5452b9ecbadd4dba08222f9a24979a834016a013dc466c6589d5636fbe80f9b5"
+    },
+    {
+      "file": "app/argument.css",
+      "sha256": "dc39953167ab864f540a19a3de1ba7504bd2e3aff3e4ee399fed4b3b3131a588"
     },
     {
       "file": "app/chatgpt-auth.ts",
@@ -123,7 +131,7 @@
     },
     {
       "file": "app/layout.tsx",
-      "sha256": "cce9ec4a4b1b16bf7aa359b0b81893c6826b2e64f942b7e2ecdc5d86ca9cea9d"
+      "sha256": "db5a5fd4dad8b4b729e971aae389092a6d234939daadc5a368026f007e245ef3"
     },
     {
       "file": "app/page.tsx",
@@ -131,11 +139,11 @@
     },
     {
       "file": "app/responsive.css",
-      "sha256": "782cf4d56defe81215eda5a8b0eb4e884c58c65e40bbced37be3ab1a50581ee4"
+      "sha256": "6cedb0bdbfe033a3add1d836d265b92d54a9289ec8b1010e36caff5500bb6321"
     },
     {
       "file": "app/studio.css",
-      "sha256": "60eab7976de17bf79521a67c7523739d669643606cf9f8ed856cb6cc27e195d5"
+      "sha256": "daa13d6f386669fcf6c71452e612b65d025444cc524beb172311a5a128261b57"
     },
     {
       "file": "build/sites-vite-plugin.ts",
@@ -147,7 +155,27 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "85ba7a6c339debc7156beb397185c9a0d776720df1859e150cc7b90ebc36e964"
+      "sha256": "e58c6d47a8b3c5402192c9ca12a59a83deede1370972169e2fd586ec4256b77b"
+    },
+    {
+      "file": "components/algebra/ArgumentBackups.tsx",
+      "sha256": "e6de9fd706cdbd999261ba2fb6e1a9706be57f2d9aa49d29b0623590f0662795"
+    },
+    {
+      "file": "components/algebra/ArgumentContext.tsx",
+      "sha256": "eff338395f21046f3bd9394b0aa6ce8f2a6fdd450f8e7ca3c9bcd2c006ecaa9b"
+    },
+    {
+      "file": "components/algebra/ArgumentDesk.tsx",
+      "sha256": "6f9392860026bdc63c986b545d9f21419e68ffba019ce0b48ceba0a0a9a18e0e"
+    },
+    {
+      "file": "components/algebra/ArgumentSupport.tsx",
+      "sha256": "34ad79eb748d51bb507a83b11161da13640371dc236565e0bfa9fd566df0ef81"
+    },
+    {
+      "file": "components/algebra/ArgumentWriting.tsx",
+      "sha256": "bee7e5cd67a8c411afce49dfddb52ca952d516376a431cd23f8cf88875b11496"
     },
     {
       "file": "components/algebra/Bridges.tsx",
@@ -191,7 +219,7 @@
     },
     {
       "file": "components/algebra/ConceptLibrary.tsx",
-      "sha256": "4cbaedd5a7f25d62ce6ba2aa60b62074f6946fe2314e0eaeb7dd07fbcb546888"
+      "sha256": "0e622258189fbf6dd40fc57a09a478e3891ee332c7d4c0052822082d9c20c6a2"
     },
     {
       "file": "components/algebra/ConceptLink.tsx",
@@ -291,7 +319,7 @@
     },
     {
       "file": "components/algebra/LearningProgress.tsx",
-      "sha256": "e4158afce5e1107a3b9ff048d87702ecdd814f03e85fb5cdf763100fc4877ac7"
+      "sha256": "b3ddc3825d9a36d164ed5c6bbe1bc98bc6a644ce1de44e4a65aae378d533b30f"
     },
     {
       "file": "components/algebra/LearningRoutes.tsx",
@@ -299,7 +327,7 @@
     },
     {
       "file": "components/algebra/LessonReader.tsx",
-      "sha256": "9961424fb48bf2555f9047e40b32689e5b7610d2eb8c27cc846a355f54eececf"
+      "sha256": "f3c50c01f96e11f30c3fda5131bcc1db38d1ee6f2502726f04e66fab58f8c4f9"
     },
     {
       "file": "components/algebra/LocalisationMicroscope.tsx",
@@ -687,7 +715,7 @@
     },
     {
       "file": "db/schema.ts",
-      "sha256": "fcb071dbc8180d83f63a06bfb452660d6139d4c15342bc6e7621e60eabf3b224"
+      "sha256": "aa7236b54b42a02f7f357400f2214d1f2e96cb4478bb0339290d7a42381e171e"
     },
     {
       "file": "design-qa.md",
@@ -736,6 +764,10 @@
     {
       "file": "docs/adr/0011-review-ureca-teaching-with-private-source-reconciliation.md",
       "sha256": "66c0034e90cd829f4ebc7ed2887f86c2bde1e1a231d5e030c61d4d12e190d9b6"
+    },
+    {
+      "file": "docs/adr/0012-keep-argument-writing-separate-from-learning-progress.md",
+      "sha256": "e7fdc6949448ac1e74a648c8fc6a7305f346f0ee30225964f1ca93e2de8dae72"
     },
     {
       "file": "docs/agents/acceptance-criteria.md",
@@ -812,6 +844,10 @@
     {
       "file": "docs/release-verification.md",
       "sha256": "4c703ffb292864bf44e6d580650c539aa3566681b50eeacd774dbe4c2770c872"
+    },
+    {
+      "file": "docs/research/argument-recovery-review.json",
+      "sha256": "278dd0b99a1a0eab03541498b5c14ebdf0501b40a3900d6d94620003ff77f1f3"
     },
     {
       "file": "docs/research/browser-inspection.json",
@@ -902,12 +938,20 @@
       "sha256": "ee512fa4f7dc74cf1c18cc7d295813c2c82bb45610b6bdb8907fcf51d7687ba1"
     },
     {
+      "file": "drizzle/0001_argument_records.sql",
+      "sha256": "1d80d944b1d300df121d2122eaa12c87d750c34449c97542ba26a9ed04afd4c7"
+    },
+    {
       "file": "drizzle/meta/0000_snapshot.json",
       "sha256": "db72d377e941d885cee30d93221c74596dae4f47f1cef8dccba0d21a4289999b"
     },
     {
+      "file": "drizzle/meta/0001_snapshot.json",
+      "sha256": "7370bb963f1e46377ace2ada020553e517fed1eee45863dd44802a2843e66c14"
+    },
+    {
       "file": "drizzle/meta/_journal.json",
-      "sha256": "d4b81b7ca9b83b66b31c5ff807752078a144f22cc0779a8a41b74ef6367b60ad"
+      "sha256": "f434ffea3acc0c6b93b617fa3fa76ea65a21c9235499f2d0ab29bbe82f80e627"
     },
     {
       "file": "eslint-suppressions.json",
@@ -926,6 +970,14 @@
       "sha256": "7b84082968fd047d76b36c46ec8f1ecfff8fd3710e62eae52d3e48fb7b4a2e98"
     },
     {
+      "file": "hooks/use-algebra-navigation.ts",
+      "sha256": "17e9b0b64b2b86b9cf821a1ef12196c57f052c5a04a9e24e6d5eff7f9414b964"
+    },
+    {
+      "file": "hooks/use-concept-sidebar.ts",
+      "sha256": "a057aea4967c11d65ed58df7a598163f8b78603c0334c178f550742cbcdce3eb"
+    },
+    {
       "file": "hooks/use-navigation-focus.ts",
       "sha256": "53a8b7e8a21500549cc2db130d691fdd7477f6e33a5cbdf8fbfd6d1d53307c5b"
     },
@@ -935,11 +987,27 @@
     },
     {
       "file": "lib/algebra/account-server.ts",
-      "sha256": "b47b7100e8b4e5e29b899f271378a4e47e0a006617c4c4db75d5124413389da5"
+      "sha256": "798c68ae4e2e39963be53c5dda8437c44c5632418f7ed00f633e6f357e5049e4"
     },
     {
       "file": "lib/algebra/account-store.ts",
-      "sha256": "9f9cea7c28d303312f1d57aed4938815b5dc40bc34f908435047d347a002ab0c"
+      "sha256": "384bc28fd28d25c8523df676e00a84f6a8a800c03b3f7a19932bc8a9c4b6c667"
+    },
+    {
+      "file": "lib/algebra/argument-catalogue.ts",
+      "sha256": "85932bc97df687bd4747f73220f1c22867a173631934776c45823aa9a8d57e30"
+    },
+    {
+      "file": "lib/algebra/argument-records.ts",
+      "sha256": "db73fc329f810be11ba9496dc08aa6784316e7ee9947dfec1c5d8adf3256a198"
+    },
+    {
+      "file": "lib/algebra/argument-server.ts",
+      "sha256": "264895830e84fa5bee11ea35edcc6c05b7d1ecf1cf2822db5a8e24ca5a17bd76"
+    },
+    {
+      "file": "lib/algebra/argument-store.ts",
+      "sha256": "cb7009992bb34b3af5f50893433a404ce10e136a113c27ed733f798d78f189df"
     },
     {
       "file": "lib/algebra/capstone-assessments.json",
@@ -1027,7 +1095,7 @@
     },
     {
       "file": "lib/algebra/navigation.ts",
-      "sha256": "876f018eb74d941c88ec8eb74cd065cf139ce1ba14440a5e1a3ecf4ca62832e6"
+      "sha256": "43cf69c1b31cb9a3cf45934b297de3d2cab0d1ec125bee3c052aff205d9114ba"
     },
     {
       "file": "lib/algebra/nilradical.ts",
@@ -1163,7 +1231,7 @@
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "41d864f2d749f5223f112cfaa27fb94ee0d76641d717f1b297785cac4de8fa4a"
+      "sha256": "7eccda7db889ca8439b7c8bb81ee2c5b7289d804ffde87d4148e7caf2487c4b2"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1171,7 +1239,7 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "18ca150867ea9f5d8ecff461222b80026a277f3552336d3b3a655591cf1a88fb"
+      "sha256": "c48d89904d558421706901c9f48f0cb5edbf97b4178e37be3ad2bd7c69fb6799"
     },
     {
       "file": "scripts/algebra-playwright-setup.mjs",
@@ -1235,7 +1303,7 @@
     },
     {
       "file": "tests/account-store.test.mjs",
-      "sha256": "34ae6807f4975d330e794188436d8b21747b2b672dd875290ed7d9674e153cdb"
+      "sha256": "d256c64f67a5828911ce4aaffc9d2f3b755dd1913bf49d450640add961b714ed"
     },
     {
       "file": "tests/agent-cli.test.mjs",
@@ -1244,6 +1312,22 @@
     {
       "file": "tests/algebra.test.mjs",
       "sha256": "cb2a33d002fd5b61821490f38d3777a359734e6e1b73599c044ab52c4681fd97"
+    },
+    {
+      "file": "tests/argument-catalogue.test.mjs",
+      "sha256": "062d222d90006a57146e3ef40748e5f7325a07c09a049009036f9c264d49ed04"
+    },
+    {
+      "file": "tests/argument-records.test.mjs",
+      "sha256": "5aa46c91619d0694389f6794b69e0f21250d0c7658a2f6225fd79191fbc64568"
+    },
+    {
+      "file": "tests/argument-server.test.mjs",
+      "sha256": "0993f341b1a772f84fa8a779db34101b9678e43b7efbaaaac678321929815845"
+    },
+    {
+      "file": "tests/argument-store.test.mjs",
+      "sha256": "309de80bc831e633204bb98efc9ca1833459641920e039d6df0c303879654e0e"
     },
     {
       "file": "tests/audit-ledger.test.mjs",
@@ -1256,6 +1340,10 @@
     {
       "file": "tests/browser/agent-cli.spec.mjs",
       "sha256": "facf4464c29ee448863184b6a3784f373776b4340f7396acf45574e099ab37a6"
+    },
+    {
+      "file": "tests/browser/arguments.spec.mjs",
+      "sha256": "23fc6a2c1a539c665c522188f6302607d39339f974f10a73561bf4fcc7253969"
     },
     {
       "file": "tests/browser/catalogue.spec.mjs",
@@ -1336,6 +1424,10 @@
     {
       "file": "tests/browser/semidirect-product.spec.mjs",
       "sha256": "9c7ae2ead96a04de8754fa93b8e9ea04b1df920f3581ba9fc50c71e7e8b97eff"
+    },
+    {
+      "file": "tests/browser/sidebar.spec.mjs",
+      "sha256": "983469a0420a716e7ae941f2b8e001bae70fbe4a7c1dd4a30966ab9f933f1d1b"
     },
     {
       "file": "tests/browser/studio.spec.mjs",
@@ -1419,7 +1511,7 @@
     },
     {
       "file": "tests/learning-units.test.mjs",
-      "sha256": "a229d221ca00bf26ea9fd4ac20809f0ce4b5dee5a469e7d1c2c9df1eac8f336e"
+      "sha256": "f64bfce76d30a838a03eacd7359c80861db705f51e451e27c8beb7724c9d10a9"
     },
     {
       "file": "tests/lesson-content.test.mjs",
@@ -1579,12 +1671,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1621,12 +1717,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1663,12 +1763,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1705,12 +1809,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1747,12 +1855,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1794,12 +1906,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1808,6 +1924,52 @@
             "Atlas filters",
             "Responsive navigation and focus",
             "Durable unit capstone return, disclosure and focus cancellation"
+          ]
+        }
+      ],
+      "evidence": "source-inspection"
+    },
+    {
+      "id": "argument-workspace",
+      "route": "#work:<lesson-id>",
+      "component": "components/algebra/ArgumentDesk.tsx",
+      "interactions": "proof blocks, questions, comparison, chosen support, transfer and explicit argument backups",
+      "prerequisites": [],
+      "reads": ["catalogue", "current UI state"],
+      "writes": [
+        "temporary guest writing",
+        "explicit owner-scoped argument saves, copies and deletion",
+        "argument backup download and previewed import",
+        "public support and unit history",
+        "existing transfer competency after assessment submission"
+      ],
+      "verification": [
+        {
+          "group": "guided-learning",
+          "sources": [
+            "components/algebra/Checkpoint.tsx",
+            "components/algebra/GuidedReader.tsx",
+            "lib/algebra/guided.ts",
+            "lib/algebra/learning.ts",
+            "components/algebra/ArgumentDesk.tsx",
+            "components/algebra/ArgumentWriting.tsx",
+            "components/algebra/ArgumentSupport.tsx",
+            "components/algebra/ArgumentBackups.tsx",
+            "lib/algebra/argument-catalogue.ts",
+            "lib/algebra/argument-records.ts",
+            "app/argument.css"
+          ],
+          "journeys": [
+            "tests/browser/learning.spec.mjs",
+            "tests/browser/studio.spec.mjs",
+            "tests/browser/arguments.spec.mjs",
+            "tests/browser/ureca-coverage.spec.mjs"
+          ],
+          "assertions": [
+            "Checkpoint reasoning feedback",
+            "Proof recall and keyboard stages",
+            "Unit context and heading focus",
+            "Editable argument, chosen support detour, retained edition and return to existing assessment"
           ]
         }
       ],
@@ -1877,12 +2039,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -1911,17 +2077,26 @@
             "components/algebra/Checkpoint.tsx",
             "components/algebra/GuidedReader.tsx",
             "lib/algebra/guided.ts",
-            "lib/algebra/learning.ts"
+            "lib/algebra/learning.ts",
+            "components/algebra/ArgumentDesk.tsx",
+            "components/algebra/ArgumentWriting.tsx",
+            "components/algebra/ArgumentSupport.tsx",
+            "components/algebra/ArgumentBackups.tsx",
+            "lib/algebra/argument-catalogue.ts",
+            "lib/algebra/argument-records.ts",
+            "app/argument.css"
           ],
           "journeys": [
             "tests/browser/learning.spec.mjs",
             "tests/browser/studio.spec.mjs",
+            "tests/browser/arguments.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
           "assertions": [
             "Checkpoint reasoning feedback",
             "Proof recall and keyboard stages",
-            "Unit context and heading focus"
+            "Unit context and heading focus",
+            "Editable argument, chosen support detour, retained edition and return to existing assessment"
           ]
         }
       ],
@@ -2026,12 +2201,16 @@
             "lib/algebra/ureca-topics.json",
             "components/algebra/LessonReader.tsx",
             "components/algebra/ConceptLibrary.tsx",
+            "hooks/use-concept-sidebar.ts",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/argument-catalogue.ts",
             "lib/algebra/navigation.ts",
             "lib/algebra/routes.ts"
           ],
           "journeys": [
             "tests/browser/navigation.spec.mjs",
             "tests/browser/navigation-focus.spec.mjs",
+            "tests/browser/sidebar.spec.mjs",
             "tests/browser/learning.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
@@ -2099,17 +2278,26 @@
             "components/algebra/Checkpoint.tsx",
             "components/algebra/GuidedReader.tsx",
             "lib/algebra/guided.ts",
-            "lib/algebra/learning.ts"
+            "lib/algebra/learning.ts",
+            "components/algebra/ArgumentDesk.tsx",
+            "components/algebra/ArgumentWriting.tsx",
+            "components/algebra/ArgumentSupport.tsx",
+            "components/algebra/ArgumentBackups.tsx",
+            "lib/algebra/argument-catalogue.ts",
+            "lib/algebra/argument-records.ts",
+            "app/argument.css"
           ],
           "journeys": [
             "tests/browser/learning.spec.mjs",
             "tests/browser/studio.spec.mjs",
+            "tests/browser/arguments.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
           "assertions": [
             "Checkpoint reasoning feedback",
             "Proof recall and keyboard stages",
-            "Unit context and heading focus"
+            "Unit context and heading focus",
+            "Editable argument, chosen support detour, retained edition and return to existing assessment"
           ]
         }
       ],
@@ -2136,6 +2324,12 @@
             "lib/algebra/account-progress.ts",
             "lib/algebra/account-server.ts",
             "lib/algebra/account-store.ts",
+            "lib/algebra/argument-store.ts",
+            "lib/algebra/argument-server.ts",
+            "lib/algebra/argument-records.ts",
+            "components/algebra/ArgumentContext.tsx",
+            "app/api/arguments/route.ts",
+            "drizzle/0001_argument_records.sql",
             "app/api/progress/route.ts",
             "db/schema.ts",
             "drizzle/0000_account_progress.sql",
@@ -2147,6 +2341,7 @@
           ],
           "journeys": [
             "tests/browser/account-progress.spec.mjs",
+            "tests/browser/arguments.spec.mjs",
             "tests/browser/progress.spec.mjs",
             "tests/browser/navigation.spec.mjs"
           ],
@@ -2156,6 +2351,7 @@
             "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
             "Capstone navigation preserves account progress and preferences",
             "Explicit legacy preview/import/export, reset and recovery",
+            "Separate argument records, exact acknowledgement and conflict recovery without progress reset side effects",
             "Hosted provider sign-in and gateway header stripping require separate production proof"
           ]
         }
@@ -2187,6 +2383,12 @@
             "lib/algebra/account-progress.ts",
             "lib/algebra/account-server.ts",
             "lib/algebra/account-store.ts",
+            "lib/algebra/argument-store.ts",
+            "lib/algebra/argument-server.ts",
+            "lib/algebra/argument-records.ts",
+            "components/algebra/ArgumentContext.tsx",
+            "app/api/arguments/route.ts",
+            "drizzle/0001_argument_records.sql",
             "app/api/progress/route.ts",
             "db/schema.ts",
             "drizzle/0000_account_progress.sql",
@@ -2198,6 +2400,7 @@
           ],
           "journeys": [
             "tests/browser/account-progress.spec.mjs",
+            "tests/browser/arguments.spec.mjs",
             "tests/browser/progress.spec.mjs",
             "tests/browser/navigation.spec.mjs"
           ],
@@ -2207,6 +2410,7 @@
             "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
             "Capstone navigation preserves account progress and preferences",
             "Explicit legacy preview/import/export, reset and recovery",
+            "Separate argument records, exact acknowledgement and conflict recovery without progress reset side effects",
             "Hosted provider sign-in and gateway header stripping require separate production proof"
           ]
         }
@@ -2275,12 +2479,16 @@
         "lib/algebra/ureca-topics.json",
         "components/algebra/LessonReader.tsx",
         "components/algebra/ConceptLibrary.tsx",
+        "hooks/use-concept-sidebar.ts",
+        "hooks/use-algebra-navigation.ts",
+        "lib/algebra/argument-catalogue.ts",
         "lib/algebra/navigation.ts",
         "lib/algebra/routes.ts"
       ],
       "journeys": [
         "tests/browser/navigation.spec.mjs",
         "tests/browser/navigation-focus.spec.mjs",
+        "tests/browser/sidebar.spec.mjs",
         "tests/browser/learning.spec.mjs",
         "tests/browser/ureca-coverage.spec.mjs"
       ],
@@ -2293,22 +2501,31 @@
     },
     {
       "id": "guided-learning",
-      "featureIds": ["assessment", "lesson-compass"],
+      "featureIds": ["assessment", "lesson-compass", "argument-workspace"],
       "sources": [
         "components/algebra/Checkpoint.tsx",
         "components/algebra/GuidedReader.tsx",
         "lib/algebra/guided.ts",
-        "lib/algebra/learning.ts"
+        "lib/algebra/learning.ts",
+        "components/algebra/ArgumentDesk.tsx",
+        "components/algebra/ArgumentWriting.tsx",
+        "components/algebra/ArgumentSupport.tsx",
+        "components/algebra/ArgumentBackups.tsx",
+        "lib/algebra/argument-catalogue.ts",
+        "lib/algebra/argument-records.ts",
+        "app/argument.css"
       ],
       "journeys": [
         "tests/browser/learning.spec.mjs",
         "tests/browser/studio.spec.mjs",
+        "tests/browser/arguments.spec.mjs",
         "tests/browser/ureca-coverage.spec.mjs"
       ],
       "assertions": [
         "Checkpoint reasoning feedback",
         "Proof recall and keyboard stages",
-        "Unit context and heading focus"
+        "Unit context and heading focus",
+        "Editable argument, chosen support detour, retained edition and return to existing assessment"
       ]
     },
     {
@@ -2350,6 +2567,12 @@
         "lib/algebra/account-progress.ts",
         "lib/algebra/account-server.ts",
         "lib/algebra/account-store.ts",
+        "lib/algebra/argument-store.ts",
+        "lib/algebra/argument-server.ts",
+        "lib/algebra/argument-records.ts",
+        "components/algebra/ArgumentContext.tsx",
+        "app/api/arguments/route.ts",
+        "drizzle/0001_argument_records.sql",
         "app/api/progress/route.ts",
         "db/schema.ts",
         "drizzle/0000_account_progress.sql",
@@ -2361,6 +2584,7 @@
       ],
       "journeys": [
         "tests/browser/account-progress.spec.mjs",
+        "tests/browser/arguments.spec.mjs",
         "tests/browser/progress.spec.mjs",
         "tests/browser/navigation.spec.mjs"
       ],
@@ -2370,6 +2594,7 @@
         "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
         "Capstone navigation preserves account progress and preferences",
         "Explicit legacy preview/import/export, reset and recovery",
+        "Separate argument records, exact acknowledgement and conflict recovery without progress reset side effects",
         "Hosted provider sign-in and gateway header stripping require separate production proof"
       ],
       "prerequisites": [
@@ -3041,29 +3266,19 @@
         "./LaboratoryControls",
         "./WebMCP",
         "./RepresentationObject",
-        "@/hooks/use-navigation-focus"
+        "@/hooks/use-algebra-navigation",
+        "@/hooks/use-concept-sidebar",
+        "@/lib/algebra/argument-catalogue",
+        "./ArgumentDesk"
       ],
       "states": [
-        {
-          "binding": "[screen, setScreen]",
-          "initialExpression": "{ mode: \"home\" }"
-        },
-        {
-          "binding": "[id, setId]",
-          "initialExpression": "\"foundations-functions\""
-        },
         {
           "binding": "[subject, setSubject]",
           "initialExpression": "subjects[0]"
         },
         { "binding": "[query, setQuery]", "initialExpression": "\"\"" },
+        { "binding": "[ready, setReady]", "initialExpression": "false" },
         { "binding": "[tab, setTab]", "initialExpression": "\"guided\"" },
-        { "binding": "[route, setRoute]", "initialExpression": "\"actions\"" },
-        { "binding": "[menu, setMenu]", "initialExpression": "false" },
-        {
-          "binding": "[laboratory, setLaboratory]",
-          "initialExpression": "false"
-        },
         {
           "binding": "[expanded, setExpanded]",
           "initialExpression": "\"Groups & generators\""
@@ -3072,7 +3287,7 @@
       "controls": [
         {
           "kind": "a",
-          "line": 218,
+          "line": 183,
           "attributes": {
             "className": "\"skip-link\"",
             "href": "\"#concept\"",
@@ -3081,7 +3296,7 @@
         },
         {
           "kind": "a",
-          "line": 229,
+          "line": 194,
           "attributes": {
             "className": "\"wordmark\"",
             "href": "\"#home\"",
@@ -3090,7 +3305,7 @@
         },
         {
           "kind": "a",
-          "line": 258,
+          "line": 223,
           "attributes": {
             "key": "{mode}",
             "href": "{`#${mode}`}",
@@ -3100,17 +3315,31 @@
         },
         {
           "kind": "button",
-          "line": 284,
+          "line": 249,
           "attributes": {
             "id": "\"library-toggle\"",
             "className": "\"library-toggle\"",
-            "aria-expanded": "{menu}",
-            "onClick": "{() => setMenu(!menu)}"
+            "ref": "{toggleButton}",
+            "aria-controls": "\"concept-library\"",
+            "aria-haspopup": "{narrow ? \"dialog\" : undefined}",
+            "aria-expanded": "{narrow ? modalOpen : conceptsExpanded}",
+            "aria-label": "{\n            narrow\n              ? \"Concepts\"\n              : conceptsExpanded\n                ? \"Collapse concepts\"\n                : \"Expand concepts\"\n          }",
+            "onClick": "{toggleConcepts}",
+            "disabled": "{!ready}"
           }
         },
         {
           "kind": "button",
-          "line": 361,
+          "line": 298,
+          "attributes": {
+            "className": "\"library-close\"",
+            "onClick": "{dismissConcepts}",
+            "aria-label": "\"Close concepts\""
+          }
+        },
+        {
+          "kind": "button",
+          "line": 364,
           "attributes": {
             "aria-label": "{`Previous: ${siblings[index - 1]?.navTitle || \"start of route\"}`}",
             "disabled": "{index <= 0}",
@@ -3119,27 +3348,484 @@
         },
         {
           "kind": "button",
-          "line": 370,
+          "line": 373,
           "attributes": {
             "aria-label": "{`Next: ${siblings[index + 1]?.navTitle || \"end of route\"}`}",
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
-        { "kind": "summary", "line": 382, "attributes": {} },
+        { "kind": "summary", "line": 385, "attributes": {} },
         {
           "kind": "button",
-          "line": 420,
+          "line": 428,
           "attributes": {
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
         {
           "kind": "a",
-          "line": 429,
+          "line": 437,
           "attributes": {
             "href": "{`#${capstoneTargetId(activeRoute)}`}",
             "onClick": "{(event) => {\n                      if (\n                        !event.metaKey &&\n                        !event.ctrlKey &&\n                        !event.shiftKey &&\n                        !event.altKey\n                      ) {\n                        event.preventDefault();\n                        openCapstone(activeRoute);\n                      }\n                    }}"
+          }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/ArgumentBackups.tsx",
+      "dependencies": [
+        "react",
+        "lucide-react",
+        "@/lib/algebra/argument-records",
+        "@/lib/algebra/argument-catalogue",
+        "./ArgumentContext"
+      ],
+      "states": [
+        { "binding": "[preview, setPreview]", "initialExpression": "null" },
+        { "binding": "[selected, setSelected]", "initialExpression": "null" },
+        { "binding": "[error, setError]", "initialExpression": "\"\"" },
+        { "binding": "[removing, setRemoving]", "initialExpression": "null" }
+      ],
+      "controls": [
+        { "kind": "summary", "line": 47, "attributes": {} },
+        {
+          "kind": "button",
+          "line": 56,
+          "attributes": { "onClick": "{download}" }
+        },
+        {
+          "kind": "input",
+          "line": 62,
+          "attributes": {
+            "id": "{fileId}",
+            "type": "\"file\"",
+            "accept": "\"application/json,.json\"",
+            "onChange": "{async (event) => {\n              const file = event.target.files?.[0];\n              event.target.value = \"\";\n              if (!file) return;\n              try {\n                if (file.size > argumentLimits.importBytes)\n                  throw new Error(\"Argument backup exceeds 8 MiB.\");\n                setPreview(state.previewImport(await file.text()));\n                setSelected(null);\n                setError(\"\");\n              } catch (error) {\n                setPreview(null);\n                setError(\n                  error instanceof Error\n                    ? error.message\n                    : \"This backup could not be read.\",\n                );\n              }\n            }}"
+          }
+        },
+        {
+          "kind": "input",
+          "line": 105,
+          "attributes": {
+            "type": "\"radio\"",
+            "name": "{`${fileId}-sheet`}",
+            "checked": "{selected === sheet.id}",
+            "onChange": "{() => setSelected(sheet.id)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 123,
+          "attributes": {
+            "disabled": "{!selected}",
+            "onClick": "{() => {\n                  const sheet = preview.sheets.find(\n                    (sheet) => sheet.id === selected,\n                  );\n                  if (sheet) onImport(sheet);\n                }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 134,
+          "attributes": { "onClick": "{() => setPreview(null)}" }
+        },
+        {
+          "kind": "button",
+          "line": 153,
+          "attributes": { "onClick": "{() => onResume(saved)}" }
+        },
+        {
+          "kind": "button",
+          "line": 156,
+          "attributes": {
+            "disabled": "{\n                      (state.phase !== \"ready\" &&\n                        state.phase !== \"unsupported\") ||\n                      state.canRetry ||\n                      (state.dirty && state.active?.id === saved.sheet.id)\n                    }",
+            "onClick": "{() => setRemoving(saved)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 182,
+          "attributes": {
+            "disabled": "{\n                          (state.phase !== \"ready\" &&\n                            state.phase !== \"unsupported\") ||\n                          state.canRetry ||\n                          (state.dirty && state.active?.id === saved.sheet.id)\n                        }",
+            "onClick": "{() => {\n                          run(() => state.remove(saved));\n                          setRemoving(null);\n                        }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 196,
+          "attributes": { "onClick": "{() => setRemoving(null)}" }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/ArgumentContext.tsx",
+      "dependencies": ["react", "@/lib/algebra/argument-store"],
+      "states": [],
+      "controls": [],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/ArgumentDesk.tsx",
+      "dependencies": [
+        "react",
+        "lucide-react",
+        "@/lib/algebra/argument-records",
+        "@/lib/algebra/argument-catalogue",
+        "@/lib/algebra/navigation",
+        "@/lib/algebra/guided",
+        "@/lib/algebra/learning",
+        "@/lib/algebra/routes",
+        "./ArgumentContext",
+        "./ArgumentWriting",
+        "./ArgumentSupport",
+        "./ArgumentBackups",
+        "./Checkpoint",
+        "./Math"
+      ],
+      "states": [
+        {
+          "binding": "[view, setView]",
+          "initialExpression": "\"reconstruct\""
+        },
+        { "binding": "[notice, setNotice]", "initialExpression": "\"\"" },
+        {
+          "binding": "[replacement, setReplacement]",
+          "initialExpression": "null"
+        },
+        { "binding": "[teaching, setTeaching]", "initialExpression": "null" }
+      ],
+      "controls": [
+        {
+          "kind": "a",
+          "line": 68,
+          "attributes": {
+            "className": "{className}",
+            "href": "{`#${workTargetId(targetId, unitId ?? undefined, support)}`}",
+            "onClick": "{(event) => {\n        if (!ordinaryClick(event)) return;\n        event.preventDefault();\n        navigate(targetId, unitId, support);\n      }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 210,
+          "attributes": { "onClick": "{() => run(state.retry)}" }
+        },
+        {
+          "kind": "button",
+          "line": 216,
+          "attributes": { "onClick": "{state.useServerVersion}" }
+        },
+        {
+          "kind": "button",
+          "line": 221,
+          "attributes": { "onClick": "{() => run(state.saveCopy)}" }
+        },
+        { "kind": "summary", "line": 226, "attributes": {} },
+        {
+          "kind": "button",
+          "line": 237,
+          "attributes": {
+            "className": "\"argument-primary\"",
+            "disabled": "{\n                !state.active ||\n                !state.dirty ||\n                (state.phase !== \"ready\" &&\n                  state.phase !== \"unsupported\" &&\n                  !(state.phase === \"failed\" && !state.canRetry))\n              }",
+            "onClick": "{() => run(state.save)}"
+          }
+        },
+        {
+          "kind": "a",
+          "line": 455,
+          "attributes": {
+            "href": "{`#${target.id}`}",
+            "className": "\"argument-lesson-link\"",
+            "onClick": "{(event) => {\n            if (!ordinaryClick(event)) return;\n            event.preventDefault();\n            openLesson(target.id, unit?.id);\n          }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 501,
+          "attributes": {
+            "className": "\"argument-primary\"",
+            "disabled": "{\n                        state.phase !== \"ready\" && state.phase !== \"unsupported\"\n                      }",
+            "onClick": "{() => run(state.save)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 510,
+          "attributes": {
+            "disabled": "{state.phase === \"saving\"}",
+            "onClick": "{() => {\n                        state.discardActive();\n                        run(() => applyReplacement(replacement));\n                      }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 521,
+          "attributes": {
+            "className": "\"argument-primary\"",
+            "onClick": "{() => run(() => applyReplacement(replacement))}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 528,
+          "attributes": {
+            "onClick": "{() => {\n                    setReplacement(null);\n                    if (sheet) navigate(sheet.lessonId, sheet.unitId);\n                  }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 554,
+          "attributes": {
+            "onClick": "{() =>\n                    request({ kind: \"target\", lessonId: targetId, unitId })\n                  }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 580,
+          "attributes": {
+            "onClick": "{() =>\n                      request({\n                        kind: \"new\",\n                        lessonId: sheet.lessonId,\n                        unitId: sheet.unitId,\n                      })\n                    }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 594,
+          "attributes": {
+            "aria-pressed": "{mode === \"reconstruct\"}",
+            "onClick": "{() => showPane(\"reconstruct\")}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 600,
+          "attributes": {
+            "aria-pressed": "{mode === \"compare\"}",
+            "onClick": "{() => showPane(\"compare\")}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 606,
+          "attributes": {
+            "aria-pressed": "{mode === \"consult\"}",
+            "onClick": "{() => showPane(\"consult\")}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 646,
+          "attributes": { "onClick": "{() => showPane(\"compare\")}" }
+        },
+        {
+          "kind": "Checkpoint",
+          "line": 682,
+          "attributes": {
+            "key": "{targetId}",
+            "title": "\"Transfer your reasoning\"",
+            "assessment": "{guide.transfer}",
+            "competencyId": "{\n                            learningMetadata(target).competencies.some(\n                              (competency) => competency.id === transferId,\n                            )\n                              ? transferId\n                              : undefined\n                          }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 708,
+          "attributes": { "onClick": "{() => showPane(\"transfer\")}" }
+        },
+        {
+          "kind": "a",
+          "line": 712,
+          "attributes": {
+            "href": "{`#capstone:${encodeURIComponent(unit.id)}`}",
+            "onClick": "{(event) => {\n                        if (!ordinaryClick(event)) return;\n                        event.preventDefault();\n                        openCapstone(unit.id);\n                      }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 727,
+          "attributes": {
+            "onClick": "{() =>\n                    request({\n                      kind: \"new\",\n                      lessonId: sheet.lessonId,\n                      unitId: sheet.unitId,\n                    })\n                  }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 739,
+          "attributes": {
+            "disabled": "{\n                      state.phase !== \"ready\" && state.phase !== \"unsupported\"\n                    }",
+            "onClick": "{() => run(state.saveCopy)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 757,
+          "attributes": {
+            "onClick": "{() =>\n                  run(() => state.start(targetId, unitId ?? undefined))\n                }"
+          }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/ArgumentSupport.tsx",
+      "dependencies": [
+        "react",
+        "lucide-react",
+        "@/lib/algebra/argument-records",
+        "@/lib/algebra/argument-catalogue",
+        "@/lib/algebra/navigation",
+        "@/lib/algebra/reading-views",
+        "@/lib/algebra/lab-contracts",
+        "./LearningProgress",
+        "./ConceptLink",
+        "./LessonReader",
+        "./Exploration",
+        "./Math",
+        "./ArgumentDesk"
+      ],
+      "states": [
+        { "binding": "[expanded, setExpanded]", "initialExpression": "false" },
+        { "binding": "[query, setQuery]", "initialExpression": "\"\"" },
+        {
+          "binding": "[reading, setReading]",
+          "initialExpression": "\"guided\""
+        }
+      ],
+      "controls": [
+        { "kind": "summary", "line": 86, "attributes": {} },
+        {
+          "kind": "button",
+          "line": 137,
+          "attributes": { "onClick": "{returnToWriting}" }
+        },
+        {
+          "kind": "button",
+          "line": 140,
+          "attributes": { "onClick": "{chooseSupport}" }
+        },
+        { "kind": "summary", "line": 188, "attributes": {} },
+        {
+          "kind": "input",
+          "line": 221,
+          "attributes": {
+            "id": "{searchId}",
+            "type": "\"search\"",
+            "value": "{query}",
+            "onChange": "{(event) => setQuery(event.target.value)}",
+            "placeholder": "\"Try balancing, kernels, naturality…\""
+          }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/ArgumentWriting.tsx",
+      "dependencies": [
+        "react",
+        "lucide-react",
+        "@/lib/algebra/argument-records",
+        "./Math"
+      ],
+      "states": [
+        { "binding": "[preview, setPreview]", "initialExpression": "false" },
+        { "binding": "[removing, setRemoving]", "initialExpression": "null" }
+      ],
+      "controls": [
+        {
+          "kind": "button",
+          "line": 55,
+          "attributes": {
+            "aria-pressed": "{block.id === active.id}",
+            "onClick": "{() => commit({ ...sheet, activeBlockId: block.id })}"
+          }
+        },
+        {
+          "kind": "textarea",
+          "line": 88,
+          "attributes": {
+            "id": "{`${fieldId}-text`}",
+            "aria-describedby": "{`${fieldId}-hint`}",
+            "value": "{active.text}",
+            "maxLength": "{argumentLimits.textBytes}",
+            "onChange": "{(event) =>\n            edit({ text: event.target.value, review: \"unreviewed\" })\n          }",
+            "rows": "{9}",
+            "placeholder": "\"Name the objects and the map you want to construct. Justify one move at a time.\""
+          }
+        },
+        {
+          "kind": "button",
+          "line": 99,
+          "attributes": {
+            "className": "\"argument-text-button\"",
+            "aria-expanded": "{preview}",
+            "onClick": "{() => setPreview(!preview)}"
+          }
+        },
+        {
+          "kind": "textarea",
+          "line": 117,
+          "attributes": {
+            "id": "{`${fieldId}-question`}",
+            "rows": "{2}",
+            "value": "{active.question}",
+            "maxLength": "{argumentLimits.questionBytes}",
+            "onChange": "{(event) =>\n            edit({ question: event.target.value, review: \"needs-work\" })\n          }",
+            "placeholder": "\"Which equality, hypothesis or construction needs work?\""
+          }
+        },
+        {
+          "kind": "button",
+          "line": 127,
+          "attributes": {
+            "className": "\"argument-consult-action\"",
+            "onClick": "{() => {\n            edit({ review: \"needs-work\" });\n            consult();\n          }}"
+          }
+        },
+        {
+          "kind": "select",
+          "line": 139,
+          "attributes": {
+            "id": "{`${fieldId}-review`}",
+            "value": "{active.review}",
+            "onChange": "{(event) => {\n            const review = event.target.value;\n            if (\n              review === \"unreviewed\" ||\n              review === \"needs-work\" ||\n              review === \"revisited\"\n            )\n              edit({ review });\n          }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 162,
+          "attributes": { "onClick": "{() => edit({ reference: null })}" }
+        },
+        {
+          "kind": "button",
+          "line": 171,
+          "attributes": {
+            "disabled": "{sheet.blocks.length >= argumentLimits.blocks}",
+            "onClick": "{() => {\n              const block: ArgumentBlock = {\n                id: crypto.randomUUID(),\n                text: \"\",\n                question: \"\",\n                review: \"unreviewed\",\n                reference: null,\n              };\n              commit({\n                ...sheet,\n                blocks: [...sheet.blocks, block],\n                activeBlockId: block.id,\n              });\n            }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 190,
+          "attributes": {
+            "className": "\"argument-text-button\"",
+            "disabled": "{sheet.blocks.length <= 1}",
+            "onClick": "{() => setRemoving(active.id)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 206,
+          "attributes": {
+            "onClick": "{() => {\n                  const blocks = sheet.blocks.filter(\n                    (block) => block.id !== active.id,\n                  );\n                  commit({ ...sheet, blocks, activeBlockId: blocks[0].id });\n                  setRemoving(null);\n                }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 217,
+          "attributes": { "onClick": "{() => setRemoving(null)}" }
+        },
+        {
+          "kind": "button",
+          "line": 263,
+          "attributes": {
+            "aria-pressed": "{active.reference === index}",
+            "onClick": "{() =>\n                commit({\n                  ...sheet,\n                  activeBlockId: active.id,\n                  blocks: sheet.blocks.map((block) =>\n                    block.id === active.id\n                      ? { ...block, reference: index }\n                      : block,\n                  ),\n                })\n              }"
           }
         }
       ],
@@ -3600,16 +4286,16 @@
       "controls": [
         {
           "kind": "summary",
-          "line": 50,
+          "line": 57,
           "attributes": {
-            "onClick": "{(e) => {\n                e.preventDefault();\n                setSubject(s === subject ? \"\" : s);\n                setQuery(\"\");\n              }}"
+            "onClick": "{(e) => {\n                  e.preventDefault();\n                  setSubject(s === subject ? \"\" : s);\n                  setQuery(\"\");\n                }}"
           }
         },
         {
           "kind": "summary",
-          "line": 70,
+          "line": 77,
           "attributes": {
-            "onClick": "{(e) => {\n                      e.preventDefault();\n                      setExpanded(expanded === f ? undefined : f);\n                    }}"
+            "onClick": "{(e) => {\n                        e.preventDefault();\n                        setExpanded(expanded === f ? undefined : f);\n                      }}"
           }
         }
       ],
@@ -4835,6 +5521,7 @@
       "file": "components/algebra/LearningProgress.tsx",
       "dependencies": [
         "react",
+        "./ArgumentContext",
         "@/lib/algebra/engine",
         "@/lib/algebra/progress",
         "@/lib/algebra/account-store"
@@ -4843,7 +5530,7 @@
       "controls": [
         {
           "kind": "a",
-          "line": 123,
+          "line": 124,
           "attributes": {
             "href": "\"/signout-with-chatgpt?return_to=%2F\"",
             "target": "\"_top\"",
@@ -4852,7 +5539,7 @@
         },
         {
           "kind": "a",
-          "line": 132,
+          "line": 133,
           "attributes": {
             "href": "\"/signin-with-chatgpt?return_to=%2F\"",
             "target": "\"_top\""
@@ -4860,27 +5547,27 @@
         },
         {
           "kind": "button",
-          "line": 137,
+          "line": 138,
           "attributes": { "type": "\"button\"", "onClick": "{retry}" }
         },
         {
           "kind": "button",
-          "line": 142,
+          "line": 143,
           "attributes": { "type": "\"button\"", "onClick": "{discard}" }
         },
         {
           "kind": "button",
-          "line": 147,
+          "line": 148,
           "attributes": { "type": "\"button\"", "onClick": "{refresh}" }
         },
         {
           "kind": "button",
-          "line": 201,
+          "line": 202,
           "attributes": { "type": "\"button\"", "onClick": "{download}" }
         },
         {
           "kind": "button",
-          "line": 204,
+          "line": 205,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{undo}",
@@ -4889,12 +5576,12 @@
         },
         {
           "kind": "button",
-          "line": 207,
+          "line": 208,
           "attributes": { "type": "\"button\"", "onClick": "{previewLegacy}" }
         },
         {
           "kind": "button",
-          "line": 242,
+          "line": 243,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{importLegacy}",
@@ -4963,7 +5650,7 @@
       "controls": [
         {
           "kind": "button",
-          "line": 41,
+          "line": 43,
           "attributes": {
             "key": "{value}",
             "aria-pressed": "{tab === value}",
@@ -4972,15 +5659,15 @@
         },
         {
           "kind": "button",
-          "line": 111,
+          "line": 113,
           "attributes": {
             "className": "\"open-experiment\"",
-            "onClick": "{() => {\n                      const experiment = document.getElementById(\"experiment\");\n                      experiment?.scrollIntoView({ block: \"start\" });\n                      experiment?.focus({ preventScroll: true });\n                    }}"
+            "onClick": "{() => {\n                      if (openExperiment) return openExperiment();\n                      const experiment = document.getElementById(\"experiment\");\n                      experiment?.scrollIntoView({ block: \"start\" });\n                      experiment?.focus({ preventScroll: true });\n                    }}"
           }
         },
-        { "kind": "summary", "line": 184, "attributes": {} },
-        { "kind": "summary", "line": 190, "attributes": {} },
-        { "kind": "summary", "line": 204, "attributes": {} }
+        { "kind": "summary", "line": 187, "attributes": {} },
+        { "kind": "summary", "line": 193, "attributes": {} },
+        { "kind": "summary", "line": 207, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -32373,6 +33060,10 @@
     "tests/account-store.test.mjs",
     "tests/agent-cli.test.mjs",
     "tests/algebra.test.mjs",
+    "tests/argument-catalogue.test.mjs",
+    "tests/argument-records.test.mjs",
+    "tests/argument-server.test.mjs",
+    "tests/argument-store.test.mjs",
     "tests/audit-ledger.test.mjs",
     "tests/cayley-words.test.mjs",
     "tests/character-construction.test.mjs",
