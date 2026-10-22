@@ -18,6 +18,9 @@ const { handleAccountProgress } = await vite.ssrLoadModule(
 const lessons = JSON.parse(
   readFileSync(new URL("../lib/algebra/lessons.json", import.meta.url)),
 );
+const units = JSON.parse(
+  readFileSync(new URL("../lib/algebra/units.json", import.meta.url)),
+);
 const registry = progress.assessmentRegistry(lessons);
 const id = "foundations-functions:boundaryCheck";
 const submit = {
@@ -62,7 +65,10 @@ test("complete catalogue, one history copy, reset backup and 64 receipts fit the
   };
   domain.documentSchema.parse(document);
   const fullRowBytes = domain.serializedBytes(document);
-  assert.equal(Object.keys(registry).length, 467);
+  assert.equal(
+    Object.keys(registry).length,
+    lessons.length * 3 + units.length + 1,
+  );
   assert.ok(fullRowBytes < domain.accountByteLimit);
   assert.ok(domain.accountByteLimit < 2 * 1024 * 1024);
   t.diagnostic(

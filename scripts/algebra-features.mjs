@@ -18,6 +18,9 @@ export const verificationGroups = [
       "components/algebra/LaboratoryGallery.tsx",
       "components/algebra/ReferenceAtlas.tsx",
       "components/algebra/SourceCoverage.tsx",
+      "components/algebra/UrecaCoverage.tsx",
+      "lib/algebra/ureca-topics.ts",
+      "lib/algebra/ureca-topics.json",
       "components/algebra/LessonReader.tsx",
       "components/algebra/ConceptLibrary.tsx",
       "lib/algebra/navigation.ts",
@@ -27,6 +30,7 @@ export const verificationGroups = [
       "tests/browser/navigation.spec.mjs",
       "tests/browser/navigation-focus.spec.mjs",
       "tests/browser/learning.spec.mjs",
+      "tests/browser/ureca-coverage.spec.mjs",
     ],
     assertions: [
       "Mode, alias and history destinations",
@@ -47,6 +51,7 @@ export const verificationGroups = [
     journeys: [
       "tests/browser/learning.spec.mjs",
       "tests/browser/studio.spec.mjs",
+      "tests/browser/ureca-coverage.spec.mjs",
     ],
     assertions: [
       "Checkpoint reasoning feedback",

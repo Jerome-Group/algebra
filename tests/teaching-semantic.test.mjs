@@ -231,9 +231,15 @@ test("triangular module simple layers and nonsplitting are exact over F2", () =>
   assert.ok(vectors.every((v) => equal(act(J, act(J, v)), [0, 0])));
 });
 
-test("all 150 existing concepts have teaching; original 79 assessment contracts survive", () => {
-  assert.equal(lessons.length, 150);
-  assert.equal(Object.keys(guides).length, 150);
+test("current concepts have teaching; the original 150 entries and 79 assessment contracts survive", () => {
+  assert.deepEqual(
+    new Set(Object.keys(guides)),
+    new Set(lessons.map(({ id }) => id)),
+  );
+  assert.deepEqual(
+    new Set(Object.keys(metadata)),
+    new Set(lessons.map(({ id }) => id)),
+  );
   assert.equal(audit.rows.length, 150);
   assert.equal(audit.rows.filter((row) => row.newScaffolding).length, 71);
   const positions = [0, 0, 0];

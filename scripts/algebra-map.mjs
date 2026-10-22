@@ -483,7 +483,7 @@ export function buildMap() {
       machine: lesson.machine,
       parameters: lesson.parameters,
       source: lesson.source,
-      connections: lesson.connections,
+      connections: lesson.connections ?? [],
       contentSource: "lib/algebra/lessons.json",
       metadata: metadata[lesson.id],
       guided: guided[lesson.id]

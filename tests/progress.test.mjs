@@ -145,7 +145,6 @@ test("unit completion needs all guided lesson evidence plus the unit transfer ch
   );
 });
 test("all unit capstones offer distinct diagnosed reasoning and retain their worked solution", () => {
-  assert.equal(units.length, 16);
   for (const unit of units) {
     const assessment = capstoneAssessment(unit.id);
     assert.ok(assessment.question.startsWith(unit.capstone.question), unit.id);

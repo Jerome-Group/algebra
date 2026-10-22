@@ -44,9 +44,42 @@ for (const lesson of lessons) {
             );
           await start.click();
         }
-        await expect(
-          page.locator(".visual-panel .katex").first(),
-        ).toBeVisible();
+        if (
+          lesson.machine === "diagram" &&
+          lesson.id !== "characters-burnside" &&
+          lesson.parameters?.nodes?.length
+        ) {
+          const panel = page.locator(".visual-panel");
+          await expect(
+            panel.getByRole("img", {
+              name: "Mathematical structure relationships",
+              exact: true,
+            }),
+          ).toBeVisible();
+          await expect(panel.locator(".structure-node")).toHaveCount(
+            lesson.parameters.nodes.length,
+          );
+          if (lesson.parameters.nodes.some((node) => !node.text))
+            await expect(panel.locator(".katex").first()).toBeVisible();
+          const relationships = panel.locator(".relationship-steps button");
+          await expect(relationships).toHaveCount(
+            lesson.parameters.edges.length,
+          );
+          for (const control of [relationships.first(), relationships.last()]) {
+            const label = (await control.textContent()).replace(
+              /^\d+\.\s*/,
+              "",
+            );
+            await control.click();
+            await expect(control).toHaveClass("active");
+            await expect(panel.locator(".relationship-readout")).toContainText(
+              label,
+            );
+          }
+        } else
+          await expect(
+            page.locator(".visual-panel .katex").first(),
+          ).toBeVisible();
         await expect(page.locator(".laboratory-loading")).toHaveCount(0);
         await expect(page.locator(".laboratory-load-error")).toHaveCount(0);
         await expect(page.locator(".katex-error")).toHaveCount(0);

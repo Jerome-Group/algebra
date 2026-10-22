@@ -17,6 +17,9 @@ The registered catalogue, sizing, geometry, studio, URECA and load-recovery jour
 catalogue and exercise selected mathematical outcomes. Expect exact square vertex images,
 visible mathematical output, fitted diagrams at narrow widths and a usable retry after an
 intentionally failed laboratory load. Inspect the resulting screenshots for diagram changes.
+Text-only structure illustrations need their named SVG, declared objects and relationship
+controls. Formula labels retain the KaTeX rendering checks. A valid text diagram need not
+contain a formula.
 
 ## Gotchas
 

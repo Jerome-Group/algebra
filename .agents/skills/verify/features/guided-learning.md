@@ -24,6 +24,13 @@ and 1440 pixels. It rejects unknown targets and checks deferred focus cancellati
 reading endpoint ends the reading list. The account journey checks that capstone navigation
 preserves the account document without competency credit.
 
+The URECA coverage journey enters every added foundations, constructions and theory lesson.
+It checks visible conventions, all authored worked examples and four checkpoint controls,
+operates Work examples and proof recall, then submits one correct hypothesis answer through
+the real form. Selecting the answer leaves credit unchanged; submitting it demonstrates one
+competency. Other new checkpoint answers remain covered by independent content review and
+rendering checks, rather than a claim that this journey submits all four.
+
 ## Gotchas
 
 Before you begin gives no competency credit. Credit follows the latest correct submission for

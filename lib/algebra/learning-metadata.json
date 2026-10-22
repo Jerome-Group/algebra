@@ -4059,5 +4059,2160 @@
     "visualisationType": "checker",
     "sourceCollections": ["URECA Y2"],
     "conceptKind": "theorem"
+  },
+  "ureca-theory-mackey-orbits": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["odyssey-induction", "mh2220-double-cosets"],
+    "competencies": [
+      {
+        "id": "ureca-theory-mackey-orbits:boundaryCheck",
+        "statement": "State the ring and action hypotheses for Mackey orbit pieces.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-mackey-orbits:application",
+        "statement": "Compute the stabilizer intersection in an original finite-group example.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-mackey-orbits:transfer",
+        "statement": "Prove directness using unique induced-module coordinates.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-mackey-isomorphism": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["ureca-theory-mackey-orbits"],
+    "competencies": [
+      {
+        "id": "ureca-theory-mackey-isomorphism:boundaryCheck",
+        "statement": "Identify the hypotheses used by the tensor-coordinate proof.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-mackey-isomorphism:application",
+        "statement": "Compute both Mackey summands for induction from a transposition subgroup.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-mackey-isomorphism:transfer",
+        "statement": "Verify representative changes by balancing and composition.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-semisimple-endomorphisms": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["odyssey-schur", "representations-maschke"],
+    "competencies": [
+      {
+        "id": "ureca-theory-semisimple-endomorphisms:boundaryCheck",
+        "statement": "Locate the semisimplicity requirement in the converse criterion.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-semisimple-endomorphisms:application",
+        "statement": "Compute a commutant dimension from complex isotypic multiplicities.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-semisimple-endomorphisms:transfer",
+        "statement": "Use a modular counterexample without overclaiming its implications.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-normal-induced-irreducibility": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-theory-mackey-isomorphism",
+      "ureca-theory-semisimple-endomorphisms",
+      "odyssey-frobenius"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-theory-normal-induced-irreducibility:boundaryCheck",
+        "statement": "State the field and semisimplicity boundaries of the criterion.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-normal-induced-irreducibility:application",
+        "statement": "Determine irreducibility for induction of a nontrivial A3 character.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-normal-induced-irreducibility:transfer",
+        "statement": "Prove the necessity direction in the correct logical order.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-alternating-splitting": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 40,
+    "prerequisites": ["mh2220-conjugacy"],
+    "competencies": [
+      {
+        "id": "ureca-theory-alternating-splitting:boundaryCheck",
+        "statement": "State the index-two centralizer splitting test.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-alternating-splitting:application",
+        "statement": "Compute split class sizes in A4.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-alternating-splitting:transfer",
+        "statement": "Construct an even conjugator by an odd-centralizer repair.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-distinct-odd-cycles": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 40,
+    "prerequisites": ["ureca-theory-alternating-splitting"],
+    "competencies": [
+      {
+        "id": "ureca-theory-distinct-odd-cycles:boundaryCheck",
+        "statement": "Apply the full odd-and-distinct criterion with all fixed points.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-distinct-odd-cycles:application",
+        "statement": "Construct an odd centralizer for repeated odd cycles.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-distinct-odd-cycles:transfer",
+        "statement": "Prove the sufficiency direction from orbit preservation.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-linear-adjoints": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 40,
+    "prerequisites": ["foundations-linear-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-theory-linear-adjoints:boundaryCheck",
+        "statement": "Identify the orthonormal-basis hypothesis in the matrix shortcut.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-linear-adjoints:application",
+        "statement": "Compute a rectangular complex adjoint.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-linear-adjoints:transfer",
+        "statement": "Extend basis-pair calculations by sesquilinearity.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-gram-matrix-adjoints": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 40,
+    "prerequisites": ["ureca-theory-linear-adjoints"],
+    "competencies": [
+      {
+        "id": "ureca-theory-gram-matrix-adjoints:boundaryCheck",
+        "statement": "Explain the positive-definite basis hypotheses behind Gram inversion.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-gram-matrix-adjoints:application",
+        "statement": "Compute the arbitrary-basis matrix of a Euclidean self-adjoint map.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-gram-matrix-adjoints:transfer",
+        "statement": "Transfer the adjoint formula to distinct source and target metrics.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-class-function-adjoints": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 40,
+    "prerequisites": [
+      "ureca-theory-gram-matrix-adjoints",
+      "odyssey-frobenius",
+      "representations-characters"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-theory-class-function-adjoints:boundaryCheck",
+        "statement": "Retain the weighted inner-product normalization.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-class-function-adjoints:application",
+        "statement": "Compute the class-coordinate induction matrix for S3 and C2.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-class-function-adjoints:transfer",
+        "statement": "Derive regular-module multiplicities by adjointness.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "theorem"
+  },
+  "ureca-theory-categories-currying": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["foundations-functions", "ureca-intertwiners"],
+    "competencies": [
+      {
+        "id": "ureca-theory-categories-currying:boundaryCheck",
+        "statement": "State the naturality requirement for adjunctions.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-categories-currying:application",
+        "statement": "Evaluate a curried finite function.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-categories-currying:transfer",
+        "statement": "Track the contravariant source direction of Hom.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-bimodule-tensor-hom": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["ureca-theory-categories-currying", "tensor-products"],
+    "competencies": [
+      {
+        "id": "ureca-theory-bimodule-tensor-hom:boundaryCheck",
+        "statement": "State the precise abelian-group and central-scalar linearity claims.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-bimodule-tensor-hom:application",
+        "statement": "Compute the annihilator description of a quotient-ring Hom.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-bimodule-tensor-hom:transfer",
+        "statement": "Prove reverse balancing before using the tensor universal property.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tensor-hom-naturality": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["ureca-theory-bimodule-tensor-hom"],
+    "competencies": [
+      {
+        "id": "ureca-theory-tensor-hom-naturality:boundaryCheck",
+        "statement": "Distinguish adjunction from equivalence.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-tensor-hom-naturality:application",
+        "statement": "Compute both routes of a naturality identity.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tensor-hom-naturality:transfer",
+        "statement": "Verify the Hom-side triangle identity by evaluation.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-spring-model": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": ["foundations-linear-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-spring-model:boundaryCheck",
+        "statement": "State the unstressed central-spring assumptions behind the quadratic model.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-spring-model:application",
+        "statement": "Compute an edge extension and its quadratic energy.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-spring-model:transfer",
+        "statement": "Form the generalized mass-stiffness normal-mode equation.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-displacement-character": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": [
+      "ureca-theory-tetrahedron-spring-model",
+      "representations-characters",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-displacement-character:boundaryCheck",
+        "statement": "Retain the full-group boundary needed for polar and axial distinctions.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-displacement-character:application",
+        "statement": "Compute a physical displacement trace from fixed sites and vector trace.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-displacement-character:transfer",
+        "statement": "Decompose the physical displacement character.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-affine-coordinates": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": ["ureca-theory-tetrahedron-displacement-character"],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-affine-coordinates:boundaryCheck",
+        "statement": "State the nondegeneracy hypothesis behind affine reconstruction.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-affine-coordinates:application",
+        "statement": "Recover a translation coordinate from displacement data.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-affine-coordinates:transfer",
+        "statement": "Use the mass metric on symmetric matrix coordinates.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-rigid-motions": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": ["ureca-theory-tetrahedron-affine-coordinates"],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-rigid-motions:boundaryCheck",
+        "statement": "Identify the proper-transformation boundary of polar and axial equivalence.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-rigid-motions:application",
+        "statement": "Compute a rotation parameter under a reflection.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-rigid-motions:transfer",
+        "statement": "Prove rigidity from all six edge equations.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-exact-spectrum": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": ["ureca-theory-tetrahedron-rigid-motions"],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-exact-spectrum:boundaryCheck",
+        "statement": "State the force and mass assumptions behind the exact spectrum.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-exact-spectrum:application",
+        "statement": "Compute the shear stiffness-to-mass ratio.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-exact-spectrum:transfer",
+        "statement": "Construct normalized mode coordinates from affine matrix patterns.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-schur-degeneracy": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": [
+      "ureca-theory-tetrahedron-exact-spectrum",
+      "ureca-theory-semisimple-endomorphisms"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-schur-degeneracy:boundaryCheck",
+        "statement": "State why complex Schur applies to these real physical families.",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-schur-degeneracy:application",
+        "statement": "Diagonalize a repeated-copy multiplicity matrix.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-schur-degeneracy:transfer",
+        "statement": "Use translation invariance and self-adjointness to exclude a possible coupling.",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-theory-tetrahedron-induction-bridge": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 50,
+    "prerequisites": [
+      "ureca-theory-tetrahedron-displacement-character",
+      "ureca-theory-class-function-adjoints",
+      "odyssey-induction"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-theory-tetrahedron-induction-bridge:boundaryCheck",
+        "statement": "Identify the correct local fiber representation for displacement induction.",
+        "level": "recognise"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-induction-bridge:application",
+        "statement": "Compute a displacement multiplicity using the stabilizer.",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-theory-tetrahedron-induction-bridge:transfer",
+        "statement": "Prove representative independence of the tensor-identity inverse.",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-quaternion-presentation": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-linear-action"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-quaternion-presentation:boundaryCheck",
+        "statement": "Why does a nonzero quaternion invariant subspace fill the real four-dimensional module?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-quaternion-presentation:application",
+        "statement": "What is $L_jL_i(1)$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-quaternion-presentation:transfer",
+        "statement": "Does group faithfulness force the group-algebra map to be injective?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-order-eighteen": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-linear-action"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-order-eighteen:boundaryCheck",
+        "statement": "When is this two-dimensional complex family irreducible?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-order-eighteen:application",
+        "statement": "For $(\\alpha,\\beta)=(\\omega,\\omega)$, which element lies in the kernel?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-order-eighteen:transfer",
+        "statement": "Why can no member be faithful?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-invariant-blocks": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-invariant-subspaces", "ureca-intertwiners"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-invariant-blocks:boundaryCheck",
+        "statement": "What does a zero lower-left block for every group element establish?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-invariant-blocks:application",
+        "statement": "How many invariant lines does the swap have on $\\mathbb F_2^2$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-invariant-blocks:transfer",
+        "statement": "How does an intertwining isomorphism transport invariant spaces?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-direct-sum-maps": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-intertwiners"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-direct-sum-maps:boundaryCheck",
+        "statement": "Why can a new irreducible summand be selected or discarded?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-direct-sum-maps:application",
+        "statement": "What is the fixed-line projection of $(3,1)$ in the swap module over $\\mathbb C$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-direct-sum-maps:transfer",
+        "statement": "What are the blocks of an equivariant map between direct sums?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-regular-calculations": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-group-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-regular-calculations:boundaryCheck",
+        "statement": "Why can a group element not act by zero on a nonzero module?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-regular-calculations:application",
+        "statement": "For $G=V_4$, what is $c^2$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-regular-calculations:transfer",
+        "statement": "Why is $\\langle x,sx\\rangle$ irreducible in the displayed $D_6$ example?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-permutation-regular-fixed": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-permutation-module", "ureca-group-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-permutation-regular-fixed:boundaryCheck",
+        "statement": "When does group averaging guarantee a fixed-space projection?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-permutation-regular-fixed:application",
+        "statement": "What is the fixed-space dimension of the disconnected four-point Klein action?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-permutation-regular-fixed:transfer",
+        "statement": "In modular characteristic, must the group sum always fail to be onto the fixed space?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-equivariant-operators": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-intertwiners",
+      "ureca-foundations-direct-sum-maps"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-equivariant-operators:boundaryCheck",
+        "statement": "Why is characteristic two excluded from the $\\theta^2=2\\theta$ splitting?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-equivariant-operators:application",
+        "statement": "What is $\\frac12(I+S)(5,1)$ over $\\mathbb C$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-equivariant-operators:transfer",
+        "statement": "Does rank-nullity imply a direct sum of kernel and image?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-invariant-hermitian": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-invariant-subspaces", "representations-maschke"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-invariant-hermitian:boundaryCheck",
+        "statement": "Which hypotheses justify the finite averaged Hermitian proof?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-invariant-hermitian:application",
+        "statement": "For $K=\\begin{pmatrix}2&2\\\\2&6\\end{pmatrix}$, which line is orthogonal to $\\mathbb Ce_1$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-invariant-hermitian:transfer",
+        "statement": "Does averaging imply the original coordinate matrices were already unitary?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-complement-boundaries": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "representations-maschke",
+      "ureca-foundations-invariant-blocks"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-complement-boundaries:boundaryCheck",
+        "statement": "What justifies the noncommuting-image criterion on a complex plane?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-complement-boundaries:application",
+        "statement": "For $S=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$, what is $S^3$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-complement-boundaries:transfer",
+        "statement": "Why does a nontrivial irreducible of a simple group have trivial kernel?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-commutants": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "odyssey-schur",
+      "representations-maschke",
+      "ureca-foundations-direct-sum-maps"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-commutants:boundaryCheck",
+        "statement": "What permits the converse scalar-commutant criterion here?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-commutants:application",
+        "statement": "What is $\\dim\\operatorname{Hom}_G(U^{\\oplus2},U^{\\oplus3})$ for complex irreducible $U$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-commutants:transfer",
+        "statement": "What does a repeated irreducible type contribute to the endomorphism algebra?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-abelian-weights": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-cyclic-eigenvalues", "odyssey-schur"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-abelian-weights:boundaryCheck",
+        "statement": "Which field boundary matters in the finite-order argument?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-abelian-weights:application",
+        "statement": "How many characters of $C_4^2$ satisfy $\\lambda(a^2b^2)=1$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-abelian-weights:transfer",
+        "statement": "What is the least faithful complex degree of $C_p^r$?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-central-algebra": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "odyssey-schur",
+      "ureca-foundations-regular-calculations"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-central-algebra:boundaryCheck",
+        "statement": "Why is a central algebra element scalar on U?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-central-algebra:application",
+        "statement": "What is the scalar of $[r]+[r^{-1}]$ on the standard $S_3$ plane?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-central-algebra:transfer",
+        "statement": "When does the sum of a normal subgroup act by its full order on an irreducible?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-character-values": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-cyclic-eigenvalues", "representations-characters"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-character-values:boundaryCheck",
+        "statement": "Which conclusion follows if g is conjugate to its inverse?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-character-values:application",
+        "statement": "For degree seven and involution trace -1, what is the -1 multiplicity?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-character-values:transfer",
+        "statement": "Can the trivial character alone detect whether a class is conjugate to its inverse?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-conjugate-representation": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-intertwiners",
+      "ureca-foundations-character-values"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-conjugate-representation:boundaryCheck",
+        "statement": "Why does conjugation preserve irreducibility?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-conjugate-representation:application",
+        "statement": "What is the conjugate of the $C_3$ character with generator value $\\omega$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-conjugate-representation:transfer",
+        "statement": "Does a real-valued complex character automatically have a real realization of the same degree?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-regular-character": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-group-algebra",
+      "odyssey-character-table",
+      "odyssey-schur"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-regular-character:boundaryCheck",
+        "statement": "Why does evaluation at [1] determine an equivariant map from the regular module?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-regular-character:application",
+        "statement": "How often does the degree-two S3 irreducible occur in the regular module?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-regular-character:transfer",
+        "statement": "What is the inner product of the regular character with an arbitrary actual character?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-isotypic-projections": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "odyssey-character-table",
+      "odyssey-schur",
+      "ureca-foundations-regular-character",
+      "ureca-foundations-central-algebra"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-isotypic-projections:boundaryCheck",
+        "statement": "What makes the displayed projection formula valid?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-isotypic-projections:application",
+        "statement": "What is $e_\\sigma[rs]$ in $\\mathbb CD_8$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-isotypic-projections:transfer",
+        "statement": "If a degree-three irreducible occurs four times, what is its isotypic projector rank?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-determinant-involutions": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-foundations-character-values",
+      "ureca-foundations-regular-character"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-determinant-involutions:boundaryCheck",
+        "statement": "What extra condition gives an index-two determinant kernel?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-determinant-involutions:application",
+        "statement": "In degree five, an involution has determinant 1 and two negative eigenvalues. What is its trace?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-determinant-involutions:transfer",
+        "statement": "Why does the order-twice-odd argument produce a nontrivial regular determinant?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-character-constraints": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "odyssey-character-table",
+      "ureca-foundations-regular-character",
+      "ureca-foundations-conjugate-representation"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-character-constraints:boundaryCheck",
+        "statement": "What is needed before using norm one to infer irreducibility?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-character-constraints:application",
+        "statement": "Which multiplicity patterns have actual character norm four?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-character-constraints:transfer",
+        "statement": "Why can an everywhere nonnegative nontrivial actual character not be irreducible?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-dihedral-quaternion-characters": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-foundations-quaternion-presentation",
+      "ureca-foundations-character-values",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-dihedral-quaternion-characters:boundaryCheck",
+        "statement": "When do equal characters imply equivalence in the stated argument?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-dihedral-quaternion-characters:application",
+        "statement": "What is the kernel of the D12 k=2 representation?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-dihedral-quaternion-characters:transfer",
+        "statement": "What strengthens elementwise image conjugacy to one global equivalence?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-tetrahedral-groups": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": ["ureca-linear-action", "ureca-cyclic-eigenvalues"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-tetrahedral-groups:boundaryCheck",
+        "statement": "Why do rotations correspond to even vertex permutations?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-tetrahedral-groups:application",
+        "statement": "What is the spatial trace of a 120-degree tetrahedral rotation?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-tetrahedral-groups:transfer",
+        "statement": "Why is the reflection complement not a direct-product factor?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-octahedral-groups": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "cube-signed-permutations",
+      "cube-diagonals-s4",
+      "ureca-cyclic-eigenvalues"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-octahedral-groups:boundaryCheck",
+        "statement": "Why is the rotation action on four opposite-face axes faithful?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-octahedral-groups:application",
+        "statement": "Which C4 eigenvalue is absent from the natural spatial restriction?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-octahedral-groups:transfer",
+        "statement": "Why do dual cube and octahedron have the same orthogonal symmetries?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-dodecahedral-coordinates": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 50,
+    "prerequisites": ["ureca-linear-action", "cube-signed-permutations"],
+    "competencies": [
+      {
+        "id": "ureca-foundations-dodecahedral-coordinates:boundaryCheck",
+        "statement": "What establishes the twenty-element vertex orbit?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-dodecahedral-coordinates:application",
+        "statement": "What is $R(1,1,1)$?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-dodecahedral-coordinates:transfer",
+        "statement": "Why is the vertex stabilizer at most C3?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-five-cubes": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 50,
+    "prerequisites": [
+      "ureca-foundations-dodecahedral-coordinates",
+      "cube-diagonals-s4"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-five-cubes:boundaryCheck",
+        "statement": "Why does fixing all five cubes force identity in the rotation group?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-five-cubes:application",
+        "statement": "Which cube is the image of C0 under R?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-five-cubes:transfer",
+        "statement": "Why does an injective sixty-element subgroup of S5 equal A5?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-icosahedral-groups": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-foundations-five-cubes",
+      "ureca-cyclic-eigenvalues"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-icosahedral-groups:boundaryCheck",
+        "statement": "What happens to the real rotation plane on complexification?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-icosahedral-groups:application",
+        "statement": "What is the trace of the displayed fivefold generator R?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-icosahedral-groups:transfer",
+        "statement": "Which C5 weights occur in the three-dimensional spatial representation?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-foundations-platonic-comparison": {
+    "teachingStatus": "guided",
+    "courseTier": "core",
+    "estimatedMinutes": 30,
+    "prerequisites": [
+      "ureca-foundations-tetrahedral-groups",
+      "ureca-foundations-octahedral-groups",
+      "ureca-foundations-icosahedral-groups",
+      "cube-direct-product",
+      "ureca-cyclic-eigenvalues"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-foundations-platonic-comparison:boundaryCheck",
+        "statement": "Why does central inversion give a direct product for four solids?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-foundations-platonic-comparison:application",
+        "statement": "What are the spatial C5 multiplicities in index order 0 through 4?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-foundations-platonic-comparison:transfer",
+        "statement": "Can fixed-vertex counting replace the spatial trace?",
+        "level": "transfer"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-diagonal-tensor": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["tensor-products", "ureca-external-tensor-products"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-diagonal-tensor:boundaryCheck",
+        "statement": "Why does the formula on pure tensors define a linear operator?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-diagonal-tensor:application",
+        "statement": "A group element has traces 3 and -2 on two factors. What is its tensor trace?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-diagonal-tensor:transfer",
+        "statement": "How must $1+g$ act on a diagonal tensor?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-character-products": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-diagonal-tensor",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-character-products:boundaryCheck",
+        "statement": "For irreducibles alpha and beta, when can alpha beta contain 1?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-character-products:application",
+        "statement": "For lambda(r)=omega on C3, what is the trivial multiplicity in lambda squared?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-character-products:transfer",
+        "statement": "Which expression equals the multiplicity of gamma in alpha beta?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-faithful-powers": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-diagonal-tensor",
+      "ureca-constructions-character-products",
+      "ureca-character-bound-kernel"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-faithful-powers:boundaryCheck",
+        "statement": "Why is the Vandermonde determinant nonzero?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-faithful-powers:application",
+        "statement": "A faithful character has four distinct values. Which exponents does the theorem guarantee suffice?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-faithful-powers:transfer",
+        "statement": "A nonidentity element acts identically on V. What happens in every tensor power?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-symmetric-exterior": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-constructions-diagonal-tensor"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-symmetric-exterior:boundaryCheck",
+        "statement": "Which scalar must be invertible for the half-sum projectors?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-symmetric-exterior:application",
+        "statement": "If chi(g)=2 and chi(g squared)=0, what is the exterior-square trace?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-symmetric-exterior:transfer",
+        "statement": "A 4-cycle is squared. Which cycle type supplies chi(g squared)?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s4-tensors": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-symmetric-exterior",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s4-tensors:boundaryCheck",
+        "statement": "Why does a norm-one row prove irreducibility here?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s4-tensors:application",
+        "statement": "What is the multiplicity of the trivial representation in V tensor V for S4?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s4-tensors:transfer",
+        "statement": "What is V tensor Q?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s5-table": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-constructions-s4-tensors"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s5-table:boundaryCheck",
+        "statement": "Why is s minus 1 minus v an actual character?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s5-table:application",
+        "statement": "What is the exterior-square value on a double transposition?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s5-table:transfer",
+        "statement": "Why are there no further irreducibles?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s6-table": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-s5-table",
+      "ureca-constructions-symmetric-exterior"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s6-table:boundaryCheck",
+        "statement": "What makes p3 minus p2 an actual character?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s6-table:application",
+        "statement": "What is the degree of the remaining row z=vy-w?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s6-table:transfer",
+        "statement": "What checks completeness after the eleven actual rows are distinct?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-a5-squares": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-symmetric-exterior",
+      "ureca-constructions-a5-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-a5-squares:boundaryCheck",
+        "statement": "Why does equality with a sum of irreducible characters identify the module?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-a5-squares:application",
+        "statement": "What is the multiplicity of d in its symmetric square?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-a5-squares:transfer",
+        "statement": "What is the exterior square of the degree-four row?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-binary-tetrahedral": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-symmetric-exterior",
+      "ureca-constructions-character-products"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-binary-tetrahedral:boundaryCheck",
+        "statement": "Which data distinguish the four classes outside Q8?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-binary-tetrahedral:application",
+        "statement": "What class size corresponds to centralizer order six?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-binary-tetrahedral:transfer",
+        "statement": "For chi=delta lambda, what is its exterior square?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-d6-product-table": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-external-tensor-products",
+      "ureca-direct-product-irreducibles"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-d6-product-table:boundaryCheck",
+        "statement": "Why do the inner products factor?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-d6-product-table:application",
+        "statement": "What is the degree of u external-tensor u?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-d6-product-table:transfer",
+        "statement": "What happens on diagonal S3?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-restriction": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-linear-action", "ureca-cyclic-eigenvalues"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-restriction:boundaryCheck",
+        "statement": "Does irreducible restriction imply irreducibility over the larger group in arbitrary characteristic?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-restriction:application",
+        "statement": "What is the dimension after restricting a seven-dimensional module?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-restriction:transfer",
+        "statement": "Why does the D8 example become reducible on V4?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-restriction-bounds": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-restriction",
+      "odyssey-character-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-restriction-bounds:boundaryCheck",
+        "statement": "When is the restriction norm equal to the index?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-restriction-bounds:application",
+        "statement": "At index three, can a constituent have multiplicity two?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-restriction-bounds:transfer",
+        "statement": "If H is abelian of index four, how large can an irreducible G degree be?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-clifford": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-restriction-bounds",
+      "representations-maschke"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-clifford:boundaryCheck",
+        "statement": "Why is normality essential in the conjugate character formula?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-clifford:application",
+        "statement": "If e=2, t=3 and the constituent degree is 4, what is chi(1)?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-clifford:transfer",
+        "statement": "Why are multiplicities equal after equal degrees are known?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-index-two-restriction": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-clifford",
+      "ureca-constructions-restriction-bounds"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-index-two-restriction:boundaryCheck",
+        "statement": "When does an irreducible G row split on H?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-index-two-restriction:application",
+        "statement": "An irreducible G row of degree nine is restricted to an index-two subgroup. What follows?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-index-two-restriction:transfer",
+        "statement": "Can a split H constituent occur under a different G irreducible?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s5-a4-matrix": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-s5-table",
+      "ureca-constructions-restriction",
+      "ureca-constructions-character-products",
+      "ureca-constructions-induction-adjunction"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s5-a4-matrix:boundaryCheck",
+        "statement": "Which class sizes belong in the restriction inner product?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s5-a4-matrix:application",
+        "statement": "What is the multiplicity of tau in the restricted degree-six row?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s5-a4-matrix:transfer",
+        "statement": "How is an induction decomposition recovered from M?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s4-d8-matrix": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-s4-tensors",
+      "ureca-constructions-restriction",
+      "ureca-constructions-induction-adjunction"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s4-d8-matrix:boundaryCheck",
+        "statement": "What must be fixed before computing this matrix?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s4-d8-matrix:application",
+        "statement": "What is Ind of the D8 planar degree-two row?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s4-d8-matrix:transfer",
+        "statement": "Why does lambda minus-plus induce irreducibly?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-a5-table": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-s5-table",
+      "ureca-constructions-index-two-restriction",
+      "ureca-character-bound-kernel"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-a5-table:boundaryCheck",
+        "statement": "Why are the unknown five-cycle values real?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-a5-table:application",
+        "statement": "If u+v=1 and u squared+v squared=3, what is uv?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-a5-table:transfer",
+        "statement": "What would a nontrivial proper normal subgroup produce?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-a6-table": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-s6-table",
+      "ureca-constructions-index-two-restriction",
+      "ureca-constructions-a5-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-a6-table:boundaryCheck",
+        "statement": "Why do the degree-eight rows agree on an unsplit class?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-a6-table:application",
+        "statement": "What is the sum of the two degree-eight five-cycle values?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-a6-table:transfer",
+        "statement": "Can the two degree-five restrictions be identified just because their degrees match?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-a7-degrees": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-index-two-restriction",
+      "ureca-constructions-a6-table"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-a7-degrees:boundaryCheck",
+        "statement": "Which S7 diagrams split on A7?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-a7-degrees:application",
+        "statement": "The self-transpose S7 module has degree twenty. What are its A7 constituent degrees?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-a7-degrees:transfer",
+        "statement": "Why do two different nonself transpose pairs give different A7 rows?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-regular-multipliers": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-group-algebra",
+      "representations-maschke",
+      "ureca-intertwiners"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-regular-multipliers:boundaryCheck",
+        "statement": "What supplies the invariant complement in the proof?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-regular-multipliers:application",
+        "statement": "For an A-linear endomorphism F of A, what is F(a)?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-regular-multipliers:transfer",
+        "statement": "Why can the separating multiplier be chosen idempotent?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-classical-induction": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-regular-multipliers",
+      "ureca-constructions-restriction"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-classical-induction:boundaryCheck",
+        "statement": "Why may an arbitrary H-module need A to the m?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-classical-induction:application",
+        "statement": "Inducing a two-dimensional H-module across index three gives which dimension?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-classical-induction:transfer",
+        "statement": "Why are induced modules from two isomorphic embeddings equivalent?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-coset-module": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-constructions-restriction", "ureca-group-algebra"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-coset-module:boundaryCheck",
+        "statement": "Does the construction require V to be free over R?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-coset-module:application",
+        "statement": "When gt equals t prime h, where does j_t(v) go?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-coset-module:transfer",
+        "statement": "Why do the correction factors multiply in the order h1 h2?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-tensor-coset-identification": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["ureca-constructions-coset-module", "tensor-products"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-tensor-coset-identification:boundaryCheck",
+        "statement": "Why does P descend to the tensor quotient?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-tensor-coset-identification:application",
+        "statement": "For a basis representative t, what is q_s(t)?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-tensor-coset-identification:transfer",
+        "statement": "What coordinate change follows from replacing t by t h?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-induction-adjunction": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-tensor-coset-identification",
+      "ureca-intertwiners"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-induction-adjunction:boundaryCheck",
+        "statement": "Why is the reverse pair map balanced?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-induction-adjunction:application",
+        "statement": "How is alpha recovered from its induced extension?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-induction-adjunction:transfer",
+        "statement": "For noncommutative R, what linear structure is always valid on this correspondence?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-adjunction-naturality": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": ["ureca-constructions-induction-adjunction"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-adjunction-naturality:boundaryCheck",
+        "statement": "Which action makes evaluation at 1 A-linear?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-adjunction-naturality:application",
+        "statement": "What is the counit on b tensor w?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-adjunction-naturality:transfer",
+        "statement": "Does an inverse Hom correspondence imply the functors are inverse?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-induced-character": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-constructions-tensor-coset-identification"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-induced-character:boundaryCheck",
+        "statement": "Which extra condition permits the averaged formula?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-induced-character:application",
+        "statement": "A representation of degree two is induced over index five. What is its character at identity?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-induced-character:transfer",
+        "statement": "Why is the full-group sum multiplied by |H|?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-class-fusion": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-induced-character",
+      "ureca-constructions-s4-tensors"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-class-fusion:boundaryCheck",
+        "statement": "Must an induced input class function be an actual character?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-class-fusion:application",
+        "statement": "For S4/D8, what is the double-transposition value?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-class-fusion:transfer",
+        "statement": "Why can a moved coset formula and class-fusion formula agree?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-d8-induced-matrices": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-induced-character",
+      "ureca-constructions-induction-adjunction"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-d8-induced-matrices:boundaryCheck",
+        "statement": "Why does checking the two eigenlines suffice for irreducibility here?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-d8-induced-matrices:application",
+        "statement": "What is the trace at r squared?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-d8-induced-matrices:transfer",
+        "statement": "Why can induction from two different subgroups give equivalent modules?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-s4-c3-matrix": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": [
+      "ureca-constructions-s4-tensors",
+      "ureca-constructions-induction-adjunction",
+      "ureca-constructions-class-fusion"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-s4-c3-matrix:boundaryCheck",
+        "statement": "What identifies the restriction and induction multiplicities?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-s4-c3-matrix:application",
+        "statement": "What is the induced nontrivial C3 character at a three-cycle?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-s4-c3-matrix:transfer",
+        "statement": "Is induction injective on isomorphism classes of H-modules here?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-order-twenty-one": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-induced-character",
+      "ureca-constructions-character-products"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-order-twenty-one:boundaryCheck",
+        "statement": "Why do the induced rows vanish off H?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-order-twenty-one:application",
+        "statement": "What is the product of the two period sums u and v?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-order-twenty-one:transfer",
+        "statement": "Why are there only two induced degree-three rows from six nontrivial H characters?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-induction-identities": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-induced-character",
+      "ureca-constructions-induction-adjunction",
+      "ureca-constructions-diagonal-tensor"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-induction-identities:boundaryCheck",
+        "statement": "Why does the index-only norm bound apply to irreducible theta?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-induction-identities:application",
+        "statement": "Induced multiplicities are 2,1,1. What is their squared norm?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-induction-identities:transfer",
+        "statement": "For a source character of squared norm four, which upper bound is justified?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-induction-transitivity": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 35,
+    "prerequisites": ["ureca-constructions-tensor-coset-identification"],
+    "competencies": [
+      {
+        "id": "ureca-constructions-induction-transitivity:boundaryCheck",
+        "statement": "Does this isomorphism require semisimplicity?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-induction-transitivity:application",
+        "statement": "Indices are G:H=4 and H:K=3. What is G:K?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-induction-transitivity:transfer",
+        "statement": "What must be checked for the reverse map to exist?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
+  },
+  "ureca-constructions-index-two-induction": {
+    "teachingStatus": "guided",
+    "courseTier": "advanced",
+    "estimatedMinutes": 45,
+    "prerequisites": [
+      "ureca-constructions-index-two-restriction",
+      "ureca-constructions-induction-adjunction",
+      "ureca-constructions-induced-character"
+    ],
+    "competencies": [
+      {
+        "id": "ureca-constructions-index-two-induction:boundaryCheck",
+        "statement": "Which field hypothesis supports the two-extension statement as given?",
+        "level": "explain"
+      },
+      {
+        "id": "ureca-constructions-index-two-induction:application",
+        "statement": "If theta and its outside conjugate differ, what is the induced norm?",
+        "level": "compute"
+      },
+      {
+        "id": "ureca-constructions-index-two-induction:transfer",
+        "statement": "If theta is invariant, how are its two extensions related?",
+        "level": "prove"
+      }
+    ],
+    "visualisationType": "reference-diagram",
+    "sourceCollections": ["URECA Y2"],
+    "conceptKind": "technique"
   }
 }

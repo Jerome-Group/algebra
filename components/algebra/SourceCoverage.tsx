@@ -3,6 +3,7 @@ import { learningMetadata, teachingStatuses } from "@/lib/algebra/learning";
 import gaps from "@/lib/algebra/source-gaps.json";
 import { ConceptLink } from "./ConceptLink";
 import { SourceLibrary } from "./Sources";
+import { UrecaCoverage } from "./UrecaCoverage";
 
 export function SourceCoverage({
   lessons,
@@ -34,9 +35,14 @@ export function SourceCoverage({
           <section className="source-collection" key={collection}>
             <h2>{collection}</h2>
             <p>
-              {mapped.length} mapped concepts · {missing.length} identified
-              topic gaps
+              {mapped.length} mapped concepts
+              {collection !== "URECA Y2" && (
+                <> · {missing.length} identified topic gaps</>
+              )}
             </p>
+            {collection === "URECA Y2" && (
+              <UrecaCoverage lessons={lessons} open={open} />
+            )}
             {teachingStatuses.map((status) => {
               const entries = mapped.filter(
                 (lesson) => learningMetadata(lesson).teachingStatus === status,

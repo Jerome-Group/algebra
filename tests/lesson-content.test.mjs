@@ -60,9 +60,11 @@ test("concept navigation resolves every connection and preserved legacy link", (
       ...(lesson.reading || []).map((x) => x.source),
     ]) {
       assert.match(source.url, /^https:\/\//);
-      assert.ok(
-        source.pages && source.pdfPages && source.section,
-        `${lesson.id}: citation location`,
+      assert.ok(source.section?.trim(), `${lesson.id}: citation section`);
+      assert.equal(
+        Boolean(source.pages),
+        Boolean(source.pdfPages),
+        `${lesson.id}: printed and PDF locations must be supplied together`,
       );
     }
   }

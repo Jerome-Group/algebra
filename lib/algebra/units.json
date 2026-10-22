@@ -360,5 +360,567 @@
       "ureca-product-kernel-scalar-matching"
     ],
     "prerequisiteUnits": ["characters", "tables"]
+  },
+  {
+    "id": "ureca-foundations-matrix-models",
+    "title": "Matrix models and submodule coordinates",
+    "description": "Build quaternion and order-eighteen representations, then organize their subspaces with common bases and direct-sum maps.",
+    "lessons": [
+      "ureca-foundations-quaternion-presentation",
+      "ureca-foundations-order-eighteen",
+      "ureca-foundations-invariant-blocks",
+      "ureca-foundations-direct-sum-maps",
+      "ureca-foundations-regular-calculations"
+    ],
+    "entryCompetencies": [
+      "Use column matrix composition and presentations.",
+      "Distinguish a formal basis label from a spatial vector."
+    ],
+    "outcomes": [
+      "Check relations before kernel and invariant-space tests.",
+      "Use one adapted basis and equivariant coordinate maps.",
+      "Calculate regular matrices and formal algebra products."
+    ],
+    "capstone": {
+      "question": "For the order-eighteen family with $\\alpha=\\omega$ and $\\beta=1$, identify its kernel and irreducibility.",
+      "answer": "The kernel is $\\langle b\\rangle$ of order three. A rotation-subgroup element $a^ub^v$ acts trivially exactly when $\\omega^u=1$, so u=0. An element involving s has an off-diagonal matrix and cannot act as I. The a-eigenvalues $\\omega,\\omega^{-1}$ are distinct, and s exchanges their lines, so the representation is irreducible but not faithful."
+    },
+    "completionCriteria": "Demonstrate every declared lesson competency and the unit capstone. Reading, revealing a proof or interacting with the illustrative diagram grants no automatic completion.",
+    "remediation": [
+      "ureca-foundations-quaternion-presentation",
+      "ureca-foundations-order-eighteen",
+      "ureca-foundations-invariant-blocks"
+    ],
+    "prerequisiteUnits": ["representations"]
+  },
+  {
+    "id": "ureca-foundations-invariant-operators",
+    "title": "Fixed vectors, operators and invariant complements",
+    "description": "Compute invariant vectors and polynomial projections, construct invariant inner products and test complement and commutant boundaries.",
+    "lessons": [
+      "ureca-foundations-permutation-regular-fixed",
+      "ureca-foundations-equivariant-operators",
+      "ureca-foundations-invariant-hermitian",
+      "ureca-foundations-complement-boundaries",
+      "ureca-foundations-commutants"
+    ],
+    "entryCompetencies": [
+      "Use submodules and equivariant maps.",
+      "Distinguish an invariant complement from an arbitrary complement."
+    ],
+    "outcomes": [
+      "Compute orbit fixed spaces and normalized averaging.",
+      "Split polynomial operators with distinct roots.",
+      "Apply the precise finite and field hypotheses behind complement and commutant criteria."
+    ],
+    "capstone": {
+      "question": "For $\\theta=I+S$ on the two-dimensional swap module, compare its kernel-image decomposition over $\\mathbb C$ and $\\mathbb F_2$.",
+      "answer": "Over C, theta has eigenvalues 0 and 2, with kernel spanned by (1,-1) and image spanned by (1,1). They are complementary invariant lines, and theta/2 is a projection. Over F2, theta is nonzero with square zero, and its kernel and image are the same line spanned by (1,1). The two roots coincide and division by two fails, so there is no kernel-image direct sum."
+    },
+    "completionCriteria": "Demonstrate every declared lesson competency and the unit capstone. Reading, revealing a proof or interacting with the illustrative diagram grants no automatic completion.",
+    "remediation": [
+      "ureca-foundations-permutation-regular-fixed",
+      "ureca-foundations-equivariant-operators",
+      "ureca-foundations-invariant-hermitian"
+    ],
+    "prerequisiteUnits": ["ureca-foundations-matrix-models"]
+  },
+  {
+    "id": "ureca-foundations-weights-characters",
+    "title": "Weights, central elements and regular characters",
+    "description": "Enumerate abelian weights, calculate central scalar actions and prove conjugation and regular-multiplicity character identities.",
+    "lessons": [
+      "ureca-foundations-abelian-weights",
+      "ureca-foundations-central-algebra",
+      "ureca-foundations-character-values",
+      "ureca-foundations-conjugate-representation",
+      "ureca-foundations-regular-character"
+    ],
+    "entryCompetencies": [
+      "Use finite-dimensional complex representations and Schur lemma.",
+      "Compute traces and class inner products."
+    ],
+    "outcomes": [
+      "Enumerate finite abelian weights and faithful degree bounds.",
+      "Compute scalar actions of central sums.",
+      "Prove regular multiplicities using evaluation at the identity."
+    ],
+    "capstone": {
+      "question": "For $C_3\\times C_3$, give the least faithful complex degree and the multiplicity of each irreducible in its regular module.",
+      "answer": "The least faithful degree is two. Every irreducible is a linear character with image in the cube roots, so a single character cannot inject the order-nine group. Two coordinate characters have kernels with trivial intersection and form a faithful sum. The regular module contains all nine degree-one characters once, since regular multiplicity equals irreducible degree."
+    },
+    "completionCriteria": "Demonstrate every declared lesson competency and the unit capstone. Reading, revealing a proof or interacting with the illustrative diagram grants no automatic completion.",
+    "remediation": [
+      "ureca-foundations-abelian-weights",
+      "ureca-foundations-central-algebra",
+      "ureca-foundations-character-values"
+    ],
+    "prerequisiteUnits": ["ureca-foundations-invariant-operators", "characters"]
+  },
+  {
+    "id": "ureca-foundations-character-methods",
+    "title": "Character projections and structural constraints",
+    "description": "Apply normalized isotypic projectors and determinant characters, then use actual character constraints to compute kernels and equivalences.",
+    "lessons": [
+      "ureca-foundations-isotypic-projections",
+      "ureca-foundations-determinant-involutions",
+      "ureca-foundations-character-constraints",
+      "ureca-foundations-dihedral-quaternion-characters"
+    ],
+    "entryCompetencies": [
+      "Use actual characters and complex orthogonality.",
+      "Distinguish irreducible types from their multiplicities."
+    ],
+    "outcomes": [
+      "Normalize and apply isotypic projectors.",
+      "Use determinant and involution congruences with their exact hypotheses.",
+      "Interpret character norms and find one global equivalence."
+    ],
+    "capstone": {
+      "question": "What is the rank of the degree-two isotypic projector on the eight-dimensional regular module of $D_8$, and how many irreducible copies does its image contain?",
+      "answer": "The rank is four, and the image contains two copies of the degree-two irreducible. The projector is e_sigma=([1]-[r^2])/2. Its image has the four independent differences [1]-[r^2], [r]-[r^3], [s]-[r^2s], [rs]-[r^3s]. Regular multiplicity equals degree, so this is one isotypic component with two copies, rather than one irreducible copy."
+    },
+    "completionCriteria": "Demonstrate every declared lesson competency and the unit capstone. Reading, revealing a proof or interacting with the illustrative diagram grants no automatic completion.",
+    "remediation": [
+      "ureca-foundations-isotypic-projections",
+      "ureca-foundations-determinant-involutions",
+      "ureca-foundations-character-constraints"
+    ],
+    "prerequisiteUnits": ["ureca-foundations-weights-characters", "tables"]
+  },
+  {
+    "id": "ureca-foundations-platonic-groups",
+    "title": "Platonic groups and spatial restrictions",
+    "description": "Prove the symmetry groups of all five regular solids and calculate their natural cyclic restrictions with explicit coordinates.",
+    "lessons": [
+      "ureca-foundations-tetrahedral-groups",
+      "ureca-foundations-octahedral-groups",
+      "ureca-foundations-dodecahedral-coordinates",
+      "ureca-foundations-five-cubes",
+      "ureca-foundations-icosahedral-groups",
+      "ureca-foundations-platonic-comparison"
+    ],
+    "entryCompetencies": [
+      "Use orbit-stabilizer and faithful permutation actions.",
+      "Distinguish spatial matrices from formal set linearizations."
+    ],
+    "outcomes": [
+      "Identify rotation and full groups for all five solids.",
+      "Prove the five-cube action faithful using common antipodal vertex pairs.",
+      "Compute C3, C4 and C5 spatial restrictions and state their real-field boundaries."
+    ],
+    "capstone": {
+      "question": "Use the five-cube action and the spatial $C_5$ restriction to identify the dodecahedral rotation group and its trace at a positive $2\\pi/5$ rotation.",
+      "answer": "The coordinate action has sixty rotations. Its action on the five exhaustive inscribed cube vertex sets is faithful because common antipodal vertex pairs force a kernel rotation to fix four nonorthogonal diagonal lines, hence to be I. Its image in S5 has index two and equals A5. On spatial C5 restriction the eigenvalues are 1, zeta_5 and zeta_5 inverse, so the trace is 1+2cos(2pi/5)=phi. The other two C5 weights have multiplicity zero."
+    },
+    "completionCriteria": "Demonstrate every declared lesson competency and the unit capstone. Reading, revealing a proof or interacting with the illustrative diagram grants no automatic completion.",
+    "remediation": [
+      "ureca-foundations-tetrahedral-groups",
+      "ureca-foundations-octahedral-groups",
+      "ureca-foundations-dodecahedral-coordinates"
+    ],
+    "prerequisiteUnits": [
+      "actions",
+      "representations",
+      "ureca-foundations-weights-characters"
+    ]
+  },
+  {
+    "id": "ureca-constructions-tensor-methods",
+    "title": "Diagonal tensors, squares and faithful powers",
+    "description": "Construct diagonal tensor actions. Separate symmetric and exterior traces using the square-class map. Prove the faithful-power theorem with Vandermonde equations.",
+    "lessons": [
+      "ureca-constructions-diagonal-tensor",
+      "ureca-constructions-character-products",
+      "ureca-constructions-faithful-powers",
+      "ureca-constructions-symmetric-exterior",
+      "ureca-constructions-s4-tensors"
+    ],
+    "entryCompetencies": [
+      "Construct a finite complex group action and compute a weighted character inner product."
+    ],
+    "outcomes": [
+      "Construct diagonal tensor actions.",
+      "Separate symmetric and exterior traces using the square-class map.",
+      "Prove the faithful-power theorem with Vandermonde equations."
+    ],
+    "capstone": {
+      "question": "For C4 with lambda(r)=i and V=1 plus lambda, decompose the two squares and identify the first power containing lambda cubed.",
+      "answer": "The symmetric square is 1 plus lambda plus lambda squared, and the exterior square is lambda. The third tensor power has character 1+3lambda+3lambda squared+lambda cubed, so the first occurrence of lambda cubed is exponent three. The four distinct character values give a Vandermonde guarantee using exponents zero through three."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-diagonal-tensor",
+      "ureca-constructions-character-products"
+    ],
+    "prerequisiteUnits": []
+  },
+  {
+    "id": "ureca-constructions-symmetric-tables",
+    "title": "Construct symmetric and product tables",
+    "description": "Derive the full S5 and S6 tables from actual modules. Use square classes and twists in a seven-class order-24 example. Assemble the full D6 by D6 table.",
+    "lessons": [
+      "ureca-constructions-s5-table",
+      "ureca-constructions-s6-table",
+      "ureca-constructions-binary-tetrahedral",
+      "ureca-constructions-d6-product-table"
+    ],
+    "entryCompetencies": [
+      "Use ordinary row orthogonality and prove that a residual character is actual before a norm test."
+    ],
+    "outcomes": [
+      "Derive the full S5 and S6 tables from actual modules.",
+      "Use square classes and twists in a seven-class order-24 example.",
+      "Assemble the full D6 by D6 table."
+    ],
+    "capstone": {
+      "question": "In S6 let y=p3-p2 and z=vy-w as defined in the table lesson. Explain why both are actual, then calculate their values on type 3 squared and the degree of z.",
+      "answer": "The equivariant pair-to-triple incidence map is injective, so a complement has actual character y. The actual tensor vy contains w once, so removing that summand gives actual z. On type (3,3), p3=2, p2=0, v=-1 and w=0, hence y=2 and z=-2. At identity z has degree 5 times 5 minus 9, equal to 16; its weighted norm is one."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-s5-table",
+      "ureca-constructions-s6-table"
+    ],
+    "prerequisiteUnits": ["ureca-constructions-tensor-methods"]
+  },
+  {
+    "id": "ureca-constructions-restriction-theory",
+    "title": "Restriction bounds and Clifford theory",
+    "description": "Distinguish restriction from fixed vectors. Prove occurrence, index and abelian degree bounds. Use isotypic orbits and the index-two dichotomy.",
+    "lessons": [
+      "ureca-constructions-restriction",
+      "ureca-constructions-restriction-bounds",
+      "ureca-constructions-clifford",
+      "ureca-constructions-index-two-restriction"
+    ],
+    "entryCompetencies": [
+      "Identify invariant subspaces and use complex complete reducibility."
+    ],
+    "outcomes": [
+      "Distinguish restriction from fixed vectors.",
+      "Prove occurrence, index and abelian degree bounds.",
+      "Use isotypic orbits and the index-two dichotomy."
+    ],
+    "capstone": {
+      "question": "The degree-three irreducible A4 row restricts to its normal V4 as the three nontrivial linear rows once each. Find its norm, explain equality in the index bound and identify the Clifford parameters.",
+      "answer": "The squared restriction norm is 1+1+1=3, equal to the index [A4:V4]=3. Equality means the A4 character vanishes outside V4. The three distinct constituent types are permuted transitively, with common multiplicity e=1, orbit size t=3 and degree d=1, giving total degree etd=3. The abelian-subgroup degree bound is attained."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-restriction",
+      "ureca-constructions-restriction-bounds"
+    ],
+    "prerequisiteUnits": ["ureca-constructions-tensor-methods"]
+  },
+  {
+    "id": "ureca-constructions-alternating-tables",
+    "title": "Alternating tables and degree orbits",
+    "description": "Derive the full A5 and A6 tables. Use kernels to prove A5 simplicity. Recover all A7 degrees and decompose A5 squares.",
+    "lessons": [
+      "ureca-constructions-a5-table",
+      "ureca-constructions-a6-table",
+      "ureca-constructions-a7-degrees",
+      "ureca-constructions-a5-squares"
+    ],
+    "entryCompetencies": [
+      "Use sign pairs and the distinction between class splitting and character splitting."
+    ],
+    "outcomes": [
+      "Derive the full A5 and A6 tables.",
+      "Use kernels to prove A5 simplicity.",
+      "Recover all A7 degrees and decompose A5 squares."
+    ],
+    "capstone": {
+      "question": "For the split degree-sixteen S6 row on A6, explain the two constituent degrees and solve their five-cycle entries from u+v=1 and u squared+v squared=3. Compare the self-transpose degree-twenty S7 row on A7.",
+      "answer": "The index-two theorem gives two distinct A6 constituents of degree eight. The equations imply uv=-1, so u and v are (1+sqrt(5))/2 and (1-sqrt(5))/2, exchanged by swapping the two split class labels. The self-transpose S7 row is sign-invariant and restricts to two distinct A7 rows of degree ten."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-a5-table",
+      "ureca-constructions-a6-table"
+    ],
+    "prerequisiteUnits": [
+      "ureca-constructions-symmetric-tables",
+      "ureca-constructions-restriction-theory"
+    ]
+  },
+  {
+    "id": "ureca-constructions-induction-objects",
+    "title": "Classical, coset and tensor induction",
+    "description": "Construct induction before identifying models. Prove unique tensor coordinates without freeness. Compare classical embedded induction and prove transitivity with inverse maps.",
+    "lessons": [
+      "ureca-constructions-regular-multipliers",
+      "ureca-constructions-classical-induction",
+      "ureca-constructions-coset-module",
+      "ureca-constructions-tensor-coset-identification",
+      "ureca-constructions-induction-transitivity"
+    ],
+    "entryCompetencies": [
+      "Use group-ring multiplication, direct sums and balanced tensor relations."
+    ],
+    "outcomes": [
+      "Construct induction before identifying models.",
+      "Prove unique tensor coordinates without freeness.",
+      "Compare classical embedded induction and prove transitivity with inverse maps."
+    ],
+    "capstone": {
+      "question": "Take R=Z, G=C4, H generated by r squared and V=Z/2 with trivial H action. Identify the induced module and r action, and explain which maps prove its tensor-coordinate decomposition.",
+      "answer": "The induced module is two external copies of Z/2, indexed by 1 and r, and r swaps the copies because r squared acts trivially. Theta sends a tuple to 1 tensor v1 plus r tensor vr. Its inverse sends b tensor v to the tuple (q1(b)v,qr(b)v); right H-linearity of the q maps proves balancing, and both composites are identity. No Z-basis of V is required."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-regular-multipliers",
+      "ureca-constructions-classical-induction"
+    ],
+    "prerequisiteUnits": ["ureca-constructions-restriction-theory"]
+  },
+  {
+    "id": "ureca-constructions-induction-adjunctions",
+    "title": "Adjunction, naturality and induced trace",
+    "description": "Prove the typed Hom bijection and its naturality. Identify evaluation, unit and counit. Derive both induced-character formulas with the precise ring boundary.",
+    "lessons": [
+      "ureca-constructions-induction-adjunction",
+      "ureca-constructions-adjunction-naturality",
+      "ureca-constructions-induced-character"
+    ],
+    "entryCompetencies": [
+      "Distinguish left module linearity, tensor balancing and diagonal matrix blocks."
+    ],
+    "outcomes": [
+      "Prove the typed Hom bijection and its naturality.",
+      "Identify evaluation, unit and counit.",
+      "Derive both induced-character formulas with the precise ring boundary."
+    ],
+    "capstone": {
+      "question": "For H trivial in C2, V=C and a C2 module W, describe the Hom correspondence. If f multiplies V by 2 and u multiplies W by 3, check naturality and decide whether the unit is always an isomorphism.",
+      "answer": "An equivariant F corresponds to v maps to F(1 tensor v), with inverse b tensor v maps to b alpha(v). Applying f and u before or after conversion gives 6 times the same corresponding map. The unit V to Res Ind V is v maps to 1 tensor v; here its target has dimension two while V has dimension one, so it is not an isomorphism. Natural inverse Hom maps do not make induction and restriction inverse functors."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-induction-adjunction",
+      "ureca-constructions-adjunction-naturality"
+    ],
+    "prerequisiteUnits": ["ureca-constructions-induction-objects"]
+  },
+  {
+    "id": "ureca-constructions-subgroup-matrices",
+    "title": "Class fusion and reciprocity matrices",
+    "description": "Derive centralizer-ratio induction. Compute all S5/A4 and S4/D8 restriction rows. Read induction columns and verify the S4/C3 matrix independently.",
+    "lessons": [
+      "ureca-constructions-class-fusion",
+      "ureca-constructions-s5-a4-matrix",
+      "ureca-constructions-s4-d8-matrix",
+      "ureca-constructions-s4-c3-matrix"
+    ],
+    "entryCompetencies": [
+      "Read an explicit subgroup embedding and compute character multiplicities using subgroup weights."
+    ],
+    "outcomes": [
+      "Derive centralizer-ratio induction.",
+      "Compute all S5/A4 and S4/D8 restriction rows.",
+      "Read induction columns and verify the S4/C3 matrix independently."
+    ],
+    "capstone": {
+      "question": "In the D8 subgroup of S4 with r=(1234), s=(13), induce the linear character lambda(r)=-1 and lambda(s)=1. Compute its S4 values using class fusion and identify the matrix column.",
+      "answer": "In S4 class order 1,2,2 squared,3,4 the induced values are (3,1,-1,0,-1). Identity gives index three; the transposition gives lambda(s)=1; double transpositions give lambda(r squared)+2lambda(rs)=1-2=-1; the three-cycle class misses D8; and the four-cycle gives lambda(r)=-1. This is the standard row v, exactly the lambda minus-plus column of the reciprocity matrix."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-class-fusion",
+      "ureca-constructions-s5-a4-matrix"
+    ],
+    "prerequisiteUnits": [
+      "ureca-constructions-symmetric-tables",
+      "ureca-constructions-induction-adjunctions"
+    ]
+  },
+  {
+    "id": "ureca-constructions-induction-applications",
+    "title": "Induced tables, products and index two",
+    "description": "Build explicit irreducible D8 matrices. Derive the complete order-21 table and period sums. Apply the product formula, induced norm bound and index-two alternatives.",
+    "lessons": [
+      "ureca-constructions-d8-induced-matrices",
+      "ureca-constructions-order-twenty-one",
+      "ureca-constructions-induction-identities",
+      "ureca-constructions-index-two-induction"
+    ],
+    "entryCompetencies": [
+      "Compute fixed-coset corrections, weighted norms and source conjugation."
+    ],
+    "outcomes": [
+      "Build explicit irreducible D8 matrices.",
+      "Derive the complete order-21 table and period sums.",
+      "Apply the product formula, induced norm bound and index-two alternatives."
+    ],
+    "capstone": {
+      "question": "For the affine group of order twenty-one, induce lambda(a)=exp(2 pi i/7) from its order-seven normal subgroup. Give its degree, outside values, period equations and norm, then compare the index-two case of a source fixed by outside conjugation.",
+      "answer": "The induced degree is three and its values vanish outside the order-seven subgroup. On its two nonidentity classes the periods satisfy u+v=-1 and uv=2, so they are (-1 plus or minus i sqrt(7))/2. Its norm is (9+3 times 2+3 times 2)/21=1, hence it is irreducible and satisfies the norm bound 1 at most index three. For a complex irreducible source fixed by outside conjugation at index two, induction instead has norm two and splits into its two distinct sign-related extensions."
+    },
+    "completionCriteria": "Demonstrate all three credited competencies in each lesson and solve the capstone with its hypotheses and calculations. Reading alone earns no completion.",
+    "remediation": [
+      "ureca-constructions-d8-induced-matrices",
+      "ureca-constructions-order-twenty-one"
+    ],
+    "prerequisiteUnits": [
+      "ureca-constructions-induction-adjunctions",
+      "ureca-constructions-restriction-theory",
+      "ureca-constructions-tensor-methods"
+    ]
+  },
+  {
+    "id": "ureca-theory-mackey-normal-induction",
+    "title": "Mackey decomposition and normal induction",
+    "description": "Construct restricted orbit summands, prove their maps, and use a complex endomorphism count to test normal-subgroup induction.",
+    "lessons": [
+      "ureca-theory-mackey-orbits",
+      "ureca-theory-mackey-isomorphism",
+      "ureca-theory-semisimple-endomorphisms",
+      "ureca-theory-normal-induced-irreducibility"
+    ],
+    "entryCompetencies": [
+      "Use left-coset coordinates for tensor induction.",
+      "Distinguish invariant subspaces, intertwiners and complex character multiplicities."
+    ],
+    "outcomes": [
+      "Construct the Mackey summand and its inverse.",
+      "Check both representative changes and the role of subgroup intersections.",
+      "Prove the normal criterion with its field and semisimplicity hypotheses."
+    ],
+    "capstone": {
+      "question": "For $G=S_3$ and $K=\\langle(12)\\rangle$, induce the nontrivial complex character $\\sigma$ and restrict back to $K$. Compute its $G$-endomorphism dimension. Compare induction of a nontrivial cubic character from $N=A_3$, and explain which part uses complex semisimplicity.",
+      "answer": "The two $K$ double cosets have intersections $K$ and $1$, so the restriction is $\\sigma\\oplus\\mathbb CK$. Adjunction gives endomorphism dimension two, so this induced module is reducible over $\\mathbb C$. For $N=A_3$, a transposition replaces a nontrivial cubic character $\\zeta$ by $\\zeta^{-1}\\ne\\zeta$, so the normal criterion gives an irreducible induced module with endomorphism dimension one. Mackey decomposition uses coordinate maps over a unital ring. Inferring irreducibility from endomorphism dimension one uses complex scalar Schur and the semisimple converse."
+    },
+    "completionCriteria": "Submit correct current answers for every credited lesson competency and this unit capstone. Opening lessons, revealing proofs and reading explanations do not complete the unit.",
+    "remediation": [
+      "ureca-theory-mackey-isomorphism",
+      "ureca-theory-semisimple-endomorphisms",
+      "ureca-theory-normal-induced-irreducibility"
+    ],
+    "prerequisiteUnits": ["tables", "tensor"]
+  },
+  {
+    "id": "ureca-theory-alternating-class-splitting",
+    "title": "Parity and alternating class splitting",
+    "description": "Use centralizers and all cycle lengths to decide whether an even symmetric-group class stays one alternating-group class or splits in two.",
+    "lessons": [
+      "mh2220-conjugacy",
+      "ureca-theory-alternating-splitting",
+      "ureca-theory-distinct-odd-cycles"
+    ],
+    "entryCompetencies": [
+      "Compose permutations and compute signs.",
+      "Use orbit-stabilizer for the conjugation action."
+    ],
+    "outcomes": [
+      "Repair odd conjugators with odd centralizer elements.",
+      "Prove the distinct-odd-cycle criterion including fixed points.",
+      "Compute equal split-class sizes and repeated-fixed-point obstructions."
+    ],
+    "capstone": {
+      "question": "Compare the $S_6$ class of $(12345)(6)$ and the $S_7$ class of $(12345)(6)(7)$ inside $A_6$ and $A_7$. Determine splitting and the resulting class sizes, and justify the difference.",
+      "answer": "Type $(5,1)$ has distinct odd lengths, centralizer order five and an $S_6$ class of size $720/5=144$. It splits into two $A_6$ classes of size 72. Type $(5,1,1)$ repeats length one and has the odd centralizer $(67)$. Its $S_7$ centralizer has order $5\\cdot2=10$, and its 504 elements stay one $A_7$ class. Every fixed point must be included."
+    },
+    "completionCriteria": "Submit correct current answers for every credited lesson competency and this unit capstone. Opening lessons, revealing proofs and reading explanations do not complete the unit.",
+    "remediation": [
+      "ureca-theory-alternating-splitting",
+      "ureca-theory-distinct-odd-cycles"
+    ],
+    "prerequisiteUnits": ["actions"]
+  },
+  {
+    "id": "ureca-theory-inner-product-adjoints",
+    "title": "Adjoints and weighted class functions",
+    "description": "Construct adjoints, preserve the metric in arbitrary bases, and prove induction-restriction adjointness on class functions.",
+    "lessons": [
+      "ureca-theory-linear-adjoints",
+      "ureca-theory-gram-matrix-adjoints",
+      "ureca-theory-class-function-adjoints"
+    ],
+    "entryCompetencies": [
+      "Use coordinate columns, conjugate transpose and finite-dimensional inner products.",
+      "Read class-function values and conjugacy-class sizes."
+    ],
+    "outcomes": [
+      "Prove adjoint existence and uniqueness.",
+      "Use both source and target Gram matrices.",
+      "Derive the weighted class-function adjoint identity and its regular-module consequence."
+    ],
+    "capstone": {
+      "question": "Use linear-first inner products. A Euclidean projection has matrix $M=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ in basis $(1,0),(1,1)$. Find its adjoint matrix. Then give the class-coordinate induction map from $H=\\langle(12)\\rangle$ to $S_3$ and explain the metric factors.",
+      "answer": "The projection Gram matrix is $G=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$, so $[P^*]=G^{-1}M^TG=M$, although $M^T\\ne M$. For class coordinates $(a,b)$ on $H$ and identity, transposition, 3-cycle coordinates on $S_3$, induction is $(a,b)\\mapsto(3a,b,0)$. The Gram diagonals are $(1/2,1/2)$ and $(1/6,1/2,1/3)$, so the adjoint matrix is $D_G^{-1}R^TD_H$. Metric factors belong to both calculations."
+    },
+    "completionCriteria": "Submit correct current answers for every credited lesson competency and this unit capstone. Opening lessons, revealing proofs and reading explanations do not complete the unit.",
+    "remediation": [
+      "ureca-theory-gram-matrix-adjoints",
+      "ureca-theory-class-function-adjoints"
+    ],
+    "prerequisiteUnits": ["characters"]
+  },
+  {
+    "id": "ureca-theory-tensor-hom-adjunction",
+    "title": "Tensor-Hom as a natural adjunction",
+    "description": "Build the two-sided linear correspondence, prove naturality and triangle identities, and distinguish adjunction from inverse functors.",
+    "lessons": [
+      "ureca-theory-categories-currying",
+      "ureca-theory-bimodule-tensor-hom",
+      "ureca-theory-tensor-hom-naturality"
+    ],
+    "entryCompetencies": [
+      "Distinguish module objects and linear maps.",
+      "Use tensor balancing with declared left and right actions."
+    ],
+    "outcomes": [
+      "State functor rules on morphisms and the natural Hom-set definition.",
+      "Prove inner S-linearity, outer R-linearity and reverse balancing.",
+      "Compute unit, counit and both triangle identities without claiming equivalence."
+    ],
+    "capstone": {
+      "question": "For a unital $(S,R)$-bimodule $M$, a left $R$-module $V$ and a left $S$-module $W$, give both tensor-Hom maps and the Hom action. Explain why these are inverse and natural. Test whether the adjoint functors are inverse when $R=S=\\mathbb C$ and $M=\\mathbb C^2$.",
+      "answer": "The Hom action is $(rf)(m)=f(mr)$. The maps are $T\\mapsto[v\\mapsto(m\\mapsto T(m\\otimes v))]$ and $f\\mapsto[m\\otimes v\\mapsto f(v)(m)]$. Outer R-linearity gives $f(rv)(m)=f(v)(mr)$, the reverse balancing relation. Evaluating at $m,v$ proves both inverse identities and naturality under source precomposition and target postcomposition. For $M=\\mathbb C^2$, $U(F\\mathbb C)=\\operatorname{End}(\\mathbb C^2)$ has dimension four while $\\mathbb C$ has dimension one, so the adjunction is not an inverse equivalence."
+    },
+    "completionCriteria": "Submit correct current answers for every credited lesson competency and this unit capstone. Opening lessons, revealing proofs and reading explanations do not complete the unit.",
+    "remediation": [
+      "ureca-theory-bimodule-tensor-hom",
+      "ureca-theory-tensor-hom-naturality"
+    ],
+    "prerequisiteUnits": ["modules", "tensor"]
+  },
+  {
+    "id": "ureca-theory-tetrahedral-spring-modes",
+    "title": "Tetrahedral spring modes and induction",
+    "description": "Derive a complete ideal six-spring model, its symmetry decomposition, exact mass-normalized spectrum and stabilizer-induction interpretation.",
+    "lessons": [
+      "ureca-theory-tetrahedron-spring-model",
+      "ureca-theory-tetrahedron-displacement-character",
+      "ureca-theory-tetrahedron-affine-coordinates",
+      "ureca-theory-tetrahedron-rigid-motions",
+      "ureca-theory-tetrahedron-exact-spectrum",
+      "ureca-theory-tetrahedron-schur-degeneracy",
+      "ureca-theory-tetrahedron-induction-bridge"
+    ],
+    "entryCompetencies": [
+      "Use quadratic energies and generalized eigenvalue equations.",
+      "Compute finite-group character inner products and induction multiplicities."
+    ],
+    "outcomes": [
+      "Declare the free, equal-mass, unstressed central-spring assumptions.",
+      "Construct the actual polar-vector and site-permutation action of full Td.",
+      "Remove polar translations and axial rotations and recover affine mass coordinates.",
+      "Derive all six internal patterns and exact frequency families.",
+      "Use Schur with its multiplicity limits and rederive characters from a vertex stabilizer."
+    ],
+    "capstone": {
+      "question": "For the stated free tetrahedron with four equal masses m and six equal unstressed central springs k, derive the internal symmetry types and squared frequencies. Explain why rotations are axial, why raw shear coordinates need a different mass weight, and which conclusions follow from symmetry alone.",
+      "answer": "The full displacement character is $(12,0,0,0,2)=A_1+E+T_1+2T_2$ in the class order $1,(123),(12)(34),(1234),(12)$. Translations are polar T2 and infinitesimal rotations are axial T1 because their parameter transforms by det(R)R. Removing both leaves $A_1+E+T_2$. Affine internal strains have mass matrix $4ma^2\\operatorname{diag}(1,1,1,2,2,2)$ in the six raw symmetric entries. The exact energy gives squared frequencies $4k/m$ once, $k/m$ twice and $2k/m$ three times. Symmetry and single-copy Schur force the family degeneracies, while the force law and mass metric determine their values. The vertex-stabilizer tensor identity independently gives displacement multiplicities $1,0,1,1,2$."
+    },
+    "completionCriteria": "Submit correct current answers for every credited lesson competency and this unit capstone. Opening lessons, revealing proofs and reading explanations do not complete the unit.",
+    "remediation": [
+      "ureca-theory-tetrahedron-spring-model",
+      "ureca-theory-tetrahedron-rigid-motions",
+      "ureca-theory-tetrahedron-exact-spectrum",
+      "ureca-theory-tetrahedron-schur-degeneracy"
+    ],
+    "prerequisiteUnits": ["tables", "ureca-theory-inner-product-adjoints"]
   }
 ]

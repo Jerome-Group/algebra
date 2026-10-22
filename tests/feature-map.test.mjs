@@ -17,8 +17,18 @@ test("feature map is current and covers every lesson, unit, component and source
   const map = buildMap();
   assert.deepEqual(JSON.parse(fs.readFileSync(mapPath, "utf8")), map);
   assert.deepEqual(validateMap(map), []);
-  assert.equal(map.lessons.length, 150);
-  assert.equal(map.units.length, 16);
+  const catalogue = (file) =>
+    JSON.parse(
+      fs.readFileSync(new URL(`../lib/algebra/${file}.json`, import.meta.url)),
+    );
+  assert.deepEqual(
+    map.lessons.map(({ id }) => id),
+    catalogue("lessons").map(({ id }) => id),
+  );
+  assert.deepEqual(
+    map.units.map(({ id }) => id),
+    catalogue("units").map(({ id }) => id),
+  );
   assert.ok(map.lessons.filter((lesson) => lesson.guided).length >= 79);
   for (const lesson of map.lessons) {
     assert.ok(lesson.routes.includes(`#lab:${lesson.id}`));
