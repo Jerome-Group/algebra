@@ -189,7 +189,7 @@
   .connections {
     display: block;
   }
-  .concept-end > span {
+  .concept-end > span:first-child {
     display: none;
   }
   .section-kicker {
@@ -462,7 +462,7 @@
     flex-basis: 100%;
     width: 100%;
   }
-  .algebra-app .concept-end button {
+  .algebra-app .concept-end :is(button, a) {
     white-space: normal;
     text-align: left;
   }

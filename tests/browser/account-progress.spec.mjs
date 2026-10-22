@@ -82,6 +82,47 @@ test.describe("local built Worker and real D1 with synthetic trusted Sites heade
     });
   });
 
+  test("returning to a capstone preserves the account document and grants no credit", async ({
+    page,
+    context,
+    request,
+  }) => {
+    const owner = `capstone-${randomUUID()}`;
+    await context.setExtraHTTPHeaders(headers(owner));
+    await page.goto("/#learn");
+    await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+      "data-account-phase",
+      "ready",
+    );
+    await page
+      .locator(".route-options > section")
+      .first()
+      .locator("ol a")
+      .last()
+      .click();
+    await expect
+      .poll(
+        async () => (await state(request, owner)).preferences.resumeLessonId,
+      )
+      .toBe("foundations-quotient-rules");
+    const before = await state(request, owner);
+    await page.getByRole("link", { name: "Return to unit capstone" }).click();
+    await expect(page.locator('[id="capstone:functions"]')).toBeFocused();
+    await expect(
+      page
+        .locator(".route-options > section")
+        .first()
+        .locator(".competency-progress"),
+    ).toContainText("0 of");
+    await page.reload();
+    await expect(page.locator("[data-account-phase]")).toHaveAttribute(
+      "data-account-phase",
+      "ready",
+    );
+    await expect(page.locator('[id="capstone:functions"]')).toBeFocused();
+    expect(await state(request, owner)).toEqual(before);
+  });
+
   test("public reading, missing identity, owner preconditions and strict validation protect private state", async ({
     page,
     request,

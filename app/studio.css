@@ -472,6 +472,9 @@
   padding: 10px 14px;
   border-radius: 8px;
 }
+.course-catalog summary[id^="capstone:"] {
+  scroll-margin-top: calc(var(--algebra-header-height, 70px) + 16px);
+}
 .atlas-results {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -19,11 +19,11 @@
     },
     {
       "file": ".agents/skills/verify/features/discovery.md",
-      "sha256": "2ce0937b6786943d89dcfe0f8f9d32044d79af39c3f3c17ea191b2999d7ac98c"
+      "sha256": "8babe9226f232255a10f59e1632efd2d45c0798436a8620b6673ad8fe96e41f3"
     },
     {
       "file": ".agents/skills/verify/features/guided-learning.md",
-      "sha256": "eafacdaed9d57ea997a75c82a1c00aef705e3878015098926925fd8d7e0244be"
+      "sha256": "49b1447ad55e72bdbc428c631b2b7beb49ecd9adea0aba3f5e59992404334191"
     },
     {
       "file": ".agents/skills/verify/features/laboratories.md",
@@ -99,7 +99,7 @@
     },
     {
       "file": "app/algebra.css",
-      "sha256": "f289fd92d16420d811d97cf3398ce7a77e7d5a2177a06ed21f57c6f09def8495"
+      "sha256": "1be5960169203d8ca6f438af1f8ec3947fbe2d13c7238e40ff219a946bd2a3e1"
     },
     {
       "file": "app/api/build/route.ts",
@@ -131,11 +131,11 @@
     },
     {
       "file": "app/responsive.css",
-      "sha256": "367329c6d09672a79800bc4873cf1f99573690918fc922fcd8269df3def53559"
+      "sha256": "782cf4d56defe81215eda5a8b0eb4e884c58c65e40bbced37be3ab1a50581ee4"
     },
     {
       "file": "app/studio.css",
-      "sha256": "b70010f5211d721efa229902fc1b055b77524f596c29bba4eda9bf6c8eb13c7f"
+      "sha256": "60eab7976de17bf79521a67c7523739d669643606cf9f8ed856cb6cc27e195d5"
     },
     {
       "file": "build/sites-vite-plugin.ts",
@@ -147,7 +147,7 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "5a8e4995cf0b98b4700239bdbcd69eaeeaf78a3dc682aaa5f0a717833beba106"
+      "sha256": "85ba7a6c339debc7156beb397185c9a0d776720df1859e150cc7b90ebc36e964"
     },
     {
       "file": "components/algebra/Bridges.tsx",
@@ -295,7 +295,7 @@
     },
     {
       "file": "components/algebra/LearningRoutes.tsx",
-      "sha256": "287b9d9575a075e579697dcb02db955e3698cfa56c11669bfe235e58b925437f"
+      "sha256": "db44bf1a8fb888321007622c0fe6d105db7f9019ec7a10102d0ad6207eef99f4"
     },
     {
       "file": "components/algebra/LessonReader.tsx",
@@ -439,7 +439,7 @@
     },
     {
       "file": "components/algebra/WebMCP.tsx",
-      "sha256": "b96ec43ff92621ccea5838d97281e3ae0bc878771c71f3b9a975a7df6b1fc03a"
+      "sha256": "4cea0963cac85b7ac817f17bcfaef4381b2783aaf0be27f4afea716e2d9c5018"
     },
     {
       "file": "components/algebra/WedderburnLayerLab.tsx",
@@ -722,6 +722,10 @@
       "sha256": "275bf2a5bd6156ed076277390ce0a9c1b85be0e4aa819aa4b58bf65a0348232a"
     },
     {
+      "file": "docs/adr/0009-address-unit-capstones-with-durable-fragments.md",
+      "sha256": "526475c688a65c2fbe469327d04bd15100a37eb1941b7f2ade6902f06e5bf4f8"
+    },
+    {
       "file": "docs/agents/acceptance-criteria.md",
       "sha256": "35199255df1658038e66e122845ef6248ae713c91914483ebf6ceb9084e651c3"
     },
@@ -887,7 +891,7 @@
     },
     {
       "file": "hooks/use-navigation-focus.ts",
-      "sha256": "ecc19f5eebddaeb72bd83b872348f4a1b589ee5950e8cb56a52e1f0b94e3309c"
+      "sha256": "53a8b7e8a21500549cc2db130d691fdd7477f6e33a5cbdf8fbfd6d1d53307c5b"
     },
     {
       "file": "lib/algebra/account-progress.ts",
@@ -987,7 +991,7 @@
     },
     {
       "file": "lib/algebra/navigation.ts",
-      "sha256": "743c424749c2edf6a4850d290dc3ce4b70f4493ff90e58de4abc264ba660cb03"
+      "sha256": "876f018eb74d941c88ec8eb74cd065cf139ce1ba14440a5e1a3ecf4ca62832e6"
     },
     {
       "file": "lib/algebra/nilradical.ts",
@@ -1027,7 +1031,7 @@
     },
     {
       "file": "lib/algebra/routes.ts",
-      "sha256": "9112051421617adb1caeddbc3669c730b7110e9990636ba82fd4dd14c1fbe66a"
+      "sha256": "f0155e4aecad257436e7926cf4540482f02d90f4d2df97781a2138cc52c50b1b"
     },
     {
       "file": "lib/algebra/search.ts",
@@ -1115,7 +1119,7 @@
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "7990dd096d7e9948b1e97e07faffa622bf88b63e7b8ecf1c7d4b280232fa347a"
+      "sha256": "3856ab6398a0e29c6c75b3e6c5ae55aa917e68270a03de0071eb1b346233b307"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1175,7 +1179,7 @@
     },
     {
       "file": "tests/browser/account-progress.spec.mjs",
-      "sha256": "9aecfde85af1562fc2614b2b74a496837dc06ffe194dfb60a6eaf748e498ffdb"
+      "sha256": "ccae60c3dce1bd8a26985a3b02d6c591a0c7b55eeaf1649590e3a89fc9f39382"
     },
     {
       "file": "tests/browser/agent-cli.spec.mjs",
@@ -1227,7 +1231,7 @@
     },
     {
       "file": "tests/browser/learning.spec.mjs",
-      "sha256": "04f3f4ee936b1d81e3f2b6e9140a34551650e2cb795ea3198ff0289fc438e496"
+      "sha256": "fe7775e851d52f2d4a37b8c862499b6f6df719af3ddcb51d6dda92d7e43306ae"
     },
     {
       "file": "tests/browser/localisation-chains.spec.mjs",
@@ -1239,7 +1243,7 @@
     },
     {
       "file": "tests/browser/navigation-focus.spec.mjs",
-      "sha256": "134f1ba027045b580ac1f5363142ba96965774abf1ca1c8b908b2fae55c20249"
+      "sha256": "316ad24e2fb8d6980d11b97edf55fcc2321d5c2c8ee6aff8d621bd916cfeae63"
     },
     {
       "file": "tests/browser/navigation.spec.mjs",
@@ -1335,7 +1339,7 @@
     },
     {
       "file": "tests/learning-units.test.mjs",
-      "sha256": "5426bcb77aad5460f18b5711accfed92850596e456bb6e90ada9c447be0c099c"
+      "sha256": "e7a83622c08f7fa429fb5bfa4efab95f87d369ef89574195ca3bd61d0b83c941"
     },
     {
       "file": "tests/lesson-content.test.mjs",
@@ -1487,7 +1491,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1524,7 +1529,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1561,7 +1567,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1598,7 +1605,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1635,7 +1643,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1677,7 +1686,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1755,7 +1765,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -1898,7 +1909,8 @@
           "assertions": [
             "Mode, alias and history destinations",
             "Atlas filters",
-            "Responsive navigation and focus"
+            "Responsive navigation and focus",
+            "Durable unit capstone return, disclosure and focus cancellation"
           ]
         }
       ],
@@ -2012,6 +2024,7 @@
             "Guest reading and temporary answers require no account",
             "Trusted identity, strict validation and account isolation",
             "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+            "Capstone navigation preserves account progress and preferences",
             "Explicit legacy preview/import/export, reset and recovery",
             "Hosted provider sign-in and gateway header stripping require separate production proof"
           ]
@@ -2062,6 +2075,7 @@
             "Guest reading and temporary answers require no account",
             "Trusted identity, strict validation and account isolation",
             "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+            "Capstone navigation preserves account progress and preferences",
             "Explicit legacy preview/import/export, reset and recovery",
             "Hosted provider sign-in and gateway header stripping require separate production proof"
           ]
@@ -2139,7 +2153,8 @@
       "assertions": [
         "Mode, alias and history destinations",
         "Atlas filters",
-        "Responsive navigation and focus"
+        "Responsive navigation and focus",
+        "Durable unit capstone return, disclosure and focus cancellation"
       ]
     },
     {
@@ -2218,6 +2233,7 @@
         "Guest reading and temporary answers require no account",
         "Trusted identity, strict validation and account isolation",
         "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+        "Capstone navigation preserves account progress and preferences",
         "Explicit legacy preview/import/export, reset and recovery",
         "Hosted provider sign-in and gateway header stripping require separate production proof"
       ],
@@ -2893,6 +2909,10 @@
       ],
       "states": [
         {
+          "binding": "[screen, setScreen]",
+          "initialExpression": "{ mode: \"home\" }"
+        },
+        {
           "binding": "[id, setId]",
           "initialExpression": "\"foundations-functions\""
         },
@@ -2904,7 +2924,6 @@
         { "binding": "[tab, setTab]", "initialExpression": "\"guided\"" },
         { "binding": "[route, setRoute]", "initialExpression": "\"actions\"" },
         { "binding": "[menu, setMenu]", "initialExpression": "false" },
-        { "binding": "[view, setView]", "initialExpression": "\"home\"" },
         {
           "binding": "[laboratory, setLaboratory]",
           "initialExpression": "false"
@@ -2917,7 +2936,7 @@
       "controls": [
         {
           "kind": "a",
-          "line": 197,
+          "line": 218,
           "attributes": {
             "className": "\"skip-link\"",
             "href": "\"#concept\"",
@@ -2926,7 +2945,7 @@
         },
         {
           "kind": "a",
-          "line": 208,
+          "line": 229,
           "attributes": {
             "className": "\"wordmark\"",
             "href": "\"#home\"",
@@ -2935,7 +2954,7 @@
         },
         {
           "kind": "a",
-          "line": 237,
+          "line": 258,
           "attributes": {
             "key": "{mode}",
             "href": "{`#${mode}`}",
@@ -2945,7 +2964,7 @@
         },
         {
           "kind": "button",
-          "line": 263,
+          "line": 284,
           "attributes": {
             "id": "\"library-toggle\"",
             "className": "\"library-toggle\"",
@@ -2955,7 +2974,7 @@
         },
         {
           "kind": "button",
-          "line": 337,
+          "line": 361,
           "attributes": {
             "aria-label": "{`Previous: ${siblings[index - 1]?.navTitle || \"start of route\"}`}",
             "disabled": "{index <= 0}",
@@ -2964,20 +2983,27 @@
         },
         {
           "kind": "button",
-          "line": 346,
+          "line": 370,
           "attributes": {
             "aria-label": "{`Next: ${siblings[index + 1]?.navTitle || \"end of route\"}`}",
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
-        { "kind": "summary", "line": 358, "attributes": {} },
+        { "kind": "summary", "line": 382, "attributes": {} },
         {
           "kind": "button",
-          "line": 395,
+          "line": 420,
           "attributes": {
-            "disabled": "{index === siblings.length - 1}",
-            "onClick": "{() => open(siblings[index + 1].id, activeRoute?.id)}"
+            "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
+          }
+        },
+        {
+          "kind": "a",
+          "line": 429,
+          "attributes": {
+            "href": "{`#${capstoneTargetId(activeRoute)}`}",
+            "onClick": "{(event) => {\n                      if (\n                        !event.metaKey &&\n                        !event.ctrlKey &&\n                        !event.shiftKey &&\n                        !event.altKey\n                      ) {\n                        event.preventDefault();\n                        openCapstone(activeRoute);\n                      }\n                    }}"
           }
         }
       ],
@@ -4745,12 +4771,14 @@
     {
       "file": "components/algebra/LearningRoutes.tsx",
       "dependencies": [
+        "react",
         "@/lib/algebra/progress",
         "./LearningProgress",
         "./RepresentationJourney",
         "./Checkpoint",
         "@/lib/algebra/engine",
         "@/lib/algebra/routes",
+        "@/lib/algebra/navigation",
         "./ConceptLink",
         "@/lib/algebra/learning"
       ],
@@ -4758,23 +4786,27 @@
       "controls": [
         {
           "kind": "button",
-          "line": 70,
+          "line": 81,
           "attributes": {
             "aria-pressed": "{route === item.id}",
-            "onClick": "{() => {\n                  setRoute(item.id);\n                  open(item.lessons[0], item.id);\n                }}"
+            "onClick": "{() => open(item.lessons[0], item.id)}"
           }
         },
-        { "kind": "summary", "line": 95, "attributes": {} },
+        {
+          "kind": "summary",
+          "line": 105,
+          "attributes": { "id": "{capstoneTargetId(item)}" }
+        },
         {
           "kind": "Checkpoint",
-          "line": 97,
+          "line": 107,
           "attributes": {
             "competencyId": "{`unit:${item.id}`}",
             "title": "\"Unit transfer checkpoint\"",
             "assessment": "{assessment}"
           }
         },
-        { "kind": "summary", "line": 109, "attributes": {} }
+        { "kind": "summary", "line": 119, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -6564,6 +6596,7 @@
       "dependencies": [
         "@/lib/algebra/reading-views",
         "@/lib/algebra/search",
+        "@/lib/algebra/navigation",
         "react",
         "@/lib/algebra/engine",
         "./LaboratoryControls",

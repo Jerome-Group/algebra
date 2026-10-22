@@ -172,7 +172,7 @@
   color: #616b84;
   font-size: 14px;
 }
-.concept-end button {
+.concept-end :is(button, a) {
   display: flex;
   align-items: center;
   gap: 10px;
