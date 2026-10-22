@@ -1,0 +1,12 @@
+{"variant":"candidate","name":"lock","status":0,"signal":null,"elapsedMs":736}
+{"variant":"candidate","name":"install","status":0,"signal":null,"elapsedMs":6562}
+{"variant":"candidate","name":"versions","status":0,"signal":null,"elapsedMs":322}
+{"variant":"candidate","name":"audit","status":0,"signal":null,"elapsedMs":430}
+{"variant":"candidate","name":"audit-production","status":0,"signal":null,"elapsedMs":416}
+{"variant":"candidate","name":"esm-path","status":0,"signal":null,"elapsedMs":64}
+{"variant":"candidate","name":"dynamic","status":0,"signal":null,"elapsedMs":60}
+{"variant":"candidate","name":"cjs-loader","status":1,"signal":null,"elapsedMs":53}
+{"variant":"candidate","name":"cjs-core","status":0,"signal":null,"elapsedMs":56}
+{"variant":"candidate","name":"generate","status":0,"signal":null,"elapsedMs":270}
+{"variant":"candidate","name":"sqlite","status":0,"signal":null,"elapsedMs":26}
+{"variant":"candidate","name":"generate-repeat","status":0,"signal":null,"elapsedMs":212}

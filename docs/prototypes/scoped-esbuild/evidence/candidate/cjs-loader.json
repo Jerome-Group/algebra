@@ -1,0 +1,16 @@
+{
+  "variant": "candidate",
+  "name": "cjs-loader",
+  "command": "/Users/jeromequeck/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": [
+    "--no-experimental-strip-types",
+    "--loader",
+    "@esbuild-kit/esm-loader",
+    "fixtures/cjs.cts"
+  ],
+  "status": 1,
+  "signal": null,
+  "elapsedMs": 48,
+  "stdout": "",
+  "stderr": "(node:93757) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"%40esbuild-kit/esm-loader\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n/Volumes/Working/001 Projects/algebra/work/scoped-esbuild-prototype/work/esbuild-observation/candidate-jQDSxo/fixtures/cjs.cts:1\nconst value: number = 45; module.exports = {case:\"cjs\",value}; console.log(JSON.stringify(module.exports));\n      ^^^^^\n\nSyntaxError: Missing initializer in const declaration\n    at wrapSafe (node:internal/modules/cjs/loader:1804:18)\n    at Module._compile (node:internal/modules/cjs/loader:1846:20)\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at loadCJSModuleWithModuleLoad (node:internal/modules/esm/translators:372:15)\n    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:244:9)\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\nNode.js v24.19.0\n"
+}

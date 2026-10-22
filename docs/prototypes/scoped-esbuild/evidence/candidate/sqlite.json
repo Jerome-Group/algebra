@@ -1,0 +1,11 @@
+{
+  "variant": "candidate",
+  "name": "sqlite",
+  "command": "/Users/jeromequeck/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": ["fixtures/sqlite.mjs"],
+  "status": 0,
+  "signal": null,
+  "elapsedMs": 25,
+  "stdout": "[{\"type\":\"table\",\"name\":\"account_progress\",\"tbl_name\":\"account_progress\",\"sql\":\"CREATE TABLE `account_progress` (\\n\\t`owner` text PRIMARY KEY NOT NULL,\\n\\t`revision` integer NOT NULL,\\n\\t`document` text NOT NULL\\n)\"}]\n[{\"owner\":\"fixture-owner\",\"revision\":7,\"document\":\"{\\\"lesson\\\":\\\"groups\\\"}\"}]\n{\"duplicate\":\"ERR_SQLITE_ERROR\",\"message\":\"UNIQUE constraint failed: account_progress.owner\"}\n",
+  "stderr": ""
+}

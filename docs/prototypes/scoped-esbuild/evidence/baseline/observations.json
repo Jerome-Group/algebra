@@ -1,0 +1,73 @@
+{
+  "variant": "baseline",
+  "node": "v24.19.0",
+  "source": "1f404fb8d482dc2e06e28bfc5df686af881b044d",
+  "observations": [
+    {
+      "name": "install",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 6903
+    },
+    {
+      "name": "versions",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 343
+    },
+    {
+      "name": "audit",
+      "status": 1,
+      "signal": null,
+      "elapsedMs": 487
+    },
+    {
+      "name": "audit-production",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 419
+    },
+    {
+      "name": "esm-path",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 56
+    },
+    {
+      "name": "dynamic",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 55
+    },
+    {
+      "name": "cjs-loader",
+      "status": 1,
+      "signal": null,
+      "elapsedMs": 48
+    },
+    {
+      "name": "cjs-core",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 51
+    },
+    {
+      "name": "generate",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 248
+    },
+    {
+      "name": "sqlite",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 24
+    },
+    {
+      "name": "generate-repeat",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 222
+    }
+  ]
+}

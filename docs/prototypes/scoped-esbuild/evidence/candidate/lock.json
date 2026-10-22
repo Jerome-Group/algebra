@@ -1,0 +1,17 @@
+{
+  "variant": "candidate",
+  "name": "lock",
+  "command": "npm",
+  "args": [
+    "install",
+    "--package-lock-only",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "status": 0,
+  "signal": null,
+  "elapsedMs": 500,
+  "stdout": "\nup to date in 436ms\n",
+  "stderr": ""
+}

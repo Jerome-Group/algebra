@@ -1,0 +1,11 @@
+{
+  "variant": "baseline",
+  "name": "cjs-core",
+  "command": "/Users/jeromequeck/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": ["--no-experimental-strip-types", "fixtures/core.cjs"],
+  "status": 0,
+  "signal": null,
+  "elapsedMs": 51,
+  "stdout": "{\"case\":\"cjs\",\"value\":45}\n{\"case\":\"core-sync-map\",\"map\":\"object\"}\n",
+  "stderr": ""
+}
