@@ -5,8 +5,9 @@ import { axisRotation, planeRotation } from "../lib/algebra/rotations.ts";
 import { det } from "../lib/algebra/engine.ts";
 const vite = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   appType: "custom",
-  server: { middlewareMode: true, hmr: false },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const { cubeSymmetryMatch, metricOrientationModel, planeReflectionModel } =

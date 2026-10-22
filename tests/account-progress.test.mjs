@@ -5,8 +5,9 @@ import { createServer } from "vite";
 
 const vite = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   appType: "custom",
-  server: { middlewareMode: true, hmr: false },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const domain = await vite.ssrLoadModule("/lib/algebra/account-progress.ts");

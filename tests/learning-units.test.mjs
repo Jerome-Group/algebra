@@ -4,8 +4,9 @@ import { createServer } from "vite";
 
 const vite = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   appType: "custom",
-  server: { middlewareMode: true },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const { learningRoutes } = await vite.ssrLoadModule("/lib/algebra/routes.ts");

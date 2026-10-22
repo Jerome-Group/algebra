@@ -1163,11 +1163,11 @@
     },
     {
       "file": "tests/account-progress.test.mjs",
-      "sha256": "08779d360f5d64f27b8463bc9e1214eb3573ca1e3404d8e32e9ea8b2140557ba"
+      "sha256": "2320999cf42f02e30f2e7eda8e1ea3ead3609b291e24019174435559f0848542"
     },
     {
       "file": "tests/account-store.test.mjs",
-      "sha256": "3d9ec662f344f70367bf335f28ebe24dbedbf8c8186c448340dda2c8d432c57a"
+      "sha256": "34ae6807f4975d330e794188436d8b21747b2b672dd875290ed7d9674e153cdb"
     },
     {
       "file": "tests/agent-cli.test.mjs",
@@ -1299,11 +1299,11 @@
     },
     {
       "file": "tests/cayley-words.test.mjs",
-      "sha256": "d707d1fa882d0ac68771679505cedd303d0bd48f86658899253be5267f809920"
+      "sha256": "36fcb819fa3b91145c494bf46509616276a8af8e373c70a688c4a6e3aab81aa5"
     },
     {
       "file": "tests/character-construction.test.mjs",
-      "sha256": "ef4ecac11571ecbc77fbe24344f450980ac32d71f37494c77c1e4fcd3193fccb"
+      "sha256": "8f84c91c23e9680dcc2a4f332d7296ccb78632b0e9b44356927d9491db27ec46"
     },
     {
       "file": "tests/dependency-boundaries.test.mjs",
@@ -1327,15 +1327,15 @@
     },
     {
       "file": "tests/ideal-quotients.test.mjs",
-      "sha256": "68a1f02dd78afa2d11780ba8f1ec5082d444d9909ccab55b82645f6060be94ba"
+      "sha256": "961d4158e105e8c977268fdfe4d1c1d92e8642fd25c6e234c83786bfc2f36937"
     },
     {
       "file": "tests/induction-restriction.test.mjs",
-      "sha256": "ffd6a37f6339d20c42db730a99f5cd4429ed0d8447de7feea78258a42686c83a"
+      "sha256": "5f1d9986d09da6018399f8102dcec82473f22e1711d3ffa5d0eef5533dee29fa"
     },
     {
       "file": "tests/invariant-intertwiner.test.mjs",
-      "sha256": "16c56bf22e62eb11a8e32e55ccc2644afecdb7cf7c9c056c3e846ae0881cd5af"
+      "sha256": "048f122a19c3f49c9ae977f28462a2c60604d1e175a0fc0d7d50a69c1d8a1e9f"
     },
     {
       "file": "tests/learning-metadata.test.mjs",
@@ -1343,7 +1343,7 @@
     },
     {
       "file": "tests/learning-units.test.mjs",
-      "sha256": "e7a83622c08f7fa429fb5bfa4efab95f87d369ef89574195ca3bd61d0b83c941"
+      "sha256": "efa8c2d791a37a37407bf5f5ebfc7982be81b380d0e114f500db1cf32277a5f0"
     },
     {
       "file": "tests/lesson-content.test.mjs",
@@ -1351,11 +1351,11 @@
     },
     {
       "file": "tests/localisation-chains.test.mjs",
-      "sha256": "fac55b99100a6ec09d663eb41732b5768576b1dc6aa4dc177ebe54ff3a27f467"
+      "sha256": "0170d5cb680014e70c68f2aa8b8ec2eb30bb7bb7db7bc8c1641a87b8481c0202"
     },
     {
       "file": "tests/module-action-board.test.mjs",
-      "sha256": "bbfe2731172a1f8108c5ad525efdb075211e9b6ef603f2c203c5097df8233c72"
+      "sha256": "bdc215ddc67142c8195f8beec3d4c9bbdee27dab4fbcecf40e4cd263a16e23eb"
     },
     {
       "file": "tests/nilradical.test.mjs",
@@ -1363,7 +1363,7 @@
     },
     {
       "file": "tests/orthogonal-geometry.test.mjs",
-      "sha256": "b65c85c73b4b3af24dc12f21aa82d53b965dad422d6d13b3402bf4f6dd0e0149"
+      "sha256": "5b2234402e498b481d5bf2aa189cf94f90b99d878e243655eaf14ad651865044"
     },
     {
       "file": "tests/permutation-matrices.test.mjs",
@@ -1371,11 +1371,11 @@
     },
     {
       "file": "tests/polynomial-factorisation.test.mjs",
-      "sha256": "64f8c48b59b1b9af0665f458edfda3fdb6ea98f404abf7ebd761702c27299cdf"
+      "sha256": "ccd13cd175185a35e3b60c8241e09f5b83cee40520e5d540083fa0a98b94bc93"
     },
     {
       "file": "tests/progress.test.mjs",
-      "sha256": "5506e570b7d8336b10d5d6bdc3067570b26c7b240b17b60cba82b6778bb259ce"
+      "sha256": "d5304ba2fce0481ee0087fa54fdf87877c7d20221a96ce4ef97586fbb1e136d8"
     },
     {
       "file": "tests/proof-dependencies.test.mjs",
@@ -1391,7 +1391,7 @@
     },
     {
       "file": "tests/semidirect-product.test.mjs",
-      "sha256": "36acca5d911db1b37b648beb4c4512b36a53958effb7a445252212a8daae5d3f"
+      "sha256": "9fa8e1aba58d94edde61a9473a7157403505adc5407133346621bfcb9a1bac9e"
     },
     {
       "file": "tests/source-boundaries.test.mjs",
@@ -1399,19 +1399,19 @@
     },
     {
       "file": "tests/sylow-workbench.test.mjs",
-      "sha256": "3d45ed7d7525c99983357b7c9dbf2c6999c25ae8d1905e09dca6819d0aad3868"
+      "sha256": "78bebad393262f904b7442a7585ff36d8ba077b79768294f92514bdb8db852b5"
     },
     {
       "file": "tests/teaching-semantic.test.mjs",
-      "sha256": "ee45779916ada28b7a4743669c9dc1c67af547479f643c16ba73eb7f9491d9e0"
+      "sha256": "f7709e627a20a8532547a99c7cdaf04bf6b8b84a47f8de0afda25431f604a314"
     },
     {
       "file": "tests/tensor-balancing.test.mjs",
-      "sha256": "2de67229426d1ec9e534da87b022edadef484d66fdc08710e3b6ff600d184ad1"
+      "sha256": "91430d21e43217505b86f852cb45879b1dfa6c897c618a601d377664630b9ffd"
     },
     {
       "file": "tests/ui-components.test.mjs",
-      "sha256": "f9867aa28c15dd03de5673ddf50593d6dab2fe3da0734801fb451f29f54003b9"
+      "sha256": "96d7f550e183610117ff88c7355e8cfe539ea7b0660150d0c9d688af8ef41896"
     },
     {
       "file": "tests/ureca-direct-products.test.mjs",
@@ -1419,7 +1419,7 @@
     },
     {
       "file": "tests/wedderburn-layers.test.mjs",
-      "sha256": "078bd00096a7e7d5a3a6bff5cf0b4a167d2ef4c47625b4f896c51bfabd5857a8"
+      "sha256": "0bb17353f5c8e2b86632c4f84bbb6294ac17699fb4cd40c7a3428b7b50ce5927"
     },
     {
       "file": "tsconfig.json",
