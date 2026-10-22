@@ -35,8 +35,11 @@ npm run build
 node --test tests/*.test.mjs
 ```
 
-The ordinary build is portable. Retained `scripts/build-verified.sh` and
-`scripts/install-ci.sh` provide the older managed Linux workflow.
+The ordinary build is portable. `npm run install:ci` supports macOS and retains
+`scripts/install-ci.sh` on Linux. The portable installer holds an exclusive project
+lock and bounds npm plus its lifecycle subprocesses to eight minutes, with a
+15-second termination grace. Inspect the PID in a stale `.sites-runtime/install-portable.lock`
+before removing it. `scripts/build-verified.sh` retains the managed Linux build workflow.
 
 For account verification, use the owned built-Worker launch in the verification skill.
 It migrates an empty isolated D1 database before starting and enables local synthetic identities.

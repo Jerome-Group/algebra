@@ -8,7 +8,7 @@
   "scripts": {
     "agent": "node scripts/algebra.mjs",
     "typecheck": "tsc --noEmit",
-    "install:ci": "bash scripts/install-ci.sh",
+    "install:ci": "node scripts/install-ci.mjs",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
     "build": "vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",

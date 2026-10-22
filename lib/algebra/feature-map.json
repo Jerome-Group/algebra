@@ -87,7 +87,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "29ad65f3ad3b746cd87a94fab3aee568dceeba591e20cc635d20714bf35a0e9f"
+      "sha256": "20f2f93b8ef0a1761516a47f355fc11e3e1c668c51a72152fa3e64df9a67f517"
     },
     {
       "file": "SECURITY.md",
@@ -1119,7 +1119,7 @@
     },
     {
       "file": "package.json",
-      "sha256": "82a22e82680f7db5afb90c802a8330fdb8ae4913db8674568757208ded33120b"
+      "sha256": "a5975178156e974fbc83439862b24eed968dac0ca9763ca7dbc4c6290146fa14"
     },
     {
       "file": "playwright.config.ts",
@@ -1194,8 +1194,16 @@
       "sha256": "2ae5329ac860076070c9217a43106a15cb5ecf907a0f7baeb9ef903f76b53c68"
     },
     {
+      "file": "scripts/install-ci.mjs",
+      "sha256": "f6bb39cf914ff7c3538a5b9831887cff0dc1bb8e8ac0db0667591f013a658fdd"
+    },
+    {
       "file": "scripts/install-ci.sh",
       "sha256": "658c0aefc1d907dafde98ebc288b623ab9d2824a7bb1db055370a339a794a10d"
+    },
+    {
+      "file": "scripts/install-portable.mjs",
+      "sha256": "dbf90440e55979b3e042bc10371e72441d5794367ab6b0bb36a8f61736f827e9"
     },
     {
       "file": "scripts/lib/ureca-coverage.mjs",
@@ -1396,6 +1404,10 @@
     {
       "file": "tests/induction-restriction.test.mjs",
       "sha256": "5f1d9986d09da6018399f8102dcec82473f22e1711d3ffa5d0eef5533dee29fa"
+    },
+    {
+      "file": "tests/install-ci.test.mjs",
+      "sha256": "36af7e13ed376508226852d8054effbd895d6b96a5c43bd31c2b516356f2e792"
     },
     {
       "file": "tests/invariant-intertwiner.test.mjs",
@@ -32371,6 +32383,7 @@
     "tests/guided-content.test.mjs",
     "tests/ideal-quotients.test.mjs",
     "tests/induction-restriction.test.mjs",
+    "tests/install-ci.test.mjs",
     "tests/invariant-intertwiner.test.mjs",
     "tests/learning-metadata.test.mjs",
     "tests/learning-units.test.mjs",
