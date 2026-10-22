@@ -13,6 +13,62 @@ const additions = lessons.filter(({ id }) =>
   /^ureca-(foundations|constructions|theory)-/.test(id),
 );
 
+for (const width of [390, 1440])
+  test(`Mackey checkpoint answer keeps its inline mathematics readable at ${width}px`, async ({
+    page,
+  }, info) => {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto("/#ureca-theory-mackey-orbits");
+    const checkpoint = page.locator(".learning-checkpoint").filter({
+      has: page.getByText("Check the hypothesis", { exact: true }),
+    });
+    const answer = checkpoint.getByRole("radio", { name: /A unital/ });
+    await expect(answer).toHaveAccessibleName(
+      /A unital.*-module and the declared subgroup actions\./,
+    );
+    const label = checkpoint.locator("label").filter({
+      has: page.getByRole("radio", { name: /A unital/ }),
+    });
+    await label.scrollIntoViewIfNeeded();
+    const math = label.locator(".math-inline");
+    await expect(math.locator("annotation")).toHaveText("RK");
+    await expect(math.locator(".katex-html")).toBeVisible();
+    const layout = await label.evaluate((element) => {
+      const math = element.querySelector(".math-inline");
+      const bounds = math.getBoundingClientRect();
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      let suffix;
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        if (node.textContent.startsWith("-module and")) {
+          const range = document.createRange();
+          range.setStart(node, 0);
+          range.setEnd(node, 7);
+          suffix = range.getBoundingClientRect();
+          break;
+        }
+      }
+      return {
+        clientWidth: math.clientWidth,
+        scrollWidth: math.scrollWidth,
+        suffixGap: suffix ? suffix.left - bounds.right : null,
+        suffixSharesLine: suffix
+          ? suffix.top < bounds.bottom && suffix.bottom > bounds.top
+          : false,
+      };
+    });
+    await info.attach(`checkpoint-layout-${width}`, {
+      body: JSON.stringify(layout, null, 2),
+      contentType: "application/json",
+    });
+    await checkpoint.screenshot({
+      path: info.outputPath(`mackey-checkpoint-${width}.png`),
+    });
+    expect.soft(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
+    expect.soft(layout.suffixSharesLine).toBe(true);
+    expect.soft(layout.suffixGap).toBeGreaterThanOrEqual(-1);
+    expect.soft(layout.suffixGap).toBeLessThanOrEqual(1);
+  });
+
 test("retained square lessons show explicit conventions before their examples", async ({
   page,
 }) => {
