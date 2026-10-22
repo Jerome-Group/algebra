@@ -1070,6 +1070,24 @@
   border-left: 3px solid #8b4c29;
   padding-left: 20px;
 }
+
+.ureca-coverage {
+  margin-block: 1.5rem;
+}
+.ureca-topic-section {
+  border-top: 1px solid #d5d8dc;
+  padding-block: 0.5rem;
+}
+.ureca-topics > li {
+  margin-block: 0.8rem;
+}
+.ureca-topic-status {
+  display: block;
+  margin-block-start: 0.25rem;
+  color: #4b5868;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
 @media (max-width: 768px) {
   .algebra-header {
     flex-wrap: wrap;

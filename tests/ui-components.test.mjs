@@ -70,7 +70,7 @@ function renderLoadedMarkup(element) {
   });
 }
 
-test("all laboratory entry points render valid dynamic mathematics inside their provider", async () => {
+test("all laboratory entry points render their declared content and valid mathematics inside their provider", async () => {
   const [{ default: Laboratory }, { LaboratoryProvider }] = await Promise.all([
     vite.ssrLoadModule("/components/algebra/Laboratory.tsx"),
     vite.ssrLoadModule("/components/algebra/LaboratoryControls.tsx"),
@@ -87,7 +87,17 @@ test("all laboratory entry points render valid dynamic mathematics inside their 
       ),
     );
     assert.doesNotMatch(html, /class="katex-error"/, lesson.id);
-    assert.match(html, /class="katex"/, lesson.id);
+    if (
+      lesson.machine === "diagram" &&
+      html.includes('class="structure-node"')
+    ) {
+      if (lesson.parameters?.nodes?.length)
+        assert.equal(
+          (html.match(/class="structure-node"/g) || []).length,
+          lesson.parameters.nodes.length,
+          `${lesson.id}: every declared object is rendered`,
+        );
+    } else assert.match(html, /class="katex"/, lesson.id);
   }
 });
 

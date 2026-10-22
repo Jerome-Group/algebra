@@ -79,11 +79,7 @@ test("deferred capstone focus yields to the reader's checkpoint choice", async (
   expect(
     await page.evaluate(() => window.navigationFrames.count()),
   ).toBeGreaterThan(0);
-  const choice = page
-    .locator(".route-options > section")
-    .last()
-    .getByRole("radio")
-    .first();
+  const choice = target.locator("..").getByRole("radio").first();
   await choice.focus();
   await page.evaluate(() => window.navigationFrames.flush());
   await expect(choice).toBeFocused();

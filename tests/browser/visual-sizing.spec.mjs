@@ -23,7 +23,22 @@ async function openLaboratory(page, id, guided = false) {
   }
   await expect(page.locator(".laboratory-loading")).toHaveCount(0);
   await expect(page.locator(".laboratory-load-error")).toHaveCount(0);
-  await expect(panel.locator(".katex").first()).toBeVisible();
+  const lesson = lessons.find((item) => item.id === id);
+  if (
+    lesson.machine === "diagram" &&
+    lesson.parameters?.nodes?.length &&
+    lesson.parameters.nodes.every((node) => node.text)
+  ) {
+    await expect(
+      panel.getByRole("img", {
+        name: "Mathematical structure relationships",
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(panel.locator(".structure-node")).toHaveCount(
+      lesson.parameters.nodes.length,
+    );
+  } else await expect(panel.locator(".katex").first()).toBeVisible();
   return panel;
 }
 

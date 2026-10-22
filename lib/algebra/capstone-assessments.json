@@ -186,5 +186,203 @@
     ],
     "answer": 1,
     "explanation": "Norm one establishes D₈ irreducibility. Product inner products establish distinct irreducible external rows; the 8n squared-degree sum establishes completeness. Trace −2 means scalar −I₂, not kernel. C₂ contributes −1 and cancels it, while C₃ has no −1 character value."
+  },
+  "ureca-theory-mackey-normal-induction": {
+    "kind": "transfer",
+    "question": "For $G=S_3$ and $K=\\langle(12)\\rangle$, induce the nontrivial complex character $\\sigma$ and restrict back to $K$. Compute its $G$-endomorphism dimension. Compare induction of a nontrivial cubic character from $N=A_3$, and explain which part uses complex semisimplicity. Choose the reasoning that supports the complete conclusion.",
+    "choices": [
+      "The first restriction is $\\sigma\\oplus\\mathbb CK$ and gives dimension two; the nontrivial cubic induction has dimension-one commutant and is irreducible under the complex semisimple hypotheses.",
+      "Both induced modules are irreducible because every nontrivial inducing character induces irreducibly.",
+      "The first restriction is three trivial modules, and Mackey decomposition requires algebraic closure."
+    ],
+    "answer": 0,
+    "explanation": "The two $K$ double cosets have intersections $K$ and $1$, so the restriction is $\\sigma\\oplus\\mathbb CK$. Adjunction gives endomorphism dimension two, so this induced module is reducible over $\\mathbb C$. For $N=A_3$, a transposition replaces a nontrivial cubic character $\\zeta$ by $\\zeta^{-1}\\ne\\zeta$, so the normal criterion gives an irreducible induced module with endomorphism dimension one. Mackey decomposition uses coordinate maps over a unital ring. Inferring irreducibility from endomorphism dimension one uses complex scalar Schur and the semisimple converse."
+  },
+  "ureca-theory-alternating-class-splitting": {
+    "kind": "transfer",
+    "question": "Compare the $S_6$ class of $(12345)(6)$ and the $S_7$ class of $(12345)(6)(7)$ inside $A_6$ and $A_7$. Determine splitting and the resulting class sizes, and justify the difference. Choose the reasoning that supports the complete conclusion.",
+    "choices": [
+      "Neither splits because every permutation has a fixed point.",
+      "Type $(5,1)$ splits into two classes of 72; type $(5,1,1)$ stays one class of 504 because $(67)$ centralizes it and is odd.",
+      "Both split because the only written nontrivial cycle has odd length."
+    ],
+    "answer": 1,
+    "explanation": "Type $(5,1)$ has distinct odd lengths, centralizer order five and an $S_6$ class of size $720/5=144$. It splits into two $A_6$ classes of size 72. Type $(5,1,1)$ repeats length one and has the odd centralizer $(67)$. Its $S_7$ centralizer has order $5\\cdot2=10$, and its 504 elements stay one $A_7$ class. Every fixed point must be included."
+  },
+  "ureca-theory-inner-product-adjoints": {
+    "kind": "transfer",
+    "question": "Use linear-first inner products. A Euclidean projection has matrix $M=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ in basis $(1,0),(1,1)$. Find its adjoint matrix. Then give the class-coordinate induction map from $H=\\langle(12)\\rangle$ to $S_3$ and explain the metric factors. Choose the reasoning that supports the complete conclusion.",
+    "choices": [
+      "The projection adjoint is always $M^T$, and induction is the unweighted transpose of restriction.",
+      "Both maps require inverses of their original matrices.",
+      "The projection adjoint matrix is M, and induction sends $(a,b)$ to $(3a,b,0)$ after applying the relevant Gram matrices."
+    ],
+    "answer": 2,
+    "explanation": "The projection Gram matrix is $G=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$, so $[P^*]=G^{-1}M^TG=M$, although $M^T\\ne M$. For class coordinates $(a,b)$ on $H$ and identity, transposition, 3-cycle coordinates on $S_3$, induction is $(a,b)\\mapsto(3a,b,0)$. The Gram diagonals are $(1/2,1/2)$ and $(1/6,1/2,1/3)$, so the adjoint matrix is $D_G^{-1}R^TD_H$. Metric factors belong to both calculations."
+  },
+  "ureca-theory-tensor-hom-adjunction": {
+    "kind": "transfer",
+    "question": "For a unital $(S,R)$-bimodule $M$, a left $R$-module $V$ and a left $S$-module $W$, give both tensor-Hom maps and the Hom action. Explain why these are inverse and natural. Test whether the adjoint functors are inverse when $R=S=\\mathbb C$ and $M=\\mathbb C^2$. Choose the reasoning that supports the complete conclusion.",
+    "choices": [
+      "Precomposition on M defines the Hom action, balancing gives the reverse map, evaluation proves inverses and naturality, and the dimension-four example disproves inverse equivalence.",
+      "The maps are inverse on objects because all adjoint functors are inverse functors.",
+      "An arbitrary set currying bijection proves the module statement without checking linearity or balancing."
+    ],
+    "answer": 0,
+    "explanation": "The Hom action is $(rf)(m)=f(mr)$. The maps are $T\\mapsto[v\\mapsto(m\\mapsto T(m\\otimes v))]$ and $f\\mapsto[m\\otimes v\\mapsto f(v)(m)]$. Outer R-linearity gives $f(rv)(m)=f(v)(mr)$, the reverse balancing relation. Evaluating at $m,v$ proves both inverse identities and naturality under source precomposition and target postcomposition. For $M=\\mathbb C^2$, $U(F\\mathbb C)=\\operatorname{End}(\\mathbb C^2)$ has dimension four while $\\mathbb C$ has dimension one, so the adjunction is not an inverse equivalence."
+  },
+  "ureca-theory-tetrahedral-spring-modes": {
+    "kind": "transfer",
+    "question": "For the stated free tetrahedron with four equal masses m and six equal unstressed central springs k, derive the internal symmetry types and squared frequencies. Explain why rotations are axial, why raw shear coordinates need a different mass weight, and which conclusions follow from symmetry alone. Choose the reasoning that supports the complete conclusion.",
+    "choices": [
+      "There are twelve positive-frequency modes because all twelve displacement coordinates are independent.",
+      "Internal types are $A_1+E+T_2$ with squared frequencies $4k/m,k/m,2k/m$ and multiplicities $1,2,3$ under the stated force and mass assumptions.",
+      "Symmetry alone determines the same numerical frequencies for every tetrahedral force model, and rotations are polar under reflections."
+    ],
+    "answer": 1,
+    "explanation": "The full displacement character is $(12,0,0,0,2)=A_1+E+T_1+2T_2$ in the class order $1,(123),(12)(34),(1234),(12)$. Translations are polar T2 and infinitesimal rotations are axial T1 because their parameter transforms by det(R)R. Removing both leaves $A_1+E+T_2$. Affine internal strains have mass matrix $4ma^2\\operatorname{diag}(1,1,1,2,2,2)$ in the six raw symmetric entries. The exact energy gives squared frequencies $4k/m$ once, $k/m$ twice and $2k/m$ three times. Symmetry and single-copy Schur force the family degeneracies, while the force law and mass metric determine their values. The vertex-stabilizer tensor identity independently gives displacement multiplicities $1,0,1,1,2$."
+  },
+  "ureca-foundations-matrix-models": {
+    "kind": "transfer",
+    "question": "For the order-eighteen family with $\\alpha=\\omega$ and $\\beta=1$, identify its kernel and irreducibility.",
+    "choices": [
+      "Irreducible, with kernel generated by b",
+      "Faithful irreducible",
+      "Reducible, with trivial kernel"
+    ],
+    "answer": 0,
+    "explanation": "The kernel is $\\langle b\\rangle$ of order three. A rotation-subgroup element $a^ub^v$ acts trivially exactly when $\\omega^u=1$, so u=0. An element involving s has an off-diagonal matrix and cannot act as I. The a-eigenvalues $\\omega,\\omega^{-1}$ are distinct, and s exchanges their lines, so the representation is irreducible but not faithful."
+  },
+  "ureca-foundations-invariant-operators": {
+    "kind": "transfer",
+    "question": "For $\\theta=I+S$ on the two-dimensional swap module, compare its kernel-image decomposition over $\\mathbb C$ and $\\mathbb F_2$.",
+    "choices": [
+      "Both fields give two complementary lines",
+      "The operator is zero over both fields",
+      "The complex module splits; in characteristic two the kernel equals the image"
+    ],
+    "answer": 2,
+    "explanation": "Over C, theta has eigenvalues 0 and 2, with kernel spanned by (1,-1) and image spanned by (1,1). They are complementary invariant lines, and theta/2 is a projection. Over F2, theta is nonzero with square zero, and its kernel and image are the same line spanned by (1,1). The two roots coincide and division by two fails, so there is no kernel-image direct sum."
+  },
+  "ureca-foundations-weights-characters": {
+    "kind": "transfer",
+    "question": "For $C_3\\times C_3$, give the least faithful complex degree and the multiplicity of each irreducible in its regular module.",
+    "choices": [
+      "Least faithful degree nine; each irreducible occurs twice",
+      "Least faithful degree two; each of nine irreducibles occurs once",
+      "Least faithful degree one; one irreducible occurs nine times"
+    ],
+    "answer": 1,
+    "explanation": "The least faithful degree is two. Every irreducible is a linear character with image in the cube roots, so a single character cannot inject the order-nine group. Two coordinate characters have kernels with trivial intersection and form a faithful sum. The regular module contains all nine degree-one characters once, since regular multiplicity equals irreducible degree."
+  },
+  "ureca-foundations-character-methods": {
+    "kind": "transfer",
+    "question": "What is the rank of the degree-two isotypic projector on the eight-dimensional regular module of $D_8$, and how many irreducible copies does its image contain?",
+    "choices": [
+      "Rank four, with two degree-two copies",
+      "Rank two, with one degree-two copy",
+      "Rank eight, with four degree-two copies"
+    ],
+    "answer": 0,
+    "explanation": "The rank is four, and the image contains two copies of the degree-two irreducible. The projector is e_sigma=([1]-[r^2])/2. Its image has the four independent differences [1]-[r^2], [r]-[r^3], [s]-[r^2s], [rs]-[r^3s]. Regular multiplicity equals degree, so this is one isotypic component with two copies, rather than one irreducible copy."
+  },
+  "ureca-foundations-platonic-groups": {
+    "kind": "transfer",
+    "question": "Use the five-cube action and the spatial $C_5$ restriction to identify the dodecahedral rotation group and its trace at a positive $2\\pi/5$ rotation.",
+    "choices": [
+      "S5, with spatial trace zero",
+      "A5 times C2, with spatial trace five",
+      "A5, with spatial trace phi"
+    ],
+    "answer": 2,
+    "explanation": "The coordinate action has sixty rotations. Its action on the five exhaustive inscribed cube vertex sets is faithful because common antipodal vertex pairs force a kernel rotation to fix four nonorthogonal diagonal lines, hence to be I. Its image in S5 has index two and equals A5. On spatial C5 restriction the eigenvalues are 1, zeta_5 and zeta_5 inverse, so the trace is 1+2cos(2pi/5)=phi. The other two C5 weights have multiplicity zero."
+  },
+  "ureca-constructions-tensor-methods": {
+    "kind": "transfer",
+    "question": "For C4 with lambda(r)=i and V=1 plus lambda, decompose the two squares and identify the first power containing lambda cubed. Choose the fully justified conclusion.",
+    "choices": [
+      "The symmetric square is 1 plus lambda plus lambda squared, and the exterior square is lambda. The third tensor power has character 1+3lambda+3lambda squared+lambda cubed, so the first occurrence of lambda cubed is exponent three. The four distinct character values give a Vandermonde guarantee using exponents zero through three.",
+      "Both squares equal V and lambda cubed never occurs.",
+      "The exterior square is zero because both summands of V have degree one."
+    ],
+    "answer": 0,
+    "explanation": "The symmetric square is 1 plus lambda plus lambda squared, and the exterior square is lambda. The third tensor power has character 1+3lambda+3lambda squared+lambda cubed, so the first occurrence of lambda cubed is exponent three. The four distinct character values give a Vandermonde guarantee using exponents zero through three."
+  },
+  "ureca-constructions-symmetric-tables": {
+    "kind": "transfer",
+    "question": "In S6 let y=p3-p2 and z=vy-w as defined in the table lesson. Explain why both are actual, then calculate their values on type 3 squared and the degree of z. Choose the fully justified conclusion.",
+    "choices": [
+      "The equivariant pair-to-triple incidence map is injective, so a complement has actual character y. The actual tensor vy contains w once, so removing that summand gives actual z. On type (3,3), p3=2, p2=0, v=-1 and w=0, hence y=2 and z=-2. At identity z has degree 5 times 5 minus 9, equal to 16; its weighted norm is one.",
+      "Positive degrees alone prove actualness, and both values are zero.",
+      "Subtracting any two permutation rows gives an actual character; z has degree 25."
+    ],
+    "answer": 0,
+    "explanation": "The equivariant pair-to-triple incidence map is injective, so a complement has actual character y. The actual tensor vy contains w once, so removing that summand gives actual z. On type (3,3), p3=2, p2=0, v=-1 and w=0, hence y=2 and z=-2. At identity z has degree 5 times 5 minus 9, equal to 16; its weighted norm is one."
+  },
+  "ureca-constructions-restriction-theory": {
+    "kind": "transfer",
+    "question": "The degree-three irreducible A4 row restricts to its normal V4 as the three nontrivial linear rows once each. Find its norm, explain equality in the index bound and identify the Clifford parameters. Choose the fully justified conclusion.",
+    "choices": [
+      "The squared restriction norm is 1+1+1=3, equal to the index [A4:V4]=3. Equality means the A4 character vanishes outside V4. The three distinct constituent types are permuted transitively, with common multiplicity e=1, orbit size t=3 and degree d=1, giving total degree etd=3. The abelian-subgroup degree bound is attained.",
+      "The norm is nine because each constituent has degree one.",
+      "The equality forces V4 to be the kernel and all three constituents to be trivial."
+    ],
+    "answer": 0,
+    "explanation": "The squared restriction norm is 1+1+1=3, equal to the index [A4:V4]=3. Equality means the A4 character vanishes outside V4. The three distinct constituent types are permuted transitively, with common multiplicity e=1, orbit size t=3 and degree d=1, giving total degree etd=3. The abelian-subgroup degree bound is attained."
+  },
+  "ureca-constructions-alternating-tables": {
+    "kind": "transfer",
+    "question": "For the split degree-sixteen S6 row on A6, explain the two constituent degrees and solve their five-cycle entries from u+v=1 and u squared+v squared=3. Compare the self-transpose degree-twenty S7 row on A7. Choose the fully justified conclusion.",
+    "choices": [
+      "The index-two theorem gives two distinct A6 constituents of degree eight. The equations imply uv=-1, so u and v are (1+sqrt(5))/2 and (1-sqrt(5))/2, exchanged by swapping the two split class labels. The self-transpose S7 row is sign-invariant and restricts to two distinct A7 rows of degree ten.",
+      "Every even-degree row splits, so all S6 rows divide in half.",
+      "The equations give u=v=1/2 and the S7 row remains degree twenty irreducible."
+    ],
+    "answer": 0,
+    "explanation": "The index-two theorem gives two distinct A6 constituents of degree eight. The equations imply uv=-1, so u and v are (1+sqrt(5))/2 and (1-sqrt(5))/2, exchanged by swapping the two split class labels. The self-transpose S7 row is sign-invariant and restricts to two distinct A7 rows of degree ten."
+  },
+  "ureca-constructions-induction-objects": {
+    "kind": "transfer",
+    "question": "Take R=Z, G=C4, H generated by r squared and V=Z/2 with trivial H action. Identify the induced module and r action, and explain which maps prove its tensor-coordinate decomposition. Choose the fully justified conclusion.",
+    "choices": [
+      "The induced module is two external copies of Z/2, indexed by 1 and r, and r swaps the copies because r squared acts trivially. Theta sends a tuple to 1 tensor v1 plus r tensor vr. Its inverse sends b tensor v to the tuple (q1(b)v,qr(b)v); right H-linearity of the q maps proves balancing, and both composites are identity. No Z-basis of V is required.",
+      "The induced module is free of rank two over Z because the coset set has two elements.",
+      "Tensoring an inclusion is always injective, so no inverse-coordinate map is needed."
+    ],
+    "answer": 0,
+    "explanation": "The induced module is two external copies of Z/2, indexed by 1 and r, and r swaps the copies because r squared acts trivially. Theta sends a tuple to 1 tensor v1 plus r tensor vr. Its inverse sends b tensor v to the tuple (q1(b)v,qr(b)v); right H-linearity of the q maps proves balancing, and both composites are identity. No Z-basis of V is required."
+  },
+  "ureca-constructions-induction-adjunctions": {
+    "kind": "transfer",
+    "question": "For H trivial in C2, V=C and a C2 module W, describe the Hom correspondence. If f multiplies V by 2 and u multiplies W by 3, check naturality and decide whether the unit is always an isomorphism. Choose the fully justified conclusion.",
+    "choices": [
+      "An equivariant F corresponds to v maps to F(1 tensor v), with inverse b tensor v maps to b alpha(v). Applying f and u before or after conversion gives 6 times the same corresponding map. The unit V to Res Ind V is v maps to 1 tensor v; here its target has dimension two while V has dimension one, so it is not an isomorphism. Natural inverse Hom maps do not make induction and restriction inverse functors.",
+      "The unit is an isomorphism because the Hom correspondence has an inverse.",
+      "The reverse extension ignores b, and naturality changes the result by a factor of five."
+    ],
+    "answer": 0,
+    "explanation": "An equivariant F corresponds to v maps to F(1 tensor v), with inverse b tensor v maps to b alpha(v). Applying f and u before or after conversion gives 6 times the same corresponding map. The unit V to Res Ind V is v maps to 1 tensor v; here its target has dimension two while V has dimension one, so it is not an isomorphism. Natural inverse Hom maps do not make induction and restriction inverse functors."
+  },
+  "ureca-constructions-subgroup-matrices": {
+    "kind": "transfer",
+    "question": "In the D8 subgroup of S4 with r=(1234), s=(13), induce the linear character lambda(r)=-1 and lambda(s)=1. Compute its S4 values using class fusion and identify the matrix column. Choose the fully justified conclusion.",
+    "choices": [
+      "In S4 class order 1,2,2 squared,3,4 the induced values are (3,1,-1,0,-1). Identity gives index three; the transposition gives lambda(s)=1; double transpositions give lambda(r squared)+2lambda(rs)=1-2=-1; the three-cycle class misses D8; and the four-cycle gives lambda(r)=-1. This is the standard row v, exactly the lambda minus-plus column of the reciprocity matrix.",
+      "The induced values are obtained by extending lambda by zero and have degree one.",
+      "Every linear D8 character induces to the same three-dimensional permutation row."
+    ],
+    "answer": 0,
+    "explanation": "In S4 class order 1,2,2 squared,3,4 the induced values are (3,1,-1,0,-1). Identity gives index three; the transposition gives lambda(s)=1; double transpositions give lambda(r squared)+2lambda(rs)=1-2=-1; the three-cycle class misses D8; and the four-cycle gives lambda(r)=-1. This is the standard row v, exactly the lambda minus-plus column of the reciprocity matrix."
+  },
+  "ureca-constructions-induction-applications": {
+    "kind": "transfer",
+    "question": "For the affine group of order twenty-one, induce lambda(a)=exp(2 pi i/7) from its order-seven normal subgroup. Give its degree, outside values, period equations and norm, then compare the index-two case of a source fixed by outside conjugation. Choose the fully justified conclusion.",
+    "choices": [
+      "The induced degree is three and its values vanish outside the order-seven subgroup. On its two nonidentity classes the periods satisfy u+v=-1 and uv=2, so they are (-1 plus or minus i sqrt(7))/2. Its norm is (9+3 times 2+3 times 2)/21=1, hence it is irreducible and satisfies the norm bound 1 at most index three. For a complex irreducible source fixed by outside conjugation at index two, induction instead has norm two and splits into its two distinct sign-related extensions.",
+      "Both induction problems are irreducible because the source has degree one.",
+      "The order-21 periods are real and the index-two induction has a repeated constituent twice."
+    ],
+    "answer": 0,
+    "explanation": "The induced degree is three and its values vanish outside the order-seven subgroup. On its two nonidentity classes the periods satisfy u+v=-1 and uv=2, so they are (-1 plus or minus i sqrt(7))/2. Its norm is (9+3 times 2+3 times 2)/21=1, hence it is irreducible and satisfies the norm bound 1 at most index three. For a complex irreducible source fixed by outside conjugation at index two, induction instead has norm two and splits into its two distinct sign-related extensions."
   }
 }

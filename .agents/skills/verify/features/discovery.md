@@ -22,6 +22,12 @@ the sticky header. Cold entry and reload also run with a slower CPU. The focus j
 animation frames to check reader and navigation cancellation before and after the destination commit.
 Inspect captured responsive screenshots when changing navigation or layout.
 
+The URECA coverage journey opens reviewed topic evidence at 390 and 1440 pixels, follows its
+lesson link and checks the added exercise examples. It also enters every new foundations,
+constructions and theory lesson at 390 pixels, operates proof recall and a hypothesis checkpoint,
+and checks page overflow and mathematical rendering. Review the retained topic/lesson screenshots.
+Those guest interactions do not establish account persistence or independent mathematical truth.
+
 For changes to other discovery controls, supplement the registered journeys. At 390 pixels,
 search for Sylow in Concepts, open a result and check Back, Forward and heading focus. Exercise
 Concept kind, Course tier, Source collection, Visualisation type, Study time and Prerequisites

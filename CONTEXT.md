@@ -19,6 +19,10 @@ referenced file or grant permission to copy it.
 
 **Source location**: printed page numbering belongs to the source; PDF numbering starts at one in the linked file.
 
+**Dihedral notation**: state the group order. URECA square and triangle examples use D₈ and D₆
+for orders eight and six. Polygon laboratories use Dₙ for order 2n, calling those groups D₄ and
+D₃. Each lesson declares its relevant convention before the examples.
+
 **Deeper note**: a collapsed extension with its own result and page citation.
 
 **Account progress**: an acknowledged learning record owned by the authenticated Sites user
@@ -29,3 +33,13 @@ an account save.
 
 **Legacy record**: existing browser bytes retained for explicit preview, export or import.
 Signing in never imports them automatically.
+
+**Coverage obligation**: a mathematical topic or exercise method requiring identifiable teaching
+passages, examples, proof and hypothesis boundaries. A catalogue entry alone does not discharge it.
+
+**Independent content review**: a separate reader checks a teaching claim against mathematical
+sources and calculations. Its digest binds the review to unchanged public content; the digest
+does not establish correctness.
+
+**Source reconciliation**: a private comparison of retained source bytes with reviewed dispositions.
+Administrative records, duplicate renders, candidates and preparation retain their own status.

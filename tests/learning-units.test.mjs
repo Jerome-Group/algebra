@@ -13,10 +13,28 @@ const { learningRoutes } = await vite.ssrLoadModule("/lib/algebra/routes.ts");
 const { parseDestination, productModes, capstoneTargetId } =
   await vite.ssrLoadModule("/lib/algebra/navigation.ts");
 
-test("sixteen short units carry outcomes, a concrete capstone and remediation", () => {
-  assert.equal(learningRoutes.length, 16);
+test("short units retain the original routes, outcomes, capstones and remediation", () => {
   const ids = new Set(learningRoutes.map((unit) => unit.id));
-  assert.equal(ids.size, 16);
+  assert.equal(ids.size, learningRoutes.length);
+  for (const id of [
+    "functions",
+    "operations",
+    "generators",
+    "cosets",
+    "quotients",
+    "actions",
+    "counting",
+    "sylow",
+    "rings",
+    "factorisation",
+    "localisation",
+    "modules",
+    "representations",
+    "characters",
+    "tables",
+    "tensor",
+  ])
+    assert.ok(ids.has(id), `Original unit disappeared: ${id}`);
   for (const unit of learningRoutes) {
     assert.ok(unit.lessons.length >= 3 && unit.lessons.length <= 7, unit.id);
     assert.ok(unit.entryCompetencies.length && unit.outcomes.length, unit.id);

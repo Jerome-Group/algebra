@@ -83,6 +83,12 @@ export function GuidedReader({
         <p>
           <Prose>{content.objects}</Prose>
         </p>
+        {lesson.conventions && (
+          <p className="guided-conventions">
+            <strong>Conventions: </strong>
+            <Prose>{lesson.conventions}</Prose>
+          </p>
+        )}
         <M block>{lesson.definition}</M>
       </section>
       {content.examples.map((example, index) => (

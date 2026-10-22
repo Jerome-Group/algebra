@@ -70,6 +70,12 @@ Where a piece of work starts, what hands on to what, and where research and prot
 Use `.agents/skills/verify/SKILL.md` to launch, drive and clean up an owned application.
 Read its feature file for the changed journey. Source-map presence is not executed coverage.
 
+### URECA Y2
+
+At task start and before release, follow `docs/agents/ureca-coverage.md`. Reconcile retained
+source additions and changes to detailed, independently reviewed website teaching. Keep
+candidate investigations and prepared assignments distinct from required study coverage.
+
 ### Issue tracker
 
 GitHub Issues on this repository, via the `gh` CLI. `docs/agents/issue-tracker.md` carries the

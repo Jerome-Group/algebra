@@ -5,6 +5,9 @@ import { readFileSync } from "node:fs";
 const units = JSON.parse(
   readFileSync(new URL("../../lib/algebra/units.json", import.meta.url)),
 );
+const lessons = JSON.parse(
+  readFileSync(new URL("../../lib/algebra/lessons.json", import.meta.url)),
+);
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
@@ -274,9 +277,9 @@ test("reference teaching filter reports empty results after every entry has a gu
     .getByRole("combobox", { name: /^Teaching status/ })
     .selectOption("guided");
   await expect(page.locator(".reference-atlas").getByRole("status")).toHaveText(
-    "150 matching concepts",
+    `${lessons.length} matching concepts`,
   );
-  await expect(page.locator(".atlas-results > li")).toHaveCount(150);
+  await expect(page.locator(".atlas-results > li")).toHaveCount(lessons.length);
 });
 
 test("guided checkpoints diagnose an error and keep the source/reference path available", async ({
