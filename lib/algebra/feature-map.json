@@ -726,6 +726,10 @@
       "sha256": "526475c688a65c2fbe469327d04bd15100a37eb1941b7f2ade6902f06e5bf4f8"
     },
     {
+      "file": "docs/adr/0010-scope-the-legacy-loader-esbuild-override.md",
+      "sha256": "9857134d05a866149cb8163601f28c9492b44a0b164122dee37e1f18ab6b7963"
+    },
+    {
       "file": "docs/agents/acceptance-criteria.md",
       "sha256": "35199255df1658038e66e122845ef6248ae713c91914483ebf6ceb9084e651c3"
     },
@@ -1071,11 +1075,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "642f20b7e7efd6121a7d6ad27ae4b13149531f9cd9837020962b54f787feaede"
+      "sha256": "62f02d640ff61fd6d8dbeb390901b6ab0c4aac998c014bd4cb667a71b799f955"
     },
     {
       "file": "package.json",
-      "sha256": "6dc34bd8e10b42e33cf6f446f90520801429c0681da9b01b5ccd5c8977898094"
+      "sha256": "fb6edf2c5d7a7c01c5f67ebc62b3040a85775bf0f4a79484f39d085787b76363"
     },
     {
       "file": "playwright.config.ts",
@@ -1303,7 +1307,7 @@
     },
     {
       "file": "tests/dependency-boundaries.test.mjs",
-      "sha256": "9b94ac52864a096186f753af6bd635e919bfb1d2ce68f8f1de7fc584ba949eb0"
+      "sha256": "13ad2461012af74db0e0ad75a17903e242844e463cde94f8f78f4169aed807a7"
     },
     {
       "file": "tests/feature-map.test.mjs",

@@ -85,6 +85,9 @@
     },
     "@shuding/opentype.js": {
       "fflate": "0.7.5"
+    },
+    "@esbuild-kit/core-utils": {
+      "esbuild": "0.25.12"
     }
   }
 }
