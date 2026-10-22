@@ -6,7 +6,7 @@ import { det } from "../lib/algebra/engine.ts";
 const vite = await createServer({
   configFile: false,
   appType: "custom",
-  server: { middlewareMode: true, hmr: false },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const { cubeSymmetryMatch, metricOrientationModel, planeReflectionModel } =

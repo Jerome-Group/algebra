@@ -4,7 +4,7 @@ import { createServer } from "vite";
 const vite = await createServer({
   configFile: false,
   appType: "custom",
-  server: { middlewareMode: true },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const { inducedMatrix, multiply3, inducedState } = await vite.ssrLoadModule(

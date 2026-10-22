@@ -5,7 +5,7 @@ import { createServer } from "vite";
 const vite = await createServer({
   configFile: false,
   appType: "custom",
-  server: { middlewareMode: true, hmr: false },
+  server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => vite.close());
 const { cyclicSubgroups, evaluateS3Word, regularActionModel, s3WordModel } =
