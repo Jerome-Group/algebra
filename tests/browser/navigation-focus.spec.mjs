@@ -68,6 +68,79 @@ test("deferred mode navigation never overwrites subsequent reader focus", async 
   await expect(search).toBeFocused();
 });
 
+test("deferred capstone focus yields to the reader's checkpoint choice", async ({
+  page,
+}) => {
+  await page.evaluate(() => {
+    location.hash = "capstone:tensor";
+  });
+  const target = page.locator('[id="capstone:tensor"]');
+  await expect(target).toBeVisible();
+  expect(
+    await page.evaluate(() => window.navigationFrames.count()),
+  ).toBeGreaterThan(0);
+  const choice = page
+    .locator(".route-options > section")
+    .last()
+    .getByRole("radio")
+    .first();
+  await choice.focus();
+  await page.evaluate(() => window.navigationFrames.flush());
+  await expect(choice).toBeFocused();
+  await expect(target).not.toBeFocused();
+});
+
+test("capstone intent yields to reader focus before the destination commit", async ({
+  page,
+}) => {
+  await page.getByRole("link", { name: "Learn", exact: true }).click();
+  const reader = page
+    .locator(".route-options > section")
+    .first()
+    .getByRole("button", { name: "Start this unit", exact: true });
+  await expect(reader).toBeVisible();
+  await page.evaluate(() => {
+    const reader = document.querySelector(".route-options > section button");
+    window.addEventListener("hashchange", () => reader.focus(), { once: true });
+    location.hash = "capstone:functions";
+  });
+  await expect(
+    page.locator(".route-options > section > details[open]"),
+  ).toHaveCount(1);
+  await page.evaluate(() => window.navigationFrames.flush());
+  await expect(reader).toBeFocused();
+});
+
+test("new navigation cancels pending capstone focus and target scrolling", async ({
+  page,
+}) => {
+  await page.evaluate(() => {
+    location.hash = "capstone:tensor";
+  });
+  const target = page.locator('[id="capstone:tensor"]');
+  await expect(target).toBeVisible();
+  await target.evaluate((summary) => {
+    window.capstoneFocusCount = 0;
+    summary.addEventListener("focus", () => {
+      window.capstoneFocusCount++;
+    });
+  });
+  await page.evaluate(
+    () =>
+      new Promise((resolve) => {
+        window.addEventListener("hashchange", resolve, { once: true });
+        location.hash = "learn";
+      }),
+  );
+  expect(
+    await page.evaluate(() => window.navigationFrames.count()),
+  ).toBeGreaterThan(0);
+  await page.evaluate(() => window.navigationFrames.flush());
+  await expect(page.locator("#mode-heading")).toBeFocused();
+  expect(await page.evaluate(() => window.capstoneFocusCount)).toBe(0);
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
+});
+
 test("latest navigation cancels stale frames and retains default heading focus and scroll reset", async ({
   page,
 }) => {

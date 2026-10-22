@@ -1,24 +1,41 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
+
+type FocusRequest = { heading: string; scroll: "top" | "target" };
 
 export function useNavigationFocus() {
   const pending = useRef<number | null>(null);
+  const active = useRef<FocusRequest | null>(null);
+  const [request, setRequest] = useState<FocusRequest | null>(null);
   const cancel = useCallback(function cancelPending() {
     if (pending.current !== null) cancelAnimationFrame(pending.current);
     pending.current = null;
+    active.current = null;
     document.removeEventListener("focusin", cancelPending);
   }, []);
-  useEffect(() => cancel, [cancel]);
+  useLayoutEffect(() => cancel, [cancel]);
+  useLayoutEffect(() => {
+    if (!request || active.current !== request) return;
+    pending.current = requestAnimationFrame(() => {
+      cancel();
+      const target = document.getElementById(request.heading);
+      target?.focus({ preventScroll: true });
+      if (request.scroll === "target")
+        target?.scrollIntoView({ block: "start" });
+      else window.scrollTo({ top: 0 });
+    });
+  }, [request, cancel]);
 
   return useCallback(
-    (heading: string) => {
+    (
+      heading: string,
+      options: { scroll: "top" | "target" } = { scroll: "top" },
+    ) => {
       cancel();
+      const request = { heading, scroll: options.scroll };
+      active.current = request;
       // A reader moving focus after navigation takes precedence over its default.
       document.addEventListener("focusin", cancel);
-      pending.current = requestAnimationFrame(() => {
-        cancel();
-        document.getElementById(heading)?.focus({ preventScroll: true });
-        window.scrollTo({ top: 0 });
-      });
+      setRequest(request);
     },
     [cancel],
   );

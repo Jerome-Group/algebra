@@ -1,23 +1,34 @@
+import { useLayoutEffect, useRef } from "react";
 import { capstoneAssessment, unitCompletion } from "@/lib/algebra/progress";
 import { useLearningProgress } from "./LearningProgress";
 import { RepresentationJourney } from "./RepresentationJourney";
 import { Checkpoint } from "./Checkpoint";
 import type { Lesson } from "@/lib/algebra/engine";
-import { learningRoutes } from "@/lib/algebra/routes";
+import { learningRoutes, type LearningUnit } from "@/lib/algebra/routes";
+import { capstoneTargetId } from "@/lib/algebra/navigation";
 import { ConceptLink } from "./ConceptLink";
 import { learningMetadata } from "@/lib/algebra/learning";
 export function LearningRoutes({
   lessons,
   route,
-  setRoute,
   open,
+  capstone,
 }: {
   lessons: Lesson[];
   route: string;
-  setRoute: (id: string) => void;
   open: (id: string, unit?: string) => void;
+  capstone: LearningUnit | null;
 }) {
   const { mastered } = useLearningProgress();
+  const capstones = useRef(new Map<string, HTMLDetailsElement>());
+  useLayoutEffect(() => {
+    if (!capstone) return;
+    const details = capstones.current.get(capstone.id);
+    if (!details) return;
+    details.open = true;
+    const answer = details.querySelector("details");
+    if (answer) answer.open = false;
+  }, [capstone]);
   return (
     <section className="learning-routes course-catalog">
       <p className="section-kicker">GUIDED COURSES</p>
@@ -69,10 +80,7 @@ export function LearningRoutes({
               </p>
               <button
                 aria-pressed={route === item.id}
-                onClick={() => {
-                  setRoute(item.id);
-                  open(item.lessons[0], item.id);
-                }}
+                onClick={() => open(item.lessons[0], item.id)}
               >
                 Start this unit
               </button>
@@ -81,18 +89,20 @@ export function LearningRoutes({
                   <li key={id}>
                     <ConceptLink
                       id={id}
-                      open={(target) => {
-                        setRoute(item.id);
-                        open(target, item.id);
-                      }}
+                      open={(target) => open(target, item.id)}
                     >
                       {lessons.find((lesson) => lesson.id === id)?.navTitle}
                     </ConceptLink>
                   </li>
                 ))}
               </ol>
-              <details>
-                <summary>Unit capstone</summary>
+              <details
+                ref={(element) => {
+                  if (element) capstones.current.set(item.id, element);
+                  else capstones.current.delete(item.id);
+                }}
+              >
+                <summary id={capstoneTargetId(item)}>Unit capstone</summary>
                 {assessment && (
                   <Checkpoint
                     competencyId={`unit:${item.id}`}

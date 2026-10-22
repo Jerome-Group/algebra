@@ -16,6 +16,10 @@ The registered navigation, focus and learning journeys exercise these routes, at
 Teaching status, unit entry and the mobile drawer. Expect the correct heading, restored keyboard
 focus and working history. Overflow checks and screenshots cover 320, 390, 768 and 1440 pixels;
 the serious and critical accessibility scan runs at 1440 pixels.
+Capstone destinations use `/#capstone:<unit>`. The learning journey checks the final lesson's
+return link, direct entry, reload and history, closed worked answers, and target focus below
+the sticky header. Cold entry and reload also run with a slower CPU. The focus journey holds
+animation frames to check reader and navigation cancellation before and after the destination commit.
 Inspect captured responsive screenshots when changing navigation or layout.
 
 For changes to other discovery controls, supplement the registered journeys. At 390 pixels,

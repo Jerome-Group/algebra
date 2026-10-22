@@ -1,7 +1,16 @@
-import test from "node:test";
+import test, { after } from "node:test";
 import assert from "node:assert/strict";
-import { learningRoutes } from "../lib/algebra/routes.ts";
-import { parseDestination, productModes } from "../lib/algebra/navigation.ts";
+import { createServer } from "vite";
+
+const vite = await createServer({
+  configFile: false,
+  appType: "custom",
+  server: { middlewareMode: true },
+});
+after(() => vite.close());
+const { learningRoutes } = await vite.ssrLoadModule("/lib/algebra/routes.ts");
+const { parseDestination, productModes, capstoneTargetId } =
+  await vite.ssrLoadModule("/lib/algebra/navigation.ts");
 
 test("sixteen short units carry outcomes, a concrete capstone and remediation", () => {
   assert.equal(learningRoutes.length, 16);
@@ -41,4 +50,34 @@ test("home, mode, legacy lesson and laboratory fragments retain distinct destina
     id: "m3220-modules",
     laboratory: true,
   });
+});
+
+test("capstone fragments resolve catalog units and reject invalid targets safely", () => {
+  for (const unit of learningRoutes) {
+    const destination = parseDestination(`#${capstoneTargetId(unit)}`);
+    assert.equal(destination.mode, "capstone");
+    assert.equal(destination.unit, unit);
+  }
+  assert.equal(
+    parseDestination("#capstone:%66unctions").unit,
+    learningRoutes[0],
+  );
+  for (const target of [
+    "",
+    "unknown",
+    "functions:extra",
+    "%",
+    "%E0%A4%A",
+    "%3A",
+  ])
+    assert.deepEqual(parseDestination(`#capstone:${target}`), {
+      mode: "learn",
+    });
+  assert.deepEqual(productModes, [
+    "home",
+    "learn",
+    "explore",
+    "reference",
+    "sources",
+  ]);
 });

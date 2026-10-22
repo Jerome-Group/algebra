@@ -32,6 +32,7 @@ export const verificationGroups = [
       "Mode, alias and history destinations",
       "Atlas filters",
       "Responsive navigation and focus",
+      "Durable unit capstone return, disclosure and focus cancellation",
     ],
   },
   {
@@ -110,6 +111,7 @@ export const verificationGroups = [
       "Guest reading and temporary answers require no account",
       "Trusted identity, strict validation and account isolation",
       "Acknowledged saves persist across contexts; conflicts and retries preserve revisions",
+      "Capstone navigation preserves account progress and preferences",
       "Explicit legacy preview/import/export, reset and recovery",
       "Hosted provider sign-in and gateway header stripping require separate production proof",
     ],

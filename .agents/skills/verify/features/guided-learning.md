@@ -3,7 +3,7 @@
 ## Sub-features
 
 Checkpoint reasoning, prerequisite and competency feedback, staged reading, proof recall,
-unit context and capstone completion.
+unit context, capstone return and capstone completion.
 
 ## How to get to it (user POV)
 
@@ -18,6 +18,11 @@ by keyboard, proof recall and heading focus across Back and Forward. For changes
 destinations, operate each affected button and check that its section receives focus.
 Expect unit position and lesson context to survive navigation. Use a disposable context for answers;
 a selected radio alone is not a submission.
+The discovery learning journey also returns from a unit's final lesson to its existing capstone,
+restores `#capstone:<unit>` through refresh and history, and checks visible target focus at 390
+and 1440 pixels. It rejects unknown targets and checks deferred focus cancellation. An unscoped
+reading endpoint ends the reading list. The account journey checks that capstone navigation
+preserves the account document without competency credit.
 
 ## Gotchas
 

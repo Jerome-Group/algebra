@@ -5,6 +5,7 @@ import {
   type ReadingView,
 } from "@/lib/algebra/reading-views";
 import { searchLessons } from "@/lib/algebra/search";
+import type { ViewMode } from "@/lib/algebra/navigation";
 import { useEffect, type RefObject } from "react";
 import { type Lesson } from "@/lib/algebra/engine";
 import { useLaboratoryControls } from "./LaboratoryControls";
@@ -41,7 +42,7 @@ export function useLearningTools({
   current: RefObject<Lesson>;
   open: (id: string) => void;
   setTab: (tab: ReadingView) => void;
-  setView: (view: string) => void;
+  setView: (view: ViewMode) => void;
   setQuery: (query: string) => void;
 }) {
   const laboratoryControls = useLaboratoryControls();
