@@ -25,7 +25,7 @@ ALGEBRA_OWNER=$(node -e 'process.stdout.write(require(process.argv[1]).result.ow
 
 Read `ok`, `result.origin`, `result.ownerFile`, and `result.runDir` from the result.
 Keep this owner marker for the whole pass. A fresh run gets separate runtime state and logs.
-For a built Worker, launch applies the additive D1 migration to that run's empty persistence
+For a built Worker, launch applies pending schema migrations to that run's empty persistence
 directory before starting. It enables synthetic identity fixtures only for its owned loopback
 server. Hosted ChatGPT sign-in is a separate boundary. Launch failure still requires cleanup
 of any owner it returned.

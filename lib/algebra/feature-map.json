@@ -3,31 +3,31 @@
   "sources": [
     {
       "file": ".agents/skills/verify/SKILL.md",
-      "sha256": "571112d71b543d428f192c57179df52de35759c5e27778a0b34f4bbbbbff1032"
+      "sha256": "ed3c7bf881300252a89b3c26403cef639a56dacc67c191586f2764ed18f872b4"
     },
     {
       "file": ".agents/skills/verify/features/README.md",
-      "sha256": "4f0461dd405eab650f0bc54a24a5d79db1babea15b6fa9dfb252c2b33e1129ce"
+      "sha256": "8517c6eadb74215246e2b17b501fa057f412daa92a05a6e5451b97e900fc82f0"
     },
     {
       "file": ".agents/skills/verify/features/accounts-progress.md",
-      "sha256": "0ee43b6bc0a14fd3d99e59638294a59ee6792f28bdf623853f791ecbb211039a"
+      "sha256": "338a971970e84ea5233087f37f6804cecdae8038f6ae043eec228200a2cde2fe"
     },
     {
       "file": ".agents/skills/verify/features/agent-access.md",
-      "sha256": "09e9e87b64f60dc9b649a287d11c4ed587385fc0fbd7b58810c40ccf0563f9d6"
+      "sha256": "fce143b3b059217c39483430447e0426fdd14f0e7fc336e400bd76c019479b2d"
     },
     {
       "file": ".agents/skills/verify/features/discovery.md",
-      "sha256": "aac588274cb560db93e08fa575118096eb3edc2909a54a9fd87ce4c0e5c1490d"
+      "sha256": "22d558f3c697ded5eb17cf6b018778b051b93599a316c0c74d6601c2b979c00c"
     },
     {
       "file": ".agents/skills/verify/features/guided-learning.md",
-      "sha256": "b60ce7a508077d40149769ab71609b3ea3e1590bfcf7a6906dae2f9585890185"
+      "sha256": "3a6cca2f414cd5f00f7fb1517a4006877db893fefc60ae54f1f7b4f2c886ba5c"
     },
     {
       "file": ".agents/skills/verify/features/laboratories.md",
-      "sha256": "677f144dcbcb066ca7d1ebd4ce93adbb4c644340db3bcae810d452de7ddc82e4"
+      "sha256": "e82062a1ccc8c09d3558553f2b86707a5021484436b0b333b3dba780ac980272"
     },
     {
       "file": ".editorconfig",
