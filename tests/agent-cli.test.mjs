@@ -53,6 +53,14 @@ test("static help remains available when catalogue and installed dependencies ar
       focused.result.commands[0].inputSchema.properties.actions.type,
       "array",
     );
+    assert.match(result.result.output, /verify --layer all --port PORT/);
+    const verification = execute(["help", "--command", "verify"], {
+      ALGEBRA_MAP_ROOT: fixture,
+    });
+    assert.match(
+      verification.result.commands[0].inputSchema.properties.layer.description,
+      /all builds, launches and stops its own production Worker/,
+    );
     assert.deepEqual(fs.readdirSync(fixture), []);
   } finally {
     fs.rmSync(fixture, { recursive: true, force: true });
@@ -144,6 +152,69 @@ test("command parsing preserves supported actions and refuses invalid input befo
         "INVALID_INPUT",
         JSON.stringify(args),
       );
+      assert.deepEqual(result.checks, []);
+      assert.deepEqual(result.evidence, []);
+      assert.deepEqual(fs.readdirSync(fixture), []);
+    }
+  } finally {
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
+});
+
+for (const [target, args, environment] of [
+  ["--owner", ["--owner", "/unused-owner.json"], {}],
+  ["--url", ["--url", "https://example.org"], {}],
+  ["ALGEBRA_LOCAL_OWNER", [], { ALGEBRA_LOCAL_OWNER: "/unused-owner.json" }],
+  ["ALGEBRA_TEST_ORIGIN", [], { ALGEBRA_TEST_ORIGIN: "https://example.org" }],
+])
+  test(`full verification rejects ${target} before effects`, () => {
+    const fixture = fs.mkdtempSync(
+      path.join(os.tmpdir(), "algebra-full-input-"),
+    );
+    try {
+      const result = execute(
+        [
+          "verify",
+          "--layer",
+          "all",
+          ...args,
+          "--evidence",
+          path.join(fixture, "must-not-exist.json"),
+        ],
+        { ALGEBRA_MAP_ROOT: fixture, ...environment },
+      );
+      assert.equal(result.code, 1);
+      assert.equal(result.errors[0].code, "INVALID_INPUT");
+      assert.match(result.errors[0].message, /all.*own.*Worker/);
+      assert.deepEqual(result.checks, []);
+      assert.deepEqual(result.evidence, []);
+      assert.equal(result.provenance, undefined);
+      assert.deepEqual(fs.readdirSync(fixture), []);
+    } finally {
+      fs.rmSync(fixture, { recursive: true, force: true });
+    }
+  });
+
+test("verification accepts self-owned full runs and existing browser targets at the input boundary", () => {
+  const fixture = fs.mkdtempSync(
+    path.join(os.tmpdir(), "algebra-verify-input-"),
+  );
+  try {
+    for (const [args, environment] of [
+      [["--layer", "all"], {}],
+      [["--layer", "all", "--built", "--port", "5183"], {}],
+      [["--layer", "browser", "--owner", "/unused-owner.json"], {}],
+      [["--layer", "browser", "--url", "https://example.org"], {}],
+      [["--layer", "browser"], { ALGEBRA_LOCAL_OWNER: "/unused-owner.json" }],
+      [["--layer", "browser"], { ALGEBRA_TEST_ORIGIN: "https://example.org" }],
+    ]) {
+      const result = execute(["verify", ...args], {
+        ALGEBRA_MAP_ROOT: fixture,
+        ...environment,
+      });
+      assert.equal(result.code, 1);
+      assert.equal(result.errors[0].code, "ENOENT");
+      assert.match(result.errors[0].message, /lib\/algebra\/lessons\.json/);
       assert.deepEqual(result.checks, []);
       assert.deepEqual(result.evidence, []);
       assert.deepEqual(fs.readdirSync(fixture), []);
