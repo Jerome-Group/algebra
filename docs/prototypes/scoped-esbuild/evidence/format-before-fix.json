@@ -1,0 +1,11 @@
+{
+  "command": "/Users/jeromequeck/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": [
+    "work/esbuild-observation/candidate/node_modules/prettier/bin/prettier.cjs",
+    "--check",
+    "docs/prototypes/scoped-esbuild/**/*.{mjs,md,json}"
+  ],
+  "status": 1,
+  "stdout": "Checking formatting...\n",
+  "stderr": "[warn] docs/prototypes/scoped-esbuild/evidence/comparison.json\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+}

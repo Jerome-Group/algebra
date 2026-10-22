@@ -42,34 +42,22 @@
     "esm-path": {
       "sameStatus": true,
       "sameStdout": true,
-      "statuses": [
-        0,
-        0
-      ]
+      "statuses": [0, 0]
     },
     "dynamic": {
       "sameStatus": true,
       "sameStdout": true,
-      "statuses": [
-        0,
-        0
-      ]
+      "statuses": [0, 0]
     },
     "cjs-core": {
       "sameStatus": true,
       "sameStdout": true,
-      "statuses": [
-        0,
-        0
-      ]
+      "statuses": [0, 0]
     },
     "sqlite": {
       "sameStatus": true,
       "sameStdout": true,
-      "statuses": [
-        0,
-        0
-      ]
+      "statuses": [0, 0]
     }
   }
 }
