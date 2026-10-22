@@ -64,7 +64,9 @@ export function Checkpoint({
                 setResult(null);
               }}
             />
-            <Prose>{option}</Prose>
+            <span>
+              <Prose>{option}</Prose>
+            </span>
           </label>
         ))}
       </fieldset>

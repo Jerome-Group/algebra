@@ -175,7 +175,7 @@
     },
     {
       "file": "components/algebra/Checkpoint.tsx",
-      "sha256": "879336ad1289962d7dc35c702ef0e098e963cfc533fd8755b08b6a2336fbdc6b"
+      "sha256": "0b1c4a51297778b51ba9d1d369377c1d1d5d73f8fc04ae0438d722ce0109a04b"
     },
     {
       "file": "components/algebra/Coloring.tsx",
@@ -1343,7 +1343,7 @@
     },
     {
       "file": "tests/browser/ureca-coverage.spec.mjs",
-      "sha256": "1c0267ea2ed7c216fc8bd8e4a2a35c83c2145b0dafc58a54c6317764d9ba54a7"
+      "sha256": "240376a9dadb452ad29892af9447ce05d5d2869d04c687a966e895127d5fe145"
     },
     {
       "file": "tests/browser/ureca.spec.mjs",
@@ -3494,7 +3494,7 @@
         },
         {
           "kind": "button",
-          "line": 71,
+          "line": 73,
           "attributes": {
             "type": "\"submit\"",
             "disabled": "{choice === null}"
