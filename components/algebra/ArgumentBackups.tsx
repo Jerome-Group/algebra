@@ -8,6 +8,7 @@ import {
 } from "@/lib/algebra/argument-records";
 import { argumentTarget } from "@/lib/algebra/argument-catalogue";
 import { useArguments } from "./ArgumentContext";
+import { Prose } from "./Math";
 type ImportPreview = ReturnType<
   ReturnType<typeof useArguments>["previewImport"]
 >;
@@ -109,8 +110,10 @@ export function ArgumentBackups({
                     onChange={() => setSelected(sheet.id)}
                   />
                   <span>
-                    {argumentTarget(sheet.lessonId)?.navTitle} ·{" "}
-                    {sheet.blocks.length} block
+                    <Prose focusable={false}>
+                      {argumentTarget(sheet.lessonId)?.navTitle || ""}
+                    </Prose>{" "}
+                    · {sheet.blocks.length} block
                     {sheet.blocks.length === 1 ? "" : "s"}
                   </span>
                 </label>
@@ -141,7 +144,9 @@ export function ArgumentBackups({
               <li key={saved.sheet.id}>
                 <div>
                   <strong>
-                    {argumentTarget(saved.sheet.lessonId)?.navTitle}
+                    <Prose>
+                      {argumentTarget(saved.sheet.lessonId)?.navTitle || ""}
+                    </Prose>
                   </strong>
                   <small>
                     {saved.sheet.blocks.length} block

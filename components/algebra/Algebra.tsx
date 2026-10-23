@@ -356,14 +356,17 @@ function LearningExperience() {
             <>
               {activeRoute && (
                 <p className="route-progress">
-                  {activeRoute.title} · Reading position {index + 1} of{" "}
-                  {siblings.length}
+                  <Prose>{activeRoute.title}</Prose> · Reading position{" "}
+                  {index + 1} of {siblings.length}
                 </p>
               )}
               <div className="concept-heading">
                 <div>
                   <p className="section-kicker">
-                    {lesson.subject} <span>/ {lesson.family}</span>
+                    <Prose>{lesson.subject || ""}</Prose>{" "}
+                    <span>
+                      / <Prose>{lesson.family || ""}</Prose>
+                    </span>
                   </p>
                   <h1 id="lesson-heading" tabIndex={-1}>
                     <span className="chapter-number">
@@ -398,7 +401,9 @@ function LearningExperience() {
               <details className="chapter-switcher">
                 <summary>
                   In this chapter ·{" "}
-                  <Prose>{lesson.navTitle || lesson.title}</Prose>
+                  <Prose focusable={false}>
+                    {lesson.navTitle || lesson.title}
+                  </Prose>
                   <ChevronDown size={14} />
                 </summary>
                 <div>
@@ -411,7 +416,7 @@ function LearningExperience() {
                         key={l.id}
                         aria-current={l.id === id ? "page" : undefined}
                       >
-                        <Prose>{l.navTitle || l.title}</Prose>
+                        <Prose focusable={false}>{l.navTitle || l.title}</Prose>
                       </ConceptLink>
                     ))}
                 </div>
@@ -456,7 +461,11 @@ function LearningExperience() {
                       open(siblings[index + 1].id, activeRoute?.id)
                     }
                   >
-                    Next: {siblings[index + 1].navTitle}{" "}
+                    Next:{" "}
+                    <Prose focusable={false}>
+                      {siblings[index + 1].navTitle ||
+                        siblings[index + 1].title}
+                    </Prose>{" "}
                     <ArrowRight size={16} />
                   </button>
                 ) : activeRoute ? (

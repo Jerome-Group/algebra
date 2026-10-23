@@ -18,7 +18,7 @@ import { useLearningProgress } from "./LearningProgress";
 import { ConceptLink } from "./ConceptLink";
 import { LessonReader } from "./LessonReader";
 import Exploration from "./Exploration";
-import { Prose } from "./Math";
+import { Math as M, Prose } from "./Math";
 import type { ArgumentDeskProps } from "./ArgumentDesk";
 
 type Support = NonNullable<ArgumentDeskProps["support"]>;
@@ -74,7 +74,9 @@ function SupportBranch({
         support={{ lessonId, lab: false }}
         navigate={navigate}
       >
-        <span>{target.navTitle}</span>
+        <span>
+          <Prose focusable={false}>{target.navTitle}</Prose>
+        </span>
         <ArrowUpRight size={15} aria-hidden="true" />
       </WorkLink>
       <small>
@@ -131,7 +133,8 @@ export function ArgumentSupport({
     return (
       <section className="argument-consultation" aria-label="Consult a lesson">
         <p className="section-kicker">
-          {support.lab ? "LABORATORY" : "LESSON"} · {target.navTitle}
+          {support.lab ? "LABORATORY" : "LESSON"} ·{" "}
+          <Prose>{target.navTitle || target.title}</Prose>
         </p>
         <div className="argument-actions argument-consult-navigation">
           <button onClick={returnToWriting}>
@@ -241,12 +244,21 @@ export function ArgumentSupport({
                   support={{ lessonId: target.id, lab: false }}
                   navigate={navigate}
                 >
-                  <span>{target.navTitle}</span>
+                  <span>
+                    <Prose focusable={false}>{target.navTitle}</Prose>
+                  </span>
                   <ArrowUpRight size={15} aria-hidden="true" />
                 </WorkLink>
-                <small>{passage.label}</small>
+                <small>
+                  <Prose>{passage.label}</Prose>
+                </small>
                 <p>
-                  <Prose>{passage.text}</Prose>
+                  {passage.text === target.definition ||
+                  passage.text === target.theorem ? (
+                    <M>{passage.text}</M>
+                  ) : (
+                    <Prose>{passage.text}</Prose>
+                  )}
                 </p>
                 {labContract(target.id) && (
                   <WorkLink

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   matrixUnitProduct,
   wedderburnLayers,
@@ -229,8 +229,8 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
           multiplication: the opposite-ring step cannot be dropped.
         </p>
         <p>
-          {lesson.title} separates algebra blocks, simple dimensions and regular
-          multiplicities.
+          <Prose>{lesson.title}</Prose> separates algebra blocks, simple
+          dimensions and regular multiplicities.
         </p>
       </div>
     </div>

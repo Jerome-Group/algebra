@@ -24,6 +24,7 @@ const lessons = read("../lib/algebra/lessons.json");
 const guides = read("../lib/algebra/guided-lessons.json");
 const metadata = read("../lib/algebra/learning-metadata.json");
 const audit = read("../docs/research/teaching-audit.json");
+const corrections = read("../docs/research/catalogue-correction-ledger.json");
 const byId = new Map(lessons.map((lesson) => [lesson.id, lesson]));
 const canonical = (value) => {
   if (Array.isArray(value)) return value.map(canonical);
@@ -242,6 +243,18 @@ test("current concepts have teaching; the original 150 entries and 79 assessment
   );
   assert.equal(audit.rows.length, 150);
   assert.equal(audit.rows.filter((row) => row.newScaffolding).length, 71);
+  const originalGuides = structuredClone(guides);
+  for (const { file, pointer, before, after } of corrections.edits) {
+    if (file !== "lib/algebra/guided-lessons.json") continue;
+    const keys = pointer
+      .slice(1)
+      .split("/")
+      .map((key) => key.replaceAll("~1", "/").replaceAll("~0", "~"));
+    const field = keys.pop();
+    const owner = keys.reduce((value, key) => value[key], originalGuides);
+    assert.equal(owner[field], after, `Reviewed correction ${pointer}`);
+    owner[field] = before;
+  }
   const positions = [0, 0, 0];
   for (const row of audit.rows) {
     const lesson = byId.get(row.id);
@@ -265,7 +278,7 @@ test("current concepts have teaching; the original 150 entries and 79 assessment
           JSON.stringify(
             canonical(
               Object.fromEntries(
-                fields.map((field) => [field, guides[row.id][field]]),
+                fields.map((field) => [field, originalGuides[row.id][field]]),
               ),
             ),
           ),
@@ -279,7 +292,7 @@ test("current concepts have teaching; the original 150 entries and 79 assessment
       if (!row.guideChangedReason)
         assert.equal(
           createHash("sha256")
-            .update(JSON.stringify(canonical(guides[row.id])))
+            .update(JSON.stringify(canonical(originalGuides[row.id])))
             .digest("hex"),
           row.baselineGuideSha256,
         );

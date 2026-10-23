@@ -14,6 +14,7 @@ import {
   productKernel,
 } from "@/lib/algebra/direct-products";
 import { capstoneAssessment } from "@/lib/algebra/progress";
+import { Prose } from "./Math";
 
 export const representationRouteId = "route-ureca-representation-theory";
 
@@ -137,7 +138,9 @@ export function RepresentationJourney({
           const completion = lessonCompletion(lesson, mastered);
           return (
             <li key={stage.id}>
-              <h3>{lesson.navTitle || lesson.title}</h3>
+              <h3>
+                <Prose>{lesson.navTitle || lesson.title}</Prose>
+              </h3>
               <p>{stage.move}</p>
               <p>
                 <strong>Same object:</strong> {stage.anchor}

@@ -51,7 +51,8 @@ export function LessonReader({
       </nav>
       <p className="reading-caption">
         {learning.teachingStatus.replaceAll("-", " ")} · {learning.courseTier} ·
-        approximately {learning.estimatedMinutes} minutes · {lesson.proofStatus}
+        approximately {learning.estimatedMinutes} minutes ·{" "}
+        <Prose>{lesson.proofStatus}</Prose>
       </p>
       {learning.teachingStatus === "reference-only" && (
         <p>
@@ -72,7 +73,9 @@ export function LessonReader({
             const prerequisite = lessons.find((item) => item.id === id);
             return prerequisite ? (
               <ConceptLink key={id} id={id} open={open}>
-                {prerequisite.navTitle}
+                <Prose focusable={false}>
+                  {prerequisite.navTitle || prerequisite.title}
+                </Prose>
               </ConceptLink>
             ) : null;
           })}
@@ -86,6 +89,10 @@ export function LessonReader({
           <div className="definition-strip">
             <M block>{lesson.definition}</M>
           </div>
+          <p className="reading-caption">
+            Wide equations scroll sideways. Focus an equation, then use the Left
+            and Right arrow keys.
+          </p>
         </div>
         <aside className="margin-note" aria-label="Boundary reminder">
           <span className="section-kicker">KEEP IN MIND</span>
@@ -126,7 +133,11 @@ export function LessonReader({
             )}
             {(tab === "guided" || tab === "example") && (
               <section className="lesson-section" aria-label="example">
-                <h2>{lesson.worked?.title || "Reason through the example"}</h2>
+                <h2>
+                  <Prose>
+                    {lesson.worked?.title || "Reason through the example"}
+                  </Prose>
+                </h2>
                 {lesson.worked ? (
                   <ol className="worked-steps">
                     {lesson.worked.steps.map((step, i) => (
@@ -160,7 +171,9 @@ export function LessonReader({
             )}
             {(tab === "guided" || tab === "proof") && (
               <section className="lesson-section" aria-label="proof">
-                <h2>{lesson.proofStatus || "Proof sketch here"}</h2>
+                <h2>
+                  <Prose>{lesson.proofStatus || "Proof sketch here"}</Prose>
+                </h2>
                 <p>
                   <Prose>{lesson.proof}</Prose>
                 </p>
@@ -205,7 +218,7 @@ export function LessonReader({
               {lesson.reading.map((note) => (
                 <details key={note.title}>
                   <summary>
-                    <Prose>{note.title}</Prose>
+                    <Prose focusable={false}>{note.title}</Prose>
                     <ChevronDown size={16} />
                   </summary>
                   <div>
@@ -243,9 +256,11 @@ export function LessonReader({
             );
             return next ? (
               <ConceptLink key={target} id={target} open={open}>
-                <small>{next.subject}</small>
+                <small>
+                  <Prose focusable={false}>{next.subject || ""}</Prose>
+                </small>
                 <span>
-                  <Prose>{next.navTitle || next.title}</Prose>
+                  <Prose focusable={false}>{next.navTitle || next.title}</Prose>
                   <ArrowUpRight size={16} />
                 </span>
               </ConceptLink>

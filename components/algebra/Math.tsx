@@ -1,4 +1,5 @@
 import katex from "katex";
+import { presentCatalogueText } from "@/lib/algebra/math-presentation.generated";
 export function Math({
   children,
   block = false,
@@ -32,7 +33,17 @@ export function Math({
     />
   );
 }
-export function Prose({ children }: { children: string }) {
+type ProseProps = { children: string; focusable?: boolean };
+
+export function Prose({ children, focusable }: ProseProps) {
+  return (
+    <WrittenProse focusable={focusable}>
+      {presentCatalogueText(children)}
+    </WrittenProse>
+  );
+}
+
+export function WrittenProse({ children, focusable }: ProseProps) {
   const parts = children.split(
     /(\$\$[\s\S]*?\$\$|\$[^$]+\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/g,
   );
@@ -40,15 +51,19 @@ export function Prose({ children }: { children: string }) {
     <>
       {parts.map((p, i) =>
         p.startsWith("$$") ? (
-          <Math key={i} block>
+          <Math key={i} block focusable={focusable}>
             {p.slice(2, -2)}
           </Math>
         ) : p.startsWith("$") ? (
-          <Math key={i}>{p.slice(1, -1)}</Math>
+          <Math key={i} focusable={focusable}>
+            {p.slice(1, -1)}
+          </Math>
         ) : p.startsWith("\\(") ? (
-          <Math key={i}>{p.slice(2, -2)}</Math>
+          <Math key={i} focusable={focusable}>
+            {p.slice(2, -2)}
+          </Math>
         ) : p.startsWith("\\[") ? (
-          <Math key={i} block>
+          <Math key={i} block focusable={focusable}>
             {p.slice(2, -2)}
           </Math>
         ) : (

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "status": "reviewed",
+  "sources": {
+    "lib/algebra/lessons.json": "8dfaabfeec6f749b393451dc2c586f2fdad81165d6f815e2f4470d925cef0207",
+    "lib/algebra/guided-lessons.json": "c2aa004ff8f7efdfdce7b3fedfb1ccfa8bbef58ec2d5d2a06bb9b2f28ea6e98b",
+    "lib/algebra/units.json": "8eef02cb34d036e29969de1fbcfbd04f4f2729a43c06a54446747d7e627b563b",
+    "lib/algebra/capstone-assessments.json": "568c81a97e4a64ff69a7c9e1c282b90b51187d76bf1f291a0c53585281c8b7c6"
+  },
+  "annotationDigest": "2694c4e7f9345256fc392af51ca920e04bc17cd37b5f4297cee2339bc16d6c62",
+  "queueDigest": "60d241d7b29eb16c0c0d23d7f6bcdb754dbc7e1209adcaa05831f604b64935a0",
+  "reviewedStrings": 10888,
+  "reviewedOccurrences": 14698,
+  "reports": [
+    {
+      "path": "docs/research/catalogue-functions-notation-review.md",
+      "sha256": "6409aa0047c196ce36efe3aaf38ef6b0345d4df2f879b43796d188a9bc7e0a4a"
+    },
+    {
+      "path": "docs/research/catalogue-notation-review-1.md",
+      "sha256": "aa40db0152e7dfcd79018cfe6da9a9cd4b4b5afb02152252c9f842e129bcf921"
+    },
+    {
+      "path": "docs/research/catalogue-notation-review-2.md",
+      "sha256": "8ff9e69f0d56b69c475ac30ee7cc4ff724bc2a09e5ba007ab6e6f517bf355cba"
+    },
+    {
+      "path": "docs/research/catalogue-notation-review-3.md",
+      "sha256": "af43b59820c504f4c5a6d5479511f422287923daf55f7ece3caa12837c120b22"
+    },
+    {
+      "path": "docs/research/catalogue-notation-cross-review.md",
+      "sha256": "1797232fb770b18e3332aa1f194de4b51af6549ffb9ec9a153e8deea98968476"
+    },
+    {
+      "path": "docs/research/catalogue-notation-integration-review.md",
+      "sha256": "9aaa39c27ce7a702bc5c59e19b0aaedb81b2f60a74db8b384798d02c5d84f60f"
+    },
+    {
+      "path": "docs/research/ureca-catalogue-corrections-review.md",
+      "sha256": "14e0f4000f6cd5d18bd458d8bc348e3022321dde62c06260cc17585337549c47"
+    }
+  ]
+}

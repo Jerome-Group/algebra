@@ -52,9 +52,12 @@ export function Choice({
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {options.map(([v, t]) => (
-          <SelectItem key={v} value={v}>
-            <Prose>{t}</Prose>
+        {options.map(([v, t], index) => (
+          <SelectItem key={v} value={v} textValue={t}>
+            <span>
+              <span className="sr-only">Option {index + 1}. </span>
+              <Prose focusable={false}>{t}</Prose>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>
@@ -63,6 +66,7 @@ export function Choice({
 }
 export function Range({
   label,
+  accessibleLabel = label,
   value,
   min,
   max,
@@ -70,6 +74,7 @@ export function Range({
   step = 1,
 }: {
   label: string;
+  accessibleLabel?: string;
   value: number;
   min: number;
   max: number;
@@ -78,7 +83,7 @@ export function Range({
 }) {
   const id = useId();
   useLaboratoryControl(id, {
-    label,
+    label: accessibleLabel,
     value,
     min,
     max,
@@ -88,13 +93,13 @@ export function Range({
   return (
     <div className="range-control">
       <label>
-        <Prose>{label}</Prose>
+        <Prose focusable={false}>{label}</Prose>
         <strong>
-          <M>{String(value)}</M>
+          <M focusable={false}>{String(value)}</M>
         </strong>
       </label>
       <Slider
-        aria-label={label}
+        aria-label={accessibleLabel}
         min={min}
         max={max}
         step={step}
@@ -204,7 +209,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         />
         {(type === "C" || type === "D" || type === "U" || type === "S") && (
           <Choice
-            label={"Parameter $n$"}
+            label="Parameter n"
             value={String(n)}
             onChange={(v) => {
               setN(+v);
@@ -456,8 +461,18 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         </Diagram>
       )}
       <div className="lab-controls">
-        <button className="quotient-toggle" onClick={() => setBoth(!both)}>
-          {both ? "Generate H using a only" : "Generate H using both a and b"}
+        <button
+          className="quotient-toggle"
+          onClick={() => setBoth(!both)}
+          aria-label={
+            both ? "Generate H using a only" : "Generate H using both a and b"
+          }
+        >
+          <Prose focusable={false}>
+            {both
+              ? "Generate $H$ using $a$ only"
+              : "Generate $H$ using both $a$ and $b$"}
+          </Prose>
         </button>
         {mode === "subgroups" && (
           <button
@@ -465,20 +480,22 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             disabled={!normal(g, H)}
             onClick={() => setAbove(!above)}
           >
-            {above
-              ? "Show full subgroup lattice"
-              : "Show subgroups above H, labeled as K/H"}
+            <Prose focusable={false}>
+              {above
+                ? "Show full subgroup lattice"
+                : "Show subgroups above $H$, labeled as $K/H$"}
+            </Prose>
           </button>
         )}
         <div className="two-cols">
           <Choice
-            label={"Element $a$"}
+            label="Element a"
             value={String(x)}
             onChange={(v) => setA(+v)}
             options={g.labels.map((l, i) => [String(i), `$a = ${l}$`])}
           />
           <Choice
-            label={"Element $b$"}
+            label="Element b"
             value={String(y)}
             onChange={(v) => setB(+v)}
             options={g.labels.map((l, i) => [String(i), `$b = ${l}$`])}
@@ -496,7 +513,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           <div>
             <strong>{cs.length}</strong>
             <span>
-              <Prose>{"index [$G$:H]"}</Prose>
+              <Prose>{"index $[G:H]$"}</Prose>
             </span>
           </div>
           <div>
@@ -550,7 +567,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         {lesson.id === "mh2220-simple-composition" && (
           <details open>
             <summary>
-              <Prose>{"A composition series for $S_{4}$"}</Prose>
+              <Prose focusable={false}>
+                {"A composition series for $S_{4}$"}
+              </Prose>
             </summary>
             <M block>
               {
@@ -648,7 +667,7 @@ export function PolygonLab() {
             setR(mod(r + 1, n));
           }}
         >
-          <Prose>{" Rotate $r$ "}</Prose>
+          <Prose focusable={false}>{" Rotate $r$ "}</Prose>
         </button>
         <button
           onClick={() => {
@@ -656,7 +675,7 @@ export function PolygonLab() {
             setS(1 - s);
           }}
         >
-          <Prose>{" Reflect $s$ "}</Prose>
+          <Prose focusable={false}>{" Reflect $s$ "}</Prose>
         </button>
         <button
           onClick={() => {
@@ -764,6 +783,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
       <div className="lab-controls">
         <Range
           label={"Domain modulus $n$"}
+          accessibleLabel="Domain modulus n"
           value={n}
           min={2}
           max={16}
@@ -771,6 +791,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
         />
         <Range
           label={"Codomain modulus $m$"}
+          accessibleLabel="Codomain modulus m"
           value={m}
           min={2}
           max={12}
@@ -778,6 +799,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
         />
         <Range
           label={"Multiplier $k$"}
+          accessibleLabel="Multiplier k"
           value={k}
           min={0}
           max={12}

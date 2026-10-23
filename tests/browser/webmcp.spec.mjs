@@ -30,7 +30,7 @@ test("registered interactions activate labelled checkpoint radios and submit Rea
     return controls.elements.find((item) => item.kind === "radio");
   });
   expect(radio.label).toContain("Which rule is a function");
-  expect(radio.label).toContain("0↦a, 1↦b");
+  expect(radio.label).toContain("$0\\mapsto a, 1\\mapsto b$");
   await page.evaluate(
     (control) =>
       window.algebraTestTools

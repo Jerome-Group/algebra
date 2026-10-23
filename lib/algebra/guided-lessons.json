@@ -82,7 +82,7 @@
       {
         "title": "Remainder fibers",
         "steps": [
-          "For f:Z→Z/3Z, the classes are 3Z, 1+3Z and 2+3Z.",
+          "For f:Z→Z/3Z given by $f(n)=[n]_3$, the classes are 3Z, 1+3Z and 2+3Z.",
           "Each integer lies in exactly one by division with remainder.",
           "The label 1+3Z names an infinite set; choosing 4 instead gives the same set."
         ]
@@ -3626,7 +3626,7 @@
       }
     ],
     "nonexample": {
-      "title": "Content 6 does not imply primitive",
+      "title": "Content 3 does not imply primitive",
       "explanation": "6X²+9X+3 has content 3. Apply Gauss to 2X²+3X+1 and track the scalar content separately."
     },
     "proofSteps": [
@@ -3854,7 +3854,7 @@
         "R is finite"
       ],
       "answer": 0,
-      "explanation": "Atu=cts implies t(au−cs)=0; regularity forces au−cs=0."
+      "explanation": "atu=cts implies t(au−cs)=0; regularity forces au−cs=0."
     },
     "application": {
       "kind": "compute",
@@ -5791,7 +5791,7 @@
     ],
     "nonexample": {
       "title": "A missing coprimality premise",
-      "explanation": "2⁴≡4 modulo ten, not one: gcd(2,10)≠1, so Euler does not apply."
+      "explanation": "2⁴≡6 modulo ten, not one: gcd(2,10)≠1, so Euler does not apply."
     },
     "proofSteps": [
       "When gcd(a,n)=1, [a] belongs to the finite unit group of size φ(n).",
@@ -6417,7 +6417,7 @@
   },
   "mh2220-simple-composition": {
     "hook": "Which irreducible group pieces survive a choice of decomposition?",
-    "objects": "A composition series is a finite chain in which each subgroup is normal in the preceding one and each successive quotient is simple. The Jordan–$H$ölder theorem says that any two such series have the same simple factors up to isomorphism and reordering. The source mentions this theorem without proving it.",
+    "objects": "A composition series is a finite chain in which each subgroup is normal in the preceding one and each successive quotient is simple. The Jordan–Hölder theorem says that any two such series have the same simple factors up to isomorphism and reordering. The source mentions this theorem without proving it.",
     "prerequisiteCheck": {
       "kind": "explain",
       "question": "What must a factor group Gᵢ/Gᵢ₊₁ require?",
@@ -6540,20 +6540,20 @@
     },
     "transfer": {
       "kind": "transfer",
-      "question": "Why is Cₚ² not simple?",
+      "question": "For prime p, why is the cyclic group $C_{p^2}=\\langle g\\rangle$ not simple?",
       "choices": [
         "Its subgroup of order p is normal and proper",
         "It has trivial center",
         "Its order is composite and every composite group is nonsimple"
       ],
       "answer": 0,
-      "explanation": "The actual subgroup ⟨gᵖ⟩ supplies the normal-subgroup witness."
+      "explanation": "The subgroup $\\langle g^p\\rangle$ has order p, so it is nontrivial, normal and proper."
     },
     "connection": "Explain why a finite p-group has nontrivial center but need not be abelian."
   },
   "mh2220-finite-matrices": {
     "hook": "How do independent columns reveal a maximal prime-power subgroup?",
-    "objects": "The first column can be any nonzero vector; each later column must avoid the span of its predecessors. In the unitriangular subgroup there are $n(n-1)/2$ arbitrary entries above the diagonal. It captures the entire $p$-part of the general linear group order. Every finite $p$-group $G$ embeds into $U_|G|(F_p)$, although this construction can use a much larger dimension than necessary.",
+    "objects": "The first column can be any nonzero vector; each later column must avoid the span of its predecessors. In the unitriangular subgroup there are $n(n-1)/2$ arbitrary entries above the diagonal. It captures the entire $p$-part of the general linear group order. Every finite $p$-group $G$ embeds into $U_{|G|}(\\mathbb F_p)$, although this construction can use a much larger dimension than necessary.",
     "prerequisiteCheck": {
       "kind": "explain",
       "question": "What makes a square matrix invertible over a field?",
@@ -6717,7 +6717,7 @@
         "title": "Four elements, characteristic two",
         "steps": [
           "F₄ is two-dimensional over its prime subfield F₂.",
-          "Its additive identity satisfies 1+1=0, while its cardinality is 2²=4."
+          "Its multiplicative identity satisfies 1+1=0, while its cardinality is 2²=4."
         ]
       }
     ],
@@ -7588,7 +7588,7 @@
         ]
       },
       {
-        "title": "A nonzero polynomial function can vanish everywhere",
+        "title": "A nonzero polynomial can vanish everywhere",
         "steps": [
           "Over F₂, f=X²−X is a nonzero formal polynomial of degree two.",
           "At both inputs zero and one its value is zero. Distinct coefficient data can give the same finite-field function."
@@ -8709,7 +8709,7 @@
   },
   "ureca-cyclic-eigenvalues": {
     "hook": "How can one cyclic subgroup reveal the frequencies inside a representation?",
-    "objects": "Let $V$ be a finite-dimensional complex representation and $r$ an element of finite order $m$. On $V\\lambda$ every power $r^{k}$ acts by $\\lambda ^{k}$; its dimension is the multiplicity of that one-dimensional cyclic representation. In the natural three-dimensional cube representation, a quarter-turn about the vertical axis has eigenvalues 1, $i$ and $-i$. The real horizontal plane splits into two lines only after complexification.",
+    "objects": "Let $V$ be a finite-dimensional complex representation and $r$ an element of finite order $m$. On $V_\\lambda$ every power $r^{k}$ acts by $\\lambda ^{k}$; its dimension is the multiplicity of that one-dimensional cyclic representation. In the natural three-dimensional cube representation, a quarter-turn about the vertical axis has eigenvalues 1, $i$ and $-i$. The real horizontal plane splits into two lines only after complexification.",
     "prerequisiteCheck": {
       "kind": "explain",
       "question": "What is an eigenline?",
@@ -10607,7 +10607,7 @@
       }
     ],
     "nonexample": {
-      "title": "A3-cycle in A5 does not split",
+      "title": "A 3-cycle in A5 does not split",
       "explanation": "For $x=(123)\\in A_5$, the transposition $(45)$ centralizes $x$ because it moves only fixed points. Any odd conjugator can be repaired by $(45)$. Thus all twenty 3-cycles form one $A_5$-class, despite the odd length of the displayed nontrivial cycle."
     },
     "proofSteps": [
@@ -12627,7 +12627,7 @@
         "title": "A real-valued quaternion character",
         "steps": [
           "For the two-dimensional $Q_8$ matrices $A=\\operatorname{diag}(i,-i)$ and $B=\\begin{pmatrix}0&1\\\\-1&0\\end{pmatrix}$, the character is 2 at 1, -2 at -1 and zero on the other elements.",
-          "Its conjugate has the same row and is equivalent. It has no real two-dimensional realization. A real matrix J with J squared -I can be put in the standard complex-structure form. Every real matrix anticommuting with J is $\\begin{pmatrix}a&b\\\\b&-a\\end{pmatrix}$ up to this basis convention, and its square is $(a^2+b^2)I$, never -I. Thus a second quaternion generator cannot exist on a real plane."
+          "Its conjugate has the same row and is equivalent. It has no real two-dimensional realization. A real matrix J with $J^2=-I$ can be put in the standard complex-structure form. Every real matrix anticommuting with J is $\\begin{pmatrix}a&b\\\\b&-a\\end{pmatrix}$ up to this basis convention, and its square is $(a^2+b^2)I$, never -I. Thus a second quaternion generator cannot exist on a real plane."
         ]
       }
     ],

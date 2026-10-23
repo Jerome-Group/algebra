@@ -953,12 +953,12 @@
       ],
       "review": {
         "status": "reviewed",
-        "id": "ureca-foundations-independent-2026-10-22",
-        "reviewer": "gpt-6.1-sol @max, independent mathematics review",
-        "reviewedAt": "2026-10-22T16:33:21.151Z",
-        "evidence": "docs/research/ureca-foundations-review.md",
-        "contentDigest": "3829e67a5b1d56b893c5d58a802e02fd87e4c143131c1a5eeb9ae81ee62cbcb8",
-        "summary": "Distinct-root cyclic decomposition, Fourier multiplicities and dihedral subgroup versus full-group invariant lines verified."
+        "id": "catalogue-math-independent-2026-10-23",
+        "reviewer": "gpt-6.1-sol @xhigh, independent mathematics/spec/Standards review",
+        "reviewedAt": "2026-10-23T12:07:33.298Z",
+        "evidence": "docs/research/ureca-catalogue-corrections-review.md",
+        "contentDigest": "2df4eb630c1950d135c2f6143c925144c88282ad4a4d3ed76315197c9676619e",
+        "summary": "Complete mapped teaching and exercise methods independently rechecked after canonical notation corrections; rationale and calculations in the bound review."
       },
       "section": "Representation foundations"
     },
@@ -1629,12 +1629,12 @@
       ],
       "review": {
         "status": "reviewed",
-        "id": "ureca-foundations-independent-2026-10-22",
-        "reviewer": "gpt-6.1-sol @max, independent mathematics review",
-        "reviewedAt": "2026-10-22T16:33:21.151Z",
-        "evidence": "docs/research/ureca-foundations-review.md",
-        "contentDigest": "6a6910a2937644a82bba08ee6a772958336cbe13ca7a1ed1aceebc68e8a9af9e",
-        "summary": "Actual trace characters, conjugacy invariance, additivity, fixed-point counts and spatial versus permutation rows verified."
+        "id": "catalogue-math-independent-2026-10-23",
+        "reviewer": "gpt-6.1-sol @xhigh, independent mathematics/spec/Standards review",
+        "reviewedAt": "2026-10-23T12:07:33.298Z",
+        "evidence": "docs/research/ureca-catalogue-corrections-review.md",
+        "contentDigest": "053be9dd815365176dbf4d3f2f6de2c31f3adcbd219948260222663d06987948",
+        "summary": "Complete mapped teaching and exercise methods independently rechecked after canonical notation corrections; rationale and calculations in the bound review."
       },
       "section": "Representation foundations"
     },
@@ -1828,12 +1828,12 @@
       ],
       "review": {
         "status": "reviewed",
-        "id": "ureca-foundations-independent-2026-10-22",
-        "reviewer": "gpt-6.1-sol @max, independent mathematics review",
-        "reviewedAt": "2026-10-22T16:33:21.151Z",
-        "evidence": "docs/research/ureca-foundations-review.md",
-        "contentDigest": "952e544d8a161936b7f256f441e55798cf68d5ab36f76bef1d7157ab6023859e",
-        "summary": "Conjugate scalar structure, complex-linearity, invariant-subspace correspondence and quaternion real-form obstruction verified."
+        "id": "catalogue-math-independent-2026-10-23",
+        "reviewer": "gpt-6.1-sol @xhigh, independent mathematics/spec/Standards review",
+        "reviewedAt": "2026-10-23T12:07:33.298Z",
+        "evidence": "docs/research/ureca-catalogue-corrections-review.md",
+        "contentDigest": "c1bd870c16054489c45726abfc74b02adf45c57e69e155578a6ab9c8ca85dfb8",
+        "summary": "Complete mapped teaching and exercise methods independently rechecked after canonical notation corrections; rationale and calculations in the bound review."
       },
       "section": "Representation foundations"
     },
@@ -2521,7 +2521,7 @@
           "lessonId": "cube-orbit-stabilizer",
           "source": "lesson",
           "path": "/proof",
-          "excerpt": "The map from left cosets $gG_{x}$ to orbit points g·x is well-defined and bijective: $g\\cdot x=h\\cdot x$ exactly when $h^{-1}g\\in G_{x}$. Thus the orbit has index [$G$:$G_{x}]$. The cube actions are transitive, and subst",
+          "excerpt": "The map from left cosets $gG_{x}$ to orbit points g·x is well-defined and bijective: $g\\cdot x=h\\cdot x$ exactly when $h^{-1}g\\in G_{x}$. Thus the orbit has index $[G:G_x]$. The cube actions are transitive, and subst",
           "purpose": "proof"
         },
         {
@@ -2554,12 +2554,12 @@
       ],
       "review": {
         "status": "reviewed",
-        "id": "ureca-foundations-independent-2026-10-22",
-        "reviewer": "gpt-6.1-sol @max, independent mathematics review",
-        "reviewedAt": "2026-10-22T16:33:21.151Z",
-        "evidence": "docs/research/ureca-foundations-review.md",
-        "contentDigest": "23f47b1b6c2dbb1644fec0e090cb5696540a356c2c58b0d82080cad9353f7ad5",
-        "summary": "All cube object kernels, transitive orbits, stabilizer orders and faithful four-diagonal S4 identification verified."
+        "id": "catalogue-math-independent-2026-10-23",
+        "reviewer": "gpt-6.1-sol @xhigh, independent mathematics/spec/Standards review",
+        "reviewedAt": "2026-10-23T12:07:33.298Z",
+        "evidence": "docs/research/ureca-catalogue-corrections-review.md",
+        "contentDigest": "6ba555b5036ff1c1264f18847b6de4895add1c136081b3ddb14f4b8904f747f5",
+        "summary": "Complete mapped teaching and exercise methods independently rechecked after canonical notation corrections; rationale and calculations in the bound review."
       },
       "section": "Geometric symmetry"
     },
@@ -6487,12 +6487,12 @@
       ],
       "review": {
         "status": "reviewed",
-        "id": "ureca-theory-independent-2026-10-22",
-        "reviewer": "gpt-6.1-sol @max, independent mathematics review",
-        "reviewedAt": "2026-10-22T16:10:09.288Z",
-        "evidence": "docs/research/ureca-theory-review.md",
-        "contentDigest": "b155c02cc11281f30696823637bad99dff3162dfe124218795dd4d56caabd24c",
-        "summary": "Independently checked odd-centralizer repair and converse, exactly two equal-sized classes, A3/A4/A5 examples, diagnostic answers and capstone."
+        "id": "catalogue-math-independent-2026-10-23",
+        "reviewer": "gpt-6.1-sol @xhigh, independent mathematics/spec/Standards review",
+        "reviewedAt": "2026-10-23T12:07:33.298Z",
+        "evidence": "docs/research/ureca-catalogue-corrections-review.md",
+        "contentDigest": "c45b43edc793b765108218a53c2d131c883a5b5a4f52436b92590b20bdb0c0f5",
+        "summary": "Complete mapped teaching and exercise methods independently rechecked after canonical notation corrections; rationale and calculations in the bound review."
       },
       "section": "Alternating conjugacy classes"
     },

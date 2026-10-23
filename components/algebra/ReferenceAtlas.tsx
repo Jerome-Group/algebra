@@ -178,7 +178,9 @@ export function ReferenceAtlas({
           return (
             <li key={lesson.id}>
               <ConceptLink id={lesson.id} open={open}>
-                <Prose>{lesson.navTitle || lesson.title}</Prose>
+                <Prose focusable={false}>
+                  {lesson.navTitle || lesson.title}
+                </Prose>
               </ConceptLink>
               <p>
                 {item.teachingStatus.replaceAll("-", " ")} · {item.courseTier} ·

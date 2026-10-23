@@ -66,7 +66,9 @@ export function GuidedReader({
           Need a refresher?{" "}
           {metadata.prerequisites.map((id) => (
             <ConceptLink key={id} id={id} open={open}>
-              {lessons.find((item) => item.id === id)?.navTitle}
+              <Prose focusable={false}>
+                {lessons.find((item) => item.id === id)?.navTitle || id}
+              </Prose>
               {" · "}
             </ConceptLink>
           ))}
@@ -90,6 +92,10 @@ export function GuidedReader({
           </p>
         )}
         <M block>{lesson.definition}</M>
+        <p className="reading-caption">
+          Wide equations scroll sideways. Focus an equation, then use the Left
+          and Right arrow keys.
+        </p>
       </section>
       {content.examples.map((example, index) => (
         <section
@@ -133,8 +139,8 @@ export function GuidedReader({
         <h2>Statement and proof moves</h2>
         <M block>{lesson.theorem}</M>
         <p className="reading-caption">
-          {lesson.proofStatus}. The following steps expose the reasoning; a
-          visual state alone is not a proof.
+          <Prose>{lesson.proofStatus}</Prose>. The following steps expose the
+          reasoning; a visual state alone is not a proof.
         </p>
         <div className="proof-recall">
           <p>
@@ -185,7 +191,9 @@ export function GuidedReader({
           {(lesson.connections || []).map((id) => (
             <li key={id}>
               <ConceptLink id={id} open={open}>
-                {lessons.find((item) => item.id === id)?.navTitle}
+                <Prose focusable={false}>
+                  {lessons.find((item) => item.id === id)?.navTitle || id}
+                </Prose>
               </ConceptLink>
             </li>
           ))}
@@ -197,7 +205,9 @@ export function GuidedReader({
           {metadata.prerequisites.length ? (
             metadata.prerequisites.map((id) => (
               <ConceptLink key={id} id={id} open={open}>
-                {lessons.find((item) => item.id === id)?.navTitle || id}
+                <Prose focusable={false}>
+                  {lessons.find((item) => item.id === id)?.navTitle || id}
+                </Prose>
               </ConceptLink>
             ))
           ) : (
@@ -212,7 +222,7 @@ export function GuidedReader({
             )
             .map((item) => (
               <ConceptLink key={item.id} id={item.id} open={open}>
-                {item.navTitle || item.title}
+                <Prose focusable={false}>{item.navTitle || item.title}</Prose>
               </ConceptLink>
             ))}
         </div>

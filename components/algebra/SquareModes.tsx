@@ -45,7 +45,7 @@ export function SquareModesLab() {
           ]}
         />
         <button onClick={() => setR(mod(r + 1, 4))}>
-          <Prose>{"Apply $r$"}</Prose>
+          <Prose focusable={false}>{"Apply $r$"}</Prose>
         </button>
         <button
           onClick={() => {
@@ -53,7 +53,7 @@ export function SquareModesLab() {
             setS(1 - s);
           }}
         >
-          <Prose>{" Apply $s$ "}</Prose>
+          <Prose focusable={false}>{" Apply $s$ "}</Prose>
         </button>
       </div>
       <Diagram
