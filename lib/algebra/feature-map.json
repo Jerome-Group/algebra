@@ -159,11 +159,11 @@
     },
     {
       "file": "app/responsive.css",
-      "sha256": "b95deb5138301059d10c2a54c8cdd7e9b74d85bed4b545c59e09110502ca4289"
+      "sha256": "5a0e595c854c19282d4b386684a938e80f706a24bd5b2720ef184a6b09a5403e"
     },
     {
       "file": "app/studio.css",
-      "sha256": "daa13d6f386669fcf6c71452e612b65d025444cc524beb172311a5a128261b57"
+      "sha256": "838959181306beb16f9d340e5bb76967084b511ada304bf0f3a9ecb0cb91d116"
     },
     {
       "file": "build/sites-vite-plugin.ts",
@@ -175,11 +175,11 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "57c1ab61b232e1b37cef76d30299cf538fbd0eb3918ff729532104ddbedc279c"
+      "sha256": "c0ad7dacee4e4ef3df1d2fda314b5472166af306b264d139d22606825e6553c2"
     },
     {
       "file": "components/algebra/ArgumentBackups.tsx",
-      "sha256": "e6de9fd706cdbd999261ba2fb6e1a9706be57f2d9aa49d29b0623590f0662795"
+      "sha256": "cc54b30815b3b96491f02c93e5f4ed3ad558d1142a95e5adebbef5ac267b8a8c"
     },
     {
       "file": "components/algebra/ArgumentContext.tsx",
@@ -187,15 +187,15 @@
     },
     {
       "file": "components/algebra/ArgumentDesk.tsx",
-      "sha256": "6f9392860026bdc63c986b545d9f21419e68ffba019ce0b48ceba0a0a9a18e0e"
+      "sha256": "daeb7892eb7c29644dee90977a4c1e5366cc347e0ece0d242b3254cb08e07a11"
     },
     {
       "file": "components/algebra/ArgumentSupport.tsx",
-      "sha256": "34ad79eb748d51bb507a83b11161da13640371dc236565e0bfa9fd566df0ef81"
+      "sha256": "036039361368fc805cac4f692d8c7a5349bac49fda1cd40f0186bf87e996aa22"
     },
     {
       "file": "components/algebra/ArgumentWriting.tsx",
-      "sha256": "bee7e5cd67a8c411afce49dfddb52ca952d516376a431cd23f8cf88875b11496"
+      "sha256": "4a34e34955e71f6824d486034103ff6bb1d8a9c7c31be279a26587629fcd2a6e"
     },
     {
       "file": "components/algebra/BeginnerMap.tsx",
@@ -227,11 +227,11 @@
     },
     {
       "file": "components/algebra/CharacterConstruction.tsx",
-      "sha256": "cca1ee03af6eb349c72b216b4d97d6be438ae02d57fc6cc98823db24c3c2cb94"
+      "sha256": "91722341d57ea685a0a678ca56f249dc4b38e80b1291acbba6c45c4cc46e2fb9"
     },
     {
       "file": "components/algebra/Checkpoint.tsx",
-      "sha256": "0b1c4a51297778b51ba9d1d369377c1d1d5d73f8fc04ae0438d722ce0109a04b"
+      "sha256": "2d713b1db6171b0ca79e225923cbb33012e5088fa64572c7e84e48dd05910aa6"
     },
     {
       "file": "components/algebra/Coloring.tsx",
@@ -247,7 +247,7 @@
     },
     {
       "file": "components/algebra/ConceptLibrary.tsx",
-      "sha256": "0e622258189fbf6dd40fc57a09a478e3891ee332c7d4c0052822082d9c20c6a2"
+      "sha256": "98684cd1e084bdcac6488f05bf6730fe2c4095b0cbf53ceaaeeddae0dfc8d3c0"
     },
     {
       "file": "components/algebra/ConceptLink.tsx",
@@ -263,7 +263,7 @@
     },
     {
       "file": "components/algebra/Cube.tsx",
-      "sha256": "8c36a55b5311cc729f7d888e98f93824154cee292170ba05bdf87953e9c48e91"
+      "sha256": "302685c3ad8796daed156ac53f7a65490890893e9afe510086a75aff61523506"
     },
     {
       "file": "components/algebra/CubeColoringLab.tsx",
@@ -271,7 +271,7 @@
     },
     {
       "file": "components/algebra/CyclicEigenvalues.tsx",
-      "sha256": "e257d0a21e2268626f216135339cc24153bf00ab861859288957054b3f0c1698"
+      "sha256": "9ab2ecc08f37c8f6436fdfcd12095b4a0c65deefcca45b65df02ffde9bd2bd7e"
     },
     {
       "file": "components/algebra/CyclicSubgroups.tsx",
@@ -283,7 +283,7 @@
     },
     {
       "file": "components/algebra/Exploration.tsx",
-      "sha256": "5f2532e466b59f905bd203450d258e1825dcfdf079ad8ebbc85ec31257f36258"
+      "sha256": "f770abed6a50576b1eea601dfc4db4bc229442d142018e4e655286e543cf6bf3"
     },
     {
       "file": "components/algebra/FiniteLinearGroups.tsx",
@@ -295,15 +295,15 @@
     },
     {
       "file": "components/algebra/FunctionFibers.tsx",
-      "sha256": "ac4de59ec9d04377f43bc328c28174ff33b83dbc1726a877a7848107ffdbe486"
+      "sha256": "6b24de578124535230fd27564092743ba193ad9aa2149c1d0287e68dc589c9d1"
     },
     {
       "file": "components/algebra/Groups.tsx",
-      "sha256": "93667f167dfddf1cf1bcdcf5ff060b5e6365d94f24332059238c91a11b5aba4a"
+      "sha256": "a28fc7b39c62fdd404b2515408d43fd8b83aaf29fe75308d807df203a01ede72"
     },
     {
       "file": "components/algebra/GuidedReader.tsx",
-      "sha256": "e5868c72e3671e9efeb323905258bd6f8b921ea75d318064b09e28c0a017e171"
+      "sha256": "3d28f917e5e96253251ea348526dfc32ab3447ea059c55c01b7dcbb66fd8d1b8"
     },
     {
       "file": "components/algebra/IdealChainExplorer.tsx",
@@ -315,7 +315,7 @@
     },
     {
       "file": "components/algebra/InductionReciprocityLab.tsx",
-      "sha256": "fbf4c11deb6f6f79328e4e8be9b3ddb7db237991221126f375cbf30af5cfb34f"
+      "sha256": "c94ec714606ea0f2bbf870b088ebb708e5b4685b42ce42770e0622ecfa163135"
     },
     {
       "file": "components/algebra/InterfaceControls.ts",
@@ -323,7 +323,7 @@
     },
     {
       "file": "components/algebra/InvariantIntertwinerLab.tsx",
-      "sha256": "d30032d40d3893472eba35c5dafc4a7a10981a2c1ca65229ab6dd1023a14e64d"
+      "sha256": "670e8d0c119e1643bf8b1135168a6d80e4a3542162946bdd55a6bf4a4029738d"
     },
     {
       "file": "components/algebra/Laboratory.tsx",
@@ -339,11 +339,11 @@
     },
     {
       "file": "components/algebra/LaboratoryLoadBoundary.tsx",
-      "sha256": "cf352e963c73dc4708dd0ec1ba3497dce8b29395ad5cdace1a9d8e40ff96f76a"
+      "sha256": "8df77cddf6dbbb1b7bd39786e85497a2c015cdf97b33c13fbecbfd7be04fcc8e"
     },
     {
       "file": "components/algebra/LearningHome.tsx",
-      "sha256": "23e8a008ec23c0721e536dec1b11455b87b6dc88c01a50f876d5c237cd4fd622"
+      "sha256": "e35bc9c1e65204b7225af8905609722692c25e115e489fd361431903919324fd"
     },
     {
       "file": "components/algebra/LearningProgress.tsx",
@@ -351,11 +351,11 @@
     },
     {
       "file": "components/algebra/LearningRoutes.tsx",
-      "sha256": "2c30602d45a492451554319de2e832c7b705bc81cb5cb6b8357c620aa97c91dd"
+      "sha256": "5d432a61c1486f56f3a4f29da82c426f8cd7a1c46d5ba9656ef55bca7e2b40e6"
     },
     {
       "file": "components/algebra/LessonReader.tsx",
-      "sha256": "f3c50c01f96e11f30c3fda5131bcc1db38d1ee6f2502726f04e66fab58f8c4f9"
+      "sha256": "d8168cf799e865f321d608d7d837f2e29fdcce30deda3a4a37ac9c76e9a7cbe7"
     },
     {
       "file": "components/algebra/LocalisationMicroscope.tsx",
@@ -363,7 +363,7 @@
     },
     {
       "file": "components/algebra/Math.tsx",
-      "sha256": "2e1f855afb1d3c7fb8365fedda550373c5d79dbdc731c9725a185bdbd988247a"
+      "sha256": "f96d97867fc254196ca6b6e1e56dd675611a50ce938f0d282d9d6d002a2d91c7"
     },
     {
       "file": "components/algebra/ModuleActionBoard.tsx",
@@ -407,11 +407,11 @@
     },
     {
       "file": "components/algebra/ReferenceAtlas.tsx",
-      "sha256": "cbbe609ddec14a6c622648b482897b059a3391e6d5d18806eb945ac65a123d3f"
+      "sha256": "31c05557efbe8b68d27d53f312777cdcd94d3d2203912ef564da07ae2d8d5d9a"
     },
     {
       "file": "components/algebra/RepresentationJourney.tsx",
-      "sha256": "5756c1950cd33b110791dfc281bb220cb746a8f9d83cee02088df47c6721337c"
+      "sha256": "925b33df12994e600e74cc99946a9765def383f35b43496968672f0d3b71cd63"
     },
     {
       "file": "components/algebra/RepresentationObject.tsx",
@@ -419,11 +419,11 @@
     },
     {
       "file": "components/algebra/Representations.tsx",
-      "sha256": "41c46463f3d2c759b27efbc790433f01238501e47eed9139cb70f75d3789282d"
+      "sha256": "f5e8c23dbe7913f29e850cc4db0c9b4bc414e08a0371855d392edfc40e00a7c5"
     },
     {
       "file": "components/algebra/Rings.tsx",
-      "sha256": "cb6f7b5824db2b5052e9b9ec195dccc0d180ed0cefbaa43621b2345b7c031db7"
+      "sha256": "0ce35588d1fc22f68ce52bf7e20dfbe6659b8d84adccd3b0b883b15f2391a478"
     },
     {
       "file": "components/algebra/RotationLessons.tsx",
@@ -435,7 +435,7 @@
     },
     {
       "file": "components/algebra/SourceCoverage.tsx",
-      "sha256": "1a4e07afdfafb2dd79834a2190015435328328dbfa57b531c277966b9084a914"
+      "sha256": "54c9f5aac3c8921083b7d2273dea51d4280e68eee29fb367ac1e548052c22680"
     },
     {
       "file": "components/algebra/Sources.tsx",
@@ -443,11 +443,11 @@
     },
     {
       "file": "components/algebra/SquareModes.tsx",
-      "sha256": "ffe20483e4de0608909d2e23d54880092472bfca7227d056b99afd32d9f1300a"
+      "sha256": "ed59dd9cf1b2a542085e12f71645c596240b528ae7452ee2ccedfcb738c98c87"
     },
     {
       "file": "components/algebra/Structure.tsx",
-      "sha256": "3a2f2dc3933037f1b1e31a68c4d06bc93b76d8ca7df163056289aa1335f8cbf8"
+      "sha256": "6fbc03fd067abeffd70c3379582582c8fd6e03653832e754539262dfa51afbc7"
     },
     {
       "file": "components/algebra/SvgMath.tsx",
@@ -467,7 +467,7 @@
     },
     {
       "file": "components/algebra/TensorBalancingLab.tsx",
-      "sha256": "2aa691c961cb78f4c4ddfdc06add71b510932ed5244d5c54fae67d4888f951c6"
+      "sha256": "f75ab659520701e31c4bacb40118acb04be420595036a5fe01edf04b64d2127d"
     },
     {
       "file": "components/algebra/UrecaCharacterBound.tsx",
@@ -475,7 +475,7 @@
     },
     {
       "file": "components/algebra/UrecaCoverage.tsx",
-      "sha256": "cec1cfff3603c72634a423f472ad31765f636b93e3bb978125068c1d8856c603"
+      "sha256": "004900c85a7a474842162e4287455c95b8a43ce0a835f0f253621bfa1c930d44"
     },
     {
       "file": "components/algebra/UrecaDirectProducts.tsx",
@@ -503,7 +503,7 @@
     },
     {
       "file": "components/algebra/WedderburnLayerLab.tsx",
-      "sha256": "9457fbe00147361100cd34a2d53c1dde92aa5fa68a0d9097e15844dca1314440"
+      "sha256": "d074f15fe15ee6f9661935cfd8a45bb57e4dccc1f767bbc45c5f87e7d3728791"
     },
     {
       "file": "components/ui/accordion.tsx",
@@ -890,6 +890,34 @@
       "sha256": "9a4527322c59e89b716e65fc18b942bfa302fdc8bad389ec90df39feaf557203"
     },
     {
+      "file": "docs/research/catalogue-correction-ledger.json",
+      "sha256": "a2e160481a28bc7839f22fda4df4a3fa1cad269ddba29add8841da70834eeebc"
+    },
+    {
+      "file": "docs/research/catalogue-functions-notation-review.md",
+      "sha256": "6409aa0047c196ce36efe3aaf38ef6b0345d4df2f879b43796d188a9bc7e0a4a"
+    },
+    {
+      "file": "docs/research/catalogue-notation-cross-review.md",
+      "sha256": "1797232fb770b18e3332aa1f194de4b51af6549ffb9ec9a153e8deea98968476"
+    },
+    {
+      "file": "docs/research/catalogue-notation-integration-review.md",
+      "sha256": "9aaa39c27ce7a702bc5c59e19b0aaedb81b2f60a74db8b384798d02c5d84f60f"
+    },
+    {
+      "file": "docs/research/catalogue-notation-review-1.md",
+      "sha256": "aa40db0152e7dfcd79018cfe6da9a9cd4b4b5afb02152252c9f842e129bcf921"
+    },
+    {
+      "file": "docs/research/catalogue-notation-review-2.md",
+      "sha256": "8ff9e69f0d56b69c475ac30ee7cc4ff724bc2a09e5ba007ab6e6f517bf355cba"
+    },
+    {
+      "file": "docs/research/catalogue-notation-review-3.md",
+      "sha256": "af43b59820c504f4c5a6d5479511f422287923daf55f7ece3caa12837c120b22"
+    },
+    {
       "file": "docs/research/dependency-readiness.md",
       "sha256": "8bdb7c42c73a35fe6cd8c9f3310f01c3566784a1cf778b52512a52840cec80ef"
     },
@@ -928,6 +956,10 @@
     {
       "file": "docs/research/teaching-audit.json",
       "sha256": "1cb78280bf65d3abd2a1cd71283c0e40b9e598e1b4be86d0fb00a09eb3ff2440"
+    },
+    {
+      "file": "docs/research/ureca-catalogue-corrections-review.md",
+      "sha256": "14e0f4000f6cd5d18bd458d8bc348e3022321dde62c06260cc17585337549c47"
     },
     {
       "file": "docs/research/ureca-constructions-induction-review.md",
@@ -1051,7 +1083,7 @@
     },
     {
       "file": "lib/algebra/capstone-assessments.json",
-      "sha256": "f9c562ddd4c9f6b22ac7ab2ed83b86e9980ca8f12cc73736581e0ab5135dbc84"
+      "sha256": "568c81a97e4a64ff69a7c9e1c282b90b51187d76bf1f291a0c53585281c8b7c6"
     },
     {
       "file": "lib/algebra/cayley-words.ts",
@@ -1079,7 +1111,7 @@
     },
     {
       "file": "lib/algebra/guided-lessons.json",
-      "sha256": "6d727041580ad0be7891013926222ff8607e07e291ac6845ac1e82a6932911db"
+      "sha256": "c2aa004ff8f7efdfdce7b3fedfb1ccfa8bbef58ec2d5d2a06bb9b2f28ea6e98b"
     },
     {
       "file": "lib/algebra/guided.ts",
@@ -1115,7 +1147,7 @@
     },
     {
       "file": "lib/algebra/learning-metadata.json",
-      "sha256": "be787bf9c86f46742be706b8fa70b3c6c152d0c236733b024074e153c5bdcd1c"
+      "sha256": "44cc0d3556e833ac5e6f19451b9fad29750f6cf815ead5be6f79cbe4a8e2683a"
     },
     {
       "file": "lib/algebra/learning.ts",
@@ -1123,11 +1155,23 @@
     },
     {
       "file": "lib/algebra/lessons.json",
-      "sha256": "5f12e02001cdb65591ef5437ed0279cf2f750b4490a930e4af2ad01cc1274d74"
+      "sha256": "8dfaabfeec6f749b393451dc2c586f2fdad81165d6f815e2f4470d925cef0207"
     },
     {
       "file": "lib/algebra/localisation-model.ts",
       "sha256": "22fc7c2bc8da562f05b8faed2299040b536e3d1f8b87e8d0b090440c7f5dbf0a"
+    },
+    {
+      "file": "lib/algebra/math-presentation.generated.ts",
+      "sha256": "1f6bdf2a64b8655a5a523461b873d30ba85233f3e13c8b096d754033cf7f5832"
+    },
+    {
+      "file": "lib/algebra/math-presentation/annotations.json",
+      "sha256": "54c2e6e7e8743c7621d7f350b082e235e4fdfaca10874c6756f1e561b33fca67"
+    },
+    {
+      "file": "lib/algebra/math-presentation/review.json",
+      "sha256": "7502198b46cfa5f9cd25841e8abf4f22fc05032d50c4d8fc4f495c2194792c25"
     },
     {
       "file": "lib/algebra/module-action-board.ts",
@@ -1199,11 +1243,11 @@
     },
     {
       "file": "lib/algebra/units.json",
-      "sha256": "622452df05bafd77af27ab9ad3f5ae4427d88bf1d391b88dc547a3981ee90bf4"
+      "sha256": "8eef02cb34d036e29969de1fbcfbd04f4f2729a43c06a54446747d7e627b563b"
     },
     {
       "file": "lib/algebra/ureca-topics.json",
-      "sha256": "8039a9934e0b95fcd6e14e1a5005e22b2407c19ccb7e5daad779ff8a6af19bee"
+      "sha256": "ac9a1fc73c888e0aad92053746fd88a7942a51a2635e12220212533e9678ef38"
     },
     {
       "file": "lib/algebra/ureca-topics.ts",
@@ -1227,7 +1271,7 @@
     },
     {
       "file": "package.json",
-      "sha256": "bdc18994b4c8eff9e32d64b7f578c9a9a11e00e8232b8c66abb8101470be0f9e"
+      "sha256": "ae3b89ff787ae4d8997027c030a410909efe0922886e529215f53d0efc6bbaf2"
     },
     {
       "file": "playwright.config.ts",
@@ -1271,7 +1315,7 @@
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "741b8b703f1c9d71f8e9fafca6a923531356e2929d9e24926f179edb0fb42e93"
+      "sha256": "6de07fc359967d439b3c6ba4784516a6fa3aca8f16201718cc0840e0b42f463b"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1322,6 +1366,14 @@
       "sha256": "dbf90440e55979b3e042bc10371e72441d5794367ab6b0bb36a8f61736f827e9"
     },
     {
+      "file": "scripts/lib/math-presentation.mjs",
+      "sha256": "9c1ce356b3450dc4529158289e5b413928cc0a6a72dd470db2ea9cf4379ab463"
+    },
+    {
+      "file": "scripts/lib/math-review.mjs",
+      "sha256": "87300b043a8708f74115b3810a3c297a8eedd32bd15ac0cd2e946bea4984f1e1"
+    },
+    {
       "file": "scripts/lib/ureca-coverage.mjs",
       "sha256": "cb4d0a6eef97f1ef4f5a6565205ef9873a3ba992b56d874592a2d36c93590762"
     },
@@ -1332,6 +1384,10 @@
     {
       "file": "scripts/lib/ureca-source-scan.mjs",
       "sha256": "8c9c9f75b3149b49cb0ee51499437200af8d6d6ed98191178521ea87486cac62"
+    },
+    {
+      "file": "scripts/math-presentation.mjs",
+      "sha256": "d724eb8fdba31fa31bafcae090c98ad5b3796ea3a1a6d0828bc4c6af2c901b8c"
     },
     {
       "file": "scripts/sites-env.sh",
@@ -1458,6 +1514,14 @@
       "sha256": "b58d7686b54af300d196b9cbbb0df96ce08ac58ca60c9aa4c2990abd8263f924"
     },
     {
+      "file": "tests/browser/math-content.mjs",
+      "sha256": "953c0d9daef53303aa0f3b37fd877a6481578486516004baa1c353ea32b01bf5"
+    },
+    {
+      "file": "tests/browser/math-presentation.spec.mjs",
+      "sha256": "b23f0409f78f0077ce3e1f5f365943bf07e7e2f1c9b259f70d034b194ac53d32"
+    },
+    {
       "file": "tests/browser/module-action-board.spec.mjs",
       "sha256": "8da6c320401c18ae254442118d632d9315260a57139675bd12e60ec0f2174d48"
     },
@@ -1503,7 +1567,7 @@
     },
     {
       "file": "tests/browser/ureca-coverage.spec.mjs",
-      "sha256": "240376a9dadb452ad29892af9447ce05d5d2869d04c687a966e895127d5fe145"
+      "sha256": "04d98ce9a650e05ee4ec2147cad6e1aa5bd1f668e08e5b54e31dd93f3de94c42"
     },
     {
       "file": "tests/browser/ureca.spec.mjs",
@@ -1520,6 +1584,10 @@
     {
       "file": "tests/browser/wedderburn-layers.spec.mjs",
       "sha256": "69402bb224b68ed485c6d1297287aa5b0a4bc0b73edb7baf5270d6b0cd2b68d4"
+    },
+    {
+      "file": "tests/catalogue-math-corrections.test.mjs",
+      "sha256": "5318da8d055d86415f18ee6f9ad06f52274407c7e793965939952e607bce0004"
     },
     {
       "file": "tests/cayley-words.test.mjs",
@@ -1540,6 +1608,10 @@
     {
       "file": "tests/fixed-colorings.test.mjs",
       "sha256": "f18a7365021dee29b86bde56a5aaa62d82ff389050b9259ea61d2dd317ef4365"
+    },
+    {
+      "file": "tests/fixtures/catalogue-math-before.json",
+      "sha256": "14e9a5008f79d48533b40245e4a149b4d1349366db66cc1d142bbdd863f0838b"
     },
     {
       "file": "tests/formal-evidence.test.mjs",
@@ -1584,6 +1656,14 @@
     {
       "file": "tests/localisation-chains.test.mjs",
       "sha256": "0170d5cb680014e70c68f2aa8b8ec2eb30bb7bb7db7bc8c1641a87b8481c0202"
+    },
+    {
+      "file": "tests/math-presentation.test.mjs",
+      "sha256": "9425dda802067081121f3191b0ee91ce0e0f35e88d81f9a45e3f45f70f14809d"
+    },
+    {
+      "file": "tests/math-review-gate.test.mjs",
+      "sha256": "f0e4d64f67b10d8ac53203b67f7df015c578c88e43ca0ffe87da145c5818a44e"
     },
     {
       "file": "tests/module-action-board.test.mjs",
@@ -1635,7 +1715,7 @@
     },
     {
       "file": "tests/teaching-semantic.test.mjs",
-      "sha256": "88ebfe722e53cc64a1447f2448f6d9d112d3dcb710ead4dc461827c90b4c1886"
+      "sha256": "ce7341cd35738f2194b7c66d22bbe69cd986d572a65f4f6d0b9be5f4be375779"
     },
     {
       "file": "tests/tensor-balancing.test.mjs",
@@ -1679,7 +1759,7 @@
     },
     {
       "file": "vite.config.ts",
-      "sha256": "faa1bf205f4b56205d44ebb28b5e8682255f61441097b424c2324b145dcd6ddd"
+      "sha256": "97e6b8298dbe14cd8c6a7a0c5d7a7bc926e8f718075a2320b4ab16052ebccf92"
     },
     {
       "file": "worker/index.ts",
@@ -2052,6 +2132,16 @@
           "sources": [
             "components/algebra/Checkpoint.tsx",
             "components/algebra/GuidedReader.tsx",
+            "components/algebra/Math.tsx",
+            "lib/algebra/math-presentation.generated.ts",
+            "lib/algebra/math-presentation/annotations.json",
+            "scripts/math-presentation.mjs",
+            "scripts/lib/math-presentation.mjs",
+            "scripts/lib/math-review.mjs",
+            "lib/algebra/math-presentation/review.json",
+            "tests/browser/math-content.mjs",
+            "components/algebra/Groups.tsx",
+            "app/responsive.css",
             "lib/algebra/guided.ts",
             "lib/algebra/learning.ts",
             "components/algebra/ArgumentDesk.tsx",
@@ -2066,10 +2156,12 @@
             "tests/browser/learning.spec.mjs",
             "tests/browser/studio.spec.mjs",
             "tests/browser/arguments.spec.mjs",
+            "tests/browser/math-presentation.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
           "assertions": [
             "Checkpoint reasoning feedback",
+            "Typeset catalogue mathematics keeps native choice names and keyboard selection",
             "Proof recall and keyboard stages",
             "Unit context and heading focus",
             "Editable argument, chosen support detour, retained edition and return to existing assessment"
@@ -2179,6 +2271,16 @@
           "sources": [
             "components/algebra/Checkpoint.tsx",
             "components/algebra/GuidedReader.tsx",
+            "components/algebra/Math.tsx",
+            "lib/algebra/math-presentation.generated.ts",
+            "lib/algebra/math-presentation/annotations.json",
+            "scripts/math-presentation.mjs",
+            "scripts/lib/math-presentation.mjs",
+            "scripts/lib/math-review.mjs",
+            "lib/algebra/math-presentation/review.json",
+            "tests/browser/math-content.mjs",
+            "components/algebra/Groups.tsx",
+            "app/responsive.css",
             "lib/algebra/guided.ts",
             "lib/algebra/learning.ts",
             "components/algebra/ArgumentDesk.tsx",
@@ -2193,10 +2295,12 @@
             "tests/browser/learning.spec.mjs",
             "tests/browser/studio.spec.mjs",
             "tests/browser/arguments.spec.mjs",
+            "tests/browser/math-presentation.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
           "assertions": [
             "Checkpoint reasoning feedback",
+            "Typeset catalogue mathematics keeps native choice names and keyboard selection",
             "Proof recall and keyboard stages",
             "Unit context and heading focus",
             "Editable argument, chosen support detour, retained edition and return to existing assessment"
@@ -2380,6 +2484,16 @@
           "sources": [
             "components/algebra/Checkpoint.tsx",
             "components/algebra/GuidedReader.tsx",
+            "components/algebra/Math.tsx",
+            "lib/algebra/math-presentation.generated.ts",
+            "lib/algebra/math-presentation/annotations.json",
+            "scripts/math-presentation.mjs",
+            "scripts/lib/math-presentation.mjs",
+            "scripts/lib/math-review.mjs",
+            "lib/algebra/math-presentation/review.json",
+            "tests/browser/math-content.mjs",
+            "components/algebra/Groups.tsx",
+            "app/responsive.css",
             "lib/algebra/guided.ts",
             "lib/algebra/learning.ts",
             "components/algebra/ArgumentDesk.tsx",
@@ -2394,10 +2508,12 @@
             "tests/browser/learning.spec.mjs",
             "tests/browser/studio.spec.mjs",
             "tests/browser/arguments.spec.mjs",
+            "tests/browser/math-presentation.spec.mjs",
             "tests/browser/ureca-coverage.spec.mjs"
           ],
           "assertions": [
             "Checkpoint reasoning feedback",
+            "Typeset catalogue mathematics keeps native choice names and keyboard selection",
             "Proof recall and keyboard stages",
             "Unit context and heading focus",
             "Editable argument, chosen support detour, retained edition and return to existing assessment"
@@ -2632,6 +2748,16 @@
       "sources": [
         "components/algebra/Checkpoint.tsx",
         "components/algebra/GuidedReader.tsx",
+        "components/algebra/Math.tsx",
+        "lib/algebra/math-presentation.generated.ts",
+        "lib/algebra/math-presentation/annotations.json",
+        "scripts/math-presentation.mjs",
+        "scripts/lib/math-presentation.mjs",
+        "scripts/lib/math-review.mjs",
+        "lib/algebra/math-presentation/review.json",
+        "tests/browser/math-content.mjs",
+        "components/algebra/Groups.tsx",
+        "app/responsive.css",
         "lib/algebra/guided.ts",
         "lib/algebra/learning.ts",
         "components/algebra/ArgumentDesk.tsx",
@@ -2646,10 +2772,12 @@
         "tests/browser/learning.spec.mjs",
         "tests/browser/studio.spec.mjs",
         "tests/browser/arguments.spec.mjs",
+        "tests/browser/math-presentation.spec.mjs",
         "tests/browser/ureca-coverage.spec.mjs"
       ],
       "assertions": [
         "Checkpoint reasoning feedback",
+        "Typeset catalogue mathematics keeps native choice names and keyboard selection",
         "Proof recall and keyboard stages",
         "Unit context and heading focus",
         "Editable argument, chosen support detour, retained edition and return to existing assessment"
@@ -3469,7 +3597,7 @@
         },
         {
           "kind": "button",
-          "line": 378,
+          "line": 381,
           "attributes": {
             "aria-label": "{`Previous: ${siblings[index - 1]?.navTitle || \"start of route\"}`}",
             "disabled": "{index <= 0}",
@@ -3478,24 +3606,24 @@
         },
         {
           "kind": "button",
-          "line": 387,
+          "line": 390,
           "attributes": {
             "aria-label": "{`Next: ${siblings[index + 1]?.navTitle || \"end of route\"}`}",
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
-        { "kind": "summary", "line": 399, "attributes": {} },
+        { "kind": "summary", "line": 402, "attributes": {} },
         {
           "kind": "button",
-          "line": 454,
+          "line": 459,
           "attributes": {
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
         {
           "kind": "a",
-          "line": 463,
+          "line": 472,
           "attributes": {
             "href": "{`#${capstoneTargetId(activeRoute)}`}",
             "onClick": "{(event) => {\n                      if (\n                        !event.metaKey &&\n                        !event.ctrlKey &&\n                        !event.shiftKey &&\n                        !event.altKey\n                      ) {\n                        event.preventDefault();\n                        openCapstone(activeRoute);\n                      }\n                    }}"
@@ -3511,7 +3639,8 @@
         "lucide-react",
         "@/lib/algebra/argument-records",
         "@/lib/algebra/argument-catalogue",
-        "./ArgumentContext"
+        "./ArgumentContext",
+        "./Math"
       ],
       "states": [
         { "binding": "[preview, setPreview]", "initialExpression": "null" },
@@ -3520,15 +3649,15 @@
         { "binding": "[removing, setRemoving]", "initialExpression": "null" }
       ],
       "controls": [
-        { "kind": "summary", "line": 47, "attributes": {} },
+        { "kind": "summary", "line": 48, "attributes": {} },
         {
           "kind": "button",
-          "line": 56,
+          "line": 57,
           "attributes": { "onClick": "{download}" }
         },
         {
           "kind": "input",
-          "line": 62,
+          "line": 63,
           "attributes": {
             "id": "{fileId}",
             "type": "\"file\"",
@@ -3538,7 +3667,7 @@
         },
         {
           "kind": "input",
-          "line": 105,
+          "line": 106,
           "attributes": {
             "type": "\"radio\"",
             "name": "{`${fileId}-sheet`}",
@@ -3548,7 +3677,7 @@
         },
         {
           "kind": "button",
-          "line": 123,
+          "line": 126,
           "attributes": {
             "disabled": "{!selected}",
             "onClick": "{() => {\n                  const sheet = preview.sheets.find(\n                    (sheet) => sheet.id === selected,\n                  );\n                  if (sheet) onImport(sheet);\n                }}"
@@ -3556,17 +3685,17 @@
         },
         {
           "kind": "button",
-          "line": 134,
+          "line": 137,
           "attributes": { "onClick": "{() => setPreview(null)}" }
         },
         {
           "kind": "button",
-          "line": 153,
+          "line": 158,
           "attributes": { "onClick": "{() => onResume(saved)}" }
         },
         {
           "kind": "button",
-          "line": 156,
+          "line": 161,
           "attributes": {
             "disabled": "{\n                      (state.phase !== \"ready\" &&\n                        state.phase !== \"unsupported\") ||\n                      state.canRetry ||\n                      (state.dirty && state.active?.id === saved.sheet.id)\n                    }",
             "onClick": "{() => setRemoving(saved)}"
@@ -3574,7 +3703,7 @@
         },
         {
           "kind": "button",
-          "line": 182,
+          "line": 187,
           "attributes": {
             "disabled": "{\n                          (state.phase !== \"ready\" &&\n                            state.phase !== \"unsupported\") ||\n                          state.canRetry ||\n                          (state.dirty && state.active?.id === saved.sheet.id)\n                        }",
             "onClick": "{() => {\n                          run(() => state.remove(saved));\n                          setRemoving(null);\n                        }}"
@@ -3582,7 +3711,7 @@
         },
         {
           "kind": "button",
-          "line": 196,
+          "line": 201,
           "attributes": { "onClick": "{() => setRemoving(null)}" }
         }
       ],
@@ -3637,23 +3766,23 @@
         },
         {
           "kind": "button",
-          "line": 210,
+          "line": 214,
           "attributes": { "onClick": "{() => run(state.retry)}" }
         },
         {
           "kind": "button",
-          "line": 216,
+          "line": 220,
           "attributes": { "onClick": "{state.useServerVersion}" }
         },
         {
           "kind": "button",
-          "line": 221,
+          "line": 225,
           "attributes": { "onClick": "{() => run(state.saveCopy)}" }
         },
-        { "kind": "summary", "line": 226, "attributes": {} },
+        { "kind": "summary", "line": 230, "attributes": {} },
         {
           "kind": "button",
-          "line": 237,
+          "line": 241,
           "attributes": {
             "className": "\"argument-primary\"",
             "disabled": "{\n                !state.active ||\n                !state.dirty ||\n                (state.phase !== \"ready\" &&\n                  state.phase !== \"unsupported\" &&\n                  !(state.phase === \"failed\" && !state.canRetry))\n              }",
@@ -3662,7 +3791,7 @@
         },
         {
           "kind": "a",
-          "line": 455,
+          "line": 462,
           "attributes": {
             "href": "{`#${target.id}`}",
             "className": "\"argument-lesson-link\"",
@@ -3671,7 +3800,7 @@
         },
         {
           "kind": "button",
-          "line": 501,
+          "line": 508,
           "attributes": {
             "className": "\"argument-primary\"",
             "disabled": "{\n                        state.phase !== \"ready\" && state.phase !== \"unsupported\"\n                      }",
@@ -3680,7 +3809,7 @@
         },
         {
           "kind": "button",
-          "line": 510,
+          "line": 517,
           "attributes": {
             "disabled": "{state.phase === \"saving\"}",
             "onClick": "{() => {\n                        state.discardActive();\n                        run(() => applyReplacement(replacement));\n                      }}"
@@ -3688,7 +3817,7 @@
         },
         {
           "kind": "button",
-          "line": 521,
+          "line": 528,
           "attributes": {
             "className": "\"argument-primary\"",
             "onClick": "{() => run(() => applyReplacement(replacement))}"
@@ -3696,28 +3825,28 @@
         },
         {
           "kind": "button",
-          "line": 528,
+          "line": 535,
           "attributes": {
             "onClick": "{() => {\n                    setReplacement(null);\n                    if (sheet) navigate(sheet.lessonId, sheet.unitId);\n                  }}"
           }
         },
         {
           "kind": "button",
-          "line": 554,
+          "line": 561,
           "attributes": {
             "onClick": "{() =>\n                    request({ kind: \"target\", lessonId: targetId, unitId })\n                  }"
           }
         },
         {
           "kind": "button",
-          "line": 580,
+          "line": 587,
           "attributes": {
             "onClick": "{() =>\n                      request({\n                        kind: \"new\",\n                        lessonId: sheet.lessonId,\n                        unitId: sheet.unitId,\n                      })\n                    }"
           }
         },
         {
           "kind": "button",
-          "line": 594,
+          "line": 601,
           "attributes": {
             "aria-pressed": "{mode === \"reconstruct\"}",
             "onClick": "{() => showPane(\"reconstruct\")}"
@@ -3725,7 +3854,7 @@
         },
         {
           "kind": "button",
-          "line": 600,
+          "line": 607,
           "attributes": {
             "aria-pressed": "{mode === \"compare\"}",
             "onClick": "{() => showPane(\"compare\")}"
@@ -3733,7 +3862,7 @@
         },
         {
           "kind": "button",
-          "line": 606,
+          "line": 613,
           "attributes": {
             "aria-pressed": "{mode === \"consult\"}",
             "onClick": "{() => showPane(\"consult\")}"
@@ -3741,12 +3870,12 @@
         },
         {
           "kind": "button",
-          "line": 646,
+          "line": 653,
           "attributes": { "onClick": "{() => showPane(\"compare\")}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 682,
+          "line": 689,
           "attributes": {
             "key": "{targetId}",
             "title": "\"Transfer your reasoning\"",
@@ -3756,12 +3885,12 @@
         },
         {
           "kind": "button",
-          "line": 708,
+          "line": 715,
           "attributes": { "onClick": "{() => showPane(\"transfer\")}" }
         },
         {
           "kind": "a",
-          "line": 712,
+          "line": 719,
           "attributes": {
             "href": "{`#capstone:${encodeURIComponent(unit.id)}`}",
             "onClick": "{(event) => {\n                        if (!ordinaryClick(event)) return;\n                        event.preventDefault();\n                        openCapstone(unit.id);\n                      }}"
@@ -3769,14 +3898,14 @@
         },
         {
           "kind": "button",
-          "line": 727,
+          "line": 734,
           "attributes": {
             "onClick": "{() =>\n                    request({\n                      kind: \"new\",\n                      lessonId: sheet.lessonId,\n                      unitId: sheet.unitId,\n                    })\n                  }"
           }
         },
         {
           "kind": "button",
-          "line": 739,
+          "line": 746,
           "attributes": {
             "disabled": "{\n                      state.phase !== \"ready\" && state.phase !== \"unsupported\"\n                    }",
             "onClick": "{() => run(state.saveCopy)}"
@@ -3784,7 +3913,7 @@
         },
         {
           "kind": "button",
-          "line": 757,
+          "line": 764,
           "attributes": {
             "onClick": "{() =>\n                  run(() => state.start(targetId, unitId ?? undefined))\n                }"
           }
@@ -3818,21 +3947,21 @@
         }
       ],
       "controls": [
-        { "kind": "summary", "line": 86, "attributes": {} },
+        { "kind": "summary", "line": 88, "attributes": {} },
         {
           "kind": "button",
-          "line": 137,
+          "line": 140,
           "attributes": { "onClick": "{returnToWriting}" }
         },
         {
           "kind": "button",
-          "line": 140,
+          "line": 143,
           "attributes": { "onClick": "{chooseSupport}" }
         },
-        { "kind": "summary", "line": 188, "attributes": {} },
+        { "kind": "summary", "line": 191, "attributes": {} },
         {
           "kind": "input",
-          "line": 221,
+          "line": 224,
           "attributes": {
             "id": "{searchId}",
             "type": "\"search\"",
@@ -3952,7 +4081,7 @@
         },
         {
           "kind": "button",
-          "line": 263,
+          "line": 264,
           "attributes": {
             "aria-pressed": "{active.reference === index}",
             "onClick": "{() =>\n                commit({\n                  ...sheet,\n                  activeBlockId: active.id,\n                  blocks: sheet.blocks.map((block) =>\n                    block.id === active.id\n                      ? { ...block, reference: index }\n                      : block,\n                  ),\n                })\n              }"
@@ -4494,6 +4623,7 @@
           "line": 57,
           "attributes": {
             "type": "\"radio\"",
+            "aria-labelledby": "{`${group}-option-${index}`}",
             "name": "{group}",
             "value": "{index}",
             "checked": "{choice === index}",
@@ -4502,7 +4632,7 @@
         },
         {
           "kind": "button",
-          "line": 73,
+          "line": 75,
           "attributes": {
             "type": "\"submit\"",
             "disabled": "{choice === null}"
@@ -4603,7 +4733,7 @@
         },
         {
           "kind": "summary",
-          "line": 77,
+          "line": 79,
           "attributes": {
             "onClick": "{(e) => {\n                        e.preventDefault();\n                        setExpanded(expanded === f ? undefined : f);\n                      }}"
           }
@@ -4838,7 +4968,7 @@
         { "kind": "summary", "line": 514, "attributes": {} },
         {
           "kind": "Range",
-          "line": 517,
+          "line": 519,
           "attributes": {
             "label": "\"Labeled colors $k$\"",
             "value": "{colors}",
@@ -4847,8 +4977,8 @@
             "onChange": "{setColors}"
           }
         },
-        { "kind": "summary", "line": 549, "attributes": {} },
-        { "kind": "summary", "line": 573, "attributes": {} }
+        { "kind": "summary", "line": 551, "attributes": {} },
+        { "kind": "summary", "line": 575, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -5147,7 +5277,7 @@
         },
         {
           "kind": "button",
-          "line": 321,
+          "line": 326,
           "attributes": {
             "key": "{v}",
             "onClick": "{() => setB(v)}",
@@ -5156,31 +5286,32 @@
         },
         {
           "kind": "button",
-          "line": 459,
+          "line": 464,
           "attributes": {
             "className": "\"quotient-toggle\"",
-            "onClick": "{() => setBoth(!both)}"
+            "onClick": "{() => setBoth(!both)}",
+            "aria-label": "{\n            both ? \"Generate H using a only\" : \"Generate H using both a and b\"\n          }"
           }
         },
         {
           "kind": "button",
-          "line": 463,
+          "line": 478,
           "attributes": {
             "className": "\"quotient-toggle\"",
             "disabled": "{!normal(g, H)}",
             "onClick": "{() => setAbove(!above)}"
           }
         },
-        { "kind": "summary", "line": 528, "attributes": {} },
-        { "kind": "summary", "line": 552, "attributes": {} },
+        { "kind": "summary", "line": 545, "attributes": {} },
+        { "kind": "summary", "line": 569, "attributes": {} },
         {
           "kind": "button",
-          "line": 576,
+          "line": 595,
           "attributes": { "onClick": "{() => setRight(!right)}" }
         },
         {
           "kind": "button",
-          "line": 581,
+          "line": 600,
           "attributes": {
             "onClick": "{() => setTab(\"graph\")}",
             "className": "{tab === \"graph\" ? \"active\" : \"\"}"
@@ -5188,39 +5319,40 @@
         },
         {
           "kind": "button",
-          "line": 587,
+          "line": 606,
           "attributes": {
             "onClick": "{() => setTab(\"table\")}",
             "className": "{tab === \"table\" ? \"active\" : \"\"}"
           }
         },
-        { "kind": "summary", "line": 614, "attributes": {} },
+        { "kind": "summary", "line": 633, "attributes": {} },
         {
           "kind": "button",
-          "line": 646,
+          "line": 665,
           "attributes": {
             "onClick": "{() => {\n            setR(mod(r + 1, n));\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 653,
+          "line": 672,
           "attributes": {
             "onClick": "{() => {\n            setR(mod(-r, n));\n            setS(1 - s);\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 661,
+          "line": 680,
           "attributes": {
             "onClick": "{() => {\n            setR(0);\n            setS(0);\n          }}"
           }
         },
         {
           "kind": "Range",
-          "line": 765,
+          "line": 784,
           "attributes": {
             "label": "{\"Domain modulus $n$\"}",
+            "accessibleLabel": "\"Domain modulus n\"",
             "value": "{n}",
             "min": "{2}",
             "max": "{16}",
@@ -5229,9 +5361,10 @@
         },
         {
           "kind": "Range",
-          "line": 772,
+          "line": 792,
           "attributes": {
             "label": "{\"Codomain modulus $m$\"}",
+            "accessibleLabel": "\"Codomain modulus m\"",
             "value": "{m}",
             "min": "{2}",
             "max": "{12}",
@@ -5240,9 +5373,10 @@
         },
         {
           "kind": "Range",
-          "line": 779,
+          "line": 800,
           "attributes": {
             "label": "{\"Multiplier $k$\"}",
+            "accessibleLabel": "\"Multiplier k\"",
             "value": "{k}",
             "min": "{0}",
             "max": "{12}",
@@ -5288,7 +5422,7 @@
         },
         {
           "kind": "Checkpoint",
-          "line": 127,
+          "line": 133,
           "attributes": {
             "competencyId": "{`${lesson.id}:boundaryCheck`}",
             "title": "\"Check the hypothesis\"",
@@ -5297,7 +5431,7 @@
         },
         {
           "kind": "button",
-          "line": 145,
+          "line": 151,
           "attributes": {
             "aria-expanded": "{proofVisible}",
             "aria-controls": "{`${lesson.id}-proof-steps`}",
@@ -5306,7 +5440,7 @@
         },
         {
           "kind": "Checkpoint",
-          "line": 168,
+          "line": 174,
           "attributes": {
             "competencyId": "{`${lesson.id}:application`}",
             "title": "\"Apply the idea\"",
@@ -5315,17 +5449,17 @@
         },
         {
           "kind": "Checkpoint",
-          "line": 173,
+          "line": 179,
           "attributes": {
             "competencyId": "{`${lesson.id}:transfer`}",
             "title": "\"Transfer to a new problem\"",
             "assessment": "{content.transfer}"
           }
         },
-        { "kind": "summary", "line": 221, "attributes": {} },
+        { "kind": "summary", "line": 231, "attributes": {} },
         {
           "kind": "button",
-          "line": 236,
+          "line": 246,
           "attributes": {
             "className": "\"read-reference\"",
             "onClick": "{readReference}"
@@ -5753,12 +5887,12 @@
     },
     {
       "file": "components/algebra/LaboratoryLoadBoundary.tsx",
-      "dependencies": ["react"],
+      "dependencies": ["react", "./Math"],
       "states": [],
       "controls": [
         {
           "kind": "button",
-          "line": 31,
+          "line": 35,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => window.location.reload()}"
@@ -5776,7 +5910,8 @@
         "@/lib/algebra/progress",
         "./LearningProgress",
         "./SymmetryDesk",
-        "./BeginnerRunway"
+        "./BeginnerRunway",
+        "./Math"
       ],
       "states": [
         { "binding": "[resetting, setResetting]", "initialExpression": "false" }
@@ -5784,7 +5919,7 @@
       "controls": [
         {
           "kind": "button",
-          "line": 68,
+          "line": 73,
           "attributes": {
             "className": "\"studio-primary\"",
             "onClick": "{() => open(resume?.id || \"foundations-functions\")}"
@@ -5792,24 +5927,24 @@
         },
         {
           "kind": "button",
-          "line": 76,
+          "line": 88,
           "attributes": { "onClick": "{() => navigate(\"learn\")}" }
         },
         {
           "kind": "button",
-          "line": 104,
+          "line": 116,
           "attributes": {
             "onClick": "{() => {\n                    reset();\n                    setResetting(false);\n                  }}"
           }
         },
         {
           "kind": "button",
-          "line": 112,
+          "line": 124,
           "attributes": { "onClick": "{() => setResetting(false)}" }
         },
         {
           "kind": "button",
-          "line": 117,
+          "line": 129,
           "attributes": {
             "onClick": "{() => setResetting(true)}",
             "disabled": "{\n                  !(\n                    phase === \"guest\" ||\n                    (phase === \"ready\" && draftCount === 0)\n                  )\n                }"
@@ -5817,12 +5952,12 @@
         },
         {
           "kind": "button",
-          "line": 157,
+          "line": 169,
           "attributes": { "key": "{mode}", "onClick": "{() => navigate(mode)}" }
         },
         {
           "kind": "button",
-          "line": 170,
+          "line": 182,
           "attributes": { "onClick": "{() => open(\"mh2220-quotient\")}" }
         }
       ],
@@ -5921,7 +6056,7 @@
       "controls": [
         {
           "kind": "button",
-          "line": 82,
+          "line": 95,
           "attributes": {
             "aria-pressed": "{route === item.id}",
             "onClick": "{() => open(item.lessons[0], item.id)}"
@@ -5929,19 +6064,19 @@
         },
         {
           "kind": "summary",
-          "line": 106,
+          "line": 122,
           "attributes": { "id": "{capstoneTargetId(item)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 108,
+          "line": 124,
           "attributes": {
             "competencyId": "{`unit:${item.id}`}",
             "title": "\"Unit transfer checkpoint\"",
             "assessment": "{assessment}"
           }
         },
-        { "kind": "summary", "line": 120, "attributes": {} }
+        { "kind": "summary", "line": 136, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -5971,15 +6106,15 @@
         },
         {
           "kind": "button",
-          "line": 113,
+          "line": 120,
           "attributes": {
             "className": "\"open-experiment\"",
             "onClick": "{() => {\n                      if (openExperiment) return openExperiment();\n                      const experiment = document.getElementById(\"experiment\");\n                      experiment?.scrollIntoView({ block: \"start\" });\n                      experiment?.focus({ preventScroll: true });\n                    }}"
           }
         },
-        { "kind": "summary", "line": 187, "attributes": {} },
-        { "kind": "summary", "line": 193, "attributes": {} },
-        { "kind": "summary", "line": 207, "attributes": {} }
+        { "kind": "summary", "line": 200, "attributes": {} },
+        { "kind": "summary", "line": 206, "attributes": {} },
+        { "kind": "summary", "line": 220, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -6070,7 +6205,7 @@
     },
     {
       "file": "components/algebra/Math.tsx",
-      "dependencies": ["katex"],
+      "dependencies": ["katex", "@/lib/algebra/math-presentation.generated"],
       "states": [],
       "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -6777,18 +6912,19 @@
         "./Checkpoint",
         "./RepresentationObject",
         "@/lib/algebra/direct-products",
-        "@/lib/algebra/progress"
+        "@/lib/algebra/progress",
+        "./Math"
       ],
       "states": [],
       "controls": [
         {
           "kind": "a",
-          "line": 113,
+          "line": 114,
           "attributes": { "href": "{`#${representationRouteId}`}" }
         },
         {
           "kind": "select",
-          "line": 119,
+          "line": 120,
           "attributes": {
             "value": "{element}",
             "onChange": "{(event) =>\n            setElement(dihedralIndex(Number(event.target.value)))\n          }"
@@ -6796,12 +6932,12 @@
         },
         {
           "kind": "button",
-          "line": 152,
+          "line": 155,
           "attributes": { "onClick": "{() => open(stage.id)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 165,
+          "line": 168,
           "attributes": {
             "competencyId": "\"route:ureca-representation-theory\"",
             "title": "\"URECA route capstone\"",
@@ -6998,7 +7134,7 @@
         },
         {
           "kind": "input",
-          "line": 445,
+          "line": 447,
           "attributes": {
             "aria-label": "\"Polynomial f coefficients\"",
             "value": "{raw}",
@@ -7008,18 +7144,18 @@
         },
         {
           "kind": "input",
-          "line": 454,
+          "line": 458,
           "attributes": {
             "aria-label": "\"Polynomial g coefficients\"",
             "value": "{rawB}",
             "onChange": "{(e) => setRawB(e.target.value)}"
           }
         },
-        { "kind": "summary", "line": 557, "attributes": {} },
-        { "kind": "summary", "line": 603, "attributes": {} },
+        { "kind": "summary", "line": 561, "attributes": {} },
+        { "kind": "summary", "line": 609, "attributes": {} },
         {
           "kind": "Range",
-          "line": 613,
+          "line": 619,
           "attributes": {
             "label": "{\"Translate $X$ by $h$\"}",
             "value": "{shift}",
@@ -7028,10 +7164,10 @@
             "onChange": "{setShift}"
           }
         },
-        { "kind": "summary", "line": 647, "attributes": {} },
+        { "kind": "summary", "line": 653, "attributes": {} },
         {
           "kind": "Range",
-          "line": 764,
+          "line": 770,
           "attributes": {
             "label": "{\"Real part $a$ of $z$\"}",
             "min": "{-8}",
@@ -7042,7 +7178,7 @@
         },
         {
           "kind": "Range",
-          "line": 771,
+          "line": 777,
           "attributes": {
             "label": "{\"Imaginary part $b$ of $z$\"}",
             "min": "{-8}",
@@ -7053,7 +7189,7 @@
         },
         {
           "kind": "Range",
-          "line": 778,
+          "line": 784,
           "attributes": {
             "label": "{\"Real part $u$ of $w$\"}",
             "min": "{-4}",
@@ -7064,7 +7200,7 @@
         },
         {
           "kind": "Range",
-          "line": 785,
+          "line": 791,
           "attributes": {
             "label": "{\"Imaginary part $v$ of $w$\"}",
             "min": "{-4}",
@@ -7195,20 +7331,21 @@
         "@/lib/algebra/source-gaps.json",
         "./ConceptLink",
         "./Sources",
-        "./UrecaCoverage"
+        "./UrecaCoverage",
+        "./Math"
       ],
       "states": [],
       "controls": [
-        { "kind": "summary", "line": 52, "attributes": {} },
-        { "kind": "a", "line": 81, "attributes": { "href": "\"#learn\"" } },
+        { "kind": "summary", "line": 53, "attributes": {} },
+        { "kind": "a", "line": 84, "attributes": { "href": "\"#learn\"" } },
         {
           "kind": "a",
-          "line": 84,
+          "line": 87,
           "attributes": {
             "href": "\"https://github.com/Jerome-Group/algebra/blob/main/docs/audit-2026-09-22/URECA_PROVENANCE.md\""
           }
         },
-        { "kind": "summary", "line": 90, "attributes": {} }
+        { "kind": "summary", "line": 93, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -7626,10 +7763,14 @@
       "controls": [
         { "kind": "summary", "line": 50, "attributes": {} },
         { "kind": "summary", "line": 61, "attributes": {} },
-        { "kind": "a", "line": 99, "attributes": { "href": "{citation.url}" } },
         {
           "kind": "a",
-          "line": 106,
+          "line": 101,
+          "attributes": { "href": "{citation.url}" }
+        },
+        {
+          "kind": "a",
+          "line": 108,
           "attributes": {
             "href": "{`https://github.com/Jerome-Group/algebra/blob/main/${topic.review.evidence}`}"
           }
@@ -12957,7 +13098,7 @@
           },
           {
             "id": "mh2220-p-groups:transfer",
-            "statement": "Why is Cₚ² not simple?",
+            "statement": "For prime p, why is the cyclic group $C_{p^2}=\\langle g\\rangle$ not simple?",
             "level": "transfer"
           }
         ],
@@ -32041,7 +32182,7 @@
         "test independence of representatives."
       ],
       "capstone": {
-        "question": "For f: Z → Z/3Z, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3.",
+        "question": "For f: Z → Z/3Z given by $f(n)=[n]_3$, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3.",
         "answer": "Fibers are residue classes modulo 3. The proposed rule fails because 0 and 3 represent the same input but their squares are 0 and 3 modulo 6."
       },
       "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",
@@ -32958,7 +33099,7 @@
   "capstones": {
     "functions": {
       "kind": "transfer",
-      "question": "For f: Z → Z/3Z, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3. Choose the reasoning that supports your solution.",
+      "question": "For f: Z → Z/3Z given by $f(n)=[n]_3$, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3. Choose the reasoning that supports your solution.",
       "choices": [
         "Fibers are classes modulo 3; the square rule fails since 0² and 3² differ modulo 6.",
         "The rule works since congruence always survives a change of modulus.",
@@ -33381,6 +33522,7 @@
     "tests/argument-store.test.mjs",
     "tests/audit-ledger.test.mjs",
     "tests/beginner.test.mjs",
+    "tests/catalogue-math-corrections.test.mjs",
     "tests/cayley-words.test.mjs",
     "tests/character-construction.test.mjs",
     "tests/dependency-boundaries.test.mjs",
@@ -33397,6 +33539,8 @@
     "tests/learning-units.test.mjs",
     "tests/lesson-content.test.mjs",
     "tests/localisation-chains.test.mjs",
+    "tests/math-presentation.test.mjs",
+    "tests/math-review-gate.test.mjs",
     "tests/module-action-board.test.mjs",
     "tests/nilradical.test.mjs",
     "tests/orthogonal-geometry.test.mjs",

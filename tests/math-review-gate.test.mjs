@@ -393,3 +393,58 @@ test("CLI cannot overwrite attestation, accepted annotations or bound reports th
   for (const [index, file] of protectedFiles.entries())
     assert.equal(await readFile(path.join(f.root, file), "utf8"), bytes[index]);
 });
+
+test("a malformed attestation replaces an earlier passing receipt without touching report aliases", async (t) => {
+  const f = await fixture(t);
+  await f.json(reviewFile, f.review);
+  await f.command("check", "--complete", "--report", "receipt.json");
+  await f.write(reviewFile, "{invalid json");
+  await fails(
+    f.command("check", "--complete", "--report", "receipt.json"),
+    /JSON/,
+  );
+  const receipt = JSON.parse(
+    await readFile(path.join(f.root, "receipt.json"), "utf8"),
+  );
+  assert.equal(receipt.status, "failed");
+  assert.equal(receipt.partial, true);
+  assert.equal(receipt.reviewedCompleteness, null);
+  const before = await readFile(path.join(f.root, reportFile), "utf8");
+  await link(
+    path.join(f.root, reportFile),
+    path.join(f.root, "report-alias.json"),
+  );
+  await fails(
+    f.command("check", "--complete", "--report", "report-alias.json"),
+    /Refusing to overwrite/,
+  );
+  assert.equal(await readFile(path.join(f.root, reportFile), "utf8"), before);
+});
+
+test("invalid schema, unreadable attestation and invalid command cannot retain an earlier passing receipt", async (t) => {
+  const f = await fixture(t);
+  for (const failure of ["schema", "unreadable", "command"]) {
+    await rm(path.join(f.root, reviewFile), { recursive: true, force: true });
+    await f.json(reviewFile, f.review);
+    await f.command("check", "--complete", "--report", "receipt.json");
+    if (failure === "schema") await f.json(reviewFile, {});
+    if (failure === "unreadable") {
+      await rm(path.join(f.root, reviewFile));
+      await mkdir(path.join(f.root, reviewFile));
+    }
+    await fails(
+      f.command(
+        failure === "command" ? "invalid" : "check",
+        "--complete",
+        "--report",
+        "receipt.json",
+      ),
+      /.+/,
+    );
+    const receipt = JSON.parse(
+      await readFile(path.join(f.root, "receipt.json"), "utf8"),
+    );
+    assert.equal(receipt.status, "failed", failure);
+    assert.equal(receipt.reviewedCompleteness, null, failure);
+  }
+});

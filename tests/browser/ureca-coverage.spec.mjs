@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { expectCatalogueText } from "./math-content.mjs";
 import { readFileSync } from "node:fs";
 
 const lessons = JSON.parse(
@@ -88,9 +89,13 @@ test("retained square lessons show explicit conventions before their examples", 
     await reader.getByRole("button", { name: "Define", exact: true }).click();
     const conventions = reader.locator(".guided-conventions");
     await expect(conventions).toBeInViewport();
-    await expect(conventions).toContainText(lesson.conventions);
-    await expect(conventions).toContainText("D₈");
-    await expect(conventions).toContainText("D₄");
+    await expectCatalogueText(conventions, lesson.conventions, {
+      prefix: "Conventions: ",
+    });
+    await expect(conventions.locator("annotation")).toContainText([
+      "D_{8}",
+      "D_{4}",
+    ]);
     const position = await conventions.boundingBox();
     const example = await reader
       .locator(".guided-example")
@@ -108,7 +113,7 @@ for (const lesson of additions)
     page.on("pageerror", (error) => errors.push(error.message));
     await page.setViewportSize({ width: 390, height: 1000 });
     await page.goto(`/#${lesson.id}`);
-    await expect(page.locator("#lesson-heading")).toContainText(lesson.title);
+    await expectCatalogueText(page.locator("#lesson-heading"), lesson.title);
     const reader = page.locator(".guided-reader");
     await expect(reader.locator(".guided-conventions")).toBeVisible();
     await expect(reader.locator(".guided-example")).toHaveCount(

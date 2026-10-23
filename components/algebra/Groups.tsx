@@ -52,9 +52,12 @@ export function Choice({
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {options.map(([v, t]) => (
-          <SelectItem key={v} value={v} aria-label={t} textValue={t}>
-            <Prose focusable={false}>{t}</Prose>
+        {options.map(([v, t], index) => (
+          <SelectItem key={v} value={v} textValue={t}>
+            <span>
+              <span className="sr-only">Option {index + 1}. </span>
+              <Prose focusable={false}>{t}</Prose>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>
@@ -63,6 +66,7 @@ export function Choice({
 }
 export function Range({
   label,
+  accessibleLabel = label,
   value,
   min,
   max,
@@ -70,6 +74,7 @@ export function Range({
   step = 1,
 }: {
   label: string;
+  accessibleLabel?: string;
   value: number;
   min: number;
   max: number;
@@ -78,7 +83,7 @@ export function Range({
 }) {
   const id = useId();
   useLaboratoryControl(id, {
-    label,
+    label: accessibleLabel,
     value,
     min,
     max,
@@ -90,11 +95,11 @@ export function Range({
       <label>
         <Prose focusable={false}>{label}</Prose>
         <strong>
-          <M>{String(value)}</M>
+          <M focusable={false}>{String(value)}</M>
         </strong>
       </label>
       <Slider
-        aria-label={label}
+        aria-label={accessibleLabel}
         min={min}
         max={max}
         step={step}
@@ -204,7 +209,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         />
         {(type === "C" || type === "D" || type === "U" || type === "S") && (
           <Choice
-            label={"Parameter $n$"}
+            label="Parameter n"
             value={String(n)}
             onChange={(v) => {
               setN(+v);
@@ -484,13 +489,13 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         )}
         <div className="two-cols">
           <Choice
-            label={"Element $a$"}
+            label="Element a"
             value={String(x)}
             onChange={(v) => setA(+v)}
             options={g.labels.map((l, i) => [String(i), `$a = ${l}$`])}
           />
           <Choice
-            label={"Element $b$"}
+            label="Element b"
             value={String(y)}
             onChange={(v) => setB(+v)}
             options={g.labels.map((l, i) => [String(i), `$b = ${l}$`])}
@@ -778,6 +783,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
       <div className="lab-controls">
         <Range
           label={"Domain modulus $n$"}
+          accessibleLabel="Domain modulus n"
           value={n}
           min={2}
           max={16}
@@ -785,6 +791,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
         />
         <Range
           label={"Codomain modulus $m$"}
+          accessibleLabel="Codomain modulus m"
           value={m}
           min={2}
           max={12}
@@ -792,6 +799,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
         />
         <Range
           label={"Multiplier $k$"}
+          accessibleLabel="Multiplier k"
           value={k}
           min={0}
           max={12}

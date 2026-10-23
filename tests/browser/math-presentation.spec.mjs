@@ -20,11 +20,14 @@ for (const width of [390, 1440]) {
       expect(await guide.locator("math").count()).toBeGreaterThan(5);
       const checkpoint = guide.locator(".learning-checkpoint").first();
       const choices = checkpoint.getByRole("radio");
-      const names = await choices.evaluateAll((inputs) =>
-        inputs.map((input) => input.getAttribute("aria-label")),
-      );
-      expect(names.every((name) => name?.trim())).toBe(true);
-      expect(new Set(names).size).toBe(names.length);
+      for (let index = 0; index < (await choices.count()); index++) {
+        await expect(choices.nth(index)).toHaveAccessibleName(
+          new RegExp(`^Choice ${index + 1}\\. \\S`),
+        );
+        expect(await choices.nth(index).ariaSnapshot()).not.toMatch(
+          /\\(?:operatorname|mathbb|oplus|frac|text)/,
+        );
+      }
       await expect(
         checkpoint.locator("label .math-inline[tabindex]"),
       ).toHaveCount(0);
@@ -70,3 +73,57 @@ for (const width of [390, 1440]) {
     });
   }
 }
+
+for (const width of [390, 1440]) {
+  test(`existing TeX choices expose rendered mathematical names at ${width}px`, async ({
+    page,
+  }, testInfo) => {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto("/#ureca-theory-mackey-isomorphism");
+    const choice = page.getByRole("radio", { name: /Choice 1\. sgn/ });
+    await expect(choice).toHaveAccessibleName(/sgn.*H.*⊕.*C.*H/);
+    expect(await choice.ariaSnapshot()).not.toMatch(
+      /\\(?:operatorname|mathbb|oplus)/,
+    );
+    await choice.check();
+    await choice.press("ArrowDown");
+    const checkpoint = choice.locator("xpath=ancestor::form");
+    await expect(checkpoint.getByRole("radio").nth(1)).toBeFocused();
+    await expect(checkpoint.getByRole("radio").nth(1)).toBeChecked();
+    await expect(
+      checkpoint.locator("label .math-inline[tabindex]"),
+    ).toHaveCount(0);
+    const audit = await new AxeBuilder({ page }).analyze();
+    await testInfo.attach("existing-tex-choice-accessibility", {
+      body: JSON.stringify(audit),
+      contentType: "application/json",
+    });
+    expect(
+      audit.violations.filter((v) =>
+        ["serious", "critical"].includes(v.impact),
+      ),
+    ).toEqual([]);
+    await checkpoint.screenshot({
+      path: testInfo.outputPath("existing-tex-checkpoint.png"),
+    });
+  });
+}
+
+test("typeset custom group options retain prefix keyboard search", async ({
+  page,
+}) => {
+  await page.goto("/#lab:mh2220-subgroups");
+  const group = page.getByRole("combobox", {
+    name: "Finite group",
+    exact: true,
+  });
+  await expect(group).toBeVisible();
+  await group.press("ArrowDown");
+  await page.keyboard.press("s");
+  const symmetric = page.getByRole("option", { name: /Symmetric/ });
+  await expect(symmetric).toBeFocused();
+  await expect(symmetric.locator(".math-inline[tabindex]")).toHaveCount(0);
+  await page.keyboard.press("Enter");
+  await expect(group).toContainText("Symmetric");
+  await expect(group).toBeFocused();
+});

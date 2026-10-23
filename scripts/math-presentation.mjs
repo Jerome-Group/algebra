@@ -1,5 +1,6 @@
 import {
   readFile,
+  readdir,
   writeFile,
   mkdir,
   stat,
@@ -92,7 +93,20 @@ async function outputTarget(file, allowGenerated = false) {
   });
   if (symbolic?.isSymbolicLink())
     throw new Error("Refusing to overwrite an output symlink");
+  const researchRoot = await existingPath(path.resolve(root, "docs/research"));
+  if (
+    target.path === researchRoot ||
+    target.path.startsWith(researchRoot + path.sep)
+  )
+    throw new Error("Refusing to overwrite a reserved research report");
+  const researchEntries = await readdir(researchRoot, {
+    recursive: true,
+  }).catch((error) => {
+    if (error.code !== "ENOENT") throw error;
+    return [];
+  });
   const protectedFiles = [
+    ...researchEntries.map((file) => path.join(researchRoot, file)),
     ...publicFiles,
     manifestPath,
     acceptedManifestPath,
@@ -123,15 +137,6 @@ async function writeOutput(target, text) {
 }
 
 try {
-  if (
-    positionals.length !== 1 ||
-    !["queue", "check", "build"].includes(command) ||
-    (values.complete && command !== "check")
-  )
-    throw new Error(
-      "Usage: node scripts/math-presentation.mjs queue|check|build [--root DIR] [--manifest FILE] [--output FILE] [--report FILE] [check --complete]",
-    );
-  review = await readReview(root);
   const output =
     command === "check"
       ? await describeFile(values.output ?? generatedPath)
@@ -145,6 +150,15 @@ try {
   if (output && reportTarget && sameFile(output, reportTarget))
     throw new Error("Output and report destinations must be distinct");
   report = reportTarget;
+  if (
+    positionals.length !== 1 ||
+    !["queue", "check", "build"].includes(command) ||
+    (values.complete && command !== "check")
+  )
+    throw new Error(
+      "Usage: node scripts/math-presentation.mjs queue|check|build [--root DIR] [--manifest FILE] [--output FILE] [--report FILE] [check --complete]",
+    );
+  review = await readReview(root);
   if (values.complete) {
     if (
       !sameFile(
