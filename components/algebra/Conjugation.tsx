@@ -54,15 +54,16 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
           value={mode}
           onChange={setMode}
           options={[
-            ["conjugation", "Conjugation hxh⁻¹"],
-            ["regular", "Left translation hx"],
+            ["conjugation", String.raw`Conjugation $hxh^{-1}$`],
+            ["regular", "Left translation $hx$"],
           ]}
         />
       </div>
       {(type === "D" || type === "C") && (
         <div className="lab-controls">
           <Range
-            label="Group parameter n"
+            label="Group parameter $n$"
+            accessibleLabel="Group parameter n"
             min={3}
             max={8}
             value={n}
@@ -85,7 +86,8 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
         {orbits.map((o, i) => (
           <div key={i} style={{ borderColor: palette[i] }}>
             <label>
-              Orbit · {o.length} {o.length === 1 ? "element" : "elements"}
+              Orbit · <M focusable={false}>{String(o.length)}</M>{" "}
+              {o.length === 1 ? "element" : "elements"}
             </label>
             <div>
               {o.map((y) => (
@@ -93,8 +95,9 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
                   key={y}
                   onClick={() => setA(y)}
                   className={x === y ? "selected" : ""}
+                  aria-label={`Select orbit element ${y + 1}`}
                 >
-                  <M>{g.labels[y]}</M>
+                  <M focusable={false}>{g.labels[y]}</M>
                 </button>
               ))}
             </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { regularActionModel } from "@/lib/algebra/cayley-words";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
 export function CayleyEmbeddingLab() {
   const [first, setFirst] = useState(4);
@@ -12,14 +12,14 @@ export function CayleyEmbeddingLab() {
   return (
     <div className="foundation-lab cayley-embedding-lab">
       <p>
-        S₃ acts on its own six elements by left multiplication λg(x)=gx.
-        Composition λgλh applies λh first, matching gh. This constructs an
-        embedding into S₆; it does not claim six is the smallest degree.
+        <Prose>{String.raw`$S_3$ acts on its own six elements by left multiplication $\lambda_g(x)=gx$. Composition $\lambda_g\lambda_h$ applies $\lambda_h$ first, matching $gh$. This constructs an embedding into $S_6$; it does not claim six is the smallest degree.`}</Prose>
       </p>
       <div className="lab-controls">
         <label>
-          First factor g, currently {model.names[first]}
+          First factor <M focusable={false}>{"g"}</M>, currently{" "}
+          <M focusable={false}>{model.names[first]}</M>
           <select
+            aria-label={`First factor g, currently ${model.names[first]}`}
             value={first}
             onChange={(event) => setFirst(Number(event.target.value))}
           >
@@ -31,8 +31,10 @@ export function CayleyEmbeddingLab() {
           </select>
         </label>
         <label>
-          Second factor h, currently {model.names[second]}
+          Second factor <M focusable={false}>{"h"}</M>, currently{" "}
+          <M focusable={false}>{model.names[second]}</M>
           <select
+            aria-label={`Second factor h, currently ${model.names[second]}`}
             value={second}
             onChange={(event) => setSecond(Number(event.target.value))}
           >
@@ -49,72 +51,86 @@ export function CayleyEmbeddingLab() {
           block
         >{String.raw`\lambda_g(x)=gx,\qquad\lambda_g\circ\lambda_h=\lambda_{gh}`}</M>
         <p>
-          gh={model.names[model.product]}. Images of λg in the fixed element
-          order: {permutationText(model.firstPermutation)}.
+          <Prose>{String.raw`$gh=${model.names[model.product]}$. Images of $\lambda_g$ in the fixed element order: $(${permutationText(model.firstPermutation)})$.`}</Prose>
         </p>
         <p>
-          Images of λh: {permutationText(model.secondPermutation)}. Images of
-          λgh: {permutationText(model.productPermutation)}.
+          <Prose>{String.raw`Images of $\lambda_h$: $(${permutationText(model.secondPermutation)})$. Images of $\lambda_{gh}$: $(${permutationText(model.productPermutation)})$.`}</Prose>
         </p>
         <p>
-          All six images of λg∘λh agree with λgh:{" "}
-          {model.composedPermutation.every(
-            (image, i) => image === model.productPermutation[i],
-          )
-            ? "yes"
-            : "no"}
-          .
+          <Prose>{String.raw`All six images of $\lambda_g\circ\lambda_h$ agree with $\lambda_{gh}$: ${model.composedPermutation.every((image, i) => image === model.productPermutation[i]) ? "yes" : "no"}.`}</Prose>
         </p>
         <p>
-          λg(e)=g={model.names[first]}. Distinct g have distinct images of e, so
-          the embedding is injective.
+          <Prose>{String.raw`$\lambda_g(e)=g=${model.names[first]}$. Distinct $g$ have distinct images of $e$, so the embedding is injective.`}</Prose>
         </p>
       </div>
       <table>
         <caption>
-          Left-regular embedding S₃→S₆: each row is one permutation
+          <Prose>{String.raw`Left-regular embedding $S_3\to S_6$: each row is one permutation`}</Prose>
         </caption>
         <thead>
           <tr>
-            <th scope="col">g</th>
-            <th scope="col">Images of e, (12), (23), (13), (123), (132)</th>
-            <th scope="col">λg(e)</th>
+            <th scope="col">
+              Element <M>{"g"}</M>
+            </th>
+            <th scope="col">
+              <Prose>{String.raw`Images of $e$, $(12)$, $(23)$, $(13)$, $(123)$, $(132)$`}</Prose>
+            </th>
+            <th scope="col">
+              Identity image <M>{String.raw`\lambda_g(e)`}</M>
+            </th>
           </tr>
         </thead>
         <tbody>
           {model.allPermutations.map((images, g) => (
             <tr key={g}>
-              <th scope="row">{model.names[g]}</th>
-              <td>{permutationText(images)}</td>
-              <td>{model.names[images[0]]}</td>
+              <th scope="row">
+                Element <M>{model.names[g]}</M>
+              </th>
+              <td>
+                <M>{`(${permutationText(images)})`}</M>
+              </td>
+              <td>
+                <M>{model.names[images[0]]}</M>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       <table>
-        <caption>Composition check for every x in S₃</caption>
+        <caption>
+          <Prose>{String.raw`Composition check for every $x\in S_3$`}</Prose>
+        </caption>
         <thead>
           <tr>
-            <th scope="col">x</th>
-            <th scope="col">λg(λh(x))</th>
-            <th scope="col">λgh(x)</th>
+            <th scope="col">
+              Input <M>{"x"}</M>
+            </th>
+            <th scope="col">
+              Composite image <M>{String.raw`\lambda_g(\lambda_h(x))`}</M>
+            </th>
+            <th scope="col">
+              Product image <M>{String.raw`\lambda_{gh}(x)`}</M>
+            </th>
           </tr>
         </thead>
         <tbody>
           {model.elements.map((x) => (
             <tr key={x}>
-              <th scope="row">{model.names[x]}</th>
-              <td>{model.names[model.composedPermutation[x]]}</td>
-              <td>{model.names[model.productPermutation[x]]}</td>
+              <th scope="row">
+                Input <M>{model.names[x]}</M>
+              </th>
+              <td>
+                <M>{model.names[model.composedPermutation[x]]}</M>
+              </td>
+              <td>
+                <M>{model.names[model.productPermutation[x]]}</M>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       <p>
-        The table exhausts this six-element example. In an arbitrary group, left
-        multiplication is bijective with inverse λg⁻¹, and λgλh(x)=g(hx)=(gh)x
-        by associativity. Evaluating at e proves injectivity. Minimal
-        permutation degree is a different question.
+        <Prose>{String.raw`The table exhausts this six-element example. In an arbitrary group, left multiplication is bijective with inverse $\lambda_{g^{-1}}$, and $\lambda_g\lambda_h(x)=g(hx)=(gh)x$ by associativity. Evaluating at $e$ proves injectivity. Minimal permutation degree is a different question.`}</Prose>
       </p>
     </div>
   );

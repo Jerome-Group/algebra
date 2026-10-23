@@ -1,7 +1,7 @@
 "use client";
 import type { Lesson } from "@/lib/algebra/engine";
 import type { CyclicFactor } from "@/lib/algebra/direct-products";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import { UrecaCharacterBound } from "./UrecaCharacterBound";
 import { UrecaExternalTensor } from "./UrecaExternalTensor";
 import { UrecaIrreducibles } from "./UrecaIrreducibles";
@@ -43,10 +43,7 @@ export function UrecaDirectProducts({ lesson }: { lesson: Lesson }) {
         }
       </M>
       <p>
-        Here G=Cₙ and H=D₈. Both factors act on complex vector spaces. D₈ has
-        eight elements; r⁴=s²=e and srs=r⁻¹. The matrices act on columns, with
-        AB applying B first. The cyclic factor uses its faithful one-dimensional
-        character.
+        <Prose>{String.raw`Here $G=C_n$ and $H=D_8$. Both factors act on complex vector spaces. $D_8$ has eight elements; $r^4=s^2=e$ and $srs=r^{-1}$. The matrices act on columns, with $AB$ applying $B$ first. The cyclic factor uses its faithful one-dimensional character.`}</Prose>
       </p>
       {panel(state)}
     </div>

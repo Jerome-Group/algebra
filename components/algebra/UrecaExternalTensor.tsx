@@ -1,26 +1,29 @@
 "use client";
 import {
-  cyclicScalarLabel,
   dihedralCharacter,
-  dihedralElements,
   dihedralMatrix,
   productCharacterLabel,
 } from "@/lib/algebra/direct-products";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   CyclicElementControl,
   CyclicFactorControl,
   DihedralElementControl,
-  cyclicName,
   type UrecaSelection,
 } from "./UrecaLabControls";
+
+import {
+  cyclicElementTex,
+  cyclicScalarTex,
+  dihedralTex,
+  characterValueTex,
+} from "./RepresentationTex";
 
 const matrixMath = (matrix: number[][]) =>
   `\\begin{pmatrix}${matrix.map((row) => row.join("&")).join("\\\\")}\\end{pmatrix}`;
 
 export function UrecaExternalTensor({ state }: { state: UrecaSelection }) {
   const { order, exponent, element } = state;
-  const scalar = cyclicScalarLabel(order, exponent);
   const matrix = dihedralMatrix(element);
   return (
     <>
@@ -31,27 +34,28 @@ export function UrecaExternalTensor({ state }: { state: UrecaSelection }) {
         <h3>Two factors act on a tensor basis</h3>
         <M
           block
-        >{`\\pi(${cyclicName(order, exponent)})=${scalar === "−1" ? "-1" : scalar === "1" ? "1" : scalar === "ω" ? "\\omega" : "\\omega^2"},\\quad \\rho(${dihedralElements[element]})=${matrixMath(matrix)}`}</M>
+        >{`\\pi(${cyclicElementTex(exponent)})=${cyclicScalarTex(order, exponent)},\\quad \\rho(${dihedralTex[element]})=${matrixMath(matrix)}`}</M>
         <div className="presentation-board">
           <span>First factor: degree 1</span>
           <span>Second factor: degree 2</span>
-          <span>Product basis: v⊗w₁, v⊗w₂</span>
+          <span>
+            <Prose>{String.raw`Product basis: $v\otimes w_1$, $v\otimes w_2$`}</Prose>
+          </span>
         </div>
         <div className="live-mathematics" aria-live="polite">
           <p>
-            Product degree: 1×2=2. Character at ({cyclicName(order, exponent)},{" "}
-            {dihedralElements[element]}): {scalar} ×{" "}
-            {dihedralCharacter(element)} ={" "}
-            {productCharacterLabel(order, exponent, element)}.
+            <Prose>{String.raw`Product degree: $1\times2=2$. Character at $(${cyclicElementTex(exponent)},${dihedralTex[element]})$: $(${cyclicScalarTex(order, exponent)})\times(${dihedralCharacter(element)})=${characterValueTex[productCharacterLabel(order, exponent, element)]}$.`}</Prose>
           </p>
           <p>
-            The product matrix has entries{" "}
-            {matrix
+            <Prose>{String.raw`The product matrix has entries $${matrix
               .flat()
-              .map((entry) => `${entry}·${scalar}`)
-              .join(", ")}{" "}
-            in row order. Tensor balancing over a ring is a separate
-            construction.
+              .map(
+                (entry) =>
+                  String.raw`(${entry})\cdot(${cyclicScalarTex(order, exponent)})`,
+              )
+              .join(
+                ", ",
+              )}$ in row order. Tensor balancing over a ring is a separate construction.`}</Prose>
           </p>
         </div>
         <button
@@ -63,8 +67,7 @@ export function UrecaExternalTensor({ state }: { state: UrecaSelection }) {
           Try the cancellation pair
         </button>
         <p>
-          For the selected pair, tr(A⊗B)=tr(A)tr(B) by summing the diagonal
-          entries. The lesson checks the whole G×H action law.
+          <Prose>{String.raw`For the selected pair, $\operatorname{tr}(A\otimes B)=\operatorname{tr}(A)\operatorname{tr}(B)$ by summing the diagonal entries. The lesson checks the whole $G\times H$ action law.`}</Prose>
         </p>
       </section>
     </>

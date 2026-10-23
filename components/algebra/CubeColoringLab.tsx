@@ -4,6 +4,7 @@ import {
   fixedColoringLedger,
   type CubeFeature,
 } from "@/lib/algebra/fixed-colorings";
+import { Math as M, Prose } from "./Math";
 import { ColoringLedgerView } from "./ColoringLedgerView";
 
 const cubeFeatures: CubeFeature[] = ["vertices", "faces", "edges"];
@@ -38,8 +39,9 @@ export function CubeColoringLab() {
           </select>
         </label>
         <label>
-          Labeled colors q, currently {colors}
+          Labeled colors <M focusable={false}>{"q"}</M>, currently {colors}
           <select
+            aria-label="Labeled colors q"
             value={colors}
             onChange={(event) => setColors(Number(event.target.value))}
           >
@@ -66,10 +68,7 @@ export function CubeColoringLab() {
         Show a motion with no fixed positions but fixed colorings
       </button>
       <p>
-        A face-axis rotation may fix no vertex and still fix many vertex
-        colorings. The axis class table yields (q⁸+17q⁴+6q²)/24 for vertices;
-        face and edge actions have different cycle ledgers. The table verifies
-        finite counts; double-counting (g, coloring) proves Burnside’s lemma.
+        <Prose>{String.raw`A face-axis rotation may fix no vertex and still fix many vertex colorings. The axis class table yields $(q^8+17q^4+6q^2)/24$ for vertices; face and edge actions have different cycle ledgers. The table verifies finite counts; double-counting $(g,\mathrm{coloring})$ proves Burnside’s lemma.`}</Prose>
       </p>
     </>
   );

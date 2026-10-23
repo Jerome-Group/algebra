@@ -10,7 +10,7 @@ import {
 } from "@/lib/algebra/induction-restriction";
 
 const matrixText = (matrix: number[][]) =>
-  matrix.map((row) => `[${row.join(", ")}]`).join("; ");
+  String.raw`\begin{pmatrix}${matrix.map((row) => row.join(" & ")).join(String.raw`\\`)}\end{pmatrix}`;
 
 export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
   const [character, setCharacter] = useState<HCharacter>("sign");
@@ -29,10 +29,7 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
   return (
     <div className="foundation-lab">
       <p>
-        How does induction from H=⟨s=(12)⟩≅C₂ to S₃ move one vector across coset
-        copies? Choose the one-dimensional H-character φ and the transversal
-        t₀=e, t₁=r=(123), t₂=r². In Ind_H^G φ the basis vector uᵢ=tᵢ⊗1 has
-        dimension [G:H]·dim φ=3.
+        <Prose>{String.raw`How does induction from $H=\langle s=(12)\rangle\cong C_2$ to $S_3$ move one vector across coset copies? Choose the one-dimensional $H$-character $\varphi$ and the transversal $t_0=e$, $t_1=r=(123)$, $t_2=r^2$. In $\operatorname{Ind}_H^G\varphi$, the coset basis vectors $u_i=t_i\otimes1$ span a space of dimension $[G:H]\dim\varphi=3$.`}</Prose>
       </p>
       <M block>
         {
@@ -41,8 +38,10 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
       </M>
       <div className="lab-controls">
         <label>
-          Inducing H-character φ
+          Inducing <M focusable={false}>{"H"}</M>-character{" "}
+          <M focusable={false}>{String.raw`\varphi`}</M>
           <select
+            aria-label="Inducing H-character φ"
             value={character}
             onChange={(e) => {
               setCharacter(e.target.value as HCharacter);
@@ -54,8 +53,9 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Acting element g
+          Acting element <M focusable={false}>{String.raw`g`}</M>
           <select
+            aria-label="Acting element g"
             value={element}
             onChange={(e) => {
               setElement(e.target.value as S3Element);
@@ -68,8 +68,9 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Coset basis vector uᵢ
+          Coset basis vector <M focusable={false}>{"u_i"}</M>
           <select
+            aria-label="Coset basis vector uᵢ"
             value={basis}
             onChange={(e) => {
               setBasis(Number(e.target.value));
@@ -84,8 +85,10 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Target G-character χ
+          Target <M focusable={false}>{"G"}</M>-character{" "}
+          <M focusable={false}>{String.raw`\chi`}</M>
           <select
+            aria-label="Target G-character χ"
             value={target}
             onChange={(e) => {
               setTarget(e.target.value as TargetCharacter);
@@ -99,8 +102,8 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
         </label>
       </div>
       <label className="prediction-prompt">
-        Predict g·uᵢ, the induced trace, and both Hom-space dimensions before
-        revealing them.
+        Predict <M focusable={false}>{String.raw`g\cdot u_i`}</M>, the induced
+        trace, and both Hom-space dimensions before revealing them.
         <textarea
           value={prediction}
           onChange={(e) => setPrediction(e.target.value)}
@@ -118,44 +121,29 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
         <div className="live-mathematics" aria-live="polite">
           <h3>Coset, trace and reciprocity evidence</h3>
           <p>
-            {element}·u{basis}={state.coefficient === -1 ? "−" : ""}u
-            {state.targetBasis}. The subgroup correction is {state.correction};
-            for s it contributes φ(s)={character === "sign" ? "−1" : "1"}.
-            Omitting that correction gives the wrong induced sign trace.
+            <Prose>{String.raw`$${element}\cdot u_{${basis}}=${state.coefficient === -1 ? "-" : ""}u_{${state.targetBasis}}$. The subgroup correction is $${state.correction}$; for $s$ it contributes $\varphi(s)=${character === "sign" ? "-1" : "1"}$. Omitting that correction gives the wrong induced sign trace.`}</Prose>
           </p>
           <p>
-            Generator matrices on (u₀,u₁,u₂): R=[{matrixText(state.generatorR)}
-            ], S=[{matrixText(state.generatorS)}]. The selected matrix is [
-            {matrixText(state.matrix)}].
+            <Prose>{String.raw`Generator matrices on $(u_0,u_1,u_2)$: $R=${matrixText(state.generatorR)}$, $S=${matrixText(state.generatorS)}$. The selected matrix is $${matrixText(state.matrix)}$.`}</Prose>
           </p>
           <p>
-            On (e, transpositions, 3-cycles), χ_Ind=(
-            {state.inducedValues.join(", ")}); χ_{target}=(
-            {state.targetRow.join(", ")}). Its trace at {element} is
-            {element === "e"
-              ? state.inducedValues[0]
-              : element === "s"
-                ? state.inducedValues[1]
-                : state.inducedValues[2]}
-            .
+            <Prose>{String.raw`On the classes of $e$, transpositions, and $3$-cycles, $\chi_{\mathrm{Ind}}=(${state.inducedValues.join(", ")})$; $\chi_{\mathrm{${target}}}=(${state.targetRow.join(", ")})$. Its trace at $${element}$ is $${element === "e" ? state.inducedValues[0] : element === "s" ? state.inducedValues[1] : state.inducedValues[2]}$.`}</Prose>
           </p>
           <p>
-            dim Hom_G(Ind φ,{target})={state.innerProduct}; dim Hom_H(φ,Res{" "}
-            {target})={state.restrictedHomDimension}. Both sides agree. The
-            double cosets are {state.doubleCosets.join(" and ")}.
+            <Prose>{String.raw`$\dim\operatorname{Hom}_G(\operatorname{Ind}\varphi,\mathrm{${target}})=${state.innerProduct}$; $\dim\operatorname{Hom}_H(\varphi,\operatorname{Res}\mathrm{${target}})=${state.restrictedHomDimension}$. Both sides agree. The double cosets are $H$ and $HrH$.`}</Prose>
           </p>
           {failure && (
             <p role="status">
-              Failure witness: treating the sign-induced s matrix as an unsigned
-              permutation changes its trace from −1 to +1, falsely replacing
-              Ind(sign_H)=sign_G⊕Std by Ind(trivial_H)=trivial_G⊕Std.
+              <Prose>{String.raw`Failure witness: treating the sign-induced $s$ matrix as an unsigned permutation changes its trace from $-1$ to $+1$, falsely replacing $\operatorname{Ind}(\mathrm{sign}_H)=\mathrm{sign}_G\oplus\mathrm{Std}$ by $\operatorname{Ind}(\mathrm{trivial}_H)=\mathrm{trivial}_G\oplus\mathrm{Std}$.`}</Prose>
             </p>
           )}
           <table>
             <caption>Induced character and Hom dimensions by target</caption>
             <thead>
               <tr>
-                <th scope="col">G target</th>
+                <th scope="col">
+                  <M>{"G"}</M> target
+                </th>
                 <th scope="col">trivial</th>
                 <th scope="col">sign</th>
                 <th scope="col">standard</th>
@@ -163,27 +151,37 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
             </thead>
             <tbody>
               <tr>
-                <th scope="row">dim Hom_G(Ind φ, target)</th>
+                <th scope="row">
+                  Induced Hom dimension{" "}
+                  <M>{String.raw`\dim\operatorname{Hom}_G(\operatorname{Ind}\varphi,\text{target})`}</M>
+                </th>
                 {(["trivial", "sign", "standard"] as TargetCharacter[]).map(
                   (name) => (
                     <td key={name}>
-                      {
-                        inducedState(character, element, basis, name)
-                          .innerProduct
-                      }
+                      <M>
+                        {String(
+                          inducedState(character, element, basis, name)
+                            .innerProduct,
+                        )}
+                      </M>
                     </td>
                   ),
                 )}
               </tr>
               <tr>
-                <th scope="row">dim Hom_H(φ, Res target)</th>
+                <th scope="row">
+                  Restricted Hom dimension{" "}
+                  <M>{String.raw`\dim\operatorname{Hom}_H(\varphi,\operatorname{Res}\text{target})`}</M>
+                </th>
                 {(["trivial", "sign", "standard"] as TargetCharacter[]).map(
                   (name) => (
                     <td key={name}>
-                      {
-                        inducedState(character, element, basis, name)
-                          .restrictedHomDimension
-                      }
+                      <M>
+                        {String(
+                          inducedState(character, element, basis, name)
+                            .restrictedHomDimension,
+                        )}
+                      </M>
                     </td>
                   ),
                 )}
@@ -211,13 +209,7 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
       <div className="laboratory-debrief">
         <h3>Theorem debrief and proof boundary</h3>
         <p>
-          The coset calculation gives every matrix entry in this
-          three-dimensional S₃ example. A fixed coset contributes to the induced
-          trace only after its H-correction is evaluated. Frobenius reciprocity
-          is a natural Hom-space isomorphism; the matching dimensions here
-          verify this one example but do not prove the general theorem. The
-          separate character table lesson proves its own inflation and
-          orthogonality boundaries.
+          <Prose>{String.raw`The coset calculation gives every matrix entry in this three-dimensional $S_3$ example. A fixed coset contributes to the induced trace only after its $H$-correction is evaluated. Frobenius reciprocity is a natural Hom-space isomorphism; the matching dimensions here verify this one example but do not prove the general theorem. The separate character table lesson proves its own inflation and orthogonality boundaries.`}</Prose>
         </p>
         <p>
           <Prose>{lesson.title}</Prose> keeps the transversal and subgroup

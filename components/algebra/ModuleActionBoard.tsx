@@ -6,10 +6,10 @@ import {
   moduleStages,
   type ModuleStage,
 } from "@/lib/algebra/module-action-board";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
 const setText = (elements: number[]) =>
-  `{${elements.map((value) => `[${value}]`).join(", ")}}`;
+  String.raw`\{${elements.map((value) => `[${value}]`).join(", ")}\}`;
 const stageNames: Record<ModuleStage, string> = {
   action: "1. Ring action",
   presentation: "2. Generators and relations",
@@ -41,17 +41,17 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
   return (
     <div className="foundation-lab">
       <p>
-        Carry one left <M>{"\mathbb Z"}</M>-module through action, presentation,
-        submodule and exactness. For a right action over noncommutative R, use a
-        left Rᵒᵖ-module.
+        <Prose>{String.raw`Carry one left $\mathbb Z$-module through action, presentation, submodule and exactness. For a right action over noncommutative $R$, use a left $R^{\mathrm{op}}$-module.`}</Prose>
       </p>
       <M
         block
       >{`M=\\mathbb Z/${modulus}\\mathbb Z=\\langle e\\mid ${modulus}e=0\\rangle`}</M>
       <div className="lab-controls">
         <label>
-          Module relation ne=0; choose n
+          Module relation <M focusable={false}>{"ne=0"}</M>; choose{" "}
+          <M focusable={false}>{"n"}</M>
           <select
+            aria-label="Module relation ne=0; choose n"
             value={modulus}
             onChange={(event) => {
               setModulus(Number(event.target.value));
@@ -68,8 +68,9 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Integer scalar r
+          Integer scalar <M focusable={false}>{String.raw`r`}</M>
           <select
+            aria-label="Integer scalar r"
             value={scalar}
             onChange={(event) => {
               setScalar(Number(event.target.value));
@@ -100,8 +101,9 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Submodule generator d dividing n
+          Submodule generator <M focusable={false}>{String.raw`d\mid n`}</M>
           <select
+            aria-label="Submodule generator d dividing n"
             value={generator}
             onChange={(event) => {
               setGenerator(Number(event.target.value));
@@ -118,8 +120,9 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Vector [x]
+          Vector <M focusable={false}>{String.raw`[x]`}</M>
           <select
+            aria-label="Vector [x]"
             value={vector}
             onChange={(event) => {
               setVector(Number(event.target.value));
@@ -136,7 +139,8 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
       </div>
       <label className="prediction-prompt">
         For {stageNames[stage]}, predict the relevant action, relation,
-        submodule or exactness invariant using the selected n, r, d and [x].
+        submodule or exactness invariant using the selected{" "}
+        <M focusable={false}>{"n,r,d"}</M> and <M focusable={false}>{"[x]"}</M>.
         <textarea
           value={prediction}
           onChange={(event) => setPrediction(event.target.value)}
@@ -152,75 +156,50 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
             {stage === "action" && (
               <>
                 <p>
-                  Left action: r·[x]=[rx] in M; r↦([x]↦[rx]) is a unital map
-                  ℤ→Endₐᵦ(M). The selected scalar {scalar} has kernel{" "}
-                  {setText(model.action.kernel)} and image{" "}
-                  {setText(model.action.image)}.
+                  <Prose>{String.raw`Left action: $r\cdot[x]=[rx]$ in $M$; $r\mapsto([x]\mapsto[rx])$ is a unital map $\mathbb Z\to\operatorname{End}_{\mathrm{Ab}}(M)$. The selected scalar $${scalar}$ has kernel $${setText(model.action.kernel)}$ and image $${setText(model.action.image)}$.`}</Prose>
                 </p>
                 <p>
-                  {model.action.inverse === undefined
-                    ? "This operator is not invertible on M."
-                    : `This operator is invertible on M, with scalar inverse ${model.action.inverse} modulo ${modulus}.`}{" "}
-                  {model.regularModuleInvertible
-                    ? `${scalar} is a unit of ℤ and acts invertibly on every unital ℤ-module.`
-                    : `${scalar} is a nonunit of ℤ; on the regular module ℤ its multiplication map is not invertible.`}
+                  <Prose>{String.raw`${model.action.inverse === undefined ? "This operator is not invertible on $M$." : `This operator is invertible on $M$, with scalar inverse $${model.action.inverse}$ modulo $${modulus}$.`} ${model.regularModuleInvertible ? `$${scalar}$ is a unit of $\\mathbb Z$ and acts invertibly on every unital $\\mathbb Z$-module.` : `$${scalar}$ is a nonunit of $\\mathbb Z$; on the regular module $\\mathbb Z$ its multiplication map is not invertible.`}`}</Prose>
                 </p>
               </>
             )}
             {stage === "presentation" && (
               <>
                 <p>
-                  Generator e=[1]; relation {modulus}e=0; annihilator of M is{" "}
-                  {modulus}ℤ. This cyclic module is not free over ℤ because e is
-                  nonzero torsion.
+                  <Prose>{String.raw`Generator $e=[1]$; relation $${modulus}e=0$; annihilator of $M$ is $${modulus}\mathbb Z$. This cyclic module is not free over $\mathbb Z$ because $e$ is nonzero torsion.`}</Prose>
                 </p>
                 <M
                   block
                 >{`0\\longrightarrow\\mathbb Z\\xrightarrow{\\times ${modulus}}\\mathbb Z\\xrightarrow{q}M\\longrightarrow0`}</M>
                 <p>
-                  The relation map has image {modulus}ℤ, exactly ker q. This is
-                  a presentation and a short exact sequence.
+                  <Prose>{String.raw`The relation map has image $${modulus}\mathbb Z$, exactly $\ker q$. This is a presentation and a short exact sequence.`}</Prose>
                 </p>
               </>
             )}
             {stage === "submodule" && (
               <>
                 <p>
-                  N=⟨[{generator}]⟩={setText(model.submodule)} is closed under
-                  addition and every integer scalar. M/N≅ℤ/{generator}ℤ has
-                  representatives {setText(model.quotient)}; r acts on them as{" "}
-                  {setText(model.quotientAction)}.
+                  <Prose>{String.raw`$N=\langle[${generator}]\rangle=${setText(model.submodule)}$ is closed under addition and every integer scalar. $M/N\cong\mathbb Z/${generator}\mathbb Z$ has representatives $${setText(model.quotient)}$; $r$ acts on them as $${setText(model.quotientAction)}$.`}</Prose>
                 </p>
                 <p>
-                  Changing [x]+N by [n]∈N changes r[x] by r[n]∈N, so quotient
-                  scalar multiplication is well-defined. For T=diag(2,1) on ℚ²,{" "}
-                  {model.operatorExample.invariantLine};{" "}
-                  {model.operatorExample.failedLine}.
+                  <Prose>{String.raw`Changing $[x]+N$ by $[n]\in N$ changes $r[x]$ by $r[n]\in N$, so quotient scalar multiplication is well-defined. For $T=\operatorname{diag}(2,1)$ on $\mathbb Q^2$, $\mathbb Qe_1$ is stable; $\mathbb Q(e_1+e_2)$ is not stable: $T(e_1+e_2)=2e_1+e_2$.`}</Prose>
                 </p>
               </>
             )}
             {stage === "exactness" && (
               <>
                 <p>
-                  For ×{scalar}:M→M, ker={setText(model.action.kernel)}, im=
-                  {setText(model.action.image)}; |M/ker|=
-                  {model.imageQuotientSize}=|im| and |M/im|={model.cokernelSize}
-                  . The induced map [x]+ker↦[{scalar}x] is the first module
-                  isomorphism.
+                  <Prose>{String.raw`For $\times ${scalar}:M\to M$, $\ker=${setText(model.action.kernel)}$, $\operatorname{im}=${setText(model.action.image)}$; $|M/\ker|=${model.imageQuotientSize}=|\operatorname{im}|$ and $|M/\operatorname{im}|=${model.cokernelSize}$. The induced map $[x]+\ker\mapsto[${scalar}x]$ is the first module isomorphism.`}</Prose>
                 </p>
                 <p>
-                  Ann([{vector}])={model.vectorAnnihilator}ℤ, while Ann(M)=
-                  {model.moduleAnnihilator}ℤ. For a left module over
-                  noncommutative R, Ann(m) is a left ideal and Ann(M) is
-                  two-sided.
+                  <Prose>{String.raw`$\operatorname{Ann}([${vector}])=${model.vectorAnnihilator}\mathbb Z$, while $\operatorname{Ann}(M)=${model.moduleAnnihilator}\mathbb Z$. For a left module over noncommutative $R$, $\operatorname{Ann}(m)$ is a left ideal and $\operatorname{Ann}(M)$ is two-sided.`}</Prose>
                 </p>
                 <p>
-                  At the middle ℤ of 0→ℤ --×{modulus}→ ℤ --q→ M→0, im(×{modulus}
-                  )={modulus}ℤ=ker q. This sequence is nonsplit: a section M→ℤ
-                  would send torsion e to a nonzero torsion integer. By
-                  contrast, 0→ℤ→ℤ⊕ℤ→ℤ→0 splits by section b↦(0,b).
+                  <Prose>{String.raw`At the middle $\mathbb Z$ of $0\to\mathbb Z\xrightarrow{\times ${modulus}}\mathbb Z\xrightarrow{q}M\to0$, $\operatorname{im}(\times ${modulus})=${modulus}\mathbb Z=\ker q$. This sequence is nonsplit: a section $M\to\mathbb Z$ would send torsion $e$ to a nonzero torsion integer. By contrast, $0\to\mathbb Z\to\mathbb Z\oplus\mathbb Z\to\mathbb Z\to0$ splits by section $b\mapsto(0,b)$.`}</Prose>
                 </p>
-                <p>{model.operatorExample.moduleMap}</p>
+                <p>
+                  <Prose>{String.raw`For $T=\operatorname{diag}(2,1)$ on $M=\mathbb Q^2$ and $X$ acting as $2$ on $N=\mathbb Q$, $p(a,b)=a$ is $\mathbb Q[X]$-linear: $p(T(a,b))=2a=X\cdot p(a,b)$. Its kernel is $\mathbb Qe_2$, its image is $\mathbb Q$, and $M/\mathbb Qe_2\cong\mathbb Q$ as $\mathbb Q[X]$-modules.`}</Prose>
+                </p>
               </>
             )}
           </div>
@@ -236,29 +215,25 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
               <tr>
                 <th scope="row">Module</th>
                 <td>
-                  ℤ/{modulus}ℤ, generator e=[1], relation {modulus}e=0
+                  <Prose>{String.raw`$\mathbb Z/${modulus}\mathbb Z$, generator $e=[1]$, relation $${modulus}e=0$`}</Prose>
                 </td>
               </tr>
               <tr>
                 <th scope="row">Scalar action</th>
                 <td>
-                  {scalar}·[x]=[{scalar}x]; kernel{" "}
-                  {setText(model.action.kernel)}; image{" "}
-                  {setText(model.action.image)}
+                  <Prose>{String.raw`$${scalar}\cdot[x]=[${scalar}x]$; kernel $${setText(model.action.kernel)}$; image $${setText(model.action.image)}$`}</Prose>
                 </td>
               </tr>
               <tr>
                 <th scope="row">Submodule and quotient</th>
                 <td>
-                  N={setText(model.submodule)}; M/N has {model.quotient.length}{" "}
-                  classes
+                  <Prose>{String.raw`$N=${setText(model.submodule)}$; $M/N$ has ${model.quotient.length} classes`}</Prose>
                 </td>
               </tr>
               <tr>
                 <th scope="row">Annihilators</th>
                 <td>
-                  Ann([{vector}])={model.vectorAnnihilator}ℤ; Ann(M)=
-                  {model.moduleAnnihilator}ℤ
+                  <Prose>{String.raw`$\operatorname{Ann}([${vector}])=${model.vectorAnnihilator}\mathbb Z$; $\operatorname{Ann}(M)=${model.moduleAnnihilator}\mathbb Z$`}</Prose>
                 </td>
               </tr>
             </tbody>
@@ -268,19 +243,11 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
           </button>
           {failure && (
             <p role="status">
-              Scalar 2 is not a unit of ℤ but acts invertibly on ℤ/3ℤ; it does
-              not act invertibly on the regular module ℤ. The exact sequence 0→ℤ
-              --×6→ ℤ→ℤ/6ℤ→0 does not split: a ℤ-linear section would send [1]
-              to a nonzero integer killed by 6.
+              <Prose>{String.raw`Scalar $2$ is not a unit of $\mathbb Z$ but acts invertibly on $\mathbb Z/3\mathbb Z$; it does not act invertibly on the regular module $\mathbb Z$. The exact sequence $0\to\mathbb Z\xrightarrow{\times6}\mathbb Z\to\mathbb Z/6\mathbb Z\to0$ does not split: a $\mathbb Z$-linear section would send $[1]$ to a nonzero integer killed by $6$.`}</Prose>
             </p>
           )}
           <p>
-            Proof boundary: the finite action table checks this M only. Units
-            act invertibly on every unital module by their ring inverses;
-            submodule closure proves quotient well-definedness; image=kernel
-            checks exactness; a section, not exactness alone, proves a
-            direct-sum splitting. The guided proof supplies those general
-            arguments.
+            <Prose>{String.raw`Proof boundary: the finite action table checks this $M$ only. Units act invertibly on every unital module by their ring inverses; submodule closure proves quotient well-definedness; $\operatorname{im}=\ker$ checks exactness; a section, not exactness alone, proves a direct-sum splitting. The guided proof supplies those general arguments.`}</Prose>
           </p>
         </>
       )}

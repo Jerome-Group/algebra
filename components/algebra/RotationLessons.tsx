@@ -46,8 +46,10 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
         </p>
         {axis.map((value, index) => (
           <label key={index}>
-            Axis {"xyz"[index]} component, currently {value}
+            Axis <M focusable={false}>{"xyz"[index]}</M> component, currently{" "}
+            <M focusable={false}>{String(value)}</M>
             <input
+              aria-label={`Axis ${"xyz"[index]} component`}
               type="number"
               step="any"
               value={value}
@@ -61,14 +63,24 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
             />
           </label>
         ))}
-        <button onClick={() => setAxis([1, 1, 1])}>
-          Use cube body diagonal (1,1,1)
+        <button
+          aria-label="Use cube body diagonal (1,1,1)"
+          onClick={() => setAxis([1, 1, 1])}
+        >
+          Use cube body diagonal <M focusable={false}>{"(1,1,1)"}</M>
         </button>
-        <button onClick={() => setAxis([1, 0, 0])}>
-          Use face axis (1,0,0)
+        <button
+          aria-label="Use face axis (1,0,0)"
+          onClick={() => setAxis([1, 0, 0])}
+        >
+          Use face axis <M focusable={false}>{"(1,0,0)"}</M>
         </button>
         {!validAxis && <p role="alert">Enter a nonzero finite axis vector.</p>}
-        {!validAngle && <p role="alert">Enter an angle from 0° to 360°.</p>}
+        {!validAngle && (
+          <p role="alert">
+            <Prose>{String.raw`Enter an angle from $0^\circ$ to $360^\circ$.`}</Prose>
+          </p>
+        )}
         <Range
           label="Rotation angle in degrees"
           min={0}
@@ -77,9 +89,11 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
           onChange={setAngle}
         />
         <label>
-          Exact angle in degrees, currently {angle}
+          Exact angle in degrees, currently{" "}
+          <M focusable={false}>{String(angle)}</M>
           <input
             type="number"
+            aria-label="Exact angle in degrees"
             min={0}
             max={360}
             step="any"
@@ -90,28 +104,20 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
         {matrix && (
           <div className="live-mathematics" aria-live="polite">
             <p>
-              Normalized axis: ({normalized.join(", ")}). Rodrigues rotation at{" "}
-              {angle}°.
+              <Prose>{String.raw`Normalized axis: $(${normalized.join(", ")})$. Rodrigues rotation at $${angle}^\circ$.`}</Prose>
             </p>
             <M block>{String.raw`R\approx${matrixTex(matrix)}`}</M>
             <M
               block
             >{String.raw`Rn=n,\quad\operatorname{tr}(R)=1+2\cos(${angle}^\circ)`}</M>
             <p>
-              {matched
-                ? `Cube symmetry: yes. Vertex permutation (images of 1–8): ${images!.map((index) => index + 1).join(", ")}. Generator word: ${matched.word.join(" ") || "I"}.`
-                : "Cube symmetry: no. This is a rotation of space, but it has no permutation or generator word in the cube symmetry group."}
+              <Prose>{String.raw`${matched ? `Cube symmetry: yes. Vertex permutation (images of $1$–$8$): $(${images!.map((index) => index + 1).join(", ")})$. Generator word: $${matched.word.join(" ") || "I"}$.` : "Cube symmetry: no. This is a rotation of space, but it has no permutation or generator word in the cube symmetry group."}`}</Prose>
             </p>
             <p>
-              {Math.abs(angle) < 1e-9 || Math.abs(angle - 360) < 1e-9
-                ? "At the identity rotation every axis is possible; the axis is not uniquely determined."
-                : Math.abs(angle - 180) < 1e-9
-                  ? "At 180° the axis line is determined, but n and −n describe the same rotation."
-                  : "Away from 0° and 180°, reversing the axis reverses the signed angle."}
+              <Prose>{String.raw`${Math.abs(angle) < 1e-9 || Math.abs(angle - 360) < 1e-9 ? "At the identity rotation every axis is possible; the axis is not uniquely determined." : Math.abs(angle - 180) < 1e-9 ? "At $180^\\circ$ the axis line is determined, but $n$ and $-n$ describe the same rotation." : "Away from $0^\\circ$ and $180^\\circ$, reversing the axis reverses the signed angle."}`}</Prose>
             </p>
             <p>
-              Along (1,1,1), exactly 0°, 120°, 240° and 360° preserve the cube.
-              Other angles remain valid spatial rotations.
+              <Prose>{String.raw`Along $(1,1,1)$, exactly $0^\circ$, $120^\circ$, $240^\circ$ and $360^\circ$ preserve the cube. Other angles remain valid spatial rotations.`}</Prose>
             </p>
           </div>
         )}
@@ -143,7 +149,9 @@ export function PlaneRepresentationLab({ lesson }: { lesson: Lesson }) {
             ["complex", "Complex numbers · dimension 2"],
           ]}
         />
-        <span className="lab-tag">Same C₃ action · no fixed extra axis</span>
+        <span className="lab-tag">
+          <Prose>{"Same $C_3$ action · no fixed extra axis"}</Prose>
+        </span>
       </div>
       <Diagram
         className="math-svg"

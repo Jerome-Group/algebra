@@ -1,11 +1,9 @@
 "use client";
 import { useState } from "react";
-import {
-  chainExamples,
-  chainReading,
-  type ChainExample,
-} from "@/lib/algebra/ideal-chains";
-import { Math as M } from "./Math";
+import { chainExamples, type ChainExample } from "@/lib/algebra/ideal-chains";
+import { Math as M, Prose } from "./Math";
+
+import { chainText, chainContext } from "./IdealChainText";
 
 export function IdealChainExplorer() {
   const [example, setExample] = useState<ChainExample>("integerAscending");
@@ -14,7 +12,7 @@ export function IdealChainExplorer() {
   const [revealed, setRevealed] = useState(false);
   const [failure, setFailure] = useState(false);
   const context = chainExamples[example];
-  const reading = chainReading(example, stage);
+  const reading = chainText(example, stage);
   function reset() {
     setPrediction("");
     setRevealed(false);
@@ -44,8 +42,9 @@ export function IdealChainExplorer() {
           </select>
         </label>
         <label>
-          Stage n
+          Stage <M focusable={false}>{"n"}</M>
           <select
+            aria-label="Stage n"
             value={stage}
             onChange={(event) => {
               setStage(Number(event.target.value));
@@ -61,7 +60,7 @@ export function IdealChainExplorer() {
         </label>
       </div>
       <p>
-        Context: {context.context}. Inspect stage {stage}.
+        <Prose>{String.raw`Context: ${chainContext[example]}. Inspect stage $${stage}$.`}</Prose>
       </p>
       <label className="prediction-prompt">
         Predict the ideal, a generator or strictness witness, and whether the
@@ -79,10 +78,11 @@ export function IdealChainExplorer() {
         <>
           <div className="live-mathematics" aria-live="polite">
             <p>
-              At stage {stage}: Iₙ={reading.ideal}. Generators:{" "}
-              {reading.generators.join(", ")}.
+              <Prose>{String.raw`At stage $${stage}$: $I_{${stage}}=${reading.ideal}$. Generators: $${reading.generators.length ? reading.generators.join(", ") : String.raw`\varnothing`}$.`}</Prose>
             </p>
-            <p>{reading.witness}</p>
+            <p>
+              <Prose>{reading.witness}</Prose>
+            </p>
             <p>
               Selected chain:{" "}
               {reading.stable ? "stabilized here" : "not stabilized here"}.
@@ -91,7 +91,7 @@ export function IdealChainExplorer() {
           </div>
           <table>
             <caption>
-              Ideal chain and generator evidence in {context.context}
+              <Prose>{String.raw`Ideal chain and generator evidence in ${chainContext[example]}`}</Prose>
             </caption>
             <thead>
               <tr>
@@ -103,13 +103,25 @@ export function IdealChainExplorer() {
             </thead>
             <tbody>
               {Array.from({ length: stage }, (_, i) => {
-                const row = chainReading(example, i + 1);
+                const row = chainText(example, i + 1);
                 return (
                   <tr key={i}>
-                    <th scope="row">{i + 1}</th>
-                    <td>{row.ideal}</td>
-                    <td>{row.generators.join(", ")}</td>
-                    <td>{row.witness}</td>
+                    <th scope="row">
+                      <M>{String(i + 1)}</M>
+                    </th>
+                    <td>
+                      <M>{row.ideal}</M>
+                    </td>
+                    <td>
+                      <M>
+                        {row.generators.length
+                          ? row.generators.join(", ")
+                          : String.raw`\varnothing`}
+                      </M>
+                    </td>
+                    <td>
+                      <Prose>{row.witness}</Prose>
+                    </td>
                   </tr>
                 );
               })}
@@ -120,19 +132,16 @@ export function IdealChainExplorer() {
           </button>
           {failure && (
             <p role="status">
-              ℤ has infinitely many elements, yet every ideal is principal and
-              ascending chains stabilize. In F[X₁,X₂,…], the chain
-              (X₁)⊊(X₁,X₂)⊊⋯ never stabilizes because each fresh variable is
-              outside the previous ideal.
+              <Prose>{String.raw`$\mathbb Z$ has infinitely many elements, yet every ideal is principal and ascending chains stabilize. In $F[X_1,X_2,\ldots]$, the chain $(X_1)\subsetneq(X_1,X_2)\subsetneq\cdots$ never stabilizes because each fresh variable is outside the previous ideal.`}</Prose>
             </p>
           )}
           <p>
-            Proof boundary: {reading.theorem} ACC is equivalent to finite
-            generation of every ideal in this ring; DCC is a distinct Artinian
-            condition. Hilbert’s basis theorem requires a Noetherian base and
-            finitely many adjoined variables. Prime-ideal chains and Krull
-            dimension require their own hypotheses; this finite display does not
-            prove a dimension claim.
+            Proof boundary: <Prose>{reading.theorem}</Prose> ACC is equivalent
+            to finite generation of every ideal in this ring; DCC is a distinct
+            Artinian condition. Hilbert’s basis theorem requires a Noetherian
+            base and finitely many adjoined variables. Prime-ideal chains and
+            Krull dimension require their own hypotheses; this finite display
+            does not prove a dimension claim.
           </p>
         </>
       )}

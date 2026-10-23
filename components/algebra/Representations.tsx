@@ -69,8 +69,8 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
           value={dim}
           onChange={setDim}
           options={[
-            ["2", "Plane · O(2)"],
-            ["3", "Space · O(3)"],
+            ["2", "Plane · $O(2)$"],
+            ["3", "Space · $O(3)$"],
           ]}
         />
         <Choice
@@ -88,9 +88,9 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
             value={axis}
             onChange={setAxis}
             options={[
-              ["x", "x-axis"],
-              ["y", "y-axis"],
-              ["z", "z-axis"],
+              ["x", "$x$-axis"],
+              ["y", "$y$-axis"],
+              ["z", "$z$-axis"],
             ]}
           />
         )}
@@ -158,6 +158,7 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <Range
           label={"Angle $\\theta$ in degrees"}
+          accessibleLabel="Angle theta in degrees"
           value={angle}
           min={0}
           max={360}
@@ -330,10 +331,7 @@ export function RepresentationLab() {
           label="Permutation action"
           value={String(perm)}
           onChange={(x) => setPerm(+x)}
-          options={perms.map((p, i) => [
-            String(i),
-            `Apply ${cycleTex(p).replaceAll("\\,", " ")}`,
-          ])}
+          options={perms.map((p, i) => [String(i), `Apply $${cycleTex(p)}$`])}
         />
         <span className="lab-tag">
           <Prose>{"Permutation module $\\mathbb R ^{3}$"}</Prose>
@@ -379,7 +377,8 @@ export function RepresentationLab() {
           ].map(([z, fn], i) => (
             <Range
               key={i}
-              label={`v${i + 1}`}
+              label={`Vector coordinate $v_{${i + 1}}$`}
+              accessibleLabel={`Vector coordinate v${i + 1}`}
               min={-4}
               max={4}
               value={z as number}
@@ -491,7 +490,9 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
               {classes.map((x, i) => (
                 <TableHead key={x}>
                   <M>{x}</M>
-                  <small>size {sizes[i]}</small>
+                  <small>
+                    size <M>{String(sizes[i])}</M>
+                  </small>
                 </TableHead>
               ))}
             </TableRow>
@@ -504,7 +505,7 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
                 </TableHead>
                 {r.map((x, j) => (
                   <TableCell key={j} style={{ color: palette[i] }}>
-                    {x}
+                    <M>{String(x)}</M>
                   </TableCell>
                 ))}
               </TableRow>
@@ -534,7 +535,9 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
               <div
                 style={{ height: `${24 + m * 36}px`, background: palette[i] }}
               />
-              <strong>{m}</strong>
+              <strong>
+                <M>{String(m)}</M>
+              </strong>
               <M>{names[i]}</M>
             </div>
           ))}

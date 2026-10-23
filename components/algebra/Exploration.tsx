@@ -4,14 +4,14 @@ import { Minus, Plus, Maximize2, Minimize2 } from "lucide-react";
 import type { Lesson } from "@/lib/algebra/engine";
 import Laboratory from "./Laboratory";
 import { Prose } from "./Math";
-import { labContract } from "@/lib/algebra/lab-contracts";
+import { labContractPresentation } from "@/lib/algebra/lab-contract-presentations";
 
 export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [open, setOpen] = useState(true),
     [expanded, setExpanded] = useState(false);
   const [prediction, setPrediction] = useState("");
   const [testing, setTesting] = useState(false);
-  const contract = labContract(lesson.id);
+  const contract = labContractPresentation(lesson.id);
   const integratedPrediction =
     lesson.machine === "ideal-quotient-lattice" ||
     lesson.machine === "polynomial-factorisation" ||
@@ -35,7 +35,7 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
           {contract?.type.replaceAll("-", " ") || "Illustration"}
         </span>
         <span className="exploration-description">
-          {contract?.name || "Test an example"}
+          <Prose>{contract?.name || "Test an example"}</Prose>
         </span>
         <div className="exploration-actions">
           {open && (
@@ -68,12 +68,16 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
         <div className="experiment-context">
           {contract && (
             <>
-              <h2>{contract.question}</h2>
-              <p>{contract.objects}</p>
+              <h2>
+                <Prose>{contract.question}</Prose>
+              </h2>
+              <p>
+                <Prose>{contract.objects}</Prose>
+              </p>
               {!integratedPrediction && (
                 <>
                   <label className="prediction-prompt">
-                    {contract.prediction}
+                    <Prose focusable={false}>{contract.prediction}</Prose>
                     <textarea
                       value={prediction}
                       onChange={(event) => setPrediction(event.target.value)}
@@ -93,10 +97,10 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
             </>
           )}
           <p>
-            <Prose>{lesson.prompt}</Prose>
+            <Prose>{contract?.prediction || lesson.prompt}</Prose>
           </p>
           <p className="reading-caption">
-            <Prose>{lesson.labScope}</Prose>
+            <Prose>{contract?.debrief || lesson.labScope}</Prose>
           </p>
         </div>
         {(!contract || testing || integratedPrediction) && (
@@ -105,12 +109,20 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
         {contract && testing && !integratedPrediction && (
           <section className="laboratory-debrief">
             <h3>Invariant</h3>
-            <p>{contract.invariant}</p>
+            <p>
+              <Prose>{contract.invariant}</Prose>
+            </p>
             <h3>Try a failure state</h3>
-            <p>{contract.counterexample}</p>
+            <p>
+              <Prose>{contract.counterexample}</Prose>
+            </p>
             <h3>Theorem debrief and proof boundary</h3>
-            <p>{contract.debrief}</p>
-            <p>{contract.fallback}</p>
+            <p>
+              <Prose>{contract.debrief}</Prose>
+            </p>
+            <p>
+              <Prose>{contract.fallback}</Prose>
+            </p>
           </section>
         )}
       </div>

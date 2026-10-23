@@ -71,14 +71,18 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
                 <M>{op === "add" ? "+" : "\\times"}</M>
               </TableHead>
               {Array.from({ length: n }, (_, i) => (
-                <TableHead key={i}>{i}</TableHead>
+                <TableHead key={i}>
+                  <M>{String(i)}</M>
+                </TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
             {Array.from({ length: n }, (_, i) => (
               <TableRow key={i}>
-                <TableHead>{i}</TableHead>
+                <TableHead>
+                  <M>{String(i)}</M>
+                </TableHead>
                 {Array.from({ length: n }, (_, j) => {
                   const z = mod(op === "add" ? i + j : i * j, n);
                   return (
@@ -95,7 +99,7 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
                         color: z === 0 ? "#fff" : palette[z % 12],
                       }}
                     >
-                      {z}
+                      <M>{String(z)}</M>
                     </TableCell>
                   );
                 })}
@@ -108,6 +112,7 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
         <div className="two-cols">
           <Range
             label={"Element $a$"}
+            accessibleLabel="Element a"
             value={x}
             min={0}
             max={n - 1}
@@ -115,6 +120,7 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
           />
           <Range
             label={"Element $b$"}
+            accessibleLabel="Element b"
             value={y}
             min={0}
             max={n - 1}
@@ -145,18 +151,20 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
           </div>
         </div>
         <p>
-          Units: {units.join(", ")}. A unit has an inverse because{" "}
-          <M>{`\\gcd(a,${n})=1`}</M>. A nonzero zero divisor has a nonzero
-          multiplier whose product is 0.
+          Units: <M>{String.raw`\{${units.join(", ")}\}`}</M>. A unit has an
+          inverse because <M>{`\\gcd(a,${n})=1`}</M>. A nonzero zero divisor has
+          a nonzero multiplier whose product is <M>{"0"}</M>.
         </p>
         <label>
-          Successive powers of <M>{"a"}</M>
+          Successive powers of <M focusable={false}>{"a"}</M>
         </label>
         <div className="power-chain">
           {powers.map((p, i) => (
             <span key={i} className={p === 0 ? "zero" : ""}>
-              <small>{i + 1}</small>
-              {p}
+              <small>
+                <M>{String(i + 1)}</M>
+              </small>
+              <M>{String(p)}</M>
             </span>
           ))}
         </div>
@@ -166,7 +174,7 @@ export function RingLab({ lesson }: { lesson: Lesson }) {
           onChange={(v) => setD(+v)}
           options={ds.map((i) => [
             String(i),
-            `Ideal (${i}) · ${n / i} elements`,
+            `Ideal $(${i})$ · $${n / i}$ elements`,
           ])}
         />
         <M
@@ -283,6 +291,7 @@ export function ProductLab({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <Range
           label={"Integer / diagonal step $a$"}
+          accessibleLabel="Integer or diagonal step a"
           value={a % L}
           min={0}
           max={L - 1}
@@ -292,8 +301,8 @@ export function ProductLab({ lesson }: { lesson: Lesson }) {
           block
         >{`[${a % L}]_{${L}}\\longmapsto ([${a % m}]_{${m}},[${a % n}]_{${n}})`}</M>
         <p>
-          The diagonal step <M>{"(1,1)"}</M> visits {seen.size} of {L} points
-          before repeating.{" "}
+          The diagonal step <M>{"(1,1)"}</M> visits <M>{String(seen.size)}</M>{" "}
+          of <M>{String(L)}</M> points before repeating.{" "}
           {good
             ? "The moduli are coprime, so this map is both a group and a unital ring isomorphism."
             : "The moduli share a factor, so the map is not an isomorphism: some pairs cannot occur."}
@@ -308,7 +317,7 @@ export function ProductLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " In a direct product, the first coordinate always adds normally. In $D_{m} = C_{m} \\rtimes  C_{2}$, the second coordinate reverses that addition when it equals 1: "
+                " In a direct product, the first coordinate always adds normally. In $D_{m} = C_{m} \\rtimes  C_{2}$, the second coordinate reverses that addition when it equals $1$: "
               }
             </Prose>
           </p>
@@ -537,7 +546,7 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
               <Prose>
                 {p === 4 ? "modulo $4$" : `in $\\mathbb F_{${p}}$`}
               </Prose>{" "}
-              : {roots.length ? roots.join(", ") : "none"}.{" "}
+              : {roots.length ? <M>{roots.join(", ")}</M> : "none"}.{" "}
               <Prose>
                 {p === 4
                   ? "This coefficient ring has zero divisors: root bounds and field irreducibility tests need not hold. Try $f=2X$."
@@ -547,10 +556,12 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
           ) : (
             <p>
               <Prose>{" The content of $f$ is "}</Prose>
-              {content}.{" "}
-              {content > 1
-                ? `Dividing all coefficients by ${content} produces its primitive part.`
-                : "A nonzero integer polynomial with content 1 is primitive."}
+              <M>{String(content)}</M>.{" "}
+              <Prose>
+                {content > 1
+                  ? `Dividing all coefficients by $${content}$ produces its primitive part.`
+                  : "A nonzero integer polynomial with content $1$ is primitive."}
+              </Prose>
             </p>
           )}
           <details
@@ -618,6 +629,7 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
               <>
                 <Range
                   label={"Translate $X$ by $h$"}
+                  accessibleLabel="Translate X by h"
                   value={shift}
                   min={-3}
                   max={3}
@@ -700,13 +712,13 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
             </M>
             <div className="two-cols">
               <Choice
-                label="First element of $\\mathbb F_4$"
+                label="First element of the field with four elements"
                 value={String(x)}
                 onChange={(z) => setX(+z)}
                 options={labels.map((l, i) => [String(i), `$${l}$`])}
               />
               <Choice
-                label="Second element of $\\mathbb F_4$"
+                label="Second element of the field with four elements"
                 value={String(y)}
                 onChange={(z) => setY(+z)}
                 options={labels.map((l, i) => [String(i), `$${l}$`])}
@@ -769,6 +781,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
             <div className="two-cols">
               <Range
                 label={"Real part $a$ of $z$"}
+                accessibleLabel="Real part a of z"
                 min={-8}
                 max={8}
                 value={a}
@@ -776,6 +789,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
               />
               <Range
                 label={"Imaginary part $b$ of $z$"}
+                accessibleLabel="Imaginary part b of z"
                 min={-8}
                 max={8}
                 value={b}
@@ -783,6 +797,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
               />
               <Range
                 label={"Real part $u$ of $w$"}
+                accessibleLabel="Real part u of w"
                 min={-4}
                 max={4}
                 value={u}
@@ -790,6 +805,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
               />
               <Range
                 label={"Imaginary part $v$ of $w$"}
+                accessibleLabel="Imaginary part v of w"
                 min={-4}
                 max={4}
                 value={v}
@@ -858,14 +874,7 @@ export function FieldLab({ lesson }: { lesson: Lesson }) {
                   block
                 >{`z=qw+r,\\quad q=${qr}+(${qi})i,\\quad r=${rr}+(${ri})i`}</M>
                 <p>
-                  <Prose>
-                    {
-                      " Round both coordinates of $z/w$ to the nearest integer. $N(r)=$ "
-                    }
-                  </Prose>
-                  {rr * rr + ri * ri}
-                  <Prose>{" < $N(w)=$"}</Prose>
-                  {d}, so Euclidean division decreases the norm.
+                  <Prose>{String.raw`Round both coordinates of $z/w$ to the nearest integer. $N(r)=${rr * rr + ri * ri}<N(w)=${d}$, so Euclidean division decreases the norm.`}</Prose>
                 </p>
               </>
             ) : (

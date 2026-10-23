@@ -40,7 +40,7 @@ export function LinearQuotientLab() {
                 }}
                 onClick={() => setSelected(i)}
               >
-                <M>{`(${point.join(",")})`}</M>
+                <M focusable={false}>{`(${point.join(",")})`}</M>
               </button>
             ))}
           </div>
@@ -89,6 +89,7 @@ export function LinearQuotientLab() {
             <Range
               key={String(label)}
               label={`Matrix entry $${label}$`}
+              accessibleLabel={`Matrix entry ${label}`}
               min={0}
               max={prime - 1}
               value={value as number}
@@ -145,6 +146,7 @@ export function QuadraticQuotientLab() {
         <div className="two-cols">
           <Range
             label="Linear coefficient $b$"
+            accessibleLabel="Linear coefficient b"
             value={linear}
             min={0}
             max={prime - 1}
@@ -152,6 +154,7 @@ export function QuadraticQuotientLab() {
           />
           <Range
             label="Constant coefficient $c$"
+            accessibleLabel="Constant coefficient c"
             value={constant}
             min={0}
             max={prime - 1}
@@ -205,7 +208,7 @@ export function QuadraticQuotientLab() {
             className={`${ring.inverse(i) !== -1 ? "is-unit" : "is-nonunit"} ${x === i ? "fiber-selected" : ""}`}
             onClick={() => setA(i)}
           >
-            <M>{ring.label(i)}</M>
+            <M focusable={false}>{ring.label(i)}</M>
             <small>
               {i === 0
                 ? "zero"

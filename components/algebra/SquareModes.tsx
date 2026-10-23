@@ -44,10 +44,11 @@ export function SquareModesLab() {
             ["contrast", "Opposite contrasts"],
           ]}
         />
-        <button onClick={() => setR(mod(r + 1, 4))}>
+        <button aria-label="Apply r" onClick={() => setR(mod(r + 1, 4))}>
           <Prose focusable={false}>{"Apply $r$"}</Prose>
         </button>
         <button
+          aria-label="Apply s"
           onClick={() => {
             setR(mod(-r, 4));
             setS(1 - s);
@@ -84,7 +85,8 @@ export function SquareModesLab() {
           {v.map((x, i) => (
             <Range
               key={i}
-              label={`Coefficient v${i + 1}`}
+              label={`Coefficient $v_{${i + 1}}$`}
+              accessibleLabel={`Coefficient v${i + 1}`}
               value={x}
               min={-3}
               max={3}
@@ -108,7 +110,8 @@ export function SquareModesLab() {
         </M>
         <p>
           Averaging a vector over all eight group elements projects it onto the
-          constant line. The mean {mean} is unchanged by every permutation.
+          constant line. The mean <M>{String(mean)}</M> is unchanged by every
+          permutation.
         </p>
       </div>
     </div>

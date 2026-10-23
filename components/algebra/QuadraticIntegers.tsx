@@ -23,7 +23,7 @@ export function QuadraticLab() {
     <div>
       <div className="lab-toolbar">
         <Choice
-          label={"Quadratic radicand $D$"}
+          label="Quadratic radicand D"
           value={String(D)}
           onChange={(v) => setD(+v)}
           options={[-1, -2, -3, -5, -7].map((d) => [String(d), `$D = ${d}$`])}
@@ -95,6 +95,7 @@ export function QuadraticLab() {
         <div className="two-cols">
           <Range
             label={"Coefficient $a$"}
+            accessibleLabel="Coefficient a"
             min={-3}
             max={3}
             value={a}
@@ -102,6 +103,7 @@ export function QuadraticLab() {
           />
           <Range
             label={"Coefficient $b$"}
+            accessibleLabel="Coefficient b"
             min={-3}
             max={3}
             value={b}

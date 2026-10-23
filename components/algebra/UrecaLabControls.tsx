@@ -9,6 +9,13 @@ import {
 } from "@/lib/algebra/direct-products";
 import { useRepresentationObject } from "./RepresentationObject";
 
+import { Math as M } from "./Math";
+import {
+  cyclicElementTex,
+  cyclicScalarTex,
+  dihedralTex,
+} from "./RepresentationTex";
+
 export const cyclicName = (order: CyclicFactor, exponent: number) =>
   exponent === 0 ? "e" : exponent === 1 ? "a" : "a²";
 
@@ -34,8 +41,10 @@ export type UrecaSelection = ReturnType<typeof useUrecaSelection>;
 export function CyclicFactorControl({ state }: { state: UrecaSelection }) {
   return (
     <label>
-      Cyclic factor G, currently C{state.order}
+      Cyclic factor <M focusable={false}>{"G"}</M>, currently{" "}
+      <M focusable={false}>{`C_{${state.order}}`}</M>
       <select
+        aria-label={`Cyclic factor G, currently C${state.order}`}
         value={state.order}
         onChange={(event) =>
           state.changeOrder(Number(event.target.value) as CyclicFactor)
@@ -50,9 +59,11 @@ export function CyclicFactorControl({ state }: { state: UrecaSelection }) {
 export function CyclicElementControl({ state }: { state: UrecaSelection }) {
   return (
     <label>
-      Cyclic element g, currently {cyclicName(state.order, state.exponent)} with
-      scalar {cyclicScalarLabel(state.order, state.exponent)}
+      Cyclic element <M focusable={false}>{"g"}</M>, currently{" "}
+      <M focusable={false}>{cyclicElementTex(state.exponent)}</M> with scalar{" "}
+      <M focusable={false}>{cyclicScalarTex(state.order, state.exponent)}</M>
       <select
+        aria-label={`Cyclic element g, currently ${cyclicName(state.order, state.exponent)} with scalar ${cyclicScalarLabel(state.order, state.exponent)}`}
         value={state.exponent}
         onChange={(event) => state.setExponent(Number(event.target.value))}
       >
@@ -69,9 +80,11 @@ export function CyclicElementControl({ state }: { state: UrecaSelection }) {
 export function DihedralElementControl({ state }: { state: UrecaSelection }) {
   return (
     <label>
-      D₈ element h, currently {dihedralElements[state.element]} with trace{" "}
-      {dihedralCharacter(state.element)}
+      <M focusable={false}>{"D_8"}</M> element <M focusable={false}>{"h"}</M>,
+      currently <M focusable={false}>{dihedralTex[state.element]}</M> with trace{" "}
+      <M focusable={false}>{String(dihedralCharacter(state.element))}</M>
       <select
+        aria-label={`D₈ element h, currently ${dihedralElements[state.element]} with trace ${dihedralCharacter(state.element)}`}
         value={state.element}
         onChange={(event) =>
           state.setElement(dihedralIndex(Number(event.target.value)))

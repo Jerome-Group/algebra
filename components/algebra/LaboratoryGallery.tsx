@@ -1,6 +1,6 @@
 import type { Lesson } from "@/lib/algebra/engine";
 import { Prose } from "./Math";
-import { labContract } from "@/lib/algebra/lab-contracts";
+import { labContractPresentation } from "@/lib/algebra/lab-contract-presentations";
 
 export function LaboratoryGallery({
   lessons,
@@ -10,7 +10,7 @@ export function LaboratoryGallery({
   open: (id: string) => void;
 }) {
   const experiences = lessons.flatMap((lesson) => {
-    const contract = labContract(lesson.id);
+    const contract = labContractPresentation(lesson.id);
     return contract ? [{ id: lesson.id, ...contract }] : [];
   });
   return (
@@ -29,10 +29,14 @@ export function LaboratoryGallery({
           if (!lesson) return null;
           return (
             <article key={experience.id}>
-              <h2>{experience.name}</h2>
-              <p>{experience.question}</p>
+              <h2>
+                <Prose>{experience.name}</Prose>
+              </h2>
               <p>
-                <Prose>{lesson.labScope}</Prose>
+                <Prose>{experience.question}</Prose>
+              </p>
+              <p>
+                <Prose>{experience.debrief}</Prose>
               </p>
               <button onClick={() => open(experience.id)}>
                 Open workspace →

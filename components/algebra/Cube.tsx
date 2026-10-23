@@ -400,7 +400,17 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         <div className="generator-row">
           <span>Apply generator</span>
           {["A", "B", ...(!rotOnly ? ["J"] : [])].map((g) => (
-            <button key={g} onClick={() => apply(g)}>
+            <button
+              key={g}
+              aria-label={
+                g === "A"
+                  ? "Apply A, rotate about x"
+                  : g === "B"
+                    ? "Apply B, rotate about z"
+                    : "Apply J, invert"
+              }
+              onClick={() => apply(g)}
+            >
               <Prose focusable={false}>
                 {g === "A"
                   ? "$A$ · rotate about $x$"
@@ -422,7 +432,8 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             <label>Induced permutation</label>
             <M block>{`\\pi_X(Q)=${cycleTex(p)}`}</M>
             <span>
-              <M>{`\\det Q=${det(el.matrix)}`}</M> · {cycles(p).length} cycles
+              <M>{`\\det Q=${det(el.matrix)}`}</M> ·{" "}
+              <M>{String(cycles(p).length)}</M> cycles
             </span>
           </div>
         </div>
@@ -436,41 +447,52 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
                 { "--point-color": palette[i % 12] } as React.CSSProperties
               }
               onClick={() => setSelected(i)}
+              aria-label={`Follow point ${i + 1}, image ${p[i] + 1}`}
             >
-              {i + 1}
+              <M focusable={false}>{String(i + 1)}</M>
               <span>
                 <Prose focusable={false}>{"$\\to$"}</Prose>
-                {p[i] + 1}
+                <M focusable={false}>{String(p[i] + 1)}</M>
               </span>
             </button>
           ))}
         </div>
         <div className="stat-strip">
           <div>
-            <strong>{G.length}</strong>
+            <strong>
+              <M>{String(G.length)}</M>
+            </strong>
             <M>{"|G|"}</M>
           </div>
           <div>
-            <strong>{orb.length}</strong>
+            <strong>
+              <M>{String(orb.length)}</M>
+            </strong>
             <M>{`|\\operatorname{Orb}(${selected + 1})|`}</M>
           </div>
           <div>
-            <strong>{stab.length}</strong>
+            <strong>
+              <M>{String(stab.length)}</M>
+            </strong>
             <M>{`|\\operatorname{Stab}(${selected + 1})|`}</M>
           </div>
           <div>
-            <strong>{kernel.length}</strong>
+            <strong>
+              <M>{String(kernel.length)}</M>
+            </strong>
             <span>
               <M>{"|\\ker\\pi|"}</M>
             </span>
           </div>
         </div>
         <p className="lab-explain">
-          {set === "mixed"
-            ? `The selected point lies in an orbit of size ${orb.length}. Vertices and faces form two separate orbits, so the action is faithful but not transitive.`
-            : `Every ${set === "diagonals" ? "unoriented diagonal" : set === "vertices" ? "vertex" : set.slice(0, -1)} is reachable.`}{" "}
-          Each destination in this orbit is reached by exactly {stab.length}{" "}
-          group elements:{" "}
+          <Prose>
+            {set === "mixed"
+              ? `The selected point lies in an orbit of size $${orb.length}$. Vertices and faces form two separate orbits, so the action is faithful but not transitive.`
+              : `Every ${set === "diagonals" ? "unoriented diagonal" : set === "vertices" ? "vertex" : set.slice(0, -1)} is reachable.`}
+          </Prose>{" "}
+          Each destination in this orbit is reached by exactly{" "}
+          <M>{String(stab.length)}</M> group elements:{" "}
           <M>{`${G.length}=${orb.length}\\cdot ${stab.length}`}</M>.{" "}
           <Prose>
             {set === "diagonals" && !rotOnly
@@ -503,9 +525,10 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
                 disabled={!active}
                 className={index === i ? "active" : ""}
                 onClick={() => setIndex(i)}
+                aria-label={`Select cube transformation ${i + 1}`}
                 title={`${x.word.join(" ") || "I"}, determinant ${det(x.matrix)}`}
               >
-                <M>{x.word.join("") || "I"}</M>
+                <M focusable={false}>{x.word.join("") || "I"}</M>
               </button>
             );
           })}
@@ -518,6 +541,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           </summary>
           <Range
             label="Labeled colors $k$"
+            accessibleLabel="Labeled colors k"
             value={colors}
             min={1}
             max={6}
@@ -527,8 +551,10 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             block
           >{`\\#(\\{1,\\ldots,k\\}^X/G)=\\frac{1}{${G.length}}\\sum_{g\\in G}k^{c(g)}`}</M>
           <p>
-            For {colors} colors on {set}, there are{" "}
-            <strong>{colorings.toLocaleString()} inequivalent colorings</strong>
+            For <M>{String(colors)}</M> colors on {set}, there are{" "}
+            <strong>
+              <M>{String(colorings)}</M> inequivalent colorings
+            </strong>
             <Prose>
               {
                 " . Repeated colors are allowed. A coloring fixed by $g$ must be constant on every cycle. "
@@ -540,9 +566,9 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
               .sort((a, b) => b[0] - a[0])
               .map(([c, n]) => (
                 <span key={c}>
-                  {n}
+                  <M>{String(n)}</M>
                   <Prose>{" elements $\\times$ "}</Prose>
-                  {c} cycles
+                  <M>{String(c)}</M> cycles
                 </span>
               ))}
           </div>
@@ -556,7 +582,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
               }
             </Prose>
             <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This representation has dimension{" "}
-            {p.length}
+            <M>{String(p.length)}</M>
             <Prose>{"; the geometric matrix $Q$ has dimension 3. "}</Prose>
           </p>
           <M

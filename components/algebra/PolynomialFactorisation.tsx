@@ -7,7 +7,13 @@ import {
   type CoefficientField,
   type PolynomialCase,
 } from "@/lib/algebra/polynomial-factorisation";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
+
+import {
+  fieldTex,
+  polynomialTex,
+  polynomialReadings,
+} from "./PolynomialFactorisationText";
 
 export function PolynomialFactorisation() {
   const [example, setExample] = useState<PolynomialCase>("quadratic");
@@ -16,6 +22,7 @@ export function PolynomialFactorisation() {
   const [revealed, setRevealed] = useState(false);
   const [failure, setFailure] = useState(false);
   const result = polynomialReading(example, field);
+  const display = polynomialReadings[example][field];
   function reset() {
     setPrediction("");
     setRevealed(false);
@@ -62,8 +69,7 @@ export function PolynomialFactorisation() {
         </label>
       </div>
       <p>
-        Selected input: {result.label} over {result.field}. Integer content
-        before changing field: {result.content}.
+        <Prose>{String.raw`Selected input: $${polynomialTex[example]}$ over $${fieldTex[field]}$. Integer content before changing field: $${result.content}$.`}</Prose>
       </p>
       <label className="prediction-prompt">
         Predict factors and roots in the selected field. State whether your
@@ -81,13 +87,16 @@ export function PolynomialFactorisation() {
         <>
           <div className="live-mathematics" aria-live="polite">
             <p>
-              Factorisation equation over {result.field}: {result.label} ={" "}
-              {result.equation}.
+              <Prose>{String.raw`Factorisation equation over $${fieldTex[field]}$: $${polynomialTex[example]}=${display.equation}$.`}</Prose>
             </p>
-            <p>Roots: {result.roots}</p>
-            <p>Certificate: {result.certificate}</p>
             <p>
-              Verdict: {result.verdict} over {result.field}.
+              Roots: <Prose>{display.roots}</Prose>
+            </p>
+            <p>
+              Certificate: <Prose>{display.certificate}</Prose>
+            </p>
+            <p>
+              <Prose>{String.raw`Verdict: ${result.verdict} over $${fieldTex[field]}$.`}</Prose>
             </p>
           </div>
           <button onClick={() => setFailure(!failure)} aria-pressed={failure}>
@@ -95,9 +104,7 @@ export function PolynomialFactorisation() {
           </button>
           {failure && (
             <p role="status">
-              X⁴+3X²+2 has no rational roots, yet equals (X²+1)(X²+2) over ℚ. A
-              failed root test in degree four is inconclusive. Likewise, a
-              failed Eisenstein test does not prove reducibility.
+              <Prose>{String.raw`$X^4+3X^2+2$ has no rational roots, yet equals $(X^2+1)(X^2+2)$ over $\mathbb Q$. A failed root test in degree four is inconclusive. Likewise, a failed Eisenstein test does not prove reducibility.`}</Prose>
             </p>
           )}
           <p>
@@ -108,23 +115,35 @@ export function PolynomialFactorisation() {
             all coefficients to zero changes the polynomial degree.
           </p>
           <table>
-            <caption>Selected polynomial evidence in {result.field}[X]</caption>
+            <caption>
+              <Prose>{String.raw`Selected polynomial evidence in $${fieldTex[field]}[X]$`}</Prose>
+            </caption>
             <tbody>
               <tr>
                 <th scope="row">Factors</th>
-                <td>{result.equation}</td>
+                <td>
+                  <M>{display.equation}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Roots</th>
-                <td>{result.roots}</td>
+                <td>
+                  <Prose>{display.roots}</Prose>
+                </td>
               </tr>
               <tr>
-                <th scope="row">Content in ℤ[X]</th>
-                <td>{result.content}</td>
+                <th scope="row">
+                  Content in <M>{String.raw`\mathbb Z[X]`}</M>
+                </th>
+                <td>
+                  <M>{String(result.content)}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Proof certificate</th>
-                <td>{result.certificate}</td>
+                <td>
+                  <Prose>{display.certificate}</Prose>
+                </td>
               </tr>
             </tbody>
           </table>

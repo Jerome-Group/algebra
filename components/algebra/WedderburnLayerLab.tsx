@@ -9,6 +9,8 @@ import {
   type FieldChoice,
 } from "@/lib/algebra/wedderburn-layers";
 
+import { wedderburnText } from "./WedderburnLayerText";
+
 const units = ["E11", "E12", "E21", "E22"] as const;
 const unitIndices = (name: (typeof units)[number]): [1 | 2, 1 | 2] => [
   Number(name[1]) as 1 | 2,
@@ -26,6 +28,7 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
   const [revealed, setRevealed] = useState(false);
   const [failure, setFailure] = useState(false);
   const model = wedderburnLayers(algebra, field);
+  const display = wedderburnText(algebra, field);
   const [i, j] = unitIndices(first);
   const [k, l] = unitIndices(second);
   const product = matrixUnitProduct(i, j, k, l);
@@ -37,13 +40,7 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
   return (
     <div className="foundation-lab">
       <p>
-        {lesson.id === "algebra-radical"
-          ? "Do simple successive layers force a direct-sum decomposition? "
-          : "Is the dimension of a matrix block the same as its simple module? "}
-        Throughout, A is an associative, finite-dimensional, unital algebra over
-        the selected field F; modules are unital left A-modules. The
-        Artin–Wedderburn direct-product claim applies to semisimple A, and over
-        a general field its matrix blocks may use division rings rather than F.
+        <Prose>{String.raw`${lesson.id === "algebra-radical" ? "Do simple successive layers force a direct-sum decomposition?" : "Is the dimension of a matrix block the same as its simple module?"} Throughout, $A$ is an associative, finite-dimensional, unital algebra over the selected field $F$; modules are unital left $A$-modules. The Artin–Wedderburn direct-product claim applies to semisimple $A$, and over a general field its matrix blocks may use division rings rather than $F$.`}</Prose>
       </p>
       <M block>
         {
@@ -52,8 +49,9 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
       </M>
       <div className="lab-controls">
         <label>
-          Algebra A
+          Algebra <M focusable={false}>{String.raw`A`}</M>
           <select
+            aria-label="Algebra A"
             value={algebra}
             onChange={(e) => {
               setAlgebra(e.target.value as AlgebraChoice);
@@ -66,8 +64,9 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Coefficient field F
+          Coefficient field <M focusable={false}>{String.raw`F`}</M>
           <select
+            aria-label="Coefficient field F"
             value={field}
             onChange={(e) => {
               setField(e.target.value as FieldChoice);
@@ -81,8 +80,9 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
         {algebra === "matrix" && (
           <>
             <label>
-              First matrix unit Eᵢⱼ
+              First matrix unit <M focusable={false}>{String.raw`E_{ij}`}</M>
               <select
+                aria-label="First matrix unit Eᵢⱼ"
                 value={first}
                 onChange={(e) => {
                   setFirst(e.target.value as (typeof units)[number]);
@@ -97,8 +97,9 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
               </select>
             </label>
             <label>
-              Second matrix unit Eₖₗ
+              Second matrix unit <M focusable={false}>{String.raw`E_{kl}`}</M>
               <select
+                aria-label="Second matrix unit Eₖₗ"
                 value={second}
                 onChange={(e) => {
                   setSecond(e.target.value as (typeof units)[number]);
@@ -135,42 +136,32 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
         <div className="live-mathematics" aria-live="polite">
           <h3>Block and radical-layer evidence</h3>
           <p>
-            A is finite-dimensional ({model.dimension}) and unital over{" "}
-            {field === "Q" ? "ℚ" : "𝔽₂"}. Its radical has dimension{" "}
-            {model.radicalDimension}; A/J(A)≅{model.quotient}. A{" "}
-            {model.semisimple ? "is" : "is not"} semisimple.
+            <Prose>{String.raw`$A$ is finite-dimensional ($${model.dimension}$) and unital over $${field === "Q" ? String.raw`\mathbb Q` : String.raw`\mathbb F_2`}$. Its radical has dimension $${model.radicalDimension}$; $A/J(A)\cong${display.quotient}$. $A$ ${model.semisimple ? "is" : "is not"} semisimple.`}</Prose>
           </p>
           <p>
-            {model.blocks}. {model.simples}. {model.regular}.
+            <Prose>{`${display.blocks}. ${display.simples}. ${display.regular}.`}</Prose>
           </p>
           <p>
-            {model.naturalModule}. {model.failure}.
+            <Prose>{`${display.naturalModule}. ${display.failure}.`}</Prose>
           </p>
           {algebra === "matrix" && (
             <p>
-              {first}
-              {second}={product}; EᵢⱼEₖₗ is zero unless j=k. The two column
-              copies of F² account for the regular module’s multiplicity.
+              <Prose>{String.raw`$E_{${i}${j}}E_{${k}${l}}=${product === "0" ? "0" : `E_{${i}${l}}`}$; $E_{ij}E_{kl}$ is zero unless $j=k$. The two column copies of $F^2$ account for the regular module’s multiplicity.`}</Prose>
             </p>
           )}
           {algebra === "triangular" && (
             <p>
-              For A=[[a,b],[0,c]], J(A) consists of [[0,b],[0,0]]. On V=F²,
-              E₁₂e₂=e₁; the socle Fe₁ and quotient V/Fe₁ are simple, but no
-              invariant line complements Fe₁.
+              <Prose>{String.raw`For $A=\{\begin{pmatrix}a&b\\0&c\end{pmatrix}:a,b,c\in F\}$, $J(A)$ consists of matrices $\begin{pmatrix}0&b\\0&0\end{pmatrix}$. On $V=F^2$, $E_{12}e_2=e_1$; the socle $Fe_1$ and quotient $V/Fe_1$ are simple, but no invariant line complements $Fe_1$.`}</Prose>
             </p>
           )}
           {algebra === "group-c2" && (
             <p>
-              {field === "Q"
-                ? "The explicit block map sends a+bg to (a+b,a−b), with inverse (x,y)↦((x+y)/2)+((x−y)/2)g."
-                : "The element ε=g+1 has ε²=0 and spans the radical; no idempotent split using 1/2 exists."}
+              <Prose>{String.raw`${field === "Q" ? String.raw`The explicit block map sends $a+bg$ to $(a+b,a-b)$, with inverse $(x,y)\mapsto\frac{x+y}{2}+\frac{x-y}{2}g$.` : String.raw`The element $\varepsilon=g+1$ has $\varepsilon^2=0$ and spans the radical; no idempotent split using $1/2$ exists.`}`}</Prose>
             </p>
           )}
           {failure && (
             <p role="status">
-              Failure witness: the two one-dimensional layers of the natural
-              T₂(F)-module do not split, because E₁₂ carries e₂ to e₁.
+              <Prose>{String.raw`Failure witness: the two one-dimensional layers of the natural $T_2(F)$-module do not split, because $E_{12}$ carries $e_2$ to $e_1$.`}</Prose>
             </p>
           )}
           <table>
@@ -184,23 +175,35 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
             <tbody>
               <tr>
                 <th scope="row">Hypotheses</th>
-                <td>Associative, finite-dimensional, unital F-algebra</td>
+                <td>
+                  <Prose>
+                    {"Associative, finite-dimensional, unital $F$-algebra"}
+                  </Prose>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Dimension</th>
-                <td>{model.dimension}</td>
+                <td>
+                  <M>{String(model.dimension)}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Radical dimension</th>
-                <td>{model.radicalDimension}</td>
+                <td>
+                  <M>{String(model.radicalDimension)}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Semisimple quotient</th>
-                <td>{model.quotient}</td>
+                <td>
+                  <M>{display.quotient}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">Module layers</th>
-                <td>{model.naturalModule}</td>
+                <td>
+                  <Prose>{display.naturalModule}</Prose>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -220,13 +223,7 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
       <div className="laboratory-debrief">
         <h3>Theorem debrief and proof boundary</h3>
         <p>
-          The displayed matrices compute these finite examples. The general
-          Artin–Wedderburn theorem requires a semisimple Artinian unital ring;
-          finite-dimensional semisimple F-algebras satisfy that condition.
-          Quotienting by J(A) produces semisimple blocks but does not split
-          every A-module extension. For left modules, the commuting endomorphism
-          division ring becomes a right scalar ring only after reversing
-          multiplication: the opposite-ring step cannot be dropped.
+          <Prose>{String.raw`The displayed matrices compute these finite examples. The general Artin–Wedderburn theorem requires a semisimple Artinian unital ring; finite-dimensional semisimple $F$-algebras satisfy that condition. Quotienting by $J(A)$ produces semisimple blocks but does not split every $A$-module extension. For left modules, the commuting endomorphism division ring becomes a right scalar ring only after reversing multiplication: the opposite-ring step cannot be dropped.`}</Prose>
         </p>
         <p>
           <Prose>{lesson.title}</Prose> separates algebra blocks, simple

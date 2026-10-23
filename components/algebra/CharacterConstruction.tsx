@@ -38,10 +38,7 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
   return (
     <div className="foundation-lab">
       <p>
-        Construct the complex character table of S₃ from actual left
-        representations, then use class-weighted inner products. The three point
-        permutation representation has trace equal to fixed points; subtract its
-        constant line to obtain the two-dimensional standard row.
+        <Prose>{String.raw`Construct the complex character table of $S_3$ from actual left representations, then use class-weighted inner products. The three point permutation representation has trace equal to fixed points; subtract its constant line to obtain the two-dimensional standard row.`}</Prose>
       </p>
       <M block>
         {
@@ -129,57 +126,40 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
       </button>
       {revealed && (
         <div className="live-mathematics" aria-live="polite">
-          <h3>Constructed S₃ character evidence</h3>
+          <h3>
+            Constructed <M>{"S_3"}</M> character evidence
+          </h3>
           {stage === "classes" && (
             <p>
-              Conjugacy classes are e (size 1), transpositions (size 3), and
-              3-cycles (size 2). Their sizes sum to |S₃|={model.order}; a
-              character is constant on each class because trace is unchanged
-              under conjugation.
+              <Prose>{String.raw`Conjugacy classes are $e$ (size $1$), transpositions (size $3$), and $3$-cycles (size $2$). Their sizes sum to $|S_3|=${model.order}$; a character is constant on each class because trace is unchanged under conjugation.`}</Prose>
             </p>
           )}
           {stage === "representations" && (
             <p>
-              Trivial trace: {rowText(s3Character("trivial"))}; sign from
-              parity:
-              {rowText(s3Character("sign"))}. The three-point permutation trace
-              counts fixed points:{" "}
-              {rowText(s3Classes.map((item) => item.fixedPoints))}. Subtracting
-              the trivial row yields Std={rowText(s3Character("standard"))}.
+              <Prose>{String.raw`Trivial trace: $${rowText(s3Character("trivial"))}$; sign from parity: $${rowText(s3Character("sign"))}$. The three-point permutation trace counts fixed points: $${rowText(s3Classes.map((item) => item.fixedPoints))}$. Subtracting the trivial row yields $\mathrm{Std}=${rowText(s3Character("standard"))}$.`}</Prose>
             </p>
           )}
           {stage === "orthogonality" && (
             <p>
-              With{" "}
-              {weighting === "class-size"
-                ? "class-size weights (1,3,2)"
-                : "incorrect equal-column weights (1,1,1)"}
-              , ⟨Std,Std⟩={scalarText(model.standardNorm)}. The correct weighted
-              norm is 1; the equal-column result 5/3 violates irreducible
-              orthogonality. Degrees satisfy 1²+1²+2²={model.degreesSquared}
-              =|S₃|.
+              <Prose>{String.raw`With ${weighting === "class-size" ? "class-size weights $(1,3,2)$" : "incorrect equal-column weights $(1,1,1)$"}, $\langle\mathrm{Std},\mathrm{Std}\rangle=${scalarText(model.standardNorm)}$. The correct weighted norm is $1$; the equal-column result $5/3$ violates irreducible orthogonality. Degrees satisfy $1^2+1^2+2^2=${model.degreesSquared}=|S_3|$.`}</Prose>
             </p>
           )}
           {stage === "decomposition" && (
             <p>
-              χ_{first}χ_{second}={rowText(model.product)}. Inner products give
-              multiplicities: trivial {scalarText(model.multiplicities.trivial)}
-              , sign {scalarText(model.multiplicities.sign)}, standard{" "}
-              {scalarText(model.multiplicities.standard)}.
-              {weighting === "class-size" &&
-                first === "standard" &&
-                second === "standard" &&
-                " Thus Std⊗Std≅1⊕sgn⊕Std."}
+              <Prose>{String.raw`$\chi_{\mathrm{${first}}}\chi_{\mathrm{${second}}}=${rowText(model.product)}$. Inner products give multiplicities: trivial $${scalarText(model.multiplicities.trivial)}$, sign $${scalarText(model.multiplicities.sign)}$, standard $${scalarText(model.multiplicities.standard)}$.${weighting === "class-size" && first === "standard" && second === "standard" ? String.raw` Thus $\mathrm{Std}\otimes\mathrm{Std}\cong\mathbf1\oplus\mathrm{sgn}\oplus\mathrm{Std}$.` : ""}`}</Prose>
             </p>
           )}
           <table>
-            <caption>S₃ rows constructed from fixed points and parity</caption>
+            <caption>
+              <Prose>{String.raw`$S_3$ rows constructed from fixed points and parity`}</Prose>
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Representation</th>
                 {s3Classes.map((item) => (
                   <th scope="col" key={item.name}>
-                    {item.name} · size {item.size}
+                    {item.name === "e" ? <M>{"e"}</M> : item.name} · size{" "}
+                    <M>{String(item.size)}</M>
                   </th>
                 ))}
               </tr>
@@ -188,14 +168,18 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
               <tr>
                 <th scope="row">Permutation on three points</th>
                 {s3Classes.map((item) => (
-                  <td key={item.name}>{item.fixedPoints}</td>
+                  <td key={item.name}>
+                    <M>{String(item.fixedPoints)}</M>
+                  </td>
                 ))}
               </tr>
               {characterNames.map((name) => (
                 <tr key={name}>
                   <th scope="row">{name}</th>
                   {s3Character(name).map((value, index) => (
-                    <td key={s3Classes[index].name}>{value}</td>
+                    <td key={s3Classes[index].name}>
+                      <M>{String(value)}</M>
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -217,12 +201,7 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
       <div className="laboratory-debrief">
         <h3>Theorem debrief and proof boundary</h3>
         <p>
-          The table follows from the three displayed representations, not a list
-          of memorised rows. Complex-character orthogonality requires the actual
-          class sizes and a proof via matrix coefficients. The finite
-          computation verifies S₃; it does not prove orthogonality for every
-          finite group. Maschke’s averaging needs |G| invertible in the field,
-          and Schur’s scalar conclusion needs an algebraically closed field.
+          <Prose>{String.raw`The table follows from the three displayed representations, not a list of memorised rows. Complex-character orthogonality requires the actual class sizes and a proof via matrix coefficients. The finite computation verifies $S_3$; it does not prove orthogonality for every finite group. Maschke’s averaging needs $|G|$ invertible in the field, and Schur’s scalar conclusion needs an algebraically closed field.`}</Prose>
         </p>
         <p>
           <Prose>{lesson.title}</Prose> connects trace to representation

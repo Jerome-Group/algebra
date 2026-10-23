@@ -5,7 +5,7 @@ import {
   operationModel,
   type OperationKind,
 } from "@/lib/algebra/foundation-labs";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 export function OperationChecker({ lesson }: { lesson: Lesson }) {
   const [size, setSize] = useState(3);
   const [kind, setKind] = useState<OperationKind>(
@@ -19,10 +19,7 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
         block
       >{`G=\\{${model.elements.join(",")}\\},\\qquad (a\\star b)\\star c\\stackrel{?}{=}a\\star(b\\star c)`}</M>
       <p>
-        The set is {"{"}
-        {model.elements.join(", ")}
-        {"}"}. Row a and column b contain a⋆b. Associativity is checked on every
-        triple, independently of how the table looks.
+        <Prose>{String.raw`The set is $\{${model.elements.join(", ")}\}$. Row $a$ and column $b$ contain $a\star b$. Associativity is checked on every triple, independently of how the table looks.`}</Prose>
       </p>
       <label>
         Number of elements
@@ -36,8 +33,9 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <label>
-        Operation ⋆
+        Operation <M focusable={false}>{String.raw`\star`}</M>
         <select
+          aria-label="Operation ⋆"
           value={kind}
           onChange={(event) => setKind(event.target.value as OperationKind)}
         >
@@ -54,10 +52,12 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
           <caption>Complete operation table</caption>
           <thead>
             <tr>
-              <th scope="col">a⋆b</th>
+              <th scope="col">
+                Product <M>{String.raw`a\star b`}</M>
+              </th>
               {model.elements.map((b) => (
                 <th scope="col" key={b}>
-                  {b}
+                  <M>{String(b)}</M>
                 </th>
               ))}
             </tr>
@@ -65,9 +65,13 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
           <tbody>
             {model.table.map((row, a) => (
               <tr key={a}>
-                <th scope="row">{a}</th>
+                <th scope="row">
+                  <M>{String(a)}</M>
+                </th>
                 {row.map((value, b) => (
-                  <td key={b}>{value}</td>
+                  <td key={b}>
+                    <M>{String(value)}</M>
+                  </td>
                 ))}
               </tr>
             ))}
@@ -76,38 +80,32 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
       </div>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          Closure:{" "}
-          {model.closureWitness
-            ? `fails: ${model.closureWitness.a}⋆${model.closureWitness.b}=${model.closureWitness.value} is outside the set`
-            : "passes for every pair"}
-          .
+          <Prose>{String.raw`Closure: ${model.closureWitness ? String.raw`fails: $${model.closureWitness.a}\star${model.closureWitness.b}=${model.closureWitness.value}$ is outside the set` : "passes for every pair"}.`}</Prose>
         </p>
         <p>
           Two-sided identity:{" "}
-          {model.closureWitness
-            ? "not evaluated outside a closed operation"
-            : model.identity === undefined
-              ? "none"
-              : model.identity}
+          {model.closureWitness ? (
+            "not evaluated outside a closed operation"
+          ) : model.identity === undefined ? (
+            "none"
+          ) : (
+            <M>{String(model.identity)}</M>
+          )}
           .
         </p>
         <p>
           Two-sided inverses:{" "}
-          {model.identity === undefined
-            ? "requires an identity"
-            : model.missingInverse === undefined
-              ? "every element has one"
-              : `${model.missingInverse} has no inverse`}
+          {model.identity === undefined ? (
+            "requires an identity"
+          ) : model.missingInverse === undefined ? (
+            "every element has one"
+          ) : (
+            <Prose>{`$${model.missingInverse}$ has no inverse`}</Prose>
+          )}
           .
         </p>
         <p>
-          Associativity:{" "}
-          {model.closureWitness
-            ? "requires closure before nesting the operation"
-            : failure
-              ? `fails: (${failure.a}⋆${failure.b})⋆${failure.c}=${failure.left}, but ${failure.a}⋆(${failure.b}⋆${failure.c})=${failure.right}`
-              : `passes all ${size ** 3} triples`}
-          .
+          <Prose>{String.raw`Associativity: ${model.closureWitness ? "requires closure before nesting the operation" : failure ? String.raw`fails: $(${failure.a}\star${failure.b})\star${failure.c}=${failure.left}$, but $${failure.a}\star(${failure.b}\star${failure.c})=${failure.right}$` : `passes all $${size ** 3}$ triples`}.`}</Prose>
         </p>
         <p>
           <strong>

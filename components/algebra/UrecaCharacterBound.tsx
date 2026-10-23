@@ -1,4 +1,5 @@
 "use client";
+import { Math as M, Prose } from "./Math";
 import { Diagram } from "./Diagram";
 import {
   dihedralCharacter,
@@ -47,28 +48,18 @@ export function UrecaCharacterBound({ state }: { state: UrecaSelection }) {
         </Diagram>
         <div className="live-mathematics" aria-live="polite">
           <p>
-            Eigenvalues:{" "}
-            {element === 0
-              ? "1, 1"
-              : element === 1
-                ? "i, −i"
-                : element === 2
-                  ? "−1, −1"
-                  : element === 3
-                    ? "−i, i"
-                    : "1, −1"}
-            . Their sum is χ(h)={trace}; degree d=2.
+            <Prose>{String.raw`Eigenvalues: $${element === 0 ? "1,1" : element === 1 ? "i,-i" : element === 2 ? "-1,-1" : element === 3 ? "-i,i" : "1,-1"}$. Their sum is $\chi(h)=${trace}$; degree $d=2$.`}</Prose>
           </p>
           <p>
-            |χ(h)|={Math.abs(trace)}.{" "}
-            {scalar === null
-              ? "Strict bound: the image is not scalar."
-              : `Equality: image ${scalar === 1 ? "I₂" : "−I₂"} is scalar.`}{" "}
-            {element === 0 ? "h is in the kernel." : "h is not in the kernel."}
+            <Prose>{String.raw`$|\chi(h)|=${Math.abs(trace)}$. ${scalar === null ? "Strict bound: the image is not scalar." : `Equality: image $${scalar === 1 ? "I_2" : "-I_2"}$ is scalar.`} ${element === 0 ? "$h$ is in the kernel." : "$h$ is not in the kernel."}`}</Prose>
           </p>
         </div>
-        <button onClick={() => setElement(2)}>
-          Try −I₂: absolute equality outside the kernel
+        <button
+          aria-label="Try −I₂: absolute equality outside the kernel"
+          onClick={() => setElement(2)}
+        >
+          Try <M focusable={false}>{"-I_2"}</M>: absolute equality outside the
+          kernel
         </button>
         <p>
           The general proof uses diagonalizability of a finite-order complex

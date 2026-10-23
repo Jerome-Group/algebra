@@ -1,0 +1,380 @@
+{
+  "foundations-functions": {
+    "prediction": "Which fiber loses an input and which gains it if $f(0)$ changes from $0$ to $1$?",
+    "objects": "A function from $X=\\{0,1,2,3,4,5\\}$ to $Y=\\{0,1,2\\}$; input equivalence is congruence modulo $m$.",
+    "invariant": "Every input has exactly one output; the nonempty fibers partition $X$."
+  },
+  "foundations-fibers": {
+    "prediction": "Change $f(4)$ to $0$: predict the sizes of the fibers of $0$ and $1$.",
+    "counterexample": "Assign every input output $0$; surjectivity fails but the nonempty fiber still partitions $X$."
+  },
+  "foundations-quotient-rules": {
+    "question": "When does $[x]\\mapsto f(x)$ survive a different representative?",
+    "prediction": "With $f(x)=x\\bmod3$ and parity input classes, compare representatives $0$ and $2$.",
+    "objects": "Domain quotient $X/{\\sim}$, where $\\sim$ is congruence modulo $m$; the target $Y$ is not quotiented.",
+    "invariant": "A well-defined map must be constant on each chosen input class.",
+    "debrief": "A finite witness disproves the proposed rule. Absence of a witness certifies only this displayed finite domain; the lesson proves the general criterion."
+  },
+  "mh2220-axioms": {
+    "prediction": "Before choosing subtraction modulo $3$, predict which axiom will fail.",
+    "objects": "Finite set $\\{0,\\ldots,n-1\\}$; operation choices are modular addition, multiplication, subtraction, or unreduced addition.",
+    "debrief": "Exhaustive checks prove the axioms for the displayed finite operation. A family-wide result needs the algebraic proof in the lesson."
+  },
+  "mh2220-inverse-order": {
+    "prediction": "In $C_{12}$ choose $8$: will its order be $3$, $6$ or $12$?",
+    "objects": "Additive $C_n$ with a chosen residue generator and its additive inverse.",
+    "invariant": "A word evaluates by addition modulo $n$; the first positive return is $n/\\gcd(n,g)$.",
+    "counterexample": "Choose $4$ in $C_{12}$: a nonzero element has order $3$ and does not generate all twelve elements."
+  },
+  "mh2220-generators": {
+    "prediction": "For $g=4$ in $C_{12}$ predict the reachable set; then test $r^3=e$ and $srs=r^{-1}$ in $S_3$.",
+    "objects": "Additive $C_n$ with $g$ and $-g$, plus $S_3$ with $r=(123)$, $s=(12)$; products in $S_3$ apply the right factor first.",
+    "invariant": "BFS records shortest words. The $S_3$ relations yield six normal forms only after a reduction argument; observed identity words alone are not a completeness proof.",
+    "counterexample": "$\\langle4\\rangle\\cup\\langle6\\rangle$ in $C_{12}$ omits $10$ although their join contains it; a sampled relation without normal forms does not present an arbitrary group.",
+    "debrief": "The cyclic graph proves finite reachability for the selected $C_n$. The $S_3$ table checks three defining relations; a separate normal-form upper bound plus six distinct images proves that particular presentation complete.",
+    "fallback": "Reachability, shortest lengths, $C_n$ subgroups, $S_3$ words, relations and normal forms are all available in labelled text and tables."
+  },
+  "mh2220-cyclic": {
+    "question": "Which residues generate $C_n$?",
+    "prediction": "Compare $4$ and $5$ in $C_{12}$: which gives all twelve points?",
+    "objects": "Additive $C_n$ with $n\\in\\{6,8,12\\}$, a chosen residue $g$, shortest $\\pm g$ words and every divisor-order subgroup.",
+    "invariant": "$\\operatorname{ord}(g)=n/\\gcd(n,g)$; one subgroup of each divisor order is listed with every element.",
+    "counterexample": "In $C_{12}$, $\\langle4\\rangle\\cup\\langle6\\rangle$ is not a subgroup, while their join is $\\langle2\\rangle$.",
+    "debrief": "The finite table shows every subgroup for the selected $C_n$ and the current first-return relation. The exponent/least-positive-return proof in the lesson establishes the classification for all cyclic groups."
+  },
+  "mh2220-cosets": {
+    "prediction": "For $H=\\{e,(12)\\}$, predict whether $(123)H$ equals $H(123)$.",
+    "objects": "$S_3$ acts on three letters; permutation products apply the right factor first.",
+    "debrief": "The tiling is a complete finite example. Translation $h\\mapsto ah$ proves equal coset cardinality for arbitrary groups."
+  },
+  "mh2220-lagrange": {
+    "objects": "$G=S_3$ and one of four explicitly listed subgroups.",
+    "invariant": "$6=[G:H]|H|$ for every selected subgroup.",
+    "debrief": "This partition illustrates Lagrange. It does not prove a converse; the lesson gives the $A_4$ counterexample to subgroup existence for every divisor."
+  },
+  "mh2220-normal": {
+    "prediction": "For $A_3$, predict whether conjugating a 3-cycle by a transposition fixes that element or swaps it.",
+    "objects": "$S_3$, a chosen subgroup $H$ and a conjugating permutation $a$; $ab$ applies $b$ first.",
+    "invariant": "Normality is equality $aHa^{-1}=H$ for every $a$, not pointwise fixation."
+  },
+  "mh2220-quotient": {
+    "prediction": "Compare $H=\\{e,(12)\\}$ with $A_3$: predict which admits a quotient table.",
+    "objects": "Left cosets of $H\\le S_3$; the product is attempted using representatives.",
+    "invariant": "A quotient table appears only for normal $H$.",
+    "debrief": "The witness rejects a nonnormal quotient. The expression $anbm=ab(b^{-1}nb)m$ explains why normality makes the general law well-defined."
+  },
+  "mh2220-actions": {
+    "objects": "$S_3$ acting on letters, on itself by left multiplication, or on itself by conjugation.",
+    "invariant": "The identity acts trivially and $(gh)\\cdot x=g\\cdot(h\\cdot x)$ for each action."
+  },
+  "mh2220-orbit-stabilizer": {
+    "objects": "Left actions of $S_3$ on three letters or its six elements.",
+    "invariant": "$|\\operatorname{orbit}(x)|\\,|\\operatorname{stabilizer}(x)|=6$, with concrete sets shown.",
+    "counterexample": "A fixed point has orbit size one and stabilizer all of $G$, even in a faithful action.",
+    "debrief": "The bijection $gG_x\\mapsto g\\cdot x$ explains the formula. The table enumerates this finite example and displays all hypotheses."
+  },
+  "actions-faithful-transitive": {
+    "prediction": "For conjugation on $S_3$, predict the kernel and the orbit of identity.",
+    "objects": "$S_3$ acting on its elements by conjugation, or the natural and regular actions for comparison.",
+    "counterexample": "Conjugation on $S_3$ is faithful but not transitive.",
+    "debrief": "The kernel is the center for conjugation; $S_3$ has trivial center. One fixed point does not mean every group element acts trivially everywhere."
+  },
+  "actions-stabilizer-kernel-core": {
+    "objects": "$S_3$ with a left action; the core is the intersection of conjugates of the selected point stabilizer.",
+    "counterexample": "At the identity conjugation orbit, the core is $S_3$ while the whole-action kernel is $\\{e\\}$."
+  },
+  "actions-regular-conjugation": {
+    "prediction": "Apply $(12)$ to $e$ under regular multiplication and under conjugation.",
+    "objects": "$S_3$ acting on itself by $g\\cdot x=gx$ or $g\\cdot x=gxg^{-1}$.",
+    "counterexample": "Identity is a singleton conjugacy class but its regular orbit is all of $S_3$."
+  },
+  "m3220-modules": {
+    "prediction": "Choose $n$, scalar $r$, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left $\\mathbb Z$-module $M=\\mathbb Z/n\\mathbb Z$ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by $\\mathbb Z\\to\\operatorname{End}(M)$; $\\operatorname{im}(\\times r)\\cong M/\\ker(\\times r)$, while a section is needed for splitting.",
+    "counterexample": "$2$ is a nonunit of $\\mathbb Z$ but acts invertibly on $\\mathbb Z/3\\mathbb Z$; $0\\to\\mathbb Z\\xrightarrow{\\times6}\\mathbb Z\\to\\mathbb Z/6\\mathbb Z\\to0$ is exact and nonsplit."
+  },
+  "modules-generators": {
+    "prediction": "Choose $n$, scalar $r$, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left $\\mathbb Z$-module $M=\\mathbb Z/n\\mathbb Z$ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by $\\mathbb Z\\to\\operatorname{End}(M)$; $\\operatorname{im}(\\times r)\\cong M/\\ker(\\times r)$, while a section is needed for splitting.",
+    "counterexample": "$2$ is a nonunit of $\\mathbb Z$ but acts invertibly on $\\mathbb Z/3\\mathbb Z$; $0\\to\\mathbb Z\\xrightarrow{\\times6}\\mathbb Z\\to\\mathbb Z/6\\mathbb Z\\to0$ is exact and nonsplit."
+  },
+  "m3220-annihilator": {
+    "prediction": "Choose $n$, scalar $r$, a submodule generator, a vector and a learning stage. Predict the selected invariant before revealing it.",
+    "objects": "One left $\\mathbb Z$-module $M=\\mathbb Z/n\\mathbb Z$ carried through action, presentation, submodule/quotient, and exactness stages.",
+    "invariant": "The left action is typed by $\\mathbb Z\\to\\operatorname{End}(M)$; $\\operatorname{im}(\\times r)\\cong M/\\ker(\\times r)$, while a section is needed for splitting.",
+    "counterexample": "$2$ is a nonunit of $\\mathbb Z$ but acts invertibly on $\\mathbb Z/3\\mathbb Z$; $0\\to\\mathbb Z\\xrightarrow{\\times6}\\mathbb Z\\to\\mathbb Z/6\\mathbb Z\\to0$ is exact and nonsplit."
+  },
+  "orthogonal-axis-angle": {
+    "prediction": "For axis $(1,1,1)$, compare $60^\\circ$ and $120^\\circ$ cube preservation; then try a general nonzero axis.",
+    "objects": "Any nonzero real axis vector in $\\mathbb R^3$, a continuous angle from $0^\\circ$ to $360^\\circ$, and the cube vertex set.",
+    "counterexample": "$60^\\circ$ about $(1,1,1)$, or $60^\\circ$ about $(1,2,0)$, preserves Euclidean geometry but has no cube-group permutation or word.",
+    "debrief": "The matrix and dashed axis follow the selected real vector and angle. Exact matrix matching identifies cube symmetries; the $0^\\circ$ and $180^\\circ$ ambiguity and the general proof are explained in the lesson."
+  },
+  "representations-real-complex": {
+    "name": "Real and complex $C_3$ representation",
+    "prediction": "Predict whether the real $120^\\circ$ rotation has a real invariant line, then compare its two complex eigenlines.",
+    "objects": "$C_3$ acting on a two-dimensional real space by a $120^\\circ$ rotation, then its complexification on $\\mathbb C^2$.",
+    "counterexample": "A real irreducible plane can split into two complex one-dimensional subspaces.",
+    "debrief": "$C_3$ on a two-dimensional space. Switching the scalar field preserves the group and matrix; there is no extra fixed axis. This experiment tests the displayed example; the lesson supplies the general argument."
+  },
+  "linear-quotient": {
+    "objects": "A two-dimensional vector space over the selected finite field and a linear map on columns.",
+    "invariant": "Nonempty fibers are kernel cosets; $|\\mathrm{domain}|/|\\ker|=|\\operatorname{im}|$.",
+    "counterexample": "A noninvertible map may have several inputs with the same output, while targets outside its image have empty fibers."
+  },
+  "mh2220-semidirect": {
+    "name": "$C_3\\rtimes C_2$ product constructor",
+    "question": "How can $C_3$ and $C_2$ produce either $S_3$ or $C_6$?",
+    "objects": "Pairs in $C_3\\times C_2$ with left action $\\alpha:C_2\\to\\operatorname{Aut}(C_3)$; $b$ acts on the next rotation coordinate.",
+    "invariant": "$\\alpha(s)^2=\\operatorname{id}$ and $\\alpha(s)$ is invertible; the normal $C_3$ and complementary $C_2$ yield a split extension.",
+    "counterexample": "The zero endomorphism is not an automorphism or a valid $C_2$ action; $C_4$ is a nonsplit $C_2$ extension.",
+    "debrief": "The six-element table tests $S_3$ or $C_6$. Associativity in general uses $\\alpha(hk)=\\alpha(h)\\alpha(k)$; internal splitting uses normality, trivial intersection and generation."
+  },
+  "ureca-character-bound-kernel": {
+    "prediction": "For the $D_8$ half-turn $r^2$, predict $\\chi(r^2)$, $|\\chi(r^2)|$ and whether $r^2$ is in the kernel.",
+    "objects": "The faithful degree-two complexified square representation of $D_8$; $r^2$ acts as $-I_2$.",
+    "invariant": "For finite-order matrices, $|\\chi(g)|\\le\\mathrm{degree}$; equality means scalar image, while $\\chi(g)=\\mathrm{degree}$ means identity image.",
+    "counterexample": "The central half-turn has $|\\chi|=2$ and is not a kernel element.",
+    "debrief": "The eigenvalue argument above proves the general bound. A plotted or tabulated equality alone illustrates it; only equality of the actual trace with degree proves kernel membership."
+  },
+  "ureca-external-tensor-products": {
+    "prediction": "For $\\pi(a)=\\omega$ on $\\mathbb C$ and $\\rho(r^2)=-I_2$, predict the product degree and trace at $(a,r^2)$.",
+    "objects": "$C_3$-character line $V$ and $D_8$ square plane $W$ over $\\mathbb C$; $(g,h)$ acts on $V\\otimes W$.",
+    "counterexample": "The nonidentity pair $(a,r^2)$ cancels in the $C_2\\times D_8$ variant."
+  },
+  "ureca-direct-product-irreducibles": {
+    "prediction": "Predict the number and degree-squared total for $C_3\\times D_8$ before viewing the accounting table.",
+    "objects": "Irreducible complex characters of $C_3$ and $D_8$; external products form rows for $C_3\\times D_8$.",
+    "invariant": "Inner products factor and the sum of squared product degrees is $|G||H|$.",
+    "counterexample": "A list of products without orthogonality cannot certify irreducibility."
+  },
+  "ureca-product-kernel-scalar-matching": {
+    "prediction": "Choose $C_2$ or $C_3$ with the $D_8$ square representation. Predict whether a nonidentity product pair acts as identity.",
+    "objects": "A faithful complex character of $C_2$ or $C_3$ and the faithful degree-two $D_8$ square representation.",
+    "invariant": "A pair is in the product kernel exactly when its two operator scalars are reciprocal.",
+    "counterexample": "The pair $(a,r^2)$ lies in the $C_2\\times D_8$ kernel despite both factor kernels being trivial."
+  },
+  "ureca-faithful-direct-product": {
+    "prediction": "Predict the difference between $C_2\\times D_8$ and $C_3\\times D_8$ before checking center orders and kernel pairs.",
+    "objects": "The faithful one-dimensional $C_n$ character and faithful degree-two complex $D_8$ square representation.",
+    "counterexample": "The $C_2\\times D_8$ nonidentity pair $(a,r^2)$ acts trivially, while $C_3\\times D_8$ has no such pair."
+  },
+  "mh2220-burnside": {
+    "objects": "A finite cyclic or dihedral group acts on labeled bead positions and hence on assignments of labeled colors.",
+    "invariant": "A coloring is fixed exactly when each permutation cycle is monochromatic; Burnside averages these counts over the whole group.",
+    "counterexample": "A nonidentity triangle rotation fixes no bead, but fixes both constant binary colorings. Naive division of $8$ by $3$ fails.",
+    "debrief": "Double-count $(g,c)$ with $g\\cdot c=c$: each coloring orbit contributes $|G|$ such pairs. This proves the formula; the table checks a finite instance."
+  },
+  "mh2220-necklaces": {
+    "question": "Why do six binary beads give $14$ necklaces but $13$ bracelets?",
+    "objects": "$C_n$ acts by rotations; $D_n$ adds $n$ reflections. Colors may repeat or be unused.",
+    "invariant": "A reflection through two opposite beads has two fixed positions and $n/2+1$ cycles; a gap-axis reflection has $n/2$ cycles.",
+    "counterexample": "Treating all even-$n$ reflections alike gives the wrong bracelet count; dividing $2^6$ by $12$ assumes a free action.",
+    "debrief": "Count cycles for every rotation and each reflection type, then average all $2n$ fixed-coloring counts. The table is the finite calculation."
+  },
+  "mh2220-cycle-index": {
+    "objects": "The action on $n$ bead positions has cycle-index monomials $\\prod_j a_j^{c_j}$. For two colors, replace $a_j$ by $x^j+y^j$.",
+    "invariant": "The coefficient of $x^r y^{n-r}$ after averaging counts orbits with exactly $r$ beads of the first color.",
+    "counterexample": "Substituting $a_j=2$ counts all binary colorings but cannot recover a prescribed inventory.",
+    "debrief": "Each cycle must use one color, contributing $x^j$ or $y^j$. Multiplying cycle factors and averaging is Burnside coefficient by coefficient."
+  },
+  "mh2220-solid-colorings": {
+    "objects": "The $24$ orientation-preserving signed-permutation matrices act separately on cube vertices, face centers and edge midpoints.",
+    "invariant": "The five proper cube rotation conjugacy classes have $1$, $6$, $3$, $8$ and $6$ elements. A class of size $m$ whose action has $c$ cycles contributes $m\\cdot q^c$ fixed colorings before averaging.",
+    "counterexample": "A face-axis quarter-turn fixes no vertex yet fixes $q^2$ vertex colorings. Face and vertex cycle polynomials differ.",
+    "debrief": "Each matrix induces an exact permutation on the chosen feature set. The class table yields $(q^8+17q^4+6q^2)/24$ for vertices; this finite ledger illustrates Burnside."
+  },
+  "orthogonal-metric-orientation": {
+    "prediction": "Predict the fixed-space dimensions of a plane reflection and $-I_3$ before comparing their matrices.",
+    "objects": "Real $\\mathbb R^2$ or $\\mathbb R^3$ column vectors, orthogonal matrices, coordinate-plane normals and the cube vertex set.",
+    "invariant": "$Q^TQ=I$ preserves all inner products; $\\det Q$ is $\\pm1$; fixed space and cube preservation are separate invariants.",
+    "counterexample": "A $37^\\circ$ $z$-axis rotation preserves metric and orientation but not the cube; $-I_3$ and a plane reflection have equal determinant but different fixed spaces.",
+    "debrief": "The controls synchronize matrix, dimension, determinant, fixed space, dot-product calculation and cube verdict. The displayed examples illustrate the general identity $(Qu)\\cdot(Qv)=u^TQ^TQv$, proved in the lesson."
+  },
+  "orthogonal-plane": {
+    "question": "Which line does $R_\\theta F$ fix, and how does $FR_\\theta$ differ?",
+    "prediction": "At $\\theta=0$ predict the shared fixed line, then at $\\theta=90^\\circ$ predict the two fixed lines of $R_\\theta F$ and $FR_\\theta$.",
+    "objects": "$\\mathbb R^2$ column vectors, $R_\\theta$ counterclockwise, and one fixed $F=\\operatorname{diag}(1,-1)$; products apply the right factor first.",
+    "invariant": "Both products are reflections with determinant $-1$; $R_\\theta F$ fixes $\\theta/2$ and $FR_\\theta$ fixes $-\\theta/2$ modulo $180^\\circ$.",
+    "counterexample": "At $\\theta=90^\\circ$, the two products fix $y=x$ and $y=-x$ respectively; treating the composition order as interchangeable fails.",
+    "debrief": "The graphic, selected product and exact $F$ convention agree at $\\theta=0$ and throughout the slider. Matrix multiplication proves $FR_\\theta F=R_{-\\theta}$ and the half-angle rule; the display tests examples.",
+    "fallback": "Both matrices, selected fixed-line angle and image of $e_1$ are available as text and rendered equations."
+  },
+  "mh2220-cayley-embedding": {
+    "question": "How does left multiplication turn every $S_3$ element into a distinct permutation?",
+    "prediction": "For $g=(123)$ and $h=(12)$, predict $\\lambda_g(e)$, $\\lambda_h(e)$ and whether $\\lambda_g\\lambda_h=\\lambda_{gh}$.",
+    "objects": "$S_3$ acting on its own six elements by $\\lambda_g(x)=gx$; right factor acts first in a product.",
+    "invariant": "Every $\\lambda_g$ is a permutation; $\\lambda_g\\circ\\lambda_h=\\lambda_{gh}$ and $\\lambda_g(e)=g$, so $\\lambda$ is an injective homomorphism.",
+    "counterexample": "$S_3$ embeds into $S_6$ by its regular action but already acts faithfully on three letters; degree six is not minimal.",
+    "fallback": "Every $\\lambda_g$ permutation, selected product, composition check and identity image are provided as labelled text and tables."
+  },
+  "mh2220-sylow-existence": {
+    "question": "Which centralizer retains the full $p$-power in $S_3$?",
+    "prediction": "Choose $p=2$ or $p=3$; predict the required Sylow subgroup order and a class whose centralizer has that $p$-part.",
+    "objects": "$S_3$ conjugacy classes, centralizers and explicit Sylow subgroups.",
+    "invariant": "The chosen centralizer for a class of $p$-coprime size retains the full $p$-part of $|G|$.",
+    "counterexample": "A proper centralizer whose index is divisible by $p$ need not retain the full $p$-power.",
+    "debrief": "The table checks one finite group. The guided proof supplies both induction branches, including a central subgroup when $p$ divides $|Z(G)|$."
+  },
+  "mh2220-sylow-conjugacy": {
+    "prediction": "For $p=2$ in $S_3$, choose distinct Sylow subgroups $P$ and $Q$; predict the $P$-orbit sizes on $G/Q$ and identify a fixed coset.",
+    "objects": "A Sylow $p$-subgroup $P$ of $S_3$ acting by left multiplication on cosets of an independently chosen Sylow subgroup $Q$.",
+    "invariant": "Coset count $[G:P]$ is coprime to $p$; $P$-orbit sizes are powers of $p$, so a fixed coset exists.",
+    "counterexample": "A set with size divisible by $p$ can consist entirely of nontrivial $p$-orbits; the fixed-point inference then fails.",
+    "debrief": "Fixed $gQ$ means $g^{-1}Pg\\le Q$; equal Sylow orders force equality. The listed $S_3$ cosets illustrate the general proof."
+  },
+  "mh2220-sylow-counts": {
+    "question": "Which Sylow counts pass arithmetic, and which occur in $S_3$?",
+    "prediction": "For $p=2$ in $S_3$, list the counts satisfying $n_2\\mid3$ and $n_2\\equiv1\\pmod2$; predict the actual count.",
+    "objects": "$S_3$ Sylow subgroups, their normalizer and conjugation orbits.",
+    "invariant": "$n_p=[G:N(P)]$ divides $[G:P]$ and is $1$ modulo $p$.",
+    "counterexample": "For $p=2$, $n_2=1$ passes arithmetic but $S_3$ has three distinct Sylow $2$-subgroups."
+  },
+  "m3220-ideals": {
+    "question": "Which ideals survive when we quotient by $I$?",
+    "prediction": "Choose an ideal of $\\mathbb Z/12\\mathbb Z$ or $\\mathbb F_2[X]$; predict which larger ideals correspond to ideals of the quotient.",
+    "objects": "An ideal $I$ in $\\mathbb Z/12\\mathbb Z$ or $\\mathbb F_2[X]$, its quotient $R/I$, and every displayed ideal $J$ containing $I$.",
+    "invariant": "$J\\supseteq I$ corresponds to $J/I$; multiplication of classes is independent of representatives only for a two-sided ideal.",
+    "counterexample": "The constants $H=\\{0,1\\}$ in $\\mathbb F_2[X]$ are an additive subgroup, but $X\\cdot1\\notin H$, so multiplication of proposed classes is not well-defined.",
+    "debrief": "The tables compute finite examples and their inclusion order. The general correspondence comes from ideal preimages under $R\\to R/I$; two-sided absorption proves multiplication descends."
+  },
+  "m3220-quotient-ring": {
+    "prediction": "Select $I$ in $\\mathbb Z/12\\mathbb Z$ or $\\mathbb F_2[X]$. Predict the quotient classes and whether a non-ideal additive subgroup could work.",
+    "objects": "Cosets of a chosen two-sided ideal, with explicit arithmetic in $\\mathbb Z/d\\mathbb Z$ and $\\mathbb F_2[X]/(q)$.",
+    "invariant": "For $i,j\\in I$, $(a+i)(b+j)-ab=aj+ib+ij\\in I$; units and zero divisors are computed in the quotient.",
+    "counterexample": "For constants $H\\subset\\mathbb F_2[X]$, $X$ and $X+1$ differ by $1\\in H$ but their products with $X$ differ by $X\\notin H$."
+  },
+  "m3220-polynomial-division": {
+    "prediction": "For $f=X^3+1$ and $g=X^2+1$ over $\\mathbb Z$, predict the quotient and remainder. Then open the workbench to change either polynomial or the coefficient ring.",
+    "objects": "The initial dividend is $X^3+1$ and divisor is $X^2+1$ over $\\mathbb Z$; after predicting, choose other coefficients or a finite coefficient ring.",
+    "invariant": "Each successful cancellation leaves $f=qg+r$; the remainder degree falls below the divisor degree.",
+    "counterexample": "Over $\\mathbb Z[X]$, dividing $X$ by $2X+1$ requires the unavailable coefficient $1/2$. A field permits it, while a monic divisor works over any commutative coefficient ring."
+  },
+  "m3220-gauss": {
+    "objects": "Worked polynomials in $\\mathbb Q[X]$, $\\mathbb R[X]$, $\\mathbb C[X]$ and $\\mathbb F_2[X]$, with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "$X^4+3X^2+2$ has no rational root but factors as $(X^2+1)(X^2+2)$; a failed Eisenstein test is inconclusive."
+  },
+  "m3220-eisenstein": {
+    "objects": "Worked polynomials in $\\mathbb Q[X]$, $\\mathbb R[X]$, $\\mathbb C[X]$ and $\\mathbb F_2[X]$, with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "$X^4+3X^2+2$ has no rational root but factors as $(X^2+1)(X^2+2)$; a failed Eisenstein test is inconclusive."
+  },
+  "m3220-irreducibility-tests": {
+    "objects": "Worked polynomials in $\\mathbb Q[X]$, $\\mathbb R[X]$, $\\mathbb C[X]$ and $\\mathbb F_2[X]$, with integer content tracked before coefficient reduction.",
+    "invariant": "A factorisation is valid only over its selected field; an irreducibility claim needs a degree or valid certificate under its hypotheses.",
+    "counterexample": "$X^4+3X^2+2$ has no rational root but factors as $(X^2+1)(X^2+2)$; a failed Eisenstein test is inconclusive."
+  },
+  "m3220-fractions": {
+    "objects": "Reduced fractions in $\\mathbb Z_{(3)}$, $\\mathbb Z[1/3]$ and $\\mathbb Q$, plus selected multiplicative subsets of $\\mathbb Z$.",
+    "invariant": "A reduced denominator decides membership; a map factors through $S^{-1}R$ exactly when its target makes every $s\\in S$ a unit.",
+    "counterexample": "In $\\mathbb Z/6\\mathbb Z$ with $S=\\{1,2,4\\}$, $1/1$ and $4/1$ become equivalent after an $S$-annihilator, although direct cross products differ."
+  },
+  "m3220-localization": {
+    "objects": "Reduced fractions in $\\mathbb Z_{(3)}$, $\\mathbb Z[1/3]$ and $\\mathbb Q$, plus selected multiplicative subsets of $\\mathbb Z$.",
+    "invariant": "A reduced denominator decides membership; a map factors through $S^{-1}R$ exactly when its target makes every $s\\in S$ a unit.",
+    "counterexample": "In $\\mathbb Z/6\\mathbb Z$ with $S=\\{1,2,4\\}$, $1/1$ and $4/1$ become equivalent after an $S$-annihilator, although direct cross products differ."
+  },
+  "m3220-prime-localization": {
+    "question": "Which reduced fractions are absent, units or nonunits in $\\mathbb Z_{(3)}$?",
+    "objects": "Reduced fractions in $\\mathbb Z_{(3)}$, $\\mathbb Z[1/3]$ and $\\mathbb Q$, plus selected multiplicative subsets of $\\mathbb Z$.",
+    "invariant": "A reduced denominator decides membership; a map factors through $S^{-1}R$ exactly when its target makes every $s\\in S$ a unit.",
+    "counterexample": "In $\\mathbb Z/6\\mathbb Z$ with $S=\\{1,2,4\\}$, $1/1$ and $4/1$ become equivalent after an $S$-annihilator, although direct cross products differ."
+  },
+  "m3220-noetherian": {
+    "objects": "Ascending, descending and prime-ideal chains in $\\mathbb Z$, $F[X_1,X_2,\\ldots]$, $F[X,Y]$ and $\\mathbb Z/12\\mathbb Z$.",
+    "counterexample": "$\\mathbb Z$ is infinite and Noetherian, while $(X_1)\\subsetneq(X_1,X_2)\\subsetneq\\cdots$ never stabilizes in the infinite-variable ring."
+  },
+  "m3220-submodules": {
+    "prediction": "For $T=\\operatorname{diag}(2,1)$ on $\\mathbb R^2$, predict whether the $x$-axis is stable and what $T$ induces on the quotient by it. Then change the operator.",
+    "objects": "The initial left $\\mathbb R[t]$-module $\\mathbb R^2$ has $t$ acting by $T=\\operatorname{diag}(2,1)$, with $W$ the $x$-axis.",
+    "invariant": "$T(W)\\subseteq W$ gives stability under every $p(T)$, and the quotient action remembers only the $y$-coordinate.",
+    "counterexample": "The line $\\mathbb R(e_1+e_2)$ is not stable under $\\operatorname{diag}(2,1)$: its image $2e_1+e_2$ is not on that line. Stability under one operator does not imply stability under an unrelated operator.",
+    "debrief": "The vector diagram checks one operator state. General quotient well-definedness needs submodule closure under every scalar, and $M/\\ker f\\cong\\operatorname{im}f$ is proved in the guided lesson.",
+    "fallback": "The matrix, vector image, invariant $x$-axis and induced quotient scalar are labelled in text next to the diagram."
+  },
+  "foundations-linear-algebra": {
+    "objects": "$D_8$ acts from the left on column vectors in $\\mathbb F^2$ through $R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ and $S=\\operatorname{diag}(1,-1)$.",
+    "invariant": "Columns are basis images; $\\dim\\ker A+\\dim\\operatorname{im}A=\\dim\\mathrm{domain}$.",
+    "counterexample": "The $\\mathbb C$ rotation eigenline fails under reflection; $I$ and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite $D_8$ case. General claims require generator and field hypotheses stated in the lesson."
+  },
+  "ureca-linear-action": {
+    "question": "Why do $D_8$ generator matrices give an invertible left action?",
+    "objects": "$D_8$ acts from the left on column vectors in $\\mathbb F^2$ through $R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ and $S=\\operatorname{diag}(1,-1)$.",
+    "invariant": "$R^4=S^2=I$ and $SRS=R^{-1}$; group inverses map to inverse matrices.",
+    "counterexample": "The $\\mathbb C$ rotation eigenline fails under reflection; $I$ and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite $D_8$ case. General claims require generator and field hypotheses stated in the lesson."
+  },
+  "ureca-permutation-module": {
+    "objects": "$D_8$ acts from the left on column vectors in $\\mathbb F^2$ through $R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ and $S=\\operatorname{diag}(1,-1)$.",
+    "counterexample": "The $\\mathbb C$ rotation eigenline fails under reflection; $I$ and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite $D_8$ case. General claims require generator and field hypotheses stated in the lesson."
+  },
+  "ureca-invariant-subspaces": {
+    "objects": "$D_8$ acts from the left on column vectors in $\\mathbb F^2$ through $R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ and $S=\\operatorname{diag}(1,-1)$.",
+    "invariant": "$W$ is invariant iff all generators preserve it; the complex rotation eigenline fails under reflection.",
+    "counterexample": "The $\\mathbb C$ rotation eigenline fails under reflection; $I$ and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite $D_8$ case. General claims require generator and field hypotheses stated in the lesson."
+  },
+  "ureca-intertwiners": {
+    "question": "Does one fixed $T$ intertwine both $D_8$ generators?",
+    "objects": "$D_8$ acts from the left on column vectors in $\\mathbb F^2$ through $R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ and $S=\\operatorname{diag}(1,-1)$.",
+    "invariant": "$TR=R^{-1}T$ and $TS=ST$ must hold for one $T$; its kernel and image are invariant.",
+    "counterexample": "The $\\mathbb C$ rotation eigenline fails under reflection; $I$ and a singular matrix fail the intertwiner equation.",
+    "debrief": "Checking a generating set proves this finite $D_8$ case. General claims require generator and field hypotheses stated in the lesson."
+  },
+  "representations-characters": {
+    "name": "$S_3$ character construction studio",
+    "question": "How do representation traces construct the complete $S_3$ character table?",
+    "objects": "Complex left representations of $S_3$ on one- and two-dimensional spaces; class sizes $1,3,2$.",
+    "counterexample": "Equal column weights give $\\langle\\mathrm{Std},\\mathrm{Std}\\rangle=5/3$ rather than one.",
+    "debrief": "The displayed $S_3$ rows come from representations. Orthogonality for all finite groups requires its separate proof; Maschke and Schur retain their field hypotheses."
+  },
+  "odyssey-induction": {
+    "name": "$S_3$ induction and reciprocity workbench",
+    "prediction": "Choose an $H$-character, acting element, coset basis vector and $G$ target; predict motion, trace and both Hom dimensions.",
+    "objects": "$G=S_3$, $H=\\langle(12)\\rangle\\cong C_2$, transversal $e,r,r^2$ and one-dimensional trivial or sign $H$-character over $\\mathbb C$.",
+    "invariant": "$\\dim\\operatorname{Ind}_H^G\\varphi=3$; the same $H$-correction determines generator matrices and induced trace; Frobenius reciprocity equates Hom dimensions.",
+    "counterexample": "Omitting $\\mathrm{sign}_H(s)=-1$ changes the $s$ trace from $-1$ to $+1$ and misidentifies $\\operatorname{Ind}\\mathrm{sign}_H$ as $\\operatorname{Ind}\\mathrm{trivial}_H$.",
+    "debrief": "Coset matrices and Hom dimensions verify this $S_3$ case; the natural Hom-space isomorphism in the lesson proves Frobenius reciprocity generally."
+  },
+  "algebra-wedderburn": {
+    "prediction": "Choose $M_2(F)$, $T_2(F)$ or $F[C_2]$, a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "objects": "Associative finite-dimensional unital $F$-algebras $M_2(F)$, $T_2(F)$ and $F[C_2]$; natural left modules and regular modules.",
+    "invariant": "$M_2(F)$ has one matrix block and regular multiplicity two; $T_2(F)$ has radical $FE_{12}$ and a nonsplit natural module; $F[C_2]$ changes in characteristic two.",
+    "counterexample": "Simple successive layers of the natural $T_2(F)$-module do not split: $E_{12}$ sends $e_2$ to $e_1$."
+  },
+  "algebra-radical": {
+    "prediction": "Choose $M_2(F)$, $T_2(F)$ or $F[C_2]$, a coefficient field and matrix units; predict radical, quotient blocks and splitting before revealing.",
+    "objects": "Associative finite-dimensional unital $F$-algebras $M_2(F)$, $T_2(F)$ and $F[C_2]$; natural left modules and regular modules.",
+    "invariant": "$M_2(F)$ has one matrix block and regular multiplicity two; $T_2(F)$ has radical $FE_{12}$ and a nonsplit natural module; $F[C_2]$ changes in characteristic two.",
+    "counterexample": "Simple successive layers of the natural $T_2(F)$-module do not split: $E_{12}$ sends $e_2$ to $e_1$."
+  },
+  "tensor-products": {
+    "prediction": "Choose cyclic right/left $\\mathbb Z$-modules, scalar and vectors; predict gcd generator order and both balanced expressions.",
+    "objects": "$U=\\mathbb Z/m\\mathbb Z$ as a right $\\mathbb Z$-module and $V=\\mathbb Z/n\\mathbb Z$ as a left $\\mathbb Z$-module with $t=[1]\\otimes[1]$.",
+    "invariant": "$(ur)\\otimes v=u\\otimes(rv)$; $mt=nt=0$ and $\\operatorname{ord}(t)=\\gcd(m,n)$.",
+    "counterexample": "$(\\mathbb Z/2\\mathbb Z)\\otimes_{\\mathbb Z}(\\mathbb Z/3\\mathbb Z)=0$ despite two nonzero factors; a rank-two tensor sum is not pure.",
+    "debrief": "The cyclic calculation illustrates the universal property. Arbitrary-ring existence follows from the quotient construction in the lesson; external $\\boxtimes$ also carries a product-group action."
+  },
+  "mh2220-direct-product": {
+    "objects": "Pairs in $C_3\\times C_2$ with left action $\\alpha:C_2\\to\\operatorname{Aut}(C_3)$; $b$ acts on the next rotation coordinate.",
+    "invariant": "$\\alpha(s)^2=\\operatorname{id}$ and $\\alpha(s)$ is invertible; the normal $C_3$ and complementary $C_2$ yield a split extension.",
+    "counterexample": "The zero endomorphism is not an automorphism or a valid $C_2$ action; $C_4$ is a nonsplit $C_2$ extension.",
+    "debrief": "The six-element table tests $S_3$ or $C_6$. Associativity in general uses $\\alpha(hk)=\\alpha(h)\\alpha(k)$; internal splitting uses normality, trivial intersection and generation."
+  },
+  "characters-burnside": {
+    "objects": "A finite group $G$ of order $p^a q^b$; the $S_3$ conjugacy classes are a concrete index example.",
+    "invariant": "For $z$ in the center of a Sylow $q$-subgroup, $q^b\\mid |C_G(z)|$, so $|z^G|$ is a $p$-power.",
+    "debrief": "The displayed chain proves the reduction to the imported character-theoretic class-size lemma and then induction; the $S_3$ table is an illustration, not a proof of that lemma."
+  },
+  "m3220-nilradical": {
+    "prediction": "Predict the powers of $2$ in $\\mathbb Z/8\\mathbb Z$ and whether the same radical claim holds for $M_2(\\mathbb F_2)$.",
+    "objects": "Commutative unital finite rings $\\mathbb Z/8\\mathbb Z$ and $\\mathbb Z/6\\mathbb Z$; noncommutative $M_2(\\mathbb F_2)$ as a failure state.",
+    "invariant": "In commutative unital rings $\\operatorname{Nil}(R)$ is the prime-ideal intersection; in the Artinian cases $J=\\operatorname{Nil}$ and a uniform power of $J$ vanishes.",
+    "counterexample": "$E_{12}$ is nilpotent in $M_2(\\mathbb F_2)$ but $J(M_2(\\mathbb F_2))=0$."
+  }
+}

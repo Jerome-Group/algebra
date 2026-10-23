@@ -36,6 +36,7 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <Range
           label={"Exponent $k$ in $r^k$"}
+          accessibleLabel="Exponent k in r to the k"
           value={power}
           min={0}
           max={n - 1}
@@ -51,7 +52,7 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
         <p>
           <Prose>
             {
-              " The z-axis is fixed pointwise. The xy-plane is invariant and rotates. Over $\\mathbb C$, that plane splits into two eigenlines with eigenvalues on the unit circle. The generator has no real eigenline in the plane for $n\\ge 3$. "
+              " The $z$-axis is fixed pointwise. The $xy$-plane is invariant and rotates. Over $\\mathbb C$, that plane splits into two eigenlines with eigenvalues on the unit circle. The generator has no real eigenline in the plane for $n\\ge 3$. "
             }
           </Prose>
         </p>
@@ -61,13 +62,19 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
               key={k}
               className={power === k ? "active" : ""}
               onClick={() => setPower(k)}
+              aria-label={`Select generator power ${k}`}
             >
               <span>
-                <Prose focusable={false}>{" $r$"}</Prose>
-                <sup>{k}</sup>
+                <M focusable={false}>{`r^{${k}}`}</M>
               </span>
               <strong>
-                {Number((1 + 2 * Math.cos((2 * Math.PI * k) / n)).toFixed(3))}
+                <M focusable={false}>
+                  {String(
+                    Number(
+                      (1 + 2 * Math.cos((2 * Math.PI * k) / n)).toFixed(3),
+                    ),
+                  )}
+                </M>
               </strong>
             </button>
           ))}
@@ -75,7 +82,7 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
         <p>
           <Prose>
             {
-              " The numbers are the character values (rounded when necessary). For $C_{4}$, they are exactly ($3,1,-1,1$). The cube serves as a frame showing the ambient linear action; these angles are not all cube symmetries. "
+              " The numbers are the character values (rounded when necessary). For $C_{4}$, they are exactly $(3,1,-1,1)$. The cube serves as a frame showing the ambient linear action; these angles are not all cube symmetries. "
             }
           </Prose>
         </p>

@@ -7,7 +7,7 @@ import {
   permutationNames,
   type SymmetricAction,
 } from "@/lib/algebra/foundation-labs";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
   const [action, setAction] = useState<SymmetricAction>(
       (lesson.parameters?.action as SymmetricAction) || "letters",
@@ -18,7 +18,7 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
   const label = (x: number) =>
     action === "letters" ? String(x + 1) : permutationNames[x];
   const groupSet = (entries: number[]) =>
-    `{${entries.map((g) => permutationNames[g]).join(", ")}}`;
+    String.raw`\{${entries.map((g) => permutationNames[g]).join(", ")}\}`;
   const properties = actionPropertyGrid();
   return (
     <div className="foundation-lab">
@@ -40,8 +40,9 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <label>
-        Point x
+        Point <M focusable={false}>{String.raw`x`}</M>
         <select
+          aria-label="Point x"
           value={point}
           onChange={(event) => setPoint(Number(event.target.value))}
         >
@@ -53,8 +54,9 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <label>
-        Acting element g
+        Acting element <M focusable={false}>{String.raw`g`}</M>
         <select
+          aria-label="Acting element g"
           value={element}
           onChange={(event) => setElement(Number(event.target.value))}
         >
@@ -66,21 +68,31 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <div className="action-state" aria-label="Selected action state">
-        <span>Input x: {label(point)}</span>
+        <span>
+          <Prose>{String.raw`Input $x$: $${label(point)}$`}</Prose>
+        </span>
         <span aria-hidden="true">→</span>
-        <span>Apply {permutationNames[element]}</span>
+        <span>
+          <Prose>{String.raw`Apply $${permutationNames[element]}$`}</Prose>
+        </span>
         <span aria-hidden="true">→</span>
-        <span>Output g·x: {label(model.apply(element, point))}</span>
+        <span>
+          <Prose>{String.raw`Output $g\cdot x$: $${label(model.apply(element, point))}$`}</Prose>
+        </span>
       </div>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          Orbit: {"{"}
-          {model.orbit.map(label).join(", ")}
-          {"}"}.
+          <Prose>{String.raw`Orbit: $\{${model.orbit.map(label).join(", ")}\}$.`}</Prose>
         </p>
-        <p>Point stabilizer Gₓ: {groupSet(model.stabilizer)}.</p>
-        <p>Kernel on the whole action set: {groupSet(model.kernel)}.</p>
-        <p>Core of this point stabilizer: {groupSet(model.core)}.</p>
+        <p>
+          <Prose>{String.raw`Point stabilizer $G_x$: $${groupSet(model.stabilizer)}$.`}</Prose>
+        </p>
+        <p>
+          <Prose>{String.raw`Kernel on the whole action set: $${groupSet(model.kernel)}$.`}</Prose>
+        </p>
+        <p>
+          <Prose>{String.raw`Core of this point stabilizer: $${groupSet(model.core)}$.`}</Prose>
+        </p>
         <p>
           {model.orbit.length === model.points.length
             ? "This action is transitive."
@@ -94,23 +106,35 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
         <caption>All six elements acting on the selected point</caption>
         <thead>
           <tr>
-            <th scope="col">g</th>
-            <th scope="col">g·x</th>
-            <th scope="col">Fixes x?</th>
+            <th scope="col">
+              Element <M>{String.raw`g`}</M>
+            </th>
+            <th scope="col">
+              Image <M>{String.raw`g\cdot x`}</M>
+            </th>
+            <th scope="col">
+              Fixes point <M>{"x"}</M>?
+            </th>
           </tr>
         </thead>
         <tbody>
           {model.group.map((g) => (
             <tr key={g}>
-              <th scope="row">{permutationNames[g]}</th>
-              <td>{label(model.apply(g, point))}</td>
+              <th scope="row">
+                Element <M>{permutationNames[g]}</M>
+              </th>
+              <td>
+                <M>{label(model.apply(g, point))}</M>
+              </td>
               <td>{model.apply(g, point) === point ? "yes" : "no"}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <table>
-        <caption>Same group S₃, different action properties</caption>
+        <caption>
+          <Prose>{String.raw`Same group $S_3$, different action properties`}</Prose>
+        </caption>
         <thead>
           <tr>
             <th scope="col">Action</th>
@@ -142,11 +166,7 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
         Try a fixed point with a faithful action
       </button>
       <p>
-        For conjugation at identity, the stabilizer and its core are all of S3
-        while the kernel on all of S3 is its trivial center. The core equals the
-        kernel on the selected orbit; only for a transitive action must that be
-        the kernel on the entire set. Orbit–stabilizer follows from the
-        bijection gGₓ ↦ g·x.
+        <Prose>{String.raw`For conjugation at identity, the stabilizer and its core are all of $S_3$ while the kernel on all of $S_3$ is its trivial center. The core equals the kernel on the selected orbit; only for a transitive action must that be the kernel on the entire set. Orbit–stabilizer follows from the bijection $gG_x\mapsto g\cdot x$.`}</Prose>
       </p>
     </div>
   );

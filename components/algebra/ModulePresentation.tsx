@@ -2,7 +2,7 @@
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { cyclicModule } from "@/lib/algebra/foundation-labs";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 export function ModulePresentation({ lesson }: { lesson: Lesson }) {
   const [modulus, setModulus] = useState(
       Number(lesson.parameters?.modulus ?? 3),
@@ -15,13 +15,13 @@ export function ModulePresentation({ lesson }: { lesson: Lesson }) {
         block
       >{`R=\\mathbb Z,\\quad M=\\mathbb Z/${modulus}\\mathbb Z=\\langle e\\mid ${modulus}e=0\\rangle`}</M>
       <p>
-        This is a left Z-module: r·[x]=[rx]. Integers act on residue classes. It
-        is cyclic but not free over Z, since a nonzero integer annihilates its
-        nonzero generator.
+        <Prose>{String.raw`This is a left $\mathbb Z$-module: $r\cdot[x]=[rx]$. Integers act on residue classes. It is cyclic but not free over $\mathbb Z$, since a nonzero integer annihilates its nonzero generator.`}</Prose>
       </p>
       <label>
-        Relation ne=0 (n)
+        Relation <M focusable={false}>{"ne=0"}</M> (
+        <M focusable={false}>{"n"}</M>)
         <select
+          aria-label="Relation ne=0 (n)"
           value={modulus}
           onChange={(event) => setModulus(Number(event.target.value))}
         >
@@ -31,8 +31,9 @@ export function ModulePresentation({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <label>
-        Integer scalar r
+        Integer scalar <M focusable={false}>{String.raw`r`}</M>
         <select
+          aria-label="Integer scalar r"
           value={scalar}
           onChange={(event) => setScalar(Number(event.target.value))}
         >
@@ -45,44 +46,52 @@ export function ModulePresentation({ lesson }: { lesson: Lesson }) {
         block
       >{`0\\longrightarrow\\mathbb Z\\xrightarrow{\\times ${modulus}}\\mathbb Z\\xrightarrow{q} M\\longrightarrow0`}</M>
       <div className="presentation-board">
-        <span>Generator: e=[1]</span>
-        <span>Relation: {modulus}e=0</span>
-        <span>Annihilator: {modulus}Z</span>
+        <span>
+          <Prose>{String.raw`Generator: $e=[1]$`}</Prose>
+        </span>
+        <span>
+          <Prose>{String.raw`Relation: $${modulus}e=0$`}</Prose>
+        </span>
+        <span>
+          <Prose>{String.raw`Annihilator: $${modulus}\mathbb Z$`}</Prose>
+        </span>
       </div>
       <table>
-        <caption>Scalar action r·[x] on every module element</caption>
+        <caption>
+          <Prose>{String.raw`Scalar action $r\cdot[x]$ on every module element`}</Prose>
+        </caption>
         <thead>
           <tr>
-            <th scope="col">[x]</th>
-            <th scope="col">{scalar}·[x]</th>
+            <th scope="col">
+              Vector <M>{"[x]"}</M>
+            </th>
+            <th scope="col">
+              Image <M>{String.raw`${scalar}\cdot[x]`}</M>
+            </th>
           </tr>
         </thead>
         <tbody>
           {model.elements.map((x) => (
             <tr key={x}>
-              <th scope="row">[{x}]</th>
-              <td>[{model.images[x]}]</td>
+              <th scope="row">
+                Vector <M>{`[${x}]`}</M>
+              </th>
+              <td>
+                <M>{`[${model.images[x]}]`}</M>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          Kernel of r·: {"{"}
-          {model.kernel.join(", ")}
-          {"}"}. Image rM: {"{"}
-          {model.image.join(", ")}
-          {"}"}. |M/rM|={model.quotientSize}.
+          <Prose>{String.raw`Kernel of $r\cdot$: $\{${model.kernel.join(", ")}\}$. Image $rM$: $\{${model.image.join(", ")}\}$. $|M/rM|=${model.quotientSize}$.`}</Prose>
         </p>
         <p>
-          {model.inverse === undefined
-            ? "This scalar action is not invertible."
-            : `This scalar action is invertible: multiplication by ${model.inverse} is its inverse on M.`}
+          <Prose>{String.raw`${model.inverse === undefined ? "This scalar action is not invertible." : `This scalar action is invertible: multiplication by $${model.inverse}$ is its inverse on $M$.`}`}</Prose>
         </p>
         <p>
-          {Math.abs(scalar) === 1
-            ? `${scalar} is a unit of Z and therefore acts invertibly on every unital Z-module.`
-            : `${scalar} is not a unit of Z. ${model.inverse === undefined ? "It also fails to act invertibly on this module." : "Nevertheless it acts invertibly on this particular module."}`}
+          <Prose>{String.raw`$${scalar}$ is ${Math.abs(scalar) === 1 ? "a unit of $\\mathbb Z$ and therefore acts invertibly on every unital $\\mathbb Z$-module." : `not a unit of $\\mathbb Z$. ${model.inverse === undefined ? "It also fails to act invertibly on this module." : "Nevertheless it acts invertibly on this particular module."}`}`}</Prose>
         </p>
       </div>
       <button
@@ -102,10 +111,7 @@ export function ModulePresentation({ lesson }: { lesson: Lesson }) {
         Try the same scalar with a nontrivial kernel
       </button>
       <p>
-        Exactness checks: multiplication by n on Z is injective; im(×n)=nZ=ker
-        q; q reaches every residue. This infinite sequence is justified by
-        integer divisibility, not by the finite action table. On the regular
-        module Z itself, multiplication by 2 is not surjective.
+        <Prose>{String.raw`Exactness checks: multiplication by $n$ on $\mathbb Z$ is injective; $\operatorname{im}(\times n)=n\mathbb Z=\ker q$; $q$ reaches every residue. This infinite sequence is justified by integer divisibility, not by the finite action table. On the regular module $\mathbb Z$ itself, multiplication by $2$ is not surjective.`}</Prose>
       </p>
     </div>
   );

@@ -9,8 +9,13 @@ import {
   type InvertedSet,
   type LocalRing,
 } from "@/lib/algebra/localisation-model";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
+const ringTex: Record<LocalRing, string> = {
+  atThree: String.raw`\mathbb Z_{(3)}`,
+  invertThree: String.raw`\mathbb Z[1/3]`,
+  rationals: String.raw`\mathbb Q`,
+};
 const examples = [
   { label: "1/2", a: 1, b: 2 },
   { label: "3/2", a: 3, b: 2 },
@@ -66,8 +71,9 @@ export function LocalisationMicroscope() {
           </select>
         </label>
         <label>
-          Fraction a/b
+          Fraction <M focusable={false}>{String.raw`\frac ab`}</M>
           <select
+            aria-label="Fraction a/b"
             value={fractionIndex}
             onChange={(event) => {
               setFractionIndex(Number(event.target.value));
@@ -82,8 +88,9 @@ export function LocalisationMicroscope() {
           </select>
         </label>
         <label>
-          Compare with c/d
+          Compare with <M focusable={false}>{String.raw`\frac cd`}</M>
           <select
+            aria-label="Compare with c/d"
             value={comparisonIndex}
             onChange={(event) => {
               setComparisonIndex(Number(event.target.value));
@@ -98,8 +105,9 @@ export function LocalisationMicroscope() {
           </select>
         </label>
         <label>
-          Set to invert in ℤ
+          Set to invert in <M focusable={false}>{String.raw`\mathbb Z`}</M>
           <select
+            aria-label="Set to invert in ℤ"
             value={inverted}
             onChange={(event) => {
               setInverted(event.target.value as InvertedSet);
@@ -116,8 +124,9 @@ export function LocalisationMicroscope() {
       </div>
       <label className="prediction-prompt">
         Predict whether the selected fraction is absent, a unit or a nonunit in
-        the target. Are the two fractions equal, and can ℤ→
-        {localRingNames[ring]} factor through the chosen localization?
+        the target. Are the two fractions equal, and can{" "}
+        <M focusable={false}>{String.raw`\mathbb Z\to${ringTex[ring]}`}</M>{" "}
+        factor through the chosen localization?
         <textarea
           value={prediction}
           onChange={(event) => setPrediction(event.target.value)}
@@ -131,44 +140,30 @@ export function LocalisationMicroscope() {
         <>
           <div className="live-mathematics" aria-live="polite">
             <p>
-              {fraction.label} reduces to {reading.numerator}/
-              {reading.denominator} and is {reading.status} in {reading.ring}.
+              <Prose>{String.raw`$\frac{${fraction.a}}{${fraction.b}}$ reduces to $\frac{${reading.numerator}}{${reading.denominator}}$ and is ${reading.status} in $${ringTex[ring]}$.`}</Prose>
             </p>
             {reading.maximalIdeal && (
               <p>
-                The nonunits of {reading.ring} form its unique maximal ideal{" "}
-                {reading.maximalIdeal}.
+                <Prose>{String.raw`The nonunits of $${ringTex[ring]}$ form its unique maximal ideal $3\mathbb Z_{(3)}$.`}</Prose>
               </p>
             )}
-            <p>Surviving prime ideals: {reading.survivingPrimes}.</p>
+            <p>
+              <Prose>{String.raw`Surviving prime ideals: ${ring === "atThree" ? String.raw`$(0)$ and $3\mathbb Z_{(3)}$` : ring === "invertThree" ? String.raw`$(0)$ and $(p)$ for primes $p\ne3$` : "$(0)$ only"}.`}</Prose>
+            </p>
             {ring === "atThree" && reading.status !== "absent" && (
               <p>
-                Discrete valuation v₃({fraction.label})=
-                {reading.valuationAtThree === Infinity
-                  ? "∞"
-                  : reading.valuationAtThree}
-                ; units have value 0, nonzero nonunits have positive value.
+                <Prose>{String.raw`Discrete valuation $v_3(\frac{${fraction.a}}{${fraction.b}})=${reading.valuationAtThree === Infinity ? String.raw`\infty` : reading.valuationAtThree}$; units have value $0$, nonzero nonunits have positive value.`}</Prose>
               </p>
             )}
             <p>
-              Cross products: {fraction.a}·{comparison.b}={relation.leftCross},{" "}
-              {fraction.b}·{comparison.a}={relation.rightCross}. The fractions
-              are {relation.equivalent ? "equivalent" : "different"} in ℚ.
+              <Prose>{String.raw`Cross products: $${fraction.a}\cdot${comparison.b}=${relation.leftCross}$, $${fraction.b}\cdot${comparison.a}=${relation.rightCross}$. The fractions are ${relation.equivalent ? "equivalent" : "different"} in $\mathbb Q$.`}</Prose>
             </p>
             <p>
-              Inverted set: {factor.inverted}. With inclusion ψ:ℤ→
-              {factor.target}, the route ℤ→{factor.source}→{factor.target}{" "}
-              {factor.exists
-                ? "has an induced factor map because all selected denominators become units"
-                : `has no induced factor map: ${factor.obstruction}`}
-              .
+              <Prose>{String.raw`Inverted set: $${inverted === "powersThree" ? String.raw`S=\{3^n:n\ge0\}` : String.raw`S=\{n\in\mathbb Z:3\nmid n\}`}$. With inclusion $\psi:\mathbb Z\to${ringTex[ring]}$, the route $\mathbb Z\to${inverted === "powersThree" ? ringTex.invertThree : ringTex.atThree}\to${ringTex[ring]}$ ${factor.exists ? "has an induced factor map because all selected denominators become units" : inverted === "powersThree" ? String.raw`has no induced factor map: $3$ is not a unit in $\mathbb Z_{(3)}$` : String.raw`has no induced factor map: $2$ is not a unit in $\mathbb Z[1/3]$`}.`}</Prose>
             </p>
             {factor.exists && (
               <p>
-                The factor map {factor.source}→{factor.target} is given by{" "}
-                {factor.formula}; it sends {factor.sample} to {factor.sample}{" "}
-                under the displayed inclusion. Its existence does not assert
-                that the canonical map ℤ→{factor.source} is injective.
+                <Prose>{String.raw`The factor map $${inverted === "powersThree" ? ringTex.invertThree : ringTex.atThree}\to${ringTex[ring]}$ is given by $\overline\psi(a/s)=\psi(a)\psi(s)^{-1}$; it sends $${inverted === "powersThree" ? "5/9" : "5/2"}$ to $${inverted === "powersThree" ? "5/9" : "5/2"}$ under the displayed inclusion. Its existence does not assert that the canonical map $\mathbb Z\to${inverted === "powersThree" ? ringTex.invertThree : ringTex.atThree}$ is injective.`}</Prose>
               </p>
             )}
           </div>
@@ -179,20 +174,27 @@ export function LocalisationMicroscope() {
             <thead>
               <tr>
                 <th scope="col">Ring</th>
-                <th scope="col">Status of {fraction.label}</th>
+                <th scope="col">
+                  Status of{" "}
+                  <M>{String.raw`\frac{${fraction.a}}{${fraction.b}}`}</M>
+                </th>
                 <th scope="col">Inverted denominators</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">ℤ₍₃₎</th>
+                <th scope="row">
+                  Ring <M>{String.raw`\mathbb Z_{(3)}`}</M>
+                </th>
                 <td>
                   {fractionReading(fraction.a, fraction.b, "atThree").status}
                 </td>
                 <td>Integers prime to 3</td>
               </tr>
               <tr>
-                <th scope="row">ℤ[1/3]</th>
+                <th scope="row">
+                  Ring <M>{String.raw`\mathbb Z[1/3]`}</M>
+                </th>
                 <td>
                   {
                     fractionReading(fraction.a, fraction.b, "invertThree")
@@ -202,7 +204,9 @@ export function LocalisationMicroscope() {
                 <td>Powers of 3</td>
               </tr>
               <tr>
-                <th scope="row">ℚ</th>
+                <th scope="row">
+                  Ring <M>{String.raw`\mathbb Q`}</M>
+                </th>
                 <td>
                   {fractionReading(fraction.a, fraction.b, "rationals").status}
                 </td>
@@ -215,18 +219,11 @@ export function LocalisationMicroscope() {
           </button>
           {failure && (
             <p role="status">
-              In ℤ/6ℤ with S={"{1,2,4}"}, 1/1 and 4/1 become equivalent because
-              2(1−4)=0. Direct cross multiplication says 1≠4, so it is too
-              strict when S contains zero divisors. The canonical map sends
-              nonzero 3 to zero because 2·3=0.
+              <Prose>{String.raw`In $\mathbb Z/6\mathbb Z$ with $S=\{1,2,4\}$, $1/1$ and $4/1$ become equivalent because $2(1-4)=0$. Direct cross multiplication says $1\ne4$, so it is too strict when $S$ contains zero divisors. The canonical map sends nonzero $3$ to zero because $2\cdot3=0$.`}</Prose>
             </p>
           )}
           <p>
-            Proof boundary: regular denominators permit direct cross
-            multiplication and cancellation. For general S, equality means some
-            u∈S annihilates the cross-product difference. A map out of S⁻¹R
-            exists uniquely when the target makes S units; injectivity of R→S⁻¹R
-            requires a separate regularity check.
+            <Prose>{String.raw`Proof boundary: regular denominators permit direct cross multiplication and cancellation. For general $S$, equality means some $u\in S$ annihilates the cross-product difference. A map out of $S^{-1}R$ exists uniquely when the target makes $S$ units; injectivity of $R\to S^{-1}R$ requires a separate regularity check.`}</Prose>
           </p>
         </>
       )}

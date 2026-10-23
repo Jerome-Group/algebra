@@ -102,9 +102,19 @@ export function SymmetryDesk({ open }: { open: (id: string) => void }) {
         <M>{element}</M>
         <span>
           Vertex images:{" "}
-          {names.map((name, i) => `${name} ↦ ${names[images[i]]}`).join(" · ")}
+          <M>
+            {names
+              .map(
+                (name, i) =>
+                  String.raw`\mathrm{${name}}\mapsto\mathrm{${names[images[i]]}}`,
+              )
+              .join(String.raw`\quad`)}
+          </M>
         </span>
-        <span>Recent moves in time order: {word.join(", ") || "none"}</span>
+        <span>
+          Recent moves in time order:{" "}
+          {word.length ? <M>{word.join(", ")}</M> : "none"}
+        </span>
       </div>
       <p className="desk-invariant">
         <M>{"r^4=s^2=e,\\qquad sr=r^{-1}s"}</M>

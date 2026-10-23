@@ -3,7 +3,6 @@ import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
 import {
-  matrixText,
   representationState,
   type ActingGroup,
   type FieldChoice,
@@ -11,31 +10,29 @@ import {
   type MapChoice,
 } from "@/lib/algebra/invariant-intertwiner";
 
+const matrixTex = (matrix: readonly (readonly number[])[]) =>
+  String.raw`\begin{pmatrix}${matrix.map((row) => row.join(" & ")).join(String.raw`\\`)}\end{pmatrix}`;
+
 const lessonFocus: Record<string, { question: string; evidence: string }> = {
   "foundations-linear-algebra": {
     question: "What do the columns of the quarter-turn matrix do?",
-    evidence:
-      "R e₁=e₂ and R e₂=−e₁. Thus ker R=0, im R=𝔽² and 0+2=2 by rank–nullity; tr R=0.",
+    evidence: String.raw`$Re_1=e_2$ and $Re_2=-e_1$. Thus $\ker R=0$, $\operatorname{im}R=\mathbb F^2$ and $0+2=2$ by rank–nullity; $\operatorname{tr}R=0$.`,
   },
   "ureca-linear-action": {
-    question: "Why do the two generator matrices define a left D₈ action?",
-    evidence:
-      "R⁴=S²=I and SRS=R⁻¹. On column vectors ρ(gh)v=ρ(g)(ρ(h)v); inverse group elements give inverse matrices.",
+    question: String.raw`Why do the two generator matrices define a left $D_8$ action?`,
+    evidence: String.raw`$R^4=S^2=I$ and $SRS=R^{-1}$. On column vectors $\rho(gh)v=\rho(g)(\rho(h)v)$; inverse group elements give inverse matrices.`,
   },
   "ureca-permutation-module": {
     question: "How is a permutation of points extended to a linear map?",
-    evidence:
-      "For the cycle (123), e₁→e₂→e₃→e₁ and 2e₁−e₃→2e₂−e₁. Eight independent cube-vertex labels give an eight-dimensional permutation module, even though the cube sits in ℝ³.",
+    evidence: String.raw`For the cycle $(123)$, $e_1\to e_2\to e_3\to e_1$ and $2e_1-e_3\mapsto2e_2-e_1$. Eight independent cube-vertex labels give an eight-dimensional permutation module, even though the cube sits in $\mathbb R^3$.`,
   },
   "ureca-invariant-subspaces": {
-    question: "Does one eigenline survive every D₈ generator?",
-    evidence:
-      "Over characteristic ≠3, the three-point permutation module splits using p_C(x,y,z)=((x+y+z)/3)(1,1,1); the sum-zero plane is its complementary invariant image. In characteristic 3 the division and direct sum fail.",
+    question: String.raw`Does one eigenline survive every $D_8$ generator?`,
+    evidence: String.raw`Over characteristic $\ne3$, the three-point permutation module splits using $p_C(x,y,z)=\frac{x+y+z}{3}(1,1,1)$; the sum-zero plane is its complementary invariant image. In characteristic $3$ the division and direct sum fail.`,
   },
   "ureca-intertwiners": {
     question: "Can one fixed matrix intertwine both generators?",
-    evidence:
-      "T=S is invertible and satisfies TR=R⁻¹T and TS=ST. The equivariant projection q:V⊕𝔽→𝔽 has invariant kernel V⊕0 and image 𝔽 but is not an equivalence.",
+    evidence: String.raw`$T=S$ is invertible and satisfies $TR=R^{-1}T$ and $TS=ST$. The equivariant projection $q:V\oplus\mathbb F\to\mathbb F$ has invariant kernel $V\oplus0$ and image $\mathbb F$ but is not an equivalence.`,
   },
 };
 
@@ -56,24 +53,23 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
   return (
     <div className="foundation-lab">
       <p>
-        Which subspaces survive the action, and which one fixed linear map
-        intertwines two representations? This is the standard left action of
-        D₈=⟨r,s | r⁴=s²=1, srs=r⁻¹⟩ on column vectors in 𝔽². The matrix of r is
-        R=[[0,−1],[1,0]] and of s is S=diag(1,−1). The generator selector
-        changes the subspace question; the map is tested against both D₈
-        generators throughout.
+        <Prose>{String.raw`Which subspaces survive the action, and which one fixed linear map intertwines two representations? This is the standard left action of $D_8=\langle r,s\mid r^4=s^2=1,\ srs=r^{-1}\rangle$ on column vectors in $\mathbb F^2$. The matrix of $r$ is $R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ and of $s$ is $S=\operatorname{diag}(1,-1)$. The generator selector changes the subspace question; the map is tested against both $D_8$ generators throughout.`}</Prose>
       </p>
       <M block>
         {
           "R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix},\\quad S=\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}"
         }
       </M>
-      <p>{focus.question}</p>
+      <p>
+        <Prose>{focus.question}</Prose>
+      </p>
       <div className="lab-controls">
         {lesson.id === "ureca-permutation-module" && (
           <label>
-            Coefficient a in a e₁−e₃
+            Coefficient <M focusable={false}>{"a"}</M> in{" "}
+            <M focusable={false}>{"ae_1-e_3"}</M>
             <select
+              aria-label="Coefficient a in a e₁−e₃"
               value={coefficient}
               onChange={(e) => {
                 setCoefficient(Number(e.target.value));
@@ -89,8 +85,9 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
           </label>
         )}
         <label>
-          Scalar field 𝔽
+          Scalar field <M focusable={false}>{String.raw`\mathbb F`}</M>
           <select
+            aria-label="Scalar field 𝔽"
             value={field}
             onChange={(e) => {
               setField(e.target.value as FieldChoice);
@@ -115,8 +112,9 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Candidate subspace W
+          Candidate subspace <M focusable={false}>{String.raw`W`}</M>
           <select
+            aria-label="Candidate subspace W"
             value={line}
             onChange={(e) => {
               setLine(e.target.value as LineChoice);
@@ -129,8 +127,10 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
           </select>
         </label>
         <label>
-          Candidate T:ρ→ρ′
+          Candidate{" "}
+          <M focusable={false}>{String.raw`T:\rho\to\rho^{\prime}`}</M>
           <select
+            aria-label="Candidate T:ρ→ρ′"
             value={map}
             onChange={(e) => {
               setMap(e.target.value as MapChoice);
@@ -144,7 +144,8 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
         </label>
       </div>
       <label className="prediction-prompt">
-        Predict whether W is invariant and T intertwines both generators before
+        Predict whether <M focusable={false}>{"W"}</M> is invariant and{" "}
+        <M focusable={false}>{"T"}</M> intertwines both generators before
         revealing the equations.
         <textarea
           value={prediction}
@@ -162,40 +163,25 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
       {revealed && (
         <div className="live-mathematics" aria-live="polite">
           <h3>Invariant subspace and intertwiner evidence</h3>
-          <p>{focus.evidence}</p>
+          <p>
+            <Prose>{focus.evidence}</Prose>
+          </p>
           {lesson.id === "ureca-permutation-module" && (
             <p>
-              For the 3-cycle (123), {coefficient}e₁−e₃ maps to {coefficient}
-              e₂−e₁. For cube vertices labelled by three sign bits 0,…,7, a
-              half-turn about the x-axis acts on the eight basis vectors by (0
-              3)(1 2)(4 7)(5 6).
+              <Prose>{String.raw`For the $3$-cycle $(123)$, $${coefficient}e_1-e_3$ maps to $${coefficient}e_2-e_1$. For cube vertices labelled by three sign bits $0,\ldots,7$, a half-turn about the $x$-axis acts on the eight basis vectors by $(0\ 3)(1\ 2)(4\ 7)(5\ 6)$.`}</Prose>
             </p>
           )}
           <p>
-            {line === "real-axis"
-              ? "R e₁=e₂, so 𝔽e₁ fails under r. S e₁=e₁."
-              : line === "complex-eigenline"
-                ? "R(e₁+i e₂)=−i(e₁+i e₂), while S(e₁+i e₂)=e₁−i e₂."
-                : "Every matrix sends 𝔽² into itself."}
-            {!state.lineDefined &&
-              " The complex eigenline is not a subspace of ℝ²."}
+            <Prose>{String.raw`${line === "real-axis" ? String.raw`$Re_1=e_2$, so $\mathbb Fe_1$ fails under $r$. $Se_1=e_1$.` : line === "complex-eigenline" ? String.raw`$R(e_1+ie_2)=-i(e_1+ie_2)$, while $S(e_1+ie_2)=e_1-ie_2$.` : String.raw`Every matrix sends $\mathbb F^2$ into itself.`}${!state.lineDefined ? String.raw` The complex eigenline is not a subspace of $\mathbb R^2$.` : ""}`}</Prose>
           </p>
           <p>
-            W is {state.invariant ? "invariant" : "not invariant"} for the
-            selected field and generators. Rotation stability:{" "}
+            <M>{"W"}</M> is {state.invariant ? "invariant" : "not invariant"}{" "}
+            for the selected field and generators. Rotation stability:{" "}
             {state.rotationStable ? "yes" : "no"}; reflection stability:{" "}
             {state.reflectionStable ? "yes" : "no"}.
           </p>
           <p>
-            Let ρ′(r)=R⁻¹ and ρ′(s)=S. For the single selected T=
-            {matrixText(state.candidate)}, TR={matrixText(state.leftRotation)}{" "}
-            and R⁻¹T={matrixText(state.rightRotation)}; TS=
-            {matrixText(state.leftReflection)} and ST=
-            {matrixText(state.rightReflection)}. T{" "}
-            {state.intertwines
-              ? "intertwines both generators"
-              : "fails the intertwiner equation"}
-            .
+            <Prose>{String.raw`Let $\rho^{\prime}(r)=R^{-1}$ and $\rho^{\prime}(s)=S$. For the single selected $T=${matrixTex(state.candidate)}$, $TR=${matrixTex(state.leftRotation)}$ and $R^{-1}T=${matrixTex(state.rightRotation)}$; $TS=${matrixTex(state.leftReflection)}$ and $ST=${matrixTex(state.rightReflection)}$. $T$ ${state.intertwines ? "intertwines both generators" : "fails the intertwiner equation"}.`}</Prose>
           </p>
           <table>
             <caption>
@@ -204,28 +190,34 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
             <thead>
               <tr>
                 <th scope="col">Generator</th>
-                <th scope="col">W stable</th>
-                <th scope="col">Tρ(g)=ρ′(g)T</th>
+                <th scope="col">
+                  Subspace <M>{"W"}</M> stable
+                </th>
+                <th scope="col">
+                  Intertwiner equation{" "}
+                  <M>{String.raw`T\rho(g)=\rho^{\prime}(g)T`}</M>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">r</th>
+                <th scope="row">
+                  <M>{"r"}</M>
+                </th>
                 <td>{state.rotationStable ? "yes" : "no"}</td>
                 <td>{state.rotationIntertwines ? "yes" : "no"}</td>
               </tr>
               <tr>
-                <th scope="row">s</th>
+                <th scope="row">
+                  <M>{"s"}</M>
+                </th>
                 <td>{state.reflectionStable ? "yes" : "no"}</td>
                 <td>{state.reflectionIntertwines ? "yes" : "no"}</td>
               </tr>
             </tbody>
           </table>
           <p>
-            A noninvertible equivariant projection also exists:{" "}
-            {state.projection.source}; {state.projection.formula}, ker q=
-            {state.projection.kernel}, im q={state.projection.image}.{" "}
-            {state.projection.equation}.
+            <Prose>{String.raw`A noninvertible equivariant projection also exists: $V\oplus\mathbb F$ with $V=\mathbb F^2$ carrying $\rho$ and $\mathbb F$ trivial; $q(x,y,z)=z$, $\ker q=V\oplus0$, $\operatorname{im}q=\mathbb F$. For $r$ and $s$, $q((\rho(g)v,z))=z=g\cdot q(v,z)$.`}</Prose>
           </p>
         </div>
       )}
@@ -247,18 +239,11 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
       <div className="laboratory-debrief">
         <h3>Theorem debrief and proof boundary</h3>
         <p>
-          Stability under each generator proves stability under every group
-          word. The same fixed T must satisfy the equation on each generator;
-          separate conjugators for individual elements do not prove equivalence.
-          Kernel and image of an intertwiner are invariant subspaces. This
-          finite generator check proves only the displayed D₈ example. Schur’s
-          lemma additionally assumes irreducibility and a suitable field.
+          <Prose>{String.raw`Stability under each generator proves stability under every group word. The same fixed $T$ must satisfy the equation on each generator; separate conjugators for individual elements do not prove equivalence. Kernel and image of an intertwiner are invariant subspaces. This finite generator check proves only the displayed $D_8$ example. Schur’s lemma additionally assumes irreducibility and a suitable field.`}</Prose>
         </p>
         <p>
-          <Prose>{lesson.title}</Prose>: over ℝ, the quarter-turn has no real
-          eigenline; over ℂ it has two eigenlines, but the reflection swaps
-          them. The full two-dimensional D₈ representation remains irreducible
-          over both fields.
+          <Prose>{lesson.title}</Prose>:{" "}
+          <Prose>{String.raw`over $\mathbb R$, the quarter-turn has no real eigenline; over $\mathbb C$ it has two eigenlines, but the reflection swaps them. The full two-dimensional $D_8$ representation remains irreducible over both fields.`}</Prose>
         </p>
       </div>
     </div>

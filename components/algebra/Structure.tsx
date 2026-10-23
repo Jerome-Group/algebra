@@ -142,6 +142,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                   key={i}
                   onClick={() => setSelected(i)}
                   className={selected === i ? "active" : ""}
+                  aria-label={`Follow relationship ${i + 1}`}
                 >
                   {i + 1}. <Prose focusable={false}>{String(e[2])}</Prose>
                 </button>
@@ -194,6 +195,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
             <div className="two-cols">
               <Range
                 label={"Numerator $a$"}
+                accessibleLabel="Numerator a"
                 min={-12}
                 max={12}
                 value={a > 12 ? 1 : a}
@@ -201,6 +203,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               />
               <Range
                 label={"Denominator $b$"}
+                accessibleLabel="Denominator b"
                 min={1}
                 max={12}
                 value={b > 12 ? 2 : b}
@@ -212,9 +215,9 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               value={String(prime)}
               onChange={(v) => setPrime(+v)}
               options={[
-                ["2", "Localise at (2)"],
-                ["3", "Localise at (3)"],
-                ["5", "Localise at (5)"],
+                ["2", "Localise at $(2)$"],
+                ["3", "Localise at $(3)$"],
+                ["5", "Localise at $(5)$"],
               ]}
             />
             {(() => {

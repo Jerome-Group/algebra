@@ -10,7 +10,7 @@ import {
   type MetricState,
   type PlaneProduct,
 } from "@/lib/algebra/orthogonal-geometry";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import { CubeScene } from "./Cube";
 import { Range } from "./Groups";
 
@@ -29,21 +29,24 @@ export function PlaneReflectionLab() {
   return (
     <div className="foundation-lab plane-reflection-lab">
       <p>
-        Columns act on the left; AB applies B first. Fix F=diag(1,−1),
-        reflection across the horizontal x-axis. The two products use the same F
-        and Rθ.
+        <Prose>{String.raw`Columns act on the left; $AB$ applies $B$ first. Fix $F=\operatorname{diag}(1,-1)$, reflection across the horizontal $x$-axis. The two products use the same $F$ and $R_\theta$.`}</Prose>
       </p>
       <div className="lab-controls">
         <Range
-          label="Plane angle θ in degrees"
+          label={"Plane angle $\\theta$ in degrees"}
+          accessibleLabel="Plane angle theta in degrees"
           value={angle}
           min={0}
           max={360}
           onChange={setAngle}
         />
         <label>
-          Selected product, currently {product === "RF" ? "RθF" : "FRθ"}
+          Selected product, currently{" "}
+          <M focusable={false}>
+            {product === "RF" ? String.raw`R_\theta F` : String.raw`FR_\theta`}
+          </M>
           <select
+            aria-label={`Selected product, currently ${product === "RF" ? "RθF" : "FRθ"}`}
             value={product}
             onChange={(event) => setProduct(event.target.value as PlaneProduct)}
           >
@@ -101,21 +104,17 @@ export function PlaneReflectionLab() {
           block
         >{String.raw`FR_\theta\approx${matrixTex(left)},\quad FR_\theta F=R_{-\theta}`}</M>
         <p>
-          Selected {product === "RF" ? "RθF" : "FRθ"} fixes the line at{" "}
-          {rounded(lineDegrees)}° modulo 180°; its matrix is{" "}
-          {matrix.map((row) => `[${row.map(rounded).join(", ")}]`).join("; ")}.
-          It sends e₁ to ({image.map(rounded).join(", ")}).
+          <Prose>{String.raw`Selected $${product === "RF" ? String.raw`R_\theta F` : String.raw`FR_\theta`}$ fixes the line at $${rounded(lineDegrees)}^\circ$ modulo $180^\circ$; its matrix is $${matrixTex(matrix)}$. It sends $e_1$ to $(${image.map(rounded).join(", ")})$.`}</Prose>
         </p>
         <p>
-          At θ=0 both products equal F and fix the x-axis. For θ≠0, RθF and FRθ
-          generally have different fixed lines; swapping multiplication order
-          changes the reflection.
+          <Prose>{String.raw`At $\theta=0$ both products equal $F$ and fix the $x$-axis. For $\theta\ne0$, $R_\theta F$ and $FR_\theta$ generally have different fixed lines; swapping multiplication order changes the reflection.`}</Prose>
         </p>
       </div>
-      <button onClick={() => setAngle(0)}>Check the θ=0 boundary</button>
+      <button aria-label="Check the θ=0 boundary" onClick={() => setAngle(0)}>
+        Check the <M focusable={false}>{String.raw`\theta=0`}</M> boundary
+      </button>
       <p>
-        The moving line verifies the selected matrices; the identity FRθF=R−θ
-        follows by multiplying the exact matrices.
+        <Prose>{String.raw`The moving line verifies the selected matrices; the identity $FR_\theta F=R_{-\theta}$ follows by multiplying the exact matrices.`}</Prose>
       </p>
     </div>
   );
@@ -149,7 +148,7 @@ function OrientationComparison() {
   return (
     <table>
       <caption>
-        Two orientation-reversing maps in R³ have different fixed spaces
+        <Prose>{String.raw`Two orientation-reversing maps in $\mathbb R^3$ have different fixed spaces`}</Prose>
       </caption>
       <thead>
         <tr>
@@ -160,14 +159,26 @@ function OrientationComparison() {
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Plane reflection I−2nnᵀ</th>
-          <td>−1</td>
-          <td>n⊥, dimension 2</td>
+          <th scope="row">
+            Plane reflection <M>{"I-2nn^T"}</M>
+          </th>
+          <td>
+            <M>{"-1"}</M>
+          </td>
+          <td>
+            <M>{String.raw`n^\perp`}</M>, dimension <M>{"2"}</M>
+          </td>
         </tr>
         <tr>
-          <th scope="row">Central inversion −I₃</th>
-          <td>−1</td>
-          <td>{"{0}"}, dimension 0</td>
+          <th scope="row">
+            Central inversion <M>{"-I_3"}</M>
+          </th>
+          <td>
+            <M>{"-1"}</M>
+          </td>
+          <td>
+            <M>{String.raw`\{0\}`}</M>, dimension <M>{"0"}</M>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -202,8 +213,9 @@ export function MetricOrientationLab() {
         </label>
         {state === "plane3" && (
           <label>
-            Plane normal, currently {normal}
+            Plane normal, currently <M focusable={false}>{normal}</M>
             <select
+              aria-label="Plane normal"
               value={normal}
               onChange={(event) =>
                 setNormal(event.target.value as CoordinateNormal)
@@ -229,22 +241,15 @@ export function MetricOrientationLab() {
       <div className="live-mathematics" aria-live="polite">
         <M block>{model.matrixEquation}</M>
         <p>
-          Selected map on R{model.dimension}: fixed space {model.fixedSpace}.{" "}
-          {model.cubePreserved !== null
-            ? `Preserves the cube vertex set: ${model.cubePreserved ? "yes" : "no"}.`
-            : "The cube question concerns R³ and does not apply."}
+          <Prose>{String.raw`Selected map on $\mathbb R^{${model.dimension}}$: fixed space ${state === "plane2" ? "$x$-axis, dimension $1$" : state === "plane3" ? `plane $${normal}=0$, dimension $2$` : state === "inversion3" ? String.raw`$\{0\}$, dimension $0$` : angle === 0 || angle === 360 ? String.raw`all $\mathbb R^3$, dimension $3$` : "$z$-axis, dimension $1$"}. ${model.cubePreserved !== null ? `Preserves the cube vertex set: ${model.cubePreserved ? "yes" : "no"}.` : String.raw`The cube question concerns $\mathbb R^3$ and does not apply.`}`}</Prose>
         </p>
         <p>
-          For u=({model.u.join(",")}) and v=({model.v.join(",")}), ⟨u,v⟩=
-          {model.originalDot} and ⟨Qu,Qv⟩={model.transformedDot}. For every u,v,
-          orthogonality proves ⟨Qu,Qv⟩=uᵀQᵀQv=uᵀv.
+          <Prose>{String.raw`For $u=(${model.u.join(",")})$ and $v=(${model.v.join(",")})$, $\langle u,v\rangle=${model.originalDot}$ and $\langle Qu,Qv\rangle=${model.transformedDot}$. For every $u,v$, orthogonality proves $\langle Qu,Qv\rangle=u^TQ^TQv=u^Tv$.`}</Prose>
         </p>
       </div>
       <OrientationComparison />
       <p>
-        Determinant +1 means orientation preserving, not necessarily cube
-        preserving. Orthogonality alone means inner products are preserved, not
-        that a chosen solid is fixed.
+        <Prose>{String.raw`Determinant $+1$ means orientation preserving, not necessarily cube preserving. Orthogonality alone means inner products are preserved, not that a chosen solid is fixed.`}</Prose>
       </p>
     </div>
   );

@@ -8,12 +8,14 @@ import {
   s3WordModel,
   type S3Letter,
 } from "@/lib/algebra/cayley-words";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import { CayleyReachability } from "./CayleyReachability";
 
 const wordLabel = (word: S3Letter[]) =>
   word.length
-    ? word.map((letter) => (letter === "rInverse" ? "r⁻¹" : letter)).join(" · ")
+    ? word
+        .map((letter) => (letter === "rInverse" ? "r^{-1}" : letter))
+        .join(String.raw`\cdot `)
     : "e";
 
 export function S3RelationLab() {
@@ -22,35 +24,43 @@ export function S3RelationLab() {
   return (
     <div className="foundation-lab s3-relation-lab">
       <p>
-        Work in S₃ with r=(123), s=(12). Products act right factor first:
-        appending s to the written word r gives rs, which applies s first to a
-        point. Shortest words use the alphabet r, r⁻¹, s.
+        <Prose>{String.raw`Work in $S_3$ with $r=(123)$, $s=(12)$. Products act right factor first: appending $s$ to the written word $r$ gives $rs$, which applies $s$ first to a point. Shortest words use the alphabet $r$, $r^{-1}$, $s$.`}</Prose>
       </p>
       <div className="lab-controls">
         {s3Letters.map((letter) => (
-          <button key={letter} onClick={() => setWord([...word, letter])}>
-            Append {s3LetterLabel[letter]}
+          <button
+            key={letter}
+            aria-label={`Append ${s3LetterLabel[letter]}`}
+            onClick={() => setWord([...word, letter])}
+          >
+            Append{" "}
+            <M focusable={false}>{letter === "rInverse" ? "r^{-1}" : letter}</M>
           </button>
         ))}
         <button onClick={() => setWord([])}>Clear word</button>
-        <button onClick={() => setWord(["r", "r", "r"])}>Try r³=e</button>
-        <button onClick={() => setWord(["s", "r", "s"])}>Try srs=r⁻¹</button>
+        <button aria-label="Try r³=e" onClick={() => setWord(["r", "r", "r"])}>
+          Try <M focusable={false}>{"r^3=e"}</M>
+        </button>
+        <button
+          aria-label="Try srs=r⁻¹"
+          onClick={() => setWord(["s", "r", "s"])}
+        >
+          Try <M focusable={false}>{"srs=r^{-1}"}</M>
+        </button>
       </div>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          Written word {wordLabel(word)} evaluates to{" "}
-          {permutationNames[model.current]}. Shortest word length for this
-          element: {model.shortestWords.get(model.current)?.length}.
+          <Prose>{String.raw`Written word $${wordLabel(word)}$ evaluates to $${permutationNames[model.current]}$. Shortest word length for this element: ${model.shortestWords.get(model.current)?.length}.`}</Prose>
         </p>
         <p>
-          {word.length > 0 && model.current === 0
-            ? "This word is an identity relation in S₃. One observed relation alone does not prove a presentation complete."
-            : "The current word is not an identity relation; compare two words by their evaluated permutation."}
+          <Prose>{String.raw`${word.length > 0 && model.current === 0 ? "This word is an identity relation in $S_3$. One observed relation alone does not prove a presentation complete." : "The current word is not an identity relation; compare two words by their evaluated permutation."}`}</Prose>
         </p>
         <M block>{String.raw`r^3=e,\qquad s^2=e,\qquad srs=r^{-1}`}</M>
       </div>
       <table>
-        <caption>Shortest right-multiplication words in S₃</caption>
+        <caption>
+          <Prose>{String.raw`Shortest right-multiplication words in $S_3$`}</Prose>
+        </caption>
         <thead>
           <tr>
             <th scope="col">Element</th>
@@ -64,9 +74,15 @@ export function S3RelationLab() {
               .sort((a, b) => a[0] - b[0])
               .map(([element, shortest]) => (
                 <tr key={element}>
-                  <th scope="row">{permutationNames[element]}</th>
-                  <td>{wordLabel(shortest)}</td>
-                  <td>{shortest.length}</td>
+                  <th scope="row">
+                    Element <M>{permutationNames[element]}</M>
+                  </th>
+                  <td>
+                    <M>{wordLabel(shortest)}</M>
+                  </td>
+                  <td>
+                    <M>{String(shortest.length)}</M>
+                  </td>
                 </tr>
               ))}
         </tbody>
@@ -78,36 +94,29 @@ export function S3RelationLab() {
         <thead>
           <tr>
             <th scope="col">Normal form</th>
-            <th scope="col">Its S₃ permutation</th>
+            <th scope="col">
+              Its <M>{"S_3"}</M> permutation
+            </th>
           </tr>
         </thead>
         <tbody>
-          {model.normalForms.map((form) => (
+          {model.normalForms.map((form, index) => (
             <tr key={form.name}>
-              <th scope="row">{form.name}</th>
-              <td>{permutationNames[form.element]}</td>
+              <th scope="row">
+                Form <M>{["e", "r", "r^2", "s", "rs", "r^2s"][index]}</M>
+              </th>
+              <td>
+                <M>{permutationNames[form.element]}</M>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       <p>
-        Each defining relation checks true in S₃:{" "}
-        {model.relations
-          .map(
-            (relation) =>
-              `${relation.name} ${relation.holds ? "holds" : "fails"}`,
-          )
-          .join("; ")}
-        .
+        <Prose>{String.raw`Each defining relation checks true in $S_3$: $r^3=e$ ${model.relations[0].holds ? "holds" : "fails"}; $s^2=e$ ${model.relations[1].holds ? "holds" : "fails"}; $srs=r^{-1}$ ${model.relations[2].holds ? "holds" : "fails"}.`}</Prose>
       </p>
       <p>
-        This presentation is complete for S₃ for a separate reason. The
-        relations let us replace sr by r⁻¹s, move every s to the right, and
-        reduce powers modulo 3 and 2. Every word becomes one of rⁱsʲ with
-        0≤i&lt;3 and 0≤j&lt;2, so the presented group has at most six elements.
-        The six normal forms above give distinct permutations in S₃, so the map
-        onto S₃ is also injective. A relation list in another group needs its
-        own normal-form or cardinality argument.
+        <Prose>{String.raw`This presentation is complete for $S_3$ for a separate reason. The relations let us replace $sr$ by $r^{-1}s$, move every $s$ to the right, and reduce powers modulo $3$ and $2$. Every word becomes one of $r^i s^j$ with $0\le i<3$ and $0\le j<2$, so the presented group has at most six elements. The six normal forms above give distinct permutations in $S_3$, so the map onto $S_3$ is also injective. A relation list in another group needs its own normal-form or cardinality argument.`}</Prose>
       </p>
     </div>
   );
@@ -124,8 +133,12 @@ export function GeneratorRelationLab({ lesson }: { lesson: Lesson }) {
         >
           Cyclic reachability and subgroups
         </button>
-        <button aria-pressed={group === "s3"} onClick={() => setGroup("s3")}>
-          S₃ words and relations
+        <button
+          aria-label="S₃ words and relations"
+          aria-pressed={group === "s3"}
+          onClick={() => setGroup("s3")}
+        >
+          <M focusable={false}>{"S_3"}</M> words and relations
         </button>
       </div>
       {group === "cyclic" ? (

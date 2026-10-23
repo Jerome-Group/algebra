@@ -72,8 +72,9 @@ export function MatrixFiniteLab() {
               key={i}
               onClick={() => setIndex(i)}
               className={index === i ? "active" : ""}
+              aria-label={`Select group matrix ${i + 1}`}
             >
-              <M>{matrixTex(m)}</M>
+              <M focusable={false}>{matrixTex(m)}</M>
             </button>
           ))}
         </div>

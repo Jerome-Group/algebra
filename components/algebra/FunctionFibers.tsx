@@ -17,8 +17,7 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
         {"f:X\\longrightarrow Y,\\qquad x\\sim x'\\iff x\\equiv x'\\pmod m"}
       </M>
       <p>
-        X={"{0,1,2,3,4,5}"}, Y={"{0,1,2}"}. Each row assigns exactly one output
-        to an input. The proposed quotient identifies inputs modulo {modulus}.
+        <Prose>{String.raw`$X=\{0,1,2,3,4,5\}$, $Y=\{0,1,2\}$. Each row assigns exactly one output to an input. The proposed quotient identifies inputs modulo $${modulus}$.`}</Prose>
       </p>
       <label>
         Input equivalence modulus
@@ -80,15 +79,21 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
         <caption>Function values and equivalence classes</caption>
         <thead>
           <tr>
-            <th scope="col">Input x</th>
-            <th scope="col">Output f(x)</th>
+            <th scope="col">
+              Input <M>{"x"}</M>
+            </th>
+            <th scope="col">
+              Output <M>{"f(x)"}</M>
+            </th>
             <th scope="col">Input class</th>
           </tr>
         </thead>
         <tbody>
           {outputs.map((value, input) => (
             <tr key={input}>
-              <th scope="row">{input}</th>
+              <th scope="row">
+                <M>{String(input)}</M>
+              </th>
               <td>
                 <select
                   aria-label={`Output f(${input}), currently ${value}`}
@@ -106,7 +111,9 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
                   ))}
                 </select>
               </td>
-              <td>[{input % modulus}]</td>
+              <td>
+                <M>{`[${input % modulus}]`}</M>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -114,29 +121,19 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
       <div className="live-mathematics" aria-live="polite">
         {model.fibers.map((fiber, value) => (
           <p key={value}>
-            Fiber f⁻¹({"{"}
-            {value}
-            {"}"}) = {"{"}
-            {fiber.join(", ")}
-            {"}"}
+            <Prose>{String.raw`Fiber $f^{-1}(\{${value}\})=\{${fiber.join(", ")}\}$.`}</Prose>
           </p>
         ))}
         <p>
-          Injective: {model.injective ? "yes" : "no"}. Surjective onto Y:{" "}
-          {model.surjective ? "yes" : "no"}.
+          Injective: {model.injective ? "yes" : "no"}. Surjective onto{" "}
+          <M>{"Y"}</M>: {model.surjective ? "yes" : "no"}.
         </p>
         <p>
-          Proposed rule X/~ → Y, [x] ↦ f(x):{" "}
-          <strong>
-            {model.wellDefined ? "well-defined" : "not well-defined"}
-          </strong>
-          .
+          <Prose>{String.raw`Proposed rule $X/{\sim}\to Y$, $[x]\mapsto f(x)$: ${model.wellDefined ? "well-defined" : "not well-defined"}.`}</Prose>
         </p>
         {model.witness && (
           <p>
-            Witness: {model.witness[0]} and {model.witness[1]} are in the same
-            input class, but their outputs are {outputs[model.witness[0]]} and{" "}
-            {outputs[model.witness[1]]}.
+            <Prose>{String.raw`Witness: $${model.witness[0]}$ and $${model.witness[1]}$ are in the same input class, but their outputs are $${outputs[model.witness[0]]}$ and $${outputs[model.witness[1]]}$.`}</Prose>
           </p>
         )}
       </div>
@@ -157,10 +154,8 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
         Restore a valid quotient rule
       </button>
       <p>
-        Invariant for <Prose>{lesson.navTitle || lesson.title}</Prose>: a
-        descended rule exists exactly when f is constant on each chosen input
-        class. The table is a complete check for these six inputs; the general
-        proof quantifies over every pair of equivalent inputs.
+        Invariant for <Prose>{lesson.navTitle || lesson.title}</Prose>:{" "}
+        <Prose>{String.raw`a descended rule exists exactly when $f$ is constant on each chosen input class. The table is a complete check for these six inputs; the general proof quantifies over every pair of equivalent inputs.`}</Prose>
       </p>
     </div>
   );

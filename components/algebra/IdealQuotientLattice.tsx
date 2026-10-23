@@ -6,11 +6,11 @@ import {
   quotientElementNames,
   type PolynomialIdeal,
 } from "@/lib/algebra/ideal-quotients";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
 type RingExample = "integers" | "polynomials";
 const setLabel = (values: number[], names: string[] = []) =>
-  `{${values.map((value) => names[value] ?? value).join(", ")}}`;
+  String.raw`\{${values.map((value) => names[value] ?? value).join(", ")}\}`;
 
 export function IdealQuotientLattice() {
   const [example, setExample] = useState<RingExample>("integers");
@@ -26,9 +26,7 @@ export function IdealQuotientLattice() {
   return (
     <div className="foundation-lab">
       <p>
-        Choose a two-sided ideal I of R. The quotient <M>{"R/I"}</M> identifies
-        elements whose difference lies in I. Multiplication of classes is then
-        representative-independent.
+        <Prose>{String.raw`Choose a two-sided ideal $I$ of $R$. The quotient $R/I$ identifies elements whose difference lies in $I$. Multiplication of classes is then representative-independent.`}</Prose>
       </p>
       <div className="lab-controls">
         <label>
@@ -48,8 +46,11 @@ export function IdealQuotientLattice() {
         </label>
         {example === "integers" ? (
           <label>
-            Ideal I=dℤ/12ℤ; choose d
+            Ideal{" "}
+            <M focusable={false}>{String.raw`I=d\mathbb Z/12\mathbb Z`}</M>;
+            choose <M focusable={false}>{"d"}</M>
             <select
+              aria-label="Ideal I=dℤ/12ℤ; choose d"
               value={idealGenerator}
               onChange={(event) => {
                 setIdealGenerator(Number(event.target.value));
@@ -66,8 +67,10 @@ export function IdealQuotientLattice() {
           </label>
         ) : (
           <label>
-            Ideal I=(q); choose q∈F₂[X]
+            Ideal <M focusable={false}>{"I=(q)"}</M>; choose{" "}
+            <M focusable={false}>{String.raw`q\in\mathbb F_2[X]`}</M>
             <select
+              aria-label="Ideal I=(q); choose q∈F₂[X]"
               value={polynomial}
               onChange={(event) => {
                 setPolynomial(event.target.value as PolynomialIdeal);
@@ -105,10 +108,11 @@ export function IdealQuotientLattice() {
                 <M
                   block
                 >{`R=\\mathbb Z/12\\mathbb Z,\\quad I=${idealGenerator}\\mathbb Z/12\\mathbb Z,\\quad R/I\\cong\\mathbb Z/${idealGenerator}\\mathbb Z`}</M>
-                <p>Selected source ideal: {setLabel(integers.sourceIdeal)}.</p>
                 <p>
-                  Quotient classes: {setLabel(integers.elements)}.
-                  {idealGenerator === 1 && " This is the zero ring, with 0=1."}
+                  <Prose>{String.raw`Selected source ideal: $${setLabel(integers.sourceIdeal)}$.`}</Prose>
+                </p>
+                <p>
+                  <Prose>{String.raw`Quotient classes: $${setLabel(integers.elements)}$.${idealGenerator === 1 ? " This is the zero ring, with $0=1$." : ""}`}</Prose>
                 </p>
               </>
             ) : (
@@ -117,41 +121,36 @@ export function IdealQuotientLattice() {
                   block
                 >{String.raw`R=\mathbb F_2[X],\quad I=(q),\quad R/I=\mathbb F_2[X]/(q)`}</M>
                 <p>
-                  q={quadratic.label}; quotient reduction rule{" "}
-                  {quadratic.relation}.
+                  <Prose>{String.raw`$q=${polynomial === "irreducible" ? "X^2+X+1" : polynomial === "double" ? "X^2+1=(X+1)^2" : "X^2+X=X(X+1)"}$; quotient reduction rule $X^2=${polynomial === "irreducible" ? "1+X" : polynomial === "double" ? "1" : "X"}$.`}</Prose>
                 </p>
                 <p>
-                  Quotient classes:{" "}
-                  {setLabel(quadratic.elements, quotientElementNames)}.
+                  <Prose>{String.raw`Quotient classes: $${setLabel(quadratic.elements, quotientElementNames)}$.`}</Prose>
                 </p>
               </>
             )}
-            <p>Units: {setLabel(selected.units, quotientNames)}.</p>
             <p>
-              Nonzero zero divisors:{" "}
-              {setLabel(selected.zeroDivisors, quotientNames)}.
+              <Prose>{String.raw`Units: $${setLabel(selected.units, quotientNames)}$.`}</Prose>
+            </p>
+            <p>
+              <Prose>{String.raw`Nonzero zero divisors: $${setLabel(selected.zeroDivisors, quotientNames)}$.`}</Prose>
             </p>
             {failure && (
               <p role="status">
-                {quadratic.nonIdealWitness.subgroup} is an additive subgroup but
-                not an ideal: X·1=X lies outside H.{" "}
-                {quadratic.nonIdealWitness.equivalent}, yet{" "}
-                {quadratic.nonIdealWitness.products}. Multiplication of these
-                proposed classes depends on the representative.
+                <Prose>{String.raw`$H=\{0,1\}\subset\mathbb F_2[X]$ is an additive subgroup but not an ideal: $X\cdot1=X$ lies outside $H$. $X$ and $X+1$ differ by $1\in H$, yet $X\cdot X=X^2$ and $(X+1)\cdot X=X^2+X$ differ by $X\notin H$. Multiplication of these proposed classes depends on the representative.`}</Prose>
               </p>
             )}
           </div>
           {example === "polynomials" && (
             <table>
               <caption>
-                Multiplication in F₂[X]/(q), using the selected reduction rule
+                <Prose>{String.raw`Multiplication in $\mathbb F_2[X]/(q)$, using the selected reduction rule`}</Prose>
               </caption>
               <thead>
                 <tr>
-                  <th scope="col">·</th>
+                  <th scope="col">Multiply</th>
                   {quadratic.elements.map((element) => (
                     <th scope="col" key={element}>
-                      {quotientElementNames[element]}
+                      Class <M>{quotientElementNames[element]}</M>
                     </th>
                   ))}
                 </tr>
@@ -159,10 +158,12 @@ export function IdealQuotientLattice() {
               <tbody>
                 {quadratic.elements.map((a) => (
                   <tr key={a}>
-                    <th scope="row">{quotientElementNames[a]}</th>
+                    <th scope="row">
+                      Class <M>{quotientElementNames[a]}</M>
+                    </th>
                     {quadratic.elements.map((b) => (
                       <td key={b}>
-                        {quotientElementNames[quadratic.multiply(a, b)]}
+                        <M>{quotientElementNames[quadratic.multiply(a, b)]}</M>
                       </td>
                     ))}
                   </tr>
@@ -172,47 +173,68 @@ export function IdealQuotientLattice() {
           )}
           <table>
             <caption>
-              Ideal correspondence: J containing I corresponds to J/I
+              <Prose>{String.raw`Ideal correspondence: $J\supseteq I$ corresponds to $J/I$`}</Prose>
             </caption>
             <thead>
               <tr>
-                <th scope="col">Source ideal J</th>
-                <th scope="col">Quotient ideal J/I</th>
-                <th scope="col">Ideals containing J</th>
+                <th scope="col">
+                  Source ideal <M>{"J"}</M>
+                </th>
+                <th scope="col">
+                  Quotient ideal <M>{"J/I"}</M>
+                </th>
+                <th scope="col">
+                  Ideals containing <M>{"J"}</M>
+                </th>
               </tr>
             </thead>
             <tbody>
               {example === "integers"
                 ? integers.correspondence.map((row) => (
                     <tr key={row.generator}>
-                      <th scope="row">{row.generator}ℤ/12ℤ</th>
-                      <td>{setLabel(row.quotientIdeal)}</td>
+                      <th scope="row">
+                        Ideal{" "}
+                        <M>{String.raw`${row.generator}\mathbb Z/12\mathbb Z`}</M>
+                      </th>
                       <td>
-                        {row.containedIn.map((d) => `${d}ℤ/12ℤ`).join(", ")}
+                        <M>{setLabel(row.quotientIdeal)}</M>
+                      </td>
+                      <td>
+                        <M>
+                          {row.containedIn
+                            .map((d) => String.raw`${d}\mathbb Z/12\mathbb Z`)
+                            .join(", ")}
+                        </M>
                       </td>
                     </tr>
                   ))
                 : quadratic.correspondence.map((row) => (
                     <tr key={row.generator}>
-                      <th scope="row">({row.generator})</th>
+                      <th scope="row">
+                        Ideal{" "}
+                        <M>{`(${row.generator === "X²+X+1" ? "X^2+X+1" : row.generator === "X²+1" ? "X^2+1" : row.generator === "X²+X" ? "X^2+X" : row.generator})`}</M>
+                      </th>
                       <td>
-                        {setLabel(row.quotientIdeal, quotientElementNames)}
+                        <M>
+                          {setLabel(row.quotientIdeal, quotientElementNames)}
+                        </M>
                       </td>
                       <td>
-                        {row.containedIn
-                          .map((generator) => `(${generator})`)
-                          .join(", ")}
+                        <M>
+                          {row.containedIn
+                            .map(
+                              (generator) =>
+                                `(${generator === "X²+X+1" ? "X^2+X+1" : generator === "X²+1" ? "X^2+1" : generator === "X²+X" ? "X^2+X" : generator})`,
+                            )
+                            .join(", ")}
+                        </M>
                       </td>
                     </tr>
                   ))}
             </tbody>
           </table>
           <p>
-            Ideal correspondence sends J⊇I to J/I and preserves inclusion. This
-            finite table checks the selected example. In general, two-sided
-            absorption proves quotient multiplication well-defined, and the
-            preimage of an ideal under the quotient map proves the
-            correspondence.
+            <Prose>{String.raw`Ideal correspondence sends $J\supseteq I$ to $J/I$ and preserves inclusion. This finite table checks the selected example. In general, two-sided absorption proves quotient multiplication well-defined, and the preimage of an ideal under the quotient map proves the correspondence.`}</Prose>
           </p>
         </>
       )}

@@ -7,7 +7,7 @@ import {
   symmetricProduct,
   symmetricInverse,
 } from "@/lib/algebra/foundation-labs";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 const subgroups = [
   { name: "{e,(12)} — not normal", elements: [0, 1] },
   { name: "A3={e,(123),(132)} — normal", elements: [0, 4, 5] },
@@ -15,7 +15,7 @@ const subgroups = [
   { name: "S3 — normal", elements: [0, 1, 2, 3, 4, 5] },
 ];
 const names = (elements: number[]) =>
-  `{${elements.map((element) => permutationNames[element]).join(", ")}}`;
+  String.raw`\{${elements.map((element) => permutationNames[element]).join(", ")}\}`;
 export function CosetConstructor({ lesson }: { lesson: Lesson }) {
   const [selection, setSelection] = useState(
       Number(lesson.parameters?.subgroup ?? 0),
@@ -32,12 +32,12 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
         {"G=S_3,\\quad aH=\\{ah:h\\in H\\},\\quad Ha=\\{ha:h\\in H\\}"}
       </M>
       <p>
-        Permutations act on the left; ab applies b first. Cosets are whole
-        subsets. The tiles show a partition, not elements deleted from S3.
+        <Prose>{String.raw`Permutations act on the left; $ab$ applies $b$ first. Cosets are whole subsets. The tiles show a partition, not elements deleted from $S_3$.`}</Prose>
       </p>
       <label>
-        Subgroup H
+        Subgroup <M focusable={false}>{String.raw`H`}</M>
         <select
+          aria-label="Subgroup H"
           value={selection}
           onChange={(event) => setSelection(Number(event.target.value))}
         >
@@ -49,8 +49,9 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
         </select>
       </label>
       <label>
-        Representative a
+        Representative <M focusable={false}>{String.raw`a`}</M>
         <select
+          aria-label="Representative a"
           value={representative}
           onChange={(event) => setRepresentative(Number(event.target.value))}
         >
@@ -65,37 +66,28 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
         {model.cosets.map((coset, index) => (
           <section key={index}>
             <h3>
-              Class {index}: {permutationNames[coset[0]]}H
+              <Prose>{String.raw`Class ${index}: $${permutationNames[coset[0]]}H$`}</Prose>
             </h3>
             {coset.map((element) => (
-              <span key={element}>{permutationNames[element]}</span>
+              <span key={element}>
+                <M>{permutationNames[element]}</M>
+              </span>
             ))}
           </section>
         ))}
       </div>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          aH={names(model.left(representative))}; Ha=
-          {names(model.right(representative))}.
+          <Prose>{String.raw`$aH=${names(model.left(representative))}$; $Ha=${names(model.right(representative))}$.`}</Prose>
         </p>
         <p>
-          aHa⁻¹=
-          {names(
-            subgroup.elements.map((h) =>
-              symmetricProduct(
-                symmetricProduct(representative, h),
-                symmetricInverse(representative),
-              ),
-            ),
-          )}
-          .
+          <Prose>{String.raw`$aHa^{-1}=${names(subgroup.elements.map((h) => symmetricProduct(symmetricProduct(representative, h), symmetricInverse(representative))))}$.`}</Prose>
         </p>
         <p>
-          6 = {model.cosets.length} cosets × {subgroup.elements.length} elements
-          per coset.
+          <Prose>{String.raw`$6=${model.cosets.length}\times${subgroup.elements.length}$, counting cosets times elements per coset.`}</Prose>
         </p>
         <p>
-          H is{" "}
+          <M>{"H"}</M> is{" "}
           {model.normal
             ? "normal: all left/right cosets agree"
             : "not normal: quotient multiplication is rejected"}
@@ -103,11 +95,7 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
         </p>
         {witness && (
           <p>
-            Failure witness: {permutationNames[witness.first]}H=
-            {permutationNames[witness.replacement]}H, but multiplying by{" "}
-            {permutationNames[witness.second]}H gives class{" "}
-            {witness.originalClass} using the first representative and class{" "}
-            {witness.changedClass} using the replacement.
+            <Prose>{String.raw`Failure witness: $${permutationNames[witness.first]}H=${permutationNames[witness.replacement]}H$, but multiplying by $${permutationNames[witness.second]}H$ gives class ${witness.originalClass} using the first representative and class ${witness.changedClass} using the replacement.`}</Prose>
           </p>
         )}
       </div>
@@ -121,7 +109,7 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
               <th scope="col">Product</th>
               {model.cosets.map((_, i) => (
                 <th key={i} scope="col">
-                  {i}
+                  <M>{String(i)}</M>
                 </th>
               ))}
             </tr>
@@ -129,9 +117,13 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
           <tbody>
             {model.quotientTable.map((row, i) => (
               <tr key={i}>
-                <th scope="row">{i}</th>
+                <th scope="row">
+                  <M>{String(i)}</M>
+                </th>
                 {row.map((value, j) => (
-                  <td key={j}>{value}</td>
+                  <td key={j}>
+                    <M>{String(value)}</M>
+                  </td>
                 ))}
               </tr>
             ))}
@@ -141,11 +133,14 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
       <button onClick={() => setSelection(0)}>
         Try the nonnormal subgroup
       </button>
-      <button onClick={() => setSelection(1)}>Form the quotient S3/A3</button>
+      <button
+        aria-label="Form the quotient S3/A3"
+        onClick={() => setSelection(1)}
+      >
+        Form the quotient <M focusable={false}>{"S_3/A_3"}</M>
+      </button>
       <p>
-        Why the law works: for a′=an and b′=bm, a′b′=ab(b⁻¹nb)m. The output
-        stays in abH precisely when conjugation preserves H. The table checks
-        S3; this argument proves the general normal-subgroup construction.
+        <Prose>{String.raw`Why the law works: for $a^{\prime}=an$ and $b^{\prime}=bm$, $a^{\prime}b^{\prime}=ab(b^{-1}nb)m$. The output stays in $abH$ precisely when conjugation preserves $H$. The table checks $S_3$; this argument proves the general normal-subgroup construction.`}</Prose>
       </p>
     </div>
   );

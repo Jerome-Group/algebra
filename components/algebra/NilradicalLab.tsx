@@ -6,7 +6,7 @@ import {
   powerSequence,
   radicalPowers,
 } from "@/lib/algebra/nilradical";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
 export function NilradicalLab() {
   const [ring, setRing] = useState("8");
@@ -48,8 +48,7 @@ export function NilradicalLab() {
       {matrix ? (
         <>
           <p role="status">
-            E₁₂²=0 in M₂(F₂), yet J(M₂(F₂))=0. Nilpotent elements need not form
-            the Jacobson radical without commutativity.
+            <Prose>{String.raw`$E_{12}^2=0$ in $M_2(\mathbb F_2)$, yet $J(M_2(\mathbb F_2))=0$. Nilpotent elements need not form the Jacobson radical without commutativity.`}</Prose>
           </p>
           <table>
             <caption>Noncommutative failure state</caption>
@@ -57,13 +56,19 @@ export function NilradicalLab() {
               <tr>
                 <th scope="col">Matrix</th>
                 <th scope="col">Square</th>
-                <th scope="col">In J?</th>
+                <th scope="col">
+                  In radical <M>{"J"}</M>?
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">E₁₂</th>
-                <td>0</td>
+                <th scope="row">
+                  Matrix unit <M>{"E_{12}"}</M>
+                </th>
+                <td>
+                  <M>{"0"}</M>
+                </td>
                 <td>No</td>
               </tr>
             </tbody>
@@ -72,8 +77,12 @@ export function NilradicalLab() {
       ) : (
         <>
           <label>
-            Element x∈ℤ/{modulus}ℤ
+            Element{" "}
+            <M
+              focusable={false}
+            >{String.raw`x\in\mathbb Z/${modulus}\mathbb Z`}</M>
             <select
+              aria-label={`Element x∈ℤ/${modulus}ℤ`}
               value={element % modulus}
               onChange={(event) => setElement(Number(event.target.value))}
             >
@@ -85,45 +94,46 @@ export function NilradicalLab() {
             </select>
           </label>
           <p role="status">
-            {element % modulus} is{" "}
-            {powers.includes(0) ? "nilpotent" : "not nilpotent"} in ℤ/{modulus}
-            ℤ. Nil(R)=J(R)=&#123;{nil.join(", ")}&#125;.
+            <Prose>{String.raw`$${element % modulus}$ is ${powers.includes(0) ? "nilpotent" : "not nilpotent"} in $\mathbb Z/${modulus}\mathbb Z$. $\operatorname{Nil}(R)=J(R)=\{${nil.join(", ")}\}$.`}</Prose>
           </p>
           <table>
             <caption>
-              Element powers and successive radical ideals in ℤ/{modulus}ℤ
+              <Prose>{String.raw`Element powers and successive radical ideals in $\mathbb Z/${modulus}\mathbb Z$`}</Prose>
             </caption>
             <thead>
               <tr>
                 <th scope="col">Exponent</th>
-                <th scope="col">xᵏ</th>
-                <th scope="col">Jᵏ</th>
+                <th scope="col">
+                  Element power <M>{"x^k"}</M>
+                </th>
+                <th scope="col">
+                  Ideal power <M>{"J^k"}</M>
+                </th>
               </tr>
             </thead>
             <tbody>
               {ideals.map((ideal, index) => (
                 <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{powers[index] ?? powers.at(-1)}</td>
-                  <td>&#123;{ideal.join(", ")}&#125;</td>
+                  <th scope="row">
+                    <M>{String(index + 1)}</M>
+                  </th>
+                  <td>
+                    <M>{String(powers[index] ?? powers.at(-1))}</M>
+                  </td>
+                  <td>
+                    <M>{String.raw`\{${ideal.join(", ")}\}`}</M>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
           <p>
-            {modulus === 8
-              ? "J=(2), J²=(4), J³=0: one exponent kills every triple product of radical elements."
-              : "J=0: the ring is reduced despite having zero divisors."}
+            <Prose>{String.raw`${modulus === 8 ? "$J=(2)$, $J^2=(4)$, $J^3=0$: one exponent kills every triple product of radical elements." : "$J=0$: the ring is reduced despite having zero divisors."}`}</Prose>
           </p>
         </>
       )}
       <p>
-        <strong>Proof boundary.</strong> In a commutative unital ring,
-        nilpotents lie in every prime ideal; the reverse inclusion requires a
-        prime disjoint from a nonnilpotent element’s powers. Artinianity
-        supplies a uniform nilpotence exponent for J. Without it, every element
-        of a nil ideal may be nilpotent while the ideal itself is not nilpotent.
-        The matrix state rejects any extension of the commutative claim.
+        <Prose>{String.raw`Proof boundary. In a commutative unital ring, nilpotents lie in every prime ideal; the reverse inclusion requires a prime disjoint from a nonnilpotent element’s powers. Artinianity supplies a uniform nilpotence exponent for $J$. Without it, every element of a nil ideal may be nilpotent while the ideal itself is not nilpotent. The matrix state rejects any extension of the commutative claim.`}</Prose>
       </p>
     </section>
   );

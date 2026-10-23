@@ -109,6 +109,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
         <div className="three-cols">
           <Range
             label={"$T_{11}$"}
+            accessibleLabel="Matrix entry T11"
             min={-2}
             max={2}
             value={a}
@@ -116,6 +117,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
           />
           <Range
             label={"$T_{12}$"}
+            accessibleLabel="Matrix entry T12"
             min={-2}
             max={2}
             value={off}
@@ -123,6 +125,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
           />
           <Range
             label={"$T_{22}$"}
+            accessibleLabel="Matrix entry T22"
             min={-2}
             max={2}
             value={b}
@@ -132,6 +135,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
         <div className="two-cols">
           <Range
             label={"Vector $x$"}
+            accessibleLabel="Vector x"
             min={-2}
             max={2}
             value={x}
@@ -139,6 +143,7 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
           />
           <Range
             label={"Vector $y$"}
+            accessibleLabel="Vector y"
             min={-2}
             max={2}
             value={y}
@@ -151,10 +156,10 @@ export function ModuleLab({ lesson }: { lesson: Lesson }) {
         <p>
           <Prose>
             {
-              " The x-axis $W$ is invariant because $T(x,0)=(ax,0)$. A quotient class modulo $W$ remembers only $y$; the induced operator on $V/W$ is multiplication by "
+              " The $x$-axis $W$ is invariant because $T(x,0)=(ax,0)$. A quotient class modulo $W$ remembers only $y$; the induced operator on $V/W$ is multiplication by "
             }
           </Prose>
-          {b}
+          <M>{String(b)}</M>
           <Prose>
             {
               ". Change $T_{12}$: it changes the horizontal output while leaving the quotient action unchanged. "

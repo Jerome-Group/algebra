@@ -207,27 +207,27 @@
     },
     {
       "file": "components/algebra/Bridges.tsx",
-      "sha256": "4131bdf1e9830eaf2a4e36f033f3b24e7a2d69656c9989f087aab8a3979965c6"
+      "sha256": "f1edb4fbd249c40df81c8f1ddd4ce4fc1c643c3d42a5f60fc0751dae4a97c85f"
     },
     {
       "file": "components/algebra/BurnsideClassLab.tsx",
-      "sha256": "c8973986e5620150388abac8576ab5d9adf065c68371845d9caba7e6ddb97674"
+      "sha256": "e78f67fc2642f8d5d1a2942ff0778970b34686723762d535589acc103323ed77"
     },
     {
       "file": "components/algebra/CayleyEmbedding.tsx",
-      "sha256": "336b873d0c28f1742ae190e659c46d446382c79430101e4caf0689af99d8167e"
+      "sha256": "5ecee25f9267e4216f4020688623fa7f94d4e22d3a689c3c50fb65f90ae81de2"
     },
     {
       "file": "components/algebra/CayleyReachability.tsx",
-      "sha256": "e2807439d32e43376638a371525392743eb3b56ee347e24cb1be858189e855a2"
+      "sha256": "539cfe53245c77c63a28cd29dfc030e4b070223852eb2daf48a3ce9015464c65"
     },
     {
       "file": "components/algebra/CayleyRelations.tsx",
-      "sha256": "52e8437f1b26544031dc979d09dc6327f27cf23dc8b63925a6bb156b59710f79"
+      "sha256": "1f639f9a0421b195d56ea373cd77cae16674e986697d151cd92649e771bbd95f"
     },
     {
       "file": "components/algebra/CharacterConstruction.tsx",
-      "sha256": "91722341d57ea685a0a678ca56f249dc4b38e80b1291acbba6c45c4cc46e2fb9"
+      "sha256": "7d813cf909201ab7743bdd269fa87132db0e37b410a48b3864fb70be7f581213"
     },
     {
       "file": "components/algebra/Checkpoint.tsx",
@@ -235,15 +235,19 @@
     },
     {
       "file": "components/algebra/Coloring.tsx",
-      "sha256": "2dd7d3e1e6cd5af3576e44e7b60f2d09a5025cfefcbfca5701fb33e89755c1b6"
+      "sha256": "802c8bde1673ecfa63704b2d9fa8030df5466e7fd27138b23460625beb16d5e1"
     },
     {
       "file": "components/algebra/ColoringAxisDiagram.tsx",
       "sha256": "49c291692073a1a77abcab0d9238146114b3a1c5fa5886c2723a86c2dee42630"
     },
     {
+      "file": "components/algebra/ColoringLedgerText.ts",
+      "sha256": "53fed38726b218b650446353a304f665d994f98850baf6d979f15763a18a14c8"
+    },
+    {
       "file": "components/algebra/ColoringLedgerView.tsx",
-      "sha256": "84a846c941670e0e4ce30f3b179de81140a1f006a13985c604627d577c8a74d2"
+      "sha256": "6f424061323d4fa8f557f6550f206ca6d3384b5c1a9e27db95266d6512ea8be4"
     },
     {
       "file": "components/algebra/ConceptLibrary.tsx",
@@ -255,27 +259,27 @@
     },
     {
       "file": "components/algebra/Conjugation.tsx",
-      "sha256": "d950549281c0ae18949d8bc48afa424f235623202cbdbc8e63a87038cc56afd3"
+      "sha256": "8f6e66d60798ea119ed977431226934ae34d6b93bec8be473e4d972ca53a9b1f"
     },
     {
       "file": "components/algebra/CosetConstructor.tsx",
-      "sha256": "dce45bddbb9c28bad5265752e9056c723053a690af09f933a69676093b91db21"
+      "sha256": "b1d5deb2a8e0a6e41e957f2ffc4705b781b179008a6f4840085c21b79a119459"
     },
     {
       "file": "components/algebra/Cube.tsx",
-      "sha256": "302685c3ad8796daed156ac53f7a65490890893e9afe510086a75aff61523506"
+      "sha256": "7bc42c06a947a0f8045f98906d318f9a2793d58ff307453023b33dc98a9bdfed"
     },
     {
       "file": "components/algebra/CubeColoringLab.tsx",
-      "sha256": "43b7faa4bc730d46f57fb5dd3ddf0a4916077398d9a4a6a995a4588fd9e648db"
+      "sha256": "5dc6ce7d65a31b1d094ffd1a24325bbaff80d147becc372f7ad39c007dcedb5a"
     },
     {
       "file": "components/algebra/CyclicEigenvalues.tsx",
-      "sha256": "9ab2ecc08f37c8f6436fdfcd12095b4a0c65deefcca45b65df02ffde9bd2bd7e"
+      "sha256": "2f6ab7493cf581952d35c5d5dac9b17cd9f04c2972dae583b85ae631ed56ecf7"
     },
     {
       "file": "components/algebra/CyclicSubgroups.tsx",
-      "sha256": "aee96389bb6033bb7099e6d11fd8fd21cd562464d27baca3d9c3f9a44e8da2d9"
+      "sha256": "606966674a4b2692be4230d8c77daa50f9089a48a3fae57660c7dcf1faca1fc1"
     },
     {
       "file": "components/algebra/Diagram.tsx",
@@ -283,11 +287,11 @@
     },
     {
       "file": "components/algebra/Exploration.tsx",
-      "sha256": "f770abed6a50576b1eea601dfc4db4bc229442d142018e4e655286e543cf6bf3"
+      "sha256": "3b164938d97222ee1e0bfd47680824d9a79720bc993565c5c07e9bb12d5cf4f4"
     },
     {
       "file": "components/algebra/FiniteLinearGroups.tsx",
-      "sha256": "f7ef0b6385506f2d9dfe8026eede226dc791a989551830d6ad5af434e3b71edd"
+      "sha256": "6856688d61fdf2014889f9ebc4e9a04ae90ccc7b37176172582dd42c01f7462d"
     },
     {
       "file": "components/algebra/FixedColoringLab.tsx",
@@ -295,7 +299,7 @@
     },
     {
       "file": "components/algebra/FunctionFibers.tsx",
-      "sha256": "6b24de578124535230fd27564092743ba193ad9aa2149c1d0287e68dc589c9d1"
+      "sha256": "c01c79f6cb1cd9e1c28d8012cc5ca7f04004c46eecee54b594991304ccdaa492"
     },
     {
       "file": "components/algebra/Groups.tsx",
@@ -307,15 +311,19 @@
     },
     {
       "file": "components/algebra/IdealChainExplorer.tsx",
-      "sha256": "ee8da3117f27636b3dbd3b12559be62b2400e20e6f4c02bab305c514dd5207cd"
+      "sha256": "f8efda0503ec9cae45d82beb93ea4585f30b441ab57c4b5da3e5706eb3f7d57a"
+    },
+    {
+      "file": "components/algebra/IdealChainText.ts",
+      "sha256": "51f84f81a4af85f474f97c0f037c8ac8fab540729242420041e2c450088b53e2"
     },
     {
       "file": "components/algebra/IdealQuotientLattice.tsx",
-      "sha256": "13105bad4ba69195afce6d5eec2d56a35f652655a9e5a96051f019a057ed59c6"
+      "sha256": "a4895a8fe05701ccf77d6fbfca03ba66b9e508c5aba011a1d734d564c43ea8ad"
     },
     {
       "file": "components/algebra/InductionReciprocityLab.tsx",
-      "sha256": "c94ec714606ea0f2bbf870b088ebb708e5b4685b42ce42770e0622ecfa163135"
+      "sha256": "48572eb4d35618fb903a4370f1415d765cb55fba323cac3cf1b18092aa3bed77"
     },
     {
       "file": "components/algebra/InterfaceControls.ts",
@@ -323,7 +331,7 @@
     },
     {
       "file": "components/algebra/InvariantIntertwinerLab.tsx",
-      "sha256": "670e8d0c119e1643bf8b1135168a6d80e4a3542162946bdd55a6bf4a4029738d"
+      "sha256": "c03c05f76472847700c362ca4c4bd4684955c629599c55d16c8df4e293008163"
     },
     {
       "file": "components/algebra/Laboratory.tsx",
@@ -335,11 +343,11 @@
     },
     {
       "file": "components/algebra/LaboratoryGallery.tsx",
-      "sha256": "e21922d9d72db186f07fb99e09556d9b3bb436deeb62f3688272e57bb7723a7d"
+      "sha256": "c52342d5d3d9aa1b731fbf4e17585581c5edbd94859d8305d0daa59266e512ff"
     },
     {
       "file": "components/algebra/LaboratoryLoadBoundary.tsx",
-      "sha256": "8df77cddf6dbbb1b7bd39786e85497a2c015cdf97b33c13fbecbfd7be04fcc8e"
+      "sha256": "eeb0bd0dbd52e6231b4d24aa380dd019cfc7d9ca14bcfa23298221b0fb72391c"
     },
     {
       "file": "components/algebra/LearningHome.tsx",
@@ -359,7 +367,7 @@
     },
     {
       "file": "components/algebra/LocalisationMicroscope.tsx",
-      "sha256": "79add9ddd2dd6049124a8dd2d0d8074fabb032a04f85a6bd972d66d8da9bac08"
+      "sha256": "637c16a1468a8408a3976114a443712276f01f1a5c48e4bb96e8fa922fab7365"
     },
     {
       "file": "components/algebra/Math.tsx",
@@ -367,31 +375,31 @@
     },
     {
       "file": "components/algebra/ModuleActionBoard.tsx",
-      "sha256": "bacbcc9b93ac3c7eab75f06c1f9469a5400542d76a68f2c9d0974785020728f0"
+      "sha256": "b6012a2d827450d4fb2668f2d1d6243db8f2c8195ab0065a7ae3974eb11a9388"
     },
     {
       "file": "components/algebra/ModulePresentation.tsx",
-      "sha256": "bcb589c94d6fff2a75e7ca905a3b8e2278204d37eee34e7ad9837ccdd8226263"
+      "sha256": "ef1caf9acaab3737b7de859d7efd8eee123bf18a614d1e03b464c114c58662d3"
     },
     {
       "file": "components/algebra/Modules.tsx",
-      "sha256": "1f126168ca3f23a698f6be7b9157c154d418b46ecd1d3af561fcdfc2133a0886"
+      "sha256": "231e1121e5b0f2bee2570747f52528e698feadf38acbad07c669e0548cc4fc8f"
     },
     {
       "file": "components/algebra/NilradicalLab.tsx",
-      "sha256": "77d37c4a68ce2e0d7da3e2823ceaeaebdfbf1cdde08b098939b08fda60b1a39c"
+      "sha256": "f70f8dec26ccf80452a1416cb615b838a41e4c51ab0bc2edf909423723d69da6"
     },
     {
       "file": "components/algebra/OperationChecker.tsx",
-      "sha256": "a4c284211655f5a5449c71194dd854cc33a5cbabc206201337525d9c0eb4e461"
+      "sha256": "ad33525b0e803f1d04f44e8ea74d9b60deeb0d65364d89abf7d22b75a53a0a98"
     },
     {
       "file": "components/algebra/OrbitWorkbench.tsx",
-      "sha256": "25ea96ab6161eb35b4188a4ecc49a2242ee06bb9ee2284000c2362affa520005"
+      "sha256": "9cc552bf7b0f7202f807e005a159c4720a22f921d77b759ef58ee8c9d9e5d9e4"
     },
     {
       "file": "components/algebra/OrthogonalGeometry.tsx",
-      "sha256": "3c39ac2252bc15c7b25deabbccfe7c3fe3f3ef8bd0c6a8340488736dcac410dd"
+      "sha256": "f86c45ff780d8c2a6a7ae7f5c2543c441462239742556db964ce5a717bd66273"
     },
     {
       "file": "components/algebra/PolygonColoringLab.tsx",
@@ -399,11 +407,15 @@
     },
     {
       "file": "components/algebra/PolynomialFactorisation.tsx",
-      "sha256": "8c22d259e9650e3f23e25f03ae87e850c20fe14b56c493b57041e8e28c896e43"
+      "sha256": "4e65c8347da565e999a8dcf7c71dd1c06656b7e1cb47abf4bf4a3321a2ecad68"
+    },
+    {
+      "file": "components/algebra/PolynomialFactorisationText.ts",
+      "sha256": "35f5b85ce537ff2f0455e0da9ac7f900427e2abe094faebe70988fef59589399"
     },
     {
       "file": "components/algebra/QuadraticIntegers.tsx",
-      "sha256": "b814baf1093767ba5814e8a15d58bfce3dc9f0260b3cc097a384acde01bc7b23"
+      "sha256": "d2e28be3b2486cc4192570394834623a9e27c47252ce359b4d35588766f690bb"
     },
     {
       "file": "components/algebra/ReferenceAtlas.tsx",
@@ -411,27 +423,31 @@
     },
     {
       "file": "components/algebra/RepresentationJourney.tsx",
-      "sha256": "925b33df12994e600e74cc99946a9765def383f35b43496968672f0d3b71cd63"
+      "sha256": "2ef7b76420c5e04b0a2be63b13dec1a01a0cae18d645d44b8ba29bdcc2c0c7d5"
     },
     {
       "file": "components/algebra/RepresentationObject.tsx",
       "sha256": "6cab39da6493dcd70386c0f359b2bb4c4ab50e2e9451d18e153048ef699e5b6e"
     },
     {
+      "file": "components/algebra/RepresentationTex.ts",
+      "sha256": "8bc769d9e349acb9092bc9bf1a0e4081e81ec0f574184a45910580d5bd99c07e"
+    },
+    {
       "file": "components/algebra/Representations.tsx",
-      "sha256": "f5e8c23dbe7913f29e850cc4db0c9b4bc414e08a0371855d392edfc40e00a7c5"
+      "sha256": "ac732371fce03db677f0b1fbe268f00b57be76f3e1a815992504733a8c2bda3e"
     },
     {
       "file": "components/algebra/Rings.tsx",
-      "sha256": "0ce35588d1fc22f68ce52bf7e20dfbe6659b8d84adccd3b0b883b15f2391a478"
+      "sha256": "3ba56cf47ba626c7be0fccc7cd3810d8f99ec167e2b4491ed31c766c35f3449e"
     },
     {
       "file": "components/algebra/RotationLessons.tsx",
-      "sha256": "914f8b8811d40f1ed83a57bd294de76155efd6d3dd12630ad8d48fdafa2844c7"
+      "sha256": "c53760ae77ffc2a444179d93fb8f9745f52b5ff79de5eb0732621ef7037a70d8"
     },
     {
       "file": "components/algebra/SemidirectProducts.tsx",
-      "sha256": "c55811e5a0b80b698fa46fd912c094ce7ac8e5f9e7bbfc2a9e95ec4a11ab35c7"
+      "sha256": "d9d6d6ba900d69f6c4bf9a68cc869546d929f86c10618211b3187ceeeddd8456"
     },
     {
       "file": "components/algebra/SourceCoverage.tsx",
@@ -443,11 +459,11 @@
     },
     {
       "file": "components/algebra/SquareModes.tsx",
-      "sha256": "ed59dd9cf1b2a542085e12f71645c596240b528ae7452ee2ccedfcb738c98c87"
+      "sha256": "cfedc127df00b9fb29a555e519e5cfff02310ff44c08950a928d74c418d75563"
     },
     {
       "file": "components/algebra/Structure.tsx",
-      "sha256": "6fbc03fd067abeffd70c3379582582c8fd6e03653832e754539262dfa51afbc7"
+      "sha256": "8a9c5e01b484b0ad049d90818b22d5600a6b0ce687a5cf65814f5f474c3ff907"
     },
     {
       "file": "components/algebra/SvgMath.tsx",
@@ -455,23 +471,23 @@
     },
     {
       "file": "components/algebra/SylowArithmetic.tsx",
-      "sha256": "924e6bd62d380eb1493bee0347695a4f9d402625474fb74f89fcdda99f4e352b"
+      "sha256": "7dcdc12560bc9b87f7f29fad7f1dafea4ca31203b86cf9fb5c1ece94740ba9b7"
     },
     {
       "file": "components/algebra/SylowWorkbench.tsx",
-      "sha256": "4c08e890c7f2d8357d0c4801949076a8ac97780eccb8bec0f3b76c14bf995288"
+      "sha256": "07e2467e92912766d9f90e05fb1d18faa388cbe0c68700970be5c9af98348c91"
     },
     {
       "file": "components/algebra/SymmetryDesk.tsx",
-      "sha256": "4536c80998faa70a7e35553e0130434886c4a5a6ea07c8a47c52e59ff37603cb"
+      "sha256": "59376bbc049e3ee640e2c347da3e0cf0dd8bff21e334b8b4b89a150917927e2c"
     },
     {
       "file": "components/algebra/TensorBalancingLab.tsx",
-      "sha256": "f75ab659520701e31c4bacb40118acb04be420595036a5fe01edf04b64d2127d"
+      "sha256": "f98100fc474bf171906a6cb2e9d601c1e69aa40d91945601330c46297549af42"
     },
     {
       "file": "components/algebra/UrecaCharacterBound.tsx",
-      "sha256": "2c5ee718b88ee38b99ddb26cfa5aef1a646bbfcf85968eaed54ed8611248d2c4"
+      "sha256": "b1f3afdd123a2bdef0b0c497e78baca255de6863236698e74ea42c359c14eb5f"
     },
     {
       "file": "components/algebra/UrecaCoverage.tsx",
@@ -479,23 +495,23 @@
     },
     {
       "file": "components/algebra/UrecaDirectProducts.tsx",
-      "sha256": "ba02866d2face2aafc645f9f3646565c4d69b748cafa216b6718022c3be78c06"
+      "sha256": "a2c7e6670ac7c993b2d29248b1e554d936f7e52a0e69284d24e36fcc61e35af9"
     },
     {
       "file": "components/algebra/UrecaExternalTensor.tsx",
-      "sha256": "6a7799bde09d14915edc312f4a4060b062b508cf945bf8c22ae95aa5b7c01737"
+      "sha256": "ea15e40f47954989d5047119007f3a5d52881fd29893741c48d49e9716f96fa2"
     },
     {
       "file": "components/algebra/UrecaIrreducibles.tsx",
-      "sha256": "1c3810a516bd2cadd9ca4aa80e92c8e0e97e9cfd512d744f9c3bbffda548e0c9"
+      "sha256": "fa85a94ae999c21de5152fb4a0680d4f0037acb2f58d2969b60e4cfcf089d3f9"
     },
     {
       "file": "components/algebra/UrecaLabControls.tsx",
-      "sha256": "bcbcdddd02b6560d0313d83046246a0df1e49a1ae7be0e22168077ec3ff15faa"
+      "sha256": "f36c3df3aa03dbd242e0c4f62666f6d14d4c91ddc5cfc9efa1adbc2160a8b042"
     },
     {
       "file": "components/algebra/UrecaScalarKernel.tsx",
-      "sha256": "398158d62e7533beeda422b8d15f950a91ac9f614c1f95222f17ff4d90e8b903"
+      "sha256": "93a75a6f0fd2ab4eaadf7ebe1f88d83189666fd0ebddbe3d3baa3839221ffeb2"
     },
     {
       "file": "components/algebra/WebMCP.tsx",
@@ -503,7 +519,11 @@
     },
     {
       "file": "components/algebra/WedderburnLayerLab.tsx",
-      "sha256": "d074f15fe15ee6f9661935cfd8a45bb57e4dccc1f767bbc45c5f87e7d3728791"
+      "sha256": "637e330d3ca15c5cc9f7b178b9b81b46e9f0f944a3c1270ba0e7e54465659106"
+    },
+    {
+      "file": "components/algebra/WedderburnLayerText.ts",
+      "sha256": "58b820e6e08c072d3d0b4a8f292ef11ccf9c5dc2360452987240daf806b7be70"
     },
     {
       "file": "components/ui/accordion.tsx",
@@ -1134,6 +1154,14 @@
       "sha256": "1c71f84a07206fbc62f1f5386b4dff3ddf4509797c0b3d1b41451ef8293bbff3"
     },
     {
+      "file": "lib/algebra/lab-contract-presentations.json",
+      "sha256": "9a1735f7c2ecbf1fe86631b9f988b66fe32c271a519e0729ce9495c3057b43de"
+    },
+    {
+      "file": "lib/algebra/lab-contract-presentations.ts",
+      "sha256": "720f5a6b160c8b3564340b34c9bff8b47b64724e1dbf8ccd4006fec3098d630e"
+    },
+    {
       "file": "lib/algebra/lab-contracts.json",
       "sha256": "54a70dd92fd1600988cbe5793534d8968b31de8743f372d1c2936789a237736b"
     },
@@ -1644,6 +1672,10 @@
     {
       "file": "tests/invariant-intertwiner.test.mjs",
       "sha256": "048f122a19c3f49c9ae977f28462a2c60604d1e175a0fc0d7d50a69c1d8a1e9f"
+    },
+    {
+      "file": "tests/laboratory-tex.test.mjs",
+      "sha256": "99871c31429fb32a58e37c9a370e3c0ddd3f6fa54e95a78446fbaa37e572c282"
     },
     {
       "file": "tests/learning-metadata.test.mjs",
@@ -4315,6 +4347,7 @@
           "attributes": {
             "key": "{String(label)}",
             "label": "{`Matrix entry $${label}$`}",
+            "accessibleLabel": "{`Matrix entry ${label}`}",
             "min": "{0}",
             "max": "{prime - 1}",
             "value": "{value as number}",
@@ -4323,9 +4356,10 @@
         },
         {
           "kind": "Range",
-          "line": 146,
+          "line": 147,
           "attributes": {
             "label": "\"Linear coefficient $b$\"",
+            "accessibleLabel": "\"Linear coefficient b\"",
             "value": "{linear}",
             "min": "{0}",
             "max": "{prime - 1}",
@@ -4334,9 +4368,10 @@
         },
         {
           "kind": "Range",
-          "line": 153,
+          "line": 155,
           "attributes": {
             "label": "\"Constant coefficient $c$\"",
+            "accessibleLabel": "\"Constant coefficient c\"",
             "value": "{constant}",
             "min": "{0}",
             "max": "{prime - 1}",
@@ -4345,7 +4380,7 @@
         },
         {
           "kind": "button",
-          "line": 201,
+          "line": 204,
           "attributes": {
             "key": "{i}",
             "aria-label": "{`Select quotient element ${i}`}",
@@ -4369,8 +4404,9 @@
       "controls": [
         {
           "kind": "select",
-          "line": 26,
+          "line": 24,
           "attributes": {
+            "aria-label": "\"Representative z\"",
             "value": "{selected}",
             "onChange": "{(event) => setSelected(event.target.value as Case)}"
           }
@@ -4388,16 +4424,18 @@
       "controls": [
         {
           "kind": "select",
-          "line": 22,
+          "line": 21,
           "attributes": {
+            "aria-label": "{`First factor g, currently ${model.names[first]}`}",
             "value": "{first}",
             "onChange": "{(event) => setFirst(Number(event.target.value))}"
           }
         },
         {
           "kind": "select",
-          "line": 35,
+          "line": 36,
           "attributes": {
+            "aria-label": "{`Second factor h, currently ${model.names[second]}`}",
             "value": "{second}",
             "onChange": "{(event) => setSecond(Number(event.target.value))}"
           }
@@ -4426,8 +4464,9 @@
       "controls": [
         {
           "kind": "select",
-          "line": 48,
+          "line": 47,
           "attributes": {
+            "aria-label": "\"Group order n\"",
             "value": "{size}",
             "onChange": "{(event) => {\n            setSize(Number(event.target.value));\n            setGenerator(1);\n            setWord([]);\n          }}"
           }
@@ -4436,28 +4475,35 @@
           "kind": "select",
           "line": 63,
           "attributes": {
+            "aria-label": "\"Generator g\"",
             "value": "{generator}",
             "onChange": "{(event) => {\n            setGenerator(Number(event.target.value));\n            setWord([]);\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 75,
-          "attributes": { "onClick": "{() => setWord([...word, generator])}" }
+          "line": 76,
+          "attributes": {
+            "aria-label": "{`Apply +${generator}`}",
+            "onClick": "{() => setWord([...word, generator])}"
+          }
         },
         {
           "kind": "button",
-          "line": 78,
-          "attributes": { "onClick": "{() => setWord([...word, -generator])}" }
+          "line": 82,
+          "attributes": {
+            "aria-label": "{`Apply −${generator}`}",
+            "onClick": "{() => setWord([...word, -generator])}"
+          }
         },
         {
           "kind": "button",
-          "line": 81,
+          "line": 88,
           "attributes": { "onClick": "{() => setWord([])}" }
         },
         {
           "kind": "button",
-          "line": 210,
+          "line": 231,
           "attributes": {
             "onClick": "{() => {\n          setSize(12);\n          setGenerator(4);\n          setWord([]);\n        }}"
           }
@@ -4485,27 +4531,34 @@
           "line": 31,
           "attributes": {
             "key": "{letter}",
+            "aria-label": "{`Append ${s3LetterLabel[letter]}`}",
             "onClick": "{() => setWord([...word, letter])}"
           }
         },
         {
           "kind": "button",
-          "line": 35,
+          "line": 40,
           "attributes": { "onClick": "{() => setWord([])}" }
         },
         {
           "kind": "button",
-          "line": 36,
-          "attributes": { "onClick": "{() => setWord([\"r\", \"r\", \"r\"])}" }
+          "line": 41,
+          "attributes": {
+            "aria-label": "\"Try r³=e\"",
+            "onClick": "{() => setWord([\"r\", \"r\", \"r\"])}"
+          }
         },
         {
           "kind": "button",
-          "line": 37,
-          "attributes": { "onClick": "{() => setWord([\"s\", \"r\", \"s\"])}" }
+          "line": 44,
+          "attributes": {
+            "aria-label": "\"Try srs=r⁻¹\"",
+            "onClick": "{() => setWord([\"s\", \"r\", \"s\"])}"
+          }
         },
         {
           "kind": "button",
-          "line": 121,
+          "line": 130,
           "attributes": {
             "aria-pressed": "{group === \"cyclic\"}",
             "onClick": "{() => setGroup(\"cyclic\")}"
@@ -4513,8 +4566,9 @@
         },
         {
           "kind": "button",
-          "line": 127,
+          "line": 136,
           "attributes": {
+            "aria-label": "\"S₃ words and relations\"",
             "aria-pressed": "{group === \"s3\"}",
             "onClick": "{() => setGroup(\"s3\")}"
           }
@@ -4550,7 +4604,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 54,
+          "line": 51,
           "attributes": {
             "value": "{stage}",
             "onChange": "{(e) => {\n              setStage(e.target.value as CharacterStage);\n              reset();\n            }}"
@@ -4558,7 +4612,7 @@
         },
         {
           "kind": "select",
-          "line": 70,
+          "line": 67,
           "attributes": {
             "value": "{first}",
             "onChange": "{(e) => {\n              setFirst(e.target.value as CharacterName);\n              reset();\n            }}"
@@ -4566,7 +4620,7 @@
         },
         {
           "kind": "select",
-          "line": 86,
+          "line": 83,
           "attributes": {
             "value": "{second}",
             "onChange": "{(e) => {\n              setSecond(e.target.value as CharacterName);\n              reset();\n            }}"
@@ -4574,7 +4628,7 @@
         },
         {
           "kind": "select",
-          "line": 102,
+          "line": 99,
           "attributes": {
             "value": "{weighting}",
             "onChange": "{(e) => {\n              setWeighting(e.target.value as Weighting);\n              reset();\n            }}"
@@ -4582,7 +4636,7 @@
         },
         {
           "kind": "textarea",
-          "line": 117,
+          "line": 114,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(e) => setPrediction(e.target.value)}",
@@ -4591,7 +4645,7 @@
         },
         {
           "kind": "button",
-          "line": 123,
+          "line": 120,
           "attributes": {
             "type": "\"button\"",
             "disabled": "{!prediction.trim()}",
@@ -4600,7 +4654,7 @@
         },
         {
           "kind": "button",
-          "line": 206,
+          "line": 190,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => {\n          setStage(\"orthogonality\");\n          setWeighting(\"equal-columns\");\n          setPrediction(\"Equal columns should give norm 1; test this failure.\");\n          setRevealed(true);\n        }}"
@@ -4670,6 +4724,7 @@
           "line": 94,
           "attributes": {
             "label": "{\"Beads $n$\"}",
+            "accessibleLabel": "\"Beads n\"",
             "min": "{3}",
             "max": "{10}",
             "value": "{n}",
@@ -4678,9 +4733,10 @@
         },
         {
           "kind": "Range",
-          "line": 101,
+          "line": 102,
           "attributes": {
             "label": "{\"Labeled colors $k$\"}",
+            "accessibleLabel": "\"Labeled colors k\"",
             "min": "{2}",
             "max": "{5}",
             "value": "{k}",
@@ -4698,17 +4754,28 @@
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
     {
+      "file": "components/algebra/ColoringLedgerText.ts",
+      "dependencies": ["@/lib/algebra/fixed-colorings"],
+      "states": [],
+      "controls": [],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
       "file": "components/algebra/ColoringLedgerView.tsx",
       "dependencies": [
         "@/lib/algebra/fixed-colorings",
-        "./ColoringAxisDiagram"
+        "./Math",
+        "@/lib/algebra/engine",
+        "./ColoringAxisDiagram",
+        "./ColoringLedgerText"
       ],
       "states": [],
       "controls": [
         {
           "kind": "select",
-          "line": 25,
+          "line": 44,
           "attributes": {
+            "aria-label": "\"Inspect group element\"",
             "value": "{Math.min(selected, ledger.rows.length - 1)}",
             "onChange": "{(event) => setSelected(Number(event.target.value))}"
           }
@@ -4785,7 +4852,8 @@
           "kind": "Range",
           "line": 64,
           "attributes": {
-            "label": "\"Group parameter n\"",
+            "label": "\"Group parameter $n$\"",
+            "accessibleLabel": "\"Group parameter n\"",
             "min": "{3}",
             "max": "{8}",
             "value": "{n}",
@@ -4794,11 +4862,12 @@
         },
         {
           "kind": "button",
-          "line": 92,
+          "line": 94,
           "attributes": {
             "key": "{y}",
             "onClick": "{() => setA(y)}",
-            "className": "{x === y ? \"selected\" : \"\"}"
+            "className": "{x === y ? \"selected\" : \"\"}",
+            "aria-label": "{`Select orbit element ${y + 1}`}"
           }
         }
       ],
@@ -4825,8 +4894,9 @@
       "controls": [
         {
           "kind": "select",
-          "line": 40,
+          "line": 39,
           "attributes": {
+            "aria-label": "\"Subgroup H\"",
             "value": "{selection}",
             "onChange": "{(event) => setSelection(Number(event.target.value))}"
           }
@@ -4835,19 +4905,23 @@
           "kind": "select",
           "line": 53,
           "attributes": {
+            "aria-label": "\"Representative a\"",
             "value": "{representative}",
             "onChange": "{(event) => setRepresentative(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 141,
+          "line": 133,
           "attributes": { "onClick": "{() => setSelection(0)}" }
         },
         {
           "kind": "button",
-          "line": 144,
-          "attributes": { "onClick": "{() => setSelection(1)}" }
+          "line": 136,
+          "attributes": {
+            "aria-label": "\"Form the quotient S3/A3\"",
+            "onClick": "{() => setSelection(1)}"
+          }
         }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -4937,21 +5011,26 @@
         {
           "kind": "button",
           "line": 403,
-          "attributes": { "key": "{g}", "onClick": "{() => apply(g)}" }
-        },
-        {
-          "kind": "button",
-          "line": 432,
           "attributes": {
-            "key": "{i}",
-            "className": "{selected === i ? \"selected\" : \"\"}",
-            "style": "{\n                { \"--point-color\": palette[i % 12] } as React.CSSProperties\n              }",
-            "onClick": "{() => setSelected(i)}"
+            "key": "{g}",
+            "aria-label": "{\n                g === \"A\"\n                  ? \"Apply A, rotate about x\"\n                  : g === \"B\"\n                    ? \"Apply B, rotate about z\"\n                    : \"Apply J, invert\"\n              }",
+            "onClick": "{() => apply(g)}"
           }
         },
         {
           "kind": "button",
-          "line": 484,
+          "line": 443,
+          "attributes": {
+            "key": "{i}",
+            "className": "{selected === i ? \"selected\" : \"\"}",
+            "style": "{\n                { \"--point-color\": palette[i % 12] } as React.CSSProperties\n              }",
+            "onClick": "{() => setSelected(i)}",
+            "aria-label": "{`Follow point ${i + 1}, image ${p[i] + 1}`}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 506,
           "attributes": {
             "key": "{x}",
             "onClick": "{() => setView(x)}",
@@ -4960,29 +5039,31 @@
         },
         {
           "kind": "button",
-          "line": 501,
+          "line": 523,
           "attributes": {
             "key": "{i}",
             "disabled": "{!active}",
             "className": "{index === i ? \"active\" : \"\"}",
             "onClick": "{() => setIndex(i)}",
+            "aria-label": "{`Select cube transformation ${i + 1}`}",
             "title": "{`${x.word.join(\" \") || \"I\"}, determinant ${det(x.matrix)}`}"
           }
         },
-        { "kind": "summary", "line": 514, "attributes": {} },
+        { "kind": "summary", "line": 537, "attributes": {} },
         {
           "kind": "Range",
-          "line": 519,
+          "line": 542,
           "attributes": {
             "label": "\"Labeled colors $k$\"",
+            "accessibleLabel": "\"Labeled colors k\"",
             "value": "{colors}",
             "min": "{1}",
             "max": "{6}",
             "onChange": "{setColors}"
           }
         },
-        { "kind": "summary", "line": 551, "attributes": {} },
-        { "kind": "summary", "line": 575, "attributes": {} }
+        { "kind": "summary", "line": 577, "attributes": {} },
+        { "kind": "summary", "line": 601, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -4991,6 +5072,7 @@
       "dependencies": [
         "react",
         "@/lib/algebra/fixed-colorings",
+        "./Math",
         "./ColoringLedgerView"
       ],
       "states": [
@@ -5004,7 +5086,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 26,
+          "line": 27,
           "attributes": {
             "value": "{feature}",
             "onChange": "{(event) => {\n              setFeature(event.target.value as CubeFeature);\n              setSelected(0);\n            }}"
@@ -5012,15 +5094,16 @@
         },
         {
           "kind": "select",
-          "line": 42,
+          "line": 43,
           "attributes": {
+            "aria-label": "\"Labeled colors q\"",
             "value": "{colors}",
             "onChange": "{(event) => setColors(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 60,
+          "line": 62,
           "attributes": {
             "onClick": "{() => {\n          setFeature(\"vertices\");\n          setSelected(1);\n        }}"
           }
@@ -5050,6 +5133,7 @@
           "line": 37,
           "attributes": {
             "label": "{\"Exponent $k$ in $r^k$\"}",
+            "accessibleLabel": "\"Exponent k in r to the k\"",
             "value": "{power}",
             "min": "{0}",
             "max": "{n - 1}",
@@ -5058,11 +5142,12 @@
         },
         {
           "kind": "button",
-          "line": 60,
+          "line": 61,
           "attributes": {
             "key": "{k}",
             "className": "{power === k ? \"active\" : \"\"}",
-            "onClick": "{() => setPower(k)}"
+            "onClick": "{() => setPower(k)}",
+            "aria-label": "{`Select generator power ${k}`}"
           }
         }
       ],
@@ -5070,7 +5155,7 @@
     },
     {
       "file": "components/algebra/CyclicSubgroups.tsx",
-      "dependencies": ["@/lib/algebra/cayley-words"],
+      "dependencies": ["./Math", "@/lib/algebra/cayley-words"],
       "states": [],
       "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -5103,7 +5188,7 @@
         "@/lib/algebra/engine",
         "./Laboratory",
         "./Math",
-        "@/lib/algebra/lab-contracts"
+        "@/lib/algebra/lab-contract-presentations"
       ],
       "states": [
         { "binding": "[open, setOpen]", "initialExpression": "true" },
@@ -5134,7 +5219,7 @@
         },
         {
           "kind": "textarea",
-          "line": 77,
+          "line": 81,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -5143,7 +5228,7 @@
         },
         {
           "kind": "button",
-          "line": 84,
+          "line": 88,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setTesting(true)}"
@@ -5169,7 +5254,8 @@
           "attributes": {
             "key": "{i}",
             "onClick": "{() => setIndex(i)}",
-            "className": "{index === i ? \"active\" : \"\"}"
+            "className": "{index === i ? \"active\" : \"\"}",
+            "aria-label": "{`Select group matrix ${i + 1}`}"
           }
         }
       ],
@@ -5209,7 +5295,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 25,
+          "line": 24,
           "attributes": {
             "value": "{modulus}",
             "onChange": "{(event) => setModulus(Number(event.target.value))}"
@@ -5217,7 +5303,7 @@
         },
         {
           "kind": "select",
-          "line": 93,
+          "line": 98,
           "attributes": {
             "aria-label": "{`Output f(${input}), currently ${value}`}",
             "value": "{value}",
@@ -5226,14 +5312,14 @@
         },
         {
           "kind": "button",
-          "line": 143,
+          "line": 140,
           "attributes": {
             "onClick": "{() => {\n          setModulus(2);\n          setOutputs([0, 1, 2, 0, 1, 2]);\n        }}"
           }
         },
         {
           "kind": "button",
-          "line": 151,
+          "line": 148,
           "attributes": {
             "onClick": "{() => {\n          setModulus(3);\n          setOutputs([0, 1, 2, 0, 1, 2]);\n        }}"
           }
@@ -5474,7 +5560,12 @@
     },
     {
       "file": "components/algebra/IdealChainExplorer.tsx",
-      "dependencies": ["react", "@/lib/algebra/ideal-chains", "./Math"],
+      "dependencies": [
+        "react",
+        "@/lib/algebra/ideal-chains",
+        "./Math",
+        "./IdealChainText"
+      ],
       "states": [
         {
           "binding": "[example, setExample]",
@@ -5491,7 +5582,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 32,
+          "line": 30,
           "attributes": {
             "value": "{example}",
             "onChange": "{(event) => {\n              setExample(event.target.value as ChainExample);\n              reset();\n            }}"
@@ -5499,15 +5590,16 @@
         },
         {
           "kind": "select",
-          "line": 48,
+          "line": 46,
           "attributes": {
+            "aria-label": "\"Stage n\"",
             "value": "{stage}",
             "onChange": "{(event) => {\n              setStage(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 69,
+          "line": 68,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -5516,7 +5608,7 @@
         },
         {
           "kind": "button",
-          "line": 75,
+          "line": 74,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setRevealed(true)}"
@@ -5524,13 +5616,20 @@
         },
         {
           "kind": "button",
-          "line": 118,
+          "line": 130,
           "attributes": {
             "onClick": "{() => setFailure(!failure)}",
             "aria-pressed": "{failure}"
           }
         }
       ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/IdealChainText.ts",
+      "dependencies": ["@/lib/algebra/ideal-chains"],
+      "states": [],
+      "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
     {
@@ -5559,7 +5658,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 36,
+          "line": 34,
           "attributes": {
             "value": "{example}",
             "onChange": "{(event) => {\n              setExample(event.target.value as RingExample);\n              setRevealed(false);\n              setPrediction(\"\");\n              setFailure(false);\n            }}"
@@ -5569,21 +5668,23 @@
           "kind": "select",
           "line": 52,
           "attributes": {
+            "aria-label": "\"Ideal I=dℤ/12ℤ; choose d\"",
             "value": "{idealGenerator}",
             "onChange": "{(event) => {\n                setIdealGenerator(Number(event.target.value));\n                setRevealed(false);\n                setPrediction(\"\");\n              }}"
           }
         },
         {
           "kind": "select",
-          "line": 70,
+          "line": 72,
           "attributes": {
+            "aria-label": "\"Ideal I=(q); choose q∈F₂[X]\"",
             "value": "{polynomial}",
             "onChange": "{(event) => {\n                setPolynomial(event.target.value as PolynomialIdeal);\n                setRevealed(false);\n                setPrediction(\"\");\n              }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 88,
+          "line": 91,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -5592,7 +5693,7 @@
         },
         {
           "kind": "button",
-          "line": 94,
+          "line": 97,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setRevealed(true)}"
@@ -5600,7 +5701,7 @@
         },
         {
           "kind": "button",
-          "line": 99,
+          "line": 102,
           "attributes": {
             "onClick": "{() => setFailure(!failure)}",
             "aria-pressed": "{failure}"
@@ -5638,16 +5739,18 @@
       "controls": [
         {
           "kind": "select",
-          "line": 45,
+          "line": 43,
           "attributes": {
+            "aria-label": "\"Inducing H-character φ\"",
             "value": "{character}",
             "onChange": "{(e) => {\n              setCharacter(e.target.value as HCharacter);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 58,
+          "line": 57,
           "attributes": {
+            "aria-label": "\"Acting element g\"",
             "value": "{element}",
             "onChange": "{(e) => {\n              setElement(e.target.value as S3Element);\n              reset();\n            }}"
           }
@@ -5656,21 +5759,23 @@
           "kind": "select",
           "line": 72,
           "attributes": {
+            "aria-label": "\"Coset basis vector uᵢ\"",
             "value": "{basis}",
             "onChange": "{(e) => {\n              setBasis(Number(e.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 88,
+          "line": 90,
           "attributes": {
+            "aria-label": "\"Target G-character χ\"",
             "value": "{target}",
             "onChange": "{(e) => {\n              setTarget(e.target.value as TargetCharacter);\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 104,
+          "line": 107,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(e) => setPrediction(e.target.value)}",
@@ -5679,7 +5784,7 @@
         },
         {
           "kind": "button",
-          "line": 110,
+          "line": 113,
           "attributes": {
             "type": "\"button\"",
             "disabled": "{!prediction.trim()}",
@@ -5688,7 +5793,7 @@
         },
         {
           "kind": "button",
-          "line": 195,
+          "line": 193,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => {\n          setCharacter(\"sign\");\n          setElement(\"s\");\n          setBasis(1);\n          setTarget(\"sign\");\n          setPrediction(\n            \"Ignoring the subgroup sign would give the wrong trace.\",\n          );\n          setRevealed(true);\n          setFailure(true);\n        }}"
@@ -5730,23 +5835,25 @@
       "controls": [
         {
           "kind": "select",
-          "line": 76,
+          "line": 71,
           "attributes": {
+            "aria-label": "\"Coefficient a in a e₁−e₃\"",
             "value": "{coefficient}",
             "onChange": "{(e) => {\n                setCoefficient(Number(e.target.value));\n                reset();\n              }}"
           }
         },
         {
           "kind": "select",
-          "line": 93,
+          "line": 89,
           "attributes": {
+            "aria-label": "\"Scalar field 𝔽\"",
             "value": "{field}",
             "onChange": "{(e) => {\n              setField(e.target.value as FieldChoice);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 106,
+          "line": 103,
           "attributes": {
             "value": "{group}",
             "onChange": "{(e) => {\n              setGroup(e.target.value as ActingGroup);\n              reset();\n            }}"
@@ -5754,23 +5861,25 @@
         },
         {
           "kind": "select",
-          "line": 119,
+          "line": 116,
           "attributes": {
+            "aria-label": "\"Candidate subspace W\"",
             "value": "{line}",
             "onChange": "{(e) => {\n              setLine(e.target.value as LineChoice);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 133,
+          "line": 132,
           "attributes": {
+            "aria-label": "\"Candidate T:ρ→ρ′\"",
             "value": "{map}",
             "onChange": "{(e) => {\n              setMap(e.target.value as MapChoice);\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 149,
+          "line": 150,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(e) => setPrediction(e.target.value)}",
@@ -5779,7 +5888,7 @@
         },
         {
           "kind": "button",
-          "line": 155,
+          "line": 156,
           "attributes": {
             "type": "\"button\"",
             "disabled": "{!prediction.trim()}",
@@ -5788,7 +5897,7 @@
         },
         {
           "kind": "button",
-          "line": 232,
+          "line": 224,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => {\n          setField(\"C\");\n          setGroup(\"dihedral\");\n          setLine(\"complex-eigenline\");\n          setMap(\"identity\");\n          setPrediction(\n            \"The rotation eigenline fails under reflection and I fails to intertwine r.\",\n          );\n          setRevealed(true);\n        }}"
@@ -5877,13 +5986,13 @@
       "dependencies": [
         "@/lib/algebra/engine",
         "./Math",
-        "@/lib/algebra/lab-contracts"
+        "@/lib/algebra/lab-contract-presentations"
       ],
       "states": [],
       "controls": [
         {
           "kind": "button",
-          "line": 37,
+          "line": 41,
           "attributes": { "onClick": "{() => open(experience.id)}" }
         }
       ],
@@ -5891,7 +6000,7 @@
     },
     {
       "file": "components/algebra/LaboratoryLoadBoundary.tsx",
-      "dependencies": ["react", "./Math"],
+      "dependencies": ["./Math", "react"],
       "states": [],
       "controls": [
         {
@@ -6149,7 +6258,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 54,
+          "line": 59,
           "attributes": {
             "value": "{ring}",
             "onChange": "{(event) => {\n              setRing(event.target.value as LocalRing);\n              reset();\n            }}"
@@ -6157,31 +6266,34 @@
         },
         {
           "kind": "select",
-          "line": 70,
+          "line": 75,
           "attributes": {
+            "aria-label": "\"Fraction a/b\"",
             "value": "{fractionIndex}",
             "onChange": "{(event) => {\n              setFractionIndex(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 86,
+          "line": 92,
           "attributes": {
+            "aria-label": "\"Compare with c/d\"",
             "value": "{comparisonIndex}",
             "onChange": "{(event) => {\n              setComparisonIndex(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 102,
+          "line": 109,
           "attributes": {
+            "aria-label": "\"Set to invert in ℤ\"",
             "value": "{inverted}",
             "onChange": "{(event) => {\n              setInverted(event.target.value as InvertedSet);\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 121,
+          "line": 130,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -6190,7 +6302,7 @@
         },
         {
           "kind": "button",
-          "line": 127,
+          "line": 136,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setRevealed(true)}"
@@ -6198,7 +6310,7 @@
         },
         {
           "kind": "button",
-          "line": 213,
+          "line": 217,
           "attributes": {
             "onClick": "{() => setFailure(!failure)}",
             "aria-pressed": "{failure}"
@@ -6241,8 +6353,9 @@
       "controls": [
         {
           "kind": "select",
-          "line": 54,
+          "line": 53,
           "attributes": {
+            "aria-label": "\"Module relation ne=0; choose n\"",
             "value": "{modulus}",
             "onChange": "{(event) => {\n              setModulus(Number(event.target.value));\n              setGenerator(1);\n              setVector(0);\n              reset();\n            }}"
           }
@@ -6251,13 +6364,14 @@
           "kind": "select",
           "line": 72,
           "attributes": {
+            "aria-label": "\"Integer scalar r\"",
             "value": "{scalar}",
             "onChange": "{(event) => {\n              setScalar(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 88,
+          "line": 89,
           "attributes": {
             "value": "{stage}",
             "onChange": "{(event) => {\n              setStage(event.target.value as ModuleStage);\n              reset();\n            }}"
@@ -6265,23 +6379,25 @@
         },
         {
           "kind": "select",
-          "line": 104,
+          "line": 105,
           "attributes": {
+            "aria-label": "\"Submodule generator d dividing n\"",
             "value": "{generator}",
             "onChange": "{(event) => {\n              setGenerator(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 122,
+          "line": 124,
           "attributes": {
+            "aria-label": "\"Vector [x]\"",
             "value": "{vector}",
             "onChange": "{(event) => {\n              setVector(Number(event.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 140,
+          "line": 144,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -6290,7 +6406,7 @@
         },
         {
           "kind": "button",
-          "line": 146,
+          "line": 150,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setRevealed(true)}"
@@ -6298,7 +6414,7 @@
         },
         {
           "kind": "button",
-          "line": 266,
+          "line": 241,
           "attributes": {
             "onClick": "{() => setFailure(!failure)}",
             "aria-pressed": "{failure}"
@@ -6325,8 +6441,9 @@
       "controls": [
         {
           "kind": "select",
-          "line": 24,
+          "line": 23,
           "attributes": {
+            "aria-label": "\"Relation ne=0 (n)\"",
             "value": "{modulus}",
             "onChange": "{(event) => setModulus(Number(event.target.value))}"
           }
@@ -6335,20 +6452,21 @@
           "kind": "select",
           "line": 35,
           "attributes": {
+            "aria-label": "\"Integer scalar r\"",
             "value": "{scalar}",
             "onChange": "{(event) => setScalar(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 88,
+          "line": 97,
           "attributes": {
             "onClick": "{() => {\n          setModulus(3);\n          setScalar(2);\n        }}"
           }
         },
         {
           "kind": "button",
-          "line": 96,
+          "line": 105,
           "attributes": {
             "onClick": "{() => {\n          setModulus(6);\n          setScalar(2);\n        }}"
           }
@@ -6388,6 +6506,7 @@
           "line": 110,
           "attributes": {
             "label": "{\"$T_{11}$\"}",
+            "accessibleLabel": "\"Matrix entry T11\"",
             "min": "{-2}",
             "max": "{2}",
             "value": "{a}",
@@ -6396,9 +6515,10 @@
         },
         {
           "kind": "Range",
-          "line": 117,
+          "line": 118,
           "attributes": {
             "label": "{\"$T_{12}$\"}",
+            "accessibleLabel": "\"Matrix entry T12\"",
             "min": "{-2}",
             "max": "{2}",
             "value": "{off}",
@@ -6407,9 +6527,10 @@
         },
         {
           "kind": "Range",
-          "line": 124,
+          "line": 126,
           "attributes": {
             "label": "{\"$T_{22}$\"}",
+            "accessibleLabel": "\"Matrix entry T22\"",
             "min": "{-2}",
             "max": "{2}",
             "value": "{b}",
@@ -6418,9 +6539,10 @@
         },
         {
           "kind": "Range",
-          "line": 133,
+          "line": 136,
           "attributes": {
             "label": "{\"Vector $x$\"}",
+            "accessibleLabel": "\"Vector x\"",
             "min": "{-2}",
             "max": "{2}",
             "value": "{x}",
@@ -6429,9 +6551,10 @@
         },
         {
           "kind": "Range",
-          "line": 140,
+          "line": 144,
           "attributes": {
             "label": "{\"Vector $y$\"}",
+            "accessibleLabel": "\"Vector y\"",
             "min": "{-2}",
             "max": "{2}",
             "value": "{y}",
@@ -6459,8 +6582,9 @@
         },
         {
           "kind": "select",
-          "line": 76,
+          "line": 84,
           "attributes": {
+            "aria-label": "{`Element x∈ℤ/${modulus}ℤ`}",
             "value": "{element % modulus}",
             "onChange": "{(event) => setElement(Number(event.target.value))}"
           }
@@ -6486,7 +6610,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 29,
+          "line": 26,
           "attributes": {
             "value": "{size}",
             "onChange": "{(event) => setSize(Number(event.target.value))}"
@@ -6494,15 +6618,16 @@
         },
         {
           "kind": "select",
-          "line": 40,
+          "line": 37,
           "attributes": {
+            "aria-label": "\"Operation ⋆\"",
             "value": "{kind}",
             "onChange": "{(event) => setKind(event.target.value as OperationKind)}"
           }
         },
         {
           "kind": "button",
-          "line": 120,
+          "line": 118,
           "attributes": { "onClick": "{() => setKind(\"subtraction\")}" }
         }
       ],
@@ -6540,21 +6665,23 @@
           "kind": "select",
           "line": 44,
           "attributes": {
+            "aria-label": "\"Point x\"",
             "value": "{point}",
             "onChange": "{(event) => setPoint(Number(event.target.value))}"
           }
         },
         {
           "kind": "select",
-          "line": 57,
+          "line": 58,
           "attributes": {
+            "aria-label": "\"Acting element g\"",
             "value": "{element}",
             "onChange": "{(event) => setElement(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 136,
+          "line": 160,
           "attributes": {
             "onClick": "{() => {\n          setAction(\"conjugation\");\n          setPoint(0);\n        }}"
           }
@@ -6583,9 +6710,10 @@
       "controls": [
         {
           "kind": "Range",
-          "line": 37,
+          "line": 35,
           "attributes": {
-            "label": "\"Plane angle θ in degrees\"",
+            "label": "{\"Plane angle $\\\\theta$ in degrees\"}",
+            "accessibleLabel": "\"Plane angle theta in degrees\"",
             "value": "{angle}",
             "min": "{0}",
             "max": "{360}",
@@ -6594,20 +6722,24 @@
         },
         {
           "kind": "select",
-          "line": 46,
+          "line": 48,
           "attributes": {
+            "aria-label": "{`Selected product, currently ${product === \"RF\" ? \"RθF\" : \"FRθ\"}`}",
             "value": "{product}",
             "onChange": "{(event) => setProduct(event.target.value as PlaneProduct)}"
           }
         },
         {
           "kind": "button",
-          "line": 115,
-          "attributes": { "onClick": "{() => setAngle(0)}" }
+          "line": 113,
+          "attributes": {
+            "aria-label": "\"Check the θ=0 boundary\"",
+            "onClick": "{() => setAngle(0)}"
+          }
         },
         {
           "kind": "select",
-          "line": 191,
+          "line": 202,
           "attributes": {
             "value": "{state}",
             "onChange": "{(event) => setState(event.target.value as MetricState)}"
@@ -6615,15 +6747,16 @@
         },
         {
           "kind": "select",
-          "line": 206,
+          "line": 217,
           "attributes": {
+            "aria-label": "\"Plane normal\"",
             "value": "{normal}",
             "onChange": "{(event) =>\n                setNormal(event.target.value as CoordinateNormal)\n              }"
           }
         },
         {
           "kind": "Range",
-          "line": 219,
+          "line": 231,
           "attributes": {
             "label": "\"Spatial rotation angle in degrees\"",
             "min": "{0}",
@@ -6706,7 +6839,8 @@
       "dependencies": [
         "react",
         "@/lib/algebra/polynomial-factorisation",
-        "./Math"
+        "./Math",
+        "./PolynomialFactorisationText"
       ],
       "states": [
         {
@@ -6724,7 +6858,7 @@
       "controls": [
         {
           "kind": "select",
-          "line": 33,
+          "line": 40,
           "attributes": {
             "value": "{example}",
             "onChange": "{(event) => {\n              setExample(event.target.value as PolynomialCase);\n              reset();\n            }}"
@@ -6732,7 +6866,7 @@
         },
         {
           "kind": "select",
-          "line": 49,
+          "line": 56,
           "attributes": {
             "value": "{field}",
             "onChange": "{(event) => {\n              setField(event.target.value as CoefficientField);\n              reset();\n            }}"
@@ -6740,7 +6874,7 @@
         },
         {
           "kind": "textarea",
-          "line": 71,
+          "line": 77,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(event) => setPrediction(event.target.value)}",
@@ -6749,7 +6883,7 @@
         },
         {
           "kind": "button",
-          "line": 77,
+          "line": 83,
           "attributes": {
             "disabled": "{!prediction.trim()}",
             "onClick": "{() => setRevealed(true)}"
@@ -6757,13 +6891,20 @@
         },
         {
           "kind": "button",
-          "line": 93,
+          "line": 102,
           "attributes": {
             "onClick": "{() => setFailure(!failure)}",
             "aria-pressed": "{failure}"
           }
         }
       ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/PolynomialFactorisationText.ts",
+      "dependencies": ["@/lib/algebra/polynomial-factorisation"],
+      "states": [],
+      "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
     {
@@ -6788,6 +6929,7 @@
           "line": 96,
           "attributes": {
             "label": "{\"Coefficient $a$\"}",
+            "accessibleLabel": "\"Coefficient a\"",
             "min": "{-3}",
             "max": "{3}",
             "value": "{a}",
@@ -6796,9 +6938,10 @@
         },
         {
           "kind": "Range",
-          "line": 103,
+          "line": 104,
           "attributes": {
             "label": "{\"Coefficient $b$\"}",
+            "accessibleLabel": "\"Coefficient b\"",
             "min": "{-3}",
             "max": "{3}",
             "value": "{b}",
@@ -6917,31 +7060,34 @@
         "./RepresentationObject",
         "@/lib/algebra/direct-products",
         "@/lib/algebra/progress",
-        "./Math"
+        "./Math",
+        "@/lib/algebra/engine",
+        "./RepresentationTex"
       ],
       "states": [],
       "controls": [
         {
           "kind": "a",
-          "line": 114,
+          "line": 110,
           "attributes": { "href": "{`#${representationRouteId}`}" }
         },
         {
           "kind": "select",
-          "line": 120,
+          "line": 118,
           "attributes": {
+            "aria-label": "{`Same representation, selected element ${dihedralElements[element]}`}",
             "value": "{element}",
             "onChange": "{(event) =>\n            setElement(dihedralIndex(Number(event.target.value)))\n          }"
           }
         },
         {
           "kind": "button",
-          "line": 155,
+          "line": 156,
           "attributes": { "onClick": "{() => open(stage.id)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 168,
+          "line": 165,
           "attributes": {
             "competencyId": "\"route:ureca-representation-theory\"",
             "title": "\"URECA route capstone\"",
@@ -6958,6 +7104,13 @@
         "@/lib/algebra/direct-products",
         "./LearningProgress"
       ],
+      "states": [],
+      "controls": [],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/RepresentationTex.ts",
+      "dependencies": ["@/lib/algebra/direct-products"],
       "states": [],
       "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -7004,6 +7157,7 @@
           "line": 159,
           "attributes": {
             "label": "{\"Angle $\\\\theta$ in degrees\"}",
+            "accessibleLabel": "\"Angle theta in degrees\"",
             "value": "{angle}",
             "min": "{0}",
             "max": "{360}",
@@ -7012,7 +7166,7 @@
         },
         {
           "kind": "input",
-          "line": 223,
+          "line": 224,
           "attributes": {
             "aria-label": "\"Permutation p\"",
             "value": "{raw}",
@@ -7021,7 +7175,7 @@
         },
         {
           "kind": "input",
-          "line": 231,
+          "line": 232,
           "attributes": {
             "aria-label": "\"Permutation q\"",
             "value": "{rawB}",
@@ -7030,18 +7184,19 @@
         },
         {
           "kind": "Range",
-          "line": 380,
+          "line": 378,
           "attributes": {
             "key": "{i}",
-            "label": "{`v${i + 1}`}",
+            "label": "{`Vector coordinate $v_{${i + 1}}$`}",
+            "accessibleLabel": "{`Vector coordinate v${i + 1}`}",
             "min": "{-4}",
             "max": "{4}",
             "value": "{z as number}",
             "onChange": "{fn as any}"
           }
         },
-        { "kind": "summary", "line": 404, "attributes": {} },
-        { "kind": "summary", "line": 419, "attributes": {} }
+        { "kind": "summary", "line": 403, "attributes": {} },
+        { "kind": "summary", "line": 418, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -7099,9 +7254,10 @@
       "controls": [
         {
           "kind": "Range",
-          "line": 109,
+          "line": 113,
           "attributes": {
             "label": "{\"Element $a$\"}",
+            "accessibleLabel": "\"Element a\"",
             "value": "{x}",
             "min": "{0}",
             "max": "{n - 1}",
@@ -7110,21 +7266,23 @@
         },
         {
           "kind": "Range",
-          "line": 116,
+          "line": 121,
           "attributes": {
             "label": "{\"Element $b$\"}",
+            "accessibleLabel": "\"Element b\"",
             "value": "{y}",
             "min": "{0}",
             "max": "{n - 1}",
             "onChange": "{setB}"
           }
         },
-        { "kind": "summary", "line": 185, "attributes": {} },
+        { "kind": "summary", "line": 193, "attributes": {} },
         {
           "kind": "Range",
-          "line": 284,
+          "line": 292,
           "attributes": {
             "label": "{\"Integer / diagonal step $a$\"}",
+            "accessibleLabel": "\"Integer or diagonal step a\"",
             "value": "{a % L}",
             "min": "{0}",
             "max": "{L - 1}",
@@ -7133,12 +7291,12 @@
         },
         {
           "kind": "summary",
-          "line": 305,
+          "line": 314,
           "attributes": { "onClick": "{() => setTwist(!twist)}" }
         },
         {
           "kind": "input",
-          "line": 447,
+          "line": 456,
           "attributes": {
             "aria-label": "\"Polynomial f coefficients\"",
             "value": "{raw}",
@@ -7148,32 +7306,34 @@
         },
         {
           "kind": "input",
-          "line": 458,
+          "line": 467,
           "attributes": {
             "aria-label": "\"Polynomial g coefficients\"",
             "value": "{rawB}",
             "onChange": "{(e) => setRawB(e.target.value)}"
           }
         },
-        { "kind": "summary", "line": 561, "attributes": {} },
-        { "kind": "summary", "line": 609, "attributes": {} },
+        { "kind": "summary", "line": 572, "attributes": {} },
+        { "kind": "summary", "line": 620, "attributes": {} },
         {
           "kind": "Range",
-          "line": 619,
+          "line": 630,
           "attributes": {
             "label": "{\"Translate $X$ by $h$\"}",
+            "accessibleLabel": "\"Translate X by h\"",
             "value": "{shift}",
             "min": "{-3}",
             "max": "{3}",
             "onChange": "{setShift}"
           }
         },
-        { "kind": "summary", "line": 653, "attributes": {} },
+        { "kind": "summary", "line": 665, "attributes": {} },
         {
           "kind": "Range",
-          "line": 770,
+          "line": 782,
           "attributes": {
             "label": "{\"Real part $a$ of $z$\"}",
+            "accessibleLabel": "\"Real part a of z\"",
             "min": "{-8}",
             "max": "{8}",
             "value": "{a}",
@@ -7182,9 +7342,10 @@
         },
         {
           "kind": "Range",
-          "line": 777,
+          "line": 790,
           "attributes": {
             "label": "{\"Imaginary part $b$ of $z$\"}",
+            "accessibleLabel": "\"Imaginary part b of z\"",
             "min": "{-8}",
             "max": "{8}",
             "value": "{b}",
@@ -7193,9 +7354,10 @@
         },
         {
           "kind": "Range",
-          "line": 784,
+          "line": 798,
           "attributes": {
             "label": "{\"Real part $u$ of $w$\"}",
+            "accessibleLabel": "\"Real part u of w\"",
             "min": "{-4}",
             "max": "{4}",
             "value": "{u}",
@@ -7204,9 +7366,10 @@
         },
         {
           "kind": "Range",
-          "line": 791,
+          "line": 806,
           "attributes": {
             "label": "{\"Imaginary part $v$ of $w$\"}",
+            "accessibleLabel": "\"Imaginary part v of w\"",
             "min": "{-4}",
             "max": "{4}",
             "value": "{v}",
@@ -7248,8 +7411,9 @@
       "controls": [
         {
           "kind": "input",
-          "line": 50,
+          "line": 51,
           "attributes": {
+            "aria-label": "{`Axis ${\"xyz\"[index]} component`}",
             "type": "\"number\"",
             "step": "\"any\"",
             "value": "{value}",
@@ -7258,17 +7422,23 @@
         },
         {
           "kind": "button",
-          "line": 64,
-          "attributes": { "onClick": "{() => setAxis([1, 1, 1])}" }
+          "line": 66,
+          "attributes": {
+            "aria-label": "\"Use cube body diagonal (1,1,1)\"",
+            "onClick": "{() => setAxis([1, 1, 1])}"
+          }
         },
         {
           "kind": "button",
-          "line": 67,
-          "attributes": { "onClick": "{() => setAxis([1, 0, 0])}" }
+          "line": 72,
+          "attributes": {
+            "aria-label": "\"Use face axis (1,0,0)\"",
+            "onClick": "{() => setAxis([1, 0, 0])}"
+          }
         },
         {
           "kind": "Range",
-          "line": 72,
+          "line": 84,
           "attributes": {
             "label": "\"Rotation angle in degrees\"",
             "min": "{0}",
@@ -7279,9 +7449,10 @@
         },
         {
           "kind": "input",
-          "line": 81,
+          "line": 94,
           "attributes": {
             "type": "\"number\"",
+            "aria-label": "\"Exact angle in degrees\"",
             "min": "{0}",
             "max": "{360}",
             "step": "\"any\"",
@@ -7291,7 +7462,7 @@
         },
         {
           "kind": "Range",
-          "line": 175,
+          "line": 183,
           "attributes": {
             "label": "\"Generator power\"",
             "value": "{power}",
@@ -7403,21 +7574,26 @@
         {
           "kind": "button",
           "line": 47,
-          "attributes": { "onClick": "{() => setR(mod(r + 1, 4))}" }
+          "attributes": {
+            "aria-label": "\"Apply r\"",
+            "onClick": "{() => setR(mod(r + 1, 4))}"
+          }
         },
         {
           "kind": "button",
           "line": 50,
           "attributes": {
+            "aria-label": "\"Apply s\"",
             "onClick": "{() => {\n            setR(mod(-r, 4));\n            setS(1 - s);\n          }}"
           }
         },
         {
           "kind": "Range",
-          "line": 85,
+          "line": 86,
           "attributes": {
             "key": "{i}",
-            "label": "{`Coefficient v${i + 1}`}",
+            "label": "{`Coefficient $v_{${i + 1}}$`}",
+            "accessibleLabel": "{`Coefficient v${i + 1}`}",
             "value": "{x}",
             "min": "{-3}",
             "max": "{3}",
@@ -7450,12 +7626,13 @@
           "attributes": {
             "key": "{i}",
             "onClick": "{() => setSelected(i)}",
-            "className": "{selected === i ? \"active\" : \"\"}"
+            "className": "{selected === i ? \"active\" : \"\"}",
+            "aria-label": "{`Follow relationship ${i + 1}`}"
           }
         },
         {
           "kind": "Range",
-          "line": 173,
+          "line": 174,
           "attributes": {
             "label": "\"Number of steps to inspect\"",
             "min": "{1}",
@@ -7466,9 +7643,10 @@
         },
         {
           "kind": "Range",
-          "line": 195,
+          "line": 196,
           "attributes": {
             "label": "{\"Numerator $a$\"}",
+            "accessibleLabel": "\"Numerator a\"",
             "min": "{-12}",
             "max": "{12}",
             "value": "{a > 12 ? 1 : a}",
@@ -7477,9 +7655,10 @@
         },
         {
           "kind": "Range",
-          "line": 202,
+          "line": 204,
           "attributes": {
             "label": "{\"Denominator $b$\"}",
+            "accessibleLabel": "\"Denominator b\"",
             "min": "{1}",
             "max": "{12}",
             "value": "{b > 12 ? 2 : b}",
@@ -7488,7 +7667,7 @@
         },
         {
           "kind": "Range",
-          "line": 250,
+          "line": 253,
           "attributes": {
             "label": "\"First positive integer\"",
             "min": "{1}",
@@ -7499,7 +7678,7 @@
         },
         {
           "kind": "Range",
-          "line": 257,
+          "line": 260,
           "attributes": {
             "label": "\"Second positive integer\"",
             "min": "{1}",
@@ -7531,6 +7710,7 @@
           "line": 17,
           "attributes": {
             "label": "{\"Group order $|G|$\"}",
+            "accessibleLabel": "\"Group order\"",
             "value": "{N}",
             "min": "{2}",
             "max": "{120}",
@@ -7569,29 +7749,32 @@
           "kind": "select",
           "line": 26,
           "attributes": {
+            "aria-label": "\"Prime p\"",
             "value": "{prime}",
             "onChange": "{(event) => {\n              setPrime(Number(event.target.value) as SylowPrime);\n              setSubgroupIndex(0);\n              setTargetIndex(Number(event.target.value) === 2 ? 1 : 0);\n              setShowFailure(false);\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 41,
+          "line": 42,
           "attributes": {
+            "aria-label": "\"Coset subgroup Q\"",
             "value": "{targetIndex}",
             "onChange": "{(event) => setTargetIndex(Number(event.target.value))}"
           }
         },
         {
           "kind": "select",
-          "line": 54,
+          "line": 56,
           "attributes": {
+            "aria-label": "\"Chosen Sylow subgroup P\"",
             "value": "{subgroupIndex}",
             "onChange": "{(event) => setSubgroupIndex(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 65,
+          "line": 68,
           "attributes": {
             "onClick": "{() => setShowFailure(!showFailure)}",
             "aria-pressed": "{showFailure}"
@@ -7631,7 +7814,7 @@
         },
         {
           "kind": "button",
-          "line": 116,
+          "line": 126,
           "attributes": {
             "className": "\"studio-primary\"",
             "onClick": "{() => open(\"mh2220-dihedral\")}"
@@ -7670,47 +7853,52 @@
       "controls": [
         {
           "kind": "select",
-          "line": 48,
+          "line": 47,
           "attributes": {
+            "aria-label": "\"Right module U=ℤ/mℤ; choose m\"",
             "value": "{rightModulus}",
             "onChange": "{(e) => {\n              setRightModulus(Number(e.target.value));\n              setU(0);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 65,
+          "line": 67,
           "attributes": {
+            "aria-label": "\"Left module V=ℤ/nℤ; choose n\"",
             "value": "{leftModulus}",
             "onChange": "{(e) => {\n              setLeftModulus(Number(e.target.value));\n              setV(0);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 82,
+          "line": 85,
           "attributes": {
+            "aria-label": "\"Integer scalar r\"",
             "value": "{scalar}",
             "onChange": "{(e) => {\n              setScalar(Number(e.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 98,
+          "line": 102,
           "attributes": {
+            "aria-label": "\"Right-module vector [u]\"",
             "value": "{u}",
             "onChange": "{(e) => {\n              setU(Number(e.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 114,
+          "line": 119,
           "attributes": {
+            "aria-label": "\"Left-module vector [v]\"",
             "value": "{v}",
             "onChange": "{(e) => {\n              setV(Number(e.target.value));\n              reset();\n            }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 131,
+          "line": 139,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(e) => setPrediction(e.target.value)}",
@@ -7719,7 +7907,7 @@
         },
         {
           "kind": "button",
-          "line": 137,
+          "line": 145,
           "attributes": {
             "type": "\"button\"",
             "disabled": "{!prediction.trim()}",
@@ -7728,7 +7916,7 @@
         },
         {
           "kind": "button",
-          "line": 205,
+          "line": 216,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => {\n          setRightModulus(2);\n          setLeftModulus(3);\n          setU(1);\n          setV(1);\n          setScalar(1);\n          setPrediction(\"The generator may vanish despite nonzero factors.\");\n          setRevealed(true);\n          setFailure(true);\n        }}"
@@ -7740,6 +7928,7 @@
     {
       "file": "components/algebra/UrecaCharacterBound.tsx",
       "dependencies": [
+        "./Math",
         "./Diagram",
         "@/lib/algebra/direct-products",
         "./UrecaLabControls"
@@ -7748,8 +7937,11 @@
       "controls": [
         {
           "kind": "button",
-          "line": 70,
-          "attributes": { "onClick": "{() => setElement(2)}" }
+          "line": 57,
+          "attributes": {
+            "aria-label": "\"Try −I₂: absolute equality outside the kernel\"",
+            "onClick": "{() => setElement(2)}"
+          }
         }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -7803,13 +7995,14 @@
       "dependencies": [
         "@/lib/algebra/direct-products",
         "./Math",
-        "./UrecaLabControls"
+        "./UrecaLabControls",
+        "./RepresentationTex"
       ],
       "states": [],
       "controls": [
         {
           "kind": "button",
-          "line": 57,
+          "line": 61,
           "attributes": {
             "onClick": "{() => {\n            state.changeOrder(2);\n            state.setElement(2);\n          }}"
           }
@@ -7819,21 +8012,30 @@
     },
     {
       "file": "components/algebra/UrecaIrreducibles.tsx",
-      "dependencies": ["@/lib/algebra/direct-products", "./UrecaLabControls"],
+      "dependencies": [
+        "@/lib/algebra/direct-products",
+        "./UrecaLabControls",
+        "./Math",
+        "./RepresentationTex"
+      ],
       "states": [],
       "controls": [
         {
           "kind": "select",
-          "line": 26,
+          "line": 35,
           "attributes": {
+            "aria-label": "{`Product argument in the cyclic factor, currently ${cyclicName(order, exponent)}`}",
             "value": "{exponent}",
             "onChange": "{(event) => setExponent(Number(event.target.value))}"
           }
         },
         {
           "kind": "button",
-          "line": 94,
-          "attributes": { "onClick": "{() => changeOrder(3)}" }
+          "line": 116,
+          "attributes": {
+            "aria-label": "\"Check all 15 rows of C₃×D₈\"",
+            "onClick": "{() => changeOrder(3)}"
+          }
         }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -7843,7 +8045,9 @@
       "dependencies": [
         "react",
         "@/lib/algebra/direct-products",
-        "./RepresentationObject"
+        "./RepresentationObject",
+        "./Math",
+        "./RepresentationTex"
       ],
       "states": [
         { "binding": "[order, setOrder]", "initialExpression": "initialOrder" },
@@ -7852,24 +8056,27 @@
       "controls": [
         {
           "kind": "select",
-          "line": 38,
+          "line": 46,
           "attributes": {
+            "aria-label": "{`Cyclic factor G, currently C${state.order}`}",
             "value": "{state.order}",
             "onChange": "{(event) =>\n          state.changeOrder(Number(event.target.value) as CyclicFactor)\n        }"
           }
         },
         {
           "kind": "select",
-          "line": 55,
+          "line": 65,
           "attributes": {
+            "aria-label": "{`Cyclic element g, currently ${cyclicName(state.order, state.exponent)} with scalar ${cyclicScalarLabel(state.order, state.exponent)}`}",
             "value": "{state.exponent}",
             "onChange": "{(event) => state.setExponent(Number(event.target.value))}"
           }
         },
         {
           "kind": "select",
-          "line": 74,
+          "line": 86,
           "attributes": {
+            "aria-label": "{`D₈ element h, currently ${dihedralElements[state.element]} with trace ${dihedralCharacter(state.element)}`}",
             "value": "{state.element}",
             "onChange": "{(event) =>\n          state.setElement(dihedralIndex(Number(event.target.value)))\n        }"
           }
@@ -7879,20 +8086,27 @@
     },
     {
       "file": "components/algebra/UrecaScalarKernel.tsx",
-      "dependencies": ["@/lib/algebra/direct-products", "./UrecaLabControls"],
+      "dependencies": [
+        "@/lib/algebra/direct-products",
+        "./UrecaLabControls",
+        "./Math",
+        "./RepresentationTex"
+      ],
       "states": [],
       "controls": [
         {
           "kind": "button",
-          "line": 99,
+          "line": 87,
           "attributes": {
+            "aria-label": "\"Show the C₂×D₈ failure pair\"",
             "onClick": "{() => {\n            state.changeOrder(2);\n            state.setExponent(1);\n            state.setElement(2);\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 108,
+          "line": 98,
           "attributes": {
+            "aria-label": "\"Compare the faithful C₃×D₈ product\"",
             "onClick": "{() => {\n            state.changeOrder(3);\n            state.setExponent(1);\n            state.setElement(2);\n          }}"
           }
         }
@@ -7920,7 +8134,8 @@
         "react",
         "@/lib/algebra/engine",
         "./Math",
-        "@/lib/algebra/wedderburn-layers"
+        "@/lib/algebra/wedderburn-layers",
+        "./WedderburnLayerText"
       ],
       "states": [
         {
@@ -7940,24 +8155,27 @@
       "controls": [
         {
           "kind": "select",
-          "line": 56,
+          "line": 53,
           "attributes": {
+            "aria-label": "\"Algebra A\"",
             "value": "{algebra}",
             "onChange": "{(e) => {\n              setAlgebra(e.target.value as AlgebraChoice);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 70,
+          "line": 68,
           "attributes": {
+            "aria-label": "\"Coefficient field F\"",
             "value": "{field}",
             "onChange": "{(e) => {\n              setField(e.target.value as FieldChoice);\n              reset();\n            }}"
           }
         },
         {
           "kind": "select",
-          "line": 85,
+          "line": 84,
           "attributes": {
+            "aria-label": "\"First matrix unit Eᵢⱼ\"",
             "value": "{first}",
             "onChange": "{(e) => {\n                  setFirst(e.target.value as (typeof units)[number]);\n                  reset();\n                }}"
           }
@@ -7966,13 +8184,14 @@
           "kind": "select",
           "line": 101,
           "attributes": {
+            "aria-label": "\"Second matrix unit Eₖₗ\"",
             "value": "{second}",
             "onChange": "{(e) => {\n                  setSecond(e.target.value as (typeof units)[number]);\n                  reset();\n                }}"
           }
         },
         {
           "kind": "textarea",
-          "line": 121,
+          "line": 122,
           "attributes": {
             "value": "{prediction}",
             "onChange": "{(e) => setPrediction(e.target.value)}",
@@ -7981,7 +8200,7 @@
         },
         {
           "kind": "button",
-          "line": 127,
+          "line": 128,
           "attributes": {
             "type": "\"button\"",
             "disabled": "{!prediction.trim()}",
@@ -7990,13 +8209,20 @@
         },
         {
           "kind": "button",
-          "line": 209,
+          "line": 212,
           "attributes": {
             "type": "\"button\"",
             "onClick": "{() => {\n          setAlgebra(\"triangular\");\n          setPrediction(\"The two simple layers might not form a direct sum.\");\n          setRevealed(true);\n          setFailure(true);\n        }}"
           }
         }
       ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/WedderburnLayerText.ts",
+      "dependencies": ["@/lib/algebra/wedderburn-layers"],
+      "states": [],
+      "controls": [],
       "evidence": "source-inspection; expressions are not observed runtime values"
     }
   ],
@@ -33539,6 +33765,7 @@
     "tests/induction-restriction.test.mjs",
     "tests/install-ci.test.mjs",
     "tests/invariant-intertwiner.test.mjs",
+    "tests/laboratory-tex.test.mjs",
     "tests/learning-metadata.test.mjs",
     "tests/learning-units.test.mjs",
     "tests/lesson-content.test.mjs",

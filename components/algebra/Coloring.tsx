@@ -93,6 +93,7 @@ export function ColoringLab() {
         <div className="two-cols">
           <Range
             label={"Beads $n$"}
+            accessibleLabel="Beads n"
             min={3}
             max={10}
             value={n}
@@ -100,6 +101,7 @@ export function ColoringLab() {
           />
           <Range
             label={"Labeled colors $k$"}
+            accessibleLabel="Labeled colors k"
             min={2}
             max={5}
             value={k}
@@ -107,9 +109,9 @@ export function ColoringLab() {
           />
         </div>
         <p>
-          Click a bead to change its color. This coloring has {orb.size}{" "}
-          distinct labeled arrangements in its orbit and a stabilizer of size{" "}
-          {st}.
+          Click a bead to change its color. This coloring has{" "}
+          <M>{String(orb.size)}</M> distinct labeled arrangements in its orbit
+          and a stabilizer of size <M>{String(st)}</M>.
         </p>
         <M
           block

@@ -1,6 +1,6 @@
 "use client";
-import { Component, Suspense, type ReactNode } from "react";
 import { Prose } from "./Math";
+import { Component, Suspense, type ReactNode } from "react";
 
 type Props = { title: string; children: ReactNode };
 export function LaboratoryLoading({ title }: { title: string }) {
