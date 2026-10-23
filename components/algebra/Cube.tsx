@@ -4,7 +4,6 @@ import { SvgMath } from "./SvgMath";
 import { useRef, useState } from "react";
 import {
   cube,
-  I,
   mm,
   mv,
   det,
