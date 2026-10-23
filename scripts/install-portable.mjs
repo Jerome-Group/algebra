@@ -63,10 +63,12 @@ async function runNpm(timeout, killAfter) {
   );
   let stopped;
   let killTimer;
+  let forceKillDelivered = false;
   function signalOwned(signal) {
     if (!child.pid) return;
     try {
       process.kill(-child.pid, signal);
+      if (signal === "SIGKILL") forceKillDelivered = true;
     } catch (error) {
       if (error.code !== "ESRCH") throw error;
     }
@@ -101,7 +103,7 @@ async function runNpm(timeout, killAfter) {
     for (const [signal, handler] of handlers)
       process.removeListener(signal, handler);
     // Lifecycle subprocesses must finish before another install may acquire the lock.
-    signalOwned("SIGKILL");
+    if (!forceKillDelivered) signalOwned("SIGKILL");
   }
 }
 
