@@ -25,6 +25,8 @@ import {
   type ViewMode,
 } from "@/lib/algebra/navigation";
 import { LessonReader } from "./LessonReader";
+import { BeginnerRunway, BeginnerStartLink } from "./BeginnerRunway";
+import { beginnerTargetId } from "@/lib/algebra/navigation";
 import { LaboratoryProvider } from "./LaboratoryControls";
 import { useLearningTools } from "./WebMCP";
 import { RepresentationObjectProvider } from "./RepresentationObject";
@@ -90,6 +92,7 @@ function LearningExperience() {
     lesson,
     open,
     navigate,
+    openBeginner,
     openLab,
     openCapstone,
     openWork,
@@ -236,13 +239,15 @@ function LearningExperience() {
                   }
                 }}
               >
-                {mode === "learn"
-                  ? "Learn"
-                  : mode === "explore"
-                    ? "Explore"
-                    : mode === "reference"
-                      ? "Reference"
-                      : "Sources"}
+                {mode === "start"
+                  ? "Start"
+                  : mode === "learn"
+                    ? "Learn"
+                    : mode === "explore"
+                      ? "Explore"
+                      : mode === "reference"
+                        ? "Reference"
+                        : "Sources"}
               </a>
             ))}
         </nav>
@@ -318,6 +323,15 @@ function LearningExperience() {
               navigate={openWork}
               openLesson={open}
               openCapstone={openUnitCapstone}
+              requestFocus={requestFocus}
+            />
+          ) : screen.mode === "start" ? (
+            <BeginnerRunway
+              key={beginnerTargetId(screen.move, screen.returnTo)}
+              move={screen.move}
+              returnTo={screen.returnTo}
+              open={open}
+              openLab={openLab}
               requestFocus={requestFocus}
             />
           ) : view === "home" ? (
@@ -402,6 +416,18 @@ function LearningExperience() {
                     ))}
                 </div>
               </details>
+              {lesson.id === "foundations-functions" && !laboratory && (
+                <div className="beginner-lesson-entry">
+                  <span>Symbols getting in the way?</span>
+                  <BeginnerStartLink
+                    move="read"
+                    returnTo={{ lessonId: lesson.id, lab: false }}
+                    open={openBeginner}
+                  >
+                    Help me read the symbols
+                  </BeginnerStartLink>
+                </div>
+              )}
               <ArgumentStartLink
                 lessonId={lesson.id}
                 unitId={activeRoute?.id}

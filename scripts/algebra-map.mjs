@@ -242,6 +242,12 @@ export function buildMap() {
   const ledgerAvailable = fs.existsSync(path.join(root, inspectionLedger));
   const features = [
     [
+      "beginner-language",
+      "#start",
+      "BeginnerRunway",
+      "editable finite map, symbol meanings, quantified reading, witnesses and codomain changes",
+    ],
+    [
       "home",
       "#home",
       "LearningHome",
@@ -360,6 +366,11 @@ export function buildMap() {
           ]
         : ["catalogue", "current UI state"],
     writes: {
+      "beginner-language": [
+        "temporary finite map, language move and witness selection",
+        "history and heading focus",
+        "existing lesson/laboratory navigation on explicit link activation",
+      ],
       home: [
         "history",
         "resume lesson",
