@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { currentArgumentLesson } from "@/lib/algebra/argument-catalogue";
 import {
   capstoneTargetId,
+  beginnerTargetId,
   lessonUnit,
   parseDestination,
   workTargetId,
@@ -11,6 +12,7 @@ import {
 } from "@/lib/algebra/navigation";
 import type { Lesson } from "@/lib/algebra/engine";
 import type { LearningUnit } from "@/lib/algebra/routes";
+import type { BeginnerMove } from "@/lib/algebra/beginner";
 import { useNavigationFocus } from "./use-navigation-focus";
 
 type Location = { destination: Destination; unitId: string | null };
@@ -89,6 +91,11 @@ export function useAlgebraNavigation(
     [commit],
   );
   const navigate = useCallback((mode: ProductMode) => commit(mode), [commit]);
+  const openBeginner = useCallback(
+    (move: BeginnerMove = "name", returnTo: ArgumentSupport | null = null) =>
+      commit(beginnerTargetId(move, returnTo)),
+    [commit],
+  );
   const openLab = useCallback((id: string) => commit(`lab:${id}`), [commit]);
   const openCapstone = useCallback(
     (unit: LearningUnit) => commit(capstoneTargetId(unit)),
@@ -109,6 +116,7 @@ export function useAlgebraNavigation(
     lesson: currentArgumentLesson(selectedLessonId)!,
     open,
     navigate,
+    openBeginner,
     openLab,
     openCapstone,
     openWork,

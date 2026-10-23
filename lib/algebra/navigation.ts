@@ -1,8 +1,10 @@
 import { learningRoutes, type LearningUnit } from "./routes";
 import { currentArgumentLesson } from "./argument-catalogue";
+import { beginnerMoves, type BeginnerMove } from "./beginner";
 
 export const productModes = [
   "home",
+  "start",
   "learn",
   "explore",
   "reference",
@@ -19,10 +21,24 @@ export type WorkDestination = {
   support: ArgumentSupport | null;
 };
 export type Destination =
-  | { mode: ProductMode }
+  | { mode: Exclude<ProductMode, "start"> }
+  | { mode: "start"; move: BeginnerMove; returnTo: ArgumentSupport | null }
   | { mode: "lesson"; id: string; laboratory: boolean }
   | CapstoneDestination
   | WorkDestination;
+
+export function beginnerTargetId(
+  move: BeginnerMove = "name",
+  returnTo: ArgumentSupport | null = null,
+) {
+  const query = new URLSearchParams();
+  if (move !== "name") query.set("move", move);
+  if (returnTo) {
+    query.set("return", returnTo.lessonId);
+    if (returnTo.lab) query.set("lab", "1");
+  }
+  return `start${query.size ? `?${query}` : ""}`;
+}
 
 export function workTargetId(
   targetId: string,
@@ -55,8 +71,45 @@ export function parseDestination(hash: string): Destination {
   const target = hash.replace(/^#/, "");
   if (!target) return { mode: "home" };
   if (target === "route-ureca-representation-theory") return { mode: "learn" };
+  if (target === "start" || target.startsWith("start?")) {
+    const fallback = { mode: "start", move: "name", returnTo: null } as const;
+    try {
+      const query = target.slice(6);
+      decodeURIComponent(query);
+      const params = new URLSearchParams(query);
+      if (
+        [...params.keys()].some(
+          (key) =>
+            !["move", "return", "lab"].includes(key) ||
+            params.getAll(key).length !== 1,
+        )
+      )
+        return fallback;
+      const move = beginnerMoves.find(
+        (move) => move === (params.get("move") ?? "name"),
+      );
+      const lesson = params.has("return")
+        ? currentArgumentLesson(params.get("return") ?? "")
+        : null;
+      if (
+        !move ||
+        (params.has("return") && !lesson) ||
+        (params.has("lab") && (params.get("lab") !== "1" || !lesson))
+      )
+        return fallback;
+      return {
+        mode: "start",
+        move,
+        returnTo: lesson
+          ? { lessonId: lesson.id, lab: params.get("lab") === "1" }
+          : null,
+      };
+    } catch {
+      return fallback;
+    }
+  }
   const mode = productModes.find((mode) => mode === target);
-  if (mode) return { mode };
+  if (mode && mode !== "start") return { mode };
   if (target.startsWith("work:")) {
     try {
       const [encodedId, query = ""] = target.slice(5).split("?");

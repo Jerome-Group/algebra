@@ -66,7 +66,10 @@ test("short units retain the original routes, outcomes, capstones and remediatio
 test("home, mode, legacy lesson and laboratory fragments retain distinct destinations", () => {
   assert.deepEqual(parseDestination(""), { mode: "home" });
   for (const mode of productModes)
-    assert.deepEqual(parseDestination(`#${mode}`), { mode });
+    assert.deepEqual(
+      parseDestination(`#${mode}`),
+      mode === "start" ? { mode, move: "name", returnTo: null } : { mode },
+    );
   assert.deepEqual(parseDestination("#mh2220-quotient"), {
     mode: "lesson",
     id: "mh2220-quotient",
@@ -102,6 +105,7 @@ test("capstone fragments resolve catalog units and reject invalid targets safely
     });
   assert.deepEqual(productModes, [
     "home",
+    "start",
     "learn",
     "explore",
     "reference",

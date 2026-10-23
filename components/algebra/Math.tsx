@@ -2,9 +2,11 @@ import katex from "katex";
 export function Math({
   children,
   block = false,
+  focusable = true,
 }: {
   children: string;
   block?: boolean;
+  focusable?: boolean;
 }) {
   let html;
   try {
@@ -25,7 +27,7 @@ export function Math({
   return (
     <span
       className={block ? "math-display" : "math-inline"}
-      tabIndex={0}
+      tabIndex={focusable ? 0 : undefined}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

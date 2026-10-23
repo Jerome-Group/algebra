@@ -4,6 +4,7 @@ import type { ProductMode } from "@/lib/algebra/navigation";
 import { lessonCompletion } from "@/lib/algebra/progress";
 import { ProgressDataControls, useLearningProgress } from "./LearningProgress";
 import { SymmetryDesk } from "./SymmetryDesk";
+import { BeginnerStartLink } from "./BeginnerRunway";
 
 export function LearningHome({
   lessons,
@@ -35,6 +36,20 @@ export function LearningHome({
           object; learn exactly what makes its mathematics work.
         </p>
       </div>
+      <section className="beginner-home-entry" aria-label="Start from zero">
+        <div>
+          <p className="section-kicker">NEW TO THE LANGUAGE?</p>
+          <h2>Make your first mathematical move.</h2>
+          <p>
+            Change an arrow. Read a symbol. Find a reason. One small map makes
+            functions concrete.
+          </p>
+        </div>
+        <BeginnerStartLink
+          className="beginner-primary"
+          open={() => navigate("start")}
+        />
+      </section>
       <div className="studio-start">
         <SymmetryDesk open={open} />
         <div className="studio-learning">

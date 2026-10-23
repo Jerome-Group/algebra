@@ -134,6 +134,10 @@
       "sha256": "dc39953167ab864f540a19a3de1ba7504bd2e3aff3e4ee399fed4b3b3131a588"
     },
     {
+      "file": "app/beginner.css",
+      "sha256": "d8830db969b38065e95807d78e5ba46a9bb668bd5f5a64ebad375be5546e9d5f"
+    },
+    {
       "file": "app/chatgpt-auth.ts",
       "sha256": "14947aad1056a26c976c6dc131b5cde1c7d8a7fa5cab96d3db2203f5e3d3a1ae"
     },
@@ -147,7 +151,7 @@
     },
     {
       "file": "app/layout.tsx",
-      "sha256": "db5a5fd4dad8b4b729e971aae389092a6d234939daadc5a368026f007e245ef3"
+      "sha256": "912b8da7f6bf204496fcd762e54c7b5882f711d9641bafc2376ff1e4cf33d563"
     },
     {
       "file": "app/page.tsx",
@@ -171,7 +175,7 @@
     },
     {
       "file": "components/algebra/Algebra.tsx",
-      "sha256": "e58c6d47a8b3c5402192c9ca12a59a83deede1370972169e2fd586ec4256b77b"
+      "sha256": "57c1ab61b232e1b37cef76d30299cf538fbd0eb3918ff729532104ddbedc279c"
     },
     {
       "file": "components/algebra/ArgumentBackups.tsx",
@@ -192,6 +196,14 @@
     {
       "file": "components/algebra/ArgumentWriting.tsx",
       "sha256": "bee7e5cd67a8c411afce49dfddb52ca952d516376a431cd23f8cf88875b11496"
+    },
+    {
+      "file": "components/algebra/BeginnerMap.tsx",
+      "sha256": "88dbc0f047cfdcb886e230f8f41d195ea0b4b15b995a7914f74a617026c92033"
+    },
+    {
+      "file": "components/algebra/BeginnerRunway.tsx",
+      "sha256": "ae207d36801559c8b7a2fe671b754fd7e1d32570c2c5d565deef345c7531195d"
     },
     {
       "file": "components/algebra/Bridges.tsx",
@@ -331,7 +343,7 @@
     },
     {
       "file": "components/algebra/LearningHome.tsx",
-      "sha256": "fae348b066b0cdcf94d14d7f38e0d6d5c5a0562fdbb2e9515de8fa763e40d621"
+      "sha256": "23e8a008ec23c0721e536dec1b11455b87b6dc88c01a50f876d5c237cd4fd622"
     },
     {
       "file": "components/algebra/LearningProgress.tsx",
@@ -351,7 +363,7 @@
     },
     {
       "file": "components/algebra/Math.tsx",
-      "sha256": "9075815739ca9f42f27bf28282b4f66524394f08894f3ba08e5c0d6406268f5a"
+      "sha256": "2e1f855afb1d3c7fb8365fedda550373c5d79dbdc731c9725a185bdbd988247a"
     },
     {
       "file": "components/algebra/ModuleActionBoard.tsx",
@@ -870,6 +882,10 @@
       "sha256": "278dd0b99a1a0eab03541498b5c14ebdf0501b40a3900d6d94620003ff77f1f3"
     },
     {
+      "file": "docs/research/beginner-language-workshop.md",
+      "sha256": "b3b359f00d1a137bf44df076911296d1d4d34669ad82a4b18653718fd353139c"
+    },
+    {
       "file": "docs/research/browser-inspection.json",
       "sha256": "9a4527322c59e89b716e65fc18b942bfa302fdc8bad389ec90df39feaf557203"
     },
@@ -991,7 +1007,7 @@
     },
     {
       "file": "hooks/use-algebra-navigation.ts",
-      "sha256": "17e9b0b64b2b86b9cf821a1ef12196c57f052c5a04a9e24e6d5eff7f9414b964"
+      "sha256": "700c8c345232922e0818662ec1cfd19806d4035748598aa6b70e14691fc740d2"
     },
     {
       "file": "hooks/use-concept-sidebar.ts",
@@ -1028,6 +1044,10 @@
     {
       "file": "lib/algebra/argument-store.ts",
       "sha256": "cb7009992bb34b3af5f50893433a404ce10e136a113c27ed733f798d78f189df"
+    },
+    {
+      "file": "lib/algebra/beginner.ts",
+      "sha256": "25859b93bbbc267694ebe9c287ff852d675c523dbd12986fba9d2bc5bf508c05"
     },
     {
       "file": "lib/algebra/capstone-assessments.json",
@@ -1115,7 +1135,7 @@
     },
     {
       "file": "lib/algebra/navigation.ts",
-      "sha256": "43cf69c1b31cb9a3cf45934b297de3d2cab0d1ec125bee3c052aff205d9114ba"
+      "sha256": "d661b3db38582e40d6c98c396e4cc5119e084975b30c5d553192becaf73c4e17"
     },
     {
       "file": "lib/algebra/nilradical.ts",
@@ -1247,11 +1267,11 @@
     },
     {
       "file": "scripts/algebra-contract.mjs",
-      "sha256": "1e6e76da7199f73ab48374593a0e2512ead0183f52817157ca54d15d02de7b8a"
+      "sha256": "bc3d0e696e047838318baf8fa82838c923e8f60856785869d5c62ef71f9edadc"
     },
     {
       "file": "scripts/algebra-features.mjs",
-      "sha256": "7eccda7db889ca8439b7c8bb81ee2c5b7289d804ffde87d4148e7caf2487c4b2"
+      "sha256": "741b8b703f1c9d71f8e9fafca6a923531356e2929d9e24926f179edb0fb42e93"
     },
     {
       "file": "scripts/algebra-identity.mjs",
@@ -1259,7 +1279,7 @@
     },
     {
       "file": "scripts/algebra-map.mjs",
-      "sha256": "c48d89904d558421706901c9f48f0cb5edbf97b4178e37be3ad2bd7c69fb6799"
+      "sha256": "1792a4b88eb62dfeba4a11b7329d406a28ced2ddc0664804c668d91a55bba174"
     },
     {
       "file": "scripts/algebra-playwright-setup.mjs",
@@ -1362,6 +1382,10 @@
       "sha256": "858c9528caa43edc61ae412fee8cc974311b4ab1a9b2c73063a89f041130cbfa"
     },
     {
+      "file": "tests/beginner.test.mjs",
+      "sha256": "6cb8348e74b5abf0416135fa95c882cebc3582b59792a2b8c377ff8c1c341037"
+    },
+    {
       "file": "tests/browser/account-progress.spec.mjs",
       "sha256": "ccae60c3dce1bd8a26985a3b02d6c591a0c7b55eeaf1649590e3a89fc9f39382"
     },
@@ -1372,6 +1396,10 @@
     {
       "file": "tests/browser/arguments.spec.mjs",
       "sha256": "23fc6a2c1a539c665c522188f6302607d39339f974f10a73561bf4fcc7253969"
+    },
+    {
+      "file": "tests/browser/beginner.spec.mjs",
+      "sha256": "9e87e2305a4b688c6c190b0343cfdfeb76816a6d5a017621b70e55f60ce01b8a"
     },
     {
       "file": "tests/browser/catalogue.spec.mjs",
@@ -1547,7 +1575,7 @@
     },
     {
       "file": "tests/learning-units.test.mjs",
-      "sha256": "f64bfce76d30a838a03eacd7359c80861db705f51e451e27c8beb7724c9d10a9"
+      "sha256": "44fdf0980dac6db4112cd1cf852c12b2a1bf2644a93a0e3b4990f5fab06cda05"
     },
     {
       "file": "tests/lesson-content.test.mjs",
@@ -1679,6 +1707,45 @@
     "automatedResults": "CLI verify JSON includes executed checks, exit status, artifact hashes and source snapshot digest. CI retains those results and Playwright evidence; inspect them alongside this inventory."
   },
   "features": [
+    {
+      "id": "beginner-language",
+      "route": "#start",
+      "component": "components/algebra/BeginnerRunway.tsx",
+      "interactions": "editable finite map, symbol meanings, quantified reading, witnesses and codomain changes",
+      "prerequisites": [],
+      "reads": ["catalogue", "current UI state"],
+      "writes": [
+        "temporary finite map, language move and witness selection",
+        "history and heading focus",
+        "existing lesson/laboratory navigation on explicit link activation"
+      ],
+      "verification": [
+        {
+          "group": "beginner-language",
+          "sources": [
+            "components/algebra/BeginnerRunway.tsx",
+            "components/algebra/BeginnerMap.tsx",
+            "lib/algebra/beginner.ts",
+            "app/beginner.css",
+            "components/algebra/Math.tsx",
+            "components/algebra/Algebra.tsx",
+            "components/algebra/LearningHome.tsx",
+            "hooks/use-algebra-navigation.ts",
+            "lib/algebra/navigation.ts"
+          ],
+          "journeys": ["tests/browser/beginner.spec.mjs"],
+          "assertions": [
+            "Four finite-function language moves share editable assignments",
+            "Quantifier words highlight their objects and inverse images",
+            "Exact missing-output and collision diagnosis; stale witnesses clear on edits",
+            "Valid codomain changes preserve assignments; in-use removal refuses",
+            "Home, contextual return and history preserve existing destinations",
+            "Temporary guest practice, typeset math, keyboard and responsive layout"
+          ]
+        }
+      ],
+      "evidence": "source-inspection"
+    },
     {
       "id": "home",
       "route": "#home",
@@ -2492,6 +2559,30 @@
   ],
   "verificationGroups": [
     {
+      "id": "beginner-language",
+      "featureIds": ["beginner-language"],
+      "sources": [
+        "components/algebra/BeginnerRunway.tsx",
+        "components/algebra/BeginnerMap.tsx",
+        "lib/algebra/beginner.ts",
+        "app/beginner.css",
+        "components/algebra/Math.tsx",
+        "components/algebra/Algebra.tsx",
+        "components/algebra/LearningHome.tsx",
+        "hooks/use-algebra-navigation.ts",
+        "lib/algebra/navigation.ts"
+      ],
+      "journeys": ["tests/browser/beginner.spec.mjs"],
+      "assertions": [
+        "Four finite-function language moves share editable assignments",
+        "Quantifier words highlight their objects and inverse images",
+        "Exact missing-output and collision diagnosis; stale witnesses clear on edits",
+        "Valid codomain changes preserve assignments; in-use removal refuses",
+        "Home, contextual return and history preserve existing destinations",
+        "Temporary guest practice, typeset math, keyboard and responsive layout"
+      ]
+    },
+    {
       "id": "discovery",
       "featureIds": [
         "home",
@@ -3124,6 +3215,7 @@
           "feature": {
             "type": "string",
             "enum": [
+              "beginner-language",
               "discovery",
               "guided-learning",
               "laboratories",
@@ -3299,6 +3391,8 @@
         "./LaboratoryGallery",
         "@/lib/algebra/navigation",
         "./LessonReader",
+        "./BeginnerRunway",
+        "@/lib/algebra/navigation",
         "./LaboratoryControls",
         "./WebMCP",
         "./RepresentationObject",
@@ -3323,7 +3417,7 @@
       "controls": [
         {
           "kind": "a",
-          "line": 183,
+          "line": 186,
           "attributes": {
             "className": "\"skip-link\"",
             "href": "\"#concept\"",
@@ -3332,7 +3426,7 @@
         },
         {
           "kind": "a",
-          "line": 194,
+          "line": 197,
           "attributes": {
             "className": "\"wordmark\"",
             "href": "\"#home\"",
@@ -3341,7 +3435,7 @@
         },
         {
           "kind": "a",
-          "line": 223,
+          "line": 226,
           "attributes": {
             "key": "{mode}",
             "href": "{`#${mode}`}",
@@ -3351,7 +3445,7 @@
         },
         {
           "kind": "button",
-          "line": 249,
+          "line": 254,
           "attributes": {
             "id": "\"library-toggle\"",
             "className": "\"library-toggle\"",
@@ -3366,7 +3460,7 @@
         },
         {
           "kind": "button",
-          "line": 298,
+          "line": 303,
           "attributes": {
             "className": "\"library-close\"",
             "onClick": "{dismissConcepts}",
@@ -3375,7 +3469,7 @@
         },
         {
           "kind": "button",
-          "line": 364,
+          "line": 378,
           "attributes": {
             "aria-label": "{`Previous: ${siblings[index - 1]?.navTitle || \"start of route\"}`}",
             "disabled": "{index <= 0}",
@@ -3384,24 +3478,24 @@
         },
         {
           "kind": "button",
-          "line": 373,
+          "line": 387,
           "attributes": {
             "aria-label": "{`Next: ${siblings[index + 1]?.navTitle || \"end of route\"}`}",
             "disabled": "{index === siblings.length - 1}",
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
-        { "kind": "summary", "line": 385, "attributes": {} },
+        { "kind": "summary", "line": 399, "attributes": {} },
         {
           "kind": "button",
-          "line": 428,
+          "line": 454,
           "attributes": {
             "onClick": "{() =>\n                      open(siblings[index + 1].id, activeRoute?.id)\n                    }"
           }
         },
         {
           "kind": "a",
-          "line": 437,
+          "line": 463,
           "attributes": {
             "href": "{`#${capstoneTargetId(activeRoute)}`}",
             "onClick": "{(event) => {\n                      if (\n                        !event.metaKey &&\n                        !event.ctrlKey &&\n                        !event.shiftKey &&\n                        !event.altKey\n                      ) {\n                        event.preventDefault();\n                        openCapstone(activeRoute);\n                      }\n                    }}"
@@ -3862,6 +3956,186 @@
           "attributes": {
             "aria-pressed": "{active.reference === index}",
             "onClick": "{() =>\n                commit({\n                  ...sheet,\n                  activeBlockId: active.id,\n                  blocks: sheet.blocks.map((block) =>\n                    block.id === active.id\n                      ? { ...block, reference: index }\n                      : block,\n                  ),\n                })\n              }"
+          }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/BeginnerMap.tsx",
+      "dependencies": ["@/lib/algebra/beginner", "./Math"],
+      "states": [],
+      "controls": [
+        {
+          "kind": "button",
+          "line": 56,
+          "attributes": {
+            "className": "\"beginner-reset\"",
+            "onClick": "{() => dispatch({ kind: \"reset\" })}"
+          }
+        },
+        {
+          "kind": "select",
+          "line": 157,
+          "attributes": {
+            "id": "{`beginner-value-${input}`}",
+            "value": "{state.map.values[input]}",
+            "onChange": "{(event) =>\n                    dispatch({\n                      kind: \"assign\",\n                      input,\n                      output: event.target.value,\n                    })\n                  }"
+          }
+        }
+      ],
+      "evidence": "source-inspection; expressions are not observed runtime values"
+    },
+    {
+      "file": "components/algebra/BeginnerRunway.tsx",
+      "dependencies": [
+        "react",
+        "@/lib/algebra/beginner",
+        "@/lib/algebra/navigation",
+        "./BeginnerMap",
+        "./ConceptLink",
+        "./Math"
+      ],
+      "states": [],
+      "controls": [
+        {
+          "kind": "a",
+          "line": 34,
+          "attributes": {
+            "className": "{className}",
+            "href": "{`#${beginnerTargetId(move, returnTo)}`}",
+            "onClick": "{(event) => {\n        if (\n          event.button !== 0 ||\n          event.metaKey ||\n          event.ctrlKey ||\n          event.shiftKey ||\n          event.altKey\n        )\n          return;\n        event.preventDefault();\n        open(move, returnTo);\n      }}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 78,
+          "attributes": {
+            "aria-label": "{item.label}",
+            "aria-pressed": "{state.symbol === item.id}",
+            "onClick": "{() => dispatch({ kind: \"symbol\", symbol: item.id })}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 117,
+          "attributes": {
+            "aria-label": "\"Every allowed output\"",
+            "aria-pressed": "{state.phrase === \"every-output\"}",
+            "onClick": "{() => dispatch({ kind: \"phrase\", phrase: \"every-output\" })}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 125,
+          "attributes": {
+            "aria-label": "\"has at least one input\"",
+            "aria-pressed": "{state.phrase === \"some-input\"}",
+            "onClick": "{() => dispatch({ kind: \"phrase\", phrase: \"some-input\" })}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 133,
+          "attributes": {
+            "aria-label": "\"that reaches it\"",
+            "aria-pressed": "{state.phrase === \"hits-output\"}",
+            "onClick": "{() => dispatch({ kind: \"phrase\", phrase: \"hits-output\" })}"
+          }
+        },
+        {
+          "kind": "select",
+          "line": 153,
+          "attributes": {
+            "aria-label": "\"Output to inspect\"",
+            "value": "{state.readOutput}",
+            "onChange": "{(event) =>\n            dispatch({ kind: \"read-output\", output: event.target.value })\n          }"
+          }
+        },
+        {
+          "kind": "input",
+          "line": 191,
+          "attributes": {
+            "type": "\"radio\"",
+            "name": "\"beginner-claim\"",
+            "checked": "{selection.kind === \"missing-output\"}",
+            "onChange": "{() =>\n              dispatch({ kind: \"choose-claim\", claim: \"surjective\" })\n            }"
+          }
+        },
+        {
+          "kind": "input",
+          "line": 205,
+          "attributes": {
+            "type": "\"radio\"",
+            "name": "\"beginner-claim\"",
+            "checked": "{selection.kind === \"collision\"}",
+            "onChange": "{() =>\n              dispatch({ kind: \"choose-claim\", claim: \"injective\" })\n            }"
+          }
+        },
+        {
+          "kind": "select",
+          "line": 222,
+          "attributes": {
+            "aria-label": "\"Missing output witness\"",
+            "value": "{selection.output ?? \"\"}",
+            "onChange": "{(event) =>\n              dispatch({ kind: \"choose-output\", output: event.target.value })\n            }"
+          }
+        },
+        {
+          "kind": "select",
+          "line": 244,
+          "attributes": {
+            "aria-label": "{\n                  place === \"first\"\n                    ? \"First collision input\"\n                    : \"Second collision input\"\n                }",
+            "value": "{selection[place] ?? \"\"}",
+            "onChange": "{(event) =>\n                  dispatch({\n                    kind: \"choose-input\",\n                    place,\n                    input: event.target.value,\n                  })\n                }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 272,
+          "attributes": {
+            "className": "\"beginner-primary\"",
+            "onClick": "{() => dispatch({ kind: \"check\" })}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 304,
+          "attributes": {
+            "aria-label": "\"Use codomain a, b\"",
+            "aria-pressed": "{state.map.kind === \"two-outputs\"}",
+            "onClick": "{() =>\n            dispatch({ kind: \"set-codomain\", codomain: \"two-outputs\" })\n          }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 313,
+          "attributes": {
+            "aria-label": "\"Use codomain a, b, c\"",
+            "aria-pressed": "{state.map.kind === \"three-outputs\"}",
+            "onClick": "{() =>\n            dispatch({ kind: \"set-codomain\", codomain: \"three-outputs\" })\n          }"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 401,
+          "attributes": {
+            "key": "{item.id}",
+            "aria-current": "{state.move === item.id ? \"step\" : undefined}",
+            "onClick": "{() => chooseMove(item.id)}"
+          }
+        },
+        {
+          "kind": "button",
+          "line": 436,
+          "attributes": { "onClick": "{() => chooseMove(moves[index - 1].id)}" }
+        },
+        {
+          "kind": "button",
+          "line": 441,
+          "attributes": {
+            "className": "\"beginner-primary\"",
+            "onClick": "{() => chooseMove(next.id)}"
           }
         }
       ],
@@ -5501,7 +5775,8 @@
         "@/lib/algebra/navigation",
         "@/lib/algebra/progress",
         "./LearningProgress",
-        "./SymmetryDesk"
+        "./SymmetryDesk",
+        "./BeginnerRunway"
       ],
       "states": [
         { "binding": "[resetting, setResetting]", "initialExpression": "false" }
@@ -5509,7 +5784,7 @@
       "controls": [
         {
           "kind": "button",
-          "line": 53,
+          "line": 68,
           "attributes": {
             "className": "\"studio-primary\"",
             "onClick": "{() => open(resume?.id || \"foundations-functions\")}"
@@ -5517,24 +5792,24 @@
         },
         {
           "kind": "button",
-          "line": 61,
+          "line": 76,
           "attributes": { "onClick": "{() => navigate(\"learn\")}" }
         },
         {
           "kind": "button",
-          "line": 89,
+          "line": 104,
           "attributes": {
             "onClick": "{() => {\n                    reset();\n                    setResetting(false);\n                  }}"
           }
         },
         {
           "kind": "button",
-          "line": 97,
+          "line": 112,
           "attributes": { "onClick": "{() => setResetting(false)}" }
         },
         {
           "kind": "button",
-          "line": 102,
+          "line": 117,
           "attributes": {
             "onClick": "{() => setResetting(true)}",
             "disabled": "{\n                  !(\n                    phase === \"guest\" ||\n                    (phase === \"ready\" && draftCount === 0)\n                  )\n                }"
@@ -5542,12 +5817,12 @@
         },
         {
           "kind": "button",
-          "line": 142,
+          "line": 157,
           "attributes": { "key": "{mode}", "onClick": "{() => navigate(mode)}" }
         },
         {
           "kind": "button",
-          "line": 155,
+          "line": 170,
           "attributes": { "onClick": "{() => open(\"mh2220-quotient\")}" }
         }
       ],
@@ -33105,6 +33380,7 @@
     "tests/argument-server.test.mjs",
     "tests/argument-store.test.mjs",
     "tests/audit-ledger.test.mjs",
+    "tests/beginner.test.mjs",
     "tests/cayley-words.test.mjs",
     "tests/character-construction.test.mjs",
     "tests/dependency-boundaries.test.mjs",

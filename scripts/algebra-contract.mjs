@@ -10,6 +10,7 @@ export const verificationLayers = [
   "all",
 ];
 export const featureGroups = [
+  "beginner-language",
   "discovery",
   "guided-learning",
   "laboratories",

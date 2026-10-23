@@ -1,5 +1,29 @@
 export const verificationGroups = [
   {
+    id: "beginner-language",
+    featureIds: ["beginner-language"],
+    sources: [
+      "components/algebra/BeginnerRunway.tsx",
+      "components/algebra/BeginnerMap.tsx",
+      "lib/algebra/beginner.ts",
+      "app/beginner.css",
+      "components/algebra/Math.tsx",
+      "components/algebra/Algebra.tsx",
+      "components/algebra/LearningHome.tsx",
+      "hooks/use-algebra-navigation.ts",
+      "lib/algebra/navigation.ts",
+    ],
+    journeys: ["tests/browser/beginner.spec.mjs"],
+    assertions: [
+      "Four finite-function language moves share editable assignments",
+      "Quantifier words highlight their objects and inverse images",
+      "Exact missing-output and collision diagnosis; stale witnesses clear on edits",
+      "Valid codomain changes preserve assignments; in-use removal refuses",
+      "Home, contextual return and history preserve existing destinations",
+      "Temporary guest practice, typeset math, keyboard and responsive layout",
+    ],
+  },
+  {
     id: "discovery",
     featureIds: [
       "home",
