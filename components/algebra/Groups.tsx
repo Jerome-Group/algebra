@@ -12,8 +12,6 @@ import {
   normal,
   palette,
   mod,
-  gcd,
-  cycles,
   cycleTex,
   type Lesson,
 } from "@/lib/algebra/engine";
@@ -231,7 +229,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           </SvgMath>
           {(() => {
             const sizes = [...new Set(shownSg.map((h) => h.length))],
-              xy = shownSg.map((h, i) => {
+              xy = shownSg.map((h) => {
                 const layer = shownSg.filter((k) => k.length === h.length),
                   j = layer.indexOf(h);
                 return [

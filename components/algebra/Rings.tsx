@@ -391,8 +391,7 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
   const content = a.reduce((s, x) => gcd(s, x), 0);
   a = trim(a);
   b = trim(b);
-  const degreeA = a.length - 1,
-    leading = b.at(-1)!;
+  const leading = b.at(-1)!;
   const invertible = p ? gcd(leading, p) === 1 : Math.abs(leading) === 1;
   let divisionSafe = true;
   let quotient = [0],

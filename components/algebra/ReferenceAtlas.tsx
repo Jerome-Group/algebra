@@ -150,6 +150,28 @@ export function ReferenceAtlas({
         </label>
       </div>
       <p role="status">{results.length} matching concepts</p>
+      {results.length === 0 && (
+        <div className="atlas-empty">
+          <p>
+            No concepts match this search and these filters. Try fewer terms or
+            start again.
+          </p>
+          <button
+            onClick={() => {
+              setQuery("");
+              setTier("");
+              setStatus("");
+              setSource("");
+              setVisual("");
+              setMinutes("");
+              setReady(false);
+              setKind("");
+            }}
+          >
+            Clear search and filters
+          </button>
+        </div>
+      )}
       <ul className="atlas-results">
         {results.map(({ lesson }) => {
           const item = learningMetadata(lesson);

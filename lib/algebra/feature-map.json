@@ -235,7 +235,7 @@
     },
     {
       "file": "components/algebra/Cube.tsx",
-      "sha256": "a68aa4c2eedd6410715a51460ba465b62a35071f49f1c33b29faac4541c2f69f"
+      "sha256": "8c36a55b5311cc729f7d888e98f93824154cee292170ba05bdf87953e9c48e91"
     },
     {
       "file": "components/algebra/CubeColoringLab.tsx",
@@ -271,7 +271,7 @@
     },
     {
       "file": "components/algebra/Groups.tsx",
-      "sha256": "c9a9dbe68a5bed8c83d9f06f3d07c538956e57525c81ee167fa13bc2a0e1b32a"
+      "sha256": "93667f167dfddf1cf1bcdcf5ff060b5e6365d94f24332059238c91a11b5aba4a"
     },
     {
       "file": "components/algebra/GuidedReader.tsx",
@@ -323,7 +323,7 @@
     },
     {
       "file": "components/algebra/LearningRoutes.tsx",
-      "sha256": "db44bf1a8fb888321007622c0fe6d105db7f9019ec7a10102d0ad6207eef99f4"
+      "sha256": "2c30602d45a492451554319de2e832c7b705bc81cb5cb6b8357c620aa97c91dd"
     },
     {
       "file": "components/algebra/LessonReader.tsx",
@@ -379,7 +379,7 @@
     },
     {
       "file": "components/algebra/ReferenceAtlas.tsx",
-      "sha256": "12a91a33fdfd110d0f7ea3ecd8d5cf96109a0bac753fa8016c342b5945e49f35"
+      "sha256": "cbbe609ddec14a6c622648b482897b059a3391e6d5d18806eb945ac65a123d3f"
     },
     {
       "file": "components/algebra/RepresentationJourney.tsx",
@@ -391,11 +391,11 @@
     },
     {
       "file": "components/algebra/Representations.tsx",
-      "sha256": "dffbc37d586156e94966403430f33bbe362cc53a33fa29a06d60e2054f59941d"
+      "sha256": "41c46463f3d2c759b27efbc790433f01238501e47eed9139cb70f75d3789282d"
     },
     {
       "file": "components/algebra/Rings.tsx",
-      "sha256": "c4de8145b05ed0b3b42a3316d0bae0a32099c5fb4229b83080fcf4c656039c08"
+      "sha256": "cb6f7b5824db2b5052e9b9ec195dccc0d180ed0cefbaa43621b2345b7c031db7"
     },
     {
       "file": "components/algebra/RotationLessons.tsx",
@@ -1139,7 +1139,7 @@
     },
     {
       "file": "lib/algebra/search.ts",
-      "sha256": "edc4a433d14c2721a99e473dd9c337339a83c0e44979048e5eda805a5b9e60b6"
+      "sha256": "6a5543af2012b325c958368d36aabce92659dc7dff80c7589919d985252d986f"
     },
     {
       "file": "lib/algebra/semidirect-product.ts",
@@ -1388,6 +1388,10 @@
     {
       "file": "tests/browser/laboratory-loading.spec.mjs",
       "sha256": "c683f049ef343c50905794ca2d281dfff48d9cbbedf7fa1ff1f14c28ce764b38"
+    },
+    {
+      "file": "tests/browser/learning-recovery.spec.mjs",
+      "sha256": "1736d0a6192fe3b8272ea0033a344b91941172520bb9d64df4b7dea23699debb"
     },
     {
       "file": "tests/browser/learning.spec.mjs",
@@ -4437,10 +4441,10 @@
         { "binding": "[colors, setColors]", "initialExpression": "3" }
       ],
       "controls": [
-        { "kind": "summary", "line": 283, "attributes": {} },
+        { "kind": "summary", "line": 282, "attributes": {} },
         {
           "kind": "Range",
-          "line": 284,
+          "line": 283,
           "attributes": {
             "label": "\"Horizontal angle\"",
             "value": "{yaw}",
@@ -4452,7 +4456,7 @@
         },
         {
           "kind": "Range",
-          "line": 292,
+          "line": 291,
           "attributes": {
             "label": "\"Vertical angle\"",
             "value": "{pitch}",
@@ -4464,7 +4468,7 @@
         },
         {
           "kind": "Range",
-          "line": 300,
+          "line": 299,
           "attributes": {
             "label": "\"Zoom\"",
             "value": "{zoom}",
@@ -4476,14 +4480,14 @@
         },
         {
           "kind": "button",
-          "line": 308,
+          "line": 307,
           "attributes": {
             "onClick": "{() => {\n            setYaw(0.62);\n            setPitch(-0.38);\n            setZoom(1);\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 392,
+          "line": 391,
           "attributes": {
             "className": "\"icon-button\"",
             "title": "\"Reset transformation\"",
@@ -4492,12 +4496,12 @@
         },
         {
           "kind": "button",
-          "line": 404,
+          "line": 403,
           "attributes": { "key": "{g}", "onClick": "{() => apply(g)}" }
         },
         {
           "kind": "button",
-          "line": 433,
+          "line": 432,
           "attributes": {
             "key": "{i}",
             "className": "{selected === i ? \"selected\" : \"\"}",
@@ -4507,7 +4511,7 @@
         },
         {
           "kind": "button",
-          "line": 485,
+          "line": 484,
           "attributes": {
             "key": "{x}",
             "onClick": "{() => setView(x)}",
@@ -4516,7 +4520,7 @@
         },
         {
           "kind": "button",
-          "line": 502,
+          "line": 501,
           "attributes": {
             "key": "{i}",
             "disabled": "{!active}",
@@ -4525,10 +4529,10 @@
             "title": "{`${x.word.join(\" \") || \"I\"}, determinant ${det(x.matrix)}`}"
           }
         },
-        { "kind": "summary", "line": 515, "attributes": {} },
+        { "kind": "summary", "line": 514, "attributes": {} },
         {
           "kind": "Range",
-          "line": 518,
+          "line": 517,
           "attributes": {
             "label": "\"Labeled colors $k$\"",
             "value": "{colors}",
@@ -4537,8 +4541,8 @@
             "onChange": "{setColors}"
           }
         },
-        { "kind": "summary", "line": 550, "attributes": {} },
-        { "kind": "summary", "line": 574, "attributes": {} }
+        { "kind": "summary", "line": 549, "attributes": {} },
+        { "kind": "summary", "line": 573, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -4832,12 +4836,12 @@
       "controls": [
         {
           "kind": "Select",
-          "line": 52,
+          "line": 50,
           "attributes": { "value": "{value}", "onValueChange": "{onChange}" }
         },
         {
           "kind": "button",
-          "line": 323,
+          "line": 321,
           "attributes": {
             "key": "{v}",
             "onClick": "{() => setB(v)}",
@@ -4846,7 +4850,7 @@
         },
         {
           "kind": "button",
-          "line": 461,
+          "line": 459,
           "attributes": {
             "className": "\"quotient-toggle\"",
             "onClick": "{() => setBoth(!both)}"
@@ -4854,23 +4858,23 @@
         },
         {
           "kind": "button",
-          "line": 465,
+          "line": 463,
           "attributes": {
             "className": "\"quotient-toggle\"",
             "disabled": "{!normal(g, H)}",
             "onClick": "{() => setAbove(!above)}"
           }
         },
-        { "kind": "summary", "line": 530, "attributes": {} },
-        { "kind": "summary", "line": 554, "attributes": {} },
+        { "kind": "summary", "line": 528, "attributes": {} },
+        { "kind": "summary", "line": 552, "attributes": {} },
         {
           "kind": "button",
-          "line": 578,
+          "line": 576,
           "attributes": { "onClick": "{() => setRight(!right)}" }
         },
         {
           "kind": "button",
-          "line": 583,
+          "line": 581,
           "attributes": {
             "onClick": "{() => setTab(\"graph\")}",
             "className": "{tab === \"graph\" ? \"active\" : \"\"}"
@@ -4878,37 +4882,37 @@
         },
         {
           "kind": "button",
-          "line": 589,
+          "line": 587,
           "attributes": {
             "onClick": "{() => setTab(\"table\")}",
             "className": "{tab === \"table\" ? \"active\" : \"\"}"
           }
         },
-        { "kind": "summary", "line": 616, "attributes": {} },
+        { "kind": "summary", "line": 614, "attributes": {} },
         {
           "kind": "button",
-          "line": 648,
+          "line": 646,
           "attributes": {
             "onClick": "{() => {\n            setR(mod(r + 1, n));\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 655,
+          "line": 653,
           "attributes": {
             "onClick": "{() => {\n            setR(mod(-r, n));\n            setS(1 - s);\n          }}"
           }
         },
         {
           "kind": "button",
-          "line": 663,
+          "line": 661,
           "attributes": {
             "onClick": "{() => {\n            setR(0);\n            setS(0);\n          }}"
           }
         },
         {
           "kind": "Range",
-          "line": 767,
+          "line": 765,
           "attributes": {
             "label": "{\"Domain modulus $n$\"}",
             "value": "{n}",
@@ -4919,7 +4923,7 @@
         },
         {
           "kind": "Range",
-          "line": 774,
+          "line": 772,
           "attributes": {
             "label": "{\"Codomain modulus $m$\"}",
             "value": "{m}",
@@ -4930,7 +4934,7 @@
         },
         {
           "kind": "Range",
-          "line": 781,
+          "line": 779,
           "attributes": {
             "label": "{\"Multiplier $k$\"}",
             "value": "{k}",
@@ -5603,13 +5607,14 @@
         "@/lib/algebra/routes",
         "@/lib/algebra/navigation",
         "./ConceptLink",
-        "@/lib/algebra/learning"
+        "@/lib/algebra/learning",
+        "./Math"
       ],
       "states": [],
       "controls": [
         {
           "kind": "button",
-          "line": 81,
+          "line": 82,
           "attributes": {
             "aria-pressed": "{route === item.id}",
             "onClick": "{() => open(item.lessons[0], item.id)}"
@@ -5617,19 +5622,19 @@
         },
         {
           "kind": "summary",
-          "line": 105,
+          "line": 106,
           "attributes": { "id": "{capstoneTargetId(item)}" }
         },
         {
           "kind": "Checkpoint",
-          "line": 107,
+          "line": 108,
           "attributes": {
             "competencyId": "{`unit:${item.id}`}",
             "title": "\"Unit transfer checkpoint\"",
             "assessment": "{assessment}"
           }
         },
-        { "kind": "summary", "line": 119, "attributes": {} }
+        { "kind": "summary", "line": 120, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -6444,6 +6449,13 @@
             "checked": "{ready}",
             "onChange": "{(event) => setReady(event.target.checked)}"
           }
+        },
+        {
+          "kind": "button",
+          "line": 159,
+          "attributes": {
+            "onClick": "{() => {\n              setQuery(\"\");\n              setTier(\"\");\n              setStatus(\"\");\n              setSource(\"\");\n              setVisual(\"\");\n              setMinutes(\"\");\n              setReady(false);\n              setKind(\"\");\n            }}"
+          }
         }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
@@ -6532,10 +6544,6 @@
         { "binding": "[axis, setAxis]", "initialExpression": "\"z\"" },
         { "binding": "[raw, setRaw]", "initialExpression": "\"2,3,1,5,4\"" },
         { "binding": "[rawB, setRawB]", "initialExpression": "\"1,2,3,4,5\"" },
-        {
-          "binding": "[mode, setMode]",
-          "initialExpression": "\"permutation\""
-        },
         { "binding": "[a, setA]", "initialExpression": "2" },
         { "binding": "[b, setB]", "initialExpression": "-1" },
         { "binding": "[c, setC]", "initialExpression": "1" },
@@ -6546,7 +6554,7 @@
       "controls": [
         {
           "kind": "Range",
-          "line": 161,
+          "line": 159,
           "attributes": {
             "label": "{\"Angle $\\\\theta$ in degrees\"}",
             "value": "{angle}",
@@ -6557,7 +6565,7 @@
         },
         {
           "kind": "input",
-          "line": 225,
+          "line": 223,
           "attributes": {
             "aria-label": "\"Permutation p\"",
             "value": "{raw}",
@@ -6566,7 +6574,7 @@
         },
         {
           "kind": "input",
-          "line": 233,
+          "line": 231,
           "attributes": {
             "aria-label": "\"Permutation q\"",
             "value": "{rawB}",
@@ -6575,7 +6583,7 @@
         },
         {
           "kind": "Range",
-          "line": 383,
+          "line": 380,
           "attributes": {
             "key": "{i}",
             "label": "{`v${i + 1}`}",
@@ -6585,8 +6593,8 @@
             "onChange": "{fn as any}"
           }
         },
-        { "kind": "summary", "line": 407, "attributes": {} },
-        { "kind": "summary", "line": 422, "attributes": {} }
+        { "kind": "summary", "line": 404, "attributes": {} },
+        { "kind": "summary", "line": 419, "attributes": {} }
       ],
       "evidence": "source-inspection; expressions are not observed runtime values"
     },
@@ -6683,7 +6691,7 @@
         },
         {
           "kind": "input",
-          "line": 446,
+          "line": 445,
           "attributes": {
             "aria-label": "\"Polynomial f coefficients\"",
             "value": "{raw}",
@@ -6693,18 +6701,18 @@
         },
         {
           "kind": "input",
-          "line": 455,
+          "line": 454,
           "attributes": {
             "aria-label": "\"Polynomial g coefficients\"",
             "value": "{rawB}",
             "onChange": "{(e) => setRawB(e.target.value)}"
           }
         },
-        { "kind": "summary", "line": 558, "attributes": {} },
-        { "kind": "summary", "line": 604, "attributes": {} },
+        { "kind": "summary", "line": 557, "attributes": {} },
+        { "kind": "summary", "line": 603, "attributes": {} },
         {
           "kind": "Range",
-          "line": 614,
+          "line": 613,
           "attributes": {
             "label": "{\"Translate $X$ by $h$\"}",
             "value": "{shift}",
@@ -6713,10 +6721,10 @@
             "onChange": "{setShift}"
           }
         },
-        { "kind": "summary", "line": 648, "attributes": {} },
+        { "kind": "summary", "line": 647, "attributes": {} },
         {
           "kind": "Range",
-          "line": 765,
+          "line": 764,
           "attributes": {
             "label": "{\"Real part $a$ of $z$\"}",
             "min": "{-8}",
@@ -6727,7 +6735,7 @@
         },
         {
           "kind": "Range",
-          "line": 772,
+          "line": 771,
           "attributes": {
             "label": "{\"Imaginary part $b$ of $z$\"}",
             "min": "{-8}",
@@ -6738,7 +6746,7 @@
         },
         {
           "kind": "Range",
-          "line": 779,
+          "line": 778,
           "attributes": {
             "label": "{\"Real part $u$ of $w$\"}",
             "min": "{-4}",
@@ -6749,7 +6757,7 @@
         },
         {
           "kind": "Range",
-          "line": 786,
+          "line": 785,
           "attributes": {
             "label": "{\"Imaginary part $v$ of $w$\"}",
             "min": "{-4}",

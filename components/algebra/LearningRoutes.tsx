@@ -8,6 +8,7 @@ import { learningRoutes, type LearningUnit } from "@/lib/algebra/routes";
 import { capstoneTargetId } from "@/lib/algebra/navigation";
 import { ConceptLink } from "./ConceptLink";
 import { learningMetadata } from "@/lib/algebra/learning";
+import { Prose } from "./Math";
 export function LearningRoutes({
   lessons,
   route,
@@ -117,7 +118,9 @@ export function LearningRoutes({
                 </p>
                 <details>
                   <summary>Compare your reasoning</summary>
-                  <p>{item.capstone.answer}</p>
+                  <p>
+                    <Prose>{item.capstone.answer}</Prose>
+                  </p>
                 </details>
               </details>
               <p>

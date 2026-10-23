@@ -11,11 +11,9 @@ import {
 } from "@/lib/algebra/permutation-matrices";
 import {
   matrixTex,
-  det,
   cycleTex,
   cycles,
   palette,
-  mod,
   type Mat,
   type Lesson,
 } from "@/lib/algebra/engine";
@@ -301,9 +299,8 @@ export function PermutationLab() {
     </div>
   );
 }
-export function RepresentationLab({ lesson }: { lesson: Lesson }) {
-  const [mode, setMode] = useState("permutation"),
-    [a, setA] = useState(2),
+export function RepresentationLab() {
+  const [a, setA] = useState(2),
     [b, setB] = useState(-1),
     [c, setC] = useState(1),
     [perm, setPerm] = useState(0);

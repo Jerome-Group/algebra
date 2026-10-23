@@ -1,4 +1,6 @@
 import type { Lesson } from "./engine";
+import guides from "./guided-lessons.json" with { type: "json" };
+const guidesById = new Map(Object.entries(guides));
 const normalize = (value: string) =>
   value
     .normalize("NFKD")
@@ -12,6 +14,7 @@ export function searchLessons(lessons: Lesson[], query: string) {
   const terms = normalize(query).split(" ").filter(Boolean);
   return lessons
     .map((lesson) => {
+      const guide = guidesById.get(lesson.id);
       const title = `${lesson.navTitle} ${lesson.title} ${(lesson.aliases || []).join(" ")}`;
       const passages = [
         lesson.intuition,
@@ -25,6 +28,20 @@ export function searchLessons(lessons: Lesson[], query: string) {
           note.title,
           ...note.paragraphs,
         ]),
+        ...(guide
+          ? [
+              guide.hook,
+              guide.objects,
+              ...guide.examples.flatMap((example) => [
+                example.title,
+                ...example.steps,
+              ]),
+              guide.nonexample.title,
+              guide.nonexample.explanation,
+              ...guide.proofSteps,
+              guide.connection,
+            ]
+          : []),
       ];
       const index = normalize(
         [title, lesson.subject, lesson.family, ...passages].join(" "),
