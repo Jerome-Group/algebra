@@ -1363,7 +1363,7 @@
     },
     {
       "file": "scripts/install-portable.mjs",
-      "sha256": "dbf90440e55979b3e042bc10371e72441d5794367ab6b0bb36a8f61736f827e9"
+      "sha256": "700dba7595691cfafb335cd57628aec3de7e1b3f53c69a834a37ca7402e66ef9"
     },
     {
       "file": "scripts/lib/math-presentation.mjs",
@@ -1614,6 +1614,10 @@
       "sha256": "14e9a5008f79d48533b40245e4a149b4d1349366db66cc1d142bbdd863f0838b"
     },
     {
+      "file": "tests/fixtures/install-held-zombie.c",
+      "sha256": "811712bec0f6bad46075181e5622e635fa1a98a59f28a798a73f4e5756b527d8"
+    },
+    {
       "file": "tests/formal-evidence.test.mjs",
       "sha256": "f956b1b6ecb9783f74074db1f1a16fd05eb36cf7c69182cf94ba48bc7421eefd"
     },
@@ -1635,7 +1639,7 @@
     },
     {
       "file": "tests/install-ci.test.mjs",
-      "sha256": "36af7e13ed376508226852d8054effbd895d6b96a5c43bd31c2b516356f2e792"
+      "sha256": "8fe464f8da55c1a6b04e36397354b9cec472178a4a7780443228ddca45abb9ac"
     },
     {
       "file": "tests/invariant-intertwiner.test.mjs",
