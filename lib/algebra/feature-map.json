@@ -2,6 +2,22 @@
   "version": 1,
   "sources": [
     {
+      "file": ".agents/skills/argument-lifecycle/ArgumentLifecycle.cfg",
+      "sha256": "b3a0d4e0f5919e3d847747e9aea479bfb67d85429391a331629c5bedb995eca3"
+    },
+    {
+      "file": ".agents/skills/argument-lifecycle/ArgumentLifecycle.tla",
+      "sha256": "a5013217229dd776c14f25185961a28835a593102e69855de11f3ec53161e5ed"
+    },
+    {
+      "file": ".agents/skills/argument-lifecycle/SKILL.md",
+      "sha256": "0275efc02cd3e48860dca98802817113e72f5c98aaae5d1a037db6dcd0a0b4f4"
+    },
+    {
+      "file": ".agents/skills/argument-lifecycle/coverage.json",
+      "sha256": "56ecec282a5df94ea6938da3b8edf107d4772a24840552d2d1dccc394aed5ef3"
+    },
+    {
       "file": ".agents/skills/verify/SKILL.md",
       "sha256": "ed3c7bf881300252a89b3c26403cef639a56dacc67c191586f2764ed18f872b4"
     },
@@ -83,7 +99,7 @@
     },
     {
       "file": "MAP.md",
-      "sha256": "bcc517fde4ed4445412f0a8f5513337d0d66b6ba0d4841405531ae786f5bb5f3"
+      "sha256": "e3c0aa3a462e6b1dc352e68b19bbb21b23dd681bee266ec3bc01e30b82774055"
     },
     {
       "file": "README.md",
@@ -846,6 +862,10 @@
       "sha256": "4c703ffb292864bf44e6d580650c539aa3566681b50eeacd774dbe4c2770c872"
     },
     {
+      "file": "docs/research/argument-lifecycle-verification.md",
+      "sha256": "2060d51fad199ac0b5e1d5a4331d21f618c467837698de2a286018c38ad7a0d4"
+    },
+    {
       "file": "docs/research/argument-recovery-review.json",
       "sha256": "278dd0b99a1a0eab03541498b5c14ebdf0501b40a3900d6d94620003ff77f1f3"
     },
@@ -1187,7 +1207,7 @@
     },
     {
       "file": "package.json",
-      "sha256": "a5975178156e974fbc83439862b24eed968dac0ca9763ca7dbc4c6290146fa14"
+      "sha256": "bdc18994b4c8eff9e32d64b7f578c9a9a11e00e8232b8c66abb8101470be0f9e"
     },
     {
       "file": "playwright.config.ts",
@@ -1260,6 +1280,14 @@
     {
       "file": "scripts/build-verified.sh",
       "sha256": "2ae5329ac860076070c9217a43106a15cb5ecf907a0f7baeb9ef903f76b53c68"
+    },
+    {
+      "file": "scripts/formal/argument-lifecycle-replay.mjs",
+      "sha256": "fa61c14e184f1e737c3f4ab7045f9a038469561f84208e1d386a1346a6986d01"
+    },
+    {
+      "file": "scripts/formal/argument-lifecycle.mjs",
+      "sha256": "41c4eb2457aee509ab9dae382fdfbaa7747abda4600eaffdfbb66d4fdbe508d6"
     },
     {
       "file": "scripts/install-ci.mjs",
@@ -1484,6 +1512,10 @@
     {
       "file": "tests/fixed-colorings.test.mjs",
       "sha256": "f18a7365021dee29b86bde56a5aaa62d82ff389050b9259ea61d2dd317ef4365"
+    },
+    {
+      "file": "tests/formal-evidence.test.mjs",
+      "sha256": "f956b1b6ecb9783f74074db1f1a16fd05eb36cf7c69182cf94ba48bc7421eefd"
     },
     {
       "file": "tests/foundation-labs.test.mjs",
@@ -33078,6 +33110,7 @@
     "tests/dependency-boundaries.test.mjs",
     "tests/feature-map.test.mjs",
     "tests/fixed-colorings.test.mjs",
+    "tests/formal-evidence.test.mjs",
     "tests/foundation-labs.test.mjs",
     "tests/guided-content.test.mjs",
     "tests/ideal-quotients.test.mjs",

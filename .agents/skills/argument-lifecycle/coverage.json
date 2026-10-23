@@ -1,0 +1,17 @@
+{
+  "syncCommit": "9cd4b5ca651a0574c8279383418644abdd3cbaf5",
+  "coveredFiles": [
+    "lib/algebra/account-store.ts",
+    "lib/algebra/argument-store.ts",
+    "lib/algebra/argument-records.ts"
+  ],
+  "bounds": {
+    "owners": 2,
+    "sheets": 1,
+    "contentVersions": 2,
+    "puts": 1,
+    "refreshes": 1,
+    "retriesAfterTransportFailureWithoutRefresh": 1
+  },
+  "properties": ["OwnerPrivacy", "CapturedAcknowledgement", "ImmutableRetry"]
+}
