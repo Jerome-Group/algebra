@@ -39,7 +39,7 @@ TLA+ suits event ordering here. The runner pins tools
 The one-command runner downloads and verifies those exact bytes, or verifies an
 explicit `TLA2TOOLS_JAR`. Java 21 and Node 24+ are prerequisites. CI installs Java 21
 and uses locked npm dependencies. The setup-java commit was resolved from upstream
-`actions/setup-java` tag `v5` when adding the job.
+`actions/setup-java` tag `v5` when adding the verification step.
 
 ## Bounds and code correspondence
 

@@ -22,6 +22,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - name: CLAUDE.md is still a symlink to AGENTS.md
         run: |
           mode=$(git ls-files -s CLAUDE.md | cut -d' ' -f1)
@@ -35,6 +37,10 @@ jobs:
         with:
           node-version: "24"
           cache: npm
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: "21"
       - name: Install locked dependencies
         run: npm ci
       - name: Build, format and lint
@@ -49,6 +55,8 @@ jobs:
         run: npm run agent -- verify --layer math --evidence outputs/math.json
       - name: Verify built rendering
         run: npm run agent -- verify --layer render --evidence outputs/render.json
+      - name: Check bounded argument lifecycle and real-module mutations
+        run: npm run verify:argument-lifecycle
       - name: Retain exact production artifact for browser jobs
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -111,43 +119,15 @@ jobs:
           path: outputs/
           if-no-files-found: ignore
 
-  argument-lifecycle:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version: "24"
-          cache: npm
-      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
-        with:
-          distribution: temurin
-          java-version: "21"
-      - name: Install locked dependencies
-        run: npm ci
-      - name: Check bounded argument lifecycle and real-module mutations
-        run: npm run verify:argument-lifecycle
-      - name: Retain formal model and replay evidence
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: argument-lifecycle-evidence
-          path: outputs/argument-lifecycle/
-          if-no-files-found: error
-
   # Keep the required status name; skipped or cancelled dependencies must fail it.
   checks:
     if: always()
-    needs: [engineering, browser, argument-lifecycle]
+    needs: [engineering, browser]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Require engineering, browser shards and argument lifecycle to pass
+      - name: Require engineering and every browser shard to pass
         env:
           ENGINEERING_RESULT: ${{ needs.engineering.result }}
           BROWSER_RESULT: ${{ needs.browser.result }}
-          ARGUMENT_LIFECYCLE_RESULT: ${{ needs.argument-lifecycle.result }}
-        run: test "$ENGINEERING_RESULT" = success && test "$BROWSER_RESULT" = success && test "$ARGUMENT_LIFECYCLE_RESULT" = success
+        run: test "$ENGINEERING_RESULT" = success && test "$BROWSER_RESULT" = success
