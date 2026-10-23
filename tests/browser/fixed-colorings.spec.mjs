@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { randomUUID } from "node:crypto";
+import { expectCatalogueText } from "./math-content.mjs";
 
 const cases = [
   ["mh2220-burnside", "Fixed-point table", "= 4 orbits"],
@@ -139,9 +140,15 @@ test("signed-in counting competency and capstone evidence persist without granti
     "1 of 12 currently assessed competencies demonstrated",
   );
   await unit.getByText("Unit capstone", { exact: true }).click();
-  await unit
-    .getByRole("radio", { name: /Fixed counts 16,2,4,2 give six orbits/ })
-    .check();
+  const fixedCounts = unit.locator("label").filter({
+    hasText: "give six orbits; constant colors are allowed.",
+  });
+  await expectCatalogueText(
+    fixedCounts,
+    "Fixed counts 16,2,4,2 give six orbits; constant colors are allowed.",
+    { prefix: "Choice 2. " },
+  );
+  await fixedCounts.getByRole("radio").check();
   await unit.getByRole("button", { name: "Check reasoning" }).click();
   await expect(unit.locator(".competency-progress")).toContainText(
     "Capstone demonstrated",

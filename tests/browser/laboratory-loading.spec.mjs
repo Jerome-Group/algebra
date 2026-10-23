@@ -35,7 +35,13 @@ test("laboratory code loads on demand with readable pending feedback", async ({
   expect(requested).toBe(true);
   release();
   await expect(page.locator(".laboratory-loading")).toHaveCount(0);
-  await expect(page.locator(".katex").first()).toBeVisible();
+  const laboratory = page.locator(".exploration .foundation-lab");
+  await expect(
+    laboratory.getByRole("table", {
+      name: "Function values and equivalence classes",
+    }),
+  ).toBeVisible();
+  await expect(laboratory.locator(".katex").first()).toBeVisible();
 });
 
 test("failed laboratory import keeps navigation usable and offers route-preserving reload", async ({
@@ -69,5 +75,12 @@ test("failed laboratory import keeps navigation usable and offers route-preservi
     .fill("A fiber changes.");
   await page.getByRole("button", { name: "Test my prediction" }).click();
   await expect(page.locator(".laboratory-load-error")).toHaveCount(0);
-  await expect(page.locator(".katex").first()).toBeVisible();
+  const laboratory = page.locator(".exploration .foundation-lab");
+  await expect(laboratory.locator(".katex").first()).toBeVisible();
+  await laboratory
+    .getByRole("button", { name: "Try incompatible representatives" })
+    .click();
+  await expect(laboratory.locator(".live-mathematics")).toContainText(
+    "not well-defined",
+  );
 });

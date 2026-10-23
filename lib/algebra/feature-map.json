@@ -1479,7 +1479,7 @@
     },
     {
       "file": "tests/browser/fixed-colorings.spec.mjs",
-      "sha256": "c52a4971e03bd05cb1573804761636655552e990288c07cf8235e0ef426054d8"
+      "sha256": "9f40b5fe5842a09490b53d8852ec53871dbaa31608a943bd1933ae11d2995624"
     },
     {
       "file": "tests/browser/foundation-labs.spec.mjs",
@@ -1499,7 +1499,7 @@
     },
     {
       "file": "tests/browser/laboratory-loading.spec.mjs",
-      "sha256": "c683f049ef343c50905794ca2d281dfff48d9cbbedf7fa1ff1f14c28ce764b38"
+      "sha256": "da473102bc4f82a4f7ff48daef2182b58eead6c7e96cafa79226a3133483e701"
     },
     {
       "file": "tests/browser/learning-recovery.spec.mjs",
@@ -1579,7 +1579,7 @@
     },
     {
       "file": "tests/browser/webmcp.spec.mjs",
-      "sha256": "3421250e15827a015a056e0093a99332e8680af9d162e0286d19bb537fe7de32"
+      "sha256": "ddcb81b336badac85fb33714d683343a49b4a5f83e107ef6d16558da70d341ea"
     },
     {
       "file": "tests/browser/wedderburn-layers.spec.mjs",
