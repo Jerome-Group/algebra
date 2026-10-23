@@ -15,7 +15,7 @@
       "test independence of representatives."
     ],
     "capstone": {
-      "question": "For f: Z → Z/3Z, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3.",
+      "question": "For f: Z → Z/3Z given by $f(n)=[n]_3$, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3.",
       "answer": "Fibers are residue classes modulo 3. The proposed rule fails because 0 and 3 represent the same input but their squares are 0 and 3 modulo 6."
     },
     "completionCriteria": "Demonstrate every lesson competency and solve the capstone, checking each hypothesis.",

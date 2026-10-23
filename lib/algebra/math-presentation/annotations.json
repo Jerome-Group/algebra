@@ -1,10 +1,10 @@
 {
   "version": 1,
   "sources": {
-    "lib/algebra/lessons.json": "5f12e02001cdb65591ef5437ed0279cf2f750b4490a930e4af2ad01cc1274d74",
-    "lib/algebra/guided-lessons.json": "6d727041580ad0be7891013926222ff8607e07e291ac6845ac1e82a6932911db",
-    "lib/algebra/units.json": "622452df05bafd77af27ab9ad3f5ae4427d88bf1d391b88dc547a3981ee90bf4",
-    "lib/algebra/capstone-assessments.json": "f9c562ddd4c9f6b22ac7ab2ed83b86e9980ca8f12cc73736581e0ab5135dbc84"
+    "lib/algebra/lessons.json": "8dfaabfeec6f749b393451dc2c586f2fdad81165d6f815e2f4470d925cef0207",
+    "lib/algebra/guided-lessons.json": "c2aa004ff8f7efdfdce7b3fedfb1ccfa8bbef58ec2d5d2a06bb9b2f28ea6e98b",
+    "lib/algebra/units.json": "8eef02cb34d036e29969de1fbcfbd04f4f2729a43c06a54446747d7e627b563b",
+    "lib/algebra/capstone-assessments.json": "568c81a97e4a64ff69a7c9e1c282b90b51187d76bf1f291a0c53585281c8b7c6"
   },
   "annotations": [
     {
@@ -185,13 +185,13 @@
           "tex": "f: \\mathbb{Z} \\to  \\mathbb{Z}/3\\mathbb{Z}"
         },
         {
-          "start": 44,
-          "end": 72,
+          "start": 66,
+          "end": 94,
           "raw": "[n] modulo 3 ↦ [n²] modulo 6",
           "tex": "[n]\\text{ modulo }3\\mapsto[n^{2}]\\text{ modulo }6"
         },
-        { "start": 100, "end": 103, "raw": "n=0", "tex": "n=0" },
-        { "start": 108, "end": 111, "raw": "n=3", "tex": "n=3" }
+        { "start": 122, "end": 125, "raw": "n=0", "tex": "n=0" },
+        { "start": 130, "end": 133, "raw": "n=3", "tex": "n=3" }
       ]
     },
     {
@@ -6639,8 +6639,8 @@
         "pointer": "/m3220-characteristic/examples/1/steps/1"
       },
       "spans": [
-        { "start": 32, "end": 37, "raw": "1+1=0", "tex": "1+1=0" },
-        { "start": 64, "end": 68, "raw": "2²=4", "tex": "2^{2}=4" }
+        { "start": 38, "end": 43, "raw": "1+1=0", "tex": "1+1=0" },
+        { "start": 70, "end": 74, "raw": "2²=4", "tex": "2^{2}=4" }
       ]
     },
     {
@@ -8479,7 +8479,7 @@
         "pointer": "/m3220-fractions/boundaryCheck/explanation"
       },
       "spans": [
-        { "start": 0, "end": 7, "raw": "Atu=cts", "tex": "Atu=cts" },
+        { "start": 0, "end": 7, "raw": "atu=cts", "tex": "atu=cts" },
         { "start": 16, "end": 26, "raw": "t(au−cs)=0", "tex": "t(au-cs)=0" },
         { "start": 46, "end": 53, "raw": "au−cs=0", "tex": "au-cs=0" }
       ]
@@ -8860,7 +8860,7 @@
         "file": "lib/algebra/guided-lessons.json",
         "pointer": "/m3220-gauss/nonexample/title"
       },
-      "spans": [{ "start": 8, "end": 9, "raw": "6", "tex": "6" }]
+      "spans": [{ "start": 8, "end": 9, "raw": "3", "tex": "3" }]
     },
     {
       "source": {
@@ -19940,7 +19940,7 @@
         "pointer": "/mh2220-euler-fermat/nonexample/explanation"
       },
       "spans": [
-        { "start": 0, "end": 4, "raw": "2⁴≡4", "tex": "2^{4}\\equiv 4" },
+        { "start": 0, "end": 4, "raw": "2⁴≡6", "tex": "2^{4}\\equiv 6" },
         {
           "start": 26,
           "end": 37,
@@ -23226,21 +23226,14 @@
         "file": "lib/algebra/guided-lessons.json",
         "pointer": "/mh2220-p-groups/transfer/explanation"
       },
-      "spans": [
-        {
-          "start": 20,
-          "end": 24,
-          "raw": "⟨gᵖ⟩",
-          "tex": "\\langle g^{p}\\rangle"
-        }
-      ]
+      "spans": [{ "start": 44, "end": 45, "raw": "p", "tex": "p" }]
     },
     {
       "source": {
         "file": "lib/algebra/guided-lessons.json",
         "pointer": "/mh2220-p-groups/transfer/question"
       },
-      "spans": [{ "start": 7, "end": 10, "raw": "Cₚ²", "tex": "C_{p}^{2}" }]
+      "spans": [{ "start": 10, "end": 11, "raw": "p", "tex": "p" }]
     },
     {
       "source": {
@@ -36020,10 +36013,8 @@
       },
       "spans": [
         { "start": 108, "end": 109, "raw": "J", "tex": "J" },
-        { "start": 115, "end": 124, "raw": "J squared", "tex": "J^2" },
-        { "start": 125, "end": 127, "raw": "-I", "tex": "-I" },
-        { "start": 216, "end": 217, "raw": "J", "tex": "J" },
-        { "start": 328, "end": 330, "raw": "-I", "tex": "-I" }
+        { "start": 212, "end": 213, "raw": "J", "tex": "J" },
+        { "start": 324, "end": 326, "raw": "-I", "tex": "-I" }
       ]
     },
     {
@@ -38529,8 +38520,8 @@
         "pointer": "/ureca-theory-alternating-splitting/nonexample/title"
       },
       "spans": [
-        { "start": 1, "end": 2, "raw": "3", "tex": "3" },
-        { "start": 12, "end": 14, "raw": "A5", "tex": "A_{5}" }
+        { "start": 2, "end": 3, "raw": "3", "tex": "3" },
+        { "start": 13, "end": 15, "raw": "A5", "tex": "A_{5}" }
       ]
     },
     {
@@ -39333,12 +39324,12 @@
           "tex": "f:\\mathbb{Z}\\to \\mathbb{Z}/3\\mathbb{Z}"
         },
         {
-          "start": 30,
-          "end": 38,
+          "start": 52,
+          "end": 60,
           "raw": "3Z, 1+3Z",
           "tex": "3\\mathbb{Z}, 1+3\\mathbb{Z}"
         },
-        { "start": 43, "end": 47, "raw": "2+3Z", "tex": "2+3\\mathbb{Z}" }
+        { "start": 65, "end": 69, "raw": "2+3Z", "tex": "2+3\\mathbb{Z}" }
       ]
     },
     {
@@ -39727,7 +39718,7 @@
         "file": "lib/algebra/lessons.json",
         "pointer": "/111/explanation"
       },
-      "spans": [{ "start": 343, "end": 344, "raw": "1", "tex": "1" }]
+      "spans": [{ "start": 344, "end": 345, "raw": "1", "tex": "1" }]
     },
     {
       "source": {
@@ -48697,8 +48688,7 @@
     {
       "source": { "file": "lib/algebra/lessons.json", "pointer": "/78/proof" },
       "spans": [
-        { "start": 130, "end": 136, "raw": "(q-q')", "tex": "(q-q')" },
-        { "start": 188, "end": 191, "raw": "deg", "tex": "\\operatorname{deg}" }
+        { "start": 186, "end": 189, "raw": "deg", "tex": "\\operatorname{deg}" }
       ]
     },
     {
@@ -49436,13 +49426,13 @@
           "tex": "f: \\mathbb{Z} \\to  \\mathbb{Z}/3\\mathbb{Z}"
         },
         {
-          "start": 44,
-          "end": 72,
+          "start": 66,
+          "end": 94,
           "raw": "[n] modulo 3 ↦ [n²] modulo 6",
           "tex": "[n]\\text{ modulo }3\\mapsto[n^{2}]\\text{ modulo }6"
         },
-        { "start": 100, "end": 103, "raw": "n=0", "tex": "n=0" },
-        { "start": 108, "end": 111, "raw": "n=3", "tex": "n=3" }
+        { "start": 122, "end": 125, "raw": "n=0", "tex": "n=0" },
+        { "start": 130, "end": 133, "raw": "n=3", "tex": "n=3" }
       ]
     },
     {

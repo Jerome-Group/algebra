@@ -1,0 +1,96 @@
+{
+  "sourceCommit": "2f55931f49947d43f803c392a1a5cf63925dce28",
+  "assessments": {
+    "unit:functions": {
+      "kind": "transfer",
+      "question": "For f: Z → Z/3Z, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3. Choose the reasoning that supports your solution.",
+      "choices": [
+        "Fibers are classes modulo 3; the square rule fails since 0² and 3² differ modulo 6.",
+        "The rule works since congruence always survives a change of modulus.",
+        "Every fiber is a singleton because every input has one output."
+      ],
+      "answer": 0,
+      "explanation": "Fibers are residue classes modulo 3. The proposed rule fails because 0 and 3 represent the same input but their squares are 0 and 3 modulo 6."
+    },
+    "mh2220-p-groups:transfer": {
+      "kind": "transfer",
+      "question": "Why is Cₚ² not simple?",
+      "choices": [
+        "Its subgroup of order p is normal and proper",
+        "It has trivial center",
+        "Its order is composite and every composite group is nonsimple"
+      ],
+      "answer": 0,
+      "explanation": "The actual subgroup ⟨gᵖ⟩ supplies the normal-subgroup witness."
+    },
+    "m3220-fractions:boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "Which hypothesis justifies cancelling t in the transitivity proof?",
+      "choices": [
+        "t is a non-zero-divisor",
+        "t is nonzero but possibly a zero divisor",
+        "R is finite"
+      ],
+      "answer": 0,
+      "explanation": "Atu=cts implies t(au−cs)=0; regularity forces au−cs=0."
+    },
+    "foundations-functions:boundaryCheck": {
+      "kind": "hypotheses",
+      "question": "For an arbitrary f:X→Y, what does f⁻¹({y}) mean?",
+      "choices": [
+        "The unique inverse value",
+        "All inputs mapped to y, possibly none",
+        "A function Y→X"
+      ],
+      "answer": 1,
+      "explanation": "Inverse-image notation requires neither injectivity nor surjectivity. Assuming a unique input confuses a fiber with an inverse function."
+    }
+  },
+  "editions": {
+    "mh2220-simple-composition": {
+      "version": 1,
+      "lessonId": "mh2220-simple-composition",
+      "digest": "21459c0123bfe0e183f2f657f803d6a9c78c5db78933ef80a763d9154cb94e79",
+      "objects": "A composition series is a finite chain in which each subgroup is normal in the preceding one and each successive quotient is simple. The Jordan–$H$ölder theorem says that any two such series have the same simple factors up to isomorphism and reordering. The source mentions this theorem without proving it.",
+      "statement": "S_4\\trianglerighteq A_4\\trianglerighteq V_4\\trianglerighteq C_2\\trianglerighteq\\{e\\},\\qquad \\text{factors }C_2,C_3,C_2,C_2",
+      "conventions": [
+        "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+      ],
+      "proof": [
+        "The displayed adjacent normality permits each factor quotient.",
+        "Prime-order factors are cyclic and have no proper nontrivial subgroup, so are simple.",
+        "Jordan–Hölder is imported: any two composition series of a finite group have the same multiset of simple factors. The example verifies its factors but does not prove that uniqueness theorem."
+      ]
+    },
+    "mh2220-finite-matrices": {
+      "version": 1,
+      "lessonId": "mh2220-finite-matrices",
+      "digest": "a52c026e3bcf69522591430a258e2ec7b1dd351863e91934abcb828182bb35e6",
+      "objects": "The first column can be any nonzero vector; each later column must avoid the span of its predecessors. In the unitriangular subgroup there are $n(n-1)/2$ arbitrary entries above the diagonal. It captures the entire $p$-part of the general linear group order. Every finite $p$-group $G$ embeds into $U_|G|(F_p)$, although this construction can use a much larger dimension than necessary.",
+      "statement": "|U_n(\\mathbb F_p)|=p^{n(n-1)/2},\\qquad U_n(\\mathbb F_p)\\in\\operatorname{Syl}_p(\\mathrm{GL}_n(\\mathbb F_p))\\qquad G\\text{ a finite }p\\text{-group}\\Longrightarrow G\\hookrightarrow U_{|G|}(\\mathbb F_p)",
+      "conventions": [
+        "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+      ],
+      "proof": [
+        "Choose column i+1 outside the pⁱ-element span of the previous i columns, obtaining ∏(pⁿ−pⁱ).",
+        "Factor pⁱ from each term; the remaining factors pⁿ⁻ⁱ−1 are prime to p. The p-part is p raised to n(n−1)/2.",
+        "Upper-unitriangular matrices form a subgroup with exactly that order, hence a Sylow p-subgroup. Cayley embeds any finite p-group into permutation matrices, and Sylow containment conjugates it into a unitriangular subgroup."
+      ]
+    },
+    "ureca-cyclic-eigenvalues": {
+      "version": 1,
+      "lessonId": "ureca-cyclic-eigenvalues",
+      "digest": "112080520d2f9d5db797b812cf5c4261a184a6c8d224c117b7d8fe5843f9dc09",
+      "objects": "Let $V$ be a finite-dimensional complex representation and $r$ an element of finite order $m$. On $V\\lambda$ every power $r^{k}$ acts by $\\lambda ^{k}$; its dimension is the multiplicity of that one-dimensional cyclic representation. In the natural three-dimensional cube representation, a quarter-turn about the vertical axis has eigenvalues 1, $i$ and $-i$. The real horizontal plane splits into two lines only after complexification.",
+      "statement": "\\operatorname{Res}_{\\langle r\\rangle}^G V\\cong\\bigoplus_{\\lambda^m=1}\\mathbb C_\\lambda^{\\oplus\\dim V_\\lambda},\\qquad \\chi(r^k)=\\sum_{\\lambda^m=1}(\\dim V_\\lambda)\\lambda^k.",
+      "conventions": [
+        "Group actions are left actions. Matrices act on column vectors; AB applies B first. Dₙ has 2n elements. Field and finiteness hypotheses belong to each statement."
+      ],
+      "proof": [
+        "For an element r of finite order m, ρ(r)ᵐ=I, so the minimal polynomial divides Xᵐ−1.",
+        "Over C this polynomial splits into distinct roots, giving a direct sum of eigenspaces.",
+        "Each power rᵏ acts by λᵏ on its eigenspace; summing multiplicity-weighted eigenvalues gives the character formula."
+      ]
+    }
+  }
+}

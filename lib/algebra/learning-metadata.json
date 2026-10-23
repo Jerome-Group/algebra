@@ -1254,7 +1254,7 @@
       },
       {
         "id": "mh2220-p-groups:transfer",
-        "statement": "Why is Cₚ² not simple?",
+        "statement": "For prime p, why is the cyclic group $C_{p^2}=\\langle g\\rangle$ not simple?",
         "level": "transfer"
       }
     ],

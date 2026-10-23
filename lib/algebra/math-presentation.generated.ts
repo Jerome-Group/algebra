@@ -152,12 +152,12 @@ replacements.set(
   withSpans(text17, [
     { start: 4, end: 15, tex: "f: \\mathbb{Z} \\to  \\mathbb{Z}/3\\mathbb{Z}" },
     {
-      start: 44,
-      end: 72,
+      start: 66,
+      end: 94,
       tex: "[n]\\text{ modulo }3\\mapsto[n^{2}]\\text{ modulo }6",
     },
-    { start: 100, end: 103, tex: "n=0" },
-    { start: 108, end: 111, tex: "n=3" },
+    { start: 122, end: 125, tex: "n=0" },
+    { start: 130, end: 133, tex: "n=3" },
   ]),
 );
 const text18 = sourceText(source3, ["generators", "choices", "0"]);
@@ -6409,8 +6409,8 @@ const text572 = sourceText(source1, [
 replacements.set(
   text572,
   withSpans(text572, [
-    { start: 32, end: 37, tex: "1+1=0" },
-    { start: 64, end: 68, tex: "2^{2}=4" },
+    { start: 38, end: 43, tex: "1+1=0" },
+    { start: 70, end: 74, tex: "2^{2}=4" },
   ]),
 );
 const text573 = sourceText(source1, [
@@ -8158,7 +8158,7 @@ const text729 = sourceText(source1, [
 replacements.set(
   text729,
   withSpans(text729, [
-    { start: 0, end: 7, tex: "Atu=cts" },
+    { start: 0, end: 7, tex: "atu=cts" },
     { start: 16, end: 26, tex: "t(au-cs)=0" },
     { start: 46, end: 53, tex: "au-cs=0" },
   ]),
@@ -8505,7 +8505,7 @@ replacements.set(
   ]),
 );
 const text760 = sourceText(source1, ["m3220-gauss", "nonexample", "title"]);
-replacements.set(text760, withSpans(text760, [{ start: 8, end: 9, tex: "6" }]));
+replacements.set(text760, withSpans(text760, [{ start: 8, end: 9, tex: "3" }]));
 const text761 = sourceText(source1, ["m3220-gauss", "objects"]);
 replacements.set(
   text761,
@@ -19544,7 +19544,7 @@ const text1713 = sourceText(source1, [
 replacements.set(
   text1713,
   withSpans(text1713, [
-    { start: 0, end: 4, tex: "2^{4}\\equiv 4" },
+    { start: 0, end: 4, tex: "2^{4}\\equiv 6" },
     { start: 26, end: 37, tex: "\\operatorname{gcd}(2,10)\\ne 1" },
   ]),
 );
@@ -22827,7 +22827,7 @@ const text1991 = sourceText(source1, [
 ]);
 replacements.set(
   text1991,
-  withSpans(text1991, [{ start: 20, end: 24, tex: "\\langle g^{p}\\rangle" }]),
+  withSpans(text1991, [{ start: 44, end: 45, tex: "p" }]),
 );
 const text1992 = sourceText(source1, [
   "mh2220-p-groups",
@@ -22836,7 +22836,7 @@ const text1992 = sourceText(source1, [
 ]);
 replacements.set(
   text1992,
-  withSpans(text1992, [{ start: 7, end: 10, tex: "C_{p}^{2}" }]),
+  withSpans(text1992, [{ start: 10, end: 11, tex: "p" }]),
 );
 const text1993 = sourceText(source1, [
   "mh2220-permutation-matrices",
@@ -36419,10 +36419,8 @@ replacements.set(
   text3129,
   withSpans(text3129, [
     { start: 108, end: 109, tex: "J" },
-    { start: 115, end: 124, tex: "J^2" },
-    { start: 125, end: 127, tex: "-I" },
-    { start: 216, end: 217, tex: "J" },
-    { start: 328, end: 330, tex: "-I" },
+    { start: 212, end: 213, tex: "J" },
+    { start: 324, end: 326, tex: "-I" },
   ]),
 );
 const text3130 = sourceText(source1, [
@@ -39165,8 +39163,8 @@ const text3356 = sourceText(source1, [
 replacements.set(
   text3356,
   withSpans(text3356, [
-    { start: 1, end: 2, tex: "3" },
-    { start: 12, end: 14, tex: "A_{5}" },
+    { start: 2, end: 3, tex: "3" },
+    { start: 13, end: 15, tex: "A_{5}" },
   ]),
 );
 const text3357 = sourceText(source1, [
@@ -40076,8 +40074,8 @@ replacements.set(
   text3445,
   withSpans(text3445, [
     { start: 4, end: 12, tex: "f:\\mathbb{Z}\\to \\mathbb{Z}/3\\mathbb{Z}" },
-    { start: 30, end: 38, tex: "3\\mathbb{Z}, 1+3\\mathbb{Z}" },
-    { start: 43, end: 47, tex: "2+3\\mathbb{Z}" },
+    { start: 52, end: 60, tex: "3\\mathbb{Z}, 1+3\\mathbb{Z}" },
+    { start: 65, end: 69, tex: "2+3\\mathbb{Z}" },
   ]),
 );
 const text3446 = sourceText(source0, ["1", "worked", "steps", "2"]);
@@ -40353,7 +40351,7 @@ replacements.set(
 const text3483 = sourceText(source0, ["111", "explanation"]);
 replacements.set(
   text3483,
-  withSpans(text3483, [{ start: 343, end: 344, tex: "1" }]),
+  withSpans(text3483, [{ start: 344, end: 345, tex: "1" }]),
 );
 const text3484 = sourceText(source0, ["111", "objective"]);
 replacements.set(
@@ -47241,10 +47239,7 @@ replacements.set(
 const text4364 = sourceText(source0, ["78", "proof"]);
 replacements.set(
   text4364,
-  withSpans(text4364, [
-    { start: 130, end: 136, tex: "(q-q')" },
-    { start: 188, end: 191, tex: "\\operatorname{deg}" },
-  ]),
+  withSpans(text4364, [{ start: 186, end: 189, tex: "\\operatorname{deg}" }]),
 );
 const text4365 = sourceText(source0, ["79", "pitfall"]);
 replacements.set(
@@ -47801,12 +47796,12 @@ replacements.set(
   withSpans(text4442, [
     { start: 4, end: 15, tex: "f: \\mathbb{Z} \\to  \\mathbb{Z}/3\\mathbb{Z}" },
     {
-      start: 44,
-      end: 72,
+      start: 66,
+      end: 94,
       tex: "[n]\\text{ modulo }3\\mapsto[n^{2}]\\text{ modulo }6",
     },
-    { start: 100, end: 103, tex: "n=0" },
-    { start: 108, end: 111, tex: "n=3" },
+    { start: 122, end: 125, tex: "n=0" },
+    { start: 130, end: 133, tex: "n=3" },
   ]),
 );
 const text4443 = sourceText(source2, ["1", "capstone", "answer"]);

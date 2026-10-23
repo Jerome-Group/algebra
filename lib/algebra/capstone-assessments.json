@@ -1,7 +1,7 @@
 {
   "functions": {
     "kind": "transfer",
-    "question": "For f: Z → Z/3Z, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3. Choose the reasoning that supports your solution.",
+    "question": "For f: Z → Z/3Z given by $f(n)=[n]_3$, describe every fiber. Does [n] modulo 3 ↦ [n²] modulo 6 define a function? Compare n=0 and n=3. Choose the reasoning that supports your solution.",
     "choices": [
       "Fibers are classes modulo 3; the square rule fails since 0² and 3² differ modulo 6.",
       "The rule works since congruence always survives a change of modulus.",

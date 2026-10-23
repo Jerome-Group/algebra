@@ -36,13 +36,13 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const catalogue = await readCatalogue(root);
 const expectedSources = {
   "lib/algebra/lessons.json":
-    "5f12e02001cdb65591ef5437ed0279cf2f750b4490a930e4af2ad01cc1274d74",
+    "8dfaabfeec6f749b393451dc2c586f2fdad81165d6f815e2f4470d925cef0207",
   "lib/algebra/guided-lessons.json":
-    "6d727041580ad0be7891013926222ff8607e07e291ac6845ac1e82a6932911db",
+    "c2aa004ff8f7efdfdce7b3fedfb1ccfa8bbef58ec2d5d2a06bb9b2f28ea6e98b",
   "lib/algebra/units.json":
-    "622452df05bafd77af27ab9ad3f5ae4427d88bf1d391b88dc547a3981ee90bf4",
+    "8eef02cb34d036e29969de1fbcfbd04f4f2729a43c06a54446747d7e627b563b",
   "lib/algebra/capstone-assessments.json":
-    "f9c562ddd4c9f6b22ac7ab2ed83b86e9980ca8f12cc73736581e0ab5135dbc84",
+    "568c81a97e4a64ff69a7c9e1c282b90b51187d76bf1f291a0c53585281c8b7c6",
 };
 const source = {
   file: "lib/algebra/guided-lessons.json",
@@ -104,7 +104,7 @@ const render = (component, children, props = {}) =>
   renderToStaticMarkup(createElement(component, props, children));
 const run = promisify(execFile);
 
-test("canonical source bytes stay fixed and the queue classifies every public string", () => {
+test("reviewed canonical source bytes stay fixed and the queue classifies every public string", () => {
   assert.deepEqual(
     Object.fromEntries(
       publicFiles.map((file) => [file, catalogue.sources[file].hash]),
@@ -366,7 +366,7 @@ test("prose formulas inside native controls inherit a single control focus targe
   }
 });
 
-test("actual assessment revisions and teaching editions match the pre-integration baseline", async () => {
+test("actual assessment revisions and teaching editions match the independently reviewed corrected catalogue baseline", async () => {
   const lessons = catalogue.sources[publicFiles[0]].value;
   const assessments = Object.fromEntries(
     Object.entries(progress.assessmentRegistry(lessons)).map(
@@ -382,11 +382,11 @@ test("actual assessment revisions and teaching editions match the pre-integratio
   assert.equal(Object.keys(editions).length, 227);
   assert.equal(
     sha256(JSON.stringify(assessments)),
-    "720d1635bf4faa35a77a885c691332031f8eab616cee0277e8fa6ccd306abd45",
+    "65ce617a03e34ca41bea56a6684a248e763032232a2c00e15e5768a42d78e65e",
   );
   assert.equal(
     sha256(JSON.stringify(editions)),
-    "727611104132739675b43ad47ad05aad73c37eac1e2df5f374384b554b3c93c2",
+    "fbfa448ca2bea2030b8f7f3ffd870f176546a71d4e940d1cdeea23a6d1ae4560",
   );
 });
 

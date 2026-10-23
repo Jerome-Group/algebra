@@ -82,7 +82,7 @@
     "worked": {
       "title": "Remainder fibers",
       "steps": [
-        "For f:Z→Z/3Z, the classes are 3Z, 1+3Z and 2+3Z.",
+        "For f:Z→Z/3Z given by $f(n)=[n]_3$, the classes are 3Z, 1+3Z and 2+3Z.",
         "Each integer lies in exactly one by division with remainder.",
         "The label 1+3Z names an infinite set; choosing 4 instead gives the same set."
       ]
@@ -1623,7 +1623,7 @@
   },
   {
     "definition": "(g,h)(g',h')=(gg',hh'),\\qquad o((g,h))=\\operatorname{lcm}(o(g),o(h))",
-    "explanation": "For finite-order elements the order formula follows by returning both coordinates to identity. Internally, $G$ is the direct product of $H$ and $K$ if $G=HK$, $H\\cap K={e}$, and both are normal. Distinct prime-power factors of a cyclic group separate into independent coordinates.",
+    "explanation": "For finite-order elements the order formula follows by returning both coordinates to identity. Internally, $G$ is the direct product of $H$ and $K$ if $G=HK$, $H\\cap K=\\{e\\}$, and both are normal. Distinct prime-power factors of a cyclic group separate into independent coordinates.",
     "id": "mh2220-direct-product",
     "intuition": "In a direct product, two coordinates move independently. Their repetitions synchronize according to a least common multiple.",
     "machine": "semidirect",
@@ -2962,7 +2962,7 @@
   },
   {
     "definition": "G\\text{ simple}\\iff G\\ne\\{e\\}\\ \\text{and}\\ \\{e\\},G\\text{ are its only normal subgroups}",
-    "explanation": "A composition series is a finite chain in which each subgroup is normal in the preceding one and each successive quotient is simple. The Jordan–$H$ölder theorem says that any two such series have the same simple factors up to isomorphism and reordering. The source mentions this theorem without proving it.",
+    "explanation": "A composition series is a finite chain in which each subgroup is normal in the preceding one and each successive quotient is simple. The Jordan–Hölder theorem says that any two such series have the same simple factors up to isomorphism and reordering. The source mentions this theorem without proving it.",
     "id": "mh2220-simple-composition",
     "intuition": "Normal subgroups allow a group to be broken into quotient pieces. Simple groups are the nontrivial pieces that cannot be broken further in this way.",
     "machine": "subgroups",
@@ -2972,7 +2972,7 @@
     },
     "pitfall": "A composition series requires normality in the preceding subgroup, not necessarily in all of $G$. Composition factors do not by themselves determine the original group.",
     "prompt": "Use the $S_4$ subgroup lattice as a reference. On paper, check $1\\triangleleft V_4\\triangleleft A_4\\triangleleft S_4$ and refine $V_4$ with a subgroup of order two. The lattice itself does not certify that a series is a composition series.",
-    "proof": "For the displayed example, each inclusion is normal in the previous group and the factor orders are 2,3,2,2, hence the factors are cyclic and simple. The general Jordan–$H$ölder uniqueness theorem is stated here, not proved by this example.",
+    "proof": "For the displayed example, each inclusion is normal in the previous group and the factor orders are 2,3,2,2, hence the factors are cyclic and simple. The general Jordan–Hölder uniqueness theorem is stated here, not proved by this example.",
     "section": "7.1 · Definition 7.11 and composition-series discussion",
     "source": {
       "section": "7.1 · Definition 7.11 and composition-series discussion",
@@ -3155,7 +3155,7 @@
   },
   {
     "definition": "|\\mathrm{GL}_n(\\mathbb F_p)|=\\prod_{i=0}^{n-1}(p^n-p^i),\\qquad U_n(\\mathbb F_p)=\\{I+A:A\\text{ strictly upper triangular}\\}",
-    "explanation": "The first column can be any nonzero vector; each later column must avoid the span of its predecessors. In the unitriangular subgroup there are $n(n-1)/2$ arbitrary entries above the diagonal. It captures the entire $p$-part of the general linear group order. Every finite $p$-group $G$ embeds into $U_|G|(F_p)$, although this construction can use a much larger dimension than necessary.",
+    "explanation": "The first column can be any nonzero vector; each later column must avoid the span of its predecessors. In the unitriangular subgroup there are $n(n-1)/2$ arbitrary entries above the diagonal. It captures the entire $p$-part of the general linear group order. Every finite $p$-group $G$ embeds into $U_{|G|}(\\mathbb F_p)$, although this construction can use a much larger dimension than necessary.",
     "id": "mh2220-finite-matrices",
     "intuition": "An invertible matrix is an ordered basis. Counting successive independent columns counts the finite general linear group.",
     "machine": "finite-matrices",
@@ -4477,7 +4477,7 @@
     },
     "pitfall": "Cross multiplication alone need not define the desired localization when zero divisors are allowed as denominators.",
     "prompt": "Choose a target ring, fraction, comparison fraction and inverted set. Predict equivalence, membership, units and whether the universal factor map exists.",
-    "proof": "Reflexivity and symmetry are immediate. For transitivity multiply the two assumed equalities by suitable denominators and cancel the non-zero-divisor $s$'. The arithmetic formulas respect these equivalence classes by expansion.",
+    "proof": "Reflexivity and symmetry are immediate. For transitivity multiply the two assumed equalities by suitable denominators and cancel the non-zero-divisor $s'$. The arithmetic formulas respect these equivalence classes by expansion.",
     "section": "§§3.1–3.2, Definitions 3.1–3.3, pp.41–43",
     "source": {
       "section": "§§3.1–3.2, Definitions 3.1–3.3, pp.41–43",
@@ -5307,7 +5307,7 @@
     },
     "pitfall": "Division by a nonunit constant can fail over the integers: 1 cannot equal 2q with an integer polynomial $q$.",
     "prompt": "For f=X³+1 and g=X²+1 over ℤ, predict the quotient and remainder. Then open the workbench to change either polynomial or the coefficient ring.",
-    "proof": "Subtract the leading coefficient of $f$ times a suitable power of $X$ times $d$, lowering the degree, and repeat. For uniqueness, (q-q')$d=r$'-$r$; a nonzero left side has degree at least deg $d$ because $d$ is monic, while the right side has smaller degree.",
+    "proof": "Subtract the leading coefficient of $f$ times a suitable power of $X$ times $d$, lowering the degree, and repeat. For uniqueness, $(q-q')d=r'-r$; a nonzero left side has degree at least deg $d$ because $d$ is monic, while the right side has smaller degree.",
     "section": "§5.1, Theorem 5.3 and Example 5.4, pp.63–65",
     "source": {
       "section": "§5.1, Theorem 5.3 and Example 5.4, pp.63–65",
@@ -7848,7 +7848,7 @@
     },
     "intuition": "If the only allowed symmetry is repeated application of one finite-order transformation, each complex eigendirection evolves by a single root of unity. Restriction turns the representation into independent cyclic modes.",
     "definition": "H=\\langle r\\rangle,\\quad |r|=m,\\quad V_\\lambda=\\ker(\\rho(r)-\\lambda I),\\quad V=\\bigoplus_{\\lambda^m=1}V_\\lambda.",
-    "explanation": "Let $V$ be a finite-dimensional complex representation and $r$ an element of finite order $m$. On $V\\lambda$ every power $r^{k}$ acts by $\\lambda ^{k}$; its dimension is the multiplicity of that one-dimensional cyclic representation. In the natural three-dimensional cube representation, a quarter-turn about the vertical axis has eigenvalues 1, $i$ and $-i$. The real horizontal plane splits into two lines only after complexification.",
+    "explanation": "Let $V$ be a finite-dimensional complex representation and $r$ an element of finite order $m$. On $V_\\lambda$ every power $r^{k}$ acts by $\\lambda ^{k}$; its dimension is the multiplicity of that one-dimensional cyclic representation. In the natural three-dimensional cube representation, a quarter-turn about the vertical axis has eigenvalues 1, $i$ and $-i$. The real horizontal plane splits into two lines only after complexification.",
     "theorem": "\\operatorname{Res}_{\\langle r\\rangle}^G V\\cong\\bigoplus_{\\lambda^m=1}\\mathbb C_\\lambda^{\\oplus\\dim V_\\lambda},\\qquad \\chi(r^k)=\\sum_{\\lambda^m=1}(\\dim V_\\lambda)\\lambda^k.",
     "proof": "The relation $\\rho (r)^m=I$ makes its minimal polynomial divide $X^m-1$. Over $C$ that polynomial splits with distinct roots, so $\\rho (r)$ is diagonalizable. Every eigenspace is stable under all powers of $\\rho (r)$, on which they act as the corresponding powers of its eigenvalue. Choosing a basis of each eigenspace gives the decomposition and trace formula.",
     "pitfall": "A group of order four has four complex irreducible characters, but a particular representation need not contain all four. For the natural cube quarter-turn the multiplicities are 1, 1, 0, 1 at 1, $i$, $-1$, $-i$.",
@@ -8161,7 +8161,7 @@
     "definition": "G_x=\\{g\\in G:g\\cdot x=x\\},\\qquad G\\cdot x=\\{g\\cdot x:g\\in G\\},\\qquad |G|=|G\\cdot x|\\,|G_x|.",
     "explanation": "Both the rotational and full cube groups act transitively on each of the four object sets. In the rotational group, the stabilizer orders are 3 for a vertex, 2 for an edge, 4 for a face, and 6 for an unoriented diagonal. In the full group these become 6, 4, 8, and 12 respectively. A diagonal stabilizer may exchange its two endpoints.",
     "theorem": "24=8\\cdot3=12\\cdot2=6\\cdot4=4\\cdot6,\\qquad48=8\\cdot6=12\\cdot4=6\\cdot8=4\\cdot12.",
-    "proof": "The map from left cosets $gG_{x}$ to orbit points g·x is well-defined and bijective: $g\\cdot x=h\\cdot x$ exactly when $h^{-1}g\\in G_{x}$. Thus the orbit has index [$G$:$G_{x}]$. The cube actions are transitive, and substituting their sizes gives the listed stabilizer orders.",
+    "proof": "The map from left cosets $gG_{x}$ to orbit points g·x is well-defined and bijective: $g\\cdot x=h\\cdot x$ exactly when $h^{-1}g\\in G_{x}$. Thus the orbit has index $[G:G_x]$. The cube actions are transitive, and substituting their sizes gives the listed stabilizer orders.",
     "pitfall": "Fixing an edge setwise allows its endpoints to swap. Fixing a face setwise does not require its four vertices to remain individually fixed.",
     "prompt": "Select one face and show only its stabilizer. Use its four rotations to explain the factorization $24=6\\times 4$.",
     "machine": "cube",
@@ -8481,7 +8481,7 @@
     "definition": "R(n,\\theta)=\\cos\\theta\\,I+(1-\\cos\\theta)nn^T+\\sin\\theta\\,[n]_\\times,\\qquad\\|n\\|=1,\\quad[n]_\\times v=n\\times v.",
     "explanation": "Rodrigues’ formula separates a vector into its component along $n$ and its component perpendicular to $n$. The first stays fixed; the second undergoes a plane rotation. Every element of SO(3) has this form. Choose $0\\le \\theta \\le \\pi$: a nonidentity rotation determines an axis line, but at $\\theta =\\pi$ the choices $n$ and $-n$ give the same matrix. At $\\theta =0$ every axis gives the identity.",
     "theorem": "R(n,\\theta)n=n,\\qquad\\operatorname{tr}R(n,\\theta)=1+2\\cos\\theta,\\qquad SO(3)\\subsetneq O(3).",
-    "proof": "A real orthogonal $3\\times 3$ matrix has eigenvalues of modulus one and nonreal eigenvalues occur in conjugate pairs. Determinant +1 forces at least one eigenvalue +1. Its unit eigenvector $n$ has an invariant orthogonal complement, where the restriction has determinant $+1$ and hence is a plane rotation. Decomposing into $n$ and $n$⊥ gives Rodrigues’ formula and the trace identity.",
+    "proof": "A real orthogonal $3\\times 3$ matrix has eigenvalues of modulus one and nonreal eigenvalues occur in conjugate pairs. Determinant +1 forces at least one eigenvalue +1. Its unit eigenvector $n$ has an invariant orthogonal complement, where the restriction has determinant $+1$ and hence is a plane rotation. Decomposing into $n$ and $n^\\perp$ gives Rodrigues’ formula and the trace identity.",
     "pitfall": "Any nonzero real axis defines a spatial rotation, but a generic one does not preserve the cube. Only then may one name a cube-vertex permutation or group word. At θ=0 every axis describes I; at θ=π, n and −n describe the same half-turn.",
     "prompt": "For axis (1,1,1), compare 60° and 120° cube preservation; then try a general nonzero axis.",
     "machine": "axis-angle",
@@ -8737,7 +8737,7 @@
     },
     "intuition": "A character compresses each matrix to its trace. For a permutation representation this simply counts the labeled objects left in place.",
     "definition": "\\chi_V(g)=\\operatorname{tr}\\rho(g),\\qquad\\chi_{\\mathbb C[X]}(g)=|\\operatorname{Fix}_X(g)|.",
-    "explanation": "For complex representations of a finite group, irreducible characters are orthonormal under the class-function inner product, and their inner products with $\\chi V$ give multiplicities. The five $S_{4}$ conjugacy classes have cycle types $1^{4}$, $2\\cdot 1^{2}$, $2^{2}$, 3·1, and 4. The geometric cube rotation representation has character ($3,-1,-1,0,1$), whereas the zero-sum part of the diagonal permutation representation has character ($3,1,-1,0,-1$). They differ by the sign character.",
+    "explanation": "For complex representations of a finite group, irreducible characters are orthonormal under the class-function inner product, and their inner products with $\\chi_V$ give multiplicities. The five $S_{4}$ conjugacy classes have cycle types $1^{4}$, $2\\cdot 1^{2}$, $2^{2}$, 3·1, and 4. The geometric cube rotation representation has character ($3,-1,-1,0,1$), whereas the zero-sum part of the diagonal permutation representation has character ($3,1,-1,0,-1$). They differ by the sign character.",
     "theorem": "\\langle\\chi,\\psi\\rangle=\\frac1{|G|}\\sum_{g\\in G}\\chi(g)\\overline{\\psi(g)},\\qquad m_U=\\langle\\chi_V,\\chi_U\\rangle.",
     "proof": "For a permutation matrix, a diagonal entry equals 1 exactly when that basis object is fixed, proving the fixed-point formula. Trace is unchanged by conjugation, so characters are class functions. Proof idea for the multiplicity formula: average the action on Hom(U,V) to project onto equivariant maps; its trace is the displayed inner product. Complete reducibility and Schur’s lemma identify that dimension with the multiplicity of irreducible $U$.",
     "pitfall": "Character values are not always nonnegative or integers. Fixed-point counting applies specifically to permutation representations. Equal dimensions do not imply equivalent representations.",
