@@ -73,6 +73,9 @@
   line-height: 1.2;
   text-wrap: balance;
 }
+#beginner-move-heading {
+  scroll-margin-top: calc(var(--algebra-header-height, 70px) + 16px);
+}
 .beginner-intro {
   padding: 4px 0 24px;
 }

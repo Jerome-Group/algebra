@@ -298,3 +298,51 @@ test("all four moves typeset math and reflow with native keyboard controls", asy
     }
   }
 });
+
+test("move controls keep their focused heading below the sticky header", async ({
+  page,
+}) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await enter(page);
+    for (const title of [
+      "Read the sentence",
+      "Give a reason",
+      "Change an assumption",
+    ]) {
+      await move(page, title);
+      await expect
+        .poll(() =>
+          page.evaluate(() => {
+            const heading = document
+              .querySelector("#beginner-move-heading")
+              .getBoundingClientRect();
+            const header = document
+              .querySelector(".algebra-header")
+              .getBoundingClientRect();
+            return heading.top - header.bottom;
+          }),
+        )
+        .toBeGreaterThanOrEqual(12);
+    }
+    for (let previous = 0; previous < 3; previous++) {
+      await page
+        .getByRole("button", { name: "Previous move", exact: true })
+        .click();
+      await expect(page.locator("#beginner-move-heading")).toBeFocused();
+      await expect
+        .poll(() =>
+          page.evaluate(() => {
+            const heading = document
+              .querySelector("#beginner-move-heading")
+              .getBoundingClientRect();
+            const header = document
+              .querySelector(".algebra-header")
+              .getBoundingClientRect();
+            return heading.top - header.bottom;
+          }),
+        )
+        .toBeGreaterThanOrEqual(12);
+    }
+  }
+});

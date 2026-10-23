@@ -135,7 +135,7 @@
     },
     {
       "file": "app/beginner.css",
-      "sha256": "2f6db6083ace55dcac5d616bbe8dc484d5b87df6f20f98828796a9cf02395c3e"
+      "sha256": "d8830db969b38065e95807d78e5ba46a9bb668bd5f5a64ebad375be5546e9d5f"
     },
     {
       "file": "app/chatgpt-auth.ts",
@@ -1399,7 +1399,7 @@
     },
     {
       "file": "tests/browser/beginner.spec.mjs",
-      "sha256": "79ea9b5f85212a0d6883f69738a397ce0d61f58bc2cb8dd7fd0ea6c97f683c58"
+      "sha256": "9e87e2305a4b688c6c190b0343cfdfeb76816a6d5a017621b70e55f60ce01b8a"
     },
     {
       "file": "tests/browser/catalogue.spec.mjs",
