@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 const root = new URL("../", import.meta.url);
 const manifest = JSON.parse(fs.readFileSync(new URL("package.json", root)));
@@ -64,10 +65,14 @@ function fixture(t, mode = "success") {
     `import fs from "node:fs";
 import { spawn, spawnSync } from "node:child_process";
 if (${JSON.stringify(mode)} === "failure") process.exit(42);
-if (${JSON.stringify(mode)} === "hang") {
+if (["hang", "held-zombie"].includes(${JSON.stringify(mode)})) {
   const group = Number(spawnSync("ps", ["-o", "pgid=", "-p", String(process.pid)], { encoding: "utf8" }).stdout.trim());
   if (!Number.isSafeInteger(group) || group <= 1) throw new Error("Cannot identify owned installation group");
   console.log("owned-install-group:" + group);
+  if (${JSON.stringify(mode)} === "held-zombie") {
+    const held = spawnSync(process.env.INSTALL_FIXTURE_ZOMBIE_HELPER, [String(group)], { stdio: "inherit" });
+    if (held.status !== 0) throw new Error("Zombie control failed " + held.status);
+  }
   spawn(process.execPath, ["-e", 'process.on("SIGTERM", () => {}); require("fs").writeFileSync("descendant.pid", String(process.pid)); setInterval(() => {}, 1000);'], { stdio: "inherit" });
   process.on("SIGTERM", () => {});
   setInterval(() => {}, 1000);
@@ -242,34 +247,112 @@ test("portable install preserves npm failure and verifies the executable", async
   );
 });
 
-test("portable install refuses overlap and cancels only its owned descendants", async (t) => {
-  const directory = fixture(t, "hang");
-  const unrelated = spawn(process.execPath, [
-    "-e",
-    "setInterval(() => {}, 1000)",
-  ]);
-  t.after(() => unrelated.kill("SIGKILL"));
-  const first = start(directory);
-  t.after(() => first.stop());
-  const descendant = Number(
-    await waitFor(path.join(directory, "descendant.pid")),
-  );
-  const overlap = await start(directory).finished;
-  assert.equal(overlap.code, 75, overlap.output);
-  assert.match(overlap.output, /Another dependency install/);
-  first.child.kill("SIGTERM");
-  const cancelled = await first.finished;
-  assert.equal(cancelled.signal, "SIGTERM", cancelled.output);
-  await assertStopped(descendant);
-  assert.doesNotThrow(() => process.kill(unrelated.pid, 0));
-  assert.equal(
-    fs.existsSync(path.join(directory, ".sites-runtime/install-portable.lock")),
-    false,
-  );
-  t.diagnostic(
-    `Overlap exit ${overlap.code}; cancellation ${cancelled.signal}; owned descendant ${descendant} absent; unrelated PID ${unrelated.pid} alive; lock removed.`,
-  );
-});
+for (const [mode, name] of [
+  [
+    "hang",
+    "portable install refuses overlap and cancels only its owned descendants",
+  ],
+  [
+    "held-zombie",
+    "portable install preserves cancellation after force-kill leaves only a zombie",
+  ],
+])
+  test(name, async (t) => {
+    let first;
+    let controlFile;
+    t.after(async () => {
+      if (controlFile && fs.existsSync(controlFile)) {
+        const controls = fs
+          .readFileSync(controlFile, "utf8")
+          .trim()
+          .split("\n")
+          .filter(Boolean)
+          .map(JSON.parse);
+        for (const { reaper, zombie, pgid } of controls) {
+          process.kill(reaper, "SIGKILL");
+          await assertStopped(zombie);
+          await assertStopped(reaper);
+          t.diagnostic(
+            `Owned zombie ${zombie} and external reaper ${reaper} absent before group ${pgid} teardown.`,
+          );
+        }
+      }
+      await first?.stop();
+    });
+    const directory = fixture(t, mode);
+    const environment = {};
+    controlFile = path.join(directory, "zombie-control.jsonl");
+    if (mode === "held-zombie") {
+      const compiler = spawnSync("cc", ["--version"], { encoding: "utf8" });
+      assert.equal(
+        compiler.status,
+        0,
+        `The zombie regression requires a POSIX C compiler (cc): ${compiler.error?.message ?? compiler.stderr}`,
+      );
+      const helper = path.join(directory, "held-zombie");
+      const compiled = spawnSync(
+        "cc",
+        [
+          "-std=c11",
+          "-D_POSIX_C_SOURCE=200809L",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          fileURLToPath(
+            new URL("fixtures/install-held-zombie.c", import.meta.url),
+          ),
+          "-o",
+          helper,
+        ],
+        { encoding: "utf8" },
+      );
+      assert.equal(
+        compiled.status,
+        0,
+        compiled.error?.message ?? compiled.stderr,
+      );
+      environment.INSTALL_FIXTURE_ZOMBIE_HELPER = helper;
+      environment.INSTALL_FIXTURE_CONTROL_PIDS = controlFile;
+    }
+    const inputs = ["package.json", "package-lock.json"].map((file) =>
+      fs.readFileSync(path.join(directory, file)),
+    );
+    const unrelated = spawn(process.execPath, [
+      "-e",
+      "setInterval(() => {}, 1000)",
+    ]);
+    t.after(() => unrelated.kill("SIGKILL"));
+    first = start(directory, environment);
+    const descendant = Number(
+      await waitFor(path.join(directory, "descendant.pid")),
+    );
+    const overlap = await start(directory).finished;
+    assert.equal(overlap.code, 75, overlap.output);
+    assert.match(overlap.output, /Another dependency install/);
+    first.child.kill("SIGTERM");
+    const cancelled = await first.finished;
+    assert.equal(cancelled.signal, "SIGTERM", cancelled.output);
+    await assertStopped(descendant);
+    assert.doesNotThrow(() => process.kill(unrelated.pid, 0));
+    for (const [index, file] of ["package.json", "package-lock.json"].entries())
+      assert.deepEqual(
+        fs.readFileSync(path.join(directory, file)),
+        inputs[index],
+      );
+    assert.equal(
+      fs.existsSync(path.join(directory, "node_modules/.sites-install.json")),
+      false,
+    );
+    assert.equal(
+      fs.existsSync(
+        path.join(directory, ".sites-runtime/install-portable.lock"),
+      ),
+      false,
+    );
+    t.diagnostic(
+      `Overlap exit ${overlap.code}; cancellation ${cancelled.signal}; owned descendant ${descendant} absent; unrelated PID ${unrelated.pid} alive; lock removed.`,
+    );
+  });
 
 test("portable install times out and removes signal-resistant descendants", async (t) => {
   const directory = fixture(t, "hang");
