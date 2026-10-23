@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   inducedState,
   type HCharacter,
@@ -220,7 +220,8 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
           orthogonality boundaries.
         </p>
         <p>
-          {lesson.title} keeps the transversal and subgroup correction visible.
+          <Prose>{lesson.title}</Prose> keeps the transversal and subgroup
+          correction visible.
         </p>
       </div>
     </div>

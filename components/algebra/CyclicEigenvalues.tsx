@@ -63,7 +63,7 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
               onClick={() => setPower(k)}
             >
               <span>
-                <Prose>{" $r$"}</Prose>
+                <Prose focusable={false}>{" $r$"}</Prose>
                 <sup>{k}</sup>
               </span>
               <strong>

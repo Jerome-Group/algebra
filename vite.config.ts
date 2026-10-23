@@ -4,6 +4,8 @@ import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
 import { buildIdentity } from "./scripts/algebra-identity.mjs";
 import { mkdirSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -38,8 +40,21 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
-  const identity = buildIdentity(process.cwd());
+export default defineConfig(async ({ command }) => {
+  const root = fileURLToPath(new URL(".", import.meta.url));
+  if (command === "build")
+    execFileSync(
+      process.execPath,
+      [
+        fileURLToPath(
+          new URL("./scripts/math-presentation.mjs", import.meta.url),
+        ),
+        "check",
+        "--complete",
+      ],
+      { cwd: root, stdio: "inherit" },
+    );
+  const identity = buildIdentity(root);
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";

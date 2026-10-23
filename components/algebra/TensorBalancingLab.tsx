@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   leftCyclicModule,
   rightCyclicModule,
@@ -228,7 +228,9 @@ export function TensorBalancingLab({ lesson }: { lesson: Lesson }) {
           H-representations uses the underlying field tensor with a separate
           (G×H)-action; its notation and kernel question are distinct.
         </p>
-        <p>{lesson.title} keeps the module sides explicit.</p>
+        <p>
+          <Prose>{lesson.title}</Prose> keeps the module sides explicit.
+        </p>
       </div>
     </div>
   );

@@ -401,7 +401,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <span>Apply generator</span>
           {["A", "B", ...(!rotOnly ? ["J"] : [])].map((g) => (
             <button key={g} onClick={() => apply(g)}>
-              <Prose>
+              <Prose focusable={false}>
                 {g === "A"
                   ? "$A$ · rotate about $x$"
                   : g === "B"
@@ -439,7 +439,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             >
               {i + 1}
               <span>
-                <Prose>{"$\\to$"}</Prose>
+                <Prose focusable={false}>{"$\\to$"}</Prose>
                 {p[i] + 1}
               </span>
             </button>
@@ -512,7 +512,9 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
         </div>
         <details>
           <summary>
-            <Prose>{"Count colorings with Burnside’s lemma"}</Prose>
+            <Prose focusable={false}>
+              {"Count colorings with Burnside’s lemma"}
+            </Prose>
           </summary>
           <Range
             label="Labeled colors $k$"

@@ -23,7 +23,7 @@ import { ArgumentWriting, ArgumentComparison } from "./ArgumentWriting";
 import { ArgumentSupport } from "./ArgumentSupport";
 import { ArgumentBackups } from "./ArgumentBackups";
 import { Checkpoint } from "./Checkpoint";
-import { Math as M, Prose } from "./Math";
+import { Math as M, Prose, WrittenProse } from "./Math";
 
 type Support = { lessonId: string; lab: boolean };
 type Navigate = (
@@ -137,9 +137,13 @@ export function ArgumentReturnBar({
         <span>Return to my argument</span>
       </WorkLink>
       <span className="argument-return-title">
-        {argumentTarget(active.lessonId)?.navTitle}
+        <Prose>{argumentTarget(active.lessonId)?.navTitle || ""}</Prose>
       </span>
-      {question && <span className="argument-return-question">{question}</span>}
+      {question && (
+        <span className="argument-return-question">
+          <WrittenProse>{question}</WrittenProse>
+        </span>
+      )}
       <span className="argument-return-state">
         {phase === "guest"
           ? "Temporary"
@@ -226,7 +230,7 @@ function SaveStatus({
                 <summary>Read the other saved version</summary>
                 {state.conflict.sheet.blocks.map((block) => (
                   <p className="argument-written-prose" key={block.id}>
-                    <Prose>{block.text || "Empty block"}</Prose>
+                    <WrittenProse>{block.text || "Empty block"}</WrittenProse>
                   </p>
                 ))}
               </details>
@@ -429,6 +433,7 @@ export function ArgumentDesk({
     !!sheet &&
     !!currentTeaching &&
     currentTeaching.edition.digest === sheet.edition.digest;
+  const TeachingProse = editionCurrent ? Prose : WrittenProse;
   const mismatched = sheet && sheet.lessonId !== targetId;
   const mode = support ? "consult" : view;
   const unit = sheet?.unitId
@@ -443,7 +448,9 @@ export function ArgumentDesk({
     <article className="argument-desk" data-argument-target={targetId}>
       <header className="argument-heading">
         <div>
-          <p className="section-kicker">ARGUMENT DESK · {target.subject}</p>
+          <p className="section-kicker">
+            ARGUMENT DESK · <Prose>{target.subject || ""}</Prose>
+          </p>
           <h1 id="work-heading" tabIndex={-1}>
             <Prose>{target.navTitle || target.title}</Prose>
           </h1>
@@ -468,7 +475,7 @@ export function ArgumentDesk({
         <section className="argument-route-support">
           <p className="section-kicker">CONSULTING FOR THIS ARGUMENT</p>
           <h2 id="support-heading" tabIndex={-1}>
-            {publicSupport?.navTitle ?? "Supporting lesson"}
+            <Prose>{publicSupport?.navTitle ?? "Supporting lesson"}</Prose>
           </h2>
         </section>
       )}
@@ -540,8 +547,8 @@ export function ArgumentDesk({
             <section className="argument-other-target">
               <h2>You have an argument in progress</h2>
               <p>
-                {argumentTarget(sheet.lessonId)?.navTitle}. Your writing stays
-                there until you choose to open this argument.
+                <Prose>{argumentTarget(sheet.lessonId)?.navTitle || ""}</Prose>.
+                Your writing stays there until you choose to open this argument.
               </p>
               <div className="argument-actions">
                 <WorkLink
@@ -564,7 +571,7 @@ export function ArgumentDesk({
             <>
               {unit && (
                 <p className="argument-unit-context">
-                  From your unit · {unit.title}
+                  From your unit · <Prose>{unit.title}</Prose>
                 </p>
               )}
               {historical && (
@@ -631,12 +638,12 @@ export function ArgumentDesk({
                         Objects and statement
                       </h2>
                       <p>
-                        <Prose>{sheet.edition.objects}</Prose>
+                        <TeachingProse>{sheet.edition.objects}</TeachingProse>
                       </p>
                       <M block>{sheet.edition.statement}</M>
                       {sheet.edition.conventions.map((convention) => (
                         <p className="argument-convention" key={convention}>
-                          <Prose>{convention}</Prose>
+                          <TeachingProse>{convention}</TeachingProse>
                         </p>
                       ))}
                       <p className="argument-caption">

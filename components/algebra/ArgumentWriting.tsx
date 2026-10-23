@@ -6,7 +6,7 @@ import {
   type ArgumentBlock,
   type ArgumentSheet,
 } from "@/lib/algebra/argument-records";
-import { Prose } from "./Math";
+import { Prose, WrittenProse } from "./Math";
 
 export function ArgumentWriting({
   sheet,
@@ -108,9 +108,9 @@ export function ArgumentWriting({
             className="argument-writing-preview argument-written-prose"
             aria-label="Formatted writing"
           >
-            <Prose>
+            <WrittenProse>
               {active.text || "Your formatted writing appears here."}
-            </Prose>
+            </WrittenProse>
           </div>
         )}
         <label htmlFor={`${fieldId}-question`}>Question for this block</label>
@@ -232,6 +232,7 @@ export function ArgumentComparison({
   commit: (sheet: ArgumentSheet) => void;
   historical: boolean;
 }) {
+  const TeachingProse = historical ? WrittenProse : Prose;
   const active =
     sheet.blocks.find((block) => block.id === sheet.activeBlockId) ??
     sheet.blocks[0];
@@ -258,7 +259,7 @@ export function ArgumentComparison({
               REFERENCE {index + 1}
             </span>
             <p>
-              <Prose>{text}</Prose>
+              <TeachingProse>{text}</TeachingProse>
             </p>
             <button
               aria-pressed={active.reference === index}

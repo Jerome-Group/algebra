@@ -5,6 +5,7 @@ import { lessonCompletion } from "@/lib/algebra/progress";
 import { ProgressDataControls, useLearningProgress } from "./LearningProgress";
 import { SymmetryDesk } from "./SymmetryDesk";
 import { BeginnerStartLink } from "./BeginnerRunway";
+import { Prose } from "./Math";
 
 export function LearningHome({
   lessons,
@@ -61,17 +62,28 @@ export function LearningHome({
                 : "Start with the foundations."}
             </h2>
             <p>
-              {resume
-                ? `Your place: ${resume.navTitle || resume.title}.`
-                : "Functions and equivalence explain what a rule must do before it can define an algebraic structure."}
+              {resume ? (
+                <>
+                  Your place: <Prose>{resume.navTitle || resume.title}</Prose>.
+                </>
+              ) : (
+                "Functions and equivalence explain what a rule must do before it can define an algebraic structure."
+              )}
             </p>
             <button
               className="studio-primary"
               onClick={() => open(resume?.id || "foundations-functions")}
             >
-              {resume
-                ? `Return to ${resume.navTitle || resume.title}`
-                : "Start with functions and fibers"}
+              {resume ? (
+                <>
+                  Return to{" "}
+                  <Prose focusable={false}>
+                    {resume.navTitle || resume.title}
+                  </Prose>
+                </>
+              ) : (
+                "Start with functions and fibers"
+              )}
             </button>
             <button onClick={() => navigate("learn")}>
               Choose a learning unit

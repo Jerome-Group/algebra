@@ -440,7 +440,9 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
     <div>
       <div className="lab-controls">
         <label>
-          <Prose>{"Coefficients of $f$, constant term first"}</Prose>
+          <Prose focusable={false}>
+            {"Coefficients of $f$, constant term first"}
+          </Prose>
         </label>
         <input
           aria-label="Polynomial f coefficients"
@@ -449,7 +451,9 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
           placeholder="1,2,1"
         />
         <label>
-          <Prose>{"Coefficients of $g$, constant term first"}</Prose>
+          <Prose focusable={false}>
+            {"Coefficients of $g$, constant term first"}
+          </Prose>
         </label>
         <input
           aria-label="Polynomial g coefficients"
@@ -555,7 +559,9 @@ export function PolynomialLab({ lesson }: { lesson: Lesson }) {
             )}
           >
             <summary>
-              <Prose>{"Divide $f$ by $g$ / reduce modulo $g$"}</Prose>
+              <Prose focusable={false}>
+                {"Divide $f$ by $g$ / reduce modulo $g$"}
+              </Prose>
             </summary>
             {b.every((x) => x === 0) ? (
               <p className="error-note">

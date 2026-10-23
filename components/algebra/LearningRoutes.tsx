@@ -47,14 +47,27 @@ export function LearningRoutes({
           const assessment = capstoneAssessment(item.id);
           return (
             <section key={item.id}>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
+              <h2>
+                <Prose>{item.title}</Prose>
+              </h2>
               <p>
-                <strong>Entry skills:</strong>{" "}
-                {item.entryCompetencies.join(" ")}
+                <Prose>{item.description}</Prose>
               </p>
               <p>
-                <strong>Outcomes:</strong> {item.outcomes.join(" ")}
+                <strong>Entry skills:</strong>{" "}
+                {item.entryCompetencies.map((text, index) => (
+                  <span key={index}>
+                    <Prose>{text}</Prose>{" "}
+                  </span>
+                ))}
+              </p>
+              <p>
+                <strong>Outcomes:</strong>{" "}
+                {item.outcomes.map((text, index) => (
+                  <span key={index}>
+                    <Prose>{text}</Prose>{" "}
+                  </span>
+                ))}
               </p>
               <p>
                 {
@@ -92,7 +105,10 @@ export function LearningRoutes({
                       id={id}
                       open={(target) => open(target, item.id)}
                     >
-                      {lessons.find((lesson) => lesson.id === id)?.navTitle}
+                      <Prose focusable={false}>
+                        {lessons.find((lesson) => lesson.id === id)?.navTitle ||
+                          id}
+                      </Prose>
                     </ConceptLink>
                   </li>
                 ))}
@@ -124,25 +140,34 @@ export function LearningRoutes({
                 </details>
               </details>
               <p>
-                <strong>Completion:</strong> {item.completionCriteria}
+                <strong>Completion:</strong>{" "}
+                <Prose>{item.completionCriteria}</Prose>
               </p>
               <p>
                 <strong>Remediation:</strong>{" "}
                 {item.remediation.map((id) => (
                   <ConceptLink key={id} id={id} open={open}>
-                    {lessons.find((lesson) => lesson.id === id)?.navTitle}
+                    <Prose focusable={false}>
+                      {lessons.find((lesson) => lesson.id === id)?.navTitle ||
+                        id}
+                    </Prose>
                     {" · "}
                   </ConceptLink>
                 ))}
               </p>
               <p>
                 <strong>Builds on:</strong>{" "}
-                {item.prerequisiteUnits
-                  .map(
-                    (id) =>
-                      learningRoutes.find((unit) => unit.id === id)?.title,
-                  )
-                  .join(" → ") || "Start here"}
+                {item.prerequisiteUnits.length
+                  ? item.prerequisiteUnits.map((id, index) => (
+                      <span key={id}>
+                        {index > 0 && " → "}
+                        <Prose>
+                          {learningRoutes.find((unit) => unit.id === id)
+                            ?.title || id}
+                        </Prose>
+                      </span>
+                    ))
+                  : "Start here"}
               </p>
             </section>
           );

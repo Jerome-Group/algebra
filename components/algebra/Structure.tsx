@@ -143,7 +143,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                   onClick={() => setSelected(i)}
                   className={selected === i ? "active" : ""}
                 >
-                  {i + 1}. <Prose>{String(e[2])}</Prose>
+                  {i + 1}. <Prose focusable={false}>{String(e[2])}</Prose>
                 </button>
               ))}
             </div>

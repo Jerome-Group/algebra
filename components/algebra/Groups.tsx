@@ -53,8 +53,8 @@ export function Choice({
       </SelectTrigger>
       <SelectContent>
         {options.map(([v, t]) => (
-          <SelectItem key={v} value={v}>
-            <Prose>{t}</Prose>
+          <SelectItem key={v} value={v} aria-label={t} textValue={t}>
+            <Prose focusable={false}>{t}</Prose>
           </SelectItem>
         ))}
       </SelectContent>
@@ -88,7 +88,7 @@ export function Range({
   return (
     <div className="range-control">
       <label>
-        <Prose>{label}</Prose>
+        <Prose focusable={false}>{label}</Prose>
         <strong>
           <M>{String(value)}</M>
         </strong>
@@ -456,8 +456,18 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         </Diagram>
       )}
       <div className="lab-controls">
-        <button className="quotient-toggle" onClick={() => setBoth(!both)}>
-          {both ? "Generate H using a only" : "Generate H using both a and b"}
+        <button
+          className="quotient-toggle"
+          onClick={() => setBoth(!both)}
+          aria-label={
+            both ? "Generate H using a only" : "Generate H using both a and b"
+          }
+        >
+          <Prose focusable={false}>
+            {both
+              ? "Generate $H$ using $a$ only"
+              : "Generate $H$ using both $a$ and $b$"}
+          </Prose>
         </button>
         {mode === "subgroups" && (
           <button
@@ -465,9 +475,11 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             disabled={!normal(g, H)}
             onClick={() => setAbove(!above)}
           >
-            {above
-              ? "Show full subgroup lattice"
-              : "Show subgroups above H, labeled as K/H"}
+            <Prose focusable={false}>
+              {above
+                ? "Show full subgroup lattice"
+                : "Show subgroups above $H$, labeled as $K/H$"}
+            </Prose>
           </button>
         )}
         <div className="two-cols">
@@ -496,7 +508,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           <div>
             <strong>{cs.length}</strong>
             <span>
-              <Prose>{"index [$G$:H]"}</Prose>
+              <Prose>{"index $[G:H]$"}</Prose>
             </span>
           </div>
           <div>
@@ -550,7 +562,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         {lesson.id === "mh2220-simple-composition" && (
           <details open>
             <summary>
-              <Prose>{"A composition series for $S_{4}$"}</Prose>
+              <Prose focusable={false}>
+                {"A composition series for $S_{4}$"}
+              </Prose>
             </summary>
             <M block>
               {
@@ -648,7 +662,7 @@ export function PolygonLab() {
             setR(mod(r + 1, n));
           }}
         >
-          <Prose>{" Rotate $r$ "}</Prose>
+          <Prose focusable={false}>{" Rotate $r$ "}</Prose>
         </button>
         <button
           onClick={() => {
@@ -656,7 +670,7 @@ export function PolygonLab() {
             setS(1 - s);
           }}
         >
-          <Prose>{" Reflect $s$ "}</Prose>
+          <Prose focusable={false}>{" Reflect $s$ "}</Prose>
         </button>
         <button
           onClick={() => {

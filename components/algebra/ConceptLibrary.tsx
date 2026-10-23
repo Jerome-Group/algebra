@@ -3,7 +3,7 @@ import { ConceptLink } from "./ConceptLink";
 import { Search, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Prose } from "./Math";
+import { Math as M, Prose } from "./Math";
 export function ConceptLibrary({
   lessons,
   subjects,
@@ -64,7 +64,9 @@ export function ConceptLibrary({
                 <span className="subject-number">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span>{s}</span>
+                <span>
+                  <Prose focusable={false}>{s}</Prose>
+                </span>
                 <ChevronDown size={16} />
               </summary>
               <div className="library-results">
@@ -80,7 +82,9 @@ export function ConceptLibrary({
                         setExpanded(expanded === f ? undefined : f);
                       }}
                     >
-                      <span>{f}</span>
+                      <span>
+                        <Prose focusable={false}>{f || ""}</Prose>
+                      </span>
                       <ChevronDown size={13} />
                     </summary>
                     <div className="chapter-concepts">
@@ -93,7 +97,9 @@ export function ConceptLibrary({
                             key={l.id}
                             aria-current={l.id === id ? "page" : undefined}
                           >
-                            <Prose>{l.navTitle || l.title}</Prose>
+                            <Prose focusable={false}>
+                              {l.navTitle || l.title}
+                            </Prose>
                           </ConceptLink>
                         ))}
                     </div>
@@ -109,12 +115,17 @@ export function ConceptLibrary({
             <div className="chapter-concepts">
               {results.map(({ lesson: l, snippet }) => (
                 <ConceptLink key={l.id} id={l.id} open={open}>
-                  <Prose>{l.navTitle || l.title}</Prose>
+                  <Prose focusable={false}>{l.navTitle || l.title}</Prose>
                   <small>
-                    {l.subject} · {l.family}
+                    <Prose focusable={false}>{l.subject || ""}</Prose> ·{" "}
+                    <Prose focusable={false}>{l.family || ""}</Prose>
                   </small>
                   <span className="search-snippet">
-                    <Prose>{snippet}</Prose>
+                    {snippet === l.definition || snippet === l.theorem ? (
+                      <M focusable={false}>{snippet}</M>
+                    ) : (
+                      <Prose focusable={false}>{snippet}</Prose>
+                    )}
                   </span>
                 </ConceptLink>
               ))}

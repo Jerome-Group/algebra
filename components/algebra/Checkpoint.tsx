@@ -56,6 +56,7 @@ export function Checkpoint({
           <label key={index}>
             <input
               type="radio"
+              aria-label={option}
               name={group}
               value={index}
               checked={choice === index}
@@ -65,7 +66,7 @@ export function Checkpoint({
               }}
             />
             <span>
-              <Prose>{option}</Prose>
+              <Prose focusable={false}>{option}</Prose>
             </span>
           </label>
         ))}

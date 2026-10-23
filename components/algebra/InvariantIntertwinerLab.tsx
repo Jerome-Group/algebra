@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   matrixText,
   representationState,
@@ -255,10 +255,10 @@ export function InvariantIntertwinerLab({ lesson }: { lesson: Lesson }) {
           lemma additionally assumes irreducibility and a suitable field.
         </p>
         <p>
-          {lesson.title}: over ℝ, the quarter-turn has no real eigenline; over ℂ
-          it has two eigenlines, but the reflection swaps them. The full
-          two-dimensional D₈ representation remains irreducible over both
-          fields.
+          <Prose>{lesson.title}</Prose>: over ℝ, the quarter-turn has no real
+          eigenline; over ℂ it has two eigenlines, but the reflection swaps
+          them. The full two-dimensional D₈ representation remains irreducible
+          over both fields.
         </p>
       </div>
     </div>

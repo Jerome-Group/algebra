@@ -4,6 +4,7 @@ import gaps from "@/lib/algebra/source-gaps.json";
 import { ConceptLink } from "./ConceptLink";
 import { SourceLibrary } from "./Sources";
 import { UrecaCoverage } from "./UrecaCoverage";
+import { Prose } from "./Math";
 
 export function SourceCoverage({
   lessons,
@@ -56,7 +57,9 @@ export function SourceCoverage({
                     {entries.map((lesson) => (
                       <li key={lesson.id}>
                         <ConceptLink id={lesson.id} open={open}>
-                          {lesson.navTitle || lesson.title}
+                          <Prose focusable={false}>
+                            {lesson.navTitle || lesson.title}
+                          </Prose>
                         </ConceptLink>
                       </li>
                     ))}

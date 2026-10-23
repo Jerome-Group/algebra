@@ -218,7 +218,7 @@ export function PermutationLab() {
     <div>
       <div className="lab-controls">
         <label>
-          <Prose>{"Permutation $p$, images of 1,2,…"}</Prose>
+          <Prose focusable={false}>{"Permutation $p$, images of 1,2,…"}</Prose>
         </label>
         <input
           aria-label="Permutation p"
@@ -226,7 +226,7 @@ export function PermutationLab() {
           onChange={(e) => setRaw(e.target.value)}
         />
         <label>
-          <Prose>{"Permutation $q$"}</Prose>
+          <Prose focusable={false}>{"Permutation $q$"}</Prose>
         </label>
         <input
           aria-label="Permutation q"

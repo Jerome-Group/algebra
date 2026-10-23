@@ -95,7 +95,9 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>{lesson.prompt}</Prose>
           </p>
-          <p className="reading-caption">{lesson.labScope}</p>
+          <p className="reading-caption">
+            <Prose>{lesson.labScope}</Prose>
+          </p>
         </div>
         {(!contract || testing || integratedPrediction) && (
           <Laboratory key={lesson.id} l={lesson} />

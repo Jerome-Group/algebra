@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 import {
   characterConstruction,
   characterNames,
@@ -224,7 +224,10 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
           finite group. Maschke’s averaging needs |G| invertible in the field,
           and Schur’s scalar conclusion needs an algebraically closed field.
         </p>
-        <p>{lesson.title} connects trace to representation structure.</p>
+        <p>
+          <Prose>{lesson.title}</Prose> connects trace to representation
+          structure.
+        </p>
       </div>
     </div>
   );

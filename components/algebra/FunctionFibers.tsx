@@ -3,7 +3,7 @@ import { Diagram } from "./Diagram";
 import { useState } from "react";
 import { fiberModel } from "@/lib/algebra/foundation-labs";
 import type { Lesson } from "@/lib/algebra/engine";
-import { Math as M } from "./Math";
+import { Math as M, Prose } from "./Math";
 
 export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
   const [outputs, setOutputs] = useState([0, 1, 2, 0, 1, 2]);
@@ -157,10 +157,10 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
         Restore a valid quotient rule
       </button>
       <p>
-        Invariant for {lesson.navTitle}: a descended rule exists exactly when f
-        is constant on each chosen input class. The table is a complete check
-        for these six inputs; the general proof quantifies over every pair of
-        equivalent inputs.
+        Invariant for <Prose>{lesson.navTitle || lesson.title}</Prose>: a
+        descended rule exists exactly when f is constant on each chosen input
+        class. The table is a complete check for these six inputs; the general
+        proof quantifies over every pair of equivalent inputs.
       </p>
     </div>
   );

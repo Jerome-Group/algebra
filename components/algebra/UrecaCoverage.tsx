@@ -78,8 +78,10 @@ export function UrecaCoverage({
                             {lessonIds.map((id) => (
                               <li key={id}>
                                 <ConceptLink id={id} open={open}>
-                                  {lessons.find((lesson) => lesson.id === id)
-                                    ?.title ?? id}
+                                  <Prose focusable={false}>
+                                    {lessons.find((lesson) => lesson.id === id)
+                                      ?.title ?? id}
+                                  </Prose>
                                 </ConceptLink>
                               </li>
                             ))}
