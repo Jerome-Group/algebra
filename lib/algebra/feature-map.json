@@ -11,7 +11,7 @@
     },
     {
       "file": ".agents/skills/argument-lifecycle/SKILL.md",
-      "sha256": "eaf7ff46b052cc9fb3686686fc5733b33843febaed2adf6e1f4cc397bdc99768"
+      "sha256": "77c16ae47e7a5b37bc729c160a4f9110499cc26f45e36f70b24c6d7b44dd9c54"
     },
     {
       "file": ".agents/skills/argument-lifecycle/coverage.json",
@@ -875,7 +875,7 @@
     },
     {
       "file": "docs/research/argument-lifecycle-verification.md",
-      "sha256": "65dd4954644960d8c0260d1ede92e40f1fe79989d07ce5d1c755f0cbe7af5a49"
+      "sha256": "d59260cf83ae932d6863b79eabb2f635c05820de024e766a3d8829aaa53bfee5"
     },
     {
       "file": "docs/research/argument-recovery-review.json",
@@ -1350,12 +1350,16 @@
       "sha256": "2ae5329ac860076070c9217a43106a15cb5ecf907a0f7baeb9ef903f76b53c68"
     },
     {
+      "file": "scripts/formal/argument-evidence.mjs",
+      "sha256": "3c40b75ca3e2f065ea6c5936639b42352f89b8be8c5e1da479ee43b864d4633b"
+    },
+    {
       "file": "scripts/formal/argument-lifecycle-replay.mjs",
       "sha256": "fa61c14e184f1e737c3f4ab7045f9a038469561f84208e1d386a1346a6986d01"
     },
     {
       "file": "scripts/formal/argument-lifecycle.mjs",
-      "sha256": "41c4eb2457aee509ab9dae382fdfbaa7747abda4600eaffdfbb66d4fdbe508d6"
+      "sha256": "51dfabef14b23b2f53d19e034ff665ec56ecb9a015f5b3f6b7ebf822647556a2"
     },
     {
       "file": "scripts/install-ci.mjs",
@@ -1424,6 +1428,10 @@
     {
       "file": "tests/argument-catalogue.test.mjs",
       "sha256": "062d222d90006a57146e3ef40748e5f7325a07c09a049009036f9c264d49ed04"
+    },
+    {
+      "file": "tests/argument-evidence.test.mjs",
+      "sha256": "fa2d76c6e86272b98e723a1cd402f2162613af8a17915be72c62fb5438899c4b"
     },
     {
       "file": "tests/argument-records.test.mjs",
@@ -1623,7 +1631,7 @@
     },
     {
       "file": "tests/formal-evidence.test.mjs",
-      "sha256": "f956b1b6ecb9783f74074db1f1a16fd05eb36cf7c69182cf94ba48bc7421eefd"
+      "sha256": "9009a8900cdd15f448e4c9b9a70d33948ea4fa32b6e97ceb5040b4f0b9e4f43e"
     },
     {
       "file": "tests/foundation-labs.test.mjs",
@@ -33525,6 +33533,7 @@
     "tests/agent-cli.test.mjs",
     "tests/algebra.test.mjs",
     "tests/argument-catalogue.test.mjs",
+    "tests/argument-evidence.test.mjs",
     "tests/argument-records.test.mjs",
     "tests/argument-server.test.mjs",
     "tests/argument-store.test.mjs",
