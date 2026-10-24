@@ -11,11 +11,11 @@
     },
     {
       "file": ".agents/skills/argument-lifecycle/SKILL.md",
-      "sha256": "0275efc02cd3e48860dca98802817113e72f5c98aaae5d1a037db6dcd0a0b4f4"
+      "sha256": "e5b72873177eb044edd54a32b3bb4e0bf949d66f29b45c73667536c3fe06dc15"
     },
     {
       "file": ".agents/skills/argument-lifecycle/coverage.json",
-      "sha256": "56ecec282a5df94ea6938da3b8edf107d4772a24840552d2d1dccc394aed5ef3"
+      "sha256": "472f46b324b1043a79c758cea34807a73b94331536f8e8553f27fc2cc94b3d0a"
     },
     {
       "file": ".agents/skills/verify/SKILL.md",
@@ -875,7 +875,7 @@
     },
     {
       "file": "docs/research/argument-lifecycle-verification.md",
-      "sha256": "2060d51fad199ac0b5e1d5a4331d21f618c467837698de2a286018c38ad7a0d4"
+      "sha256": "635a2bbb2b0e8bbaa3a252ae857052003c84178c9e1464ee1a81af8667789a63"
     },
     {
       "file": "docs/research/argument-recovery-review.json",
@@ -1346,12 +1346,16 @@
       "sha256": "2ae5329ac860076070c9217a43106a15cb5ecf907a0f7baeb9ef903f76b53c68"
     },
     {
+      "file": "scripts/formal/argument-evidence.mjs",
+      "sha256": "3c40b75ca3e2f065ea6c5936639b42352f89b8be8c5e1da479ee43b864d4633b"
+    },
+    {
       "file": "scripts/formal/argument-lifecycle-replay.mjs",
       "sha256": "fa61c14e184f1e737c3f4ab7045f9a038469561f84208e1d386a1346a6986d01"
     },
     {
       "file": "scripts/formal/argument-lifecycle.mjs",
-      "sha256": "41c4eb2457aee509ab9dae382fdfbaa7747abda4600eaffdfbb66d4fdbe508d6"
+      "sha256": "51dfabef14b23b2f53d19e034ff665ec56ecb9a015f5b3f6b7ebf822647556a2"
     },
     {
       "file": "scripts/install-ci.mjs",
@@ -1420,6 +1424,10 @@
     {
       "file": "tests/argument-catalogue.test.mjs",
       "sha256": "062d222d90006a57146e3ef40748e5f7325a07c09a049009036f9c264d49ed04"
+    },
+    {
+      "file": "tests/argument-evidence.test.mjs",
+      "sha256": "fa2d76c6e86272b98e723a1cd402f2162613af8a17915be72c62fb5438899c4b"
     },
     {
       "file": "tests/argument-records.test.mjs",
@@ -1619,7 +1627,7 @@
     },
     {
       "file": "tests/formal-evidence.test.mjs",
-      "sha256": "f956b1b6ecb9783f74074db1f1a16fd05eb36cf7c69182cf94ba48bc7421eefd"
+      "sha256": "9009a8900cdd15f448e4c9b9a70d33948ea4fa32b6e97ceb5040b4f0b9e4f43e"
     },
     {
       "file": "tests/foundation-labs.test.mjs",
@@ -33521,6 +33529,7 @@
     "tests/agent-cli.test.mjs",
     "tests/algebra.test.mjs",
     "tests/argument-catalogue.test.mjs",
+    "tests/argument-evidence.test.mjs",
     "tests/argument-records.test.mjs",
     "tests/argument-server.test.mjs",
     "tests/argument-store.test.mjs",

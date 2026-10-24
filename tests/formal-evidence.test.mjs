@@ -12,8 +12,9 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
+import { readCurrentArgumentEvidence } from "../scripts/formal/argument-evidence.mjs";
 
-test("a failed formal rerun replaces current success and retains old evidence", async (t) => {
+test("a failed formal rerun becomes current and retains legacy evidence", async (t) => {
   const root = await realpath(
     await mkdtemp(join(tmpdir(), "algebra-formal-evidence-")),
   );
@@ -25,10 +26,22 @@ test("a failed formal rerun replaces current success and retains old evidence", 
   await mkdir(join(root, "scripts/formal"), { recursive: true });
   await mkdir(join(root, "lib/algebra"), { recursive: true });
   await mkdir(oldRun, { recursive: true });
-  await copyFile(
-    new URL("../scripts/formal/argument-lifecycle.mjs", import.meta.url),
-    join(root, "scripts/formal/argument-lifecycle.mjs"),
-  );
+  for (const file of [
+    "argument-lifecycle.mjs",
+    "argument-lifecycle-replay.mjs",
+    "argument-evidence.mjs",
+  ]) {
+    await copyFile(
+      new URL(`../scripts/formal/${file}`, import.meta.url),
+      join(root, "scripts/formal", file),
+    );
+  }
+  for (const file of ["ArgumentLifecycle.tla", "ArgumentLifecycle.cfg"]) {
+    await copyFile(
+      new URL(`../.agents/skills/argument-lifecycle/${file}`, import.meta.url),
+      join(skill, file),
+    );
+  }
   const coveredFile = "lib/algebra/argument-store.ts";
   await writeFile(join(root, coveredFile), "export const covered = true;\n");
   function git(args) {
@@ -82,24 +95,23 @@ test("a failed formal rerun replaces current success and retains old evidence", 
   );
   assert.equal(result.status, 1, result.stdout + result.stderr);
   assert.match(result.stderr, /ENOENT.*missing-tool\.jar/);
-  const summary = JSON.parse(
-    await readFile(join(output, "summary.json"), "utf8"),
-  );
-  assert.equal(summary.status, "failed");
-  assert.notEqual(summary.runId, "run-old");
-  assert.equal(summary.runDir, join(output, summary.runId));
+  const current = await readCurrentArgumentEvidence({ root });
+  assert.equal(current.status, "failed");
+  assert.equal(current.invocation, "run-00000000000000000001");
+  const summary = current.receipt;
   assert(Date.parse(summary.startedAt) >= startedAt);
   assert(Date.parse(summary.completedAt) >= Date.parse(summary.startedAt));
-  assert.equal(summary.updatedAt, summary.completedAt);
+  assert.equal(summary.context.syncCommit, syncCommit);
   assert.equal(summary.error.code, "ENOENT");
+  assert.match(summary.error.stack, /ENOENT.*missing-tool\.jar/);
   assert.deepEqual(summary.results, []);
-  assert.deepEqual(
-    JSON.parse(await readFile(join(summary.runDir, "summary.json"), "utf8")),
-    summary,
-  );
   assert.match(
-    await readFile(join(summary.runDir, "failure.log"), "utf8"),
+    await readFile(join(current.directory, "failure.log"), "utf8"),
     /ENOENT.*missing-tool\.jar/,
+  );
+  assert.equal(
+    await readFile(join(output, "summary.json"), "utf8"),
+    oldSummary,
   );
   assert.equal(
     await readFile(join(oldRun, "summary.json"), "utf8"),
@@ -110,6 +122,74 @@ test("a failed formal rerun replaces current success and retains old evidence", 
     "retained old evidence\n",
   );
   t.diagnostic(
-    `Runner exited ${result.status} with ENOENT; latest receipt is failed; old run retained.`,
+    `Runner exited ${result.status} with ENOENT; derived current is failed; legacy bytes retained.`,
+  );
+  t.diagnostic(
+    JSON.stringify({
+      control: "missing-tool",
+      error: summary.error,
+      context: summary.context,
+      results: summary.results,
+    }),
+  );
+  await writeFile(join(root, coveredFile), "export const covered = false;\n");
+  const drift = spawnSync(
+    process.execPath,
+    ["scripts/formal/argument-lifecycle.mjs"],
+    {
+      cwd: root,
+      encoding: "utf8",
+      timeout: 10000,
+      env: { ...process.env, TLA2TOOLS_JAR: join(root, "missing-tool.jar") },
+    },
+  );
+  assert.equal(drift.status, 1);
+  const changed = await readCurrentArgumentEvidence({ root });
+  assert.equal(changed.status, "failed");
+  assert.equal(changed.receipt.error.code, "ERR_ASSERTION");
+  assert.match(
+    changed.receipt.error.message,
+    /Covered source changed since syncCommit/,
+  );
+  assert.match(
+    await readFile(join(changed.directory, "source-diff.patch"), "utf8"),
+    /covered = false/,
+  );
+  t.diagnostic(
+    JSON.stringify({
+      control: "ordinary-source-drift",
+      error: changed.receipt.error,
+      results: changed.receipt.results,
+    }),
+  );
+  const wrongJar = join(root, "wrong-tool.jar");
+  await writeFile(wrongJar, "wrong pinned bytes");
+  const checksum = spawnSync(
+    process.execPath,
+    ["scripts/formal/argument-lifecycle.mjs", "--allow-drift"],
+    {
+      cwd: root,
+      encoding: "utf8",
+      timeout: 10000,
+      env: { ...process.env, TLA2TOOLS_JAR: wrongJar },
+    },
+  );
+  assert.equal(checksum.status, 1);
+  const pinned = await readCurrentArgumentEvidence({ root });
+  assert.equal(pinned.status, "failed");
+  assert.equal(pinned.receipt.context.sourceChangedSinceSync, true);
+  assert.equal(pinned.receipt.error.code, "ERR_ASSERTION");
+  assert.match(pinned.receipt.error.message, /TLA\+ checksum mismatch/);
+  assert.deepEqual(pinned.receipt.results, []);
+  t.diagnostic(
+    JSON.stringify({
+      control: "allow-drift-wrong-jar",
+      error: pinned.receipt.error,
+      context: pinned.receipt.context,
+      results: pinned.receipt.results,
+    }),
+  );
+  t.diagnostic(
+    "Ordinary source drift refuses; --allow-drift still refuses wrong pinned jar bytes.",
   );
 });
