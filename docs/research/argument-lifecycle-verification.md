@@ -171,3 +171,52 @@ verification-only work. URECA reconciliation remains the parent release gate.
 ## Independent model correction
 
 The first model passed 414 distinct states but omitted the load cancellation performed by transmit. It conservatively admitted a stale empty load after a save, a transition that cannot occur in the real store. Independent review reproduced same-owner restoration and confirmed the actual load is canceled. The model now tracks that token and exhausts 411 distinct states. The old pass described a stale abstraction. All three promises and bounds are unchanged; no product bug was found. Current/restored runs and all negative controls pass after this verification correction.
+
+## Dependency maintenance on 2026-10-25
+
+`OwnerPrivacy`, `CapturedAcknowledgement` and `ImmutableRetry` are **in sync** at
+reviewed product commit `b2dfffe5cef12cccf352810ac75be3293d82c5a6`. Maintenance read
+all five intervening commit messages, `f434d6f`, `2f55931`, `7c3cee2`, `5c6cdfa`
+and `b2dfffe`, and the covered diff from `9cd4b5ca651a0574c8279383418644abdd3cbaf5`.
+The only covered changes replace two UUID validators with equivalent GUID validators
+for the Zod 4 migration. Both stores remain byte-identical. No state writer moved or
+appeared. Caller changes render notation without changing the lifecycle entry points.
+
+The action mapping above still describes the code. Save captures the parsed sheet
+and serialized request before fetch. Identity and pending checks still follow fetch,
+JSON and digest. Transmit still invalidates pre-save loads. Refresh still conceals
+writing and restores only the confirmed owner. Retry still sends `sent.body`.
+The changed `account-progress.ts` parser is an actual replay dependency. Its raw-key
+guard preserves refusals before Zod 4 record parsing can discard forbidden keys.
+Fresh imported-store execution checks the migration against these selected schedules.
+
+The unchanged ordinary command first failed for covered-source drift in retained
+`outputs/argument-lifecycle/run-SqRkPA`. This was sync metadata drift, not a product
+counterexample. The unchanged allow-drift command then passed all ten outcomes in
+`outputs/argument-lifecycle/run-KwJCQP`. Current and restored models each exhausted
+693 generated, 411 distinct and zero queued states. Privacy, acknowledgement and retry
+mutants respectively reached 91/71/33, 73/59/28 and 36/32/17 states and failed their
+named invariant with exit 12. Each real-module mutant exited 1 with its named
+`ERR_ASSERTION`. Inspection confirmed A's writing in B's export, later typing in the
+acknowledgement, and changed retry sheet bytes. These were behavioral failures after
+successful module loading. Current and restored modules each passed seven schedules.
+
+Only sync metadata, the skill prerequisite, this dated receipt and the regenerated
+source map change. The model, runner, replay, promises, assumptions and finite bounds
+remain unchanged. The ordinary command passes after advancing sync, with all ten
+outcomes in `run-SXlKby`. Its latest actual run and every earlier failure remain
+under `outputs/argument-lifecycle/`. The maintenance command logs and source hashes
+are retained under `outputs/dependency-resume/formal-maintenance/`. The exclusions
+above still apply, including arbitrary payloads, unsupported records, competing reads,
+deletion, replacement, retry overlap after refresh, server transactions, native
+sign-in, browser rendering and deployment. URECA release freshness remains a separate
+parent gate. This verification-only unit makes no new application or teaching claim.
+
+A squash merge does not make the reviewed product commit an ancestor of `main`.
+The local tag `verification/argument-lifecycle-b2dfffe5` resolves exactly to
+`b2dfffe5cef12cccf352810ac75be3293d82c5a6`. The parent retains a local Git experiment
+showing that a default clone resolves a commit retained only by a tag. A single-branch
+clone needs `git fetch --tags origin`. The skill now states the full-history and tag
+prerequisite. The parent must publish this tag atomically with the final dependency
+branch before CI and retain it after squash. Remote publication remains pending.
+This is a verification source reference. It makes no release claim.

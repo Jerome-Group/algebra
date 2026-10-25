@@ -11,11 +11,11 @@
     },
     {
       "file": ".agents/skills/argument-lifecycle/SKILL.md",
-      "sha256": "0275efc02cd3e48860dca98802817113e72f5c98aaae5d1a037db6dcd0a0b4f4"
+      "sha256": "eaf7ff46b052cc9fb3686686fc5733b33843febaed2adf6e1f4cc397bdc99768"
     },
     {
       "file": ".agents/skills/argument-lifecycle/coverage.json",
-      "sha256": "56ecec282a5df94ea6938da3b8edf107d4772a24840552d2d1dccc394aed5ef3"
+      "sha256": "bf1a37c2e9a7936b744042c6f8aef5d2c4a9ddca6c4a9463d81ab9528e504a52"
     },
     {
       "file": ".agents/skills/verify/SKILL.md",
@@ -875,7 +875,7 @@
     },
     {
       "file": "docs/research/argument-lifecycle-verification.md",
-      "sha256": "2060d51fad199ac0b5e1d5a4331d21f618c467837698de2a286018c38ad7a0d4"
+      "sha256": "65dd4954644960d8c0260d1ede92e40f1fe79989d07ce5d1c755f0cbe7af5a49"
     },
     {
       "file": "docs/research/argument-recovery-review.json",
