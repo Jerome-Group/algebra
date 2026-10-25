@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
@@ -44,92 +46,93 @@ export function TensorBalancingLab({ lesson }: { lesson: Lesson }) {
           Right module{" "}
           <M focusable={false}>{String.raw`U=\mathbb Z/m\mathbb Z`}</M>; choose{" "}
           <M focusable={false}>{"m"}</M>
-          <select
-            aria-label="Right module U=ℤ/mℤ; choose m"
+          <Choice
+            label="Right module U=ℤ/mℤ; choose m"
             value={rightModulus}
-            onChange={(e) => {
-              setRightModulus(Number(e.target.value));
+            onChange={(value) => {
+              setRightModulus(value);
               setU(0);
               reset();
             }}
-          >
-            {[2, 3, 4, 6, 8, 12].map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
+            options={[2, 3, 4, 6, 8, 12].map((m) => ({
+              value: m,
+              presentation: `$${m}$`,
+              speech: String(m),
+            }))}
+          />
         </label>
         <label>
           Left module{" "}
           <M focusable={false}>{String.raw`V=\mathbb Z/n\mathbb Z`}</M>; choose{" "}
           <M focusable={false}>{"n"}</M>
-          <select
-            aria-label="Left module V=ℤ/nℤ; choose n"
+          <Choice
+            label="Left module V=ℤ/nℤ; choose n"
             value={leftModulus}
-            onChange={(e) => {
-              setLeftModulus(Number(e.target.value));
+            onChange={(value) => {
+              setLeftModulus(value);
               setV(0);
               reset();
             }}
-          >
-            {[2, 3, 4, 6, 8, 12].map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
+            options={[2, 3, 4, 6, 8, 12].map((n) => ({
+              value: n,
+              presentation: `$${n}$`,
+              speech: String(n),
+            }))}
+          />
         </label>
         <label>
           Integer scalar <M focusable={false}>{String.raw`r`}</M>
-          <select
-            aria-label="Integer scalar r"
+          <Choice
+            label="Integer scalar r"
             value={scalar}
-            onChange={(e) => {
-              setScalar(Number(e.target.value));
+            onChange={(value) => {
+              setScalar(value);
               reset();
             }}
-          >
-            {[0, 1, 2, 3, 4, 6].map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
+            options={[0, 1, 2, 3, 4, 6].map((r) => ({
+              value: r,
+              presentation: `$${r}$`,
+              speech: String(r),
+            }))}
+          />
         </label>
         <label>
           Right-module vector <M focusable={false}>{String.raw`[u]`}</M>
-          <select
-            aria-label="Right-module vector [u]"
+          <Choice
+            label="Right-module vector [u]"
             value={u}
-            onChange={(e) => {
-              setU(Number(e.target.value));
+            onChange={(value) => {
+              setU(value);
               reset();
             }}
-          >
-            {Array.from({ length: rightModulus }, (_, index) => (
-              <option key={index} value={index}>
-                [{index}]
-              </option>
-            ))}
-          </select>
+            options={Array.from(
+              { length: rightModulus },
+              (_, index) => index,
+            ).map((index) => ({
+              value: index,
+              presentation: `$[${index}]$`,
+              speech: `Residue class ${index}`,
+            }))}
+          />
         </label>
         <label>
           Left-module vector <M focusable={false}>{String.raw`[v]`}</M>
-          <select
-            aria-label="Left-module vector [v]"
+          <Choice
+            label="Left-module vector [v]"
             value={v}
-            onChange={(e) => {
-              setV(Number(e.target.value));
+            onChange={(value) => {
+              setV(value);
               reset();
             }}
-          >
-            {Array.from({ length: leftModulus }, (_, index) => (
-              <option key={index} value={index}>
-                [{index}]
-              </option>
-            ))}
-          </select>
+            options={Array.from(
+              { length: leftModulus },
+              (_, index) => index,
+            ).map((index) => ({
+              value: index,
+              presentation: `$[${index}]$`,
+              speech: `Residue class ${index}`,
+            }))}
+          />
         </label>
       </div>
       <label className="prediction-prompt">

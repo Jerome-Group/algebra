@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
-import { Choice, Range } from "./Groups";
+import { Choice, Range, type ChoiceOption } from "./Groups";
 import { linearQuotient, quadraticQuotient } from "@/lib/algebra/quotients";
 import { matrixTex, palette } from "@/lib/algebra/engine";
 export function LinearQuotientLab() {
@@ -77,7 +77,11 @@ export function LinearQuotientLab() {
             setD(0);
             setSelected(0);
           }}
-          options={[2, 3, 5].map((p) => [String(p), `$\\mathbb F_${p}$`])}
+          options={[2, 3, 5].map((p) => ({
+            value: String(p),
+            presentation: `$\\mathbb F_{${p}}$`,
+            speech: `Finite field with ${p} elements`,
+          }))}
         />
         <div className="matrix-controls">
           {[
@@ -128,6 +132,16 @@ export function QuadraticQuotientLab() {
     y = b % N,
     inv = ring.inverse(x),
     killers = ring.annihilators(x);
+  const elementOptions: ChoiceOption<string>[] = ring.elements.map(
+    ([constant, coefficient], i) => ({
+      value: String(i),
+      presentation: `$${ring.label(i)}$`,
+      speech:
+        coefficient === 0
+          ? String(constant)
+          : `${constant ? `${constant} plus ` : ""}${coefficient === 1 ? "" : `${coefficient} times `}alpha`,
+    }),
+  );
   return (
     <div>
       <div className="lab-controls">
@@ -141,7 +155,11 @@ export function QuadraticQuotientLab() {
             setA(2);
             setB(3);
           }}
-          options={[2, 3, 5].map((p) => [String(p), `$\\mathbb F_${p}$`])}
+          options={[2, 3, 5].map((p) => ({
+            value: String(p),
+            presentation: `$\\mathbb F_{${p}}$`,
+            speech: `Finite field with ${p} elements`,
+          }))}
         />
         <div className="two-cols">
           <Range
@@ -180,19 +198,13 @@ export function QuadraticQuotientLab() {
             label="First quotient element"
             value={String(x)}
             onChange={(v) => setA(+v)}
-            options={ring.elements.map((_, i) => [
-              String(i),
-              `$${ring.label(i)}$`,
-            ])}
+            options={elementOptions}
           />
           <Choice
             label="Second quotient element"
             value={String(y)}
             onChange={(v) => setB(+v)}
-            options={ring.elements.map((_, i) => [
-              String(i),
-              `$${ring.label(i)}$`,
-            ])}
+            options={elementOptions}
           />
         </div>
       </div>
@@ -200,15 +212,15 @@ export function QuadraticQuotientLab() {
         className="quotient-elements"
         style={{ gridTemplateColumns: `repeat(${prime},minmax(0,1fr))` }}
       >
-        {ring.elements.map((_, i) => (
+        {elementOptions.map((option, i) => (
           <button
             key={i}
-            aria-label={`Select quotient element ${i}`}
+            aria-label={`Select quotient element ${option.speech}`}
             aria-pressed={x === i}
             className={`${ring.inverse(i) !== -1 ? "is-unit" : "is-nonunit"} ${x === i ? "fiber-selected" : ""}`}
             onClick={() => setA(i)}
           >
-            <M focusable={false}>{ring.label(i)}</M>
+            <Prose focusable={false}>{option.presentation}</Prose>
             <small>
               {i === 0
                 ? "zero"

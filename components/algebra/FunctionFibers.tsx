@@ -1,5 +1,8 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { Diagram } from "./Diagram";
+import { SvgMath } from "./SvgMath";
 import { useState } from "react";
 import { fiberModel } from "@/lib/algebra/foundation-labs";
 import type { Lesson } from "@/lib/algebra/engine";
@@ -21,13 +24,23 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
       </p>
       <label>
         Input equivalence modulus
-        <select
+        <Choice
+          label={"Input equivalence modulus"}
           value={modulus}
-          onChange={(event) => setModulus(Number(event.target.value))}
-        >
-          <option value={2}>2 (parity classes)</option>
-          <option value={3}>3 (remainder classes)</option>
-        </select>
+          onChange={(value) => setModulus(value)}
+          options={[
+            {
+              value: 2,
+              presentation: "$2$ (parity classes)",
+              speech: "2, parity classes",
+            },
+            {
+              value: 3,
+              presentation: "$3$ (remainder classes)",
+              speech: "3, remainder classes",
+            },
+          ]}
+        />
       </label>
       <Diagram
         viewBox="0 0 360 260"
@@ -50,9 +63,14 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
               fill="#eef1fa"
               stroke="#304d87"
             />
-            <text x="45" y={30 + input * 40} textAnchor="middle" fill="#172645">
+            <SvgMath
+              x="45"
+              y={30 + input * 40}
+              textAnchor="middle"
+              fill="#172645"
+            >
               {input}
-            </text>
+            </SvgMath>
           </g>
         ))}
         {[0, 1, 2].map((value) => (
@@ -64,14 +82,14 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
               fill="#f1eaf7"
               stroke="#72548a"
             />
-            <text
+            <SvgMath
               x="310"
               y={50 + value * 80}
               textAnchor="middle"
               fill="#39204d"
             >
               {value}
-            </text>
+            </SvgMath>
           </g>
         ))}
       </Diagram>
@@ -95,21 +113,23 @@ export function FunctionFiberLab({ lesson }: { lesson: Lesson }) {
                 <M>{String(input)}</M>
               </th>
               <td>
-                <select
-                  aria-label={`Output f(${input}), currently ${value}`}
+                <M focusable={false}>{`f(${input})=${value}`}</M>
+                <Choice
+                  label={`Output f(${input}), currently ${value}`}
                   value={value}
-                  onChange={(event) =>
+                  onChange={(value) =>
                     setOutputs(
                       outputs.map((entry, index) =>
-                        index === input ? Number(event.target.value) : entry,
+                        index === input ? value : entry,
                       ),
                     )
                   }
-                >
-                  {[0, 1, 2].map((target) => (
-                    <option key={target}>{target}</option>
-                  ))}
-                </select>
+                  options={[0, 1, 2].map((target) => ({
+                    value: target,
+                    presentation: `$${target}$`,
+                    speech: String(target),
+                  }))}
+                />
               </td>
               <td>
                 <M>{`[${input % modulus}]`}</M>

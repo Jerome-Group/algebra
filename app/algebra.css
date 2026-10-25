@@ -587,7 +587,7 @@
   border-radius: 0;
   padding: 13px 0;
 }
-.connections a span {
+.connections a > span {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -881,6 +881,9 @@
 .search-results a {
   display: block;
 }
+.search-results .chapter-concepts > a:has(.katex) {
+  overflow-x: auto;
+}
 .search-results small {
   display: block;
   font-size: 12px;
@@ -893,6 +896,11 @@
   overflow: hidden;
   font-size: 14px;
   line-height: 1.5;
+}
+.search-snippet:has(.katex) {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
 }
 .chapter-concepts a,
 .chapter-switcher a {

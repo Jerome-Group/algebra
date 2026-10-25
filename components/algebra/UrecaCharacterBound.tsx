@@ -1,6 +1,7 @@
 "use client";
 import { Math as M, Prose } from "./Math";
 import { Diagram } from "./Diagram";
+import { SvgMath } from "./SvgMath";
 import {
   dihedralCharacter,
   dihedralEigenvalues,
@@ -39,12 +40,12 @@ export function UrecaCharacterBound({ state }: { state: UrecaSelection }) {
               stroke="#fff"
             />
           ))}
-          <text x="224" y="119">
+          <SvgMath x="224" y="119">
             1
-          </text>
-          <text x="30" y="119">
-            −1
-          </text>
+          </SvgMath>
+          <SvgMath x="30" y="119">
+            {"-1"}
+          </SvgMath>
         </Diagram>
         <div className="live-mathematics" aria-live="polite">
           <p>

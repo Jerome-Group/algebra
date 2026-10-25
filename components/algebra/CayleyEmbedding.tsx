@@ -1,4 +1,7 @@
 "use client";
+import { symmetricElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import { regularActionModel } from "@/lib/algebra/cayley-words";
 import { Math as M, Prose } from "./Math";
@@ -18,32 +21,30 @@ export function CayleyEmbeddingLab() {
         <label>
           First factor <M focusable={false}>{"g"}</M>, currently{" "}
           <M focusable={false}>{model.names[first]}</M>
-          <select
-            aria-label={`First factor g, currently ${model.names[first]}`}
+          <Choice
+            label={`First factor g, currently ${model.names[first]}`}
             value={first}
-            onChange={(event) => setFirst(Number(event.target.value))}
-          >
-            {model.elements.map((element) => (
-              <option key={element} value={element}>
-                {model.names[element]}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setFirst(value)}
+            options={model.elements.map((element) => ({
+              value: element,
+              presentation: `$${model.names[element]}$`,
+              speech: symmetricElementSpeech[element],
+            }))}
+          />
         </label>
         <label>
           Second factor <M focusable={false}>{"h"}</M>, currently{" "}
           <M focusable={false}>{model.names[second]}</M>
-          <select
-            aria-label={`Second factor h, currently ${model.names[second]}`}
+          <Choice
+            label={`Second factor h, currently ${model.names[second]}`}
             value={second}
-            onChange={(event) => setSecond(Number(event.target.value))}
-          >
-            {model.elements.map((element) => (
-              <option key={element} value={element}>
-                {model.names[element]}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setSecond(value)}
+            options={model.elements.map((element) => ({
+              value: element,
+              presentation: `$${model.names[element]}$`,
+              speech: symmetricElementSpeech[element],
+            }))}
+          />
         </label>
       </div>
       <div className="live-mathematics" aria-live="polite">

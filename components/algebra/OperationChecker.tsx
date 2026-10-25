@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
@@ -23,29 +25,46 @@ export function OperationChecker({ lesson }: { lesson: Lesson }) {
       </p>
       <label>
         Number of elements
-        <select
+        <Choice
+          label={"Number of elements"}
           value={size}
-          onChange={(event) => setSize(Number(event.target.value))}
-        >
-          {[3, 4, 5, 6].map((n) => (
-            <option key={n}>{n}</option>
-          ))}
-        </select>
+          onChange={(value) => setSize(value)}
+          options={[3, 4, 5, 6].map((n) => ({
+            value: n,
+            presentation: `$${n}$`,
+            speech: String(n),
+          }))}
+        />
       </label>
       <label>
         Operation <M focusable={false}>{String.raw`\star`}</M>
-        <select
-          aria-label="Operation ⋆"
+        <Choice
+          label="Operation ⋆"
           value={kind}
-          onChange={(event) => setKind(event.target.value as OperationKind)}
-        >
-          <option value="addition">Addition modulo n</option>
-          <option value="multiplication">Multiplication modulo n</option>
-          <option value="subtraction">Subtraction modulo n</option>
-          <option value="unbounded-addition">
-            Ordinary addition (no reduction)
-          </option>
-        </select>
+          onChange={(value) => setKind(value)}
+          options={[
+            {
+              value: "addition",
+              presentation: "Addition modulo $n$",
+              speech: "Addition modulo n",
+            },
+            {
+              value: "multiplication",
+              presentation: "Multiplication modulo $n$",
+              speech: "Multiplication modulo n",
+            },
+            {
+              value: "subtraction",
+              presentation: "Subtraction modulo $n$",
+              speech: "Subtraction modulo n",
+            },
+            {
+              value: "unbounded-addition",
+              presentation: "Ordinary addition (no reduction)",
+              speech: "Ordinary addition, no reduction",
+            },
+          ]}
+        />
       </label>
       <div className="math-table-scroll">
         <table>

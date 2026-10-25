@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import {
   integerIdealQuotient,
@@ -31,57 +33,81 @@ export function IdealQuotientLattice() {
       <div className="lab-controls">
         <label>
           Source ring
-          <select
+          <Choice
+            label={"Source ring"}
             value={example}
-            onChange={(event) => {
-              setExample(event.target.value as RingExample);
+            onChange={(value) => {
+              setExample(value);
               setRevealed(false);
               setPrediction("");
               setFailure(false);
             }}
-          >
-            <option value="integers">R=ℤ/12ℤ</option>
-            <option value="polynomials">R=F₂[X]</option>
-          </select>
+            options={[
+              {
+                value: "integers",
+                presentation: "$R=\\mathbb Z/12\\mathbb Z$",
+                speech: "R equals the integers modulo 12",
+              },
+              {
+                value: "polynomials",
+                presentation: "$R=\\mathbb F_2[X]$",
+                speech: "R equals polynomials over the field with 2 elements",
+              },
+            ]}
+          />
         </label>
         {example === "integers" ? (
           <label>
             Ideal{" "}
             <M focusable={false}>{String.raw`I=d\mathbb Z/12\mathbb Z`}</M>;
             choose <M focusable={false}>{"d"}</M>
-            <select
-              aria-label="Ideal I=dℤ/12ℤ; choose d"
+            <Choice
+              label="Ideal I=dℤ/12ℤ; choose d"
               value={idealGenerator}
-              onChange={(event) => {
-                setIdealGenerator(Number(event.target.value));
+              onChange={(value) => {
+                setIdealGenerator(value);
                 setRevealed(false);
                 setPrediction("");
               }}
-            >
-              {[1, 2, 3, 4, 6, 12].map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
+              options={[1, 2, 3, 4, 6, 12].map((d) => ({
+                value: d,
+                presentation: `$${d}$`,
+                speech: String(d),
+              }))}
+            />
           </label>
         ) : (
           <label>
             Ideal <M focusable={false}>{"I=(q)"}</M>; choose{" "}
             <M focusable={false}>{String.raw`q\in\mathbb F_2[X]`}</M>
-            <select
-              aria-label="Ideal I=(q); choose q∈F₂[X]"
+            <Choice
+              label="Ideal I=(q); choose q∈F₂[X]"
               value={polynomial}
-              onChange={(event) => {
-                setPolynomial(event.target.value as PolynomialIdeal);
+              onChange={(value) => {
+                setPolynomial(value);
                 setRevealed(false);
                 setPrediction("");
               }}
-            >
-              <option value="irreducible">X²+X+1</option>
-              <option value="double">X²+1=(X+1)²</option>
-              <option value="split">X²+X=X(X+1)</option>
-            </select>
+              options={[
+                {
+                  value: "irreducible",
+                  presentation: "$X^2+X+1$",
+                  speech: "X squared plus X plus 1",
+                },
+                {
+                  value: "double",
+                  presentation: "$X^2+1=(X+1)^2$",
+                  speech:
+                    "X squared plus 1 equals the square of the quantity X plus 1",
+                },
+                {
+                  value: "split",
+                  presentation: "$X^2+X=X(X+1)$",
+                  speech:
+                    "X squared plus X equals X times the quantity X plus 1",
+                },
+              ]}
+            />
           </label>
         )}
       </div>

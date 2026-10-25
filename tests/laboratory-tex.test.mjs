@@ -18,6 +18,11 @@ const vite = await createServer({
 });
 after(() => vite.close());
 const { Prose } = await vite.ssrLoadModule("/components/algebra/Math.tsx");
+const { LaboratoryProvider } = await vite.ssrLoadModule(
+  "/components/algebra/LaboratoryControls.tsx",
+);
+const renderLab = (element) =>
+  renderToStaticMarkup(React.createElement(LaboratoryProvider, null, element));
 const strictMath = (tex) =>
   katex.renderToString(tex, {
     throwOnError: true,
@@ -55,7 +60,7 @@ test("coloring narratives annotate fixed, cycle and prescribed-inventory counts 
     colors: 2,
     firstColorCount: 2,
   };
-  const html = renderToStaticMarkup(
+  const html = renderLab(
     React.createElement(ColoringLedgerView, {
       config,
       ledger: fixedColoringLedger(config),
@@ -185,19 +190,24 @@ test("tensor controls retain names and keep formula labels outside the tab order
   const { TensorBalancingLab } = await vite.ssrLoadModule(
     "/components/algebra/TensorBalancingLab.tsx",
   );
-  const html = renderToStaticMarkup(
+  const html = renderLab(
     React.createElement(TensorBalancingLab, {
       lesson: { title: "Tensor products" },
     }),
   );
   assert.match(html, /aria-label="Right module U=ℤ\/mℤ; choose m"/);
   assert.match(html, /aria-label="Left module V=ℤ\/nℤ; choose n"/);
-  for (const label of html.matchAll(/<label[\s\S]*?<\/label>/g)) {
+  const controls = [
+    ...html.matchAll(/<button\b[^>]*role="combobox"[\s\S]*?<\/button>/g),
+  ];
+  assert.equal(controls.length, 5);
+  for (const [control] of controls) {
     assert.doesNotMatch(
-      label[0],
+      control,
       /tabindex="0"/,
       "formula labels add no tab stop",
     );
+    assert.match(control, /<math /);
   }
   assert.match(html, /U=\\mathbb Z\/m\\mathbb Z/);
   assert.match(html, /V=\\mathbb Z\/n\\mathbb Z/);
@@ -397,7 +407,7 @@ test("coloring ledgers render actual group words and complete cycle-type exponen
     configs.push({ kind: "cube", feature, colors: 2 });
   for (const config of configs) {
     const ledger = fixedColoringLedger(config);
-    const html = renderToStaticMarkup(
+    const html = renderLab(
       React.createElement(ColoringLedgerView, {
         config,
         ledger,

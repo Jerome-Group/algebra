@@ -158,8 +158,16 @@ export function CharacterConstruction({ lesson }: { lesson: Lesson }) {
                 <th scope="col">Representation</th>
                 {s3Classes.map((item) => (
                   <th scope="col" key={item.name}>
-                    {item.name === "e" ? <M>{"e"}</M> : item.name} · size{" "}
-                    <M>{String(item.size)}</M>
+                    {item.name === "e" ? (
+                      <M>{"e"}</M>
+                    ) : item.name === "3-cycle" ? (
+                      <>
+                        <M>{"3"}</M>-cycle
+                      </>
+                    ) : (
+                      item.name
+                    )}{" "}
+                    · size <M>{String(item.size)}</M>
                   </th>
                 ))}
               </tr>

@@ -5,8 +5,13 @@ import type { Lesson } from "@/lib/algebra/engine";
 import { matrixTex, permutation } from "@/lib/algebra/engine";
 import { cubeSymmetryMatch } from "@/lib/algebra/orthogonal-geometry";
 import { rotationConfig } from "@/lib/algebra/rotation-config";
-import { axisRotation, planeRotation } from "@/lib/algebra/rotations";
+import {
+  axisRotation,
+  normalizeAxis,
+  planeRotation,
+} from "@/lib/algebra/rotations";
 import { Math as M, Prose } from "./Math";
+import { numberTex, degreeTex } from "@/lib/algebra/numeric-tex";
 import { Range, Choice } from "./Groups";
 import { CubeScene } from "./Cube";
 
@@ -20,15 +25,16 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
   );
   if (config.kind !== "axis-angle")
     throw new Error("Expected axis-angle configuration");
-  const validAxis = axis.every(Number.isFinite) && Math.hypot(...axis) > 0;
+  const direction = normalizeAxis(axis);
+  const validAxis = direction !== null;
   const validAngle = Number.isFinite(angle) && angle >= 0 && angle <= 360;
-  const valid = validAxis && validAngle;
-  const matrix = valid ? axisRotation(axis, angle) : null;
+  const matrix =
+    direction && validAngle ? axisRotation(direction, angle) : null;
+  const angleTex = degreeTex(angle);
+  const angleNumeral = numberTex(angle);
   const matched = matrix ? cubeSymmetryMatch(matrix) : undefined;
   const images = matched ? permutation(matched.matrix, "vertices") : null;
-  const normalized = valid
-    ? axis.map((value) => (value / Math.hypot(...axis)).toFixed(3))
-    : [];
+  const normalized = direction?.map((value) => value.toFixed(3));
   return (
     <div className="axis-angle-lab">
       <div className="lab-toolbar">
@@ -36,33 +42,45 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
           Arbitrary nonzero axis · continuous spatial rotation
         </span>
       </div>
-      {matrix && (
-        <CubeScene matrix={matrix} set="vertices" selected={0} axis={axis} />
+      {matrix && direction && (
+        <CubeScene
+          matrix={matrix}
+          set="vertices"
+          selected={0}
+          axisDirection={direction}
+        />
       )}
       <div className="lab-controls">
         <p>
           Choose any nonzero real axis vector. The dashed line shows the axis;
           the cube moves under the resulting right-handed rotation.
         </p>
-        {axis.map((value, index) => (
-          <label key={index}>
-            Axis <M focusable={false}>{"xyz"[index]}</M> component, currently{" "}
-            <M focusable={false}>{String(value)}</M>
-            <input
-              aria-label={`Axis ${"xyz"[index]} component`}
-              type="number"
-              step="any"
-              value={value}
-              onChange={(event) =>
-                setAxis(
-                  axis.map((item, i) =>
-                    i === index ? Number(event.target.value) : item,
-                  ),
-                )
-              }
-            />
-          </label>
-        ))}
+        {axis.map((value, index) => {
+          const numeral = numberTex(value);
+          return (
+            <label key={index}>
+              Axis <M focusable={false}>{"xyz"[index]}</M> component, currently{" "}
+              {numeral === null ? (
+                String(value)
+              ) : (
+                <M focusable={false}>{numeral}</M>
+              )}
+              <input
+                aria-label={`Axis ${"xyz"[index]} component`}
+                type="number"
+                step="any"
+                value={Number.isFinite(value) ? value : ""}
+                onChange={(event) =>
+                  setAxis(
+                    axis.map((item, i) =>
+                      i === index ? Number(event.target.value) : item,
+                    ),
+                  )
+                }
+              />
+            </label>
+          );
+        })}
         <button
           aria-label="Use cube body diagonal (1,1,1)"
           onClick={() => setAxis([1, 1, 1])}
@@ -90,31 +108,35 @@ export function AxisAngleLab({ lesson }: { lesson: Lesson }) {
         />
         <label>
           Exact angle in degrees, currently{" "}
-          <M focusable={false}>{String(angle)}</M>
+          {angleNumeral === null ? (
+            String(angle)
+          ) : (
+            <M focusable={false}>{angleNumeral}</M>
+          )}
           <input
             type="number"
             aria-label="Exact angle in degrees"
             min={0}
             max={360}
             step="any"
-            value={angle}
+            value={Number.isFinite(angle) ? angle : ""}
             onChange={(event) => setAngle(Number(event.target.value))}
           />
         </label>
-        {matrix && (
+        {matrix && normalized && angleTex && (
           <div className="live-mathematics" aria-live="polite">
             <p>
-              <Prose>{String.raw`Normalized axis: $(${normalized.join(", ")})$. Rodrigues rotation at $${angle}^\circ$.`}</Prose>
+              <Prose>{String.raw`Normalized axis (rounded): $n\approx(${normalized.join(", ")})$. Rodrigues rotation at $${angleTex}$.`}</Prose>
             </p>
             <M block>{String.raw`R\approx${matrixTex(matrix)}`}</M>
             <M
               block
-            >{String.raw`Rn=n,\quad\operatorname{tr}(R)=1+2\cos(${angle}^\circ)`}</M>
+            >{String.raw`Rn=n,\quad\operatorname{tr}(R)=1+2\cos(${angleTex})`}</M>
             <p>
-              <Prose>{String.raw`${matched ? `Cube symmetry: yes. Vertex permutation (images of $1$–$8$): $(${images!.map((index) => index + 1).join(", ")})$. Generator word: $${matched.word.join(" ") || "I"}$.` : "Cube symmetry: no. This is a rotation of space, but it has no permutation or generator word in the cube symmetry group."}`}</Prose>
+              <Prose>{String.raw`${matched && images ? `Numerical cube candidate found (entrywise tolerance $10^{-8}$). Candidate vertex permutation (images of $1$–$8$): $(${images.map((index) => index + 1).join(", ")})$. Candidate generator word: $${matched.word.join(" ") || "I"}$. This numerical match does not assert exact cube membership of the selected rotation.` : "No numerical cube candidate matches at entrywise tolerance $10^{-8}$."}`}</Prose>
             </p>
             <p>
-              <Prose>{String.raw`${Math.abs(angle) < 1e-9 || Math.abs(angle - 360) < 1e-9 ? "At the identity rotation every axis is possible; the axis is not uniquely determined." : Math.abs(angle - 180) < 1e-9 ? "At $180^\\circ$ the axis line is determined, but $n$ and $-n$ describe the same rotation." : "Away from $0^\\circ$ and $180^\\circ$, reversing the axis reverses the signed angle."}`}</Prose>
+              <Prose>{String.raw`${angle === 0 || angle === 360 ? "At the identity rotation every axis is possible; the axis is not uniquely determined." : angle === 180 ? "At $180^\\circ$ the axis line is determined, but $n$ and $-n$ describe the same rotation." : "Away from $0^\\circ$ and $180^\\circ$, reversing the axis reverses the signed angle."}`}</Prose>
             </p>
             <p>
               <Prose>{String.raw`Along $(1,1,1)$, exactly $0^\circ$, $120^\circ$, $240^\circ$ and $360^\circ$ preserve the cube. Other angles remain valid spatial rotations.`}</Prose>
@@ -145,8 +167,16 @@ export function PlaneRepresentationLab({ lesson }: { lesson: Lesson }) {
           value={field}
           onChange={setField}
           options={[
-            ["real", "Real numbers · dimension 2"],
-            ["complex", "Complex numbers · dimension 2"],
+            {
+              value: "real",
+              presentation: "Real numbers · dimension $2$",
+              speech: "Real numbers, dimension 2",
+            },
+            {
+              value: "complex",
+              presentation: "Complex numbers · dimension $2$",
+              speech: "Complex numbers, dimension 2",
+            },
           ]}
         />
         <span className="lab-tag">

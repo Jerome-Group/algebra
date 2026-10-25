@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
@@ -50,68 +52,88 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <label>
           Algebra <M focusable={false}>{String.raw`A`}</M>
-          <select
-            aria-label="Algebra A"
+          <Choice
+            label="Algebra A"
             value={algebra}
-            onChange={(e) => {
-              setAlgebra(e.target.value as AlgebraChoice);
+            onChange={(value) => {
+              setAlgebra(value);
               reset();
             }}
-          >
-            <option value="matrix">M₂(F)</option>
-            <option value="triangular">T₂(F) upper triangular</option>
-            <option value="group-c2">F[C₂]</option>
-          </select>
+            options={[
+              {
+                value: "matrix",
+                presentation: "$M_2(F)$",
+                speech: "Two by two matrix algebra over F",
+              },
+              {
+                value: "triangular",
+                presentation: "$T_2(F)$ upper triangular",
+                speech: "Two by two upper triangular matrices over F",
+              },
+              {
+                value: "group-c2",
+                presentation: "$F[C_2]$",
+                speech: "Group algebra over F of the cyclic group of order 2",
+              },
+            ]}
+          />
         </label>
         <label>
           Coefficient field <M focusable={false}>{String.raw`F`}</M>
-          <select
-            aria-label="Coefficient field F"
+          <Choice
+            label="Coefficient field F"
             value={field}
-            onChange={(e) => {
-              setField(e.target.value as FieldChoice);
+            onChange={(value) => {
+              setField(value);
               reset();
             }}
-          >
-            <option value="Q">ℚ · characteristic zero</option>
-            <option value="F2">𝔽₂ · characteristic two</option>
-          </select>
+            options={[
+              {
+                value: "Q",
+                presentation: "$\\mathbb Q$ · characteristic zero",
+                speech: "Rational numbers, characteristic zero",
+              },
+              {
+                value: "F2",
+                presentation: "$\\mathbb F_2$ · characteristic two",
+                speech: "Field with 2 elements, characteristic two",
+              },
+            ]}
+          />
         </label>
         {algebra === "matrix" && (
           <>
             <label>
               First matrix unit <M focusable={false}>{String.raw`E_{ij}`}</M>
-              <select
-                aria-label="First matrix unit Eᵢⱼ"
+              <Choice
+                label="First matrix unit Eᵢⱼ"
                 value={first}
-                onChange={(e) => {
-                  setFirst(e.target.value as (typeof units)[number]);
+                onChange={(value) => {
+                  setFirst(value);
                   reset();
                 }}
-              >
-                {units.map((unit) => (
-                  <option key={unit} value={unit}>
-                    {unit}
-                  </option>
-                ))}
-              </select>
+                options={units.map((unit) => ({
+                  value: unit,
+                  presentation: `$E_{${unit.slice(1)}}$`,
+                  speech: `Matrix unit E row ${unit[1]} column ${unit[2]}`,
+                }))}
+              />
             </label>
             <label>
               Second matrix unit <M focusable={false}>{String.raw`E_{kl}`}</M>
-              <select
-                aria-label="Second matrix unit Eₖₗ"
+              <Choice
+                label="Second matrix unit Eₖₗ"
                 value={second}
-                onChange={(e) => {
-                  setSecond(e.target.value as (typeof units)[number]);
+                onChange={(value) => {
+                  setSecond(value);
                   reset();
                 }}
-              >
-                {units.map((unit) => (
-                  <option key={unit} value={unit}>
-                    {unit}
-                  </option>
-                ))}
-              </select>
+                options={units.map((unit) => ({
+                  value: unit,
+                  presentation: `$E_{${unit.slice(1)}}$`,
+                  speech: `Matrix unit E row ${unit[1]} column ${unit[2]}`,
+                }))}
+              />
             </label>
           </>
         )}
@@ -136,7 +158,7 @@ export function WedderburnLayerLab({ lesson }: { lesson: Lesson }) {
         <div className="live-mathematics" aria-live="polite">
           <h3>Block and radical-layer evidence</h3>
           <p>
-            <Prose>{String.raw`$A$ is finite-dimensional ($${model.dimension}$) and unital over $${field === "Q" ? String.raw`\mathbb Q` : String.raw`\mathbb F_2`}$. Its radical has dimension $${model.radicalDimension}$; $A/J(A)\cong${display.quotient}$. $A$ ${model.semisimple ? "is" : "is not"} semisimple.`}</Prose>
+            <Prose>{String.raw`$A$ is finite-dimensional ($${model.dimension}$) and unital over $${field === "Q" ? String.raw`\mathbb Q` : String.raw`\mathbb F_2`}$. Its radical has dimension $${model.radicalDimension}$; $A/J(A)\cong ${display.quotient}$. $A$ ${model.semisimple ? "is" : "is not"} semisimple.`}</Prose>
           </p>
           <p>
             <Prose>{`${display.blocks}. ${display.simples}. ${display.regular}.`}</Prose>

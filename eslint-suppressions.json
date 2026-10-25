@@ -14,14 +14,6 @@
       "count": 3
     }
   },
-  "components/algebra/Structure.tsx": {
-    "@typescript-eslint/no-explicit-any": {
-      "count": 4
-    },
-    "prefer-const": {
-      "count": 1
-    }
-  },
   "lib/algebra/engine.ts": {
     "prefer-const": {
       "count": 5

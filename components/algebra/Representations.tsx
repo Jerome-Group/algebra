@@ -1,4 +1,6 @@
 "use client";
+import { permutationSpeech, characterSpeech } from "./ChoiceSpeech";
+
 import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useState } from "react";
@@ -69,8 +71,16 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
           value={dim}
           onChange={setDim}
           options={[
-            ["2", "Plane · $O(2)$"],
-            ["3", "Space · $O(3)$"],
+            {
+              value: "2",
+              presentation: "Plane · $O(2)$",
+              speech: "Plane, orthogonal group O 2",
+            },
+            {
+              value: "3",
+              presentation: "Space · $O(3)$",
+              speech: "Space, orthogonal group O 3",
+            },
           ]}
         />
         <Choice
@@ -78,8 +88,16 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
           value={reflect ? "reverse" : "preserve"}
           onChange={(v) => setReflect(v === "reverse")}
           options={[
-            ["preserve", "Preserve orientation"],
-            ["reverse", "Reverse orientation"],
+            {
+              value: "preserve",
+              presentation: "Preserve orientation",
+              speech: "Preserve orientation",
+            },
+            {
+              value: "reverse",
+              presentation: "Reverse orientation",
+              speech: "Reverse orientation",
+            },
           ]}
         />
         {dim === "3" && (
@@ -88,9 +106,9 @@ export function OrthogonalLab({ lesson }: { lesson: Lesson }) {
             value={axis}
             onChange={setAxis}
             options={[
-              ["x", "$x$-axis"],
-              ["y", "$y$-axis"],
-              ["z", "$z$-axis"],
+              { value: "x", presentation: "$x$-axis", speech: "x axis" },
+              { value: "y", presentation: "$y$-axis", speech: "y axis" },
+              { value: "z", presentation: "$z$-axis", speech: "z axis" },
             ]}
           />
         )}
@@ -219,7 +237,9 @@ export function PermutationLab() {
     <div>
       <div className="lab-controls">
         <label>
-          <Prose focusable={false}>{"Permutation $p$, images of 1,2,…"}</Prose>
+          <Prose focusable={false}>
+            {"Permutation $p$, images of $1,2,\\ldots$"}
+          </Prose>
         </label>
         <input
           aria-label="Permutation p"
@@ -238,7 +258,7 @@ export function PermutationLab() {
           <p className="error-note">
             <Prose>
               {
-                " Use each integer 1 to $n$ once ($2 \\le  n \\le  8$), with the same $n$ in both rows. "
+                " Use each integer $1$ to $n$ once ($2 \\le  n \\le  8$), with the same $n$ in both rows. "
               }
             </Prose>
           </p>
@@ -331,7 +351,11 @@ export function RepresentationLab() {
           label="Permutation action"
           value={String(perm)}
           onChange={(x) => setPerm(+x)}
-          options={perms.map((p, i) => [String(i), `Apply $${cycleTex(p)}$`])}
+          options={perms.map((p, i) => ({
+            value: String(i),
+            presentation: `Apply $${cycleTex(p)}$`,
+            speech: `Apply ${permutationSpeech(p)}`,
+          }))}
         />
         <span className="lab-tag">
           <Prose>{"Permutation module $\\mathbb R ^{3}$"}</Prose>
@@ -424,7 +448,7 @@ export function RepresentationLab() {
           <p>
             <Prose>
               {
-                " A 120° rotation has no invariant real line. Over $\\mathbb C$ it has two eigenlines, so it is irreducible over $\\mathbb R$ but reducible after complexification. Change to the orthogonal machine to see the rotation. "
+                " A $120^{\\circ}$ rotation has no invariant real line. Over $\\mathbb C$ it has two eigenlines, so it is irreducible over $\\mathbb R$ but reducible after complexification. Change to the orthogonal machine to see the rotation. "
               }
             </Prose>
           </p>
@@ -519,13 +543,21 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
             label="First character"
             value={String(a)}
             onChange={(v) => setA(+v)}
-            options={names.map((n, i) => [String(i), `$${n}$`])}
+            options={names.map((n, i) => ({
+              value: String(i),
+              presentation: `$${n}$`,
+              speech: characterSpeech[i],
+            }))}
           />
           <Choice
             label="Second character"
             value={String(b)}
             onChange={(v) => setB(+v)}
-            options={names.map((n, i) => [String(i), `$${n}$`])}
+            options={names.map((n, i) => ({
+              value: String(i),
+              presentation: `$${n}$`,
+              speech: characterSpeech[i],
+            }))}
           />
         </div>
         <M block>{`\\chi_{V\\otimes W}=\\chi_V\\chi_W=(${prod.join(",")})`}</M>
@@ -556,7 +588,7 @@ export function CharacterLab({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " Cube rotations give the character ($3,-1,-1,0,1$), the sign twist of the standard $S_{4}$ representation. The four-diagonal permutation module instead splits as $1\\oplus \\operatorname{Std}$. "
+                " Cube rotations give the character $(3,-1,-1,0,1)$, the sign twist of the standard $S_{4}$ representation. The four-diagonal permutation module instead splits as $1\\oplus \\operatorname{Std}$. "
               }
             </Prose>
           </p>

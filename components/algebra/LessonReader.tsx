@@ -7,6 +7,7 @@ import { Reference } from "./Sources";
 import { learningMetadata } from "@/lib/algebra/learning";
 import { guidedContent } from "@/lib/algebra/guided";
 import { GuidedReader } from "./GuidedReader";
+import { laboratoryAction } from "@/lib/algebra/laboratory-presentations";
 export function LessonReader({
   lesson,
   lessons,
@@ -126,7 +127,7 @@ export function LessonReader({
                       experiment?.focus({ preventScroll: true });
                     }}
                   >
-                    Open experiment
+                    {laboratoryAction(lesson.id)}
                   </button>
                 </div>
               </section>

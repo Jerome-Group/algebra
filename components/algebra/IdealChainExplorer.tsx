@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import { chainExamples, type ChainExample } from "@/lib/algebra/ideal-chains";
 import { Math as M, Prose } from "./Math";
@@ -27,36 +29,57 @@ export function IdealChainExplorer() {
       <div className="lab-controls">
         <label>
           Ring and chain
-          <select
+          <Choice
+            label={"Ring and chain"}
             value={example}
-            onChange={(event) => {
-              setExample(event.target.value as ChainExample);
+            onChange={(value) => {
+              setExample(value);
               reset();
             }}
-          >
-            {Object.entries(chainExamples).map(([id, item]) => (
-              <option key={id} value={id}>
-                {item.label}
-              </option>
-            ))}
-          </select>
+            options={[
+              {
+                value: "integerAscending",
+                presentation: "Ascending ideals in $\\mathbb Z$",
+                speech: "Ascending ideals in the integers",
+              },
+              {
+                value: "infiniteVariables",
+                presentation: "Fresh-variable ideals",
+                speech: "Fresh-variable ideals",
+              },
+              {
+                value: "integerDescending",
+                presentation: "Descending ideals in $\\mathbb Z$",
+                speech: "Descending ideals in the integers",
+              },
+              {
+                value: "finiteRing",
+                presentation: "Ideals in $\\mathbb Z/12\\mathbb Z$",
+                speech: "Ideals in the integers modulo 12",
+              },
+              {
+                value: "primeChain",
+                presentation: "Prime ideals in $F[X,Y]$",
+                speech: "Prime ideals in the polynomial ring F of X and Y",
+              },
+            ]}
+          />
         </label>
         <label>
           Stage <M focusable={false}>{"n"}</M>
-          <select
-            aria-label="Stage n"
+          <Choice
+            label="Stage n"
             value={stage}
-            onChange={(event) => {
-              setStage(Number(event.target.value));
+            onChange={(value) => {
+              setStage(value);
               reset();
             }}
-          >
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
+            options={[1, 2, 3, 4, 5, 6].map((n) => ({
+              value: n,
+              presentation: `$${n}$`,
+              speech: String(n),
+            }))}
+          />
         </label>
       </div>
       <p>

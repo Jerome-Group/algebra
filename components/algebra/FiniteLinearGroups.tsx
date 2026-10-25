@@ -31,8 +31,11 @@ export function MatrixFiniteLab() {
       <div className="lab-controls">
         <M block>{"|\\mathrm{GL}_2(\\mathbb F_2)|=(2^2-1)(2^2-2)=6"}</M>
         <p>
-          Choose a nonzero first column (3 choices), then a second column
-          outside its span (2 choices). Act on the three nonzero vectors.
+          <Prose>
+            {
+              "Choose a nonzero first column ($3$ choices), then a second column outside its span ($2$ choices). Act on the three nonzero vectors."
+            }
+          </Prose>
         </p>
       </div>
       <Diagram

@@ -1,4 +1,6 @@
 "use client";
+import { groupPresentation, type GroupAction } from "./GroupPresentation";
+
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
@@ -14,10 +16,17 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
           4,
       ),
     ),
-    [mode, setMode] = useState("conjugation"),
+    [mode, setMode] = useState<GroupAction>("conjugation"),
     [actor, setActor] = useState(1),
     [a, setA] = useState(1);
   const g = group(type, type === "S" ? 3 : n),
+    presentation = groupPresentation({
+      type,
+      n: type === "S" ? 3 : n,
+      labels: g.labels,
+    }),
+    action = presentation.action(mode),
+    labels = presentation.elements.map((element) => element.tex),
     N = g.labels.length,
     x = a % N,
     act = (h: number, y: number) =>
@@ -43,10 +52,26 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
             setA(1);
           }}
           options={[
-            ["D", `$D_{${n}}$ · ${2 * n} elements`],
-            ["S", "$S_3$ · 6 elements"],
-            ["Q", "$Q_8$ · 8 elements"],
-            ["C", `$C_{${n}}$ · ${n} elements`],
+            {
+              value: "D",
+              presentation: `$D_{${n}}$ · $${2 * n}$ elements`,
+              speech: `Dihedral group D ${n}, ${2 * n} elements`,
+            },
+            {
+              value: "S",
+              presentation: "$S_3$ · $6$ elements",
+              speech: "Symmetric group S 3, 6 elements",
+            },
+            {
+              value: "Q",
+              presentation: "$Q_8$ · $8$ elements",
+              speech: "Quaternion group Q 8, 8 elements",
+            },
+            {
+              value: "C",
+              presentation: `$C_{${n}}$ · $${n}$ elements`,
+              speech: `Cyclic group C ${n}, ${n} elements`,
+            },
           ]}
         />
         <Choice
@@ -54,8 +79,14 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
           value={mode}
           onChange={setMode}
           options={[
-            ["conjugation", String.raw`Conjugation $hxh^{-1}$`],
-            ["regular", "Left translation $hx$"],
+            {
+              value: "conjugation",
+              ...presentation.action("conjugation"),
+            },
+            {
+              value: "regular",
+              ...presentation.action("regular"),
+            },
           ]}
         />
       </div>
@@ -76,10 +107,11 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
           label="Acting element"
           value={String(actor % N)}
           onChange={(value) => setActor(Number(value))}
-          options={g.labels.map((label, index) => [
-            String(index),
-            `$${label}$`,
-          ])}
+          options={presentation.elements.map((element) => ({
+            value: element.value,
+            presentation: `$${element.tex}$`,
+            speech: element.speech,
+          }))}
         />
       </div>
       <div className="conjugacy-orbits">
@@ -95,9 +127,9 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
                   key={y}
                   onClick={() => setA(y)}
                   className={x === y ? "selected" : ""}
-                  aria-label={`Select orbit element ${y + 1}`}
+                  aria-label={`Select orbit element ${presentation.elements[y].speech}`}
                 >
-                  <M focusable={false}>{g.labels[y]}</M>
+                  <M focusable={false}>{labels[y]}</M>
                 </button>
               ))}
             </div>
@@ -107,25 +139,21 @@ export function ConjugationLab({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <M
           block
-        >{`${g.labels[actor % N]}\\cdot ${g.labels[x]}=${g.labels[act(actor % N, x)]}`}</M>
+        >{`\\left(${labels[actor % N]}\\right)\\cdot\\left(${labels[x]}\\right)=${labels[act(actor % N, x)]}`}</M>
         <M
           block
-        >{`|G|=${N}=|\\operatorname{Orb}(${g.labels[x]})|\\,|\\operatorname{Stab}(${g.labels[x]})|=${orbit.length}\\cdot${stabilizer.length}`}</M>
+        >{`|G|=${N}=|\\operatorname{Orb}(${labels[x]})|\\,|\\operatorname{Stab}(${labels[x]})|=${orbit.length}\\cdot${stabilizer.length}`}</M>
         <M
           block
-        >{`\\operatorname{Stab}(${g.labels[x]})=\\{${stabilizer.map((h) => g.labels[h]).join(",")}\\}`}</M>
+        >{`\\operatorname{Stab}(${labels[x]})=\\{${stabilizer.map((h) => labels[h]).join(",")}\\}`}</M>
         <p>
-          <Prose>
-            {mode === "regular"
-              ? "Left translation is transitive and free. Only the identity fixes $x$, since $hx=x$ implies $h=e$."
-              : "Under conjugation the stabilizer is $C_G(x)$; singleton orbits are exactly the central elements."}
-          </Prose>
+          <Prose>{action.explanation}</Prose>
         </p>
-        <M block>
-          {mode === "regular"
-            ? "G\\curvearrowright G,\\quad h\\cdot x=hx"
-            : `|G|=${orbits.map((o) => o.length).join("+")}`}
-        </M>
+        <M block>{`G\\curvearrowright G,\\quad ${action.definition}`}</M>
+        {mode === "conjugation" && (
+          <M block>{`|G|=${orbits.map((o) => o.length).join("+")}`}</M>
+        )}
+        {presentation.convention && <M block>{presentation.convention}</M>}
         <p>
           Changing the action changes both the orbit partition and the
           stabilizers—even though the group and underlying set stay the same.

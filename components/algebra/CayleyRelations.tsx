@@ -50,10 +50,16 @@ export function S3RelationLab() {
       </div>
       <div className="live-mathematics" aria-live="polite">
         <p>
-          <Prose>{String.raw`Written word $${wordLabel(word)}$ evaluates to $${permutationNames[model.current]}$. Shortest word length for this element: ${model.shortestWords.get(model.current)?.length}.`}</Prose>
+          <Prose>{String.raw`Written word $${wordLabel(word)}$ evaluates to $${permutationNames[model.current]}$. Shortest word length for this element: $${model.shortestWords.get(model.current)?.length}$.`}</Prose>
         </p>
         <p>
-          <Prose>{String.raw`${word.length > 0 && model.current === 0 ? "This word is an identity relation in $S_3$. One observed relation alone does not prove a presentation complete." : "The current word is not an identity relation; compare two words by their evaluated permutation."}`}</Prose>
+          <Prose>
+            {word.length === 0
+              ? "The empty word is the trivial identity relation in $S_3$. This alone does not prove a presentation complete."
+              : model.current === 0
+                ? "This word is an identity relation in $S_3$. One observed relation alone does not prove a presentation complete."
+                : "The current word is not an identity relation; compare two words by their evaluated permutation."}
+          </Prose>
         </p>
         <M block>{String.raw`r^3=e,\qquad s^2=e,\qquad srs=r^{-1}`}</M>
       </div>

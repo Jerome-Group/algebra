@@ -179,7 +179,7 @@
   align-items: center;
   gap: 7px;
 }
-.stat-strip span {
+.stat-strip > div > span {
   color: #819caa;
   font-size: 12px;
 }
@@ -195,7 +195,7 @@
   font-size: 13px;
 }
 .visual-panel summary {
-  color: #b2cbd8;
+  color: var(--ink);
   cursor: pointer;
   font-size: 12px;
   line-height: 1.6;
@@ -360,6 +360,21 @@
   max-height: 430px;
   padding: 12px 17px;
 }
+.ring-map > [data-slot="table-container"] {
+  overflow: visible;
+}
+.ring-map :is(th, td) {
+  min-width: 42px;
+  font-size: 16px;
+}
+.ring-map :is(th, td) .math-inline,
+.power-chain small .math-inline {
+  font-size: inherit;
+}
+.ring-map :is(th, td) .katex,
+.power-chain small .katex {
+  font-size: 1em;
+}
 .visual-panel .cayley-table td {
   cursor: pointer;
 }
@@ -389,8 +404,8 @@
   padding: 8px 2px;
 }
 .power-chain small {
-  font-size: 9px;
-  color: #6e91a4;
+  font-size: 12px;
+  color: inherit;
   margin-bottom: 5px;
 }
 .power-chain .zero {
@@ -446,14 +461,14 @@
 .multiplicities strong {
   font-size: 17px;
 }
-.multiplicities span {
+.multiplicities > div > span {
   color: #7595a7;
 }
 .success-note {
-  color: #8ad4b1 !important;
+  color: #216849 !important;
 }
 .error-note {
-  color: #f0b0a4 !important;
+  color: #a33c32 !important;
   border-left: 2px solid #b86567;
   padding-left: 10px;
 }
@@ -981,7 +996,7 @@
     .lab-intro p,
     .lab-tag,
     .scene-hint,
-    .stat-strip span,
+    .stat-strip > div > span,
     .range-control label,
     .exact-row label,
     .lab-controls > label,
@@ -1238,6 +1253,20 @@
   background: #f7f8fc;
   white-space: normal;
 }
+
+.tetrahedral-displacements table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.tetrahedral-displacements :is(th, td) {
+  padding: 9px 10px;
+  text-align: left;
+  font-size: 15px;
+}
+.tetrahedral-displacements :is(th, td) .math-inline {
+  font-size: inherit;
+}
 .experiment-context > button:disabled {
   color: #666;
   border-color: #aaa;
@@ -1280,7 +1309,7 @@
   font-size: 14px;
   margin: 0 0 8px;
 }
-.coset-tiles span {
+.coset-tiles > section > span {
   display: inline-block;
   padding: 5px 7px;
   margin: 4px;
@@ -1296,8 +1325,8 @@
   gap: 10px;
   margin: 20px 0;
 }
-.action-state span,
-.presentation-board span {
+.action-state > span,
+.presentation-board > span {
   border: 1px solid #8b97ad;
   padding: 8px;
   background: #edf0f7;

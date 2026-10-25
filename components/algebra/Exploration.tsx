@@ -5,6 +5,7 @@ import type { Lesson } from "@/lib/algebra/engine";
 import Laboratory from "./Laboratory";
 import { Prose } from "./Math";
 import { labContractPresentation } from "@/lib/algebra/lab-contract-presentations";
+import { laboratoryPresentation } from "@/lib/algebra/laboratory-presentations";
 
 export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [open, setOpen] = useState(true),
@@ -12,6 +13,7 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
   const [prediction, setPrediction] = useState("");
   const [testing, setTesting] = useState(false);
   const contract = labContractPresentation(lesson.id);
+  const presentation = laboratoryPresentation(lesson.id);
   const integratedPrediction =
     lesson.machine === "ideal-quotient-lattice" ||
     lesson.machine === "polynomial-factorisation" ||
@@ -26,16 +28,29 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
   return (
     <section
       className={`exploration ${expanded ? "expanded" : "compact"}`}
-      aria-label="Interactive mathematical experience"
+      aria-label={
+        presentation === "model"
+          ? "Interactive mathematical experience"
+          : "Mathematical illustration"
+      }
       id="experiment"
       tabIndex={-1}
     >
       <div className="exploration-heading">
         <span className="exploration-label">
-          {contract?.type.replaceAll("-", " ") || "Illustration"}
+          {presentation === "worked-example"
+            ? "Worked example"
+            : presentation === "reference-diagram"
+              ? "Mathematical diagram"
+              : contract?.type.replaceAll("-", " ") || "Model"}
         </span>
         <span className="exploration-description">
-          <Prose>{contract?.name || "Test an example"}</Prose>
+          <Prose>
+            {contract?.name ||
+              (presentation === "model"
+                ? "Test an example"
+                : lesson.navTitle || lesson.title)}
+          </Prose>
         </span>
         <div className="exploration-actions">
           {open && (
@@ -100,7 +115,11 @@ export default function Exploration({ lesson }: { lesson: Lesson }) {
             <Prose>{contract?.prediction || lesson.prompt}</Prose>
           </p>
           <p className="reading-caption">
-            <Prose>{contract?.debrief || lesson.labScope}</Prose>
+            <Prose>
+              {presentation === "worked-example"
+                ? "Follow the lesson's actual worked construction. Read the objects and hypotheses before the calculation, then use the reading for its proof."
+                : contract?.debrief || lesson.labScope}
+            </Prose>
           </p>
         </div>
         {(!contract || testing || integratedPrediction) && (

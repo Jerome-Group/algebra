@@ -1,22 +1,38 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import {
+  expectContainedMath,
+  expectExactMathRegion,
+} from "./public-math-segments.mjs";
 
 const cases = [
   [
     "foundations-fibers",
     "Try incompatible representatives",
     "not well-defined",
+    "prose",
   ],
-  ["mh2220-axioms", "Find an associativity failure", "Associativity: fails"],
-  ["mh2220-generators", "Try a proper generated subgroup", "Nonexample"],
-  ["mh2220-quotient", "Try the nonnormal subgroup", "Failure witness"],
+  [
+    "mh2220-axioms",
+    "Find an associativity failure",
+    "Associativity: fails",
+    "prose",
+  ],
+  [
+    "mh2220-generators",
+    "Try a proper generated subgroup",
+    "Nonexample",
+    "prose",
+  ],
+  ["mh2220-quotient", "Try the nonnormal subgroup", "Failure witness", "prose"],
   [
     "mh2220-actions",
     "Try a fixed point with a faithful action",
-    "Core of this point stabilizer: {e, (12), (23), (13), (123), (132)}",
+    String.raw`Core of this point stabilizer: $\{e, (12), (23), (13), (123), (132)\}$`,
+    "math",
   ],
 ];
-for (const [id, action, result] of cases) {
+for (const [id, action, result, kind] of cases) {
   test(`${id} prediction, keyboard experiment, failure witness and accessible reflow`, async ({
     page,
   }, testInfo) => {
@@ -37,11 +53,17 @@ for (const [id, action, result] of cases) {
     const failure = lab.getByRole("button", { name: action, exact: true });
     await failure.focus();
     await page.keyboard.press("Enter");
-    await expect(lab.locator(".live-mathematics")).toContainText(result);
+    if (kind === "math")
+      await expectContainedMath(lab.locator(".live-mathematics"), result);
+    else await expect(lab.locator(".live-mathematics")).toContainText(result);
     if (id === "mh2220-actions") {
       const properties = lab.getByRole("table", {
-        name: "Same group S₃, different action properties",
+        name: /different action properties/,
       });
+      await expectExactMathRegion(
+        properties.locator("caption"),
+        String.raw`Same group $S_3$, different action properties`,
+      );
       await expect(
         properties.getByRole("row", { name: "letters yes yes no no" }),
       ).toBeVisible();

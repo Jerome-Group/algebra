@@ -129,7 +129,7 @@ const definitions = [
       "dependency files",
       "browser executable",
       "build",
-      "target identity",
+      "target source and direct dependency identity",
     ],
     writes: [],
   },
@@ -170,7 +170,13 @@ const definitions = [
       ...targetFlags,
       ...launchFlags,
     },
-    reads: ["source", "build", "isolated browser", "dependency advisories"],
+    reads: [
+      "source",
+      "independent whole-file reports",
+      "build and output manifest",
+      "isolated browser",
+      "dependency advisories",
+    ],
     writes: [
       "build for build, engineering or all",
       "TypeScript cache for types or all",

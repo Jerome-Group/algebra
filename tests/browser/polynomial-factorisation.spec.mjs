@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import {
+  expectContainedMath,
+  expectAbsentMath,
+} from "./public-math-segments.mjs";
 
 for (const id of [
   "m3220-gauss",
@@ -22,29 +27,48 @@ for (const id of [
       .fill("X²+1 is irreducible over the rationals.");
     await reveal.focus();
     await page.keyboard.press("Enter");
-    await expect(lab).toContainText("Verdict: irreducible over ℚ");
-    await lab
-      .getByRole("combobox", { name: "Coefficient field" })
-      .selectOption("C");
+    await expectContainedMath(
+      lab,
+      String.raw`Verdict: irreducible over $\mathbb Q$`,
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Coefficient field" }),
+      "C",
+    );
     await expect(reveal).toBeDisabled();
-    await expect(lab).not.toContainText("Verdict: irreducible over ℚ");
+    await expectAbsentMath(
+      lab,
+      String.raw`Verdict: irreducible over $\mathbb Q$`,
+    );
+    await expect(lab.locator(".live-mathematics")).toHaveCount(0);
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("Over C, it splits at ±i.");
     await reveal.click();
-    await expect(lab).toContainText("(X−i)(X+i)");
-    await lab
-      .getByRole("combobox", { name: "Worked polynomial" })
-      .selectOption("rootless");
-    await lab
-      .getByRole("combobox", { name: "Coefficient field" })
-      .selectOption("Q");
+    await expectContainedMath(
+      lab,
+      String.raw`Factorisation equation over $\mathbb C$: $X^2+1=(X-i)(X+i)$`,
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Worked polynomial" }),
+      "rootless",
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Coefficient field" }),
+      "Q",
+    );
     await expect(reveal).toBeDisabled();
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("No rational roots but reducible as quadratics.");
     await reveal.click();
-    await expect(lab).toContainText("(X²+1)(X²+2)");
+    await expectContainedMath(
+      lab,
+      String.raw`Factorisation equation over $\mathbb Q$: $X^4+3X^2+2=(X^2+1)(X^2+2)$`,
+    );
     const failure = lab.getByRole("button", {
       name: "Try a failed-test counterexample",
     });

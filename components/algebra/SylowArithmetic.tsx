@@ -26,7 +26,11 @@ export function SylowCalculator() {
         label="Prime p"
         value={String(p)}
         onChange={(v) => setP(+v)}
-        options={[2, 3, 5, 7, 11].map((x) => [String(x), `$p = ${x}$`])}
+        options={[2, 3, 5, 7, 11].map((x) => ({
+          value: String(x),
+          presentation: `$p = ${x}$`,
+          speech: `p equals ${x}`,
+        }))}
       />
       <M block>{`|G|=${q}\\cdot${N / q},\\quad |P|=${q}`}</M>
       <M block>{`n_${p}\\mid ${N / q},\\quad n_${p}\\equiv1\\pmod{${p}}`}</M>

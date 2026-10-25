@@ -38,10 +38,26 @@ export function SquareModesLab() {
           value={component}
           onChange={setComponent}
           options={[
-            ["all", "Full vector"],
-            ["constant", "Constant line"],
-            ["alternating", "Alternating line"],
-            ["contrast", "Opposite contrasts"],
+            {
+              value: "all",
+              presentation: "Full vector",
+              speech: "Full vector",
+            },
+            {
+              value: "constant",
+              presentation: "Constant line",
+              speech: "Constant line",
+            },
+            {
+              value: "alternating",
+              presentation: "Alternating line",
+              speech: "Alternating line",
+            },
+            {
+              value: "contrast",
+              presentation: "Opposite contrasts",
+              speech: "Opposite contrasts",
+            },
           ]}
         />
         <button aria-label="Apply r" onClick={() => setR(mod(r + 1, 4))}>

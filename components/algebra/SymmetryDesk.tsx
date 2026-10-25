@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Math as M } from "./Math";
+import { SvgMath } from "./SvgMath";
 
 const names = ["A", "B", "C", "D"];
 const positions = [
@@ -61,7 +62,7 @@ export function SymmetryDesk({ open }: { open: (id: string) => void }) {
           return (
             <g key={name}>
               <circle cx={x} cy={y} r="19" className={`vertex-${i}`} />
-              <text
+              <SvgMath
                 x={x}
                 y={y + 5}
                 textAnchor="middle"
@@ -69,8 +70,8 @@ export function SymmetryDesk({ open }: { open: (id: string) => void }) {
                 fontSize="16"
                 fontWeight="700"
               >
-                {name}
-              </text>
+                {String.raw`\mathrm{${name}}`}
+              </SvgMath>
             </g>
           );
         })}
@@ -85,7 +86,9 @@ export function SymmetryDesk({ open }: { open: (id: string) => void }) {
         </text>
       </svg>
       <div className="desk-moves">
-        <button onClick={() => act("r")}>Rotate 90° clockwise</button>
+        <button aria-label="Rotate 90° clockwise" onClick={() => act("r")}>
+          Rotate <M focusable={false}>{"90^{\\circ}"}</M> clockwise
+        </button>
         <button onClick={() => act("s")}>Reflect across vertical axis</button>
         <button
           onClick={() => {

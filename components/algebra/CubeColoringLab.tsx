@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import {
   fixedColoringLedger,
@@ -39,18 +41,18 @@ export function CubeColoringLab() {
           </select>
         </label>
         <label>
-          Labeled colors <M focusable={false}>{"q"}</M>, currently {colors}
-          <select
-            aria-label="Labeled colors q"
+          Labeled colors <M focusable={false}>{"q"}</M>, currently{" "}
+          <M focusable={false}>{String(colors)}</M>
+          <Choice
+            label="Labeled colors q"
             value={colors}
-            onChange={(event) => setColors(Number(event.target.value))}
-          >
-            {[2, 3, 4].map((value) => (
-              <option key={value} value={value}>
-                {value} colors
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setColors(value)}
+            options={[2, 3, 4].map((value) => ({
+              value: value,
+              presentation: `$${value}$ colors`,
+              speech: `${value} colors`,
+            }))}
+          />
         </label>
       </div>
       <ColoringLedgerView

@@ -1,7 +1,8 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import {
-  fieldLabels,
   polynomialCases,
   polynomialReading,
   type CoefficientField,
@@ -37,35 +38,70 @@ export function PolynomialFactorisation() {
       <div className="lab-controls">
         <label>
           Worked polynomial
-          <select
+          <Choice
+            label={"Worked polynomial"}
             value={example}
-            onChange={(event) => {
-              setExample(event.target.value as PolynomialCase);
+            onChange={(value) => {
+              setExample(value);
               reset();
             }}
-          >
-            {Object.entries(polynomialCases).map(([id, item]) => (
-              <option value={id} key={id}>
-                {item.label} — {item.name}
-              </option>
-            ))}
-          </select>
+            options={[
+              {
+                value: "quadratic",
+                presentation: `$${polynomialTex.quadratic}$ · ${polynomialCases.quadratic.name}`,
+                speech: "X squared plus 1. Quadratic comparison",
+              },
+              {
+                value: "shifted",
+                presentation: `$${polynomialTex.shifted}$ · ${polynomialCases.shifted.name}`,
+                speech: "X to power 4 plus 1. Shifted Eisenstein",
+              },
+              {
+                value: "rootless",
+                presentation: `$${polynomialTex.rootless}$ · ${polynomialCases.rootless.name}`,
+                speech:
+                  "X to power 4 plus 3 X squared plus 2. Rootless quartic",
+              },
+              {
+                value: "content",
+                presentation: `$${polynomialTex.content}$ · ${polynomialCases.content.name}`,
+                speech: "2 X squared plus 2 X plus 2. Content and reduction",
+              },
+            ]}
+          />
         </label>
         <label>
           Coefficient field
-          <select
+          <Choice
+            label={"Coefficient field"}
             value={field}
-            onChange={(event) => {
-              setField(event.target.value as CoefficientField);
+            onChange={(value) => {
+              setField(value);
               reset();
             }}
-          >
-            {Object.entries(fieldLabels).map(([id, label]) => (
-              <option value={id} key={id}>
-                {label}
-              </option>
-            ))}
-          </select>
+            options={[
+              {
+                value: "Q",
+                presentation: "$\\mathbb Q$",
+                speech: "Rational numbers",
+              },
+              {
+                value: "R",
+                presentation: "$\\mathbb R$",
+                speech: "Real numbers",
+              },
+              {
+                value: "C",
+                presentation: "$\\mathbb C$",
+                speech: "Complex numbers",
+              },
+              {
+                value: "F2",
+                presentation: "$\\mathbb F_2$",
+                speech: "Field with 2 elements",
+              },
+            ]}
+          />
         </label>
       </div>
       <p>

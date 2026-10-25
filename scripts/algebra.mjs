@@ -3,6 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { directDependencies } from "./lib/direct-dependencies.mjs";
+
 import { commands, actionKinds, parseArguments } from "./algebra-contract.mjs";
 import {
   buildIdentity,
@@ -86,6 +88,21 @@ async function doctor(values) {
     process.version,
     "Install Node.js 24 or newer",
   );
+  try {
+    const coherence = directDependencies(root);
+    record("direct-dependency-coherence", true, {
+      digest: coherence.digest,
+      count: coherence.count,
+      scope: coherence.scope,
+    });
+  } catch (error) {
+    record(
+      "direct-dependency-coherence",
+      false,
+      error.message,
+      "Install coherent locked dependencies in this checkout",
+    );
+  }
   const dependencies = [
     "typescript/lib/typescript.js",
     "@playwright/test/cli.js",
@@ -136,7 +153,11 @@ async function doctor(values) {
   } catch {}
   const buildUsable =
     fs.existsSync(artifact) &&
-    builtIdentity?.sourceDigest === expected?.sourceDigest;
+    builtIdentity?.version === 2 &&
+    builtIdentity?.sourceDigest === expected?.sourceDigest &&
+    builtIdentity?.directDependencyDigest ===
+      expected?.directDependencyDigest &&
+    builtIdentity?.directDependencyCount === expected?.directDependencyCount;
   const target = targetOptions(values);
   const requiresBuild = values.built || target.owner?.kind === "built";
   if (requiresBuild)
@@ -191,6 +212,13 @@ async function doctor(values) {
       );
     if (identity)
       record(
+        "target-dependency-match",
+        identity.dependencyMatch === "matched",
+        identity.dependencyMatch,
+        "Rebuild and restart coherent direct dependencies",
+      );
+    if (identity)
+      record(
         "target-source-match",
         identity.sourceMatch === "matched",
         identity.sourceMatch,
@@ -218,7 +246,7 @@ async function inspect(lesson, { origin, actions = [] }) {
   const url = new URL(origin);
   if (!["http:", "https:"].includes(url.protocol))
     throw Error("URL must use HTTP or HTTPS");
-  const { chromium } = await import("@playwright/test");
+  const { chromium, expect } = await import("@playwright/test");
   const browser = await chromium.launch();
   try {
     const page = await browser.newPage();
@@ -257,6 +285,10 @@ async function inspect(lesson, { origin, actions = [] }) {
         if (await target.evaluate((element) => element.tagName === "SELECT"))
           await target.selectOption(String(value));
         else {
+          const triggerId = await target.getAttribute("id");
+          if (!triggerId)
+            throw Error("Custom choice requires a stable trigger id");
+          const trigger = page.locator(`[id=${JSON.stringify(triggerId)}]`);
           await target.click();
           const options = page.getByRole("option");
           if (
@@ -274,6 +306,9 @@ async function inspect(lesson, { origin, actions = [] }) {
           if (!(await choice.isEnabled()))
             throw Error("Chosen option disabled");
           await choice.click();
+          await expect(trigger).toHaveAttribute("aria-expanded", "false");
+          await expect(page.getByRole("listbox")).toBeHidden();
+          await expect(trigger).toBeFocused();
         }
       } else if (["textbox", "searchbox", "spinbutton"].includes(kind))
         await target.fill(String(value));
@@ -341,10 +376,17 @@ async function inspect(lesson, { origin, actions = [] }) {
       const options = await page.getByRole("option").evaluateAll((items) =>
         items.map((item, index) => ({
           index,
-          label: item.textContent?.replace(/\s+/g, " ").trim(),
+          label: item.getAttribute("aria-label"),
           disabled: item.getAttribute("aria-disabled") === "true",
         })),
       );
+      for (const option of options) {
+        if (!option.label?.trim())
+          throw Error("Custom option requires a plain accessible label");
+        await expect(
+          page.getByRole("option").nth(option.index),
+        ).toHaveAccessibleName(option.label);
+      }
       customChoices.push({
         label,
         options,
@@ -352,6 +394,9 @@ async function inspect(lesson, { origin, actions = [] }) {
           "exact accessible option label or zero-based numeric index",
       });
       await page.keyboard.press("Escape");
+      await expect(control).toHaveAttribute("aria-expanded", "false");
+      await expect(page.getByRole("listbox")).toBeHidden();
+      await expect(control).toBeFocused();
     }
     const result = {
       ...(await page.locator(".algebra-app").evaluate((app) => ({
@@ -385,6 +430,13 @@ async function inspect(lesson, { origin, actions = [] }) {
         mathematicalOutput:
           app.querySelector(".live-mathematics")?.textContent ??
           app.querySelector(".visual-panel")?.textContent,
+        mathematicalExpressions: [
+          ...(
+            app.querySelector(".live-mathematics") ??
+            app.querySelector(".visual-panel") ??
+            app
+          ).querySelectorAll('annotation[encoding="application/x-tex"]'),
+        ].map((annotation) => annotation.textContent),
         mathErrors: app.querySelectorAll(".katex-error").length,
       }))),
       customChoices,
@@ -557,171 +609,236 @@ try {
       };
       envelope.evidence.push(inspection.evidence);
     } else if (command === "verify") {
+      const { recordVerification } =
+        await import("./lib/public-math-v2/session.mjs");
       const layer = options.layer;
-      if (["build", "engineering", "all"].includes(layer))
-        await check("production-build", process.execPath, [
-          "node_modules/vinext/dist/cli.js",
-          "build",
-        ]);
-      if (["engineering", "all"].includes(layer)) {
-        await check("formatting", "npm", ["run", "format:check"]);
-        await check("lint", "npm", ["run", "lint"]);
-      }
-      if (["dependencies", "all"].includes(layer))
-        await check(
-          "dependency-high-severity-audit",
-          "npm",
-          ["audit", "--audit-level=high", "--json"],
-          {},
-          60000,
-        );
-      if (["map", "all"].includes(layer)) {
-        const errors = validateMap(map);
-        const current =
-          fs.existsSync(mapPath) &&
-          JSON.stringify(JSON.parse(fs.readFileSync(mapPath, "utf8"))) ===
-            JSON.stringify(map);
-        envelope.checks.push(
-          {
-            name: "catalogue-integrity",
-            status: errors.length ? "failed" : "passed",
-            errors,
-          },
-          {
-            name: "feature-map-current",
-            status: current ? "passed" : "failed",
-            ...(current
-              ? {}
-              : {
-                  remedy:
-                    "Regenerate with map --write after source integration",
-                }),
-          },
-        );
-      }
-      if (["types", "all"].includes(layer))
-        await check("typescript-contracts", process.execPath, [
-          "node_modules/typescript/bin/tsc",
-          "--noEmit",
-        ]);
-      if (["math", "all"].includes(layer))
-        await check("mathematical-and-content-suites", process.execPath, [
-          "--test",
-          ...map.tests.filter(
-            (file) => !file.endsWith("ui-components.test.mjs"),
-          ),
-        ]);
-      if (["render", "all"].includes(layer))
-        await check(
-          "built-artifact-and-component-rendering",
-          process.execPath,
-          ["--test", "tests/ui-components.test.mjs"],
-        );
-      if (["browser", "all"].includes(layer)) {
-        const errors = validateMap(map, { group: options.feature });
-        if (errors.length)
-          throw Object.assign(
-            new Error(
-              `Verification map has unresolved links: ${errors.join("; ")}`,
-            ),
-            { code: "INVALID_MAP" },
-          );
-        const group = options.feature
-          ? map.verificationGroups.find((group) => group.id === options.feature)
-          : null;
-        const target = targetOptions(options);
-        let owned;
-        runDir ??= newRun(root);
-        try {
-          if (!target.origin)
-            owned = await launchServer(root, {
-              built: options.built || layer === "all",
-              port: options.port,
-              runDir: path.join(runDir, "server"),
-            });
-          const origin = target.origin ?? owned.origin;
-          const owner = target.owner ?? owned;
-          if (loopback(origin) && !owner) readOwner(null, root);
-          envelope.target = {
-            ...(await observeIdentity(origin, buildIdentity(root), owner)),
-            ownership: owner?.ownerFile ?? "external",
-            kind: owner?.kind ?? "external",
-            auth: owner?.accountFixture
-              ? "guest and synthetic trusted identity fixture"
-              : "guest; provider sign-in unverified",
-            backend: owner?.accountFixture
-              ? "isolated migrated local D1"
-              : "target backend unverified",
-            accountCoverage: owner?.accountFixture
-              ? "local fixture cases enabled; hosted provider and gateway checks unverified"
-              : "local account fixture cases unreachable; provider checks unverified",
-          };
-          requireOwnerIdentity(envelope.target, owner);
-          envelope.checks.push({
-            name: "target-source-identity",
-            status:
-              envelope.target.sourceMatch === "matched" ? "passed" : "failed",
-            detail: envelope.target.sourceMatch,
-            remedy:
-              "Build and run expected sources or report this target only as an unmatched observation",
-          });
-          const artifacts = path.join(runDir, "browser");
-          const reportFile = path.join(runDir, "playwright-report.json");
-          await check(
-            "browser-interactions",
-            process.execPath,
-            [
-              "node_modules/@playwright/test/cli.js",
-              "test",
-              ...(group?.journeys ?? []),
-              ...(options.shard ? [`--shard=${options.shard}`] : []),
-            ],
-            {
-              ALGEBRA_TEST_ORIGIN: origin,
-              ALGEBRA_EVIDENCE_DIR: artifacts,
-              ALGEBRA_RUN_EVIDENCE: "",
-              ALGEBRA_REPORT_FILE: reportFile,
-              ALGEBRA_LOCAL_OWNER: owner?.ownerFile ?? "",
-              ALGEBRA_ACCOUNT_FIXTURE: owner?.accountFixture ? "1" : "0",
-              ALGEBRA_AUDIT_KIND: owner?.kind ?? "external",
-              ALGEBRA_AUDIT_SOURCE_MATCH: envelope.target.sourceMatch,
-              ALGEBRA_AUDIT_SOURCE_DIGEST:
-                envelope.target.observed?.sourceDigest ?? "unknown",
-            },
-            8 * 60_000,
-          );
-          if (fs.existsSync(reportFile)) {
-            const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
-            envelope.browserResults = report.stats;
-            envelope.evidence.push({
-              kind: "browser-report",
-              path: reportFile,
-            });
-            if (
-              report.stats.expected +
-                report.stats.unexpected +
-                report.stats.flaky ===
-              0
-            )
-              envelope.checks.push({
-                name: "browser-cases-executed",
-                status: "failed",
-                detail:
-                  "No browser case executed. Choose a populated shard or feature",
-              });
+      const execution = await recordVerification(
+        root,
+        {
+          ...options,
+          built:
+            options.built || targetOptions(options).owner?.kind === "built",
+        },
+        async (recording) => {
+          if (["build", "engineering", "all"].includes(layer))
+            await check("production-build", process.execPath, [
+              "scripts/public-math-build.mjs",
+            ]);
+          if (["engineering", "all"].includes(layer)) {
+            await check("formatting", "npm", ["run", "format:check"]);
+            await check("lint", "npm", ["run", "lint"]);
           }
-          if (fs.existsSync(artifacts))
-            envelope.evidence.push({
-              kind: "browser-artifacts",
-              path: artifacts,
+          if (["dependencies", "all"].includes(layer))
+            await check(
+              "dependency-high-severity-audit",
+              "npm",
+              ["audit", "--audit-level=high", "--json"],
+              {},
+              60000,
+            );
+          if (["map", "all"].includes(layer)) {
+            const errors = validateMap(map);
+            const current =
+              fs.existsSync(mapPath) &&
+              JSON.stringify(JSON.parse(fs.readFileSync(mapPath, "utf8"))) ===
+                JSON.stringify(map);
+            envelope.checks.push(
+              {
+                name: "catalogue-integrity",
+                status: errors.length ? "failed" : "passed",
+                errors,
+              },
+              {
+                name: "feature-map-current",
+                status: current ? "passed" : "failed",
+                ...(current
+                  ? {}
+                  : {
+                      remedy:
+                        "Regenerate with map --write after source integration",
+                    }),
+              },
+            );
+          }
+          if (["types", "all"].includes(layer))
+            await check("typescript-contracts", process.execPath, [
+              "node_modules/typescript/bin/tsc",
+              "--noEmit",
+            ]);
+          if (["math", "all"].includes(layer)) {
+            await recording.run("node:test", (descriptor) =>
+              check(
+                "mathematical-and-content-suites",
+                process.execPath,
+                [
+                  "--test",
+                  ...(descriptor
+                    ? [
+                        "--test-reporter=./scripts/public-math-node-reporter.mjs",
+                      ]
+                    : []),
+                  ...map.tests.filter(
+                    (file) => !file.endsWith("ui-components.test.mjs"),
+                  ),
+                ],
+                descriptor
+                  ? { ALGEBRA_PUBLIC_MATH_DESCRIPTOR: descriptor.file }
+                  : {},
+              ),
+            );
+          }
+          if (["render", "all"].includes(layer))
+            await check(
+              "built-artifact-and-component-rendering",
+              process.execPath,
+              ["--test", "tests/ui-components.test.mjs"],
+            );
+          if (["browser", "all"].includes(layer)) {
+            const errors = validateMap(map, { group: options.feature });
+            if (errors.length)
+              throw Object.assign(
+                new Error(
+                  `Verification map has unresolved links: ${errors.join("; ")}`,
+                ),
+                { code: "INVALID_MAP" },
+              );
+            const group = options.feature
+              ? map.verificationGroups.find(
+                  (group) => group.id === options.feature,
+                )
+              : null;
+            const target = targetOptions(options);
+            await recording.run("playwright", async (descriptor) => {
+              let owned;
+              runDir ??= newRun(root);
+              try {
+                if (!target.origin)
+                  owned = await launchServer(root, {
+                    built: options.built || layer === "all",
+                    port: options.port,
+                    runDir:
+                      recording.serverDirectory ?? path.join(runDir, "server"),
+                  });
+                const origin = target.origin ?? owned.origin;
+                const owner = target.owner ?? owned;
+                if (loopback(origin) && !owner) readOwner(null, root);
+                envelope.target = {
+                  ...(await observeIdentity(
+                    origin,
+                    buildIdentity(root),
+                    owner,
+                  )),
+                  ownership: owner?.ownerFile ?? "external",
+                  kind: owner?.kind ?? "external",
+                  auth: owner?.accountFixture
+                    ? "guest and synthetic trusted identity fixture"
+                    : "guest; provider sign-in unverified",
+                  backend: owner?.accountFixture
+                    ? "isolated migrated local D1"
+                    : "target backend unverified",
+                  accountCoverage: owner?.accountFixture
+                    ? "local fixture cases enabled; hosted provider and gateway checks unverified"
+                    : "local account fixture cases unreachable; provider checks unverified",
+                };
+                requireOwnerIdentity(envelope.target, owner);
+                envelope.checks.push({
+                  name: "target-source-identity",
+                  status:
+                    envelope.target.sourceMatch === "matched" &&
+                    envelope.target.dependencyMatch === "matched"
+                      ? "passed"
+                      : "failed",
+                  detail: envelope.target.sourceMatch,
+                  remedy:
+                    "Build and run expected sources or report this target only as an unmatched observation",
+                });
+                const artifacts = path.join(runDir, "browser");
+                const reportFile = path.join(runDir, "playwright-report.json");
+                const browserCheck = await check(
+                  "browser-interactions",
+                  process.execPath,
+                  [
+                    "node_modules/@playwright/test/cli.js",
+                    "test",
+                    ...(group?.journeys ?? []),
+                    ...(options.shard ? [`--shard=${options.shard}`] : []),
+                  ],
+                  {
+                    ...(descriptor
+                      ? { ALGEBRA_PUBLIC_MATH_DESCRIPTOR: descriptor.file }
+                      : {}),
+                    ALGEBRA_TEST_ORIGIN: origin,
+                    ALGEBRA_EVIDENCE_DIR: artifacts,
+                    ALGEBRA_RUN_EVIDENCE: "",
+                    ALGEBRA_REPORT_FILE: reportFile,
+                    ALGEBRA_LOCAL_OWNER: owner?.ownerFile ?? "",
+                    ALGEBRA_ACCOUNT_FIXTURE: owner?.accountFixture ? "1" : "0",
+                    ALGEBRA_AUDIT_KIND: owner?.kind ?? "external",
+                    ALGEBRA_AUDIT_SOURCE_MATCH: envelope.target.sourceMatch,
+                    ALGEBRA_AUDIT_SOURCE_DIGEST:
+                      envelope.target.observed?.sourceDigest ?? "unknown",
+                  },
+                  (options.shard ? 8 : 20) * 60_000,
+                );
+                if (fs.existsSync(reportFile)) {
+                  const report = JSON.parse(
+                    fs.readFileSync(reportFile, "utf8"),
+                  );
+                  envelope.browserResults = report.stats;
+                  envelope.evidence.push({
+                    kind: "browser-report",
+                    path: reportFile,
+                  });
+                  if (
+                    report.stats.expected +
+                      report.stats.unexpected +
+                      report.stats.flaky ===
+                    0
+                  )
+                    envelope.checks.push({
+                      name: "browser-cases-executed",
+                      status: "failed",
+                      detail:
+                        "No browser case executed. Choose a populated shard or feature",
+                    });
+                }
+                if (fs.existsSync(artifacts))
+                  envelope.evidence.push({
+                    kind: "browser-artifacts",
+                    path: artifacts,
+                  });
+                return browserCheck;
+              } finally {
+                if (owned) {
+                  const cleanup = await stopServer(owned.ownerFile, root);
+                  envelope.evidence.push({
+                    kind: "server-cleanup",
+                    ...cleanup,
+                  });
+                  if (recording.serverDirectory)
+                    await recording.cleanup(
+                      owned.ownerFile,
+                      cleanup,
+                      !(await listening(new URL(owned.origin).port)),
+                    );
+                }
+              }
             });
-        } finally {
-          if (owned)
-            envelope.evidence.push({
-              kind: "server-cleanup",
-              ...(await stopServer(owned.ownerFile, root)),
-            });
-        }
+          }
+          return { checks: envelope.checks };
+        },
+      );
+      if (execution.directory) {
+        envelope.evidence.push({
+          kind: "public-math-execution",
+          path: execution.directory,
+          partial: Boolean(execution.partial),
+        });
+        if (layer === "all")
+          envelope.checks.push({
+            name: "public-math-required-execution",
+            status: execution.satisfiesRequirement ? "passed" : "failed",
+          });
       }
       envelope.ok = envelope.checks.every((check) => check.status === "passed");
       envelope.result = {

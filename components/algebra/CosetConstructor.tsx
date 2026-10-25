@@ -1,4 +1,7 @@
 "use client";
+import { symmetricElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
@@ -9,10 +12,26 @@ import {
 } from "@/lib/algebra/foundation-labs";
 import { Math as M, Prose } from "./Math";
 const subgroups = [
-  { name: "{e,(12)} — not normal", elements: [0, 1] },
-  { name: "A3={e,(123),(132)} — normal", elements: [0, 4, 5] },
-  { name: "{e} — normal", elements: [0] },
-  { name: "S3 — normal", elements: [0, 1, 2, 3, 4, 5] },
+  {
+    presentation: String.raw`$\{e,(12)\}$ · not normal`,
+    speech: "Subgroup containing identity and transposition 1 2, not normal",
+    elements: [0, 1],
+  },
+  {
+    presentation: String.raw`$A_3=\{e,(123),(132)\}$ · normal`,
+    speech: "A 3 containing identity, cycle 1 2 3 and cycle 1 3 2, normal",
+    elements: [0, 4, 5],
+  },
+  {
+    presentation: String.raw`$\{e\}$ · normal`,
+    speech: "Subgroup containing only the identity, normal",
+    elements: [0],
+  },
+  {
+    presentation: "$S_3$ · normal",
+    speech: "Whole symmetric group S 3, normal",
+    elements: [0, 1, 2, 3, 4, 5],
+  },
 ];
 const names = (elements: number[]) =>
   String.raw`\{${elements.map((element) => permutationNames[element]).join(", ")}\}`;
@@ -36,37 +55,35 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
       </p>
       <label>
         Subgroup <M focusable={false}>{String.raw`H`}</M>
-        <select
-          aria-label="Subgroup H"
+        <Choice
+          label="Subgroup H"
           value={selection}
-          onChange={(event) => setSelection(Number(event.target.value))}
-        >
-          {subgroups.map((group, index) => (
-            <option key={group.name} value={index}>
-              {group.name}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setSelection(value)}
+          options={subgroups.map((group, index) => ({
+            value: index,
+            presentation: group.presentation,
+            speech: group.speech,
+          }))}
+        />
       </label>
       <label>
         Representative <M focusable={false}>{String.raw`a`}</M>
-        <select
-          aria-label="Representative a"
+        <Choice
+          label="Representative a"
           value={representative}
-          onChange={(event) => setRepresentative(Number(event.target.value))}
-        >
-          {permutationNames.map((name, index) => (
-            <option key={name} value={index}>
-              {name}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setRepresentative(value)}
+          options={permutationNames.map((name, index) => ({
+            value: index,
+            presentation: `$${name}$`,
+            speech: symmetricElementSpeech[index],
+          }))}
+        />
       </label>
       <div className="coset-tiles">
         {model.cosets.map((coset, index) => (
           <section key={index}>
             <h3>
-              <Prose>{String.raw`Class ${index}: $${permutationNames[coset[0]]}H$`}</Prose>
+              <Prose>{String.raw`Class $${index}$: $${permutationNames[coset[0]]}H$`}</Prose>
             </h3>
             {coset.map((element) => (
               <span key={element}>
@@ -95,7 +112,7 @@ export function CosetConstructor({ lesson }: { lesson: Lesson }) {
         </p>
         {witness && (
           <p>
-            <Prose>{String.raw`Failure witness: $${permutationNames[witness.first]}H=${permutationNames[witness.replacement]}H$, but multiplying by $${permutationNames[witness.second]}H$ gives class ${witness.originalClass} using the first representative and class ${witness.changedClass} using the replacement.`}</Prose>
+            <Prose>{String.raw`Failure witness: $${permutationNames[witness.first]}H=${permutationNames[witness.replacement]}H$, but multiplying by $${permutationNames[witness.second]}H$ gives class $${witness.originalClass}$ using the first representative and class $${witness.changedClass}$ using the replacement.`}</Prose>
           </p>
         )}
       </div>

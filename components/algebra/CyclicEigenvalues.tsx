@@ -25,10 +25,11 @@ export function CyclicLab({ lesson }: { lesson: Lesson }) {
             setN(+v);
             setPower(1);
           }}
-          options={[3, 4, 5, 6, 8].map((n) => [
-            String(n),
-            `$C_{${n}}$ on $\\mathbb R^3$`,
-          ])}
+          options={[3, 4, 5, 6, 8].map((n) => ({
+            value: String(n),
+            presentation: `$C_{${n}}$ on $\\mathbb R^3$`,
+            speech: `Cyclic group of order ${n} on real space of dimension 3`,
+          }))}
         />
         <span className="lab-tag">Axis and rotation plane</span>
       </div>

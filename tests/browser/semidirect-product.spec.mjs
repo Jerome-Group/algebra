@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 test("V08 constructs S3 and C6 with valid actions, tables and failure", async ({
   page,
@@ -16,27 +18,35 @@ test("V08 constructs S3 and C6 with valid actions, tables and failure", async ({
   const lab = page.getByRole("region", {
     name: "Semidirect product constructor",
   });
-  await lab
-    .getByRole("combobox", {
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", {
       name: "Prediction: do the displayed pairs commute?",
-    })
-    .click();
-  await page.getByRole("option", { name: "No" }).click();
+    }),
+    "no",
+  );
   await expect(lab.getByRole("status")).toContainText("prediction is correct");
-  await expect(
+  await expectContainedMath(
     lab.getByRole("table", { name: /Rows multiply columns/ }),
-  ).toContainText("(2,1)");
+    String.raw`$(2,1)$`,
+  );
   await expect(
     lab.getByRole("table", { name: /Distinct subgroups/ }).locator("tbody tr"),
   ).toHaveCount(6);
-  await lab.getByRole("combobox", { name: "Action α(s) on C₃" }).click();
-  await page.getByRole("option", { name: /Trivial/ }).click();
-  await expect(lab).toContainText("trivial action yields C₆");
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Action α(s) on C₃" }),
+    "trivial",
+  );
+  await expectContainedMath(lab, String.raw`trivial action yields $C_6$`);
   await expect(
     lab.getByRole("table", { name: /Distinct subgroups/ }).locator("tbody tr"),
   ).toHaveCount(4);
-  await lab.getByRole("combobox", { name: "Action α(s) on C₃" }).click();
-  await page.getByRole("option", { name: /Invalid/ }).click();
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Action α(s) on C₃" }),
+    "invalid",
+  );
   await expect(lab.getByRole("status")).toContainText("Rejected action");
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });

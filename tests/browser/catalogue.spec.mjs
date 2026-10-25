@@ -1,11 +1,21 @@
 import fs from "node:fs";
 import { test, expect } from "@playwright/test";
 import { createHash } from "node:crypto";
+import { cataloguePresentation, expectCatalogueText } from "./math-content.mjs";
+import {
+  sourceSegments,
+  expectExactMathRegion,
+} from "./public-math-segments.mjs";
 
 const catalogueSource = fs.readFileSync(
   new URL("../../lib/algebra/lessons.json", import.meta.url),
 );
 const lessons = JSON.parse(catalogueSource);
+const presentations = JSON.parse(
+  fs.readFileSync(
+    new URL("../../lib/algebra/laboratory-presentations.json", import.meta.url),
+  ),
+);
 const testCatalogueSha256 = createHash("sha256")
   .update(catalogueSource)
   .digest("hex");
@@ -44,7 +54,52 @@ for (const lesson of lessons) {
             );
           await start.click();
         }
-        if (
+        const presentation = presentations[lesson.id];
+        if (presentation === "worked-example") {
+          const worked = page.getByRole("region", {
+            name: "Worked mathematical construction",
+            exact: true,
+          });
+          await expect(worked).toBeVisible();
+          await expect(worked.locator(".worked-steps li")).toHaveCount(
+            lesson.worked.steps.length,
+          );
+          for (const [index, step] of lesson.worked.steps.entries())
+            await expectCatalogueText(
+              worked.locator(".worked-steps li").nth(index),
+              step,
+            );
+          await expect(
+            page.locator(".structure-node, .relationship-steps"),
+          ).toHaveCount(0);
+        } else if (lesson.id === "m3220-krull") {
+          await expect(
+            page.getByRole("figure", { name: "Integer ring", exact: true }),
+          ).toBeVisible();
+          await expect(
+            page.getByRole("figure", {
+              name: "Polynomial ring over a field",
+              exact: true,
+            }),
+          ).toBeVisible();
+        } else if (
+          lesson.id.startsWith("ureca-theory-tetrahedron-") &&
+          presentation === "model"
+        ) {
+          const extensions = page.getByRole("table", {
+            name: "First-order spring extensions",
+            exact: true,
+          });
+          await expect(extensions.locator("tbody tr")).toHaveCount(6);
+          await expect(extensions.locator("tbody td annotation")).toHaveText([
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+          ]);
+        } else if (
           lesson.machine === "diagram" &&
           lesson.id !== "characters-burnside" &&
           lesson.parameters?.nodes?.length
@@ -57,24 +112,49 @@ for (const lesson of lessons) {
             }),
           ).toBeVisible();
           await expect(panel.locator(".structure-node")).toHaveCount(
-            lesson.parameters.nodes.length,
+            lesson.parameters?.mode === "euclidean"
+              ? 4
+              : lesson.parameters.nodes.length,
           );
           if (lesson.parameters.nodes.some((node) => !node.text))
             await expect(panel.locator(".katex").first()).toBeVisible();
           const relationships = panel.locator(".relationship-steps button");
           await expect(relationships).toHaveCount(
-            lesson.parameters.edges.length,
+            lesson.parameters?.mode === "euclidean"
+              ? 3
+              : lesson.parameters.edges.length,
           );
-          for (const control of [relationships.first(), relationships.last()]) {
-            const label = (await control.textContent()).replace(
-              /^\d+\.\s*/,
-              "",
-            );
+          for (const index of [0, (await relationships.count()) - 1]) {
+            const control = relationships.nth(index);
             await control.click();
             await expect(control).toHaveClass("active");
-            await expect(panel.locator(".relationship-readout")).toContainText(
-              label,
-            );
+            if (lesson.parameters?.mode === "euclidean")
+              await expect(
+                panel.locator(".relationship-readout annotation").first(),
+              ).toHaveText(
+                index === 0
+                  ? String.raw`\langle 84,30\rangle_{\mathbb Z}`
+                  : String.raw`\langle 24,6\rangle_{\mathbb Z}`,
+              );
+            else {
+              const [from, to, label] = lesson.parameters.edges[index];
+              const node = (id) =>
+                typeof id === "number"
+                  ? lesson.parameters.nodes[id]
+                  : lesson.parameters.nodes.find((item) => item.id === id);
+              const parts = (item) =>
+                item.text
+                  ? sourceSegments(cataloguePresentation(item.label))
+                  : [{ kind: "math", tex: item.label, display: false }];
+              await expectExactMathRegion(
+                panel.locator(".relationship-readout"),
+                [
+                  ...parts(node(from)),
+                  ...sourceSegments(cataloguePresentation(label)),
+                  ...parts(node(to)),
+                ],
+              );
+            }
           }
         } else
           await expect(

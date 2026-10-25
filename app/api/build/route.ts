@@ -3,6 +3,8 @@ declare const __ALGEBRA_BUILD_IDENTITY__: {
   algorithm: string;
   sourceDigest: string;
   inputCount: number;
+  directDependencyDigest: string;
+  directDependencyCount: number;
 };
 
 export function GET(request: Request) {

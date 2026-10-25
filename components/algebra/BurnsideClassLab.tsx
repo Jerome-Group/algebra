@@ -1,4 +1,5 @@
 "use client";
+import { Choice } from "./Groups";
 
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
@@ -21,17 +22,28 @@ export function BurnsideClassLab() {
       </p>
       <label>
         Representative <M focusable={false}>{"z"}</M>
-        <select
-          aria-label="Representative z"
+        <Choice
+          label="Representative z"
           value={selected}
-          onChange={(event) => setSelected(event.target.value as Case)}
-        >
-          <option value="identity">Identity boundary</option>
-          <option value="transposition">
-            Transposition in a Sylow 2-subgroup
-          </option>
-          <option value="cycle">Three-cycle in a Sylow 3-subgroup</option>
-        </select>
+          onChange={(value) => setSelected(value)}
+          options={[
+            {
+              value: "identity",
+              presentation: "Identity boundary",
+              speech: "Identity boundary",
+            },
+            {
+              value: "transposition",
+              presentation: "Transposition in a Sylow $2$-subgroup",
+              speech: "Transposition in a Sylow 2-subgroup",
+            },
+            {
+              value: "cycle",
+              presentation: "Three-cycle in a Sylow $3$-subgroup",
+              speech: "Three-cycle in a Sylow 3-subgroup",
+            },
+          ]}
+        />
       </label>
       <M block>{`|z^G|=[G:C_G(z)]=6/${row.centralizer}=${row.classSize}`}</M>
       <p role="status">

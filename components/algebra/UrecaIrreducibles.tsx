@@ -1,4 +1,7 @@
 "use client";
+import { cyclicElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import {
   characterProductLabel,
   cyclicCharacterValueLabel,
@@ -32,17 +35,16 @@ export function UrecaIrreducibles({ state }: { state: UrecaSelection }) {
         <label>
           Product argument in the cyclic factor, currently{" "}
           <M focusable={false}>{cyclicElementTex(exponent)}</M>
-          <select
-            aria-label={`Product argument in the cyclic factor, currently ${cyclicName(order, exponent)}`}
+          <Choice
+            label={`Product argument in the cyclic factor, currently ${cyclicName(order, exponent)}`}
             value={exponent}
-            onChange={(event) => setExponent(Number(event.target.value))}
-          >
-            {Array.from({ length: order }, (_, value) => (
-              <option key={value} value={value}>
-                {cyclicName(order, value)}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setExponent(value)}
+            options={Array.from({ length: order }, (_, value) => ({
+              value,
+              presentation: `$${cyclicElementTex(value)}$`,
+              speech: cyclicElementSpeech(value),
+            }))}
+          />
         </label>
         <div className="math-table-scroll">
           <table>
@@ -107,7 +109,7 @@ export function UrecaIrreducibles({ state }: { state: UrecaSelection }) {
         </div>
         <div className="live-mathematics" aria-live="polite">
           <p>
-            <Prose>{String.raw`${account.rows} product rows; squared-degree sum $${account.degrees.map((d) => `${d}^2`).join(" + ")}=${account.sumOfSquares}=|C_{${order}}\times D_8|$.`}</Prose>
+            <Prose>{String.raw`$${account.rows}$ product rows; squared-degree sum $${account.degrees.map((d) => `${d}^2`).join(" + ")}=${account.sumOfSquares}=|C_{${order}}\times D_8|$.`}</Prose>
           </p>
           <p>
             <Prose>{String.raw`Factored inner product: $\langle\chi_i\psi_j,\chi_k\psi_l\rangle=\langle\chi_i,\chi_k\rangle\langle\psi_j,\psi_l\rangle=\delta_{ik}\delta_{jl}$. Orthogonality proves the rows are distinct irreducibles; the full degree sum proves completeness.`}</Prose>
@@ -117,7 +119,7 @@ export function UrecaIrreducibles({ state }: { state: UrecaSelection }) {
           aria-label="Check all 15 rows of C₃×D₈"
           onClick={() => changeOrder(3)}
         >
-          Check all 15 rows of{" "}
+          Check all <M focusable={false}>{"15"}</M> rows of{" "}
           <M focusable={false}>{String.raw`C_3\times D_8`}</M>
         </button>
       </section>

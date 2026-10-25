@@ -25,6 +25,7 @@ const presentations = new Map(
   ]),
 );
 const normalize = (text) => text.replace(/\s+/g, " ").trim();
+export const cataloguePresentation = (text) => presentations.get(text) ?? text;
 
 export async function expectCatalogueText(locator, text, { prefix = "" } = {}) {
   const parts = delimiterParts(presentations.get(text) ?? text);

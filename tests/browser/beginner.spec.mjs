@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice, expectChoiceValue } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
 
 async function enter(page, hash = "start") {
@@ -48,7 +49,7 @@ test("a new guest names objects, reads a quantifier and supplies exact counterex
   await expect(
     page.getByRole("button", { name: "Every allowed output", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
-  await page.getByLabel("Output to inspect").selectOption("a");
+  await selectChoice(page, page.getByLabel("Output to inspect"), "a");
   await page
     .getByRole("button", { name: "has at least one input", exact: true })
     .click();
@@ -58,7 +59,7 @@ test("a new guest names objects, reads a quantifier and supplies exact counterex
   await expect(page.locator(".beginner-fiber annotation")).toHaveText(
     "f^{-1}(\\{a\\})=\\{0,1\\}",
   );
-  await page.getByLabel("Output to inspect").selectOption("c");
+  await selectChoice(page, page.getByLabel("Output to inspect"), "c");
   await expect(
     page.locator('.beginner-input[data-highlighted="true"]'),
   ).toHaveCount(0);
@@ -75,7 +76,7 @@ test("a new guest names objects, reads a quantifier and supplies exact counterex
   await expect(page.locator(".beginner-feedback")).toContainText(
     "Choose one allowed output",
   );
-  await page.getByLabel("Missing output witness").selectOption("a");
+  await selectChoice(page, page.getByLabel("Missing output witness"), "a");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
@@ -85,14 +86,14 @@ test("a new guest names objects, reads a quantifier and supplies exact counterex
   await expect(
     page.locator(".beginner-feedback annotation").first(),
   ).toHaveText("0,1");
-  await page.getByLabel("Missing output witness").selectOption("b");
+  await selectChoice(page, page.getByLabel("Missing output witness"), "b");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
   await expect(
     page.locator(".beginner-feedback annotation").first(),
   ).toHaveText("2");
-  await page.getByLabel("Missing output witness").selectOption("c");
+  await selectChoice(page, page.getByLabel("Missing output witness"), "c");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
@@ -105,30 +106,34 @@ test("a new guest names objects, reads a quantifier and supplies exact counterex
   await page
     .getByRole("radio", { name: /Different inputs have different outputs/ })
     .check();
-  await page.getByLabel("First collision input").selectOption("0");
-  await page.getByLabel("Second collision input").selectOption("0");
+  await selectChoice(page, page.getByLabel("First collision input"), "0");
+  await selectChoice(page, page.getByLabel("Second collision input"), "0");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
   await expect(page.locator(".beginner-feedback")).toContainText("twice");
-  await page.getByLabel("Second collision input").selectOption("2");
+  await selectChoice(page, page.getByLabel("Second collision input"), "2");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
   await expect(page.locator(".beginner-feedback")).toContainText(
     "These outputs differ",
   );
-  await page.getByLabel("Second collision input").selectOption("1");
+  await selectChoice(page, page.getByLabel("Second collision input"), "1");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
   await expect(page.locator(".beginner-feedback")).toContainText(
     "not injective",
   );
-  await page.getByLabel("Output for input 1").selectOption("c");
+  await selectChoice(page, page.getByLabel("Output for input 1"), "c");
   await expect(page.locator(".beginner-feedback")).toBeEmpty();
-  await expect(page.getByLabel("First collision input")).toHaveValue("");
-  await expect(page.getByLabel("Second collision input")).toHaveValue("");
+  await expectChoiceValue(page, page.getByLabel("First collision input"), null);
+  await expectChoiceValue(
+    page,
+    page.getByLabel("Second collision input"),
+    null,
+  );
 });
 
 test("codomain edits preserve arrows, refuse in-use c and recompute both definitions", async ({
@@ -145,14 +150,14 @@ test("codomain edits preserve arrows, refuse in-use c and recompute both definit
   await expect(page.locator('[data-property="injective"] strong')).toHaveText(
     "Not injective",
   );
-  await expect(page.getByLabel("Output for input 0")).toHaveValue("a");
-  await expect(page.getByLabel("Output for input 1")).toHaveValue("a");
-  await expect(page.getByLabel("Output for input 2")).toHaveValue("b");
+  await expectChoiceValue(page, page.getByLabel("Output for input 0"), "a");
+  await expectChoiceValue(page, page.getByLabel("Output for input 1"), "a");
+  await expectChoiceValue(page, page.getByLabel("Output for input 2"), "b");
   await expect(page.locator('[data-output="c"]')).toHaveCount(0);
   await page
     .getByRole("button", { name: "Use codomain a, b, c", exact: true })
     .click();
-  await page.getByLabel("Output for input 1").selectOption("c");
+  await selectChoice(page, page.getByLabel("Output for input 1"), "c");
   await expect(page.locator('[data-property="surjective"] strong')).toHaveText(
     "Surjective",
   );
@@ -168,9 +173,9 @@ test("codomain edits preserve arrows, refuse in-use c and recompute both definit
   await expect(page.locator(".beginner-feedback annotation").nth(1)).toHaveText(
     "1",
   );
-  await expect(page.getByLabel("Output for input 1")).toHaveValue("c");
+  await expectChoiceValue(page, page.getByLabel("Output for input 1"), "c");
   await expect(page.locator('[data-output="c"]')).toBeVisible();
-  await page.getByLabel("Output for input 1").selectOption("a");
+  await selectChoice(page, page.getByLabel("Output for input 1"), "a");
   await expect(page.locator(".beginner-feedback")).toBeEmpty();
   await page
     .getByRole("button", { name: "Use codomain a, b", exact: true })
@@ -237,9 +242,9 @@ test("workshop stays temporary and does not write account or legacy learning rec
   });
   await enter(page);
   const before = await page.evaluate(() => Object.entries(localStorage));
-  await page.getByLabel("Output for input 0").selectOption("c");
+  await selectChoice(page, page.getByLabel("Output for input 0"), "c");
   await move(page, "Give a reason");
-  await page.getByLabel("Missing output witness").selectOption("b");
+  await selectChoice(page, page.getByLabel("Missing output witness"), "b");
   await page
     .getByRole("button", { name: "Check this witness", exact: true })
     .click();
@@ -249,7 +254,7 @@ test("workshop stays temporary and does not write account or legacy learning rec
   );
   await page.reload();
   await expect(page.locator("#mode-heading")).toBeFocused();
-  await expect(page.getByLabel("Output for input 0")).toHaveValue("a");
+  await expectChoiceValue(page, page.getByLabel("Output for input 0"), "a");
   await expect(page.locator("#beginner-move-heading")).toHaveText(
     "Each input has one output.",
   );

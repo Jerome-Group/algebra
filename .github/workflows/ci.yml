@@ -15,11 +15,17 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   engineering:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      reference: ${{ steps.cohort.outputs.reference }}
+      prefix: ${{ steps.cohort.outputs.prefix }}
+      matrix: ${{ steps.cohort.outputs.matrix }}
+      engineering-artifact: ${{ steps.cohort.outputs.engineering-artifact }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -35,7 +41,7 @@ jobs:
         run: test -f MAP.md
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24"
+          node-version: "24.19.0"
           cache: npm
       - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
         with:
@@ -43,6 +49,11 @@ jobs:
           java-version: "21"
       - name: Install locked dependencies
         run: npm ci
+      - name: Select current execution cohort before source/build work
+        id: cohort
+        run: node scripts/lib/public-math-v2/session.mjs cohort --browser-shards 4
+      - name: Require current independent public source attestation
+        run: npm run verify:public-math-source
       - name: Build, format and lint
         run: npm run agent -- verify --layer engineering --evidence outputs/engineering.json
       - name: Audit production dependencies
@@ -51,16 +62,36 @@ jobs:
         run: npm run agent -- verify --layer map --evidence outputs/map.json
       - name: Verify TypeScript contracts
         run: npm run agent -- verify --layer types --evidence outputs/types.json
-      - name: Verify mathematics and content
-        run: npm run agent -- verify --layer math --evidence outputs/math.json
       - name: Verify built rendering
         run: npm run agent -- verify --layer render --evidence outputs/render.json
       - name: Check bounded argument lifecycle and real-module mutations
         run: npm run verify:argument-lifecycle
+      - name: Verify mathematics and content with durable engineering checks
+        env:
+          ALGEBRA_PUBLIC_MATH_CHECKS: '["outputs/engineering.json","outputs/dependencies.json","outputs/map.json","outputs/types.json","outputs/render.json"]'
+        run: npm run agent -- verify --layer math --evidence outputs/math.json
+      - name: Seal the complete engineering attempt journal
+        if: always() && steps.cohort.outcome == 'success'
+        run: node scripts/lib/public-math-v2/session.mjs seal-ci
+      - name: Retain explicitly selected cohort
+        if: always() && steps.cohort.outcome == 'success'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: public-math-cohort-${{ github.run_id }}-${{ github.run_attempt }}
+          path: outputs/public-math-cohort.json
+          if-no-files-found: error
+      - name: Retain exact engineering container
+        if: always() && steps.cohort.outcome == 'success'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: ${{ steps.cohort.outputs.engineering-artifact }}
+          path: outputs/public-math-containers/${{ steps.cohort.outputs.engineering-artifact }}/
+          include-hidden-files: true
+          if-no-files-found: error
       - name: Retain exact production artifact for browser jobs
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: production-dist
+          name: ${{ steps.cohort.outputs.prefix }}-dist
           path: dist/
           include-hidden-files: true
           if-no-files-found: error
@@ -81,21 +112,28 @@ jobs:
     timeout-minutes: 10
     strategy:
       fail-fast: false
-      matrix:
-        shard: [1, 2, 3, 4]
+      matrix: ${{ fromJSON(needs.engineering.outputs.matrix) }}
+    env:
+      ALGEBRA_PUBLIC_MATH_COHORT: ${{ needs.engineering.outputs.reference }}
+      ALGEBRA_PUBLIC_MATH_SLOT: ${{ matrix.slot }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24"
+          node-version: "24.19.0"
           cache: npm
       - name: Install locked dependencies
         run: npm ci
       - name: Download the engineering job's production artifact
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: production-dist
+          name: ${{ needs.engineering.outputs.prefix }}-dist
           path: dist/
+      - name: Download the engineering-selected cohort
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: public-math-cohort-${{ github.run_id }}-${{ github.run_attempt }}
+          path: outputs/
       - name: Verify pinned browser runtime
         run: |
           node --input-type=module <<'NODE'
@@ -110,19 +148,71 @@ jobs:
           await browser.close();
           NODE
       - name: Verify production browser shard
-        run: npm run agent -- verify --layer browser --built --shard ${{ matrix.shard }}/4 --evidence outputs/browser-${{ matrix.shard }}.json
+        run: npm run agent -- verify --layer browser --built --shard ${{ matrix.index }}/${{ matrix.total }} --evidence outputs/browser-${{ matrix.index }}.json
+      - name: Seal the complete browser slot attempt journal
+        if: always()
+        run: node scripts/lib/public-math-v2/session.mjs seal-ci
+      - name: Retain exact browser container
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: ${{ matrix.artifact }}
+          path: outputs/public-math-containers/${{ matrix.artifact }}/
+          include-hidden-files: true
+          if-no-files-found: error
       - name: Retain shard verification, screenshots and failure traces
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: browser-evidence-${{ matrix.shard }}
+          name: browser-evidence-${{ matrix.index }}
           path: outputs/
           if-no-files-found: ignore
+
+  public-math-execution:
+    if: always()
+    needs: [engineering, browser]
+    env:
+      ALGEBRA_PUBLIC_MATH_COHORT: ${{ needs.engineering.outputs.reference }}
+      ALGEBRA_PUBLIC_MATH_JOB_RESULTS: '{"engineering":"${{ needs.engineering.result }}","browser":"${{ needs.browser.result }}"}'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: "24.19.0"
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: ${{ needs.engineering.outputs.prefix }}-dist
+          path: dist/
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: public-math-cohort-${{ github.run_id }}-${{ github.run_attempt }}
+          path: outputs/
+      - name: Stage every exact planned container separately
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/lib/public-math-v2/session.mjs stage-ci
+      - name: Require the exact disjoint runner and state-observation union
+        run: node scripts/lib/public-math-v2/session.mjs aggregate
+      - name: Require executed public mathematics presentation
+        run: npm run verify:public-math-execution
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: public-math-execution-evidence
+          path: |
+            outputs/public-math-cohort.json
+            outputs/public-math-imports/
+          include-hidden-files: true
+          if-no-files-found: error
 
   # Keep the required status name; skipped or cancelled dependencies must fail it.
   checks:
     if: always()
-    needs: [engineering, browser]
+    needs: [engineering, browser, public-math-execution]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -130,4 +220,5 @@ jobs:
         env:
           ENGINEERING_RESULT: ${{ needs.engineering.result }}
           BROWSER_RESULT: ${{ needs.browser.result }}
-        run: test "$ENGINEERING_RESULT" = success && test "$BROWSER_RESULT" = success
+          PUBLIC_MATH_RESULT: ${{ needs.public-math-execution.result }}
+        run: test "$ENGINEERING_RESULT" = success && test "$BROWSER_RESULT" = success && test "$PUBLIC_MATH_RESULT" = success

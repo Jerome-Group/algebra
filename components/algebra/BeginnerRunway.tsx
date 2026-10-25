@@ -1,3 +1,4 @@
+import { Choice } from "./Groups";
 import { useReducer, type ReactNode } from "react";
 import {
   initialRunway,
@@ -16,6 +17,7 @@ import {
 import { BeginnerMap } from "./BeginnerMap";
 import { ConceptLink } from "./ConceptLink";
 import { Math as M, Prose } from "./Math";
+import { publicMathText } from "./PublicMathText";
 
 export function BeginnerStartLink({
   children = "Start from zero",
@@ -87,7 +89,9 @@ function NameObjects({ state, dispatch }: MoveProps) {
         ))}
       </div>
       <div className="beginner-meaning" role="status">
-        <Prose>{meaning?.meaning ?? ""}</Prose>
+        <Prose>
+          {publicMathText.get(meaning?.meaning ?? "") ?? meaning?.meaning ?? ""}
+        </Prose>
       </div>
       <p>
         Two inputs may reach the same output. An allowed output may be unused.
@@ -150,19 +154,16 @@ function ReadSentence({ state, dispatch }: MoveProps) {
       </div>
       <label className="beginner-inline-control">
         Inspect incoming arrows for{" "}
-        <select
-          aria-label="Output to inspect"
+        <Choice
+          label="Output to inspect"
           value={state.readOutput}
-          onChange={(event) =>
-            dispatch({ kind: "read-output", output: event.target.value })
-          }
-        >
-          {facts.outputs.map((output) => (
-            <option value={output} key={output}>
-              {output}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => dispatch({ kind: "read-output", output: value })}
+          options={facts.outputs.map((output) => ({
+            value: output,
+            presentation: `$${output}$`,
+            speech: String(output),
+          }))}
+        />
       </label>
       <p className="beginner-fiber">
         <M>{`f^{-1}(\\{${state.readOutput}\\})=${incoming.length ? `\\{${incoming.join(",")}\\}` : "\\varnothing"}`}</M>
@@ -219,52 +220,46 @@ function FindWitness({ state, dispatch }: MoveProps) {
       {selection.kind === "missing-output" ? (
         <label className="beginner-witness-label">
           Choose an output with no incoming arrow
-          <select
-            aria-label="Missing output witness"
-            value={selection.output ?? ""}
-            onChange={(event) =>
-              dispatch({ kind: "choose-output", output: event.target.value })
+          <Choice
+            label="Missing output witness"
+            value={selection.output}
+            onChange={(value) =>
+              dispatch({ kind: "choose-output", output: value })
             }
-          >
-            <option value="" disabled>
-              Choose an output
-            </option>
-            {mapFacts(state.map).outputs.map((output) => (
-              <option key={output} value={output}>
-                {output}
-              </option>
-            ))}
-          </select>
+            placeholder="Choose an output"
+            options={mapFacts(state.map).outputs.map((output) => ({
+              value: output,
+              presentation: `$${output}$`,
+              speech: String(output),
+            }))}
+          />
         </label>
       ) : (
         <div className="beginner-pair">
           {(["first", "second"] as const).map((place) => (
             <label key={place}>
               {place === "first" ? "First input" : "Second input"}
-              <select
-                aria-label={
+              <Choice
+                label={
                   place === "first"
                     ? "First collision input"
                     : "Second collision input"
                 }
-                value={selection[place] ?? ""}
-                onChange={(event) =>
+                value={selection[place]}
+                onChange={(value) =>
                   dispatch({
                     kind: "choose-input",
                     place,
-                    input: event.target.value,
+                    input: value,
                   })
                 }
-              >
-                <option value="" disabled>
-                  Choose an input
-                </option>
-                {inputs.map((input) => (
-                  <option key={input} value={input}>
-                    {input}
-                  </option>
-                ))}
-              </select>
+                placeholder="Choose an input"
+                options={inputs.map((input) => ({
+                  value: input,
+                  presentation: `$${input}$`,
+                  speech: String(input),
+                }))}
+              />
             </label>
           ))}
         </div>

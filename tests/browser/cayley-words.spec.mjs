@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import {
+  expectContainedMath,
+  expectExactMathRegion,
+} from "./public-math-segments.mjs";
 
 async function openLab(page, id) {
   await page.goto(`/#lab:${id}`);
@@ -36,9 +41,12 @@ test("generator workbench distinguishes finite relations from a complete S3 pres
   page.on("pageerror", (error) => errors.push(error.message));
   const experiment = await openLab(page, "mh2220-generators");
   const cyclic = experiment.locator(".foundation-lab");
-  await expect(
-    cyclic.getByRole("table", { name: /All subgroups of C12/ }),
-  ).toContainText("0, 2, 4, 6, 8, 10");
+  await expectContainedMath(
+    cyclic
+      .getByRole("region", { name: "Subgroups of C12", exact: true })
+      .getByRole("table"),
+    String.raw`$\{0, 2, 4, 6, 8, 10\}$`,
+  );
   await expect(
     cyclic.getByRole("table", { name: /Reachability and shortest words/ }),
   ).toContainText("Length");
@@ -46,10 +54,14 @@ test("generator workbench distinguishes finite relations from a complete S3 pres
     .getByRole("button", { name: "S₃ words and relations" })
     .click();
   const lab = experiment.locator(".s3-relation-lab");
+  const live = lab.locator(".live-mathematics");
+  const empty = String.raw`Written word $e$ evaluates to $e$. Shortest word length for this element: $0$.The empty word is the trivial identity relation in $S_3$. This alone does not prove a presentation complete.$$r^3=e,\qquad s^2=e,\qquad srs=r^{-1}$$`;
+  await expectExactMathRegion(live, empty);
   await lab.getByRole("button", { name: "Try r³=e" }).focus();
   await page.keyboard.press("Enter");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "This word is an identity relation",
+  await expectExactMathRegion(
+    live,
+    String.raw`Written word $r\cdot r\cdot r$ evaluates to $e$. Shortest word length for this element: $0$.This word is an identity relation in $S_3$. One observed relation alone does not prove a presentation complete.$$r^3=e,\qquad s^2=e,\qquad srs=r^{-1}$$`,
   );
   await expect(
     lab
@@ -57,9 +69,12 @@ test("generator workbench distinguishes finite relations from a complete S3 pres
       .locator("tbody tr"),
   ).toHaveCount(6);
   await lab.getByRole("button", { name: /Append s=/ }).click();
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "not an identity relation",
+  await expectExactMathRegion(
+    live,
+    String.raw`Written word $r\cdot r\cdot r\cdot s$ evaluates to $(12)$. Shortest word length for this element: $1$.The current word is not an identity relation; compare two words by their evaluated permutation.$$r^3=e,\qquad s^2=e,\qquad srs=r^{-1}$$`,
   );
+  await lab.getByRole("button", { name: "Clear word", exact: true }).click();
+  await expectExactMathRegion(live, empty);
   await checkReflowAndAxe(page, lab, info, "relations");
   expect(errors).toEqual([]);
 });
@@ -71,16 +86,27 @@ test("cyclic explorer enumerates every C12 subgroup and preserves the quotient b
   const lab = experiment.locator(".foundation-lab");
   await expect(
     lab
-      .getByRole("table", { name: /All subgroups of C12/ })
+      .getByRole("region", { name: "Subgroups of C12", exact: true })
+      .getByRole("table")
       .locator("tbody tr"),
   ).toHaveCount(6);
-  await lab.getByRole("combobox", { name: /Generator g/ }).selectOption("4");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "3 copies return to zero",
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: /Generator g/ }),
+    "4",
   );
-  await lab.getByRole("combobox", { name: /Generator g/ }).selectOption("5");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "12 copies return to zero",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`$3$ copies return to zero`,
+  );
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: /Generator g/ }),
+    "5",
+  );
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`$12$ copies return to zero`,
   );
   await checkReflowAndAxe(page, lab, info, "cyclic");
 });
@@ -92,8 +118,9 @@ test("Cayley embedding checks composition and injectivity on all six elements", 
   page.on("pageerror", (error) => errors.push(error.message));
   const experiment = await openLab(page, "mh2220-cayley-embedding");
   const lab = experiment.locator(".cayley-embedding-lab");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "agree with λgh: yes",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`agree with $\lambda_{gh}$: yes`,
   );
   await expect(
     lab
@@ -103,8 +130,9 @@ test("Cayley embedding checks composition and injectivity on all six elements", 
   await lab.getByRole("combobox", { name: /First factor g/ }).focus();
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("Enter");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "agree with λgh: yes",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`agree with $\lambda_{gh}$: yes`,
   );
   await expect(lab.locator(".live-mathematics")).toContainText(
     "embedding is injective",

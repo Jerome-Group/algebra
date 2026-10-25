@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import {
+  expectContainedMath,
+  expectAbsentMath,
+} from "./public-math-segments.mjs";
 
 for (const id of ["m3220-ideals", "m3220-quotient-ring"]) {
   test(`${id} predicts, builds and rejects quotient operations accessibly`, async ({
@@ -20,42 +25,60 @@ for (const id of ["m3220-ideals", "m3220-quotient-ring"]) {
       );
     await start.focus();
     await page.keyboard.press("Enter");
-    await expect(lab).toContainText("Quotient classes: {0, 1, 2, 3, 4, 5}");
-    await expect(lab).toContainText("Units: {1, 5}");
-    await expect(lab).toContainText("Nonzero zero divisors: {2, 3, 4}");
-    await lab
-      .getByRole("combobox", { name: "Ideal I=dℤ/12ℤ; choose d" })
-      .selectOption("4");
-    await expect(lab).not.toContainText("Units: {1, 5}");
+    await expectContainedMath(
+      lab,
+      String.raw`Quotient classes: $\{0, 1, 2, 3, 4, 5\}$`,
+    );
+    await expectContainedMath(lab, String.raw`Units: $\{1, 5\}$`);
+    await expectContainedMath(
+      lab,
+      String.raw`Nonzero zero divisors: $\{2, 3, 4\}$`,
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Ideal I=dℤ/12ℤ; choose d" }),
+      "4",
+    );
+    await expectAbsentMath(lab, String.raw`Units: $\{1, 5\}$`);
+    await expect(lab.locator(".live-mathematics")).toHaveCount(0);
     await expect(start).toBeDisabled();
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("For d=4, units are 1 and 3.");
     await start.click();
-    await expect(lab).toContainText("Units: {1, 3}");
-    await lab
-      .getByRole("combobox", { name: "Source ring" })
-      .selectOption("polynomials");
-    await expect(lab).not.toContainText("Units: {1, 3}");
+    await expectContainedMath(lab, String.raw`Units: $\{1, 3\}$`);
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Source ring" }),
+      "polynomials",
+    );
+    await expectAbsentMath(lab, String.raw`Units: $\{1, 3\}$`);
+    await expect(lab.locator(".live-mathematics")).toHaveCount(0);
     await expect(start).toBeDisabled();
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("An irreducible quadratic gives a field.");
     await start.click();
-    await expect(lab).toContainText("q=X²+X+1");
-    await expect(lab).toContainText("Units: {1, X, 1+X}");
-    await lab
-      .getByRole("combobox", { name: "Ideal I=(q); choose q∈F₂[X]" })
-      .selectOption("split");
+    await expectContainedMath(lab, String.raw`$q=X^2+X+1$`);
+    await expectContainedMath(lab, String.raw`Units: $\{1, X, 1+X\}$`);
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Ideal I=(q); choose q∈F₂[X]" }),
+      "split",
+    );
     await expect(start).toBeDisabled();
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("X and X+1 are zero divisors.");
     await start.click();
-    await expect(lab).toContainText("Nonzero zero divisors: {X, 1+X}");
-    await expect(
+    await expectContainedMath(
+      lab,
+      String.raw`Nonzero zero divisors: $\{X, 1+X\}$`,
+    );
+    await expectContainedMath(
       lab.getByRole("table", { name: /Ideal correspondence/ }),
-    ).toContainText("(X+1)");
+      String.raw`$(X+1)$`,
+    );
     const failure = lab.getByRole("button", {
       name: "Try a non-ideal failure",
     });

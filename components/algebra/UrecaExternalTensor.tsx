@@ -36,8 +36,12 @@ export function UrecaExternalTensor({ state }: { state: UrecaSelection }) {
           block
         >{`\\pi(${cyclicElementTex(exponent)})=${cyclicScalarTex(order, exponent)},\\quad \\rho(${dihedralTex[element]})=${matrixMath(matrix)}`}</M>
         <div className="presentation-board">
-          <span>First factor: degree 1</span>
-          <span>Second factor: degree 2</span>
+          <span>
+            First factor: degree <M>{"1"}</M>
+          </span>
+          <span>
+            Second factor: degree <M>{"2"}</M>
+          </span>
           <span>
             <Prose>{String.raw`Product basis: $v\otimes w_1$, $v\otimes w_2$`}</Prose>
           </span>

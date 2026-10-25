@@ -26,15 +26,27 @@ export function QuadraticLab() {
           label="Quadratic radicand D"
           value={String(D)}
           onChange={(v) => setD(+v)}
-          options={[-1, -2, -3, -5, -7].map((d) => [String(d), `$D = ${d}$`])}
+          options={[-1, -2, -3, -5, -7].map((d) => ({
+            value: String(d),
+            presentation: `$D = ${d}$`,
+            speech: `D equals ${d}`,
+          }))}
         />
         <Choice
           label="Lattice ring"
           value={full ? "integers" : "naive"}
           onChange={(v) => setFull(v === "integers")}
           options={[
-            ["integers", "Full ring of integers"],
-            ["naive", "$\\mathbb Z[\\sqrt D]$ comparison"],
+            {
+              value: "integers",
+              presentation: "Full ring of integers",
+              speech: "Full ring of integers",
+            },
+            {
+              value: "naive",
+              presentation: "$\\mathbb Z[\\sqrt D]$ comparison",
+              speech: "Integers adjoin square root of D, comparison",
+            },
           ]}
         />
       </div>

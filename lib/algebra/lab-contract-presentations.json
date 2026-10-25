@@ -53,7 +53,7 @@
     "debrief": "This partition illustrates Lagrange. It does not prove a converse; the lesson gives the $A_4$ counterexample to subgroup existence for every divisor."
   },
   "mh2220-normal": {
-    "prediction": "For $A_3$, predict whether conjugating a 3-cycle by a transposition fixes that element or swaps it.",
+    "prediction": "For $A_3$, predict whether conjugating a $3$-cycle by a transposition fixes that element or swaps it.",
     "objects": "$S_3$, a chosen subgroup $H$ and a conjugating permutation $a$; $ab$ applies $b$ first.",
     "invariant": "Normality is equality $aHa^{-1}=H$ for every $a$, not pointwise fixation."
   },

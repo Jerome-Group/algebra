@@ -302,6 +302,11 @@ test("compiled identity comparison distinguishes matching, mismatched and unknow
     const mismatch = await observeIdentity(origin, expected);
     assert.equal(mismatch.sourceMatch, "mismatched");
     assert.equal(mismatch.observed.sourceDigest, "0".repeat(64));
+    body = { ...expected, directDependencyDigest: "0".repeat(64) };
+    assert.equal(
+      (await observeIdentity(origin, expected)).dependencyMatch,
+      "mismatched",
+    );
     body = { localArtifactHash: expected.sourceDigest };
     const unknown = await observeIdentity(origin, expected);
     assert.equal(unknown.sourceMatch, "unknown");
@@ -319,14 +324,34 @@ test("source identity changes for application, verification and dependency input
     fs.mkdirSync(path.join(fixture, "scripts"));
     fs.writeFileSync(path.join(fixture, "app/page.tsx"), "one");
     fs.writeFileSync(path.join(fixture, "scripts/verify.mjs"), "one");
-    fs.writeFileSync(path.join(fixture, "package-lock.json"), "one");
+    fs.writeFileSync(
+      path.join(fixture, "package.json"),
+      JSON.stringify({ dependencies: {}, devDependencies: {} }),
+    );
+    fs.writeFileSync(
+      path.join(fixture, "package-lock.json"),
+      JSON.stringify({
+        lockfileVersion: 3,
+        packages: { "": { dependencies: {}, devDependencies: {} } },
+        name: "one",
+      }),
+    );
     let previous = buildIdentity(fixture).sourceDigest;
     for (const file of [
       "app/page.tsx",
       "scripts/verify.mjs",
       "package-lock.json",
     ]) {
-      fs.writeFileSync(path.join(fixture, file), "two");
+      fs.writeFileSync(
+        path.join(fixture, file),
+        file === "package-lock.json"
+          ? JSON.stringify({
+              lockfileVersion: 3,
+              packages: { "": { dependencies: {}, devDependencies: {} } },
+              name: "two",
+            })
+          : "two",
+      );
       const next = buildIdentity(fixture).sourceDigest;
       assert.notEqual(next, previous, file);
       previous = next;
@@ -342,6 +367,17 @@ test("Finder metadata does not change source identity", () => {
     fs.mkdirSync(path.join(fixture, "components"));
     fs.mkdirSync(path.join(fixture, "lib"));
     fs.writeFileSync(path.join(fixture, "components/Reader.tsx"), "one");
+    fs.writeFileSync(
+      path.join(fixture, "package.json"),
+      JSON.stringify({ dependencies: {}, devDependencies: {} }),
+    );
+    fs.writeFileSync(
+      path.join(fixture, "package-lock.json"),
+      JSON.stringify({
+        lockfileVersion: 3,
+        packages: { "": { dependencies: {}, devDependencies: {} } },
+      }),
+    );
     const expected = buildIdentity(fixture);
     for (const directory of ["components", "lib"]) {
       fs.writeFileSync(path.join(fixture, directory, ".DS_Store"), "Finder");
@@ -363,7 +399,11 @@ test("unowned and stale markers cannot drive or stop local processes", () => {
   );
   assert.doesNotThrow(() =>
     requireOwnerIdentity(
-      { localRunId: "expected-run" },
+      {
+        localRunId: "expected-run",
+        sourceMatch: "matched",
+        dependencyMatch: "matched",
+      },
       { runId: "expected-run" },
     ),
   );

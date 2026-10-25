@@ -12,6 +12,30 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const json = (file) => JSON.parse(read(`lib/algebra/${file}.json`));
 export const mapPath = path.join(root, "lib/algebra/feature-map.json");
 
+function browserTestInventory() {
+  const journeys = new Set(),
+    unsupported = new Set();
+  const inventory = { journeys, unsupported };
+  for (const directory of ["tests", "tests/browser"])
+    if (!fs.lstatSync(path.join(root, directory)).isDirectory())
+      return inventory;
+  const visit = (directory) => {
+    for (const entry of fs.readdirSync(path.join(root, directory), {
+      withFileTypes: true,
+    })) {
+      const file = `${directory}/${entry.name}`;
+      if (entry.isDirectory() && entry.name !== "node_modules") visit(file);
+      else if (entry.isFile()) {
+        if (entry.name.endsWith(".spec.mjs")) journeys.add(file);
+        else if (/\.(spec|test)\.[cm]?[jt]sx?$/.test(entry.name))
+          unsupported.add(file);
+      }
+    }
+  };
+  visit("tests/browser");
+  return inventory;
+}
+
 function sourceHashes() {
   const excluded = (file) =>
     file === "lib/algebra/feature-map.json" ||
@@ -601,6 +625,12 @@ export function validateMap(map, { group: selectedGroup } = {}) {
     for (const id of unit.lessons)
       if (!ids.has(id)) errors.push(`Unknown unit member ${unit.id} -> ${id}`);
   const groups = map.verificationGroups ?? [];
+  const journeys = new Set(groups.flatMap((group) => group.journeys));
+  const { journeys: actualJourneys, unsupported } = browserTestInventory();
+  for (const file of unsupported)
+    errors.push(`Unsupported browser test filename ${file}`);
+  for (const file of actualJourneys)
+    if (!journeys.has(file)) errors.push(`Unmapped browser journey ${file}`);
   const featureIds = new Set(map.features.map((feature) => feature.id));
   const grouped = groups.flatMap((group) => group.featureIds);
   for (const id of featureGroups)
@@ -627,9 +657,12 @@ export function validateMap(map, { group: selectedGroup } = {}) {
         errors.push(`Missing verification path ${group.id} -> ${file}`);
     }
     for (const file of group.journeys) {
-      if (!/^tests\/browser\/[^/]+\.spec\.mjs$/.test(file))
+      if (
+        !/^tests\/browser\/(?:[^/\\]+\/)*[^/\\]+\.spec\.mjs$/.test(file) ||
+        !actualJourneys.has(file)
+      )
         errors.push(`Invalid journey path ${group.id} -> ${file}`);
-      else if (fs.existsSync(path.join(root, file))) {
+      else {
         const source = ts.createSourceFile(
           file,
           read(file),

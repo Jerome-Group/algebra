@@ -44,9 +44,13 @@ export function SemidirectLab({ lesson }: { lesson: Lesson }) {
           value={prediction}
           onChange={setPrediction}
           options={[
-            ["", "Choose a prediction"],
-            ["yes", "Yes"],
-            ["no", "No"],
+            {
+              value: "",
+              presentation: "Choose a prediction",
+              speech: "Choose a prediction",
+            },
+            { value: "yes", presentation: "Yes", speech: "Yes" },
+            { value: "no", presentation: "No", speech: "No" },
           ]}
         />
         <Choice
@@ -54,9 +58,21 @@ export function SemidirectLab({ lesson }: { lesson: Lesson }) {
           value={action}
           onChange={setAction}
           options={[
-            ["inversion", String.raw`Inversion: $x\mapsto-x$`],
-            ["trivial", String.raw`Trivial: $x\mapsto x$`],
-            ["invalid", String.raw`Invalid: $x\mapsto0$`],
+            {
+              value: "inversion",
+              presentation: "Inversion: $x\\mapsto-x$",
+              speech: "Inversion, x maps to minus x",
+            },
+            {
+              value: "trivial",
+              presentation: "Trivial: $x\\mapsto x$",
+              speech: "Trivial, x maps to x",
+            },
+            {
+              value: "invalid",
+              presentation: "Invalid: $x\\mapsto0$",
+              speech: "Invalid, x maps to zero",
+            },
           ]}
         />
       </div>
@@ -65,13 +81,21 @@ export function SemidirectLab({ lesson }: { lesson: Lesson }) {
           label="Left factor (a,b)"
           value={left}
           onChange={setLeft}
-          options={elements.map((e) => [e.join(","), `$${label(e)}$`])}
+          options={elements.map((e) => ({
+            value: e.join(","),
+            presentation: `$${label(e)}$`,
+            speech: `Ordered pair ${e[0]}, ${e[1]}`,
+          }))}
         />
         <Choice
           label="Right factor (c,d)"
           value={right}
           onChange={setRight}
-          options={elements.map((e) => [e.join(","), `$${label(e)}$`])}
+          options={elements.map((e) => ({
+            value: e.join(","),
+            presentation: `$${label(e)}$`,
+            speech: `Ordered pair ${e[0]}, ${e[1]}`,
+          }))}
         />
       </div>
       {!valid ? (

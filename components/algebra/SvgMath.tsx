@@ -1,7 +1,6 @@
 import { Children, type ReactNode } from "react";
 import { Math as M } from "./Math";
 
-/** Keep typeset labels in SVG coordinates without replacing mathematical notation. */
 export function SvgMath({
   x = 0,
   y = 0,
@@ -40,9 +39,16 @@ export function SvgMath({
         style={{
           color:
             fill &&
-            ["#102331", "#102d38", "#132e3a", "#102e32", "#112535"].includes(
-              fill,
-            )
+            [
+              "#102331",
+              "#102d38",
+              "#132e3a",
+              "#102e32",
+              "#112535",
+              "#fff",
+              "#ffffff",
+              "white",
+            ].includes(fill)
               ? fill
               : "#343149",
           fontSize: Number(fontSize),
@@ -56,7 +62,7 @@ export function SvgMath({
           whiteSpace: "nowrap",
         }}
       >
-        {caption ? value : <M>{value}</M>}
+        {caption ? value : <M focusable={false}>{value}</M>}
       </div>
     </foreignObject>
   );

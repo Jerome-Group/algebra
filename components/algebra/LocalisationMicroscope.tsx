@@ -1,11 +1,11 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import {
   equivalentFractions,
   factorMapReading,
   fractionReading,
-  invertedSetNames,
-  localRingNames,
   type InvertedSet,
   type LocalRing,
 } from "@/lib/algebra/localisation-model";
@@ -56,70 +56,86 @@ export function LocalisationMicroscope() {
       <div className="lab-controls">
         <label>
           Target ring
-          <select
+          <Choice
+            label={"Target ring"}
             value={ring}
-            onChange={(event) => {
-              setRing(event.target.value as LocalRing);
+            onChange={(value) => {
+              setRing(value);
               reset();
             }}
-          >
-            {Object.entries(localRingNames).map(([id, name]) => (
-              <option key={id} value={id}>
-                {name}
-              </option>
-            ))}
-          </select>
+            options={[
+              {
+                value: "atThree",
+                presentation: "$\\mathbb Z_{(3)}$",
+                speech: "Integers localized at the prime 3",
+              },
+              {
+                value: "invertThree",
+                presentation: "$\\mathbb Z[1/3]$",
+                speech: "Integers with 3 inverted",
+              },
+              {
+                value: "rationals",
+                presentation: "$\\mathbb Q$",
+                speech: "Rational numbers",
+              },
+            ]}
+          />
         </label>
         <label>
           Fraction <M focusable={false}>{String.raw`\frac ab`}</M>
-          <select
-            aria-label="Fraction a/b"
+          <Choice
+            label="Fraction a/b"
             value={fractionIndex}
-            onChange={(event) => {
-              setFractionIndex(Number(event.target.value));
+            onChange={(value) => {
+              setFractionIndex(value);
               reset();
             }}
-          >
-            {examples.map((item, index) => (
-              <option key={index} value={index}>
-                {item.label}
-              </option>
-            ))}
-          </select>
+            options={examples.map((item, index) => ({
+              value: index,
+              presentation: String.raw`$\frac{${item.a}}{${item.b}}$`,
+              speech: `${item.a} over ${item.b}`,
+            }))}
+          />
         </label>
         <label>
           Compare with <M focusable={false}>{String.raw`\frac cd`}</M>
-          <select
-            aria-label="Compare with c/d"
+          <Choice
+            label="Compare with c/d"
             value={comparisonIndex}
-            onChange={(event) => {
-              setComparisonIndex(Number(event.target.value));
+            onChange={(value) => {
+              setComparisonIndex(value);
               reset();
             }}
-          >
-            {examples.map((item, index) => (
-              <option key={index} value={index}>
-                {item.label}
-              </option>
-            ))}
-          </select>
+            options={examples.map((item, index) => ({
+              value: index,
+              presentation: String.raw`$\frac{${item.a}}{${item.b}}$`,
+              speech: `${item.a} over ${item.b}`,
+            }))}
+          />
         </label>
         <label>
           Set to invert in <M focusable={false}>{String.raw`\mathbb Z`}</M>
-          <select
-            aria-label="Set to invert in ℤ"
+          <Choice
+            label="Set to invert in ℤ"
             value={inverted}
-            onChange={(event) => {
-              setInverted(event.target.value as InvertedSet);
+            onChange={(value) => {
+              setInverted(value);
               reset();
             }}
-          >
-            {Object.entries(invertedSetNames).map(([id, name]) => (
-              <option key={id} value={id}>
-                {name}
-              </option>
-            ))}
-          </select>
+            options={[
+              {
+                value: "powersThree",
+                presentation: "$S=\\{3^n:n\\ge0\\}$",
+                speech: "S is the set of nonnegative powers of 3",
+              },
+              {
+                value: "outsideThree",
+                presentation: "$S=\\{n\\in\\mathbb Z:3\\nmid n\\}$",
+                speech: "S is the set of integers not divisible by 3",
+              },
+            ]}
+          />
         </label>
       </div>
       <label className="prediction-prompt">
@@ -189,7 +205,9 @@ export function LocalisationMicroscope() {
                 <td>
                   {fractionReading(fraction.a, fraction.b, "atThree").status}
                 </td>
-                <td>Integers prime to 3</td>
+                <td>
+                  Integers prime to <M>{"3"}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">
@@ -201,7 +219,9 @@ export function LocalisationMicroscope() {
                       .status
                   }
                 </td>
-                <td>Powers of 3</td>
+                <td>
+                  Powers of <M>{"3"}</M>
+                </td>
               </tr>
               <tr>
                 <th scope="row">

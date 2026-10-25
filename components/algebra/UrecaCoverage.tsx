@@ -3,6 +3,7 @@ import { urecaLedgerSchema, type UrecaTopic } from "@/lib/algebra/ureca-topics";
 import type { Lesson } from "@/lib/algebra/engine";
 import { ConceptLink } from "./ConceptLink";
 import { Prose } from "./Math";
+import { publicMathText } from "./PublicMathText";
 
 const ledger = urecaLedgerSchema.parse(source);
 const sections = [...new Set(ledger.topics.map(({ section }) => section))];
@@ -48,7 +49,10 @@ export function UrecaCoverage({
         return (
           <details className="ureca-topic-section" key={section}>
             <summary>
-              {section} · {topics.length} topics
+              <Prose focusable={false}>
+                {publicMathText.get(section) ?? section}
+              </Prose>{" "}
+              · {topics.length} topics
             </summary>
             <ul className="ureca-topics">
               {topics.map((topic) => {
@@ -59,7 +63,10 @@ export function UrecaCoverage({
                   <li key={topic.id}>
                     <details>
                       <summary>
-                        {topic.id} · {topic.title}
+                        {topic.id} ·{" "}
+                        <Prose focusable={false}>
+                          {publicMathText.get(topic.title) ?? topic.title}
+                        </Prose>
                         <span className="ureca-topic-status">
                           {statusLabel(topic)}
                         </span>
@@ -67,7 +74,9 @@ export function UrecaCoverage({
                       <ul>
                         {topic.objectives.map((objective) => (
                           <li key={objective}>
-                            <Prose>{objective}</Prose>
+                            <Prose>
+                              {publicMathText.get(objective) ?? objective}
+                            </Prose>
                           </li>
                         ))}
                       </ul>
@@ -98,8 +107,17 @@ export function UrecaCoverage({
                       <ul>
                         {topic.sources.map((citation) => (
                           <li key={`${citation.url}:${citation.section}`}>
-                            <a href={citation.url}>{citation.title}</a> ·{" "}
-                            {citation.section}
+                            <a href={citation.url}>
+                              <Prose focusable={false}>
+                                {publicMathText.get(citation.title) ??
+                                  citation.title}
+                              </Prose>
+                            </a>{" "}
+                            ·{" "}
+                            <Prose>
+                              {publicMathText.get(citation.section) ??
+                                citation.section}
+                            </Prose>
                           </li>
                         ))}
                       </ul>

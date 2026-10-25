@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { expectChoiceValue, selectChoice } from "./choice-controls.mjs";
 import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -432,16 +433,20 @@ test.describe("local built Worker and real D1 with synthetic trusted Sites heade
       await device.evaluate(() => {
         location.hash = "#route-ureca-representation-theory";
       });
-      await expect(
+      await expectChoiceValue(
+        device,
         device.getByRole("combobox", {
           name: /Same representation, selected element/,
         }),
-      ).toHaveValue("7");
-      await device
-        .getByRole("combobox", {
+        "7",
+      );
+      await selectChoice(
+        device,
+        device.getByRole("combobox", {
           name: /Same representation, selected element/,
-        })
-        .selectOption("3");
+        }),
+        "3",
+      );
       await expect(device.locator("[data-account-phase]")).toHaveAttribute(
         "data-account-phase",
         "ready",

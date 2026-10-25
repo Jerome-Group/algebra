@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 for (const id of [
   "mh2220-sylow-existence",
@@ -21,22 +23,24 @@ for (const id of [
     await start.focus();
     await page.keyboard.press("Enter");
     const lab = page.locator(".foundation-lab");
-    await expect(lab).toContainText("Actual count in S₃: 3");
+    await expectContainedMath(lab, String.raw`Actual count in $S_3$: $3$`);
     await expect(lab.getByRole("table")).toHaveCount(3);
     const prime = lab.getByRole("combobox", { name: "Prime p" });
-    await prime.selectOption("3");
-    await expect(lab).toContainText("Actual count in S₃: 1");
+    await selectChoice(page, prime, "3");
+    await expectContainedMath(lab, String.raw`Actual count in $S_3$: $1$`);
     if (id === "mh2220-sylow-existence")
-      await expect(lab).toContainText(
-        "3-cycle class has size two, coprime to 3",
+      await expectContainedMath(
+        lab,
+        String.raw`$3$-cycle class has size two, coprime to $3$`,
       );
     await lab
       .getByRole("button", { name: "Try arithmetic-only inference" })
       .click();
-    await expect(lab.getByRole("status")).toContainText(
-      "For p=3, arithmetic forces n₃=1",
+    await expectContainedMath(
+      lab.getByRole("status"),
+      String.raw`For $p=3$, arithmetic forces $n_3=1$`,
     );
-    await prime.selectOption("2");
+    await selectChoice(page, prime, "2");
     await expect(lab.getByRole("status")).toHaveCount(0);
     const failure = lab.getByRole("button", {
       name: "Try arithmetic-only inference",

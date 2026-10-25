@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 test("S3 induction follows coset correction and reciprocity accessibly", async ({
   page,
@@ -17,23 +19,32 @@ test("S3 induction follows coset correction and reciprocity accessibly", async (
     .fill("s sends u1 to minus u2, and both Hom dimensions are one.");
   await reveal.focus();
   await page.keyboard.press("Enter");
-  await expect(lab).toContainText("s·u1=−u2");
-  await expect(lab).toContainText("dim Hom_G(Ind φ,standard)=1");
-  await expect(lab).toContainText("dim Hom_H(φ,Res standard)=1");
-  await lab
-    .getByRole("combobox", { name: "Inducing H-character φ" })
-    .selectOption("trivial");
+  await expectContainedMath(lab, String.raw`$s\cdot u_{1}=-u_{2}$`);
+  await expectContainedMath(
+    lab,
+    String.raw`$\dim\operatorname{Hom}_G(\operatorname{Ind}\varphi,\mathrm{standard})=1$`,
+  );
+  await expectContainedMath(
+    lab,
+    String.raw`$\dim\operatorname{Hom}_H(\varphi,\operatorname{Res}\mathrm{standard})=1$`,
+  );
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Inducing H-character φ" }),
+    "trivial",
+  );
   await lab
     .getByRole("textbox", { name: "Your mathematical prediction" })
     .fill("For trivial induction the correction is positive.");
   await reveal.click();
-  await expect(lab).toContainText("s·u1=u2");
-  await expect(lab).toContainText("χ_Ind=(3, 1, 0)");
+  await expectContainedMath(lab, String.raw`$s\cdot u_{1}=u_{2}$`);
+  await expectContainedMath(lab, String.raw`$\chi_{\mathrm{Ind}}=(3, 1, 0)$`);
   await lab
     .getByRole("button", { name: "Try forgetting the subgroup correction" })
     .click();
-  await expect(lab.getByRole("status")).toContainText(
-    "changes its trace from −1 to +1",
+  await expectContainedMath(
+    lab.getByRole("status"),
+    String.raw`changes its trace from $-1$ to $+1$`,
   );
   await expect(
     lab.getByRole("table", {

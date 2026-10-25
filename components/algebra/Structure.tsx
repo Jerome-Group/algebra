@@ -1,21 +1,99 @@
 "use client";
 import { Diagram } from "./Diagram";
+import { PrimeChainComparison } from "./PrimeChainComparison";
+import { TetrahedralDisplacements } from "./TetrahedralDisplacements";
+import { WorkedObjectView } from "./WorkedObjectView";
+import { laboratoryPresentation } from "@/lib/algebra/laboratory-presentations";
 import { useState } from "react";
 import { Math as M, Prose } from "./Math";
 import { Range, Choice } from "./Groups";
 import { gcd, type Lesson } from "@/lib/algebra/engine";
+import { z } from "zod";
+
+const endpoint = z.union([z.string().min(1), z.number().int().nonnegative()]);
+const structureNode = z
+  .object({
+    id: z.string().min(1),
+    label: z.string().min(1),
+    text: z.boolean().optional(),
+  })
+  .strict();
+const structureEdge = z.tuple([endpoint, endpoint, z.string().min(1)]);
+const parameters = z
+  .object({
+    mode: z.string().optional(),
+    diagram: z.string().optional(),
+    nodes: z.array(structureNode).min(1).optional(),
+    edges: z.array(structureEdge).optional(),
+    a: z.number().optional(),
+    b: z.number().optional(),
+    p: z.number().optional(),
+  })
+  .strict();
+
+export function IdealChain({
+  ascending,
+  step,
+}: {
+  ascending: boolean;
+  step: number;
+}) {
+  const terms = Array.from({ length: step + 1 }, (_, i) =>
+    ascending
+      ? `(${Array.from({ length: i + 1 }, (_, j) => `X_{${j + 1}}`).join(",")})`
+      : i === 0
+        ? "R"
+        : i === 1
+          ? "(t)"
+          : `(t^{${i}})`,
+  );
+  return <M block>{terms.join(ascending ? "\\subsetneq" : "\\supsetneq")}</M>;
+}
+
 export function StructureLab({ lesson }: { lesson: Lesson }) {
+  const params = parameters.parse(lesson.parameters || {}),
+    mode = String(params.mode || params.diagram || "");
   const [selected, setSelected] = useState(0),
     [step, setStep] = useState(3),
-    [a, setA] = useState(84),
-    [b, setB] = useState(30),
+    [a, setA] = useState(mode === "euclidean" ? (params.a ?? 84) : 84),
+    [b, setB] = useState(mode === "euclidean" ? (params.b ?? 30) : 30),
     [prime, setPrime] = useState(3);
-  const params = lesson.parameters || {},
-    mode = String(params.mode || params.diagram || "");
-  let nodes: any[] = (params.nodes as any[]) || [],
-    edges: any[] = (params.edges as any[]) || [];
-  if (nodes.length && typeof nodes[0] === "string")
-    nodes = nodes.map((label, i) => ({ id: String(i), label, text: true }));
+  const divisions: {
+    dividend: number;
+    divisor: number;
+    quotient: number;
+    remainder: number;
+  }[] = [];
+  for (let x = a, y = b; y !== 0;) {
+    const remainder = x % y;
+    divisions.push({
+      dividend: x,
+      divisor: y,
+      quotient: Math.floor(x / y),
+      remainder,
+    });
+    x = y;
+    y = remainder;
+  }
+  let nodes: z.infer<typeof structureNode>[] = params.nodes || [],
+    edges: z.infer<typeof structureEdge>[] = params.edges || [];
+  if (mode === "euclidean") {
+    nodes = [
+      ...divisions.map(({ dividend, divisor }, i) => ({
+        id: String(i),
+        label: `\\langle ${dividend},${divisor}\\rangle_{\\mathbb Z}`,
+      })),
+      {
+        id: String(divisions.length),
+        label: `\\langle ${gcd(a, b)}\\rangle_{\\mathbb Z}`,
+      },
+    ];
+    edges = divisions.map(({ dividend, divisor, quotient, remainder }, i) => [
+      i,
+      i + 1,
+      `$${dividend}=${quotient}\\cdot${divisor}+${remainder}$ preserves the ideal`,
+    ]);
+  }
   if (!nodes.length) {
     if (mode === "second-isomorphism") {
       nodes = [
@@ -44,11 +122,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
         ["Q", "GM", "isomorphism"],
       ];
     } else {
-      nodes = [
-        { id: "start", label: "V" },
-        { id: "end", label: "V" },
-      ];
-      edges = [["start", "end", "linear map $\\rho(g):V\\to V$"]];
+      throw Error(`Missing mathematical diagram for ${lesson.id}`);
     }
   }
   const rows =
@@ -64,14 +138,34 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
             ][i];
           return [i % 2 === 0 ? 135 : 425, 65 + 140 * Math.floor(i / 2)];
         });
-  const normEdges = edges
-    .map((e) => [
-      typeof e[0] === "number" ? e[0] : nodes.findIndex((n) => n.id === e[0]),
-      typeof e[1] === "number" ? e[1] : nodes.findIndex((n) => n.id === e[1]),
-      e[2],
-    ])
-    .filter((e) => e[0] >= 0 && e[1] >= 0);
-  const current = normEdges[selected % Math.max(1, normEdges.length)];
+  if (new Set(nodes.map(({ id }) => id)).size !== nodes.length)
+    throw Error(`Duplicate mathematical object in ${lesson.id}`);
+  const normEdges = edges.map((edge): [number, number, string] => {
+    const from =
+      typeof edge[0] === "number"
+        ? edge[0]
+        : nodes.findIndex((node) => node.id === edge[0]);
+    const to =
+      typeof edge[1] === "number"
+        ? edge[1]
+        : nodes.findIndex((node) => node.id === edge[1]);
+    if (from < 0 || from >= nodes.length || to < 0 || to >= nodes.length)
+      throw Error(`Unknown mathematical arrow endpoint in ${lesson.id}`);
+    return [from, to, edge[2]];
+  });
+  const active = selected % Math.max(1, normEdges.length),
+    current = normEdges[active];
+  if (laboratoryPresentation(lesson.id) === "worked-example")
+    return <WorkedObjectView lesson={lesson} />;
+  if (
+    [
+      "ureca-theory-tetrahedron-rigid-motions",
+      "ureca-theory-tetrahedron-spring-model",
+      "ureca-theory-tetrahedron-affine-coordinates",
+    ].includes(lesson.id)
+  )
+    return <TetrahedralDisplacements />;
+  if (mode === "prime-chain") return <PrimeChainComparison />;
   return (
     <div>
       <div className="structure-map">
@@ -105,8 +199,8 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                 y1={p[1] + (dy * 36) / d}
                 x2={q[0] - (dx * 38) / d}
                 y2={q[1] - (dy * 38) / d}
-                stroke={selected === i ? "#dc5632" : "#7e7770"}
-                strokeWidth={selected === i ? 3 : 1.5}
+                stroke={active === i ? "#dc5632" : "#7e7770"}
+                strokeWidth={active === i ? 3 : 1.5}
                 markerEnd="url(#struct-arrow)"
               />
             );
@@ -141,7 +235,8 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
                 <button
                   key={i}
                   onClick={() => setSelected(i)}
-                  className={selected === i ? "active" : ""}
+                  className={active === i ? "active" : ""}
+                  aria-pressed={active === i}
                   aria-label={`Follow relationship ${i + 1}`}
                 >
                   {i + 1}. <Prose focusable={false}>{String(e[2])}</Prose>
@@ -178,11 +273,7 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               value={step}
               onChange={setStep}
             />
-            <M block>
-              {mode === "ascending-chain"
-                ? `(X_1)\\subsetneq(X_1,X_2)\\subsetneq\\cdots\\subsetneq(X_1,\\ldots,X_{${step + 1}})`
-                : `R\\supsetneq(t)\\supsetneq\\cdots\\supsetneq(t^{${step}})`}
-            </M>
+            <IdealChain ascending={mode === "ascending-chain"} step={step} />
             <p>
               {mode === "ascending-chain"
                 ? "The polynomial ring with infinitely many independent variables has no finite generating stage for this ideal. Each new variable is outside the previous ideal."
@@ -215,9 +306,21 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               value={String(prime)}
               onChange={(v) => setPrime(+v)}
               options={[
-                ["2", "Localise at $(2)$"],
-                ["3", "Localise at $(3)$"],
-                ["5", "Localise at $(5)$"],
+                {
+                  value: "2",
+                  presentation: "Localise at $(2)$",
+                  speech: "Localise at ideal generated by 2",
+                },
+                {
+                  value: "3",
+                  presentation: "Localise at $(3)$",
+                  speech: "Localise at ideal generated by 3",
+                },
+                {
+                  value: "5",
+                  presentation: "Localise at $(5)$",
+                  speech: "Localise at ideal generated by 5",
+                },
               ]}
             />
             {(() => {
@@ -265,22 +368,13 @@ export function StructureLab({ lesson }: { lesson: Lesson }) {
               onChange={setB}
             />
             <div className="euclid-steps">
-              {(() => {
-                let x = a,
-                  y = b,
-                  out = [];
-                while (y) {
-                  const r = x % y;
-                  out.push(`${x}=${Math.floor(x / y)}\\cdot ${y}+${r}`);
-                  x = y;
-                  y = r;
-                }
-                return out.map((s, i) => (
+              {divisions.map(
+                ({ dividend, divisor, quotient, remainder }, i) => (
                   <M key={i} block>
-                    {s}
+                    {`${dividend}=${quotient}\\cdot ${divisor}+${remainder}`}
                   </M>
-                ));
-              })()}
+                ),
+              )}
             </div>
             <p>
               Last nonzero remainder: <M>{`\\gcd(${a},${b})=${gcd(a, b)}`}</M>.

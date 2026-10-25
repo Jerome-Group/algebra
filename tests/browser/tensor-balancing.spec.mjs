@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 test("typed cyclic tensor guide balances scalars and diagnoses zero product", async ({
   page,
@@ -17,30 +19,50 @@ test("typed cyclic tensor guide balances scalars and diagnoses zero product", as
     .fill("2t=4t=0 leaves a generator of order two.");
   await reveal.focus();
   await page.keyboard.press("Enter");
-  await expect(lab).toContainText("ord(t)=gcd(2,4)=2");
+  await expectContainedMath(
+    lab,
+    String.raw`$\operatorname{ord}(t)=\gcd(2,4)=2$`,
+  );
   await expect(lab).toContainText("Balance: equal");
-  await lab
-    .getByRole("combobox", { name: "Right module U=ℤ/mℤ; choose m" })
-    .selectOption("4");
-  await lab
-    .getByRole("combobox", { name: "Left module V=ℤ/nℤ; choose n" })
-    .selectOption("6");
-  await lab
-    .getByRole("combobox", { name: "Right-module vector [u]" })
-    .selectOption("1");
-  await lab
-    .getByRole("combobox", { name: "Left-module vector [v]" })
-    .selectOption("1");
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Right module U=ℤ/mℤ; choose m" }),
+    "4",
+  );
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Left module V=ℤ/nℤ; choose n" }),
+    "6",
+  );
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Right-module vector [u]" }),
+    "1",
+  );
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: "Left-module vector [v]" }),
+    "1",
+  );
   await lab
     .getByRole("textbox", { name: "Your mathematical prediction" })
     .fill("4t=6t=0 yields order two.");
   await reveal.click();
-  await expect(lab).toContainText("ord(t)=gcd(4,6)=2");
-  await expect(lab).toContainText("e₁⊗f₁+e₂⊗f₂ has matrix rank 2");
+  await expectContainedMath(
+    lab,
+    String.raw`$\operatorname{ord}(t)=\gcd(4,6)=2$`,
+  );
+  await expectContainedMath(
+    lab,
+    String.raw`$e_1\otimes f_1+e_2\otimes f_2$ has matrix rank $2$`,
+  );
   await lab
     .getByRole("button", { name: "Try the zero tensor-product failure" })
     .click();
-  await expect(lab.getByRole("status")).toContainText("ℤ/2⊗_ℤℤ/3=0");
+  await expectContainedMath(
+    lab.getByRole("status"),
+    String.raw`$(\mathbb Z/2\mathbb Z)\otimes_{\mathbb Z}(\mathbb Z/3\mathbb Z)=0$`,
+  );
   await expect(
     lab.getByRole("table", {
       name: "Typed balancing and cyclic tensor relation",

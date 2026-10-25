@@ -1,4 +1,7 @@
 "use client";
+import { dihedralElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import type {
   ColoringConfig,
   ColoringLedger,
@@ -41,17 +44,16 @@ export function ColoringLedgerView({
     <>
       <label>
         Inspect group element, currently <M focusable={false}>{activeTex}</M>
-        <select
-          aria-label="Inspect group element"
+        <Choice
+          label="Inspect group element"
           value={Math.min(selected, ledger.rows.length - 1)}
-          onChange={(event) => setSelected(Number(event.target.value))}
-        >
-          {ledger.rows.map((row, index) => (
-            <option key={index} value={index}>
-              {row.label} · {row.family}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setSelected(value)}
+          options={ledger.rows.map((row, index) => ({
+            value: index,
+            presentation: `$${coloringElementTex(config, index)}$ · ${row.family}`,
+            speech: `${config.kind === "cube" ? `Q subscript ${index}` : dihedralElementSpeech(index, config.size)}. ${row.family}`,
+          }))}
+        />
       </label>
       <div className="live-mathematics" aria-live="polite">
         <p>

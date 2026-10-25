@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { expectExactMathRegion } from "./public-math-segments.mjs";
+import { expectChoiceValue } from "./choice-controls.mjs";
 
 const lessons = [
   "foundations-functions",
@@ -120,10 +122,15 @@ test("typeset custom group options retain prefix keyboard search", async ({
   await expect(group).toBeVisible();
   await group.press("ArrowDown");
   await page.keyboard.press("s");
-  const symmetric = page.getByRole("option", { name: /Symmetric/ });
+  const symmetric = page.getByRole("option", {
+    name: "Symmetric group S n",
+    exact: true,
+  });
   await expect(symmetric).toBeFocused();
+  await expectExactMathRegion(symmetric, "Symmetric $S_n$");
   await expect(symmetric.locator(".math-inline[tabindex]")).toHaveCount(0);
   await page.keyboard.press("Enter");
   await expect(group).toContainText("Symmetric");
   await expect(group).toBeFocused();
+  await expectChoiceValue(page, group, "S");
 });

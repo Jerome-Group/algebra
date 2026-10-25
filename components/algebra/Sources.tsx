@@ -1,13 +1,26 @@
 import { ArrowUpRight } from "lucide-react";
+import { Prose } from "./Math";
+import { publicMathText } from "./PublicMathText";
 import type { Lesson, Citation } from "@/lib/algebra/engine";
 export function Reference({ source }: { source: Citation }) {
   return (
     <li>
       <a href={source.url} target="_blank" rel="noreferrer">
-        <span>{source.role || "Primary source"}</span>
-        <strong>{source.title}</strong>
+        <span>
+          <Prose focusable={false}>
+            {publicMathText.get(source.role || "") ??
+              (source.role || "Primary source")}
+          </Prose>
+        </span>
+        <strong>
+          <Prose focusable={false}>
+            {publicMathText.get(source.title) ?? source.title}
+          </Prose>
+        </strong>
         <small>
-          {source.section}
+          <Prose focusable={false}>
+            {publicMathText.get(source.section) ?? source.section}
+          </Prose>
           {source.pages ? ` · printed pp. ${source.pages}` : ""}
           {source.pdfPages ? ` · PDF pp. ${source.pdfPages}` : ""}
         </small>

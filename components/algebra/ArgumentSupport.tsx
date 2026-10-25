@@ -20,6 +20,7 @@ import { LessonReader } from "./LessonReader";
 import Exploration from "./Exploration";
 import { Math as M, Prose } from "./Math";
 import type { ArgumentDeskProps } from "./ArgumentDesk";
+import { publicMathText } from "./PublicMathText";
 
 type Support = NonNullable<ArgumentDeskProps["support"]>;
 type Navigate = ArgumentDeskProps["navigate"];
@@ -192,7 +193,7 @@ export function ArgumentSupport({
           <ol>
             {balancingRecovery.steps.map((step) => (
               <li key={step}>
-                <Prose>{step}</Prose>
+                <Prose>{publicMathText.get(step) ?? step}</Prose>
               </li>
             ))}
           </ol>

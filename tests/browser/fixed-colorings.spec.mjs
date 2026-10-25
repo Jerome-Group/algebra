@@ -1,13 +1,23 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 import { randomUUID } from "node:crypto";
 import { expectCatalogueText } from "./math-content.mjs";
 
 const cases = [
-  ["mh2220-burnside", "Fixed-point table", "= 4 orbits"],
-  ["mh2220-necklaces", "Necklace and bracelet", "= 13 orbits"],
-  ["mh2220-cycle-index", "Cycle-index inventory", "gives 1 orbits"],
-  ["mh2220-solid-colorings", "Cube-axis", "= 23 orbits"],
+  ["mh2220-burnside", "Fixed-point table", String.raw`gives $12/3=4$ orbits`],
+  [
+    "mh2220-necklaces",
+    "Necklace and bracelet",
+    String.raw`gives $156/12=13$ orbits`,
+  ],
+  [
+    "mh2220-cycle-index",
+    "Cycle-index inventory",
+    String.raw`coefficient of $x^{2}y^{1}$ gives $1$ orbits`,
+  ],
+  ["mh2220-solid-colorings", "Cube-axis", String.raw`gives $552/24=23$ orbits`],
 ];
 for (const [id, label, expected] of cases)
   test(`${id} exposes exact fixed-coloring rows and accessible reflow`, async ({
@@ -28,7 +38,7 @@ for (const [id, label, expected] of cases)
       .focus();
     await page.keyboard.press("Enter");
     const lab = experiment.locator(".fixed-coloring-lab");
-    await expect(lab.locator(".live-mathematics")).toContainText(expected);
+    await expectContainedMath(lab.locator(".live-mathematics"), expected);
     await expect(lab.getByRole("table")).toContainText(
       "Total before averaging",
     );
@@ -37,7 +47,7 @@ for (const [id, label, expected] of cases)
         name: "Show a motion with no fixed positions but fixed colorings",
       })
       .click();
-    await expect(lab.locator(".live-mathematics")).toContainText("0 fixed");
+    await expectContainedMath(lab.locator(".live-mathematics"), "$0$ fixed");
     const firstSelect = lab.getByRole("combobox").first();
     await firstSelect.focus();
     await page.keyboard.press("ArrowDown");
@@ -68,11 +78,14 @@ test("cycle-index inventory and cube feature controls change the mathematics", a
     .fill("Two red beads give one triangle orbit.");
   await page.getByRole("button", { name: "Test my prediction" }).click();
   const cycle = page.locator(".fixed-coloring-lab");
-  await cycle
-    .getByRole("combobox", { name: /Bead positions n/ })
-    .selectOption("4");
-  await expect(cycle.locator(".live-mathematics")).toContainText(
-    "gives 2 orbits",
+  await selectChoice(
+    page,
+    cycle.getByRole("combobox", { name: /Bead positions n/ }),
+    "4",
+  );
+  await expectContainedMath(
+    cycle.locator(".live-mathematics"),
+    String.raw`coefficient of $x^{2}y^{2}$ gives $2$ orbits`,
   );
   await page.goto("/#lab:mh2220-solid-colorings");
   await page
@@ -83,7 +96,10 @@ test("cycle-index inventory and cube feature controls change the mathematics", a
   await cube
     .getByRole("combobox", { name: /Cube feature set/ })
     .selectOption("faces");
-  await expect(cube.locator(".live-mathematics")).toContainText("= 10 orbits");
+  await expectContainedMath(
+    cube.locator(".live-mathematics"),
+    String.raw`gives $240/24=10$ orbits`,
+  );
   await expect(cube.getByRole("table")).toContainText("face-axis quarter-turn");
 });
 

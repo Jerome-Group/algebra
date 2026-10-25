@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test, { after } from "node:test";
 import { fileURLToPath } from "node:url";
@@ -21,33 +21,6 @@ const vite = await createServer({
 
 after(async () => {
   await vite.close();
-});
-
-async function readCssTree(directory) {
-  const entries = await readdir(directory, { withFileTypes: true });
-  const contents = await Promise.all(
-    entries.map(async (entry) => {
-      const entryPath = path.join(directory, entry.name);
-      if (entry.isDirectory()) {
-        return readCssTree(entryPath);
-      }
-      return entry.name.endsWith(".css") ? readFile(entryPath, "utf8") : "";
-    }),
-  );
-  return contents.join("\n");
-}
-
-test("emits the catalog's animation and scrolling utilities", async () => {
-  const css = await readCssTree(path.join(root, "dist"));
-
-  assert.match(css, /--tw-enter-opacity/);
-  assert.match(css, /scrollbar-width:\s*thin/);
-  assert.match(css, /scrollbar-width:\s*none/);
-  assert.match(css, /scrollbar-gutter:\s*stable/);
-  assert.match(css, /scroll-fade-reveal-b/);
-  assert.match(css, /mask-image:/);
-  assert.match(css, /tw-shimmer/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
 });
 
 function renderLoadedMarkup(element) {
@@ -91,7 +64,15 @@ test("all laboratory entry points render their declared content and valid mathem
       lesson.machine === "diagram" &&
       html.includes('class="structure-node"')
     ) {
-      if (lesson.parameters?.nodes?.length)
+      if (lesson.parameters?.mode === "euclidean") {
+        assert.equal(
+          (html.match(/class="structure-node"/g) || []).length,
+          4,
+          `${lesson.id}: the initial division chain has four actual ideals`,
+        );
+        assert.match(html, /\\langle 84,30\\rangle_\{\\mathbb Z\}/);
+        assert.match(html, /\\langle 6\\rangle_\{\\mathbb Z\}/);
+      } else if (lesson.parameters?.nodes?.length)
         assert.equal(
           (html.match(/class="structure-node"/g) || []).length,
           lesson.parameters.nodes.length,

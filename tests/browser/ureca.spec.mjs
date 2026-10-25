@@ -1,30 +1,32 @@
 import { test, expect } from "@playwright/test";
+import { expectChoiceValue, selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 const cases = [
   [
     "ureca-character-bound-kernel",
     "Finite-order eigenvalue polygon",
-    "h is not in the kernel",
+    "$h$ is not in the kernel",
   ],
   [
     "ureca-external-tensor-products",
     "Two factors act on a tensor basis",
-    "Product degree: 1×2=2",
+    String.raw`Product degree: $1\times2=2$`,
   ],
   [
     "ureca-direct-product-irreducibles",
     "Character-row and degree accounting",
-    "15 product rows",
+    "$15$ product rows",
   ],
   [
     "ureca-product-kernel-scalar-matching",
     "Reciprocal scalar preimages",
-    "kernel size=2",
+    "kernel size $2$",
   ],
   [
     "ureca-faithful-direct-product",
     "Reciprocal scalar preimages",
-    "kernel size=2",
+    "kernel size $2$",
   ],
 ];
 for (const [id, heading, result] of cases)
@@ -46,10 +48,10 @@ for (const [id, heading, result] of cases)
     await page.keyboard.press("Enter");
     const lab = experiment.locator(".ureca-lab");
     await expect(lab.getByRole("heading", { name: heading })).toBeVisible();
-    await expect(lab.locator(".live-mathematics")).toContainText(result);
+    await expectContainedMath(lab.locator(".live-mathematics"), result);
     const firstSelect = lab.getByRole("combobox").first();
     if (id === "ureca-external-tensor-products")
-      await expect(firstSelect).toHaveValue("3");
+      await expectChoiceValue(page, firstSelect, "3");
     await firstSelect.focus();
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
@@ -61,8 +63,9 @@ for (const [id, heading, result] of cases)
       await lab
         .getByRole("button", { name: "Compare the faithful C₃×D₈ product" })
         .click();
-      await expect(lab.locator(".live-mathematics")).toContainText(
-        "kernel size=1",
+      await expectContainedMath(
+        lab.locator(".live-mathematics"),
+        "kernel size $1$",
       );
       await lab
         .getByRole("button", { name: "Show the C₂×D₈ failure pair" })
@@ -99,14 +102,20 @@ test("integrated URECA route carries one D8 representation through nine stages",
   );
   const route = page.locator(".representation-journey");
   await expect(route.locator("ol > li")).toHaveCount(9);
-  await expect(route).toContainText("D₈ square");
-  await expect(route).toContainText("⟨χ,χ⟩=(4+4)/8=1");
-  await expect(route).toContainText("C₂×D₈ product fails");
+  await expectContainedMath(route, String.raw`$D_8$ square`);
+  await expectContainedMath(
+    route,
+    String.raw`$\langle\chi,\chi\rangle=(4+4)/8=1$`,
+  );
+  await expectContainedMath(route, String.raw`$C_2\times D_8$ product fails`);
   const selected = route.getByRole("combobox", {
     name: /Same representation, selected element/,
   });
-  await selected.selectOption("1");
-  await expect(route).toContainText("Character sample: χ(r) = tr ρ(r) = 0");
+  await selectChoice(page, selected, "1");
+  await expectContainedMath(
+    route,
+    String.raw`Character sample: $\chi(r)=\operatorname{tr}\rho(r)=0$`,
+  );
   await page.evaluate(() => {
     location.hash = "#home";
   });
@@ -114,7 +123,7 @@ test("integrated URECA route carries one D8 representation through nine stages",
   await page.evaluate(() => {
     location.hash = "#route-ureca-representation-theory";
   });
-  await expect(selected).toHaveValue("1");
+  await expectChoiceValue(page, selected, "1");
   await route.getByRole("button", { name: "Open this step" }).nth(5).click();
   await page.evaluate(() => {
     location.hash = "#lab:ureca-external-tensor-products";
@@ -124,13 +133,15 @@ test("integrated URECA route carries one D8 representation through nine stages",
     .fill("The trace remains zero for this selected square rotation.");
   await page.getByRole("button", { name: "Test my prediction" }).click();
   const lab = page.locator(".ureca-lab");
-  await expect(lab.getByRole("combobox", { name: /D₈ element h/ })).toHaveValue(
+  await expectChoiceValue(
+    page,
+    lab.getByRole("combobox", { name: /D₈ element h/ }),
     "1",
   );
   await page.evaluate(() => {
     location.hash = "#route-ureca-representation-theory";
   });
-  await expect(selected).toHaveValue("1");
+  await expectChoiceValue(page, selected, "1");
   const capstone = route.getByRole("group", { name: /URECA route capstone/ });
   await capstone
     .getByRole("radio", { name: /Product-row inner products factor/ })
@@ -139,7 +150,7 @@ test("integrated URECA route carries one D8 representation through nine stages",
   await expect(route).toContainText("Route capstone demonstrated");
   await page.reload();
   await expect(route).not.toContainText("Route capstone demonstrated");
-  await expect(selected).toHaveValue("2");
+  await expectChoiceValue(page, selected, "2");
   await route.getByRole("button", { name: "Open this step" }).last().click();
   await expect(page.locator(".guided-reader")).toBeVisible();
   await expect(page.locator("#lesson-heading")).toContainText("faithful");

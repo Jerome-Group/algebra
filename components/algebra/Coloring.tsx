@@ -40,8 +40,16 @@ export function ColoringLab() {
           value={ref ? "bracelet" : "necklace"}
           onChange={(v) => setRef(v === "bracelet")}
           options={[
-            ["necklace", "Necklaces · rotations"],
-            ["bracelet", "Bracelets · rotations + reflections"],
+            {
+              value: "necklace",
+              presentation: "Necklaces · rotations",
+              speech: "Necklaces, rotations",
+            },
+            {
+              value: "bracelet",
+              presentation: "Bracelets · rotations + reflections",
+              speech: "Bracelets, rotations and reflections",
+            },
           ]}
         />
       </div>

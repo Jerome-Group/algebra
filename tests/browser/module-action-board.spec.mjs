@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 for (const id of ["m3220-modules", "modules-generators", "m3220-annihilator"]) {
   test(`${id} carries a cyclic module through four stages accessibly`, async ({
@@ -20,7 +22,10 @@ for (const id of ["m3220-modules", "modules-generators", "m3220-annihilator"]) {
       );
     await reveal.focus();
     await page.keyboard.press("Enter");
-    await expect(lab).toContainText("Ann([2])=3ℤ");
+    await expectContainedMath(
+      lab,
+      String.raw`$\operatorname{Ann}([2])=3\mathbb Z$`,
+    );
     await lab
       .getByRole("combobox", { name: "Learning stage" })
       .selectOption("action");
@@ -29,21 +34,33 @@ for (const id of ["m3220-modules", "modules-generators", "m3220-annihilator"]) {
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("2 is not invertible on Z/6.");
     await reveal.click();
-    await expect(lab).toContainText("This operator is not invertible on M");
-    await lab
-      .getByRole("combobox", { name: "Module relation ne=0; choose n" })
-      .selectOption("3");
+    await expectContainedMath(
+      lab,
+      String.raw`This operator is not invertible on $M$`,
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Module relation ne=0; choose n" }),
+      "3",
+    );
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("2 is invertible on Z/3 despite being a nonunit of Z.");
     await reveal.click();
-    await expect(lab).toContainText("This operator is invertible on M");
-    await lab
-      .getByRole("combobox", { name: "Module relation ne=0; choose n" })
-      .selectOption("6");
-    await lab
-      .getByRole("combobox", { name: "Submodule generator d dividing n" })
-      .selectOption("2");
+    await expectContainedMath(
+      lab,
+      String.raw`This operator is invertible on $M$`,
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Module relation ne=0; choose n" }),
+      "6",
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Submodule generator d dividing n" }),
+      "2",
+    );
     await lab
       .getByRole("combobox", { name: "Learning stage" })
       .selectOption("submodule");
@@ -53,11 +70,18 @@ for (const id of ["m3220-modules", "modules-generators", "m3220-annihilator"]) {
         "The even residue submodule has three elements and quotient two classes.",
       );
     await reveal.click();
-    await expect(lab).toContainText("N=⟨[2]⟩={[0], [2], [4]}");
+    await expectContainedMath(
+      lab,
+      String.raw`$N=\langle[2]\rangle=\{[0], [2], [4]\}$`,
+    );
     await lab
       .getByRole("combobox", { name: "Learning stage" })
       .selectOption("exactness");
-    await lab.getByRole("combobox", { name: "Vector [x]" }).selectOption("2");
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Vector [x]" }),
+      "2",
+    );
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill(
@@ -65,14 +89,15 @@ for (const id of ["m3220-modules", "modules-generators", "m3220-annihilator"]) {
       );
     await reveal.click();
     await expect(lab).toContainText("This sequence is nonsplit");
-    await expect(lab).toContainText("p(T(a,b))=2a=X·p(a,b)");
+    await expectContainedMath(lab, String.raw`$p(T(a,b))=2a=X\cdot p(a,b)$`);
     const failure = lab.getByRole("button", {
       name: "Try a nonunit and nonsplit failure",
     });
     await failure.focus();
     await page.keyboard.press("Enter");
-    await expect(lab.getByRole("status")).toContainText(
-      "Scalar 2 is not a unit of ℤ but acts invertibly on ℤ/3ℤ",
+    await expectContainedMath(
+      lab.getByRole("status"),
+      String.raw`Scalar $2$ is not a unit of $\mathbb Z$ but acts invertibly on $\mathbb Z/3\mathbb Z$`,
     );
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 1000 });

@@ -1,3 +1,4 @@
+import { Choice } from "./Groups";
 import { inputs, mapFacts, type RunwayState } from "@/lib/algebra/beginner";
 import { Math as M } from "./Math";
 
@@ -154,23 +155,23 @@ export function BeginnerMap({
                 <label className="sr-only" htmlFor={`beginner-value-${input}`}>
                   Output for input {input}
                 </label>
-                <select
+                <Choice
+                  label={`Output for input ${input}`}
                   id={`beginner-value-${input}`}
                   value={state.map.values[input]}
-                  onChange={(event) =>
+                  onChange={(value) =>
                     dispatch({
                       kind: "assign",
                       input,
-                      output: event.target.value,
+                      output: value,
                     })
                   }
-                >
-                  {facts.outputs.map((output) => (
-                    <option key={output} value={output}>
-                      {output}
-                    </option>
-                  ))}
-                </select>
+                  options={facts.outputs.map((output) => ({
+                    value: output,
+                    presentation: `$${output}$`,
+                    speech: String(output),
+                  }))}
+                />
                 <M
                   focusable={false}
                 >{`f(${input})=${state.map.values[input]}`}</M>

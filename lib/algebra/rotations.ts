@@ -8,13 +8,26 @@ export function planeRotation(angle: number, reflection = false) {
   ];
 }
 
-export function axisRotation(axis: number[], degrees: number) {
-  const length = Math.hypot(...axis);
-  if (axis.length !== 3 || !Number.isFinite(length) || length === 0)
+export type Vector3 = readonly [number, number, number];
+
+export function normalizeAxis(axis: readonly number[]): Vector3 | null {
+  if (axis.length !== 3 || !axis.every(Number.isFinite)) return null;
+  const scale = Math.max(...axis.map(Math.abs));
+  if (!(scale > 0)) return null;
+  const x = axis[0] / scale;
+  const y = axis[1] / scale;
+  const z = axis[2] / scale;
+  const length = Math.hypot(x, y, z);
+  return [x / length, y / length, z / length];
+}
+
+export function axisRotation(axis: readonly number[], degrees: number) {
+  const direction = normalizeAxis(axis);
+  if (!direction)
     throw new Error(
       "A rotation axis must be a nonzero vector in three dimensions",
     );
-  const [x, y, z] = axis.map((value) => value / length);
+  const [x, y, z] = direction;
   const t = (degrees * Math.PI) / 180,
     c = Math.cos(t),
     s = Math.sin(t),

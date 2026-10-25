@@ -1,4 +1,7 @@
 "use client";
+import { groupPresentation } from "./GroupPresentation";
+import { numberTex } from "@/lib/algebra/numeric-tex";
+
 import { Diagram } from "./Diagram";
 import { SvgMath } from "./SvgMath";
 import { useId, useMemo, useState } from "react";
@@ -33,30 +36,92 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-export function Choice({
+export type ChoiceOption<T extends string | number> = {
+  value: T;
+  presentation: string;
+  speech: string;
+  disabled?: boolean;
+};
+export function Choice<const T extends string | number>({
   label,
+  id: suppliedId,
   value,
   onChange,
   options,
+  placeholder,
+  disabled,
 }: {
   label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: [string, string][];
+  id?: string;
+  value: T | null;
+  onChange: (value: T) => void;
+  options: readonly ChoiceOption<T>[];
+  placeholder?: string;
+  disabled?: boolean;
 }) {
-  const id = useId();
-  useLaboratoryControl(id, { label, value, options, set: onChange });
+  const generatedId = useId();
+  const id = suppliedId ?? generatedId;
+  const itemValue = (option: ChoiceOption<T>) =>
+    `${typeof option.value}:${option.value}`;
+  const values = new Set<string>();
+  const itemValues = new Set<string>();
+  for (const option of options) {
+    const semanticValue = String(option.value);
+    const encodedValue = itemValue(option);
+    if (values.has(semanticValue) || itemValues.has(encodedValue))
+      throw Error(`Choice "${label}" repeats value "${semanticValue}"`);
+    if (!option.speech.trim())
+      throw Error(`Choice "${label}" requires a plain option name`);
+    values.add(semanticValue);
+    itemValues.add(encodedValue);
+  }
+  const selected = options.find((option) => option.value === value);
+  const choose = (option: ChoiceOption<T> | undefined) => {
+    if (option && !option.disabled && !disabled) onChange(option.value);
+  };
+  useLaboratoryControl(id, {
+    label,
+    value: value ?? "",
+    options: options.map((option) => [String(option.value), option.speech]),
+    set: (next) => choose(options.find((item) => String(item.value) === next)),
+  });
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger aria-label={label}>
-        <SelectValue />
+    <Select
+      value={selected ? itemValue(selected) : ""}
+      onValueChange={(next) =>
+        choose(options.find((item) => itemValue(item) === next))
+      }
+      disabled={disabled}
+    >
+      <SelectTrigger
+        id={id}
+        aria-label={label}
+        aria-describedby={`${id}-value`}
+      >
+        <SelectValue placeholder={placeholder}>
+          {selected && (
+            <span aria-hidden="true" className="pointer-events-none">
+              <Prose focusable={false}>{selected.presentation}</Prose>
+            </span>
+          )}
+        </SelectValue>
+        <span id={`${id}-value`} className="sr-only">
+          {selected?.speech ?? placeholder}
+        </span>
       </SelectTrigger>
       <SelectContent>
-        {options.map(([v, t], index) => (
-          <SelectItem key={v} value={v} textValue={t}>
-            <span>
-              <span className="sr-only">Option {index + 1}. </span>
-              <Prose focusable={false}>{t}</Prose>
+        {options.map((option) => (
+          <SelectItem
+            key={itemValue(option)}
+            value={itemValue(option)}
+            disabled={option.disabled}
+            data-choice-value={String(option.value)}
+            aria-label={option.speech}
+            aria-labelledby={undefined}
+            textValue={option.speech}
+          >
+            <span aria-hidden="true" className="pointer-events-none">
+              <Prose focusable={false}>{option.presentation}</Prose>
             </span>
           </SelectItem>
         ))}
@@ -90,22 +155,29 @@ export function Range({
     step,
     set: (v) => onChange(Number(v)),
   });
+  const numeral = numberTex(value);
   return (
     <div className="range-control">
       <label>
         <Prose focusable={false}>{label}</Prose>
         <strong>
-          <M focusable={false}>{String(value)}</M>
+          {numeral === null ? (
+            String(value)
+          ) : (
+            <M focusable={false}>{numeral}</M>
+          )}
         </strong>
       </label>
-      <Slider
-        aria-label={accessibleLabel}
-        min={min}
-        max={max}
-        step={step}
-        value={[value]}
-        onValueChange={(v) => onChange(v[0])}
-      />
+      {numeral !== null && value >= min && value <= max && (
+        <Slider
+          aria-label={accessibleLabel}
+          min={min}
+          max={max}
+          step={step}
+          value={[value]}
+          onValueChange={(v) => onChange(v[0])}
+        />
+      )}
     </div>
   );
 }
@@ -147,6 +219,8 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
     [right, setRight] = useState(false),
     [both, setBoth] = useState(false);
   const g = useMemo(() => group(type, n), [type, n]),
+    presentation = groupPresentation({ type, n, labels: g.labels }),
+    labels = presentation.elements.map((element) => element.tex),
     N = g.labels.length,
     x = mod(a, N),
     y = mod(b, N),
@@ -199,12 +273,36 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             setB(2);
           }}
           options={[
-            ["C", "Cyclic $C_n$"],
-            ["D", "Dihedral $D_n$"],
-            ["V", "Klein four $V_4$"],
-            ["Q", "Quaternion $Q_8$"],
-            ["S", "Symmetric $S_n$"],
-            ["U", "Units modulo $n$"],
+            {
+              value: "C",
+              presentation: "Cyclic $C_n$",
+              speech: "Cyclic group C n",
+            },
+            {
+              value: "D",
+              presentation: "Dihedral $D_n$",
+              speech: "Dihedral group D n",
+            },
+            {
+              value: "V",
+              presentation: "Klein four $V_4$",
+              speech: "Klein four group V 4",
+            },
+            {
+              value: "Q",
+              presentation: "Quaternion $Q_8$",
+              speech: "Quaternion group Q 8",
+            },
+            {
+              value: "S",
+              presentation: "Symmetric $S_n$",
+              speech: "Symmetric group S n",
+            },
+            {
+              value: "U",
+              presentation: "Units modulo $n$",
+              speech: "Units modulo n",
+            },
           ]}
         />
         {(type === "C" || type === "D" || type === "U" || type === "S") && (
@@ -216,11 +314,17 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               setA(1);
             }}
             options={(type === "S" ? [3, 4] : [3, 4, 5, 6, 8, 10, 12, 24]).map(
-              (i) => [String(i), `$n = ${i}$`],
+              (i) => ({
+                value: String(i),
+                presentation: `$n = ${i}$`,
+                speech: `n equals ${i}`,
+              }),
             )}
           />
         )}
-        <span className="lab-tag">{N} elements</span>
+        <span className="lab-tag">
+          <M>{String(N)}</M> elements
+        </span>
       </div>
       {mode === "subgroups" || mode === "sylow" ? (
         <Diagram
@@ -299,8 +403,8 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                           : h.length === 1
                             ? "1"
                             : quotientView
-                              ? `H${i + 1}/H`
-                              : `H${i + 1}`}
+                              ? `H_{${i + 1}}/H`
+                              : `H_{${i + 1}}`}
                     </SvgMath>
                   </g>
                 ))}
@@ -320,7 +424,11 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               key={i}
               style={{ borderColor: palette[i % 12] }}
             >
-              <M>{`${double ? "H" + g.labels[c[0]] + "K" : right ? "H" + g.labels[c[0]] : g.labels[c[0]] + "H"}`}</M>
+              <M>
+                {double
+                  ? presentation.doubleCoset(labels[c[0]])
+                  : presentation.coset(labels[c[0]], right ? "right" : "left")}
+              </M>
               <div>
                 {c.map((v) => (
                   <button
@@ -328,7 +436,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                     onClick={() => setB(v)}
                     style={{ color: palette[i % 12] }}
                   >
-                    <M>{g.labels[v]}</M>
+                    <M focusable={false}>{labels[v]}</M>
                   </button>
                 ))}
               </div>
@@ -341,9 +449,9 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             <TableHeader>
               <TableRow>
                 <TableHead>
-                  <M>{"ab"}</M>
+                  <M>{presentation.product("a", "b")}</M>
                 </TableHead>
-                {g.labels.map((l, i) => (
+                {labels.map((l, i) => (
                   <TableHead key={i}>
                     <M>{l}</M>
                   </TableHead>
@@ -351,7 +459,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {g.labels.map((l, i) => (
+              {labels.map((l, i) => (
                 <TableRow key={i}>
                   <TableHead>
                     <M>{l}</M>
@@ -368,7 +476,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                         color: palette[which(g.mul(i, j)) % 12],
                       }}
                     >
-                      <M>{g.labels[g.mul(i, j)]}</M>
+                      <M>{labels[g.mul(i, j)]}</M>
                     </TableCell>
                   ))}
                 </TableRow>
@@ -381,7 +489,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
           className="math-svg"
           viewBox="0 0 560 430"
           role="img"
-          aria-label="Finite group multiplication graph"
+          aria-label={`Finite group ${presentation.operationWord} graph`}
         >
           <defs>
             <marker
@@ -396,7 +504,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             </marker>
           </defs>
           <SvgMath x="24" y="30" className="svg-caption">
-            RIGHT MULTIPLICATION BY THE SELECTED ELEMENT
+            {presentation.graphCaption}
           </SvgMath>
           {pos.map((p, i) => {
             const j = g.mul(i, x),
@@ -432,7 +540,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
               onClick={() => setA(i)}
               role="button"
               tabIndex={0}
-              aria-label={`Select ${g.labels[i]}`}
+              aria-label={`Select ${presentation.elements[i].speech}`}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") setA(i);
               }}
@@ -454,7 +562,7 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                 fill="#102331"
                 fontSize="13"
               >
-                {g.labels[i]}
+                {labels[i]}
               </SvgMath>
             </g>
           ))}
@@ -492,60 +600,77 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             label="Element a"
             value={String(x)}
             onChange={(v) => setA(+v)}
-            options={g.labels.map((l, i) => [String(i), `$a = ${l}$`])}
+            options={presentation.elements.map((element) => ({
+              value: element.value,
+              presentation: `$a = ${element.tex}$`,
+              speech: `a equals ${element.speech}`,
+            }))}
           />
           <Choice
             label="Element b"
             value={String(y)}
             onChange={(v) => setB(+v)}
-            options={g.labels.map((l, i) => [String(i), `$b = ${l}$`])}
+            options={presentation.elements.map((element) => ({
+              value: element.value,
+              presentation: `$b = ${element.tex}$`,
+              speech: `b equals ${element.speech}`,
+            }))}
           />
         </div>
         <div className="stat-strip">
           <div>
-            <strong>{order(g, x)}</strong>
+            <strong>
+              <M>{String(order(g, x))}</M>
+            </strong>
             <M>{"\\operatorname{ord}(a)"}</M>
           </div>
           <div>
-            <strong>{H.length}</strong>
+            <strong>
+              <M>{String(H.length)}</M>
+            </strong>
             <M>{"|H|"}</M>
           </div>
           <div>
-            <strong>{cs.length}</strong>
+            <strong>
+              <M>{String(cs.length)}</M>
+            </strong>
             <span>
               <Prose>{"index $[G:H]$"}</Prose>
             </span>
           </div>
           <div>
-            <strong>{sg.length}</strong>
+            <strong>
+              <M>{String(sg.length)}</M>
+            </strong>
             <span>subgroups</span>
           </div>
         </div>
         <M
           block
-        >{`a b=${g.labels[pr]},\\quad b a=${g.labels[g.mul(y, x)]},\\quad a^{-1}=${g.labels[inverse(g, x)]}`}</M>
+        >{`${presentation.product("a", "b")}=${labels[pr]},\\quad ${presentation.product("b", "a")}=${labels[g.mul(y, x)]},\\quad ${presentation.inverse("a")}=${labels[inverse(g, x)]}`}</M>
         {double && (
           <p className="lab-explain">
+            <M>{both ? "H=\\langle a,b\\rangle" : "H=\\langle a\\rangle"}</M>
             <Prose>
-              {
-                " $H=\\langle a\\rangle$ and $K=\\langle b\\rangle$. A double coset HgK lets $H$ act on the left and $K$ on the right; unlike ordinary cosets, double cosets can have different sizes. Here the sizes are "
-              }
+              {` and $K=\\langle b\\rangle$. A double coset $${presentation.doubleCoset("g")}$ lets $H$ act on the left and $K$ on the right; unlike ordinary cosets, double cosets can have different sizes. Here the sizes are `}
             </Prose>
-            {doubles.map((c) => c.length).join(", ")}.
+            <M>{doubles.map((c) => c.length).join(", ")}</M>.
           </p>
         )}
         <p className="lab-explain">
           The selected generated subgroup is{" "}
-          <M>{`H=\\{${H.map((i) => g.labels[i]).join(",")}\\}`}</M>. Following
-          multiplication arrows returns to the identity after {order(g, x)}{" "}
-          <Prose>{" steps. Cosets partition $G$ into "}</Prose>
-          {cs.length} equal pieces of size {H.length}.
+          <M>{`H=\\{${H.map((i) => labels[i]).join(",")}\\}`}</M>. Following{" "}
+          {presentation.operationWord} arrows returns to the identity after{" "}
+          <M>{String(order(g, x))}</M>{" "}
+          <Prose>{"steps. Cosets partition $G$ into "}</Prose>
+          <M>{String(cs.length)}</M> equal pieces of size{" "}
+          <M>{String(H.length)}</M>.
         </p>
         <details open={/normal|centralizer/.test(lesson.id)}>
           <summary>Conjugation, centralizer and normalizer</summary>
           <M
             block
-          >{`bHb^{-1}=\\{${conjugate.map((i) => g.labels[i]).join(",")}\\}`}</M>
+          >{`${presentation.conjugate("b", "H")}=\\{${conjugate.map((i) => labels[i]).join(",")}\\}`}</M>
           <p>
             <Prose>{" Conjugation by $b$"}</Prose>{" "}
             {conjugate.every((h) => H.includes(h)) ? "preserves" : "changes"}
@@ -579,16 +704,18 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
             <p>
               <Prose>
                 {
-                  " Each subgroup is normal in the preceding one; the factors have orders 2,3,2,2 and are cyclic of prime order. $C_{2}$ here is generated by a double transposition. Compare $C_{24}$, whose composition factors have the same prime orders but whose group structure is different. "
+                  " Each subgroup is normal in the preceding one; the factors have orders $2,3,2,2$ and are cyclic of prime order. $C_{2}$ here is generated by a double transposition. Compare $C_{24}$, whose composition factors have the same prime orders but whose group structure is different. "
                 }
               </Prose>
             </p>
           </details>
         )}
         <p className="lab-explain">
-          {normal(g, H)
-            ? "H is normal: its cosets form a quotient group."
-            : "H is not normal: left and right cosets can differ, and coset multiplication is not well-defined."}
+          <Prose>
+            {normal(g, H)
+              ? "$H$ is normal: its cosets form a quotient group."
+              : `$H$ is not normal: left and right cosets can differ, and coset ${presentation.operationWord} is not well-defined.`}
+          </Prose>
         </p>
         <div className="filter-row">
           {mode === "cosets" ? (
@@ -607,7 +734,10 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
                 onClick={() => setTab("table")}
                 className={tab === "table" ? "active" : ""}
               >
-                Multiplication table
+                {presentation.operationWord === "addition"
+                  ? "Addition"
+                  : "Multiplication"}{" "}
+                table
               </button>
             </>
           )}
@@ -631,11 +761,10 @@ export function GroupLab({ lesson }: { lesson: Lesson }) {
         )}
         <details>
           <summary>Conventions and scope</summary>
+          {presentation.convention && <M block>{presentation.convention}</M>}
           <p>
             <Prose>
-              {
-                " These machines enumerate actual finite groups, not arbitrary operation tables. $D_n$ has order $2n$ and elements $r^as^b$, with $sr = r^{-1}s$. The graph uses right multiplication. $C_{n}$ is written additively; its identity is 0. $Q_8$ uses $i^2=j^2=k^2=ijk=-1$. A finite example illustrates a theorem but does not prove the general case. "
-              }
+              {` These machines enumerate actual finite groups, not arbitrary operation tables. $D_n$ has order $2n$ and elements $r^as^b$, with $sr = r^{-1}s$. The graph uses right ${presentation.operationWord}. $Q_8$ uses $i^2=j^2=k^2=ijk=-1$. A finite example illustrates a theorem but does not prove the general case. `}
             </Prose>
           </p>
         </details>
@@ -660,7 +789,11 @@ export function PolygonLab() {
             setR(0);
             setS(0);
           }}
-          options={[3, 4, 5, 6, 8, 10, 12].map((i) => [String(i), `${i}-gon`])}
+          options={[3, 4, 5, 6, 8, 10, 12].map((i) => ({
+            value: String(i),
+            presentation: `$${i}$-gon`,
+            speech: `Polygon with ${i} sides`,
+          }))}
         />
         <button
           onClick={() => {
@@ -759,7 +892,7 @@ export function PolygonLab() {
         <p>
           <Prose>
             {
-              " Positions in the formula are numbered 0 through $n-1$; the drawing numbers them 1 through $n$. A reflection is an orientation-reversing symmetry, not a rotation in the plane. "
+              " Positions in the formula are numbered $0$ through $n-1$; the drawing numbers them $1$ through $n$. A reflection is an orientation-reversing symmetry, not a rotation in the plane. "
             }
           </Prose>
         </p>
@@ -850,13 +983,15 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
           block
         >{`\\varphi:\\mathbb Z/${n}\\to\\mathbb Z/${m},\\quad [x]\\mapsto[${k}x]`}</M>
         <p className={valid ? "success-note" : "error-note"}>
-          {valid
-            ? ring
-              ? ringValid
-                ? "Well-defined ring homomorphism."
-                : "An additive homomorphism, but multiplication is not preserved."
-              : "Well-defined group homomorphism."
-            : `Not well-defined on residue classes: 0 and ${n} represent the same input but map to different residues.`}
+          <Prose>
+            {valid
+              ? ring
+                ? ringValid
+                  ? "Well-defined ring homomorphism."
+                  : "An additive homomorphism, but multiplication is not preserved."
+                : "Well-defined group homomorphism."
+              : `Not well-defined on residue classes: $0$ and $${n}$ represent the same input but map to different residues.`}
+          </Prose>
         </p>
         {valid && (
           <>
@@ -875,7 +1010,7 @@ export function HomomorphismLab({ lesson }: { lesson?: Lesson }) {
           <p>
             <Prose>
               {
-                " Preserving multiplication also requires $k^{2} \\equiv  k$ (mod m); preserving the multiplicative identity requires $k \\equiv  1$ (mod m). Unital:"
+                " Preserving multiplication also requires $k^{2} \\equiv k \\pmod m$; preserving the multiplicative identity requires $k \\equiv 1 \\pmod m$. Unital:"
               }
             </Prose>{" "}
             {ringValid && mod(k - 1, m) === 0 ? "yes" : "no"}.

@@ -51,6 +51,7 @@ export default defineConfig(async ({ command }) => {
         ),
         "check",
         "--complete",
+        "--all-ui",
       ],
       { cwd: root, stdio: "inherit" },
     );
@@ -67,6 +68,7 @@ export default defineConfig(async ({ command }) => {
   return {
     define: { __ALGEBRA_BUILD_IDENTITY__: JSON.stringify(identity) },
     cacheDir: ".wrangler/vite-cache",
+    build: { manifest: true },
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],

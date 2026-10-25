@@ -4,6 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { runCheck } from "../scripts/algebra-runtime.mjs";
 import {
   buildMap,
@@ -12,6 +13,79 @@ import {
   commands,
   root,
 } from "../scripts/algebra-map.mjs";
+
+async function browserMapFixture(check) {
+  const map = buildMap();
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "algebra-journeys-"));
+  const previousRoot = process.env.ALGEBRA_MAP_ROOT;
+  try {
+    const files = new Set([
+      "package.json",
+      "playwright.config.ts",
+      ...map.verificationGroups.flatMap(({ sources, journeys }) => [
+        ...sources,
+        ...journeys,
+      ]),
+    ]);
+    for (const file of files) {
+      fs.mkdirSync(path.dirname(path.join(fixture, file)), { recursive: true });
+      fs.cpSync(path.join(root, file), path.join(fixture, file), {
+        verbatimSymlinks: true,
+      });
+    }
+    fs.symlinkSync(
+      path.join(root, "node_modules"),
+      path.join(fixture, "node_modules"),
+    );
+    process.env.ALGEBRA_MAP_ROOT = fixture;
+    const { validateMap: validateFixtureMap } = await import(
+      `../scripts/algebra-map.mjs?fixture=${path.basename(fixture)}`
+    );
+    await check({ map, fixture, validateFixtureMap });
+  } finally {
+    if (previousRoot === undefined) delete process.env.ALGEBRA_MAP_ROOT;
+    else process.env.ALGEBRA_MAP_ROOT = previousRoot;
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
+function registerFixtureJourney(map, file, content) {
+  map.sources.push({
+    file,
+    sha256: createHash("sha256").update(content).digest("hex"),
+  });
+  const group = map.verificationGroups.find(({ id }) => id === "laboratories");
+  group.journeys.push(file);
+  for (const feature of map.features)
+    for (const verification of feature.verification)
+      if (verification.group === group.id)
+        verification.journeys = group.journeys;
+}
+
+function listFixtureJourneys(fixture, pattern) {
+  return spawnSync(
+    process.execPath,
+    [
+      path.join(root, "node_modules/@playwright/test/cli.js"),
+      "test",
+      "--list",
+      "--config",
+      path.join(fixture, "playwright.config.ts"),
+      pattern,
+    ],
+    {
+      cwd: fixture,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        ALGEBRA_TEST_ORIGIN: "https://example.invalid",
+        ALGEBRA_LOCAL_OWNER: "",
+        ALGEBRA_RUN_EVIDENCE: path.join(fixture, "outputs"),
+        ALGEBRA_REPORT_FILE: path.join(fixture, "outputs/list.json"),
+      },
+    },
+  );
+}
 
 test("feature map is current and covers every lesson, unit, component and source contract", () => {
   const map = buildMap();
@@ -168,6 +242,209 @@ test("map integrity rejects unresolved edges and cycles without inferring covera
   );
   map.lessons[0].metadata.prerequisites = [map.lessons[0].id];
   assert.ok(validateMap(map).some((error) => error.includes("cycle")));
+});
+
+test("map integrity rejects a real browser journey removed from every verification group", () => {
+  const map = buildMap();
+  const journey = "tests/browser/beginner.spec.mjs";
+  assert.ok(fs.existsSync(path.join(root, journey)));
+  assert.ok(
+    map.verificationGroups.some((group) => group.journeys.includes(journey)),
+  );
+  for (const group of map.verificationGroups)
+    group.journeys = group.journeys.filter((file) => file !== journey);
+  assert.ok(
+    validateMap(map).includes(`Unmapped browser journey ${journey}`),
+    "A real executable browser regression cannot disappear from feature verification",
+  );
+  assert.ok(
+    validateMap(map, { group: "laboratories" }).includes(
+      `Unmapped browser journey ${journey}`,
+    ),
+    "A partial feature selection does not hide an incomplete browser inventory",
+  );
+});
+
+test("map integrity inventories nested journeys discovered by actual Playwright configuration", async (context) => {
+  await browserMapFixture(async ({ map, fixture, validateFixtureMap }) => {
+    const journey = "tests/browser/nested/deep/unregistered.spec.mjs";
+    const source =
+      'import { test } from "@playwright/test";\ntest("nested discovery regression", () => {});\n';
+    fs.mkdirSync(path.dirname(path.join(fixture, journey)), {
+      recursive: true,
+    });
+    fs.writeFileSync(path.join(fixture, journey), source);
+    const listed = listFixtureJourneys(
+      fixture,
+      "nested/deep/unregistered.spec.mjs",
+    );
+    assert.equal(listed.status, 0, listed.stdout + listed.stderr);
+    assert.match(listed.stdout, /nested discovery regression/);
+    const originalGroups = JSON.stringify(map.verificationGroups);
+    const all = validateFixtureMap(map);
+    const partial = validateFixtureMap(map, { group: "laboratories" });
+    const registered = structuredClone(map);
+    registerFixtureJourney(registered, journey, source);
+    const registeredAll = validateFixtureMap(registered);
+    const registeredPartial = validateFixtureMap(registered, {
+      group: "laboratories",
+    });
+    context.diagnostic(
+      JSON.stringify({
+        playwrightList: listed.stdout,
+        all,
+        partial,
+        registeredAll,
+        registeredPartial,
+      }),
+    );
+    assert.ok(all.includes(`Unmapped browser journey ${journey}`));
+    assert.ok(partial.includes(`Unmapped browser journey ${journey}`));
+    assert.deepEqual(registeredAll, []);
+    assert.deepEqual(registeredPartial, []);
+    assert.equal(JSON.stringify(map.verificationGroups), originalGroups);
+    registered.sources = registered.sources.filter(
+      ({ file }) => file !== journey,
+    );
+    assert.ok(
+      validateFixtureMap(registered).includes(
+        `Missing verification path laboratories -> ${journey}`,
+      ),
+    );
+    registered.sources.push({
+      file: journey,
+      sha256: createHash("sha256").update(source).digest("hex"),
+    });
+    fs.writeFileSync(
+      path.join(fixture, journey),
+      "export const noTests = true;\n",
+    );
+    assert.ok(
+      validateFixtureMap(registered).includes(
+        `Journey has no executable tests laboratories -> ${journey}`,
+      ),
+    );
+  });
+});
+
+test("map integrity rejects every unsupported Playwright default test filename under all and partial selections", async (context) => {
+  await browserMapFixture(async ({ map, fixture, validateFixtureMap }) => {
+    const source =
+      'import { test } from "@playwright/test";\ntest("unsupported filename regression", () => {});\n';
+    const filenames = ["spec", "test"].flatMap((kind) =>
+      ["", "c", "m"].flatMap((prefix) =>
+        ["js", "ts"].flatMap((extension) =>
+          ["", "x"].map(
+            (suffix) =>
+              `tests/browser/nested/deep/unsupported.${kind}.${prefix}${extension}${suffix}`,
+          ),
+        ),
+      ),
+    );
+    const unsupported = filenames.filter((file) => !file.endsWith(".spec.mjs"));
+    assert.equal(unsupported.length, 23);
+    for (const file of [
+      ...unsupported,
+      "tests/browser/nested/deep/helper.ts",
+      "tests/browser/nested/deep/helper.test.js.map",
+      "tests/browser/nested/deep/helper.spec.json",
+    ]) {
+      fs.mkdirSync(path.dirname(path.join(fixture, file)), { recursive: true });
+      fs.writeFileSync(path.join(fixture, file), source);
+    }
+    const originalGroups = JSON.stringify(map.verificationGroups);
+    const selections = [{}, { group: "laboratories" }];
+    const expected = unsupported.map(
+      (file) => `Unsupported browser test filename ${file}`,
+    );
+    const errors = selections.map((selection) =>
+      validateFixtureMap(map, selection),
+    );
+    context.diagnostic(JSON.stringify({ unsupported, errors }));
+    for (const result of errors)
+      assert.deepEqual(result.toSorted(), expected.toSorted());
+    for (const file of unsupported) {
+      const registered = structuredClone(map);
+      registerFixtureJourney(registered, file, source);
+      for (const selection of selections) {
+        const result = validateFixtureMap(registered, selection);
+        assert.ok(result.includes(`Unsupported browser test filename ${file}`));
+        assert.ok(
+          result.includes(`Invalid journey path laboratories -> ${file}`),
+        );
+      }
+    }
+    assert.equal(JSON.stringify(map.verificationGroups), originalGroups);
+  });
+});
+
+test("map integrity actual Playwright configuration discovers only recursive supported spec.mjs journeys", async (context) => {
+  await browserMapFixture(async ({ fixture }) => {
+    for (const extension of ["spec.mjs", "spec.ts", "test.mjs"]) {
+      const file = `tests/browser/nested/deep/policy.${extension}`;
+      fs.mkdirSync(path.dirname(path.join(fixture, file)), { recursive: true });
+      fs.writeFileSync(
+        path.join(fixture, file),
+        `import { test } from "@playwright/test";\ntest("policy ${extension}", () => {});\n`,
+      );
+    }
+    const listed = listFixtureJourneys(fixture, "nested/deep/policy");
+    context.diagnostic(
+      JSON.stringify({ stdout: listed.stdout, stderr: listed.stderr }),
+    );
+    assert.equal(listed.status, 0, listed.stdout + listed.stderr);
+    assert.match(listed.stdout, /policy\.spec\.mjs/);
+    assert.doesNotMatch(listed.stdout, /policy\.(spec\.ts|test\.mjs)/);
+    assert.match(listed.stdout, /Total: 1 test in 1 file/);
+  });
+});
+
+test("map integrity rejects symlink, traversal and outside browser journey paths", async () => {
+  await browserMapFixture(async ({ map, fixture, validateFixtureMap }) => {
+    const outside = fs.mkdtempSync(
+      path.join(os.tmpdir(), "algebra-outside-journeys-"),
+    );
+    const source =
+      'import { test } from "@playwright/test";\ntest("outside source", () => {});\n';
+    try {
+      fs.writeFileSync(path.join(outside, "external.spec.mjs"), source);
+      fs.writeFileSync(path.join(fixture, "tests/outside.spec.mjs"), source);
+      fs.symlinkSync(
+        path.join(outside, "external.spec.mjs"),
+        path.join(fixture, "tests/browser/linked.spec.mjs"),
+      );
+      fs.symlinkSync(
+        outside,
+        path.join(fixture, "tests/browser/linked-directory"),
+      );
+      fs.symlinkSync(
+        path.join(fixture, "tests/browser/beginner.spec.mjs"),
+        path.join(fixture, "tests/browser/internal-alias.spec.mjs"),
+      );
+      for (const journey of [
+        "tests/browser/linked.spec.mjs",
+        "tests/browser/linked-directory/external.spec.mjs",
+        "tests/browser/internal-alias.spec.mjs",
+        "tests/browser/../outside.spec.mjs",
+        "tests/browser/./beginner.spec.mjs",
+        "tests/browser//beginner.spec.mjs",
+        "tests/browser/nested/../../outside.spec.mjs",
+        path.join(outside, "external.spec.mjs"),
+      ]) {
+        const registered = structuredClone(map);
+        registerFixtureJourney(registered, journey, source);
+        for (const selection of [{}, { group: "laboratories" }])
+          assert.ok(
+            validateFixtureMap(registered, selection).includes(
+              `Invalid journey path laboratories -> ${journey}`,
+            ),
+            journey,
+          );
+      }
+    } finally {
+      fs.rmSync(outside, { recursive: true, force: true });
+    }
+  });
 });
 
 test("agent CLI provides structured results, effects and actionable failure codes", () => {

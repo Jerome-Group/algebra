@@ -1,7 +1,10 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import { fixedColoringLedger } from "@/lib/algebra/fixed-colorings";
 import { ColoringLedgerView } from "./ColoringLedgerView";
+import { Math as M, Prose } from "./Math";
 
 export function PolygonColoringLab({ lessonId }: { lessonId: string }) {
   const [size, setSize] = useState(
@@ -24,72 +27,85 @@ export function PolygonColoringLab({ lessonId }: { lessonId: string }) {
   return (
     <>
       <p>
-        The acting group permutes {size} bead positions. A coloring is fixed
-        exactly when it is constant on each permutation cycle. Colors are
-        labeled and may be unused.
+        <Prose>{`The acting group permutes $${size}$ bead positions. A coloring is fixed exactly when it is constant on each permutation cycle. Colors are labeled and may be unused.`}</Prose>
       </p>
       <div className="lab-controls">
         <label>
-          Bead positions n, currently {size}
-          <select
+          <Prose
+            focusable={false}
+          >{`Bead positions $n$, currently $${size}$`}</Prose>
+          <Choice
+            label="Bead positions n"
             value={size}
-            onChange={(event) => {
-              setSize(Number(event.target.value));
+            onChange={(value) => {
+              setSize(value);
               setSelected(0);
             }}
-          >
-            {[3, 4, 5, 6, 8].map((value) => (
-              <option key={value} value={value}>
-                {value} beads
-              </option>
-            ))}
-          </select>
+            options={[3, 4, 5, 6, 8].map((value) => ({
+              value: value,
+              presentation: `$${value}$ beads`,
+              speech: `${value} beads`,
+            }))}
+          />
         </label>
         <label>
           Equivalence group, currently{" "}
-          {reflections ? "rotations and reflections" : "rotations"}
-          <select
+          {reflections ? "rotations and reflections" : "rotations"}{" "}
+          <M focusable={false}>{`${reflections ? "D" : "C"}_{${size}}`}</M>
+          <Choice
+            label={"Equivalence group"}
             value={reflections ? "dihedral" : "cyclic"}
-            onChange={(event) => {
-              setReflections(event.target.value === "dihedral");
+            onChange={(value) => {
+              setReflections(value === "dihedral");
               setSelected(0);
             }}
-          >
-            <option value="cyclic">Rotations Cₙ · necklaces</option>
-            <option value="dihedral">
-              Rotations and reflections Dₙ · bracelets
-            </option>
-          </select>
+            options={[
+              {
+                value: "cyclic",
+                presentation: "Rotations $C_n$ · necklaces",
+                speech: "Rotations, cyclic group C n, necklaces",
+              },
+              {
+                value: "dihedral",
+                presentation: "Rotations and reflections $D_n$ · bracelets",
+                speech:
+                  "Rotations and reflections, dihedral group D n, bracelets",
+              },
+            ]}
+          />
         </label>
         <label>
-          Labeled colors q, currently {colors}
-          <select
+          <Prose
+            focusable={false}
+          >{`Labeled colors $q$, currently $${colors}$`}</Prose>
+          <Choice
+            label="Labeled colors q"
             value={colors}
-            onChange={(event) => setColors(Number(event.target.value))}
-          >
-            {[2, 3, 4].map((value) => (
-              <option key={value} value={value}>
-                {value} colors
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setColors(value)}
+            options={[2, 3, 4].map((value) => ({
+              value: value,
+              presentation: `$${value}$ colors`,
+              speech: `${value} colors`,
+            }))}
+          />
         </label>
         {colors === 2 && (
           <label>
             Inventory: beads of first color, currently{" "}
-            {Math.min(firstColorCount, size)}
-            <select
+            <M focusable={false}>{String(Math.min(firstColorCount, size))}</M>
+            <Choice
+              label={"Inventory: beads of first color"}
               value={Math.min(firstColorCount, size)}
-              onChange={(event) =>
-                setFirstColorCount(Number(event.target.value))
-              }
-            >
-              {Array.from({ length: size + 1 }, (_, value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
+              onChange={(value) => setFirstColorCount(value)}
+              options={Array.from(
+                { length: size + 1 },
+                (_, value) => value,
+              ).map((value) => ({
+                value: value,
+                presentation: `$${value}$`,
+                speech: String(value),
+              }))}
+            />
           </label>
         )}
       </div>
@@ -109,10 +125,7 @@ export function PolygonColoringLab({ lessonId }: { lessonId: string }) {
         Show a motion with no fixed positions but fixed colorings
       </button>
       <p>
-        A nonidentity rotation may fix no bead and still fix colorings: assign
-        one color per cycle. Naive division by the group order assumes every
-        coloring orbit has full size. The table verifies this finite action;
-        double-counting (g, coloring) proves the general formula.
+        <Prose>{String.raw`A nonidentity rotation may fix no bead and still fix colorings: assign one color per cycle. Naive division by the group order assumes every coloring orbit has full size. The table verifies this finite action; double-counting $(g,\text{coloring})$ proves the general formula.`}</Prose>
       </p>
     </>
   );

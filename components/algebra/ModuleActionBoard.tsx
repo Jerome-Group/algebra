@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
@@ -50,39 +52,37 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
         <label>
           Module relation <M focusable={false}>{"ne=0"}</M>; choose{" "}
           <M focusable={false}>{"n"}</M>
-          <select
-            aria-label="Module relation ne=0; choose n"
+          <Choice
+            label="Module relation ne=0; choose n"
             value={modulus}
-            onChange={(event) => {
-              setModulus(Number(event.target.value));
+            onChange={(value) => {
+              setModulus(value);
               setGenerator(1);
               setVector(0);
               reset();
             }}
-          >
-            {[3, 4, 6, 8, 12].map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
+            options={[3, 4, 6, 8, 12].map((n) => ({
+              value: n,
+              presentation: `$${n}$`,
+              speech: String(n),
+            }))}
+          />
         </label>
         <label>
           Integer scalar <M focusable={false}>{String.raw`r`}</M>
-          <select
-            aria-label="Integer scalar r"
+          <Choice
+            label="Integer scalar r"
             value={scalar}
-            onChange={(event) => {
-              setScalar(Number(event.target.value));
+            onChange={(value) => {
+              setScalar(value);
               reset();
             }}
-          >
-            {[-2, -1, 0, 1, 2, 3, 4, 6].map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
+            options={[-2, -1, 0, 1, 2, 3, 4, 6].map((r) => ({
+              value: r,
+              presentation: `$${r}$`,
+              speech: String(r),
+            }))}
+          />
         </label>
         <label>
           Learning stage
@@ -102,39 +102,37 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
         </label>
         <label>
           Submodule generator <M focusable={false}>{String.raw`d\mid n`}</M>
-          <select
-            aria-label="Submodule generator d dividing n"
+          <Choice
+            label="Submodule generator d dividing n"
             value={generator}
-            onChange={(event) => {
-              setGenerator(Number(event.target.value));
+            onChange={(value) => {
+              setGenerator(value);
               reset();
             }}
-          >
-            {Array.from({ length: modulus }, (_, i) => i + 1)
+            options={Array.from({ length: modulus }, (_, i) => i + 1)
               .filter((d) => modulus % d === 0)
-              .map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-          </select>
+              .map((d) => ({
+                value: d,
+                presentation: `$${d}$`,
+                speech: String(d),
+              }))}
+          />
         </label>
         <label>
           Vector <M focusable={false}>{String.raw`[x]`}</M>
-          <select
-            aria-label="Vector [x]"
+          <Choice
+            label="Vector [x]"
             value={vector}
-            onChange={(event) => {
-              setVector(Number(event.target.value));
+            onChange={(value) => {
+              setVector(value);
               reset();
             }}
-          >
-            {model.action.elements.map((x) => (
-              <option key={x} value={x}>
-                [{x}]
-              </option>
-            ))}
-          </select>
+            options={model.action.elements.map((x) => ({
+              value: x,
+              presentation: `$[${x}]$`,
+              speech: `Residue class ${x}`,
+            }))}
+          />
         </label>
       </div>
       <label className="prediction-prompt">
@@ -227,7 +225,7 @@ export function ModuleActionBoard({ lesson }: { lesson: Lesson }) {
               <tr>
                 <th scope="row">Submodule and quotient</th>
                 <td>
-                  <Prose>{String.raw`$N=${setText(model.submodule)}$; $M/N$ has ${model.quotient.length} classes`}</Prose>
+                  <Prose>{String.raw`$N=${setText(model.submodule)}$; $M/N$ has $${model.quotient.length}$ classes`}</Prose>
                 </td>
               </tr>
               <tr>

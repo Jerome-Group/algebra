@@ -1,10 +1,17 @@
 import fs from "node:fs";
 import { test, expect } from "@playwright/test";
+import { expectCatalogueText } from "./math-content.mjs";
+import { validateTex } from "../../scripts/lib/math-presentation.mjs";
 
 const lessons = JSON.parse(
   fs.readFileSync(new URL("../../lib/algebra/lessons.json", import.meta.url)),
 );
 const widths = [320, 375, 768, 1280];
+const presentations = JSON.parse(
+  fs.readFileSync(
+    new URL("../../lib/algebra/laboratory-presentations.json", import.meta.url),
+  ),
+);
 test.describe.configure({ mode: "parallel" });
 
 async function openLaboratory(page, id, guided = false) {
@@ -24,7 +31,33 @@ async function openLaboratory(page, id, guided = false) {
   await expect(page.locator(".laboratory-loading")).toHaveCount(0);
   await expect(page.locator(".laboratory-load-error")).toHaveCount(0);
   const lesson = lessons.find((item) => item.id === id);
-  if (
+  if (presentations[id] === "worked-example") {
+    const worked = panel.getByRole("region", {
+      name: "Worked mathematical construction",
+      exact: true,
+    });
+    await expect(worked).toBeVisible();
+    await expectCatalogueText(worked.locator("h3"), lesson.worked.title);
+    const objects = worked.getByRole("region", {
+      name: "Objects and conventions for this example",
+      exact: true,
+    });
+    await expect(objects).toBeVisible();
+    await expect(
+      objects.locator(".math-display annotation").first(),
+    ).toHaveText(lesson.definition);
+    const steps = worked.locator(".worked-steps > li");
+    await expect(steps).toHaveCount(lesson.worked.steps.length);
+    for (const [index, step] of lesson.worked.steps.entries())
+      await expectCatalogueText(steps.nth(index), step);
+    await expect(
+      panel.getByRole("img", {
+        name: "Mathematical structure relationships",
+        exact: true,
+      }),
+    ).toHaveCount(0);
+  } else if (
+    presentations[id] === "reference-diagram" &&
     lesson.machine === "diagram" &&
     lesson.parameters?.nodes?.length &&
     lesson.parameters.nodes.every((node) => node.text)
@@ -39,6 +72,12 @@ async function openLaboratory(page, id, guided = false) {
       lesson.parameters.nodes.length,
     );
   } else await expect(panel.locator(".katex").first()).toBeVisible();
+  await expect(panel.locator(".katex-error")).toHaveCount(0);
+  const annotations = await panel
+    .locator('.katex annotation[encoding="application/x-tex"]')
+    .allTextContents();
+  expect(annotations.length).toBeGreaterThan(0);
+  for (const tex of annotations) validateTex(tex);
   return panel;
 }
 

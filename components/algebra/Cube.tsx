@@ -21,19 +21,20 @@ import {
 } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
 import { Choice, Range } from "./Groups";
+import type { Vector3 } from "@/lib/algebra/rotations";
 import { RotateCcw, Move3D } from "lucide-react";
 export function CubeScene({
   matrix,
   set,
   selected,
   onSelect,
-  axis,
+  axisDirection,
 }: {
   matrix: Mat;
   set: ActionSet;
   selected: number;
   onSelect?: (i: number) => void;
-  axis?: number[];
+  axisDirection?: Vector3;
 }) {
   const [yaw, setYaw] = useState(0.62),
     [pitch, setPitch] = useState(-0.38),
@@ -158,11 +159,10 @@ export function CubeScene({
           </radialGradient>
         </defs>
         <rect width="560" height="400" fill="url(#scene-glow)" />
-        {axis &&
-          Math.hypot(...axis) > 0 &&
+        {axisDirection &&
           line(
-            axis.map((value) => (-1.8 * value) / Math.hypot(...axis)),
-            axis.map((value) => (1.8 * value) / Math.hypot(...axis)),
+            axisDirection.map((value) => -1.8 * value),
+            axisDirection.map((value) => 1.8 * value),
             "#9b5427",
             true,
             "rotation-axis",
@@ -368,13 +368,22 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           label="Action set"
           value={set}
           onChange={(v) => {
-            setSet(v as ActionSet);
+            setSet(v);
             setSelected(0);
           }}
-          options={Object.keys(points).map((k) => [
-            k,
-            `${points[k as ActionSet].length} ${k === "mixed" ? "vertices + faces" : k}`,
-          ])}
+          options={(
+            [
+              "vertices",
+              "edges",
+              "faces",
+              "diagonals",
+              "mixed",
+            ] satisfies ActionSet[]
+          ).map((k) => ({
+            value: k,
+            presentation: `$${points[k].length}$ ${k === "mixed" ? "vertices + faces" : k}`,
+            speech: `${points[k].length} ${k === "mixed" ? "vertices and faces" : k}`,
+          }))}
         />
         <Choice
           label="Cube group"
@@ -384,8 +393,16 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             setIndex(0);
           }}
           options={[
-            ["full", "Full group · 48"],
-            ["rotations", "Rotations · 24"],
+            {
+              value: "full",
+              presentation: "Full group · $48$",
+              speech: "Full group, 48 elements",
+            },
+            {
+              value: "rotations",
+              presentation: "Rotations · $24$",
+              speech: "Rotations, 24 elements",
+            },
           ]}
         />
         <button
@@ -449,11 +466,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
               onClick={() => setSelected(i)}
               aria-label={`Follow point ${i + 1}, image ${p[i] + 1}`}
             >
-              <M focusable={false}>{String(i + 1)}</M>
-              <span>
-                <Prose focusable={false}>{"$\\to$"}</Prose>
-                <M focusable={false}>{String(p[i] + 1)}</M>
-              </span>
+              <M focusable={false}>{`${i + 1}\\mapsto ${p[i] + 1}`}</M>
             </button>
           ))}
         </div>
@@ -583,7 +596,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
             </Prose>
             <M>{"P_Qe_i=e_{\\pi(Q)(i)}"}</M>. This representation has dimension{" "}
             <M>{String(p.length)}</M>
-            <Prose>{"; the geometric matrix $Q$ has dimension 3. "}</Prose>
+            <Prose>{"; the geometric matrix $Q$ has dimension $3$. "}</Prose>
           </p>
           <M
             block
@@ -602,7 +615,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " Column vectors; AB applies $B$ first. Every button left-multiplies $Q$. The matrix product is exact; camera movement is independent of the group action. "
+                " Column vectors; $AB$ applies $B$ first. Every button left-multiplies $Q$. The matrix product is exact; camera movement is independent of the group action. "
               }
             </Prose>
           </p>
@@ -619,7 +632,7 @@ export default function Cube({ lesson }: { lesson: Lesson }) {
           <p>
             <Prose>
               {
-                " A and $B$ generate all 24 rotations. Adjoining J yields 48 symmetries. Determinant $-1$ includes inversion and rotoreflections, not only plane reflections. "
+                " $A$ and $B$ generate all $24$ rotations. Adjoining $J$ yields $48$ symmetries. Determinant $-1$ includes inversion and rotoreflections, not only plane reflections. "
               }
             </Prose>
           </p>

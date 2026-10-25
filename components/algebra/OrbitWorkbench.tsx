@@ -1,4 +1,7 @@
 "use client";
+import { symmetricElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import {
@@ -27,45 +30,58 @@ export function OrbitWorkbench({ lesson }: { lesson: Lesson }) {
       >{`G=S_3,\\quad |G\\cdot x|\\,|G_x|=${model.orbit.length}\\cdot${model.stabilizer.length}=6`}</M>
       <label>
         Left action
-        <select
+        <Choice
+          label={"Left action"}
           value={action}
-          onChange={(event) => {
-            setAction(event.target.value as SymmetricAction);
+          onChange={(value) => {
+            setAction(value);
             setPoint(0);
           }}
-        >
-          <option value="letters">Natural action on {"{1,2,3}"}</option>
-          <option value="regular">Regular action on S3: g·x=gx</option>
-          <option value="conjugation">Conjugation on S3: g·x=gxg⁻¹</option>
-        </select>
+          options={[
+            {
+              value: "letters",
+              presentation: "Natural action on $\\{1,2,3\\}$",
+              speech: "Natural action on the set 1, 2, 3",
+            },
+            {
+              value: "regular",
+              presentation: "Regular action on $S_3$: $g\\cdot x=gx$",
+              speech: "Regular action on S 3, g acts on x by g times x",
+            },
+            {
+              value: "conjugation",
+              presentation: "Conjugation on $S_3$: $g\\cdot x=gxg^{-1}$",
+              speech: "Conjugation on S 3, g acts on x by g x g inverse",
+            },
+          ]}
+        />
       </label>
       <label>
         Point <M focusable={false}>{String.raw`x`}</M>
-        <select
-          aria-label="Point x"
+        <Choice
+          label="Point x"
           value={point}
-          onChange={(event) => setPoint(Number(event.target.value))}
-        >
-          {model.points.map((x) => (
-            <option key={x} value={x}>
-              {label(x)}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setPoint(value)}
+          options={model.points.map((x) => ({
+            value: x,
+            presentation: `$${label(x)}$`,
+            speech:
+              action === "letters" ? String(x + 1) : symmetricElementSpeech[x],
+          }))}
+        />
       </label>
       <label>
         Acting element <M focusable={false}>{String.raw`g`}</M>
-        <select
-          aria-label="Acting element g"
+        <Choice
+          label="Acting element g"
           value={element}
-          onChange={(event) => setElement(Number(event.target.value))}
-        >
-          {permutationNames.map((name, g) => (
-            <option key={g} value={g}>
-              {name}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setElement(value)}
+          options={permutationNames.map((name, g) => ({
+            value: g,
+            presentation: `$${name}$`,
+            speech: symmetricElementSpeech[g],
+          }))}
+        />
       </label>
       <div className="action-state" aria-label="Selected action state">
         <span>

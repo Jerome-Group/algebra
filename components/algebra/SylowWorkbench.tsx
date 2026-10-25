@@ -1,4 +1,7 @@
 "use client";
+import { symmetricElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { permutationNames } from "@/lib/algebra/foundation-labs";
@@ -23,47 +26,46 @@ export function SylowWorkbench({ lesson }: { lesson: Lesson }) {
       <div className="lab-controls">
         <label>
           Prime <M focusable={false}>{String.raw`p`}</M>
-          <select
-            aria-label="Prime p"
+          <Choice
+            label="Prime p"
             value={prime}
-            onChange={(event) => {
-              setPrime(Number(event.target.value) as SylowPrime);
+            onChange={(value) => {
+              setPrime(value);
               setSubgroupIndex(0);
-              setTargetIndex(Number(event.target.value) === 2 ? 1 : 0);
+              setTargetIndex(value === 2 ? 1 : 0);
               setShowFailure(false);
             }}
-          >
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-          </select>
+            options={[
+              { value: 2, presentation: "$2$", speech: "2" },
+              { value: 3, presentation: "$3$", speech: "3" },
+            ]}
+          />
         </label>
         <label>
           Coset subgroup <M focusable={false}>{String.raw`Q`}</M>
-          <select
-            aria-label="Coset subgroup Q"
+          <Choice
+            label="Coset subgroup Q"
             value={targetIndex}
-            onChange={(event) => setTargetIndex(Number(event.target.value))}
-          >
-            {model.sylows.map((group, index) => (
-              <option key={index} value={index}>
-                {`{${group.map((element) => permutationNames[element]).join(", ")}}`}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setTargetIndex(value)}
+            options={model.sylows.map((group, index) => ({
+              value: index,
+              presentation: String.raw`$\{${group.map((element) => permutationNames[element]).join(", ")}\}$`,
+              speech: `Subgroup containing ${group.map((element) => symmetricElementSpeech[element]).join("; ")}`,
+            }))}
+          />
         </label>
         <label>
           Chosen Sylow subgroup <M focusable={false}>{String.raw`P`}</M>
-          <select
-            aria-label="Chosen Sylow subgroup P"
+          <Choice
+            label="Chosen Sylow subgroup P"
             value={subgroupIndex}
-            onChange={(event) => setSubgroupIndex(Number(event.target.value))}
-          >
-            {model.sylows.map((group, index) => (
-              <option key={index} value={index}>
-                {`{${group.map((element) => permutationNames[element]).join(", ")}}`}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setSubgroupIndex(value)}
+            options={model.sylows.map((group, index) => ({
+              value: index,
+              presentation: String.raw`$\{${group.map((element) => permutationNames[element]).join(", ")}\}$`,
+              speech: `Subgroup containing ${group.map((element) => symmetricElementSpeech[element]).join("; ")}`,
+            }))}
+          />
         </label>
         <button
           onClick={() => setShowFailure(!showFailure)}

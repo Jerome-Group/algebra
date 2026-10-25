@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { Math as M, Prose } from "./Math";
@@ -40,49 +42,66 @@ export function InductionReciprocityLab({ lesson }: { lesson: Lesson }) {
         <label>
           Inducing <M focusable={false}>{"H"}</M>-character{" "}
           <M focusable={false}>{String.raw`\varphi`}</M>
-          <select
-            aria-label="Inducing H-character φ"
+          <Choice
+            label="Inducing H-character φ"
             value={character}
-            onChange={(e) => {
-              setCharacter(e.target.value as HCharacter);
+            onChange={(value) => {
+              setCharacter(value);
               reset();
             }}
-          >
-            <option value="trivial">trivial: φ(s)=1</option>
-            <option value="sign">sign: φ(s)=−1</option>
-          </select>
+            options={[
+              {
+                value: "trivial",
+                presentation: "trivial: $\\varphi(s)=1$",
+                speech: "trivial, phi of s equals 1",
+              },
+              {
+                value: "sign",
+                presentation: "sign: $\\varphi(s)=-1$",
+                speech: "sign, phi of s equals minus 1",
+              },
+            ]}
+          />
         </label>
         <label>
           Acting element <M focusable={false}>{String.raw`g`}</M>
-          <select
-            aria-label="Acting element g"
+          <Choice
+            label="Acting element g"
             value={element}
-            onChange={(e) => {
-              setElement(e.target.value as S3Element);
+            onChange={(value) => {
+              setElement(value);
               reset();
             }}
-          >
-            <option value="e">e</option>
-            <option value="r">r=(123)</option>
-            <option value="s">s=(12)</option>
-          </select>
+            options={[
+              { value: "e", presentation: "$e$", speech: "identity" },
+              {
+                value: "r",
+                presentation: "$r=(123)$",
+                speech: "r equals cycle 1 2 3",
+              },
+              {
+                value: "s",
+                presentation: "$s=(12)$",
+                speech: "s equals transposition 1 2",
+              },
+            ]}
+          />
         </label>
         <label>
           Coset basis vector <M focusable={false}>{"u_i"}</M>
-          <select
-            aria-label="Coset basis vector uᵢ"
+          <Choice
+            label="Coset basis vector uᵢ"
             value={basis}
-            onChange={(e) => {
-              setBasis(Number(e.target.value));
+            onChange={(value) => {
+              setBasis(value);
               reset();
             }}
-          >
-            {[0, 1, 2].map((index) => (
-              <option key={index} value={index}>
-                u{index}
-              </option>
-            ))}
-          </select>
+            options={[0, 1, 2].map((index) => ({
+              value: index,
+              presentation: `$u_{${index}}$`,
+              speech: `u subscript ${index}`,
+            }))}
+          />
         </label>
         <label>
           Target <M focusable={false}>{"G"}</M>-character{" "}

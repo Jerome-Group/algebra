@@ -1,4 +1,6 @@
 "use client";
+import { Choice } from "./Groups";
+
 import { useState } from "react";
 import type { Lesson } from "@/lib/algebra/engine";
 import { cyclicModule } from "@/lib/algebra/foundation-labs";
@@ -20,27 +22,29 @@ export function ModulePresentation({ lesson }: { lesson: Lesson }) {
       <label>
         Relation <M focusable={false}>{"ne=0"}</M> (
         <M focusable={false}>{"n"}</M>)
-        <select
-          aria-label="Relation ne=0 (n)"
+        <Choice
+          label="Relation ne=0 (n)"
           value={modulus}
-          onChange={(event) => setModulus(Number(event.target.value))}
-        >
-          {[3, 4, 6, 8, 12].map((n) => (
-            <option key={n}>{n}</option>
-          ))}
-        </select>
+          onChange={(value) => setModulus(value)}
+          options={[3, 4, 6, 8, 12].map((n) => ({
+            value: n,
+            presentation: `$${n}$`,
+            speech: String(n),
+          }))}
+        />
       </label>
       <label>
         Integer scalar <M focusable={false}>{String.raw`r`}</M>
-        <select
-          aria-label="Integer scalar r"
+        <Choice
+          label="Integer scalar r"
           value={scalar}
-          onChange={(event) => setScalar(Number(event.target.value))}
-        >
-          {[-2, -1, 0, 1, 2, 3, 4, 6].map((r) => (
-            <option key={r}>{r}</option>
-          ))}
-        </select>
+          onChange={(value) => setScalar(value)}
+          options={[-2, -1, 0, 1, 2, 3, 4, 6].map((r) => ({
+            value: r,
+            presentation: `$${r}$`,
+            speech: String(r),
+          }))}
+        />
       </label>
       <M
         block

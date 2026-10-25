@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 for (const id of [
   "foundations-linear-algebra",
@@ -26,49 +28,59 @@ for (const id of [
       );
     await reveal.focus();
     await page.keyboard.press("Enter");
-    await expect(lab).toContainText("W is not invariant");
+    await expectContainedMath(lab, String.raw`$W$ is not invariant`);
     await expect(lab).toContainText("intertwines both generators");
     if (id === "ureca-permutation-module") {
-      await lab
-        .getByRole("combobox", { name: "Coefficient a in a e₁−e₃" })
-        .selectOption("3");
+      await selectChoice(
+        page,
+        lab.getByRole("combobox", { name: "Coefficient a in a e₁−e₃" }),
+        "3",
+      );
       await lab
         .getByRole("textbox", { name: "Your mathematical prediction" })
         .fill("3e₁−e₃ maps to 3e₂−e₁.");
       await reveal.click();
-      await expect(lab).toContainText("3e₁−e₃ maps to 3e₂−e₁");
-      await expect(lab).toContainText("(0 3)(1 2)(4 7)(5 6)");
+      await expectContainedMath(lab, String.raw`$3e_1-e_3$ maps to $3e_2-e_1$`);
+      await expectContainedMath(lab, String.raw`$(0\ 3)(1\ 2)(4\ 7)(5\ 6)$`);
     }
-    await lab
-      .getByRole("combobox", { name: "Scalar field 𝔽" })
-      .selectOption("C");
-    await lab
-      .getByRole("combobox", { name: "Acting generators" })
-      .selectOption("rotation");
-    await lab
-      .getByRole("combobox", { name: "Candidate subspace W" })
-      .selectOption("complex-eigenline");
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Scalar field 𝔽" }),
+      "C",
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Acting generators" }),
+      "rotation",
+    );
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Candidate subspace W" }),
+      "complex-eigenline",
+    );
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("The complex eigenline is stable under r alone.");
     await reveal.click();
-    await expect(lab).toContainText("W is invariant");
-    await lab
-      .getByRole("combobox", { name: "Acting generators" })
-      .selectOption("dihedral");
+    await expectContainedMath(lab, String.raw`$W$ is invariant`);
+    await selectChoice(
+      page,
+      lab.getByRole("combobox", { name: "Acting generators" }),
+      "dihedral",
+    );
     await lab
       .getByRole("textbox", { name: "Your mathematical prediction" })
       .fill("Reflection swaps the eigenlines.");
     await reveal.click();
-    await expect(lab).toContainText("W is not invariant");
+    await expectContainedMath(lab, String.raw`$W$ is not invariant`);
     await lab
       .getByRole("button", {
         name: "Try the complex-line and identity-map failure",
       })
       .click();
     await expect(lab).toContainText("fails the intertwiner equation");
-    await expect(lab.getByRole("table")).toContainText("r");
-    await expect(lab).toContainText("ker q=V⊕0");
+    await expectContainedMath(lab.getByRole("table"), String.raw`$r$`);
+    await expectContainedMath(lab, String.raw`$\ker q=V\oplus0$`);
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(

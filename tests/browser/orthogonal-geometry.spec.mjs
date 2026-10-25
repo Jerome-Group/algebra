@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { selectChoice } from "./choice-controls.mjs";
 import AxeBuilder from "@axe-core/playwright";
+import { expectContainedMath } from "./public-math-segments.mjs";
 
 async function openLab(page, id) {
   await page.goto(`/#lab:${id}`);
@@ -18,8 +20,9 @@ test("plane products keep F and their fixed lines synchronized", async ({
     ".plane-reflection-lab",
   );
   await lab.getByRole("button", { name: "Check the θ=0 boundary" }).click();
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "fixes the line at 0°",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`fixes the line at $0^\circ$`,
   );
   await expect(lab.getByRole("img")).toHaveAttribute(
     "aria-label",
@@ -28,14 +31,18 @@ test("plane products keep F and their fixed lines synchronized", async ({
   const slider = lab.getByRole("slider", { name: /Plane angle/ });
   await slider.focus();
   for (let i = 0; i < 9; i++) await slider.press("PageUp");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "fixes the line at 45°",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`fixes the line at $45^\circ$`,
   );
-  await lab
-    .getByRole("combobox", { name: /Selected product/ })
-    .selectOption("FR");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "fixes the line at -45°",
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: /Selected product/ }),
+    "FR",
+  );
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`fixes the line at $-45^\circ$`,
   );
 });
 
@@ -45,33 +52,43 @@ test("metric comparison changes dimension, matrix, fixed space and cube verdict 
   const lab = (await openLab(page, "orthogonal-metric-orientation")).locator(
     ".metric-orientation-lab",
   );
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "x-axis, dimension 1",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`$x$-axis, dimension $1$`,
   );
   const select = lab.getByRole("combobox", { name: /Transformation/ });
-  await select.selectOption("plane3");
-  await lab.getByRole("combobox", { name: /Plane normal/ }).selectOption("z");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "plane z=0, dimension 2",
+  await selectChoice(page, select, "plane3");
+  await selectChoice(
+    page,
+    lab.getByRole("combobox", { name: /Plane normal/ }),
+    "z",
   );
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "Preserves the cube vertex set: yes",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`plane $z=0$, dimension $2$`,
   );
-  await select.selectOption("inversion3");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "{0}, dimension 0",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`Numerical cube candidate (entrywise tolerance $10^{-8}$): found.`,
   );
-  await select.selectOption("rotation3");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "Preserves the cube vertex set: no",
+  await selectChoice(page, select, "inversion3");
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`$\{0\}$, dimension $0$`,
+  );
+  await selectChoice(page, select, "rotation3");
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`Numerical cube candidate (entrywise tolerance $10^{-8}$): no match.`,
   );
   await lab.getByRole("slider", { name: /Spatial rotation/ }).press("Home");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "all R³, dimension 3",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`all $\mathbb R^3$, dimension $3$`,
   );
 });
 
-test("arbitrary axis reports cube words only for cube symmetries and remains accessible", async ({
+test("arbitrary axis labels numerical cube candidates and remains accessible", async ({
   page,
 }, info) => {
   const errors = [];
@@ -90,19 +107,19 @@ test("arbitrary axis reports cube words only for cube symmetries and remains acc
   const angle = lab.getByRole("spinbutton", { name: /Exact angle/ });
   await angle.fill("60");
   await expect(lab.locator(".live-mathematics")).toContainText(
-    "Cube symmetry: no",
+    "No numerical cube candidate matches",
   );
   await angle.fill("120");
   await expect(lab.locator(".live-mathematics")).toContainText(
-    "Cube symmetry: yes",
+    "Numerical cube candidate found",
   );
   await expect(lab.locator(".live-mathematics")).toContainText(
-    "Vertex permutation",
+    "Candidate vertex permutation",
   );
   await lab.getByRole("spinbutton", { name: /Axis y component/ }).fill("2");
   await angle.fill("60");
   await expect(lab.locator(".live-mathematics")).toContainText(
-    "Cube symmetry: no",
+    "No numerical cube candidate matches",
   );
   await lab.getByRole("spinbutton", { name: /Axis x component/ }).fill("0");
   await lab.getByRole("spinbutton", { name: /Axis y component/ }).fill("0");
@@ -110,8 +127,9 @@ test("arbitrary axis reports cube words only for cube symmetries and remains acc
   await expect(lab.getByRole("alert")).toContainText("nonzero finite axis");
   await lab.getByRole("button", { name: /Use cube body diagonal/ }).click();
   await angle.fill("180");
-  await expect(lab.locator(".live-mathematics")).toContainText(
-    "n and −n describe the same rotation",
+  await expectContainedMath(
+    lab.locator(".live-mathematics"),
+    String.raw`$n$ and $-n$ describe the same rotation`,
   );
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });

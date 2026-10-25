@@ -1,4 +1,5 @@
 "use client";
+import { Choice } from "./Groups";
 
 import { useState } from "react";
 import {
@@ -31,19 +32,35 @@ export function NilradicalLab() {
       </M>
       <label>
         Ring and hypotheses
-        <select
+        <Choice
+          label={"Ring and hypotheses"}
           value={ring}
-          onChange={(event) => {
-            setRing(event.target.value);
+          onChange={(value) => {
+            setRing(value);
             setElement(2);
           }}
-        >
-          <option value="8">ℤ/8ℤ — commutative, unital, Artinian</option>
-          <option value="6">ℤ/6ℤ — commutative, unital, Artinian</option>
-          <option value="matrix">
-            M₂(F₂) — unital, Artinian, noncommutative
-          </option>
-        </select>
+          options={[
+            {
+              value: "8",
+              presentation:
+                "$\\mathbb Z/8\\mathbb Z$ · commutative, unital, Artinian",
+              speech: "Integers modulo 8, commutative, unital, Artinian",
+            },
+            {
+              value: "6",
+              presentation:
+                "$\\mathbb Z/6\\mathbb Z$ · commutative, unital, Artinian",
+              speech: "Integers modulo 6, commutative, unital, Artinian",
+            },
+            {
+              value: "matrix",
+              presentation:
+                "$M_2(\\mathbb F_2)$ · unital, Artinian, noncommutative",
+              speech:
+                "Two by two matrices over the field with 2 elements, unital, Artinian, noncommutative",
+            },
+          ]}
+        />
       </label>
       {matrix ? (
         <>
@@ -81,17 +98,18 @@ export function NilradicalLab() {
             <M
               focusable={false}
             >{String.raw`x\in\mathbb Z/${modulus}\mathbb Z`}</M>
-            <select
-              aria-label={`Element x∈ℤ/${modulus}ℤ`}
+            <Choice
+              label={`Element x∈ℤ/${modulus}ℤ`}
               value={element % modulus}
-              onChange={(event) => setElement(Number(event.target.value))}
-            >
-              {Array.from({ length: modulus }, (_, value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
+              onChange={(value) => setElement(value)}
+              options={Array.from({ length: modulus }, (_, value) => value).map(
+                (value) => ({
+                  value: value,
+                  presentation: `$${value}$`,
+                  speech: String(value),
+                }),
+              )}
+            />
           </label>
           <p role="status">
             <Prose>{String.raw`$${element % modulus}$ is ${powers.includes(0) ? "nilpotent" : "not nilpotent"} in $\mathbb Z/${modulus}\mathbb Z$. $\operatorname{Nil}(R)=J(R)=\{${nil.join(", ")}\}$.`}</Prose>

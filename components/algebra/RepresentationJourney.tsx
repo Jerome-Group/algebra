@@ -1,3 +1,5 @@
+import { dihedralElementSpeech } from "./ChoiceSpeech";
+import { Choice } from "./Groups";
 import type { Lesson } from "@/lib/algebra/engine";
 import { learningMetadata } from "@/lib/algebra/learning";
 import { lessonCompletion } from "@/lib/algebra/progress";
@@ -115,19 +117,16 @@ export function RepresentationJourney({
       <label>
         Same representation, selected element{" "}
         <M focusable={false}>{dihedralTex[element]}</M>
-        <select
-          aria-label={`Same representation, selected element ${dihedralElements[element]}`}
+        <Choice
+          label={`Same representation, selected element ${dihedralElements[element]}`}
           value={element}
-          onChange={(event) =>
-            setElement(dihedralIndex(Number(event.target.value)))
-          }
-        >
-          {dihedralElements.map((name, index) => (
-            <option key={name} value={index}>
-              {name}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setElement(dihedralIndex(value))}
+          options={dihedralElements.map((name, index) => ({
+            value: index,
+            presentation: `$${dihedralTex[index]}$`,
+            speech: dihedralElementSpeech(index, 4),
+          }))}
+        />
       </label>
       <ol>
         {stages.map((stage, index) => {

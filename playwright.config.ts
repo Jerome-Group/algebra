@@ -44,10 +44,14 @@ const quote = (value: string) => `'${value.replaceAll("'", "'\\''")}'`;
 
 export default defineConfig({
   testDir: "./tests/browser",
+  testMatch: "**/*.spec.mjs",
   globalSetup: "./scripts/algebra-playwright-setup.mjs",
   outputDir: path.join(evidence, "tests"),
   reporter: [
     ["list"],
+    ...(process.env.ALGEBRA_PUBLIC_MATH_DESCRIPTOR
+      ? [["./scripts/public-math-playwright-reporter.mjs"] satisfies [string]]
+      : []),
     [
       "json",
       {

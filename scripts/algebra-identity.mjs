@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { directDependencies } from "./lib/direct-dependencies.mjs";
 
 export function buildIdentity(root) {
   const files = [];
@@ -51,13 +52,16 @@ export function buildIdentity(root) {
       .update(fs.readFileSync(path.join(root, file)))
       .digest("hex"),
   }));
+  const dependencies = directDependencies(root);
   return {
-    version: 1,
+    version: 2,
     algorithm: "sha256",
     sourceDigest: createHash("sha256")
       .update(JSON.stringify(inputs))
       .digest("hex"),
     inputCount: inputs.length,
+    directDependencyDigest: dependencies.digest,
+    directDependencyCount: dependencies.count,
   };
 }
 
@@ -68,6 +72,7 @@ export async function observeIdentity(origin, expected, owner) {
     expected,
     observed: null,
     sourceMatch: "unknown",
+    dependencyMatch: "unknown",
   };
   try {
     const endpoint = new URL("/api/build", origin);
@@ -94,23 +99,33 @@ export async function observeIdentity(origin, expected, owner) {
     }
     const observed = JSON.parse(content);
     if (
-      observed.version !== 1 ||
+      observed.version !== 2 ||
       observed.algorithm !== "sha256" ||
       !/^[a-f0-9]{64}$/.test(observed.sourceDigest) ||
       !Number.isSafeInteger(observed.inputCount) ||
-      observed.inputCount < 1
+      observed.inputCount < 1 ||
+      !/^[a-f0-9]{64}$/.test(observed.directDependencyDigest) ||
+      !Number.isSafeInteger(observed.directDependencyCount) ||
+      observed.directDependencyCount < 0
     )
       throw new Error(
         "Target does not expose a supported compiled build identity",
       );
     result.observed = {
-      version: 1,
+      version: 2,
       algorithm: "sha256",
       sourceDigest: observed.sourceDigest,
       inputCount: observed.inputCount,
+      directDependencyDigest: observed.directDependencyDigest,
+      directDependencyCount: observed.directDependencyCount,
     };
     result.localRunId =
       typeof observed.localRunId === "string" ? observed.localRunId : null;
+    result.dependencyMatch =
+      observed.directDependencyDigest === expected.directDependencyDigest &&
+      observed.directDependencyCount === expected.directDependencyCount
+        ? "matched"
+        : "mismatched";
     result.sourceMatch =
       observed.sourceDigest === expected.sourceDigest
         ? "matched"
@@ -128,5 +143,10 @@ export function requireOwnerIdentity(target, owner) {
         "Target does not acknowledge this owned server run. Stop it and launch a fresh server",
       ),
       { code: "UNOWNED_LOCAL_TARGET" },
+    );
+  if (target.sourceMatch !== "matched" || target.dependencyMatch !== "matched")
+    throw Object.assign(
+      new Error("Target source or direct dependency identity differs"),
+      { code: "UNMATCHED_BUILD_IDENTITY" },
     );
 }

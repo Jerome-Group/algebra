@@ -90,7 +90,7 @@ export function metricOrientationModel(
   return {
     dimension,
     matrix,
-    matrixEquation: String.raw`Q=${matrixTex(matrix)},\quad Q^TQ=I_${dimension},\quad\det Q=${determinant}`,
+    matrixEquation: String.raw`Q${state === "rotation3" ? String.raw`\approx` : "="}${matrixTex(matrix)},\quad Q^TQ=I_${dimension},\quad\det Q=${determinant}`,
     determinant,
     fixedSpace,
     cubePreserved: dimension === 3 ? Boolean(cubeSymmetryMatch(matrix)) : null,
