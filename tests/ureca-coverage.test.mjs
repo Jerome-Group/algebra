@@ -6,7 +6,11 @@ import {
   checkReviewReports,
   topicDigest,
 } from "../scripts/lib/ureca-coverage.mjs";
-import { integrateProposals } from "../scripts/lib/ureca-proposals.mjs";
+import { urecaTopicSchema } from "../lib/algebra/ureca-topics.ts";
+import {
+  integrateProposals,
+  proposalSchema,
+} from "../scripts/lib/ureca-proposals.mjs";
 
 const read = (file) =>
   JSON.parse(readFileSync(new URL(`../lib/algebra/${file}`, import.meta.url)));
@@ -317,4 +321,118 @@ test("published URECA obligations have complete passages and current independent
   const result = checkUrecaCoverage(ledger, catalogue, { release: true });
   assert.deepEqual(result.errors, []);
   assert.deepEqual(await checkReviewReports(ledger), []);
+});
+
+test("proposal duration keeps positive representable integers beyond the safe range", () => {
+  for (const estimatedMinutes of [
+    1,
+    Number.MAX_SAFE_INTEGER,
+    2 ** 53,
+    1e100,
+    Number.MAX_VALUE,
+  ]) {
+    const input = proposal();
+    input.entries[0].metadata.estimatedMinutes = estimatedMinutes;
+    assert.equal(
+      proposalSchema.parse(input).entries[0].metadata.estimatedMinutes,
+      estimatedMinutes,
+    );
+  }
+  for (const estimatedMinutes of [0, -1, 1.5, Infinity, NaN]) {
+    const input = proposal();
+    input.entries[0].metadata.estimatedMinutes = estimatedMinutes;
+    assert.equal(proposalSchema.safeParse(input).success, false);
+  }
+});
+
+test("proposal citation and ledger URLs preserve raw accepted bytes and scheme rules", () => {
+  for (const url of [
+    "https://example.test/x\n",
+    "https://exa\tmple.test/x",
+    "https://example.test/x ",
+    "https://例え.テスト/x",
+  ]) {
+    for (const field of ["url", "chapterUrl"]) {
+      const input = proposal();
+      input.entries[0].lesson.source[field] = url;
+      assert.equal(
+        proposalSchema.parse(input).entries[0].lesson.source[field],
+        url,
+      );
+    }
+    const topic = fixture().topics[0];
+    topic.sources[0].url = url;
+    assert.equal(urecaTopicSchema.parse(topic).sources[0].url, url);
+  }
+  for (const url of [
+    " HTTPS://example.test",
+    "http://example.test",
+    "mailto:fixture@example.test",
+    "urn:fixture:x",
+  ]) {
+    const topic = fixture().topics[0];
+    topic.sources[0].url = url;
+    assert.equal(urecaTopicSchema.parse(topic).sources[0].url, url);
+    const input = proposal();
+    input.entries[0].lesson.source.url = url;
+    assert.equal(proposalSchema.safeParse(input).success, false);
+  }
+});
+
+test("proposal string records retain their existing special-key output", () => {
+  for (const field of ["parameters", "capstones"])
+    for (const key of [
+      "__proto__",
+      "prototype",
+      "constructor",
+      "",
+      "ordinary",
+    ]) {
+      const input = proposal();
+      const value =
+        field === "parameters"
+          ? { retained: "bytes" }
+          : catalogue.capstones.functions;
+      const raw = JSON.parse(
+        `{${JSON.stringify(key)}:${JSON.stringify(value)}}`,
+      );
+      if (field === "parameters") input.entries[0].lesson.parameters = raw;
+      else input.capstones = raw;
+      const parsed = proposalSchema.parse(input);
+      const record =
+        field === "parameters"
+          ? parsed.entries[0].lesson.parameters
+          : parsed.capstones;
+      assert.deepEqual(Object.keys(record), key === "__proto__" ? [] : [key]);
+      if (key !== "__proto__") assert.deepEqual(record[key], value);
+      assert.equal(Object.hasOwn(raw, key), true);
+    }
+});
+
+test("reviewed topic UTC timestamps retain minutes, fractions and calendar validation", () => {
+  for (const reviewedAt of [
+    "0000-02-29T00:00Z",
+    "2000-02-29T23:59:59Z",
+    `2024-02-29T12:34:56.${"1".repeat(128)}Z`,
+  ]) {
+    const ledger = fixture();
+    review(ledger.topics[0], ledger);
+    ledger.topics[0].review.reviewedAt = reviewedAt;
+    assert.equal(
+      urecaTopicSchema.parse(ledger.topics[0]).review.reviewedAt,
+      reviewedAt,
+    );
+  }
+  for (const reviewedAt of [
+    "1900-02-29T00:00Z",
+    "2024-02-30T00:00Z",
+    "2024-02-29T24:00Z",
+    "2024-02-29T00:00+00:00",
+    "2024-02-29T00:00Z\n",
+  ]) {
+    const ledger = fixture();
+    review(ledger.topics[0], ledger);
+    ledger.topics[0].review.reviewedAt = reviewedAt;
+    assert.equal(urecaTopicSchema.safeParse(ledger.topics[0]).success, false);
+  }
 });

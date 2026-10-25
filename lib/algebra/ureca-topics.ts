@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+  urecaSourceUrlSchema,
+  urecaUtcTimestampSchema,
+} from "./ureca-schema-values.ts";
 
 const text = z
   .string()
@@ -20,7 +24,7 @@ const review = z.discriminatedUnion("status", [
       status: z.literal("reviewed"),
       id: text,
       reviewer: text,
-      reviewedAt: z.string().datetime(),
+      reviewedAt: urecaUtcTimestampSchema,
       evidence: z.string().regex(/^docs\/research\/ureca-[a-z0-9-]+\.md$/),
       contentDigest: z.string().regex(/^[a-f0-9]{64}$/),
       summary: text,
@@ -40,7 +44,7 @@ export const urecaTopicSchema = z
     sources: z
       .array(
         z
-          .object({ title: text, url: z.string().url(), section: text })
+          .object({ title: text, url: urecaSourceUrlSchema, section: text })
           .strict(),
       )
       .min(1),

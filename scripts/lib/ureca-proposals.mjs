@@ -1,12 +1,13 @@
 import { z } from "zod";
 import { laboratoryKinds } from "../../lib/algebra/laboratory-types.ts";
+import { urecaSourceUrlSchema } from "../../lib/algebra/ureca-schema-values.ts";
 
 const text = z
   .string()
   .min(1)
   .refine((value) => value.trim().length > 0);
 const strings = z.array(text);
-const httpsUrl = z.string().url().startsWith("https://");
+const httpsUrl = urecaSourceUrlSchema.startsWith("https://");
 const citation = z
   .object({
     title: text,
@@ -83,7 +84,7 @@ const lesson = z
     pitfall: text,
     prompt: text,
     machine: z.enum(laboratoryKinds),
-    parameters: z.record(z.unknown()).optional(),
+    parameters: z.record(z.string(), z.unknown()).optional(),
   })
   .strict();
 const guide = z
@@ -104,7 +105,7 @@ const metadata = z
   .object({
     teachingStatus: z.literal("guided"),
     courseTier: z.enum(["foundation", "core", "advanced"]),
-    estimatedMinutes: z.number().int().positive(),
+    estimatedMinutes: z.number().refine(Number.isInteger).positive(),
     prerequisites: strings,
     competencies: z
       .array(
@@ -178,7 +179,7 @@ export const proposalSchema = z
       z.object({ lesson, guide, metadata, topicIds: strings.min(1) }).strict(),
     ),
     units: z.array(unit),
-    capstones: z.record(assessment),
+    capstones: z.record(z.string(), assessment),
     exerciseCoverage: z.array(
       z
         .object({

@@ -9,6 +9,9 @@ Read [coverage.json](coverage.json) for the last confirmed source commit and bou
 Read [the code mapping and limits](../../../docs/research/argument-lifecycle-verification.md)
 before changing the model. Paths in the commands below are repository-relative.
 
+Use full Git history and tags. If `coverage.json`'s `syncCommit` is absent locally,
+run `git fetch --tags origin` before verification.
+
 Run from the repository root with locked npm dependencies, Node 24+ and Java 21 on PATH:
 
 ```sh

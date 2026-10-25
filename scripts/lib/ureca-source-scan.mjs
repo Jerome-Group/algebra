@@ -13,6 +13,7 @@ import {
 } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
+import { urecaUtcTimestampSchema } from "../../lib/algebra/ureca-schema-values.ts";
 
 const ignoredNames = new Set([
   ".git",
@@ -87,7 +88,7 @@ export const sourceStateSchema = z
     schemaVersion: z.literal(1),
     root: text,
     reviewedBy: text,
-    acceptedAt: z.string().datetime(),
+    acceptedAt: urecaUtcTimestampSchema,
     entries: z.array(
       z
         .object({
@@ -105,7 +106,7 @@ export const sourceStateSchema = z
             sha256,
             reason: text,
             reviewedBy: text,
-            acceptedAt: z.string().datetime(),
+            acceptedAt: urecaUtcTimestampSchema,
           })
           .strict(),
       )

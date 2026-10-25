@@ -280,3 +280,129 @@ test("rejected uploads cancel beyond the discard byte and time budgets", async (
       assert.match(response.headers.get("cache-control"), /private, no-store/);
     });
 });
+
+test("raw forbidden progress keys fail at every saved and imported boundary", async () => {
+  const attempt = { revision: "retained", choice: 0, submissions: 1 };
+  for (const field of ["attempts", "archived"])
+    for (const key of ["__proto__", "prototype", "constructor"]) {
+      const raw = JSON.parse(
+        `{"version":1,"attempts":{},"${field}":{${JSON.stringify(key)}:${JSON.stringify(field === "attempts" ? attempt : [attempt])}}}`,
+      );
+      assert.equal(Object.hasOwn(raw[field], key), true);
+      const data = { ...domain.emptyAccountData(), progress: raw };
+      const document = { ...domain.emptyAccountDocument(), progress: raw };
+      const operation = {
+        kind: "import",
+        legacy: domain.emptyLegacyRecords(),
+        draft: data,
+      };
+      const mutation = {
+        operationId: crypto.randomUUID(),
+        expectedAccountId: "owner",
+        expectedRevision: 0,
+        operation,
+      };
+      for (const [schema, input] of [
+        [domain.progressSchema, raw],
+        [domain.accountDataSchema, data],
+        [domain.documentSchema, document],
+        [
+          domain.documentSchema,
+          {
+            ...domain.emptyAccountDocument(),
+            previous: { data, restorableAt: 0 },
+          },
+        ],
+        [domain.operationSchema, operation],
+        [domain.mutationSchema, mutation],
+        [
+          domain.accountResponseSchema,
+          {
+            kind: "account",
+            user: { id: "owner", displayName: "Fixture", email: "" },
+            record: { kind: "supported", document },
+          },
+        ],
+      ])
+        assert.equal(schema.safeParse(input).success, false, `${field}/${key}`);
+      const response = await handleAccountProgress({
+        request: new Request("https://algebra.example/api/progress", {
+          method: "POST",
+          headers: {
+            Origin: "https://algebra.example",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(mutation),
+        }),
+        user: {
+          id: "owner",
+          displayName: "Fixture",
+          email: "",
+          fullName: null,
+        },
+        db: undefined,
+        registry,
+      });
+      assert.equal(response.status, 400);
+      assert.deepEqual(await response.json(), {
+        error: "Unsupported account request.",
+      });
+      assert.equal(Object.hasOwn(raw[field], key), true);
+    }
+});
+
+test("account operation identifiers preserve arbitrary hexadecimal GUID bytes", () => {
+  const document = domain.emptyAccountDocument();
+  const ids = [
+    "00000000-0000-0000-0000-000000000000",
+    "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+  ];
+  for (const version of "0123456789abcdef")
+    for (const variant of "0123456789abcdef")
+      ids.push(`01234567-89ab-${version}def-${variant}123-456789abcdef`);
+  for (const operationId of ids) {
+    const receipt = {
+      operationId,
+      payloadHash: "a".repeat(64),
+      appliedRevision: 0,
+    };
+    assert.equal(
+      domain.documentSchema.parse({ ...document, receipts: [receipt] })
+        .receipts[0].operationId,
+      operationId,
+    );
+    assert.equal(
+      domain.mutationSchema.parse({
+        operationId,
+        expectedAccountId: "owner",
+        expectedRevision: 0,
+        operation: { kind: "reset" },
+      }).operationId,
+      operationId,
+    );
+    assert.equal(
+      domain.accountResponseSchema.parse({
+        kind: "account",
+        user: { id: "owner", displayName: "Fixture", email: "" },
+        record: { kind: "supported", document },
+        acknowledgement: { operationId, appliedRevision: 0 },
+      }).acknowledgement.operationId,
+      operationId,
+    );
+  }
+  for (const operationId of [
+    "wrong",
+    `${ids[0]}\n`,
+    ` ${ids[0]}`,
+    ids[0].replaceAll("-", ""),
+  ])
+    assert.equal(
+      domain.mutationSchema.safeParse({
+        operationId,
+        expectedAccountId: "owner",
+        expectedRevision: 0,
+        operation: { kind: "reset" },
+      }).success,
+      false,
+    );
+});

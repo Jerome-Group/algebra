@@ -11,11 +11,11 @@
     },
     {
       "file": ".agents/skills/argument-lifecycle/SKILL.md",
-      "sha256": "0275efc02cd3e48860dca98802817113e72f5c98aaae5d1a037db6dcd0a0b4f4"
+      "sha256": "eaf7ff46b052cc9fb3686686fc5733b33843febaed2adf6e1f4cc397bdc99768"
     },
     {
       "file": ".agents/skills/argument-lifecycle/coverage.json",
-      "sha256": "56ecec282a5df94ea6938da3b8edf107d4772a24840552d2d1dccc394aed5ef3"
+      "sha256": "bf1a37c2e9a7936b744042c6f8aef5d2c4a9ddca6c4a9463d81ab9528e504a52"
     },
     {
       "file": ".agents/skills/verify/SKILL.md",
@@ -875,7 +875,7 @@
     },
     {
       "file": "docs/research/argument-lifecycle-verification.md",
-      "sha256": "2060d51fad199ac0b5e1d5a4331d21f618c467837698de2a286018c38ad7a0d4"
+      "sha256": "65dd4954644960d8c0260d1ede92e40f1fe79989d07ce5d1c755f0cbe7af5a49"
     },
     {
       "file": "docs/research/argument-recovery-review.json",
@@ -1051,7 +1051,7 @@
     },
     {
       "file": "lib/algebra/account-progress.ts",
-      "sha256": "7be330b549cd27bf90ac1f8cecda00491a0351f664000c31c4c6d9a4a7102e42"
+      "sha256": "b15f71ad4bc8c128e7dcfb7b17d7b70295a929d9598c59e43bc44e40f37b58e5"
     },
     {
       "file": "lib/algebra/account-server.ts",
@@ -1067,7 +1067,7 @@
     },
     {
       "file": "lib/algebra/argument-records.ts",
-      "sha256": "db73fc329f810be11ba9496dc08aa6784316e7ee9947dfec1c5d8adf3256a198"
+      "sha256": "edcfbc7462cb6af232553879b5d0fac843db0030f8ff7c9827e404dad5aa72d1"
     },
     {
       "file": "lib/algebra/argument-server.ts",
@@ -1246,12 +1246,16 @@
       "sha256": "8eef02cb34d036e29969de1fbcfbd04f4f2729a43c06a54446747d7e627b563b"
     },
     {
+      "file": "lib/algebra/ureca-schema-values.ts",
+      "sha256": "666ecbe24b83472b9e4de13a55f00fbf2fa68369778fc686159216f49a960bf2"
+    },
+    {
       "file": "lib/algebra/ureca-topics.json",
       "sha256": "ac9a1fc73c888e0aad92053746fd88a7942a51a2635e12220212533e9678ef38"
     },
     {
       "file": "lib/algebra/ureca-topics.ts",
-      "sha256": "8c13a54f72aa0cdaa2c74e1e364db719e3ba2297484a67e631a35217653a00a3"
+      "sha256": "feeb187a33bb18f7939251f1eb787833f45403a0bd898c3361fd26d521901794"
     },
     {
       "file": "lib/algebra/wedderburn-layers.ts",
@@ -1267,11 +1271,11 @@
     },
     {
       "file": "package-lock.json",
-      "sha256": "cd28c71d4193dc5f8687100c3f1ea67dfe492587e545a69ea0177a64225e0bf7"
+      "sha256": "c16e9d4b052cc76dbf45334cae5bd23e0a745fea436fb2f6955f702e78f63b55"
     },
     {
       "file": "package.json",
-      "sha256": "ae3b89ff787ae4d8997027c030a410909efe0922886e529215f53d0efc6bbaf2"
+      "sha256": "9d560f96626840f0180e9efd39910fa00b5cddd0438ccaad5d2635a137f0a39c"
     },
     {
       "file": "playwright.config.ts",
@@ -1379,11 +1383,11 @@
     },
     {
       "file": "scripts/lib/ureca-proposals.mjs",
-      "sha256": "424a9b6c9b8a4ca6ed5c3963b75ff59b6aa6c0ea0985beecf4a30b72361ebe8a"
+      "sha256": "3a87608acfcea05d6774795115d2569712e1eafedd534a9518d43c06f2c640d3"
     },
     {
       "file": "scripts/lib/ureca-source-scan.mjs",
-      "sha256": "8c9c9f75b3149b49cb0ee51499437200af8d6d6ed98191178521ea87486cac62"
+      "sha256": "68d96c1ce626df85d8dedb0d89fc29b52b0a2d336d8035826c4d07caadaa6d68"
     },
     {
       "file": "scripts/math-presentation.mjs",
@@ -1403,7 +1407,7 @@
     },
     {
       "file": "tests/account-progress.test.mjs",
-      "sha256": "7311e88f469b63d06f2df46d4572321b11dc4e45a15c0f0866a1e11bc8003429"
+      "sha256": "a21531fc4418793c5a57ba708b892fac5014aed8d2cef533c20dfbbf6973454e"
     },
     {
       "file": "tests/account-store.test.mjs",
@@ -1423,7 +1427,7 @@
     },
     {
       "file": "tests/argument-records.test.mjs",
-      "sha256": "5aa46c91619d0694389f6794b69e0f21250d0c7658a2f6225fd79191fbc64568"
+      "sha256": "b8b0ffce03178431c10607b57f5ef792e7c5c4a3eae9be1e9a491dbec0fcf170"
     },
     {
       "file": "tests/argument-server.test.mjs",
@@ -1731,7 +1735,7 @@
     },
     {
       "file": "tests/ureca-coverage.test.mjs",
-      "sha256": "c73a03501e51d9d9992ea5e57855d4228de85a06a7a705097490ba0d73e1a8d7"
+      "sha256": "19347289fe216414e6b9e4b42e57b1329ed5f455537107111dd282a8be2e56fa"
     },
     {
       "file": "tests/ureca-direct-products.test.mjs",
@@ -1743,7 +1747,7 @@
     },
     {
       "file": "tests/ureca-sources.test.mjs",
-      "sha256": "95df574908cb34886cf230ddfb4ed8a8f5f55b4e520968f820d10f207dd6fdf8"
+      "sha256": "546fcf6bcfa9aa518ba540e5dd98d81b664ceae5c903d311b364929ee7c62fb1"
     },
     {
       "file": "tests/wedderburn-layers.test.mjs",
@@ -1751,7 +1755,7 @@
     },
     {
       "file": "tsconfig.json",
-      "sha256": "58f96a9efb848e8ca7bb013a193b5a9a43db540bb135abcde496d303e27cc76a"
+      "sha256": "17772169c22208a093e318ebf226af50c654f240b62630d3d677665a3da02506"
     },
     {
       "file": "vendor/shadcn-tailwind-4.13.0.LICENSE.md",

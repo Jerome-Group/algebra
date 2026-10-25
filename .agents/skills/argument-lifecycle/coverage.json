@@ -1,5 +1,5 @@
 {
-  "syncCommit": "9cd4b5ca651a0574c8279383418644abdd3cbaf5",
+  "syncCommit": "b2dfffe5cef12cccf352810ac75be3293d82c5a6",
   "coveredFiles": [
     "lib/algebra/account-store.ts",
     "lib/algebra/argument-store.ts",

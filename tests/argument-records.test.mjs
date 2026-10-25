@@ -148,3 +148,29 @@ test("every public lesson has a complete bounded teaching edition and initial pr
     );
   }
 });
+
+test("argument mutation and acknowledgement identifiers preserve hexadecimal GUIDs", () => {
+  for (const version of "0123456789abcdef")
+    for (const variant of "0123456789abcdef") {
+      const operationId = `01234567-89ab-${version}def-${variant}123-456789abcdef`;
+      assert.equal(
+        records.argumentMutationSchema.parse({
+          operationId,
+          expectedAccountId: "owner",
+          createdAt: 0,
+          operation: { kind: "put", expectedRevision: 0, sheet: sheet() },
+        }).operationId,
+        operationId,
+      );
+      assert.equal(
+        records.argumentAcknowledgementSchema.parse({
+          operationId,
+          payloadHash: "a".repeat(64),
+          recordId: "sheet",
+          revision: 1,
+          kind: "put",
+        }).operationId,
+        operationId,
+      );
+    }
+});
