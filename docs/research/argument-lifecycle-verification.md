@@ -1,6 +1,6 @@
 # What does the bounded argument lifecycle check establish?
 
-At source `2b8d7e90b367cfd1c1690de5c5302099552b0b4c`, the modeled client schedules
+At source `29ca7ad5344dd1b003795c92667907c05573cede`, the modeled client schedules
 preserve private ownership, captured acknowledgements and immutable retry bytes.
 TLC explores 693 generated states and 411 distinct states, with zero left queued.
 Actual imported TypeScript stores pass seven selected schedules. Every property has
@@ -29,7 +29,18 @@ implementation deliberately omitted. It supplies workflow guidance, not a runnab
 formal verifier. Direct reads of [Poteto's X profile](https://x.com/poteto),
 [post 2111926622278521253](https://x.com/poteto/status/2111926622278521253) and
 [post 2113398433977659654](https://x.com/poteto/status/2113398433977659654)
-returned HTTP 403 on 2026-10-23. Their contents were not verified through X.
+returned HTTP 403 on 2026-10-23. That failed access attempt remains part of the
+research record. Later that day, the in-app browser displayed both complete posts.
+The reading used public post content and made no account changes.
+
+The [19 October post](https://x.com/poteto/status/2111926622278521253) describes
+property-specific verification, using TLA+ for concurrent state and Kani for Rust
+undefined behavior. It emphasizes requirements modeling and keeping models aligned
+with implementation. These support our scheduling model and source-maintenance
+gate; they do not establish that our particular model is correct.
+The [23 October post](https://x.com/poteto/status/2113398433977659654) announces a
+forthcoming statechart and diagram companion checked against formal specifications.
+An announcement does not establish an installed tool or a proof of this code.
 
 TLA+ suits event ordering here. The runner pins tools
 [v1.7.4](https://github.com/tlaplus/tlaplus/releases/tag/v1.7.4), whose jar prints
@@ -52,7 +63,7 @@ Retry may fail again. Network requests may remain unanswered indefinitely.
 
 | Model action                  | Production source at the sync commit                            | Atomic boundary                                                                                                  |
 | ----------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `Save`                        | `lib/algebra/argument-store.ts:229-257,393-435`                 | `save`/`enqueue`/`transmit` capture one parsed sheet, pending object, serialized body and identity before fetch. |
+| `Save`                        | `lib/algebra/argument-store.ts:229-257,393-437`                 | `save`/`enqueue`/`transmit` capture one parsed sheet, pending object, serialized body and identity before fetch. |
 | `Edit`                        | `argument-store.ts:87-95,558-574`                               | Synchronous sheet replacement and dirty recomputation.                                                           |
 | `Refresh`                     | `account-store.ts:132-147,185-206`; `argument-store.ts:517-528` | Conceal candidate, clear visible progress, increment generation and start fetch.                                 |
 | `RefreshFetch`                | `account-store.ts:207-218`                                      | Fetch continuation checks identity freshness before awaiting JSON.                                               |
@@ -123,15 +134,16 @@ Each real-module mutant exits 1 with `ERR_ASSERTION` and its named behavioral fa
 Current and restored real modules pass seven schedules: owner switch at fetch, JSON
 and digest; typing during digest; immutable retry after ambiguous failure; and same-owner restoration with a stale pre-save load released at fetch or JSON.
 No product source is edited. Temporary module copies are deleted in `finally`.
-Each invocation retains logs, traces and its own `summary.json` in an ignored
-`outputs/argument-lifecycle/run-*` directory; CI retains the evidence root as an
-artifact. The stable root `summary.json` names the run through `runId` and `runDir`.
-It becomes `running` before coverage, source or tool gates, then `passed` or `failed`,
-with timestamps, completed results and failure details. An interrupted run may remain
-`running`. The pinned jar cache stays at the stable root. A pass requires
-`status: "passed"`, all ten named model/replay outcomes listed in the skill and the
-matching run's mutation logs. A successful runner does not mistake mutation syntax,
-checksum or source-anchor failures for detected product regressions.
+Each invocation retains logs, traces, input hashes and completed outcomes under a
+permanent ordinal admission in ignored `outputs/argument-lifecycle/evidence-v2/`.
+Read current evidence with `node scripts/formal/argument-evidence.mjs current`.
+Only the newest admitted invocation can establish current success, including when
+it is empty, failed or interrupted. A pass requires matching current input bytes,
+all ten named outcomes and retained mutation logs. The explicit `inspect <invocation>`
+command always reports historical evidence, never current authority. Legacy summaries
+remain physically retained and can be read with `inspect-legacy <run-id>`.
+A successful runner does not mistake mutation syntax, checksum or source-anchor
+failures for detected product regressions.
 
 ## Creation and maintenance receipt
 
@@ -142,13 +154,13 @@ from `2b8d7e90b367cfd1c1690de5c5302099552b0b4c` through
 `9cd4b5ca651a0574c8279383418644abdd3cbaf5`. The intervening capstone/search
 repair changed none of the three covered modules; their state writers remain in
 place. All three promises are **in sync**; no promise or bound changed and no
-product bug was found in this scope. Full reruns retained the same results. The
-sync commit records the latter checked source.
+product bug was found in this scope. Full reruns retained the same results.
+That maintenance advanced the sync record to the latter checked source.
 
 Independent standards review reproduced a receipt defect. A failed rerun with a
-missing `TLA2TOOLS_JAR` left the earlier successful root summary unchanged. The runner
-now creates a run receipt before those gates and records the failed invocation in
-both its own directory and the stable summary. The actual-runner regression
+missing `TLA2TOOLS_JAR` left the earlier successful root summary unchanged. The
+historical sequential repair created a run receipt before those gates and recorded
+the failed invocation in both its own directory and the stable summary. The actual-runner regression
 `node --test tests/formal-evidence.test.mjs` uses an isolated Git repository and a
 missing jar, without Java or network access. It first failed with
 `'passed' !== 'failed'`, then passed after the fix. It also checks the failure log,
@@ -171,6 +183,135 @@ verification-only work. URECA reconciliation remains the parent release gate.
 ## Independent model correction
 
 The first model passed 414 distinct states but omitted the load cancellation performed by transmit. It conservatively admitted a stale empty load after a save, a transition that cannot occur in the real store. Independent review reproduced same-owner restoration and confirmed the actual load is canceled. The model now tracks that token and exhausts 411 distinct states. The old pass described a stale abstraction. All three promises and bounds are unchanged; no product bug was found. Current/restored runs and all negative controls pass after this verification correction.
+
+## Maintenance through PR 151
+
+This pass read every commit message from the previous sync
+`9cd4b5ca651a0574c8279383418644abdd3cbaf5` through the checked source
+`7c3cee2709b25f64b13c78ecebb5f02136f8f0a2`:
+
+- `f434d6f68ea3fcf5fd86800ef2c2afac535fb04e`, formal lifecycle verification, PR 144.
+- `2f55931f49947d43f803c392a1a5cf63925dce28`, beginner language workshop, PR 146.
+- `7c3cee2709b25f64b13c78ecebb5f02136f8f0a2`, reviewed catalogue notation and corrections, PR 151.
+
+The three covered modules are byte-identical to the previous sync. The review also
+read their state writers, account coordinator, context method forwarding, subscribers,
+argument UI callers, navigation changes and imported schema/catalogue dependencies.
+`ArgumentContext`, `LearningProgress`, `argument-catalogue`, `argument-server`,
+`account-progress` and `progress` are unchanged. PR 146 adds public navigation without
+changing argument mutations. PR 151 changes rendering, including `WrittenProse` for
+private or historical writing, without changing captured sheets or serialized requests.
+Its catalogue corrections change the `objects` field of three current teaching
+editions, for `mh2220-simple-composition`, `mh2220-finite-matrices` and
+`ureca-cyclic-eigenvalues`. Lesson and unit identities remain unchanged. Those values
+do not alter the modeled owner, equality or immutable-operation promises.
+
+The uncommitted laboratory presentation draft was inspected read-only against this
+checked source. Its covered modules are unchanged. Among direct argument callers,
+only `ArgumentSupport` changes. It looks up public recovery teaching strings before
+rendering them; it does not transform a private sheet or change a store callback.
+This is a snapshot audit of an unmerged draft, not a claim that a future merge was
+checked. A later source revision requires another delta audit before advancing sync.
+
+| Promise                   | Maintenance outcome | Evidence                                                                                                                                                                                     |
+| ------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OwnerPrivacy`            | in sync             | Current and restored checks pass. The model mutant violates `OwnerPrivacy`; the real-module mutant exposes A's captured writing in B's export after the paused digest resumes.               |
+| `CapturedAcknowledgement` | in sync             | Current and restored checks pass. The model mutant violates `CapturedAcknowledgement`; the real-module mutant acknowledges `A private later typing` instead of `A private captured writing`. |
+| `ImmutableRetry`          | in sync             | Current and restored checks pass. The model mutant violates `ImmutableRetry`; the real-module mutant changes the request body to later typing on retry.                                      |
+
+The as-is run passed before verification edits. No model, replay, property, bound or
+atomic boundary needed a change. There was no new verification drift or product bug
+within this scope. The earlier load-cancellation correction above remains a historical
+verification defect, not a newly discovered product failure. The sync record advances
+only to the checked source. The skill now explicitly requires reviewing mapped callers
+and imported dependencies because the runner's source gate compares only its three
+covered files.
+
+The final normal command passes all ten named outcomes with Node 24.19.0, Java
+21.0.12.1 and the pinned TLA+ jar SHA-256 above. Current and restored TLC runs each
+generate 693 states, find 411 distinct states and leave zero queued. The privacy,
+acknowledgement and retry mutants exit 12 on their named invariant with the counts
+listed above. All three real-module mutants exit 1 on their named `ERR_ASSERTION`.
+Current and restored real modules each pass the same seven schedules. The
+failed-rerun receipt regression passes. Run receipts retain the exact source commit,
+three covered-file hashes, bounds, tool hash, all ten results and mutation logs.
+
+The finite scope and exclusions above are unchanged. This pass establishes no
+liveness, server transaction, native authentication, browser, deployment or arbitrary
+payload guarantee. Public teaching and private source reconciliation remain the
+parent release's responsibility.
+
+## Concurrent evidence ownership repair
+
+Issue 177 retained an actual overlap in which A started first, B failed later with
+ENOENT, then A passed ten checks and overwrote the stable summary. Atomic replacement
+kept whole bytes but selected completion order. The replacement module reserves
+contiguous ordinal directories by exclusive mkdir before checking inputs. Every
+invocation writes only its owned directory. The single current reader selects the
+highest admission, validates its terminal digest/schema and captured input bytes,
+then rechecks the terminal intent set and successor. It refuses churn without a
+last-known-good fallback. Historical inspection cannot promote an old pass.
+
+The owner serializes record calls and retains validated context/results in memory
+before diagnostic writes. A caught record failure still prevents pass. Original
+proof/tool errors retain name, code, message and stack ahead of secondary evidence
+errors. A complete pass requires exactly the existing ten labels/kinds and named
+mutation identities. No mathematical promise, bound, jar pin, TLC flag, real-store
+schedule or scratch cleanup changed. Coverage sync does not advance for this repair.
+
+Captured exact relative hashes cover the three stores, model, config, coverage,
+runner, replay and evidence implementation. Changed final bytes produce a failed
+`FormalInputsChanged` receipt with completed outcomes and expected/observed hashes.
+Later current reads reject stale passed inputs; failed early gates keep their
+original error. These boundary comparisons do not establish hostile edit/restore
+isolation or the entire dependency closure.
+
+All mandatory checks, scratch cleanup, retained logs and prepublication flushes
+precede the no-replace hard link of frozen, closed, flushed receipt bytes. A digest
+intent is created before staging or comparing an existing body. Any second distinct
+intent makes the invocation conflicted even when empty. Exact-byte retry converges.
+The link commits the owned outcome. Later optional output diagnostics cannot turn
+that committed pass into a failed proof. Ambiguous link errors trigger exact owned
+target readback with regular-file, realpath, owner, digest and byte checks. Matching
+frozen bytes establish commitment and retain the link diagnostic. Unreadable
+readback rejects with `ArgumentPublicationUncertain`, without claiming failed proof
+or definitely incomplete publication. A later reader may resolve a committed fact.
+A captured primary tool or proof error still takes precedence over that secondary
+storage uncertainty. Process death after commitment differs
+from death during collection. No power-loss guarantee follows. Local macOS APFS and
+Linux ext4 identities are admitted; unknown/remote filesystems, symlinks, special
+objects and device changes are refused. Linux execution awaits actual CI.
+
+The original file-only CI upload could not establish retention of empty admissions
+or intents. CI now creates a directory-preserving tar archive with exact file/dir
+manifest, verifies extraction and the same current reader against the intended
+checkout, then publishes the verified archive. The CLI-only `archive --output` operation
+reports retention separately from the selected formal status. A faithful archived
+failure remains failed. Archive failure blocks retention without rewriting a
+committed proof. The three imported evidence operations remain the lifecycle wrapper,
+current reader and historical inspector. `--root` means checkout; explicit
+`--evidence-root` and `--source-root` support relocated evidence without trusting
+stored absolute paths.
+
+## Final source audit through PR 157
+
+The checked source advances from `7c3cee2709b25f64b13c78ecebb5f02136f8f0a2`
+to `5c6cdfab6262e219acca1e9aa1b290457e107c2a`. The sole intervening commit
+repairs cancellation after forced installer process-group termination. Its four
+changed paths are the installer, its test, its C fixture and their feature-map
+entries. The three covered stores, every modeled caller and imported schema or
+catalogue remain unchanged. All three promises remain in sync. No model, bound,
+atomic boundary, mutation or replay schedule changes. This audit does not approve
+the separate unmerged mathematics draft.
+
+Fresh independent review of the evidence ownership repair reproduced the actual
+overlap and restored all ten normal outcomes. Six additional isolated controls
+also pass, including required artifact flush failure, final coverage-byte drift,
+ambiguous publication with a primary error and admission during archival. These
+wrapper controls use synthetic outcomes; the actual TLC and store replay results
+remain separate. After this source audit, the ordinary command again passed all ten outcomes with
+the unchanged state counts and seven replay schedules. The current reader selected
+that passed invocation with the new sync and matching captured input bytes.
 
 ## Dependency maintenance on 2026-10-25
 
@@ -220,3 +361,57 @@ clone needs `git fetch --tags origin`. The skill now states the full-history and
 prerequisite. The parent must publish this tag atomically with the final dependency
 branch before CI and retain it after squash. Remote publication remains pending.
 This is a verification source reference. It makes no release claim.
+
+## Evidence ownership reconciliation after PR 180
+
+The dependency repair landed as `29ca7ad5344dd1b003795c92667907c05573cede`.
+Its three covered files equal the retained sync source
+`b2dfffe5cef12cccf352810ac75be3293d82c5a6`. A fresh remote read on 2026-10-25
+confirmed that `verification/argument-lifecycle-b2dfffe5` is published at that exact
+commit. The full-history and tag prerequisite remains required.
+
+Reconciliation read the complete dependency commit and every covered or imported
+dependency change. The two argument GUID validators preserve the accepted operation
+identifiers. The account parser preserves forbidden raw-key refusals and identifier
+bytes. Both stores, their callers, captured sheets and serialized requests are
+unchanged. The URECA parser changes and patched build dependencies add no lifecycle
+transition. `OwnerPrivacy`, `CapturedAcknowledgement` and `ImmutableRetry` remain
+**in sync**. No promise, model action, atomic boundary, assumption or finite bound
+changed. No product bug was found in this scope.
+
+The evidence ownership patch was replayed alone onto the dependency repair.
+Conflict resolution retains both complete maintenance histories, the successful
+primary-source reading record, the reviewed sync source and the evidence-v2 protocol.
+The evidence implementation, runner, model, replay and evidence tests retain their
+previously reviewed bytes. A clean `npm ci` precedes the new ordinary formal run.
+The current reader selects that run as passed with all ten named outcomes and
+matching captured inputs. Current and restored models retain 693/411/0 states.
+The three model mutants retain 91/71/33, 73/59/28 and 36/32/17 states and exit 12
+on their named invariant. The three real-module mutants exit 1 on their named
+`ERR_ASSERTION`, after module loading. Current and restored modules pass the same
+seven schedules. Newest-admitted selection, immutable inputs, directory authority
+and primary-error ownership remain unchanged.
+
+The local reconciliation receipts, source comparison and seal are retained under
+`outputs/formal-dependency-reconcile/`. This scoped pass does not establish full
+browser coverage, native sign-in, private-source freshness, learning mastery,
+deployment or independent approval. Earlier failed attempts remain retained.
+
+## Formal fixture filesystem boundary
+
+The first Linux run refused formal test fixtures on unsupported tmpfs. A temporary
+workflow-wide redirect then placed private-source and map fixtures inside the Git
+checkout, violating their separate location boundaries. Both failed CI runs and
+their independent Shipping verdicts remain retained. The global redirect is removed.
+
+Only the two formal evidence fixture constructors now use distinct ignored output
+directories on the checkout filesystem. Their child roots remain unique and each
+test removes only its own child. Other test families retain their default temporary
+locations. The evidence filesystem policy, private-source exclusion, model, replay,
+test assertions and negative controls remain unchanged. The evidence tests therefore
+have setup-only changes after the earlier byte-identity audit.
+
+The shared-root premise was tested before this correction. Formal evidence cases
+passed under the checkout redirect while private-source cases correctly refused it.
+The corrected local suites pass with their separate roots. This establishes no
+Linux or final release pass; exact-head CI and independent Shipping remain required.

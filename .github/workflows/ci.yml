@@ -64,6 +64,14 @@ jobs:
           path: dist/
           include-hidden-files: true
           if-no-files-found: error
+      - name: Archive exact formal evidence directories
+        if: always()
+        run: |
+          if [ -d outputs/argument-lifecycle/evidence-v2 ]; then
+            node scripts/formal/argument-evidence.mjs archive --output outputs/argument-lifecycle-evidence.tar
+          else
+            echo '{"retentionStatus":"uninitialized","selectedStatus":"uninitialized","archive":null}'
+          fi
       - name: Retain engineering evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

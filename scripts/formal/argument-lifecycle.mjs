@@ -6,14 +6,14 @@ import {
   mkdir,
   mkdtemp,
   readFile,
-  rename,
   rm,
   symlink,
   writeFile,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { basename, dirname, join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { runArgumentEvidence } from "./argument-evidence.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const skill = join(root, ".agents/skills/argument-lifecycle");
@@ -22,30 +22,6 @@ const toolVersion = "1.7.4";
 const toolHash =
   "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88";
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-await mkdir(evidenceRoot, { recursive: true });
-const output = await mkdtemp(join(evidenceRoot, "run-"));
-const startedAt = new Date().toISOString();
-const receipt = {
-  status: "running",
-  runId: basename(output),
-  runDir: output,
-  startedAt,
-  updatedAt: startedAt,
-  completedAt: null,
-  tool: { version: toolVersion, sha256: toolHash },
-  results: [],
-};
-
-async function writeReceipt() {
-  const bytes = JSON.stringify(receipt, null, 2) + "\n";
-  await writeFile(join(output, "summary.json"), bytes);
-  const temporary = join(evidenceRoot, `.${receipt.runId}-summary.json`);
-  await writeFile(temporary, bytes);
-  await rename(temporary, join(evidenceRoot, "summary.json"));
-}
-
-await writeReceipt();
-
 function command(executable, args) {
   const result = spawnSync(executable, args, {
     cwd: root,
@@ -57,7 +33,8 @@ function command(executable, args) {
   return { exitCode: result.status, output: result.stdout + result.stderr };
 }
 
-async function verify() {
+async function verify(attempt) {
+  const output = attempt.directory;
   const coverage = JSON.parse(
     await readFile(join(skill, "coverage.json"), "utf8"),
   );
@@ -83,7 +60,7 @@ async function verify() {
       ]),
     ),
   );
-  Object.assign(receipt, {
+  await attempt.recordContext({
     sourceCommit: revision.output.trim(),
     syncCommit: coverage.syncCommit,
     sourceChangedSinceSync: Boolean(sourceDiff.output),
@@ -116,7 +93,6 @@ async function verify() {
   const jar = await toolJar();
   const model = await readFile(join(skill, "ArgumentLifecycle.tla"), "utf8");
   const config = await readFile(join(skill, "ArgumentLifecycle.cfg"), "utf8");
-  const results = receipt.results;
 
   async function checkModel(mutation, label, expectedInvariant) {
     const folder = join(output, label);
@@ -173,9 +149,7 @@ async function verify() {
       distinctStates: Number(counts[2].replaceAll(",", "")),
       queuedStates: Number(counts[3].replaceAll(",", "")),
     };
-    results.push(item);
-    receipt.updatedAt = new Date().toISOString();
-    await writeReceipt();
+    await attempt.recordOutcome(item);
     console.log(JSON.stringify(item));
   }
 
@@ -250,9 +224,7 @@ async function verify() {
         exitCode: result.exitCode,
         expectedAssertion: mutation ? mutations[mutation].assertion : null,
       };
-      results.push(item);
-      receipt.updatedAt = new Date().toISOString();
-      await writeReceipt();
+      await attempt.recordOutcome(item);
       console.log(JSON.stringify(item));
     } finally {
       await rm(scratch, { recursive: true, force: true });
@@ -269,22 +241,28 @@ async function verify() {
   await replay(null, "replay-restored");
 }
 
+let outcome;
 try {
-  await verify();
-  receipt.status = "passed";
+  outcome = await runArgumentEvidence(
+    { root, tool: { version: toolVersion, sha256: toolHash } },
+    verify,
+  );
+  process.exitCode = outcome.status === "passed" ? 0 : 1;
 } catch (error) {
-  receipt.status = "failed";
-  receipt.error = {
-    name: error.name,
-    code: error.code ?? null,
-    message: error.message,
-  };
-  await writeFile(join(output, "failure.log"), error.stack + "\n");
   console.error(error);
   process.exitCode = 1;
-} finally {
-  receipt.checkedAt = new Date().toISOString();
-  receipt.updatedAt = receipt.checkedAt;
-  receipt.completedAt = receipt.checkedAt;
-  await writeReceipt();
+}
+if (outcome) {
+  try {
+    if (outcome.error) console.error(outcome.error.stack);
+    console.log(JSON.stringify(outcome));
+  } catch (error) {
+    try {
+      await writeFile(
+        join(dirname(outcome.directory), "optional-output-error.json"),
+        JSON.stringify({ name: error.name, message: error.message }) + "\n",
+        { flag: "wx" },
+      );
+    } catch {}
+  }
 }
