@@ -41,6 +41,11 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
+      - name: Use checkout filesystem for verification fixtures
+        run: |
+          verification_tmp_root="$GITHUB_WORKSPACE/outputs/ci-tmp"
+          mkdir -p "$verification_tmp_root"
+          printf 'TMPDIR=%s\n' "$verification_tmp_root" >> "$GITHUB_ENV"
       - name: Install locked dependencies
         run: npm ci
       - name: Build, format and lint
