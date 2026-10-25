@@ -1,6 +1,6 @@
 # What does the bounded argument lifecycle check establish?
 
-At source `5c6cdfab6262e219acca1e9aa1b290457e107c2a`, the modeled client schedules
+At source `29ca7ad5344dd1b003795c92667907c05573cede`, the modeled client schedules
 preserve private ownership, captured acknowledgements and immutable retry bytes.
 TLC explores 693 generated states and 411 distinct states, with zero left queued.
 Actual imported TypeScript stores pass seven selected schedules. Every property has
@@ -362,3 +362,38 @@ clone needs `git fetch --tags origin`. The skill now states the full-history and
 prerequisite. The parent must publish this tag atomically with the final dependency
 branch before CI and retain it after squash. Remote publication remains pending.
 This is a verification source reference. It makes no release claim.
+
+## Evidence ownership reconciliation after PR 180
+
+The dependency repair landed as `29ca7ad5344dd1b003795c92667907c05573cede`.
+Its three covered files equal the retained sync source
+`b2dfffe5cef12cccf352810ac75be3293d82c5a6`. A fresh remote read on 2026-10-25
+confirmed that `verification/argument-lifecycle-b2dfffe5` is published at that exact
+commit. The full-history and tag prerequisite remains required.
+
+Reconciliation read the complete dependency commit and every covered or imported
+dependency change. The two argument GUID validators preserve the accepted operation
+identifiers. The account parser preserves forbidden raw-key refusals and identifier
+bytes. Both stores, their callers, captured sheets and serialized requests are
+unchanged. The URECA parser changes and patched build dependencies add no lifecycle
+transition. `OwnerPrivacy`, `CapturedAcknowledgement` and `ImmutableRetry` remain
+**in sync**. No promise, model action, atomic boundary, assumption or finite bound
+changed. No product bug was found in this scope.
+
+The evidence ownership patch was replayed alone onto the dependency repair.
+Conflict resolution retains both complete maintenance histories, the successful
+primary-source reading record, the reviewed sync source and the evidence-v2 protocol.
+The evidence implementation, runner, model, replay and evidence tests retain their
+previously reviewed bytes. A clean `npm ci` precedes the new ordinary formal run.
+The current reader selects that run as passed with all ten named outcomes and
+matching captured inputs. Current and restored models retain 693/411/0 states.
+The three model mutants retain 91/71/33, 73/59/28 and 36/32/17 states and exit 12
+on their named invariant. The three real-module mutants exit 1 on their named
+`ERR_ASSERTION`, after module loading. Current and restored modules pass the same
+seven schedules. Newest-admitted selection, immutable inputs, directory authority
+and primary-error ownership remain unchanged.
+
+The local reconciliation receipts, source comparison and seal are retained under
+`outputs/formal-dependency-reconcile/`. This scoped pass does not establish full
+browser coverage, native sign-in, private-source freshness, learning mastery,
+deployment or independent approval. Earlier failed attempts remain retained.
