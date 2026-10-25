@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
 import * as fs from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -31,9 +30,11 @@ const deferred = () => {
 };
 
 async function fixture(t) {
-  const root = await fs.realpath(
-    await fs.mkdtemp(join(tmpdir(), "argument-evidence-unit-")),
+  const directory = fileURLToPath(
+    new URL("../outputs/argument-evidence-fixtures/", import.meta.url),
   );
+  await fs.mkdir(directory, { recursive: true });
+  const root = await fs.realpath(await fs.mkdtemp(join(directory, "unit-")));
   t.after(() => fs.rm(root, { recursive: true, force: true }));
   const paths = [
     ".agents/skills/argument-lifecycle/ArgumentLifecycle.tla",

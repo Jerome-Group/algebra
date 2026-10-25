@@ -9,15 +9,17 @@ import {
   rm,
   writeFile,
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 import { readCurrentArgumentEvidence } from "../scripts/formal/argument-evidence.mjs";
 
 test("a failed formal rerun becomes current and retains legacy evidence", async (t) => {
-  const root = await realpath(
-    await mkdtemp(join(tmpdir(), "algebra-formal-evidence-")),
+  const directory = fileURLToPath(
+    new URL("../outputs/formal-evidence-fixtures/", import.meta.url),
   );
+  await mkdir(directory, { recursive: true });
+  const root = await realpath(await mkdtemp(join(directory, "unit-")));
   t.after(() => rm(root, { recursive: true, force: true }));
   const skill = join(root, ".agents/skills/argument-lifecycle");
   const output = join(root, "outputs/argument-lifecycle");

@@ -11,7 +11,7 @@
     },
     {
       "file": ".agents/skills/argument-lifecycle/SKILL.md",
-      "sha256": "77c16ae47e7a5b37bc729c160a4f9110499cc26f45e36f70b24c6d7b44dd9c54"
+      "sha256": "326019930290d63f7e3553701ef5ef3035fe3a7be6e64baec7dadcf0498e016b"
     },
     {
       "file": ".agents/skills/argument-lifecycle/coverage.json",
@@ -875,7 +875,7 @@
     },
     {
       "file": "docs/research/argument-lifecycle-verification.md",
-      "sha256": "19eac66761307a400d76386a0a2913ec163f139ebc428ca55eddc4c57627f4ce"
+      "sha256": "0795c5a1569bf144dd38f3b4195853334506405196d7b99ca2a9dc982cf0d48e"
     },
     {
       "file": "docs/research/argument-recovery-review.json",
@@ -1431,7 +1431,7 @@
     },
     {
       "file": "tests/argument-evidence.test.mjs",
-      "sha256": "fa2d76c6e86272b98e723a1cd402f2162613af8a17915be72c62fb5438899c4b"
+      "sha256": "ef037e90a94b0b72257ff2ff8e61530eda3e15ac06e5eac34ce2d1136a75935a"
     },
     {
       "file": "tests/argument-records.test.mjs",
@@ -1631,7 +1631,7 @@
     },
     {
       "file": "tests/formal-evidence.test.mjs",
-      "sha256": "9009a8900cdd15f448e4c9b9a70d33948ea4fa32b6e97ceb5040b4f0b9e4f43e"
+      "sha256": "8dde767a8a46b8d5014e34e54f8080a269fc01e181f2b5c936ad1740bec50489"
     },
     {
       "file": "tests/foundation-labs.test.mjs",

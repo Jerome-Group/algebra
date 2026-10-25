@@ -121,7 +121,8 @@ An existing primary proof or tool error remains primary if evidence storage also
 A process killed after commitment differs from an incomplete proof. This establishes
 no power-loss guarantee. Writers and readers refuse unknown/remote filesystems,
 symlinks, special objects and device changes. The supported identities are local
-macOS APFS and Linux ext4; Linux execution remains unverified until actual CI.
+macOS APFS and Linux ext4. Local checks do not establish Linux execution; require
+actual CI evidence.
 
 CI retains a directory-preserving archive before uploading outputs. Empty admissions
 and intents are authority. A file-only copy can lose them and revive an old pass.

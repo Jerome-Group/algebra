@@ -293,7 +293,6 @@ current reader and historical inspector. `--root` means checkout; explicit
 `--evidence-root` and `--source-root` support relocated evidence without trusting
 stored absolute paths.
 
-
 ## Final source audit through PR 157
 
 The checked source advances from `7c3cee2709b25f64b13c78ecebb5f02136f8f0a2`
@@ -397,3 +396,22 @@ The local reconciliation receipts, source comparison and seal are retained under
 `outputs/formal-dependency-reconcile/`. This scoped pass does not establish full
 browser coverage, native sign-in, private-source freshness, learning mastery,
 deployment or independent approval. Earlier failed attempts remain retained.
+
+## Formal fixture filesystem boundary
+
+The first Linux run refused formal test fixtures on unsupported tmpfs. A temporary
+workflow-wide redirect then placed private-source and map fixtures inside the Git
+checkout, violating their separate location boundaries. Both failed CI runs and
+their independent Shipping verdicts remain retained. The global redirect is removed.
+
+Only the two formal evidence fixture constructors now use distinct ignored output
+directories on the checkout filesystem. Their child roots remain unique and each
+test removes only its own child. Other test families retain their default temporary
+locations. The evidence filesystem policy, private-source exclusion, model, replay,
+test assertions and negative controls remain unchanged. The evidence tests therefore
+have setup-only changes after the earlier byte-identity audit.
+
+The shared-root premise was tested before this correction. Formal evidence cases
+passed under the checkout redirect while private-source cases correctly refused it.
+The corrected local suites pass with their separate roots. This establishes no
+Linux or final release pass; exact-head CI and independent Shipping remain required.
