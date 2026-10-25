@@ -22,6 +22,7 @@ import {
   topicDigest,
 } from "../scripts/lib/ureca-coverage.mjs";
 import {
+  sourceStateSchema,
   compareSourceState,
   readSourceState,
   scanSourceRoot,
@@ -866,4 +867,54 @@ test("source CLI requires initialization, exact decisions, removed-source review
     cli("accept", "--decisions", decisionFile).stderr,
     /current independent review/,
   );
+});
+
+test("snapshot and removal UTC timestamps preserve minute and fractional bytes", () => {
+  const state = {
+    schemaVersion: 1,
+    root: "Synthetic fixture",
+    reviewedBy: "Fixture",
+    acceptedAt: "2026-10-25T00:00Z",
+    entries: [],
+  };
+  const removal = {
+    path: "old.tex",
+    sha256: "a".repeat(64),
+    reason: "Fixture",
+    reviewedBy: "Fixture",
+    acceptedAt: state.acceptedAt,
+  };
+  assert.deepEqual(sourceStateSchema.parse(state).removals, []);
+  for (const acceptedAt of [
+    "0000-02-29T00:00Z",
+    "2000-02-29T23:59:59Z",
+    `2024-02-29T12:34:56.${"1".repeat(128)}Z`,
+  ]) {
+    const parsed = sourceStateSchema.parse({
+      ...state,
+      acceptedAt,
+      removals: [{ ...removal, acceptedAt }],
+    });
+    assert.equal(parsed.acceptedAt, acceptedAt);
+    assert.equal(parsed.removals[0].acceptedAt, acceptedAt);
+  }
+  for (const acceptedAt of [
+    "1900-02-29T00:00Z",
+    "2024-02-30T00:00Z",
+    "2024-02-29T24:00Z",
+    "2024-02-29T00:00+00:00",
+    "2024-02-29T00:00Z\n",
+  ]) {
+    assert.equal(
+      sourceStateSchema.safeParse({ ...state, acceptedAt }).success,
+      false,
+    );
+    assert.equal(
+      sourceStateSchema.safeParse({
+        ...state,
+        removals: [{ ...removal, acceptedAt }],
+      }).success,
+      false,
+    );
+  }
 });

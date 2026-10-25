@@ -166,7 +166,7 @@ export async function validateArgumentEdition(sheet: ArgumentSheet) {
 
 export const argumentMutationSchema = z
   .object({
-    operationId: z.string().uuid(),
+    operationId: z.guid(),
     expectedAccountId: z.string().min(1).max(512),
     createdAt: z.number().int().nonnegative().safe(),
     operation: z.discriminatedUnion("kind", [
@@ -203,7 +203,7 @@ export const argumentRecordSchema = z.discriminatedUnion("kind", [
 ]);
 export const argumentAcknowledgementSchema = z
   .object({
-    operationId: z.string().uuid(),
+    operationId: z.guid(),
     payloadHash: z.string().regex(/^[0-9a-f]{64}$/),
     recordId: idSchema,
     revision: revisionSchema,

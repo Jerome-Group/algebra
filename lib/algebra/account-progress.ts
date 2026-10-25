@@ -24,11 +24,27 @@ export const legacyKeys = [
   squareStorageKey,
 ] as const;
 
+const forbiddenProgressKeys = new Set([
+  "__proto__",
+  "prototype",
+  "constructor",
+]);
 const keySchema = z
   .string()
   .min(1)
   .max(256)
-  .refine((key) => !["__proto__", "prototype", "constructor"].includes(key));
+  .refine((key) => !forbiddenProgressKeys.has(key));
+const progressMapInput = z.unknown().superRefine((input, context) => {
+  if (input === null || typeof input !== "object" || Array.isArray(input))
+    return;
+  for (const key of Object.keys(input))
+    if (forbiddenProgressKeys.has(key))
+      context.addIssue({
+        code: "custom",
+        path: [key],
+        message: "Invalid progress key",
+      });
+});
 const attemptSchema = z
   .object({
     revision: z.string().max(16_384),
@@ -39,8 +55,10 @@ const attemptSchema = z
 export const progressSchema = z
   .object({
     version: z.literal(1),
-    attempts: z.record(keySchema, attemptSchema),
-    archived: z.record(keySchema, z.array(attemptSchema)).optional(),
+    attempts: progressMapInput.pipe(z.record(keySchema, attemptSchema)),
+    archived: progressMapInput
+      .pipe(z.record(keySchema, z.array(attemptSchema)))
+      .optional(),
   })
   .strict();
 const lessonIdSchema = z
@@ -74,7 +92,7 @@ export const documentSchema = accountDataSchema
       .array(
         z
           .object({
-            operationId: z.string().uuid(),
+            operationId: z.guid(),
             payloadHash: z.string().regex(/^[0-9a-f]{64}$/),
             appliedRevision: revisionSchema,
           })
@@ -131,7 +149,7 @@ export const operationSchema = z.discriminatedUnion("kind", [
 ]);
 export const mutationSchema = z
   .object({
-    operationId: z.string().uuid(),
+    operationId: z.guid(),
     expectedAccountId: z.string().min(1).max(512),
     expectedRevision: revisionSchema,
     operation: operationSchema,
@@ -163,7 +181,7 @@ export const accountResponseSchema = z.discriminatedUnion("kind", [
       record: recordSchema,
       acknowledgement: z
         .object({
-          operationId: z.string().uuid(),
+          operationId: z.guid(),
           appliedRevision: revisionSchema,
         })
         .strict()
