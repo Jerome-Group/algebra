@@ -2,14 +2,15 @@
 
 ## Sub-features
 
-Home, Learn, Explore, Reference, Sources, lesson and laboratory links, persistent Concepts
+Home, Start, Learn, Explore, Reference, Sources, lesson and laboratory links, persistent Concepts
 navigation, aliases, history, unit capstones and the guest session's reading position.
 Argument/support destinations share this shell; their writing and recovery journeys live in
 [Guided learning](guided-learning.md) and [Accounts and progress](accounts-progress.md).
 
 ## How to get to it (user POV)
 
-Open `/#home`. Use the Learning modes links to visit `/#learn`, `/#explore`, `/#reference` and
+Open `/#home`. Start from zero or the Start navigation link opens `/#start`;
+[Beginner language](beginner-language.md) owns that workshop. Use the other Learning modes links to visit `/#learn`, `/#explore`, `/#reference` and
 `/#sources`. Above 1150 pixels the Concept library stays beside every mode and lesson; use
 Collapse concepts or Expand concepts. At 1150 pixels and below, Concepts opens the Concept
 library dialog. Search concepts, expand a subject and chapter, open a lesson, then use Back
@@ -25,12 +26,13 @@ the visited lesson resumes the guest's reading position within that page session
 ## Driving it with Playwright
 
 Run `node scripts/algebra.mjs verify --layer browser --feature discovery --owner "$ALGEBRA_OWNER" --evidence "$ALGEBRA_PROOF/discovery.json"`.
-The group selects the navigation, navigation-focus, sidebar, learning and URECA coverage
-journeys. Require their executed results; source bindings and the catalogue are not evidence
+The group selects navigation, navigation-focus, sidebar, learning, learning-recovery,
+final-release, URECA coverage, citation-math and search-math-layout journeys.
+Require their executed results; source bindings and the catalogue are not evidence
 that a control ran. Wait for `.algebra-app[data-ready="true"]` before driving the shell;
 the Concepts toggle and search are disabled until its header measurement is ready.
 
-The navigation and learning journeys enter all five modes, search the atlas for Sylow,
+The navigation and learning journeys enter Home, Learn, Explore, Reference and Sources, search the atlas for Sylow,
 choose Teaching status, open a result, exercise a retained alias and recover an unknown
 lesson to Reference. Expect the correct heading, restored keyboard focus and usable history.
 The Reference teaching-status check expects reference only to show zero results and guided
@@ -61,6 +63,21 @@ capstones recovering to Learn, and an unscoped reading endpoint showing End of r
 The focus journey holds animation frames to check reader and navigation cancellation before
 and after the destination commit. Inspect retained responsive screenshots when changing
 navigation or layout.
+
+`search-math-layout.spec.mjs` checks complete search previews at 390 and 1440 pixels.
+Search for `array` and reach the small-groups result by Tab. Its mathematical table stays
+whole; at desktop width, ArrowRight and ArrowLeft pan the existing result link. Enter opens
+the lesson and focuses its heading. At phone width the table fits without page overflow.
+Search for `pmatrix` to inspect mixed prose and formulas without vertical clipping. Search
+for `multiplicative row` to check that ordinary prose still uses its three-line preview.
+Inspect the retained left/right table, mixed-passage and prose screenshots. Do not replace
+these checks with formula presence or an injected scrolling style.
+
+`citation-math.spec.mjs` also opens Sources, URECA Y2, Alternating conjugacy classes and
+the T72/T73 details at both widths. Require the complete bibliographic prose and
+`gxg^{-1}` expression in their original order, with the retained source URL. The reader's
+other citation cases belong to [Guided learning](guided-learning.md). These checks do not
+open the external source or prove its permission state.
 
 The URECA coverage journey opens reviewed topic evidence at 390 and 1440 pixels, follows its
 lesson link and checks the added exercise examples. Expect the current public ledger's

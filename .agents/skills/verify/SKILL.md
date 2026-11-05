@@ -6,18 +6,26 @@ description: Drive Abstract Algebra's web UI and agent CLI against an owned Work
 # Verify Abstract Algebra
 
 Run from the repository root. Read only the relevant [feature file](features/README.md).
-`scripts/algebra-features.mjs` binds five journey groups to source and browser checks;
+`scripts/algebra-features.mjs` binds six journey groups to source and browser checks;
 `lib/algebra/feature-map.json` inventories the catalogue. Neither inventory proves behavior.
+For catalogue mathematics, read the [presentation and review checks](features/guided-learning.md#mathematical-presentation).
+Public mathematics needs current source attestation before build and executed presentation
+after the real cases run. A source review alone does not establish rendered coverage.
 
 ## Launch
 
-Use Node 24+, `npm ci`, and `npx playwright install chromium` on a fresh checkout.
+Use Node 24.19.0 for the build and recorded execution. Put that runtime first on `PATH`.
+On a fresh checkout, run `npm run install:ci` and `npx playwright install chromium`.
+Keep the checkout's dependencies coherent with its manifest and lockfile. A shared installation
+can differ even when the source commit matches.
 Build once, then launch an exclusive production Worker. Choose another unused port if 5180
 is occupied. Launch refuses to adopt an existing listener.
 
 ```sh
 mkdir -p outputs
 ALGEBRA_PROOF=$(mktemp -d "$PWD/outputs/verify-XXXXXX")
+test "$(node --version)" = v24.19.0
+node scripts/math-presentation.mjs check --complete --all-ui --require source-attestation --report "$ALGEBRA_PROOF/public-math-source.json" > "$ALGEBRA_PROOF/public-math-source.stdout.json"
 npm run build > "$ALGEBRA_PROOF/build.log" 2>&1
 node scripts/algebra.mjs launch --built --port 5180 --evidence "$ALGEBRA_PROOF/launch.json" > "$ALGEBRA_PROOF/launch.stdout.json"
 ALGEBRA_OWNER=$(node -e 'process.stdout.write(require(process.argv[1]).result.ownerFile)' "$ALGEBRA_PROOF/launch.json")
@@ -36,8 +44,11 @@ of any owner it returned.
 node scripts/algebra.mjs doctor --owner "$ALGEBRA_OWNER" --evidence "$ALGEBRA_PROOF/doctor.json" > "$ALGEBRA_PROOF/doctor.stdout.json"
 ```
 
-Require `ok: true`. Doctor checks runtime prerequisites, ownership and observed build identity.
-A source digest matches only when the responding Worker reports the compiled digest.
+Require `ok: true`. Doctor checks runtime prerequisites, coherent direct dependencies,
+ownership and observed build identity. The version-2 identity has separate `sourceDigest`
+and `directDependencyDigest` values. Require both `sourceMatch` and `dependencyMatch` to be
+`matched`, plus acknowledgement of this owned run. Direct dependency metadata does not prove
+every transitive package byte.
 Run doctor before the first drive and after surprises. A healthy process cannot diagnose a
 wedged UI; open a fresh browser context or relaunch before retrying that state.
 
@@ -64,11 +75,20 @@ Require a successful JSON envelope and each executed check's status. Keep the re
 `logPath` files, screenshots, traces and attachments under `outputs/`. Successful command output
 stays in files; read a failing tail before opening a full log.
 
+Use the CLI's recorded runner results for public mathematics. It binds actual case registrations,
+attempts and observations to current source, the build manifest and the owned target before and
+after the run. A browser report's metadata, a test filename or a manually supplied digest does
+not establish that binding. Keep `dist/public-math-build.json` and the referenced
+`outputs/public-math-runs/` records with the other evidence.
+
 Prove actions and resulting state through the real controls. Check persisted effects alongside
 visible feedback. Internal setters, mocked responses and an inventory are insufficient proof.
 Keep synthetic local identities separate from hosted provider-login evidence. Inspect screenshots
 when layout changes; accessibility automation cannot establish visual quality or mathematical
 correctness. Record unreachable prerequisites and failed attempts rather than weakening a journey.
+Never reuse an earlier passing execution after a failed or interrupted rerun. Read the current
+execution check; failed latest-run state and changed source, dependencies or outputs invalidate
+the claim. Native ChatGPT sign-in remains **UNVERIFIED** without separate provider evidence.
 
 ## Cleanup
 
@@ -86,21 +106,36 @@ answers, and every result and referenced artifact still exists. Retain proof and
 
 Complete cleanup of the manually launched pass first. Unset `ALGEBRA_LOCAL_OWNER` and
 `ALGEBRA_TEST_ORIGIN` before the full pass.
+The full pass also needs a working POSIX C compiler (`cc`) for the install-cancellation
+regression. Check `cc --version` first; doctor does not preflight it.
 
 ```sh
 mkdir -p outputs
 ALGEBRA_RELEASE_PROOF=$(mktemp -d "$PWD/outputs/release-XXXXXX")
 unset ALGEBRA_LOCAL_OWNER ALGEBRA_TEST_ORIGIN
+test "$(node --version)" = v24.19.0
 node scripts/algebra.mjs verify --layer all --port 5180 --evidence "$ALGEBRA_RELEASE_PROOF/release.json" > "$ALGEBRA_RELEASE_PROOF/release.stdout.json"
+node scripts/math-presentation.mjs check --complete --all-ui --require executed-presentation --report "$ALGEBRA_RELEASE_PROOF/public-math-execution.json" > "$ALGEBRA_RELEASE_PROOF/public-math-execution.stdout.json"
 ```
 
 Choose another unused port if needed. Full verification builds, launches its own production
-Worker, runs all gates, then stops that Worker. It rejects `--owner`, `--url`,
+Worker, runs its registered gates, then stops that Worker. It rejects `--owner`, `--url`,
 `ALGEBRA_LOCAL_OWNER` and `ALGEBRA_TEST_ORIGIN` before build or evidence effects. Use
 `--layer browser` for an existing target. Require `ok: true` and retained evidence for every gate.
+The build requires current complete-source independent review. It records the complete outer
+Vinext build only after that build succeeds with unchanged inputs. Full verification then records
+the real Node and browser cases and checks executed presentation after cleanup. It does not
+require future execution to approve source or build. Feature runs remain partial and cannot
+replace this pass. Require `publicCompleteness.satisfiesRequirement: true` with
+`require: "executed-presentation"` in the final presentation receipt.
+
+`npm run verify:math-presentation` checks the reviewed catalogue core.
+`npm run verify:public-math-source` checks complete source attestation.
+`npm run verify:public-math-execution` checks current executed presentation. None alone grants
+release approval, proves every mathematical claim or verifies native sign-in.
 
 ## Helpers
 
-The existing `node scripts/algebra.mjs` is the only helper. Its launch, doctor, verify, inspect
+The existing `node scripts/algebra.mjs` is the only lifecycle helper. Its launch, doctor, verify, inspect
 and stop commands are shown above. Do not add a second server lifecycle. Maintain this directory
 with the installed `pstack:maintain-verification-skill` after user-facing changes.

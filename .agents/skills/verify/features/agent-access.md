@@ -45,13 +45,26 @@ group's result: its existing test executes only `algebra_controls` and `algebra_
 Run CLI behavior checks with `node --test tests/agent-cli.test.mjs` when command, ownership,
 map or build-identity contracts change. A feature or shard pass is partial coverage.
 
+Build identity version 2 keeps `sourceDigest` separate from `directDependencyDigest` and
+`directDependencyCount`. `scripts/lib/direct-dependencies.mjs` compares direct declarations,
+lockfile metadata and installed package metadata. Doctor, inspect and browser setup require
+both the observed source and direct dependency identity to match. An owned local target must
+also acknowledge the live run marker. Shared `node_modules` can violate that coherence despite
+an unchanged commit. This direct metadata check does not verify every transitive package byte.
+
+Follow the parent skill for source attestation before build and recorded execution after the
+real cases. The CLI binds Node and browser runner records to current source, built outputs and
+the owned target. Report metadata alone does not establish that provenance. Partial feature
+results or an earlier success after a failed rerun cannot satisfy current executed presentation.
+
 ## Gotchas
 
 CLI output is one JSON envelope; failure exits 1. Schema-invalid input causes no effects;
 runtime rejection can follow navigation or earlier UI actions in the disposable context.
 Successful inspection records its supplied actions, including an empty discovery list.
 Local targets require the live owner marker. A local source hash alone cannot identify a
-remote deployment; doctor compares the observed compiled digest and reports unknown identity.
+remote deployment; doctor compares observed compiled source and direct dependency digests.
+Unavailable identity remains unknown and cannot establish a match.
 Injected tool registration proves the invoked application contracts. Native browser support
 and hosted ChatGPT authentication require separate live proof; synthetic local identities
 establish neither.
